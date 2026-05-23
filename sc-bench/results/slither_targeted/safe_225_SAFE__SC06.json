@@ -1,0 +1,102 @@
+{
+  "success": true,
+  "error": null,
+  "results": {
+    "detectors": [
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "withdraw",
+            "source_mapping": {
+              "start": 545,
+              "length": 169,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "ETHVault",
+                "source_mapping": {
+                  "start": 181,
+                  "length": 649,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "withdraw(uint256)"
+            }
+          },
+          {
+            "type": "node",
+            "name": "msg.sender.send(amount)",
+            "source_mapping": {
+              "start": 683,
+              "length": 23,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "withdraw",
+                "source_mapping": {
+                  "start": 545,
+                  "length": 169,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "ETHVault",
+                    "source_mapping": {
+                      "start": 181,
+                      "length": 649,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "withdraw(uint256)"
+                }
+              }
+            }
+          }
+        ],
+        "description": "ETHVault.withdraw(uint256) () ignores return value by msg.sender.send(amount) ()\n",
+        "markdown": "[ETHVault.withdraw(uint256)]() ignores return value by [msg.sender.send(amount)]()\n",
+        "first_markdown_element": "",
+        "id": "8ae74ebc2858c301965efdb590f029a5b77772621c518633fd6bb0221a726759",
+        "check": "unchecked-send",
+        "impact": "Medium",
+        "confidence": "Medium"
+      }
+    ]
+  }
+}

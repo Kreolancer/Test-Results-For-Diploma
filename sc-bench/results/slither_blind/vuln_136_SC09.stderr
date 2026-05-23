@@ -1,0 +1,45 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_136_SC09.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
+
+Detector: divide-before-multiply
+Easy12.fallback() (contracts/vulnerable/vuln_136_SC09.sol#14-25) performs a multiplication on the result of a division:
+	- payout = invests[sender] / 100 * 12 * (now - dates[sender]) / 86400 (contracts/vulnerable/vuln_136_SC09.sol#17)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#divide-before-multiply
+
+Detector: timestamp
+Easy12.fallback() (contracts/vulnerable/vuln_136_SC09.sol#14-25) uses timestamp for comparisons
+	Dangerous comparisons:
+	- payout > address(this).balance (contracts/vulnerable/vuln_136_SC09.sol#18)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+
+Detector: solc-version
+Version constraint ^0.4.25 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ABIEncoderV2PackedStorage_0.4.x.
+It is used by:
+	- ^0.4.25 (contracts/vulnerable/vuln_136_SC09.sol#1)
+solc-0.4.25 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: reentrancy-unlimited-gas
+Reentrancy in Easy12.fallback() (contracts/vulnerable/vuln_136_SC09.sol#14-25):
+	External calls:
+	- sender.transfer(payout) (contracts/vulnerable/vuln_136_SC09.sol#21)
+	State variables written after the call(s):
+	- dates[sender] = now (contracts/vulnerable/vuln_136_SC09.sol#23)
+	- invests[sender] += msg.value (contracts/vulnerable/vuln_136_SC09.sol#24)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-5
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_136_SC09.sol analyzed (1 contracts with 101 detectors), 5 result(s) found

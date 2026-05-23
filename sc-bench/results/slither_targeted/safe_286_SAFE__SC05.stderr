@@ -1,0 +1,12 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_286_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+
+Detector: timestamp
+GreatHarmon.getBasicIncome() (contracts/safe/safe_286_SAFE.sol#116-129) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(_isReady(_resident)) (contracts/safe/safe_286_SAFE.sol#118)
+GreatHarmon._isReady(GreatHarmon.Resident) (contracts/safe/safe_286_SAFE.sol#139-141) uses timestamp for comparisons
+	Dangerous comparisons:
+	- (_resident.readyTime <= now) (contracts/safe/safe_286_SAFE.sol#140)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_286_SAFE.sol analyzed (3 contracts with 2 detectors), 2 result(s) found

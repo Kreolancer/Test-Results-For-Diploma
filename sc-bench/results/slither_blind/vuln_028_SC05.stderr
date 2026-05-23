@@ -1,0 +1,52 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_028_SC05.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_028_SC05.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_028_SC05.sol:22:33: Warning: Using contract member "balance" inherited from the address type is deprecated. Convert the contract to "address" type to access the member, for example use "address(contract).balance" instead.
+            msg.sender.transfer(this.balance);
+                                ^----------^
+
+
+Detector: arbitrary-send-eth
+Roulette.fallback() (contracts/vulnerable/vuln_028_SC05.sol#15-24) sends eth to arbitrary user
+	Dangerous calls:
+	- msg.sender.transfer(this.balance) (contracts/vulnerable/vuln_028_SC05.sol#22)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#functions-that-send-ether-to-arbitrary-destinations
+
+Detector: weak-prng
+Roulette.fallback() (contracts/vulnerable/vuln_028_SC05.sol#15-24) uses a weak PRNG: "now % 15 == 0 (contracts/vulnerable/vuln_028_SC05.sol#21)" 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#weak-PRNG
+
+Detector: incorrect-equality
+Roulette.fallback() (contracts/vulnerable/vuln_028_SC05.sol#15-24) uses a dangerous strict equality:
+	- now % 15 == 0 (contracts/vulnerable/vuln_028_SC05.sol#21)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dangerous-strict-equalities
+
+Detector: timestamp
+Roulette.fallback() (contracts/vulnerable/vuln_028_SC05.sol#15-24) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(now != pastBlockTime) (contracts/vulnerable/vuln_028_SC05.sol#18)
+	- now % 15 == 0 (contracts/vulnerable/vuln_028_SC05.sol#21)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+
+Detector: solc-version
+Version constraint ^0.4.25 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ABIEncoderV2PackedStorage_0.4.x.
+It is used by:
+	- ^0.4.25 (contracts/vulnerable/vuln_028_SC05.sol#7)
+solc-0.4.25 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_028_SC05.sol analyzed (1 contracts with 101 detectors), 6 result(s) found

@@ -1,0 +1,61 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_203_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+
+Detector: solc-version
+Version constraint ^0.4.18 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- EventStructWrongData
+	- NestedArrayFunctionCallDecoder.
+It is used by:
+	- ^0.4.18 (contracts/safe/safe_203_SAFE.sol#1)
+solc-0.4.18 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Parameter BasicToken.transfer(address,uint256)._to (contracts/safe/safe_203_SAFE.sol#113) is not in mixedCase
+Parameter BasicToken.transfer(address,uint256)._value (contracts/safe/safe_203_SAFE.sol#113) is not in mixedCase
+Parameter BasicToken.balanceOf(address)._owner (contracts/safe/safe_203_SAFE.sol#129) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._from (contracts/safe/safe_203_SAFE.sol#146) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._to (contracts/safe/safe_203_SAFE.sol#146) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._value (contracts/safe/safe_203_SAFE.sol#146) is not in mixedCase
+Parameter StandardToken.approve(address,uint256)._spender (contracts/safe/safe_203_SAFE.sol#168) is not in mixedCase
+Parameter StandardToken.approve(address,uint256)._value (contracts/safe/safe_203_SAFE.sol#168) is not in mixedCase
+Parameter StandardToken.allowance(address,address)._owner (contracts/safe/safe_203_SAFE.sol#180) is not in mixedCase
+Parameter StandardToken.allowance(address,address)._spender (contracts/safe/safe_203_SAFE.sol#180) is not in mixedCase
+Parameter StandardToken.increaseApproval(address,uint256)._spender (contracts/safe/safe_203_SAFE.sol#194) is not in mixedCase
+Parameter StandardToken.increaseApproval(address,uint256)._addedValue (contracts/safe/safe_203_SAFE.sol#194) is not in mixedCase
+Parameter StandardToken.decreaseApproval(address,uint256)._spender (contracts/safe/safe_203_SAFE.sol#210) is not in mixedCase
+Parameter StandardToken.decreaseApproval(address,uint256)._subtractedValue (contracts/safe/safe_203_SAFE.sol#210) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: too-many-digits
+ThemisToken.ThemisToken() (contracts/safe/safe_203_SAFE.sol#246-271) uses literals with too many digits:
+	- totalSupply_ = 3000000000 * 1e18 (contracts/safe/safe_203_SAFE.sol#247)
+ThemisToken.ThemisToken() (contracts/safe/safe_203_SAFE.sol#246-271) uses literals with too many digits:
+	- angelSupply = 300000000 * 1e18 (contracts/safe/safe_203_SAFE.sol#248)
+ThemisToken.ThemisToken() (contracts/safe/safe_203_SAFE.sol#246-271) uses literals with too many digits:
+	- earlyBirdsSupply = 600000000 * 1e18 (contracts/safe/safe_203_SAFE.sol#249)
+ThemisToken.ThemisToken() (contracts/safe/safe_203_SAFE.sol#246-271) uses literals with too many digits:
+	- teamSupply = 450000000 * 1e18 (contracts/safe/safe_203_SAFE.sol#250)
+ThemisToken.ThemisToken() (contracts/safe/safe_203_SAFE.sol#246-271) uses literals with too many digits:
+	- foundationSupply = 750000000 * 1e18 (contracts/safe/safe_203_SAFE.sol#251)
+ThemisToken.ThemisToken() (contracts/safe/safe_203_SAFE.sol#246-271) uses literals with too many digits:
+	- marketingSupply = 600000000 * 1e18 (contracts/safe/safe_203_SAFE.sol#252)
+ThemisToken.ThemisToken() (contracts/safe/safe_203_SAFE.sol#246-271) uses literals with too many digits:
+	- optionSupply = 300000000 * 1e18 (contracts/safe/safe_203_SAFE.sol#253)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#too-many-digits
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_203_SAFE.sol analyzed (7 contracts with 101 detectors), 23 result(s) found

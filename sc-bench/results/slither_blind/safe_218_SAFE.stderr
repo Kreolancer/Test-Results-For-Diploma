@@ -1,0 +1,42 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_218_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+
+Detector: missing-zero-check
+PlanetBlockchainToken2.transferOwnership(address)._newOwner (contracts/safe/safe_218_SAFE.sol#140) lacks a zero-check on :
+		- newOwner = _newOwner (contracts/safe/safe_218_SAFE.sol#141)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+
+Detector: solc-version
+Version constraint ^0.4.15 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- NestedArrayFunctionCallDecoder
+	- ZeroFunctionSelector.
+It is used by:
+	- ^0.4.15 (contracts/safe/safe_218_SAFE.sol#1)
+solc-0.4.15 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Parameter PlanetBlockchainToken2.transferOwnership(address)._newOwner (contracts/safe/safe_218_SAFE.sol#140) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: constable-states
+ERC20Token2.decimals (contracts/safe/safe_218_SAFE.sol#10) should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+
+Detector: external-function
+issue(address,uint256,string,string) should be declared external:
+	- PlanetBlockchainToken2.issue(address,uint256,string,string) (contracts/safe/safe_218_SAFE.sol#115-123)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#public-function-that-could-be-declared-external
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_218_SAFE.sol analyzed (2 contracts with 101 detectors), 6 result(s) found

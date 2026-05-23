@@ -1,0 +1,199 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_125_SC06.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
+
+Detector: constant-function-asm
+Zeus.bytesToAddress(bytes) (contracts/vulnerable/vuln_125_SC06.sol#415-419) is declared view but contains assembly code
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#constant-functions-using-assembly-code
+
+Detector: divide-before-multiply
+Zeus.fallback() (contracts/vulnerable/vuln_125_SC06.sol#209-300) performs a multiplication on the result of a division:
+	- devAddr.send(investment / 100 * devFee) (contracts/vulnerable/vuln_125_SC06.sol#260)
+Zeus.fallback() (contracts/vulnerable/vuln_125_SC06.sol#209-300) performs a multiplication on the result of a division:
+	- advertAddr.send(investment / 100 * advertFee) (contracts/vulnerable/vuln_125_SC06.sol#264)
+Zeus.fallback() (contracts/vulnerable/vuln_125_SC06.sol#209-300) performs a multiplication on the result of a division:
+	- bonusAmount = investment / 100 * currentInterest (contracts/vulnerable/vuln_125_SC06.sol#269)
+Zeus.getInvestorDividendsAmount(address) (contracts/vulnerable/vuln_125_SC06.sol#410-413) performs a multiplication on the result of a division:
+	- investors[addr].deposit / 100 * currentInterest * time / 86400 (contracts/vulnerable/vuln_125_SC06.sol#412)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#divide-before-multiply
+
+Detector: incorrect-equality
+Zeus.fallback() (contracts/vulnerable/vuln_125_SC06.sol#209-300) uses a dangerous strict equality:
+	- user.deposits == 1 (contracts/vulnerable/vuln_125_SC06.sol#277)
+Zeus.payDividends() (contracts/vulnerable/vuln_125_SC06.sol#312-344) uses a dangerous strict equality:
+	- amount == 0 (contracts/vulnerable/vuln_125_SC06.sol#316)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dangerous-strict-equalities
+
+Detector: uninitialized-local
+Zeus.doRestart().txs (contracts/vulnerable/vuln_125_SC06.sol#348) is a local variable never initialized
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#uninitialized-local-variables
+
+Detector: events-maths
+Zeus.getInvestorData(address[],uint256[],uint256[],address[]) (contracts/vulnerable/vuln_125_SC06.sol#192-205) should emit an event for: 
+	- depositAmount += _deposit[i] (contracts/vulnerable/vuln_125_SC06.sol#198) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-arithmetic
+
+Detector: missing-zero-check
+Zeus.setAdvertAddr(address).addr (contracts/vulnerable/vuln_125_SC06.sol#173) lacks a zero-check on :
+		- advertAddr = addr (contracts/vulnerable/vuln_125_SC06.sol#174)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+
+Detector: incorrect-modifier
+Modifier Zeus.onlyOwner() (contracts/vulnerable/vuln_125_SC06.sol#157) does not always execute _; or revert
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-modifier
+
+Detector: timestamp
+GrowingControl.getMaxInvestmentToday(GrowingControl.data) (contracts/vulnerable/vuln_125_SC06.sol#58-69) uses timestamp for comparisons
+	Dangerous comparisons:
+	- control.startAt > now (contracts/vulnerable/vuln_125_SC06.sol#64)
+Zeus.fallback() (contracts/vulnerable/vuln_125_SC06.sol#209-300) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(investment > 0,Too much investments today) (contracts/vulnerable/vuln_125_SC06.sol#248)
+	- user.referrer > 0x0 (contracts/vulnerable/vuln_125_SC06.sol#272)
+	- user.deposits == 1 (contracts/vulnerable/vuln_125_SC06.sol#277)
+	- thunderstorm.addr > 0x0 && thunderstorm.from + 864000 > now (contracts/vulnerable/vuln_125_SC06.sol#282)
+	- msg.value > investment (contracts/vulnerable/vuln_125_SC06.sol#297)
+Zeus.payDividends() (contracts/vulnerable/vuln_125_SC06.sol#312-344) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(investors[msg.sender].id > 0,Investor not found) (contracts/vulnerable/vuln_125_SC06.sol#313)
+	- amount == 0 (contracts/vulnerable/vuln_125_SC06.sol#316)
+	- balance < amount (contracts/vulnerable/vuln_125_SC06.sol#332)
+Zeus.considerCurrentInterest() (contracts/vulnerable/vuln_125_SC06.sol#370-389) uses timestamp for comparisons
+	Dangerous comparisons:
+	- depositAmount >= 2000000000000000000000 (contracts/vulnerable/vuln_125_SC06.sol#375)
+	- depositAmount >= 500000000000000000000 (contracts/vulnerable/vuln_125_SC06.sol#377)
+Zeus.considerThunderstorm(uint256) (contracts/vulnerable/vuln_125_SC06.sol#393-406) uses timestamp for comparisons
+	Dangerous comparisons:
+	- thunderstorm.addr > 0x0 && thunderstorm.from + 864000 < now (contracts/vulnerable/vuln_125_SC06.sol#395)
+	- amount > thunderstorm.deposit (contracts/vulnerable/vuln_125_SC06.sol#402)
+Zeus.min(uint256,uint256) (contracts/vulnerable/vuln_125_SC06.sol#427-430) uses timestamp for comparisons
+	Dangerous comparisons:
+	- a < b (contracts/vulnerable/vuln_125_SC06.sol#428)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+
+Detector: assembly
+Zeus.bytesToAddress(bytes) (contracts/vulnerable/vuln_125_SC06.sol#415-419) uses assembly
+	- INLINE ASM (contracts/vulnerable/vuln_125_SC06.sol#416-419)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#assembly-usage
+
+Detector: costly-loop
+Zeus.getInvestorData(address[],uint256[],uint256[],address[]) (contracts/vulnerable/vuln_125_SC06.sol#192-205) has costly operations inside a loop:
+	- depositAmount += _deposit[i] (contracts/vulnerable/vuln_125_SC06.sol#198)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#costly-operations-inside-a-loop
+
+Detector: cyclomatic-complexity
+Zeus.fallback() (contracts/vulnerable/vuln_125_SC06.sol#209-300) has a high cyclomatic complexity (13).
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#cyclomatic-complexity
+
+Detector: solc-version
+Version constraint ^0.4.24 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ABIEncoderV2PackedStorage_0.4.x
+	- ExpExponentCleanup
+	- EventStructWrongData.
+It is used by:
+	- ^0.4.24 (contracts/vulnerable/vuln_125_SC06.sol#33)
+solc-0.4.24 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Struct GrowingControl.data (contracts/vulnerable/vuln_125_SC06.sol#42-49) is not in CapWords
+Parameter Zeus.getInvestorData(address[],uint256[],uint256[],address[])._addr (contracts/vulnerable/vuln_125_SC06.sol#192) is not in mixedCase
+Parameter Zeus.getInvestorData(address[],uint256[],uint256[],address[])._deposit (contracts/vulnerable/vuln_125_SC06.sol#192) is not in mixedCase
+Parameter Zeus.getInvestorData(address[],uint256[],uint256[],address[])._date (contracts/vulnerable/vuln_125_SC06.sol#192) is not in mixedCase
+Parameter Zeus.getInvestorData(address[],uint256[],uint256[],address[])._referrer (contracts/vulnerable/vuln_125_SC06.sol#192) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: reentrancy-unlimited-gas
+Reentrancy in Zeus.fallback() (contracts/vulnerable/vuln_125_SC06.sol#209-300):
+	External calls:
+	- payDividends() (contracts/vulnerable/vuln_125_SC06.sol#242)
+		- msg.sender.transfer(amount) (contracts/vulnerable/vuln_125_SC06.sol#337)
+	State variables written after the call(s):
+	- depositAmount += investment (contracts/vulnerable/vuln_125_SC06.sol#256)
+	- user.deposit += investment (contracts/vulnerable/vuln_125_SC06.sol#251)
+	- user.deposits += 1 (contracts/vulnerable/vuln_125_SC06.sol#252)
+	- lastPaymentDate = now (contracts/vulnerable/vuln_125_SC06.sol#257)
+	Event emitted after the call(s):
+	- Invest(msg.sender,investment,user.referrer) (contracts/vulnerable/vuln_125_SC06.sol#254)
+Reentrancy in Zeus.fallback() (contracts/vulnerable/vuln_125_SC06.sol#209-300):
+	External calls:
+	- payDividends() (contracts/vulnerable/vuln_125_SC06.sol#242)
+		- msg.sender.transfer(amount) (contracts/vulnerable/vuln_125_SC06.sol#337)
+	- user.referrer.send(bonusAmount) (contracts/vulnerable/vuln_125_SC06.sol#273)
+	Event emitted after the call(s):
+	- Payout(user.referrer,bonusAmount,referral,msg.sender) (contracts/vulnerable/vuln_125_SC06.sol#274)
+Reentrancy in Zeus.fallback() (contracts/vulnerable/vuln_125_SC06.sol#209-300):
+	External calls:
+	- payDividends() (contracts/vulnerable/vuln_125_SC06.sol#242)
+		- msg.sender.transfer(amount) (contracts/vulnerable/vuln_125_SC06.sol#337)
+	- devAddr.send(investment / 100 * devFee) (contracts/vulnerable/vuln_125_SC06.sol#260)
+	- msg.sender.send(bonusAmount) (contracts/vulnerable/vuln_125_SC06.sol#278)
+	Event emitted after the call(s):
+	- Payout(msg.sender,bonusAmount,cash-back,0) (contracts/vulnerable/vuln_125_SC06.sol#279)
+Reentrancy in Zeus.fallback() (contracts/vulnerable/vuln_125_SC06.sol#209-300):
+	External calls:
+	- payDividends() (contracts/vulnerable/vuln_125_SC06.sol#242)
+		- msg.sender.transfer(amount) (contracts/vulnerable/vuln_125_SC06.sol#337)
+	- thunderstorm.addr.send(bonusAmount) (contracts/vulnerable/vuln_125_SC06.sol#284)
+	Event emitted after the call(s):
+	- Payout(thunderstorm.addr,bonusAmount,thunderstorm,msg.sender) (contracts/vulnerable/vuln_125_SC06.sol#285)
+Reentrancy in Zeus.fallback() (contracts/vulnerable/vuln_125_SC06.sol#209-300):
+	External calls:
+	- payDividends() (contracts/vulnerable/vuln_125_SC06.sol#242)
+		- msg.sender.transfer(amount) (contracts/vulnerable/vuln_125_SC06.sol#337)
+	- devAddr.send(investment / 100 * devFee) (contracts/vulnerable/vuln_125_SC06.sol#260)
+	- advertAddr.send(investment / 100 * advertFee) (contracts/vulnerable/vuln_125_SC06.sol#264)
+	State variables written after the call(s):
+	- considerCurrentInterest() (contracts/vulnerable/vuln_125_SC06.sol#290)
+		- currentInterest = interest (contracts/vulnerable/vuln_125_SC06.sol#388)
+	- considerThunderstorm(investment) (contracts/vulnerable/vuln_125_SC06.sol#294)
+		- thunderstorm.addr = 0x0 (contracts/vulnerable/vuln_125_SC06.sol#396)
+		- thunderstorm.deposit = 0 (contracts/vulnerable/vuln_125_SC06.sol#397)
+		- thunderstorm = Thunderstorm(msg.sender,amount,now) (contracts/vulnerable/vuln_125_SC06.sol#403)
+	Event emitted after the call(s):
+	- ThunderstormUpdate(msg.sender,expired) (contracts/vulnerable/vuln_125_SC06.sol#398)
+		- considerThunderstorm(investment) (contracts/vulnerable/vuln_125_SC06.sol#294)
+	- ThunderstormUpdate(msg.sender,change) (contracts/vulnerable/vuln_125_SC06.sol#404)
+		- considerThunderstorm(investment) (contracts/vulnerable/vuln_125_SC06.sol#294)
+Reentrancy in Zeus.payDividends() (contracts/vulnerable/vuln_125_SC06.sol#312-344):
+	External calls:
+	- msg.sender.transfer(amount) (contracts/vulnerable/vuln_125_SC06.sol#337)
+	State variables written after the call(s):
+	- delete investors[msg.sender] (contracts/vulnerable/vuln_125_SC06.sol#342)
+	Event emitted after the call(s):
+	- Payout(msg.sender,amount,payout,0) (contracts/vulnerable/vuln_125_SC06.sol#338)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-5
+
+Detector: too-many-digits
+Zeus.slitherConstructorConstantVariables() (contracts/vulnerable/vuln_125_SC06.sol#83-432) uses literals with too many digits:
+	- MINIMUM_INVEST = 10000000000000000 (contracts/vulnerable/vuln_125_SC06.sol#89)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#too-many-digits
+
+Detector: unindexed-event-address
+Event Zeus.ThunderstormUpdate(address,string) (contracts/vulnerable/vuln_125_SC06.sol#151) has address parameters but no indexed parameters
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unindexed-event-address-parameters
+
+Detector: constable-states
+Zeus.advertFee (contracts/vulnerable/vuln_125_SC06.sol#107) should be constant 
+Zeus.devFee (contracts/vulnerable/vuln_125_SC06.sol#110) should be constant 
+Zeus.profitThreshold (contracts/vulnerable/vuln_125_SC06.sol#113) should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+
+Detector: external-function
+getInvestorData(address[],uint256[],uint256[],address[]) should be declared external:
+	- Zeus.getInvestorData(address[],uint256[],uint256[],address[]) (contracts/vulnerable/vuln_125_SC06.sol#192-205)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#public-function-that-could-be-declared-external
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_125_SC06.sol analyzed (2 contracts with 101 detectors), 39 result(s) found

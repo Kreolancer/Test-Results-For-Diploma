@@ -1,0 +1,99 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_234_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc' running
+
+Detector: events-access
+TokenFund.changeEmissionContractAddress(address) () should emit an event for: 
+	- emissionContractAddress = newAddress () 
+TokenFund.transferOwnership(address) () should emit an event for: 
+	- owner = newOwner () 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+
+Detector: events-maths
+TokenFund.issueTokens(address,uint256) () should emit an event for: 
+	- totalSupply += tokenCount () 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-arithmetic
+
+Detector: missing-zero-check
+TokenFund.changeEmissionContractAddress(address).newAddress () lacks a zero-check on :
+		- emissionContractAddress = newAddress ()
+TokenFund.TokenFund(address)._owner () lacks a zero-check on :
+		- owner = _owner ()
+TokenFund.transferOwnership(address).newOwner () lacks a zero-check on :
+		- owner = newOwner ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+
+Detector: boolean-equal
+TokenFund.issueTokens(address,uint256) () compares to a boolean constant:
+	-emissionEnabled == false ()
+TokenFund.transfer(address,uint256) () compares to a boolean constant:
+	-transfersEnabled == true ()
+TokenFund.transferFrom(address,address,uint256) () compares to a boolean constant:
+	-transfersEnabled == true ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#boolean-equality
+
+Detector: deprecated-standards
+Deprecated standard detected THROW ():
+	- Usage of "throw" should be replaced with "revert()"
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#deprecated-standards
+
+Detector: solc-version
+Version constraint ^0.4.6 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- NestedArrayFunctionCallDecoder
+	- ZeroFunctionSelector
+	- DelegateCallReturnValue
+	- ECRecoverMalformedInput
+	- SkipEmptyStringLiteral
+	- ConstantOptimizerSubtraction
+	- IdentityPrecompileReturnIgnored.
+It is used by:
+	- ^0.4.6 ()
+solc-0.4.6 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Parameter StandardToken.transfer(address,uint256)._to () is not in mixedCase
+Parameter StandardToken.transfer(address,uint256)._value () is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._from () is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._to () is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._value () is not in mixedCase
+Parameter StandardToken.balanceOf(address)._owner () is not in mixedCase
+Parameter StandardToken.approve(address,uint256)._spender () is not in mixedCase
+Parameter StandardToken.approve(address,uint256)._value () is not in mixedCase
+Parameter StandardToken.allowance(address,address)._owner () is not in mixedCase
+Parameter StandardToken.allowance(address,address)._spender () is not in mixedCase
+Parameter TokenFund.issueTokens(address,uint256)._for () is not in mixedCase
+Parameter TokenFund.transfer(address,uint256)._to () is not in mixedCase
+Parameter TokenFund.transfer(address,uint256)._value () is not in mixedCase
+Parameter TokenFund.transferFrom(address,address,uint256)._from () is not in mixedCase
+Parameter TokenFund.transferFrom(address,address,uint256)._to () is not in mixedCase
+Parameter TokenFund.transferFrom(address,address,uint256)._value () is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: unindexed-event-address
+Event StandardToken.Transfer(address,address,uint256) () has address parameters but no indexed parameters
+Event StandardToken.Approval(address,address,uint256) () has address parameters but no indexed parameters
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unindexed-event-address-parameters
+
+Detector: unused-state
+TokenFund.name () is never used in TokenFund ()
+TokenFund.symbol () is never used in TokenFund ()
+TokenFund.decimals () is never used in TokenFund ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unused-state-variable
+
+Detector: constable-states
+TokenFund.decimals () should be constant 
+TokenFund.name () should be constant 
+TokenFund.symbol () should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_234_SAFE.sol analyzed (2 contracts with 101 detectors), 36 result(s) found

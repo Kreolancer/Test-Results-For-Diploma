@@ -1,0 +1,35 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_157_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_157_SAFE.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_157_SAFE.sol:138:17: Warning: Use of the "var" keyword is deprecated.
+                var amountWith = this.balance - 10000000000000000;
+                ^------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_157_SAFE.sol:151:17: Warning: Use of the "var" keyword is deprecated.
+                var totalTokenToMint = tokensToMint * (10 ** 18);
+                ^------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_157_SAFE.sol:70:21: Warning: Invoking events without "emit" prefix is deprecated.
+                    TransferSell(owner, rec_address, finalTokens,'Offline');
+                    ^-----------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_157_SAFE.sol:91:16: Warning: Using contract member "balance" inherited from the address type is deprecated. Convert the contract to "address" type to access the member.
+        return this.balance;
+               ^----------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_157_SAFE.sol:138:34: Warning: Using contract member "balance" inherited from the address type is deprecated. Convert the contract to "address" type to access the member.
+                var amountWith = this.balance - 10000000000000000;
+                                 ^----------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_157_SAFE.sol:154:17: Warning: Invoking events without "emit" prefix is deprecated.
+                Transfer(0, owner, totalTokenToMint);
+                ^----------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_157_SAFE.sol:169:13: Warning: Invoking events without "emit" prefix is deprecated.
+            FrozenFunds(target, freeze);
+            ^-------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_157_SAFE.sol:207:15: Warning: Invoking events without "emit" prefix is deprecated.
+              Transfer(_from, _to, _value);                                     // raise event
+              ^--------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_157_SAFE.sol:248:11: Warning: Invoking events without "emit" prefix is deprecated.
+          Burn(msg.sender, _value);
+          ^----------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_157_SAFE.sol:259:11: Warning: Invoking events without "emit" prefix is deprecated.
+          Burn(_from, _value);
+          ^-----------------^
+
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_157_SAFE.sol analyzed (2 contracts with 5 detectors), 0 result(s) found

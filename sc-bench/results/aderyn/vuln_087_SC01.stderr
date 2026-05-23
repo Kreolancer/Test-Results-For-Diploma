@@ -1,0 +1,4 @@
+Compilation Error: [1;31mError[0m[1;37m: Undeclared identifier.[0m
+src/vuln_087_SC01.sol:859:3: DeclarationError: Undeclared identifier.
+		totalEth = totalEth + msg.value;
+		^------^

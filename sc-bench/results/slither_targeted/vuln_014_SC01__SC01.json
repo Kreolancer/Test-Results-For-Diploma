@@ -1,0 +1,144 @@
+{
+  "success": true,
+  "error": null,
+  "results": {
+    "detectors": [
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "forward",
+            "source_mapping": {
+              "start": 255,
+              "length": 221,
+              "filename_relative": "contracts/vulnerable/vuln_014_SC01.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_014_SC01.sol",
+              "filename_short": "contracts/vulnerable/vuln_014_SC01.sol",
+              "is_dependency": false,
+              "lines": [
+                17,
+                18,
+                19,
+                20
+              ],
+              "starting_column": 3,
+              "ending_column": 4
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "Proxy",
+                "source_mapping": {
+                  "start": 163,
+                  "length": 316,
+                  "filename_relative": "contracts/vulnerable/vuln_014_SC01.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_014_SC01.sol",
+                  "filename_short": "contracts/vulnerable/vuln_014_SC01.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15,
+                    16,
+                    17,
+                    18,
+                    19,
+                    20,
+                    21,
+                    22
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 2
+                }
+              },
+              "signature": "forward(address,bytes)"
+            }
+          },
+          {
+            "type": "node",
+            "name": "require(bool)(callee.delegatecall(_data))",
+            "source_mapping": {
+              "start": 351,
+              "length": 35,
+              "filename_relative": "contracts/vulnerable/vuln_014_SC01.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_014_SC01.sol",
+              "filename_short": "contracts/vulnerable/vuln_014_SC01.sol",
+              "is_dependency": false,
+              "lines": [
+                19
+              ],
+              "starting_column": 5,
+              "ending_column": 40
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "forward",
+                "source_mapping": {
+                  "start": 255,
+                  "length": 221,
+                  "filename_relative": "contracts/vulnerable/vuln_014_SC01.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_014_SC01.sol",
+                  "filename_short": "contracts/vulnerable/vuln_014_SC01.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    17,
+                    18,
+                    19,
+                    20
+                  ],
+                  "starting_column": 3,
+                  "ending_column": 4
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "Proxy",
+                    "source_mapping": {
+                      "start": 163,
+                      "length": 316,
+                      "filename_relative": "contracts/vulnerable/vuln_014_SC01.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_014_SC01.sol",
+                      "filename_short": "contracts/vulnerable/vuln_014_SC01.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        9,
+                        10,
+                        11,
+                        12,
+                        13,
+                        14,
+                        15,
+                        16,
+                        17,
+                        18,
+                        19,
+                        20,
+                        21,
+                        22
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "forward(address,bytes)"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Proxy.forward(address,bytes) (contracts/vulnerable/vuln_014_SC01.sol#17-20) uses delegatecall to a input-controlled function id\n\t- require(bool)(callee.delegatecall(_data)) (contracts/vulnerable/vuln_014_SC01.sol#19)\n",
+        "markdown": "[Proxy.forward(address,bytes)](contracts/vulnerable/vuln_014_SC01.sol#L17-L20) uses delegatecall to a input-controlled function id\n\t- [require(bool)(callee.delegatecall(_data))](contracts/vulnerable/vuln_014_SC01.sol#L19)\n",
+        "first_markdown_element": "contracts/vulnerable/vuln_014_SC01.sol#L17-L20",
+        "id": "56635fbed9c51077a64ede0dec25e228ce7c0600ae0c73f34837421d17783f25",
+        "check": "controlled-delegatecall",
+        "impact": "High",
+        "confidence": "Medium"
+      }
+    ]
+  }
+}

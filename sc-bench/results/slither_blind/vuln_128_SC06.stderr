@@ -1,0 +1,83 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_128_SC06.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
+
+Detector: shadowing-builtin
+MultiSigWallet.executeTransaction(uint256).tx (contracts/vulnerable/vuln_128_SC06.sol#227) (local variable) shadows built-in symbol"
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#builtin-symbol-shadowing
+
+Detector: reentrancy-events
+Reentrancy in MultiSigWallet.executeTransaction(uint256) (contracts/vulnerable/vuln_128_SC06.sol#222-236):
+	External calls:
+	- tx.destination.call.value(tx.value)(tx.data) (contracts/vulnerable/vuln_128_SC06.sol#229)
+	Event emitted after the call(s):
+	- Execution(transactionId) (contracts/vulnerable/vuln_128_SC06.sol#230)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-4
+
+Detector: deprecated-standards
+Deprecated standard detected THROW (contracts/vulnerable/vuln_128_SC06.sol#111):
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected THROW (contracts/vulnerable/vuln_128_SC06.sol#36):
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected THROW (contracts/vulnerable/vuln_128_SC06.sol#42):
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected THROW (contracts/vulnerable/vuln_128_SC06.sol#48):
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected THROW (contracts/vulnerable/vuln_128_SC06.sol#54):
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected THROW (contracts/vulnerable/vuln_128_SC06.sol#60):
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected THROW (contracts/vulnerable/vuln_128_SC06.sol#66):
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected THROW (contracts/vulnerable/vuln_128_SC06.sol#72):
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected THROW (contracts/vulnerable/vuln_128_SC06.sol#78):
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected THROW (contracts/vulnerable/vuln_128_SC06.sol#87):
+	- Usage of "throw" should be replaced with "revert()"
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#deprecated-standards
+
+Detector: solc-version
+Version constraint ^0.4.11 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- NestedArrayFunctionCallDecoder
+	- ZeroFunctionSelector
+	- DelegateCallReturnValue
+	- ECRecoverMalformedInput
+	- SkipEmptyStringLiteral.
+It is used by:
+	- ^0.4.11 (contracts/vulnerable/vuln_128_SC06.sol#1)
+solc-0.4.11 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: low-level-calls
+Low level call in MultiSigWallet.executeTransaction(uint256) (contracts/vulnerable/vuln_128_SC06.sol#222-236):
+	- tx.destination.call.value(tx.value)(tx.data) (contracts/vulnerable/vuln_128_SC06.sol#229)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+
+Detector: naming-convention
+Parameter MultiSigWallet.changeRequirement(uint256)._required (contracts/vulnerable/vuln_128_SC06.sol#173) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: cache-array-length
+Loop condition i < owners.length (contracts/vulnerable/vuln_128_SC06.sol#247) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i < owners.length (contracts/vulnerable/vuln_128_SC06.sol#160) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i < owners.length (contracts/vulnerable/vuln_128_SC06.sol#331) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i < owners.length (contracts/vulnerable/vuln_128_SC06.sol#290) should use cached array length instead of referencing `length` member of the storage array.
+ Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#cache-array-length
+
+Detector: external-function
+submitTransaction(address,uint256,bytes) should be declared external:
+	- MultiSigWallet.submitTransaction(address,uint256,bytes) (contracts/vulnerable/vuln_128_SC06.sol#187-193)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#public-function-that-could-be-declared-external
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_128_SC06.sol analyzed (1 contracts with 101 detectors), 21 result(s) found

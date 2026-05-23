@@ -1,0 +1,102 @@
+{
+  "success": true,
+  "error": null,
+  "results": {
+    "detectors": [
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "rand",
+            "source_mapping": {
+              "start": 3506,
+              "length": 298,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "LuckyDoubler",
+                "source_mapping": {
+                  "start": 312,
+                  "length": 5200,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "rand(uint256)"
+            }
+          },
+          {
+            "type": "node",
+            "name": "uint256((uint256(hashVal) / factor)) % max",
+            "source_mapping": {
+              "start": 3748,
+              "length": 49,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "rand",
+                "source_mapping": {
+                  "start": 3506,
+                  "length": 298,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "LuckyDoubler",
+                    "source_mapping": {
+                      "start": 312,
+                      "length": 5200,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "rand(uint256)"
+                }
+              }
+            }
+          }
+        ],
+        "description": "LuckyDoubler.rand(uint256) () uses a weak PRNG: \"uint256((uint256(hashVal) / factor)) % max ()\" \n",
+        "markdown": "[LuckyDoubler.rand(uint256)]() uses a weak PRNG: \"[uint256((uint256(hashVal) / factor)) % max]()\" \n",
+        "first_markdown_element": "",
+        "id": "fe40274ea755a4920565368b77269caab2f81551dc16d9c74617f0700d08c4fa",
+        "check": "weak-prng",
+        "impact": "High",
+        "confidence": "Medium"
+      }
+    ]
+  }
+}

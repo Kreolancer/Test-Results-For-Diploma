@@ -1,0 +1,227 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_251_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+
+Detector: unchecked-transfer
+OpportyPresale.getTokensBack() (contracts/safe/safe_251_SAFE.sol#529-535) ignores return value by token.transfer(msg.sender,balance) (contracts/safe/safe_251_SAFE.sol#534)
+OpportyPresale2.getTokensBack() (contracts/safe/safe_251_SAFE.sol#750-756) ignores return value by token.transfer(msg.sender,balance) (contracts/safe/safe_251_SAFE.sol#755)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unchecked-transfer
+
+Detector: divide-before-multiply
+OpportyPresale.fallback() (contracts/safe/safe_251_SAFE.sol#483-512) performs a multiplication on the result of a division:
+	- tokenAmount = msg.value.div(price) (contracts/safe/safe_251_SAFE.sol#503)
+	- tokenAmount += tokenAmount.mul(contrib.bonus).div(100) (contracts/safe/safe_251_SAFE.sol#504)
+OpportyPresale.fallback() (contracts/safe/safe_251_SAFE.sol#483-512) performs a multiplication on the result of a division:
+	- tokenAmount = msg.value.div(price) (contracts/safe/safe_251_SAFE.sol#503)
+	- tokenAmount *= 10 ** 18 (contracts/safe/safe_251_SAFE.sol#505)
+OpportyPresale2.fallback() (contracts/safe/safe_251_SAFE.sol#692-724) performs a multiplication on the result of a division:
+	- tokenAmount = msg.value.div(price) (contracts/safe/safe_251_SAFE.sol#712)
+	- tokenAmount += tokenAmount.mul(contrib.bonus).div(100) (contracts/safe/safe_251_SAFE.sol#713)
+OpportyPresale2.fallback() (contracts/safe/safe_251_SAFE.sol#692-724) performs a multiplication on the result of a division:
+	- tokenAmount = msg.value.div(price) (contracts/safe/safe_251_SAFE.sol#712)
+	- tokenAmount *= 10 ** 18 (contracts/safe/safe_251_SAFE.sol#714)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#divide-before-multiply
+
+Detector: reentrancy-no-eth
+Reentrancy in HoldPresaleContract.unlockTokens() (contracts/safe/safe_251_SAFE.sol#347-362):
+	External calls:
+	- OppToken.transfer(msg.sender,holderList[contributor].tokens) (contracts/safe/safe_251_SAFE.sol#352)
+	State variables written after the call(s):
+	- holderList[contributor].withdrawed = true (contracts/safe/safe_251_SAFE.sol#353)
+	HoldPresaleContract.holderList (contracts/safe/safe_251_SAFE.sol#300) can be used in cross function reentrancies:
+	- HoldPresaleContract.addHolder(address,uint256,uint8,uint256) (contracts/safe/safe_251_SAFE.sol#327-341)
+	- HoldPresaleContract.holderList (contracts/safe/safe_251_SAFE.sol#300)
+	- HoldPresaleContract.unlockTokens() (contracts/safe/safe_251_SAFE.sol#347-362)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-2
+
+Detector: missing-zero-check
+HoldPresaleContract.setPresaleCont(address).pres (contracts/safe/safe_251_SAFE.sol#322) lacks a zero-check on :
+		- presaleCont = pres (contracts/safe/safe_251_SAFE.sol#324)
+OpportyPresale.OpportyPresale(address,address,uint256,uint256,address).walletAddress (contracts/safe/safe_251_SAFE.sol#430) lacks a zero-check on :
+		- wallet = walletAddress (contracts/safe/safe_251_SAFE.sol#441)
+OpportyPresale2.OpportyPresale2(address,address,uint256,uint256,address,address).walletAddress (contracts/safe/safe_251_SAFE.sol#636) lacks a zero-check on :
+		- wallet = walletAddress (contracts/safe/safe_251_SAFE.sol#648)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+
+Detector: reentrancy-benign
+Reentrancy in OpportyPresale.sendTokensToHold() (contracts/safe/safe_251_SAFE.sol#518-527):
+	External calls:
+	- require(bool)(getBalanceContract() >= tokenRaised) (contracts/safe/safe_251_SAFE.sol#521)
+		- token.balanceOf(this) (contracts/safe/safe_251_SAFE.sol#515)
+	- token.transfer(holdContract,tokenRaised) (contracts/safe/safe_251_SAFE.sol#523)
+	State variables written after the call(s):
+	- tokensTransferredToHold = true (contracts/safe/safe_251_SAFE.sol#524)
+Reentrancy in OpportyPresale2.sendTokensToHold() (contracts/safe/safe_251_SAFE.sol#739-748):
+	External calls:
+	- require(bool)(getBalanceContract() >= tokenRaised) (contracts/safe/safe_251_SAFE.sol#742)
+		- token.balanceOf(this) (contracts/safe/safe_251_SAFE.sol#736)
+	- token.transfer(holdContract,tokenRaised) (contracts/safe/safe_251_SAFE.sol#744)
+	State variables written after the call(s):
+	- tokensTransferredToHold = true (contracts/safe/safe_251_SAFE.sol#745)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+
+Detector: reentrancy-events
+Reentrancy in OpportyPresale.fallback() (contracts/safe/safe_251_SAFE.sol#483-512):
+	External calls:
+	- holdContract.addHolder(msg.sender,tokenAmount,contrib.holdPeriod,contrib.holdTimestamp) (contracts/safe/safe_251_SAFE.sol#509)
+	Event emitted after the call(s):
+	- AddedToHolder(msg.sender,tokenAmount,contrib.holdPeriod,contrib.holdTimestamp) (contracts/safe/safe_251_SAFE.sol#510)
+	- FundTransfered(msg.sender,msg.value) (contracts/safe/safe_251_SAFE.sol#511)
+Reentrancy in OpportyPresale2.fallback() (contracts/safe/safe_251_SAFE.sol#692-724):
+	External calls:
+	- holdContract.addHolder(msg.sender,tokenAmount,contrib.holdPeriod,contrib.holdTimestamp) (contracts/safe/safe_251_SAFE.sol#718)
+	Event emitted after the call(s):
+	- AddedToHolder(msg.sender,tokenAmount,contrib.holdPeriod,contrib.holdTimestamp) (contracts/safe/safe_251_SAFE.sol#719)
+	- FundTransfered(msg.sender,msg.value) (contracts/safe/safe_251_SAFE.sol#720)
+Reentrancy in OpportyPresale.sendTokensToHold() (contracts/safe/safe_251_SAFE.sol#518-527):
+	External calls:
+	- require(bool)(getBalanceContract() >= tokenRaised) (contracts/safe/safe_251_SAFE.sol#521)
+		- token.balanceOf(this) (contracts/safe/safe_251_SAFE.sol#515)
+	- token.transfer(holdContract,tokenRaised) (contracts/safe/safe_251_SAFE.sol#523)
+	Event emitted after the call(s):
+	- TokensTransferedToHold(holdContract,tokenRaised) (contracts/safe/safe_251_SAFE.sol#525)
+Reentrancy in OpportyPresale2.sendTokensToHold() (contracts/safe/safe_251_SAFE.sol#739-748):
+	External calls:
+	- require(bool)(getBalanceContract() >= tokenRaised) (contracts/safe/safe_251_SAFE.sol#742)
+		- token.balanceOf(this) (contracts/safe/safe_251_SAFE.sol#736)
+	- token.transfer(holdContract,tokenRaised) (contracts/safe/safe_251_SAFE.sol#744)
+	Event emitted after the call(s):
+	- TokensTransferedToHold(holdContract,tokenRaised) (contracts/safe/safe_251_SAFE.sol#746)
+Reentrancy in HoldPresaleContract.unlockTokens() (contracts/safe/safe_251_SAFE.sol#347-362):
+	External calls:
+	- OppToken.transfer(msg.sender,holderList[contributor].tokens) (contracts/safe/safe_251_SAFE.sol#352)
+	Event emitted after the call(s):
+	- TokensTransfered(contributor,holderList[contributor].tokens) (contracts/safe/safe_251_SAFE.sol#354)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-4
+
+Detector: timestamp
+HoldPresaleContract.unlockTokens() (contracts/safe/safe_251_SAFE.sol#347-362) uses timestamp for comparisons
+	Dangerous comparisons:
+	- now >= holderList[contributor].holdPeriodTimestamp (contracts/safe/safe_251_SAFE.sol#351)
+OpportyPresale.fallback() (contracts/safe/safe_251_SAFE.sol#483-512) uses timestamp for comparisons
+	Dangerous comparisons:
+	- now > endDate (contracts/safe/safe_251_SAFE.sol#488)
+OpportyPresale.setEndSaleDate(uint256) (contracts/safe/safe_251_SAFE.sol#547-553) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(date > now) (contracts/safe/safe_251_SAFE.sol#549)
+OpportyPresale.setEndDate(uint256) (contracts/safe/safe_251_SAFE.sol#555-561) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(date > now) (contracts/safe/safe_251_SAFE.sol#557)
+OpportyPresale2.fallback() (contracts/safe/safe_251_SAFE.sol#692-724) uses timestamp for comparisons
+	Dangerous comparisons:
+	- now > endDate (contracts/safe/safe_251_SAFE.sol#697)
+OpportyPresale2.setEndSaleDate(uint256) (contracts/safe/safe_251_SAFE.sol#768-774) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(date > now) (contracts/safe/safe_251_SAFE.sol#770)
+OpportyPresale2.setEndDate(uint256) (contracts/safe/safe_251_SAFE.sol#776-782) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(date > now) (contracts/safe/safe_251_SAFE.sol#778)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+
+Detector: boolean-equal
+HoldPresaleContract.addHolder(address,uint256,uint8,uint256) (contracts/safe/safe_251_SAFE.sol#327-341) compares to a boolean constant:
+	-holderList[holder].isActive == false (contracts/safe/safe_251_SAFE.sol#328)
+OpportyPresale.addToWhitelist(address,uint256,uint8,uint8) (contracts/safe/safe_251_SAFE.sol#458-481) compares to a boolean constant:
+	-whiteList[inv].isActive == false (contracts/safe/safe_251_SAFE.sol#464)
+OpportyPresale.fallback() (contracts/safe/safe_251_SAFE.sol#483-512) compares to a boolean constant:
+	-whiteList[msg.sender].payed == false (contracts/safe/safe_251_SAFE.sol#497)
+OpportyPresale.getTokensBack() (contracts/safe/safe_251_SAFE.sol#529-535) compares to a boolean constant:
+	-require(bool)(tokensTransferredToHold == true) (contracts/safe/safe_251_SAFE.sol#531)
+OpportyPresale.withdrawEth() (contracts/safe/safe_251_SAFE.sol#537-545) compares to a boolean constant:
+	-require(bool)(tokensTransferredToHold == true) (contracts/safe/safe_251_SAFE.sol#541)
+OpportyPresale2.addToWhitelist(address,uint256,uint8,uint8) (contracts/safe/safe_251_SAFE.sol#668-690) compares to a boolean constant:
+	-whiteList[inv].isActive == false (contracts/safe/safe_251_SAFE.sol#673)
+OpportyPresale2.fallback() (contracts/safe/safe_251_SAFE.sol#692-724) compares to a boolean constant:
+	-whiteList[msg.sender].payed == false (contracts/safe/safe_251_SAFE.sol#706)
+OpportyPresale2.getTokensBack() (contracts/safe/safe_251_SAFE.sol#750-756) compares to a boolean constant:
+	-require(bool)(tokensTransferredToHold == true) (contracts/safe/safe_251_SAFE.sol#752)
+OpportyPresale2.withdrawEth() (contracts/safe/safe_251_SAFE.sol#758-766) compares to a boolean constant:
+	-require(bool)(tokensTransferredToHold == true) (contracts/safe/safe_251_SAFE.sol#762)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#boolean-equality
+
+Detector: solc-version
+Version constraint ^0.4.18 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- EventStructWrongData
+	- NestedArrayFunctionCallDecoder.
+It is used by:
+	- ^0.4.18 (contracts/safe/safe_251_SAFE.sol#1)
+solc-0.4.18 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Parameter BasicToken.transfer(address,uint256)._to (contracts/safe/safe_251_SAFE.sol#62) is not in mixedCase
+Parameter BasicToken.transfer(address,uint256)._value (contracts/safe/safe_251_SAFE.sol#62) is not in mixedCase
+Parameter BasicToken.balanceOf(address)._owner (contracts/safe/safe_251_SAFE.sol#78) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._from (contracts/safe/safe_251_SAFE.sol#113) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._to (contracts/safe/safe_251_SAFE.sol#113) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._value (contracts/safe/safe_251_SAFE.sol#113) is not in mixedCase
+Parameter StandardToken.approve(address,uint256)._spender (contracts/safe/safe_251_SAFE.sol#135) is not in mixedCase
+Parameter StandardToken.approve(address,uint256)._value (contracts/safe/safe_251_SAFE.sol#135) is not in mixedCase
+Parameter StandardToken.allowance(address,address)._owner (contracts/safe/safe_251_SAFE.sol#147) is not in mixedCase
+Parameter StandardToken.allowance(address,address)._spender (contracts/safe/safe_251_SAFE.sol#147) is not in mixedCase
+Parameter StandardToken.increaseApproval(address,uint256)._spender (contracts/safe/safe_251_SAFE.sol#157) is not in mixedCase
+Parameter StandardToken.increaseApproval(address,uint256)._addedValue (contracts/safe/safe_251_SAFE.sol#157) is not in mixedCase
+Parameter StandardToken.decreaseApproval(address,uint256)._spender (contracts/safe/safe_251_SAFE.sol#163) is not in mixedCase
+Parameter StandardToken.decreaseApproval(address,uint256)._subtractedValue (contracts/safe/safe_251_SAFE.sol#163) is not in mixedCase
+Parameter HoldPresaleContract.addAssetsOwner(address)._owner (contracts/safe/safe_251_SAFE.sol#364) is not in mixedCase
+Parameter HoldPresaleContract.removeAssetsOwner(address)._owner (contracts/safe/safe_251_SAFE.sol#369) is not in mixedCase
+Parameter HoldPresaleContract.getAssetsOwners(uint256)._index (contracts/safe/safe_251_SAFE.sol#375) is not in mixedCase
+Variable HoldPresaleContract.OppToken (contracts/safe/safe_251_SAFE.sol#289) is not in mixedCase
+Parameter OpportyPresale2.addAssetsOwner(address)._owner (contracts/safe/safe_251_SAFE.sol#799) is not in mixedCase
+Parameter OpportyPresale2.removeAssetsOwner(address)._owner (contracts/safe/safe_251_SAFE.sol#804) is not in mixedCase
+Parameter OpportyPresale2.getAssetsOwners(uint256)._index (contracts/safe/safe_251_SAFE.sol#810) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: reentrancy-unlimited-gas
+Reentrancy in OpportyPresale.withdrawEth() (contracts/safe/safe_251_SAFE.sol#537-545):
+	External calls:
+	- wallet.transfer(bal) (contracts/safe/safe_251_SAFE.sol#543)
+	Event emitted after the call(s):
+	- WithdrawedEthToWallet(bal) (contracts/safe/safe_251_SAFE.sol#544)
+Reentrancy in OpportyPresale2.withdrawEth() (contracts/safe/safe_251_SAFE.sol#758-766):
+	External calls:
+	- wallet.transfer(bal) (contracts/safe/safe_251_SAFE.sol#764)
+	Event emitted after the call(s):
+	- WithdrawedEthToWallet(bal) (contracts/safe/safe_251_SAFE.sol#765)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-5
+
+Detector: too-many-digits
+OpportyToken.slitherConstructorConstantVariables() (contracts/safe/safe_251_SAFE.sol#182-198) uses literals with too many digits:
+	- INITIAL_SUPPLY = 1000000000 * (10 ** uint256(decimals)) (contracts/safe/safe_251_SAFE.sol#188)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#too-many-digits
+
+Detector: unindexed-event-address
+Event HoldPresaleContract.TokensTransfered(address,uint256) (contracts/safe/safe_251_SAFE.sol#309) has address parameters but no indexed parameters
+Event HoldPresaleContract.Hold(address,address,uint256,uint8) (contracts/safe/safe_251_SAFE.sol#310) has address parameters but no indexed parameters
+Event OpportyPresale.FundTransfered(address,uint256) (contracts/safe/safe_251_SAFE.sol#407) has address parameters but no indexed parameters
+Event OpportyPresale.TokensTransferedToHold(address,uint256) (contracts/safe/safe_251_SAFE.sol#410) has address parameters but no indexed parameters
+Event OpportyPresale.AddedToWhiteList(address,uint256,uint8,uint8) (contracts/safe/safe_251_SAFE.sol#411) has address parameters but no indexed parameters
+Event OpportyPresale.AddedToHolder(address,uint256,uint8,uint256) (contracts/safe/safe_251_SAFE.sol#412) has address parameters but no indexed parameters
+Event OpportyPresale2.FundTransfered(address,uint256) (contracts/safe/safe_251_SAFE.sol#603) has address parameters but no indexed parameters
+Event OpportyPresale2.TokensTransferedToHold(address,uint256) (contracts/safe/safe_251_SAFE.sol#606) has address parameters but no indexed parameters
+Event OpportyPresale2.AddedToWhiteList(address,uint256,uint8,uint8) (contracts/safe/safe_251_SAFE.sol#607) has address parameters but no indexed parameters
+Event OpportyPresale2.AddedToHolder(address,uint256,uint8,uint256) (contracts/safe/safe_251_SAFE.sol#608) has address parameters but no indexed parameters
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unindexed-event-address-parameters
+
+Detector: unused-state
+OpportyPresale2.preSaleOld (contracts/safe/safe_251_SAFE.sol#590) is never used in OpportyPresale2 (contracts/safe/safe_251_SAFE.sol#572-814)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unused-state-variable
+
+Detector: constable-states
+OpportyPresale2.preSaleOld (contracts/safe/safe_251_SAFE.sol#590) should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_251_SAFE.sol analyzed (11 contracts with 101 detectors), 71 result(s) found

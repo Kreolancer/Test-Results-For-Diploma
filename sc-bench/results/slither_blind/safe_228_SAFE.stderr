@@ -1,0 +1,125 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol:108:5: Warning: Defining constructors as functions with the same name as the contract is deprecated. Use "constructor(...) { ... }" instead.
+    function LolaCoin() {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol:58:9: Warning: Invoking events without "emit" prefix is deprecated.
+        Transfer(msg.sender, _to, _value);
+        ^-------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol:69:9: Warning: Invoking events without "emit" prefix is deprecated.
+        Transfer(_from, _to, _value);
+        ^--------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol:79:9: Warning: Invoking events without "emit" prefix is deprecated.
+        Approval(msg.sender, _spender, _value);
+        ^------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol:119:9: Warning: Invoking events without "emit" prefix is deprecated.
+        Approval(msg.sender, _spender, _value);
+        ^------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol:124:46: Warning: "sha3" has been deprecated in favour of "keccak256"
+        require(_spender.call(bytes4(bytes32(sha3("receiveApproval(address,uint256,address,bytes)"))), msg.sender, _value, this, _extraData));
+                                             ^----------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol:18:5: Warning: No visibility specified. Defaulting to "public". 
+    function balanceOf(address _owner) constant returns (uint256 balance);
+    ^--------------------------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol:24:5: Warning: No visibility specified. Defaulting to "public". 
+    function transfer(address _to, uint256 _value) returns (bool success);
+    ^--------------------------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol:31:5: Warning: No visibility specified. Defaulting to "public". 
+    function transferFrom(address _from, address _to, uint256 _value) returns (bool success);
+    ^---------------------------------------------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol:37:5: Warning: No visibility specified. Defaulting to "public". 
+    function approve(address _spender, uint256 _value) returns (bool success);
+    ^------------------------------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol:42:5: Warning: No visibility specified. Defaulting to "public". 
+    function allowance(address _owner, address _spender) constant returns (uint256 remaining);
+    ^----------------------------------------------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol:50:5: Warning: No visibility specified. Defaulting to "public". 
+    function transfer(address _to, uint256 _value) returns (bool success) {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol:62:5: Warning: No visibility specified. Defaulting to "public". 
+    function transferFrom(address _from, address _to, uint256 _value) returns (bool success) {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol:73:5: Warning: No visibility specified. Defaulting to "public". 
+    function balanceOf(address _owner) constant returns (uint256 balance) {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol:77:5: Warning: No visibility specified. Defaulting to "public". 
+    function approve(address _spender, uint256 _value) returns (bool success) {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol:83:5: Warning: No visibility specified. Defaulting to "public". 
+    function allowance(address _owner, address _spender) constant returns (uint256 remaining) {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol:108:5: Warning: No visibility specified. Defaulting to "public". 
+    function LolaCoin() {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol:117:5: Warning: No visibility specified. Defaulting to "public". 
+    function approveAndCall(address _spender, uint256 _value, bytes _extraData) returns (bool success) {
+    ^ (Relevant source part starts here and spans across multiple lines).
+
+
+Detector: deprecated-standards
+Deprecated standard detected require(bool)(_spender.call(bytes4(bytes32(sha3()(receiveApproval(address,uint256,address,bytes)))),msg.sender,_value,this,_extraData)) (contracts/safe/safe_228_SAFE.sol#124):
+	- Usage of "sha3()" should be replaced with "keccak256()"
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#deprecated-standards
+
+Detector: solc-version
+Version constraint ^0.4.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- NestedArrayFunctionCallDecoder
+	- ZeroFunctionSelector
+	- DelegateCallReturnValue
+	- ECRecoverMalformedInput
+	- SkipEmptyStringLiteral
+	- ConstantOptimizerSubtraction
+	- IdentityPrecompileReturnIgnored
+	- HighOrderByteCleanStorage
+	- OptimizerStaleKnowledgeAboutSHA3
+	- LibrariesNotCallableFromPayableFunctions.
+It is used by:
+	- ^0.4.0 (contracts/safe/safe_228_SAFE.sol#1)
+solc-0.4.24 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: low-level-calls
+Low level call in LolaCoin.approveAndCall(address,uint256,bytes) (contracts/safe/safe_228_SAFE.sol#117-126):
+	- require(bool)(_spender.call(bytes4(bytes32(sha3()(receiveApproval(address,uint256,address,bytes)))),msg.sender,_value,this,_extraData)) (contracts/safe/safe_228_SAFE.sol#124)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+
+Detector: naming-convention
+Parameter StandardToken.transfer(address,uint256)._to (contracts/safe/safe_228_SAFE.sol#50) is not in mixedCase
+Parameter StandardToken.transfer(address,uint256)._value (contracts/safe/safe_228_SAFE.sol#50) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._from (contracts/safe/safe_228_SAFE.sol#62) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._to (contracts/safe/safe_228_SAFE.sol#62) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._value (contracts/safe/safe_228_SAFE.sol#62) is not in mixedCase
+Parameter StandardToken.balanceOf(address)._owner (contracts/safe/safe_228_SAFE.sol#73) is not in mixedCase
+Parameter StandardToken.approve(address,uint256)._spender (contracts/safe/safe_228_SAFE.sol#77) is not in mixedCase
+Parameter StandardToken.approve(address,uint256)._value (contracts/safe/safe_228_SAFE.sol#77) is not in mixedCase
+Parameter StandardToken.allowance(address,address)._owner (contracts/safe/safe_228_SAFE.sol#83) is not in mixedCase
+Parameter StandardToken.allowance(address,address)._spender (contracts/safe/safe_228_SAFE.sol#83) is not in mixedCase
+Parameter LolaCoin.approveAndCall(address,uint256,bytes)._spender (contracts/safe/safe_228_SAFE.sol#117) is not in mixedCase
+Parameter LolaCoin.approveAndCall(address,uint256,bytes)._value (contracts/safe/safe_228_SAFE.sol#117) is not in mixedCase
+Parameter LolaCoin.approveAndCall(address,uint256,bytes)._extraData (contracts/safe/safe_228_SAFE.sol#117) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: too-many-digits
+LolaCoin.slitherConstructorConstantVariables() (contracts/safe/safe_228_SAFE.sol#92-128) uses literals with too many digits:
+	- TOTAL = 1000000000000000000000000000 (contracts/safe/safe_228_SAFE.sol#106)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#too-many-digits
+
+Detector: constable-states
+LolaCoin.version (contracts/safe/safe_228_SAFE.sol#105) should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+
+Detector: external-function
+approveAndCall(address,uint256,bytes) should be declared external:
+	- LolaCoin.approveAndCall(address,uint256,bytes) (contracts/safe/safe_228_SAFE.sol#117-126)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#public-function-that-could-be-declared-external
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol analyzed (3 contracts with 101 detectors), 20 result(s) found

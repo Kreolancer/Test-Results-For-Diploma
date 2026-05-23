@@ -1,0 +1,457 @@
+{
+  "success": true,
+  "error": null,
+  "results": {
+    "detectors": [
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "luckyPendingIndex",
+            "source_mapping": {
+              "start": 23,
+              "length": 32,
+              "filename_relative": "contracts/vulnerable/vuln_149_SC09.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_149_SC09.sol",
+              "filename_short": "contracts/vulnerable/vuln_149_SC09.sol",
+              "is_dependency": false,
+              "lines": [
+                2
+              ],
+              "starting_column": 5,
+              "ending_column": 37
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "Saturn",
+                "source_mapping": {
+                  "start": 0,
+                  "length": 332,
+                  "filename_relative": "contracts/vulnerable/vuln_149_SC09.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_149_SC09.sol",
+                  "filename_short": "contracts/vulnerable/vuln_149_SC09.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              }
+            }
+          },
+          {
+            "type": "function",
+            "name": "handleLuckyPending",
+            "source_mapping": {
+              "start": 64,
+              "length": 265,
+              "filename_relative": "contracts/vulnerable/vuln_149_SC09.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_149_SC09.sol",
+              "filename_short": "contracts/vulnerable/vuln_149_SC09.sol",
+              "is_dependency": false,
+              "lines": [
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+              ],
+              "starting_column": 5,
+              "ending_column": 6
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "Saturn",
+                "source_mapping": {
+                  "start": 0,
+                  "length": 332,
+                  "filename_relative": "contracts/vulnerable/vuln_149_SC09.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_149_SC09.sol",
+                  "filename_short": "contracts/vulnerable/vuln_149_SC09.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              },
+              "signature": "handleLuckyPending(uint256)"
+            }
+          }
+        ],
+        "description": "Saturn.luckyPendingIndex (contracts/vulnerable/vuln_149_SC09.sol#2) is never initialized. It is used in:\n\t- Saturn.handleLuckyPending(uint256) (contracts/vulnerable/vuln_149_SC09.sol#4-9)\n",
+        "markdown": "[Saturn.luckyPendingIndex](contracts/vulnerable/vuln_149_SC09.sol#L2) is never initialized. It is used in:\n\t- [Saturn.handleLuckyPending(uint256)](contracts/vulnerable/vuln_149_SC09.sol#L4-L9)\n",
+        "first_markdown_element": "contracts/vulnerable/vuln_149_SC09.sol#L2",
+        "id": "bcb78d2d221fe97a35fd12e9039dbff29fdaef25b412c9896a945ea5e59f6fa6",
+        "check": "uninitialized-state",
+        "impact": "High",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "handleLuckyPending",
+            "source_mapping": {
+              "start": 64,
+              "length": 265,
+              "filename_relative": "contracts/vulnerable/vuln_149_SC09.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_149_SC09.sol",
+              "filename_short": "contracts/vulnerable/vuln_149_SC09.sol",
+              "is_dependency": false,
+              "lines": [
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+              ],
+              "starting_column": 5,
+              "ending_column": 6
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "Saturn",
+                "source_mapping": {
+                  "start": 0,
+                  "length": 332,
+                  "filename_relative": "contracts/vulnerable/vuln_149_SC09.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_149_SC09.sol",
+                  "filename_short": "contracts/vulnerable/vuln_149_SC09.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              },
+              "signature": "handleLuckyPending(uint256)"
+            }
+          },
+          {
+            "type": "node",
+            "name": "_seed > 0",
+            "source_mapping": {
+              "start": 294,
+              "length": 16,
+              "filename_relative": "contracts/vulnerable/vuln_149_SC09.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_149_SC09.sol",
+              "filename_short": "contracts/vulnerable/vuln_149_SC09.sol",
+              "is_dependency": false,
+              "lines": [
+                7
+              ],
+              "starting_column": 13,
+              "ending_column": 29
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "handleLuckyPending",
+                "source_mapping": {
+                  "start": 64,
+                  "length": 265,
+                  "filename_relative": "contracts/vulnerable/vuln_149_SC09.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_149_SC09.sol",
+                  "filename_short": "contracts/vulnerable/vuln_149_SC09.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "Saturn",
+                    "source_mapping": {
+                      "start": 0,
+                      "length": 332,
+                      "filename_relative": "contracts/vulnerable/vuln_149_SC09.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_149_SC09.sol",
+                      "filename_short": "contracts/vulnerable/vuln_149_SC09.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        1,
+                        2,
+                        3,
+                        4,
+                        5,
+                        6,
+                        7,
+                        8,
+                        9,
+                        10,
+                        11
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "handleLuckyPending(uint256)"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Saturn.handleLuckyPending(uint256) (contracts/vulnerable/vuln_149_SC09.sol#4-9) uses timestamp for comparisons\n\tDangerous comparisons:\n\t- _seed > 0 (contracts/vulnerable/vuln_149_SC09.sol#7)\n",
+        "markdown": "[Saturn.handleLuckyPending(uint256)](contracts/vulnerable/vuln_149_SC09.sol#L4-L9) uses timestamp for comparisons\n\tDangerous comparisons:\n\t- [_seed > 0](contracts/vulnerable/vuln_149_SC09.sol#L7)\n",
+        "first_markdown_element": "contracts/vulnerable/vuln_149_SC09.sol#L4-L9",
+        "id": "d2ad13e47c1196fb72b255e1c2aca0d3b39842167f5bb56cb3d266cfcd5da5c7",
+        "check": "timestamp",
+        "impact": "Low",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "handleLuckyPending",
+            "source_mapping": {
+              "start": 64,
+              "length": 265,
+              "filename_relative": "contracts/vulnerable/vuln_149_SC09.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_149_SC09.sol",
+              "filename_short": "contracts/vulnerable/vuln_149_SC09.sol",
+              "is_dependency": false,
+              "lines": [
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+              ],
+              "starting_column": 5,
+              "ending_column": 6
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "Saturn",
+                "source_mapping": {
+                  "start": 0,
+                  "length": 332,
+                  "filename_relative": "contracts/vulnerable/vuln_149_SC09.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_149_SC09.sol",
+                  "filename_short": "contracts/vulnerable/vuln_149_SC09.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              },
+              "signature": "handleLuckyPending(uint256)"
+            }
+          }
+        ],
+        "description": "Saturn.handleLuckyPending(uint256) (contracts/vulnerable/vuln_149_SC09.sol#4-9) is never used and should be removed\n",
+        "markdown": "[Saturn.handleLuckyPending(uint256)](contracts/vulnerable/vuln_149_SC09.sol#L4-L9) is never used and should be removed\n",
+        "first_markdown_element": "contracts/vulnerable/vuln_149_SC09.sol#L4-L9",
+        "id": "aa01502d39e535b91cf471666742a370549a423b9a660f05e37579cad4752346",
+        "check": "dead-code",
+        "impact": "Informational",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_pendingSkipSize",
+            "source_mapping": {
+              "start": 92,
+              "length": 24,
+              "filename_relative": "contracts/vulnerable/vuln_149_SC09.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_149_SC09.sol",
+              "filename_short": "contracts/vulnerable/vuln_149_SC09.sol",
+              "is_dependency": false,
+              "lines": [
+                4
+              ],
+              "starting_column": 33,
+              "ending_column": 57
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "handleLuckyPending",
+                "source_mapping": {
+                  "start": 64,
+                  "length": 265,
+                  "filename_relative": "contracts/vulnerable/vuln_149_SC09.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_149_SC09.sol",
+                  "filename_short": "contracts/vulnerable/vuln_149_SC09.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "Saturn",
+                    "source_mapping": {
+                      "start": 0,
+                      "length": 332,
+                      "filename_relative": "contracts/vulnerable/vuln_149_SC09.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_149_SC09.sol",
+                      "filename_short": "contracts/vulnerable/vuln_149_SC09.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        1,
+                        2,
+                        3,
+                        4,
+                        5,
+                        6,
+                        7,
+                        8,
+                        9,
+                        10,
+                        11
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "handleLuckyPending(uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter Saturn.handleLuckyPending(uint256)._pendingSkipSize (contracts/vulnerable/vuln_149_SC09.sol#4) is not in mixedCase\n",
+        "markdown": "Parameter [Saturn.handleLuckyPending(uint256)._pendingSkipSize](contracts/vulnerable/vuln_149_SC09.sol#L4) is not in mixedCase\n",
+        "first_markdown_element": "contracts/vulnerable/vuln_149_SC09.sol#L4",
+        "id": "59e98244cd63d6940fb3b490bee2b181c4fd2ac0a2d0fa4a03239a8e316fc719",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "luckyPendingIndex",
+            "source_mapping": {
+              "start": 23,
+              "length": 32,
+              "filename_relative": "contracts/vulnerable/vuln_149_SC09.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_149_SC09.sol",
+              "filename_short": "contracts/vulnerable/vuln_149_SC09.sol",
+              "is_dependency": false,
+              "lines": [
+                2
+              ],
+              "starting_column": 5,
+              "ending_column": 37
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "Saturn",
+                "source_mapping": {
+                  "start": 0,
+                  "length": 332,
+                  "filename_relative": "contracts/vulnerable/vuln_149_SC09.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_149_SC09.sol",
+                  "filename_short": "contracts/vulnerable/vuln_149_SC09.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              }
+            }
+          }
+        ],
+        "description": "Saturn.luckyPendingIndex (contracts/vulnerable/vuln_149_SC09.sol#2) should be constant \n",
+        "markdown": "[Saturn.luckyPendingIndex](contracts/vulnerable/vuln_149_SC09.sol#L2) should be constant \n",
+        "first_markdown_element": "contracts/vulnerable/vuln_149_SC09.sol#L2",
+        "id": "a06a50ae64026507dc8967b136334253fc8c61c8f9cecee16d11eb249bc46a6c",
+        "check": "constable-states",
+        "impact": "Optimization",
+        "confidence": "High"
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_169_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+
+Detector: erc20-interface
+OkEth (contracts/safe/safe_169_SAFE.sol#5-145) has incorrect ERC20 function interface:OkEth.transfer(address,uint256) (contracts/safe/safe_169_SAFE.sol#60-62)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-erc20-interface
+
+Detector: solc-version
+Version constraint ^0.4.15 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- NestedArrayFunctionCallDecoder
+	- ZeroFunctionSelector.
+It is used by:
+	- ^0.4.15 (contracts/safe/safe_169_SAFE.sol#1)
+solc-0.4.15 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Contract tokenRecipient (contracts/safe/safe_169_SAFE.sol#3) is not in CapWords
+Parameter OkEth.transfer(address,uint256)._to (contracts/safe/safe_169_SAFE.sol#60) is not in mixedCase
+Parameter OkEth.transfer(address,uint256)._value (contracts/safe/safe_169_SAFE.sol#60) is not in mixedCase
+Parameter OkEth.transferFrom(address,address,uint256)._from (contracts/safe/safe_169_SAFE.sol#73) is not in mixedCase
+Parameter OkEth.transferFrom(address,address,uint256)._to (contracts/safe/safe_169_SAFE.sol#73) is not in mixedCase
+Parameter OkEth.transferFrom(address,address,uint256)._value (contracts/safe/safe_169_SAFE.sol#73) is not in mixedCase
+Parameter OkEth.approve(address,uint256)._spender (contracts/safe/safe_169_SAFE.sol#88) is not in mixedCase
+Parameter OkEth.approve(address,uint256)._value (contracts/safe/safe_169_SAFE.sol#88) is not in mixedCase
+Parameter OkEth.approveAndCall(address,uint256,bytes)._spender (contracts/safe/safe_169_SAFE.sol#103) is not in mixedCase
+Parameter OkEth.approveAndCall(address,uint256,bytes)._value (contracts/safe/safe_169_SAFE.sol#103) is not in mixedCase
+Parameter OkEth.approveAndCall(address,uint256,bytes)._extraData (contracts/safe/safe_169_SAFE.sol#103) is not in mixedCase
+Parameter OkEth.burn(uint256)._value (contracts/safe/safe_169_SAFE.sol#119) is not in mixedCase
+Parameter OkEth.burnFrom(address,uint256)._from (contracts/safe/safe_169_SAFE.sol#135) is not in mixedCase
+Parameter OkEth.burnFrom(address,uint256)._value (contracts/safe/safe_169_SAFE.sol#135) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: external-function
+receiveApproval(address,uint256,address,bytes) should be declared external:
+	- tokenRecipient.receiveApproval(address,uint256,address,bytes) (contracts/safe/safe_169_SAFE.sol#3)
+approveAndCall(address,uint256,bytes) should be declared external:
+	- OkEth.approveAndCall(address,uint256,bytes) (contracts/safe/safe_169_SAFE.sol#103-110)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#public-function-that-could-be-declared-external
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_169_SAFE.sol analyzed (2 contracts with 101 detectors), 19 result(s) found

@@ -1,0 +1,598 @@
+{
+  "success": true,
+  "error": null,
+  "results": {
+    "detectors": [
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "investor",
+            "source_mapping": {
+              "start": 3198,
+              "length": 16,
+              "filename_relative": "contracts/safe/safe_212_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_212_SAFE.sol",
+              "filename_short": "contracts/safe/safe_212_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                126
+              ],
+              "starting_column": 19,
+              "ending_column": 35
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "refund",
+                "source_mapping": {
+                  "start": 3182,
+                  "length": 249,
+                  "filename_relative": "contracts/safe/safe_212_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_212_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_212_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    126,
+                    127,
+                    128,
+                    129,
+                    130,
+                    131,
+                    132
+                  ],
+                  "starting_column": 3,
+                  "ending_column": 4
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "RefundVault",
+                    "source_mapping": {
+                      "start": 2229,
+                      "length": 1205,
+                      "filename_relative": "contracts/safe/safe_212_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_212_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_212_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        89,
+                        90,
+                        91,
+                        92,
+                        93,
+                        94,
+                        95,
+                        96,
+                        97,
+                        98,
+                        99,
+                        100,
+                        101,
+                        102,
+                        103,
+                        104,
+                        105,
+                        106,
+                        107,
+                        108,
+                        109,
+                        110,
+                        111,
+                        112,
+                        113,
+                        114,
+                        115,
+                        116,
+                        117,
+                        118,
+                        119,
+                        120,
+                        121,
+                        122,
+                        123,
+                        124,
+                        125,
+                        126,
+                        127,
+                        128,
+                        129,
+                        130,
+                        131,
+                        132,
+                        133,
+                        134
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "refund(address)"
+                }
+              }
+            }
+          },
+          {
+            "type": "node",
+            "name": "investor.transfer(depositedValue)",
+            "source_mapping": {
+              "start": 3351,
+              "length": 33,
+              "filename_relative": "contracts/safe/safe_212_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_212_SAFE.sol",
+              "filename_short": "contracts/safe/safe_212_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                130
+              ],
+              "starting_column": 5,
+              "ending_column": 38
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "refund",
+                "source_mapping": {
+                  "start": 3182,
+                  "length": 249,
+                  "filename_relative": "contracts/safe/safe_212_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_212_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_212_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    126,
+                    127,
+                    128,
+                    129,
+                    130,
+                    131,
+                    132
+                  ],
+                  "starting_column": 3,
+                  "ending_column": 4
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "RefundVault",
+                    "source_mapping": {
+                      "start": 2229,
+                      "length": 1205,
+                      "filename_relative": "contracts/safe/safe_212_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_212_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_212_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        89,
+                        90,
+                        91,
+                        92,
+                        93,
+                        94,
+                        95,
+                        96,
+                        97,
+                        98,
+                        99,
+                        100,
+                        101,
+                        102,
+                        103,
+                        104,
+                        105,
+                        106,
+                        107,
+                        108,
+                        109,
+                        110,
+                        111,
+                        112,
+                        113,
+                        114,
+                        115,
+                        116,
+                        117,
+                        118,
+                        119,
+                        120,
+                        121,
+                        122,
+                        123,
+                        124,
+                        125,
+                        126,
+                        127,
+                        128,
+                        129,
+                        130,
+                        131,
+                        132,
+                        133,
+                        134
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "refund(address)"
+                }
+              }
+            }
+          }
+        ],
+        "description": "RefundVault.refund(address).investor (contracts/safe/safe_212_SAFE.sol#126) lacks a zero-check on :\n\t\t- investor.transfer(depositedValue) (contracts/safe/safe_212_SAFE.sol#130)\n",
+        "markdown": "[RefundVault.refund(address).investor](contracts/safe/safe_212_SAFE.sol#L126) lacks a zero-check on :\n\t\t- [investor.transfer(depositedValue)](contracts/safe/safe_212_SAFE.sol#L130)\n",
+        "first_markdown_element": "contracts/safe/safe_212_SAFE.sol#L126",
+        "id": "5825ff644731692bcebc8240a6d042557947d41ec3fc6d78e548de5e55aaee0e",
+        "check": "missing-zero-check",
+        "impact": "Low",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [],
+        "description": "solc-0.4.18 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.\n",
+        "markdown": "solc-0.4.18 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.\n",
+        "first_markdown_element": "",
+        "id": "2d33fb59b2ee3728c5d60692778d51cc5c547e84ce2d23b6a03e45e2dc462acd",
+        "check": "solc-version",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "pragma",
+            "name": "^0.4.18",
+            "source_mapping": {
+              "start": 0,
+              "length": 24,
+              "filename_relative": "contracts/safe/safe_212_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_212_SAFE.sol",
+              "filename_short": "contracts/safe/safe_212_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                1
+              ],
+              "starting_column": 1,
+              "ending_column": 25
+            },
+            "type_specific_fields": {
+              "directive": [
+                "solidity",
+                "^",
+                "0.4",
+                ".18"
+              ]
+            }
+          }
+        ],
+        "description": "Version constraint ^0.4.18 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- DirtyBytesArrayToStorage\n\t- ABIDecodeTwoDimensionalArrayMemory\n\t- KeccakCaching\n\t- EmptyByteArrayCopy\n\t- DynamicArrayCleanup\n\t- ImplicitConstructorCallvalueCheck\n\t- TupleAssignmentMultiStackSlotComponents\n\t- MemoryArrayCreationOverflow\n\t- privateCanBeOverridden\n\t- SignedArrayStorageCopy\n\t- ABIEncoderV2StorageArrayWithMultiSlotElement\n\t- DynamicConstructorArgumentsClippedABIV2\n\t- UninitializedFunctionPointerInConstructor_0.4.x\n\t- IncorrectEventSignatureInLibraries_0.4.x\n\t- ExpExponentCleanup\n\t- EventStructWrongData\n\t- NestedArrayFunctionCallDecoder.\nIt is used by:\n\t- ^0.4.18 (contracts/safe/safe_212_SAFE.sol#1)\n",
+        "markdown": "Version constraint ^0.4.18 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- DirtyBytesArrayToStorage\n\t- ABIDecodeTwoDimensionalArrayMemory\n\t- KeccakCaching\n\t- EmptyByteArrayCopy\n\t- DynamicArrayCleanup\n\t- ImplicitConstructorCallvalueCheck\n\t- TupleAssignmentMultiStackSlotComponents\n\t- MemoryArrayCreationOverflow\n\t- privateCanBeOverridden\n\t- SignedArrayStorageCopy\n\t- ABIEncoderV2StorageArrayWithMultiSlotElement\n\t- DynamicConstructorArgumentsClippedABIV2\n\t- UninitializedFunctionPointerInConstructor_0.4.x\n\t- IncorrectEventSignatureInLibraries_0.4.x\n\t- ExpExponentCleanup\n\t- EventStructWrongData\n\t- NestedArrayFunctionCallDecoder.\nIt is used by:\n\t- [^0.4.18](contracts/safe/safe_212_SAFE.sol#L1)\n",
+        "first_markdown_element": "contracts/safe/safe_212_SAFE.sol#L1",
+        "id": "76350d72a147e19e624e98d24d0481d285c5b3c37326789333f4bafe7e201635",
+        "check": "solc-version",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "refund",
+            "source_mapping": {
+              "start": 3182,
+              "length": 249,
+              "filename_relative": "contracts/safe/safe_212_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_212_SAFE.sol",
+              "filename_short": "contracts/safe/safe_212_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                126,
+                127,
+                128,
+                129,
+                130,
+                131,
+                132
+              ],
+              "starting_column": 3,
+              "ending_column": 4
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "RefundVault",
+                "source_mapping": {
+                  "start": 2229,
+                  "length": 1205,
+                  "filename_relative": "contracts/safe/safe_212_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_212_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_212_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    89,
+                    90,
+                    91,
+                    92,
+                    93,
+                    94,
+                    95,
+                    96,
+                    97,
+                    98,
+                    99,
+                    100,
+                    101,
+                    102,
+                    103,
+                    104,
+                    105,
+                    106,
+                    107,
+                    108,
+                    109,
+                    110,
+                    111,
+                    112,
+                    113,
+                    114,
+                    115,
+                    116,
+                    117,
+                    118,
+                    119,
+                    120,
+                    121,
+                    122,
+                    123,
+                    124,
+                    125,
+                    126,
+                    127,
+                    128,
+                    129,
+                    130,
+                    131,
+                    132,
+                    133,
+                    134
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              },
+              "signature": "refund(address)"
+            }
+          },
+          {
+            "type": "node",
+            "name": "investor.transfer(depositedValue)",
+            "source_mapping": {
+              "start": 3351,
+              "length": 33,
+              "filename_relative": "contracts/safe/safe_212_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_212_SAFE.sol",
+              "filename_short": "contracts/safe/safe_212_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                130
+              ],
+              "starting_column": 5,
+              "ending_column": 38
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "refund",
+                "source_mapping": {
+                  "start": 3182,
+                  "length": 249,
+                  "filename_relative": "contracts/safe/safe_212_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_212_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_212_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    126,
+                    127,
+                    128,
+                    129,
+                    130,
+                    131,
+                    132
+                  ],
+                  "starting_column": 3,
+                  "ending_column": 4
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "RefundVault",
+                    "source_mapping": {
+                      "start": 2229,
+                      "length": 1205,
+                      "filename_relative": "contracts/safe/safe_212_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_212_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_212_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        89,
+                        90,
+                        91,
+                        92,
+                        93,
+                        94,
+                        95,
+                        96,
+                        97,
+                        98,
+                        99,
+                        100,
+                        101,
+                        102,
+                        103,
+                        104,
+                        105,
+                        106,
+                        107,
+                        108,
+                        109,
+                        110,
+                        111,
+                        112,
+                        113,
+                        114,
+                        115,
+                        116,
+                        117,
+                        118,
+                        119,
+                        120,
+                        121,
+                        122,
+                        123,
+                        124,
+                        125,
+                        126,
+                        127,
+                        128,
+                        129,
+                        130,
+                        131,
+                        132,
+                        133,
+                        134
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "refund(address)"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "external_calls"
+            }
+          },
+          {
+            "type": "node",
+            "name": "Refunded(investor,depositedValue)",
+            "source_mapping": {
+              "start": 3391,
+              "length": 34,
+              "filename_relative": "contracts/safe/safe_212_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_212_SAFE.sol",
+              "filename_short": "contracts/safe/safe_212_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                131
+              ],
+              "starting_column": 5,
+              "ending_column": 39
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "refund",
+                "source_mapping": {
+                  "start": 3182,
+                  "length": 249,
+                  "filename_relative": "contracts/safe/safe_212_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_212_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_212_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    126,
+                    127,
+                    128,
+                    129,
+                    130,
+                    131,
+                    132
+                  ],
+                  "starting_column": 3,
+                  "ending_column": 4
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "RefundVault",
+                    "source_mapping": {
+                      "start": 2229,
+                      "length": 1205,
+                      "filename_relative": "contracts/safe/safe_212_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_212_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_212_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        89,
+                        90,
+                        91,
+                        92,
+                        93,
+                        94,
+                        95,
+                        96,
+                        97,
+                        98,
+                        99,
+                        100,
+                        101,
+                        102,
+                        103,
+                        104,
+                        105,
+                        106,
+                        107,
+                        108,
+                        109,
+                        110,
+                        111,
+                        112,
+                        113,
+                        114,
+                        115,
+                        116,
+                        117,
+                        118,
+                        119,
+                        120,
+                        121,
+                        122,
+                        123,
+                        124,
+                        125,
+                        126,
+                        127,
+                        128,
+                        129,
+                        130,
+                        131,
+                        132,
+                        133,
+                        134
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "refund(address)"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "event"
+            }
+          }
+        ],
+        "description": "Reentrancy in RefundVault.refund(address) (contracts/safe/safe_212_SAFE.sol#126-132):\n\tExternal calls:\n\t- investor.transfer(depositedValue) (contracts/safe/safe_212_SAFE.sol#130)\n\tEvent emitted after the call(s):\n\t- Refunded(investor,depositedValue) (contracts/safe/safe_212_SAFE.sol#131)\n",
+        "markdown": "Reentrancy in [RefundVault.refund(address)](contracts/safe/safe_212_SAFE.sol#L126-L132):\n\tExternal calls:\n\t- [investor.transfer(depositedValue)](contracts/safe/safe_212_SAFE.sol#L130)\n\tEvent emitted after the call(s):\n\t- [Refunded(investor,depositedValue)](contracts/safe/safe_212_SAFE.sol#L131)\n",
+        "first_markdown_element": "contracts/safe/safe_212_SAFE.sol#L126-L132",
+        "id": "db43ea43b2e4287d3d19bb755c92e974b2b63c9d5ef03ec38f148ef1be2280c3",
+        "check": "reentrancy-unlimited-gas",
+        "impact": "Informational",
+        "confidence": "Medium"
+      }
+    ]
+  }
+}

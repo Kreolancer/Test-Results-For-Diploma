@@ -1,0 +1,586 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_046_SC08.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
+
+Detector: arbitrary-send-eth
+LedgerChannel.consensusCloseChannel(bytes32,uint256,uint256[4],string,string) (contracts/vulnerable/vuln_046_SC08.sol#495-546) sends eth to arbitrary user
+	Dangerous calls:
+	- Channels[_lcID].partyAddresses[0].transfer(_balances[0]) (contracts/vulnerable/vuln_046_SC08.sol#534)
+	- Channels[_lcID].partyAddresses[1].transfer(_balances[1]) (contracts/vulnerable/vuln_046_SC08.sol#535)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#functions-that-send-ether-to-arbitrary-destinations
+
+Detector: reentrancy-eth
+Reentrancy in LedgerChannel.LCOpenTimeout(bytes32) (contracts/vulnerable/vuln_046_SC08.sol#420-437):
+	External calls:
+	- require(bool,string)(Channels[_lcID].token.transfer(Channels[_lcID].partyAddresses[0],Channels[_lcID].erc20Balances[0]),CreateChannel: token transfer failure) (contracts/vulnerable/vuln_046_SC08.sol#430)
+	External calls sending eth:
+	- Channels[_lcID].partyAddresses[0].transfer(Channels[_lcID].ethBalances[0]) (contracts/vulnerable/vuln_046_SC08.sol#426)
+	State variables written after the call(s):
+	- delete Channels[_lcID] (contracts/vulnerable/vuln_046_SC08.sol#436)
+	LedgerChannel.Channels (contracts/vulnerable/vuln_046_SC08.sol#378) can be used in cross function reentrancies:
+	- LedgerChannel.Channels (contracts/vulnerable/vuln_046_SC08.sol#378)
+	- LedgerChannel.LCOpenTimeout(bytes32) (contracts/vulnerable/vuln_046_SC08.sol#420-437)
+	- LedgerChannel.byzantineCloseChannel(bytes32) (contracts/vulnerable/vuln_046_SC08.sol#756-817)
+	- LedgerChannel.closeVirtualChannel(bytes32,bytes32) (contracts/vulnerable/vuln_046_SC08.sol#725-752)
+	- LedgerChannel.consensusCloseChannel(bytes32,uint256,uint256[4],string,string) (contracts/vulnerable/vuln_046_SC08.sol#495-546)
+	- LedgerChannel.createChannel(bytes32,address,uint256,address,uint256[2]) (contracts/vulnerable/vuln_046_SC08.sol#380-418)
+	- LedgerChannel.deposit(bytes32,address,uint256,bool) (contracts/vulnerable/vuln_046_SC08.sol#465-492)
+	- LedgerChannel.getChannel(bytes32) (contracts/vulnerable/vuln_046_SC08.sol#837-866)
+	- LedgerChannel.initVCstate(bytes32,bytes32,bytes,address,address,uint256[2],uint256[4],string) (contracts/vulnerable/vuln_046_SC08.sol#615-657)
+	- LedgerChannel.joinChannel(bytes32,uint256[2]) (contracts/vulnerable/vuln_046_SC08.sol#439-460)
+	- LedgerChannel.settleVC(bytes32,bytes32,uint256,address,address,uint256[4],string) (contracts/vulnerable/vuln_046_SC08.sol#662-723)
+	- LedgerChannel.updateLCstate(bytes32,uint256[6],bytes32,string,string) (contracts/vulnerable/vuln_046_SC08.sol#550-612)
+Reentrancy in LedgerChannel.byzantineCloseChannel(bytes32) (contracts/vulnerable/vuln_046_SC08.sol#756-817):
+	External calls:
+	- require(bool,string)(channel.token.transfer(channel.partyAddresses[0],tokenbalanceA),byzantineCloseChannel: token transfer failure) (contracts/vulnerable/vuln_046_SC08.sol#803-806)
+	- require(bool,string)(channel.token.transfer(channel.partyAddresses[1],tokenbalanceI),byzantineCloseChannel: token transfer failure) (contracts/vulnerable/vuln_046_SC08.sol#807-810)
+	External calls sending eth:
+	- channel.partyAddresses[0].transfer(ethbalanceA) (contracts/vulnerable/vuln_046_SC08.sol#798)
+	- channel.partyAddresses[1].transfer(ethbalanceI) (contracts/vulnerable/vuln_046_SC08.sol#799)
+	State variables written after the call(s):
+	- channel.isOpen = false (contracts/vulnerable/vuln_046_SC08.sol#813)
+	LedgerChannel.Channels (contracts/vulnerable/vuln_046_SC08.sol#378) can be used in cross function reentrancies:
+	- LedgerChannel.Channels (contracts/vulnerable/vuln_046_SC08.sol#378)
+	- LedgerChannel.LCOpenTimeout(bytes32) (contracts/vulnerable/vuln_046_SC08.sol#420-437)
+	- LedgerChannel.byzantineCloseChannel(bytes32) (contracts/vulnerable/vuln_046_SC08.sol#756-817)
+	- LedgerChannel.closeVirtualChannel(bytes32,bytes32) (contracts/vulnerable/vuln_046_SC08.sol#725-752)
+	- LedgerChannel.consensusCloseChannel(bytes32,uint256,uint256[4],string,string) (contracts/vulnerable/vuln_046_SC08.sol#495-546)
+	- LedgerChannel.createChannel(bytes32,address,uint256,address,uint256[2]) (contracts/vulnerable/vuln_046_SC08.sol#380-418)
+	- LedgerChannel.deposit(bytes32,address,uint256,bool) (contracts/vulnerable/vuln_046_SC08.sol#465-492)
+	- LedgerChannel.getChannel(bytes32) (contracts/vulnerable/vuln_046_SC08.sol#837-866)
+	- LedgerChannel.initVCstate(bytes32,bytes32,bytes,address,address,uint256[2],uint256[4],string) (contracts/vulnerable/vuln_046_SC08.sol#615-657)
+	- LedgerChannel.joinChannel(bytes32,uint256[2]) (contracts/vulnerable/vuln_046_SC08.sol#439-460)
+	- LedgerChannel.settleVC(bytes32,bytes32,uint256,address,address,uint256[4],string) (contracts/vulnerable/vuln_046_SC08.sol#662-723)
+	- LedgerChannel.updateLCstate(bytes32,uint256[6],bytes32,string,string) (contracts/vulnerable/vuln_046_SC08.sol#550-612)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-1
+
+Detector: constant-function-asm
+ECTools.recoverSigner(bytes32,string) (contracts/vulnerable/vuln_046_SC08.sol#62-88) is declared view but contains assembly code
+ECTools.uintToBytes32(uint256) (contracts/vulnerable/vuln_046_SC08.sol#132-135) is declared view but contains assembly code
+LedgerChannel._isContained(bytes32,bytes,bytes32) (contracts/vulnerable/vuln_046_SC08.sol#819-834) is declared view but contains assembly code
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#constant-functions-using-assembly-code
+
+Detector: incorrect-equality
+LedgerChannel.LCOpenTimeout(bytes32) (contracts/vulnerable/vuln_046_SC08.sol#420-437) uses a dangerous strict equality:
+	- require(bool)(msg.sender == Channels[_lcID].partyAddresses[0] && Channels[_lcID].isOpen == false) (contracts/vulnerable/vuln_046_SC08.sol#421)
+LedgerChannel._isContained(bytes32,bytes,bytes32) (contracts/vulnerable/vuln_046_SC08.sol#819-834) uses a dangerous strict equality:
+	- cursor == _root (contracts/vulnerable/vuln_046_SC08.sol#833)
+LedgerChannel.consensusCloseChannel(bytes32,uint256,uint256[4],string,string) (contracts/vulnerable/vuln_046_SC08.sol#495-546) uses a dangerous strict equality:
+	- require(bool)(Channels[_lcID].isOpen == true) (contracts/vulnerable/vuln_046_SC08.sol#506)
+LedgerChannel.consensusCloseChannel(bytes32,uint256,uint256[4],string,string) (contracts/vulnerable/vuln_046_SC08.sol#495-546) uses a dangerous strict equality:
+	- require(bool)(totalEthDeposit == _balances[0] + _balances[1]) (contracts/vulnerable/vuln_046_SC08.sol#509)
+LedgerChannel.consensusCloseChannel(bytes32,uint256,uint256[4],string,string) (contracts/vulnerable/vuln_046_SC08.sol#495-546) uses a dangerous strict equality:
+	- require(bool)(totalTokenDeposit == _balances[2] + _balances[3]) (contracts/vulnerable/vuln_046_SC08.sol#510)
+LedgerChannel.deposit(bytes32,address,uint256,bool) (contracts/vulnerable/vuln_046_SC08.sol#465-492) uses a dangerous strict equality:
+	- require(bool,string)(Channels[_lcID].isOpen == true,Tried adding funds to a closed channel) (contracts/vulnerable/vuln_046_SC08.sol#466)
+LedgerChannel.initVCstate(bytes32,bytes32,bytes,address,address,uint256[2],uint256[4],string) (contracts/vulnerable/vuln_046_SC08.sol#615-657) uses a dangerous strict equality:
+	- require(bool)(_isContained(_initState,_proof,Channels[_lcID].VCrootHash) == true) (contracts/vulnerable/vuln_046_SC08.sol#643)
+LedgerChannel.joinChannel(bytes32,uint256[2]) (contracts/vulnerable/vuln_046_SC08.sol#439-460) uses a dangerous strict equality:
+	- require(bool)(Channels[_lcID].isOpen == false) (contracts/vulnerable/vuln_046_SC08.sol#441)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dangerous-strict-equalities
+
+Detector: reentrancy-no-eth
+Reentrancy in LedgerChannel.createChannel(bytes32,address,uint256,address,uint256[2]) (contracts/vulnerable/vuln_046_SC08.sol#380-418):
+	External calls:
+	- require(bool,string)(Channels[_lcID].token.transferFrom(msg.sender,this,_balances[1]),CreateChannel: token transfer failure) (contracts/vulnerable/vuln_046_SC08.sol#406)
+	State variables written after the call(s):
+	- Channels[_lcID].erc20Balances[0] = _balances[1] (contracts/vulnerable/vuln_046_SC08.sol#407)
+	LedgerChannel.Channels (contracts/vulnerable/vuln_046_SC08.sol#378) can be used in cross function reentrancies:
+	- LedgerChannel.Channels (contracts/vulnerable/vuln_046_SC08.sol#378)
+	- LedgerChannel.LCOpenTimeout(bytes32) (contracts/vulnerable/vuln_046_SC08.sol#420-437)
+	- LedgerChannel.byzantineCloseChannel(bytes32) (contracts/vulnerable/vuln_046_SC08.sol#756-817)
+	- LedgerChannel.closeVirtualChannel(bytes32,bytes32) (contracts/vulnerable/vuln_046_SC08.sol#725-752)
+	- LedgerChannel.consensusCloseChannel(bytes32,uint256,uint256[4],string,string) (contracts/vulnerable/vuln_046_SC08.sol#495-546)
+	- LedgerChannel.createChannel(bytes32,address,uint256,address,uint256[2]) (contracts/vulnerable/vuln_046_SC08.sol#380-418)
+	- LedgerChannel.deposit(bytes32,address,uint256,bool) (contracts/vulnerable/vuln_046_SC08.sol#465-492)
+	- LedgerChannel.getChannel(bytes32) (contracts/vulnerable/vuln_046_SC08.sol#837-866)
+	- LedgerChannel.initVCstate(bytes32,bytes32,bytes,address,address,uint256[2],uint256[4],string) (contracts/vulnerable/vuln_046_SC08.sol#615-657)
+	- LedgerChannel.joinChannel(bytes32,uint256[2]) (contracts/vulnerable/vuln_046_SC08.sol#439-460)
+	- LedgerChannel.settleVC(bytes32,bytes32,uint256,address,address,uint256[4],string) (contracts/vulnerable/vuln_046_SC08.sol#662-723)
+	- LedgerChannel.updateLCstate(bytes32,uint256[6],bytes32,string,string) (contracts/vulnerable/vuln_046_SC08.sol#550-612)
+	- Channels[_lcID].sequence = 0 (contracts/vulnerable/vuln_046_SC08.sol#410)
+	LedgerChannel.Channels (contracts/vulnerable/vuln_046_SC08.sol#378) can be used in cross function reentrancies:
+	- LedgerChannel.Channels (contracts/vulnerable/vuln_046_SC08.sol#378)
+	- LedgerChannel.LCOpenTimeout(bytes32) (contracts/vulnerable/vuln_046_SC08.sol#420-437)
+	- LedgerChannel.byzantineCloseChannel(bytes32) (contracts/vulnerable/vuln_046_SC08.sol#756-817)
+	- LedgerChannel.closeVirtualChannel(bytes32,bytes32) (contracts/vulnerable/vuln_046_SC08.sol#725-752)
+	- LedgerChannel.consensusCloseChannel(bytes32,uint256,uint256[4],string,string) (contracts/vulnerable/vuln_046_SC08.sol#495-546)
+	- LedgerChannel.createChannel(bytes32,address,uint256,address,uint256[2]) (contracts/vulnerable/vuln_046_SC08.sol#380-418)
+	- LedgerChannel.deposit(bytes32,address,uint256,bool) (contracts/vulnerable/vuln_046_SC08.sol#465-492)
+	- LedgerChannel.getChannel(bytes32) (contracts/vulnerable/vuln_046_SC08.sol#837-866)
+	- LedgerChannel.initVCstate(bytes32,bytes32,bytes,address,address,uint256[2],uint256[4],string) (contracts/vulnerable/vuln_046_SC08.sol#615-657)
+	- LedgerChannel.joinChannel(bytes32,uint256[2]) (contracts/vulnerable/vuln_046_SC08.sol#439-460)
+	- LedgerChannel.settleVC(bytes32,bytes32,uint256,address,address,uint256[4],string) (contracts/vulnerable/vuln_046_SC08.sol#662-723)
+	- LedgerChannel.updateLCstate(bytes32,uint256[6],bytes32,string,string) (contracts/vulnerable/vuln_046_SC08.sol#550-612)
+	- Channels[_lcID].confirmTime = _confirmTime (contracts/vulnerable/vuln_046_SC08.sol#411)
+	LedgerChannel.Channels (contracts/vulnerable/vuln_046_SC08.sol#378) can be used in cross function reentrancies:
+	- LedgerChannel.Channels (contracts/vulnerable/vuln_046_SC08.sol#378)
+	- LedgerChannel.LCOpenTimeout(bytes32) (contracts/vulnerable/vuln_046_SC08.sol#420-437)
+	- LedgerChannel.byzantineCloseChannel(bytes32) (contracts/vulnerable/vuln_046_SC08.sol#756-817)
+	- LedgerChannel.closeVirtualChannel(bytes32,bytes32) (contracts/vulnerable/vuln_046_SC08.sol#725-752)
+	- LedgerChannel.consensusCloseChannel(bytes32,uint256,uint256[4],string,string) (contracts/vulnerable/vuln_046_SC08.sol#495-546)
+	- LedgerChannel.createChannel(bytes32,address,uint256,address,uint256[2]) (contracts/vulnerable/vuln_046_SC08.sol#380-418)
+	- LedgerChannel.deposit(bytes32,address,uint256,bool) (contracts/vulnerable/vuln_046_SC08.sol#465-492)
+	- LedgerChannel.getChannel(bytes32) (contracts/vulnerable/vuln_046_SC08.sol#837-866)
+	- LedgerChannel.initVCstate(bytes32,bytes32,bytes,address,address,uint256[2],uint256[4],string) (contracts/vulnerable/vuln_046_SC08.sol#615-657)
+	- LedgerChannel.joinChannel(bytes32,uint256[2]) (contracts/vulnerable/vuln_046_SC08.sol#439-460)
+	- LedgerChannel.settleVC(bytes32,bytes32,uint256,address,address,uint256[4],string) (contracts/vulnerable/vuln_046_SC08.sol#662-723)
+	- LedgerChannel.updateLCstate(bytes32,uint256[6],bytes32,string,string) (contracts/vulnerable/vuln_046_SC08.sol#550-612)
+	- Channels[_lcID].LCopenTimeout = now + _confirmTime (contracts/vulnerable/vuln_046_SC08.sol#414)
+	LedgerChannel.Channels (contracts/vulnerable/vuln_046_SC08.sol#378) can be used in cross function reentrancies:
+	- LedgerChannel.Channels (contracts/vulnerable/vuln_046_SC08.sol#378)
+	- LedgerChannel.LCOpenTimeout(bytes32) (contracts/vulnerable/vuln_046_SC08.sol#420-437)
+	- LedgerChannel.byzantineCloseChannel(bytes32) (contracts/vulnerable/vuln_046_SC08.sol#756-817)
+	- LedgerChannel.closeVirtualChannel(bytes32,bytes32) (contracts/vulnerable/vuln_046_SC08.sol#725-752)
+	- LedgerChannel.consensusCloseChannel(bytes32,uint256,uint256[4],string,string) (contracts/vulnerable/vuln_046_SC08.sol#495-546)
+	- LedgerChannel.createChannel(bytes32,address,uint256,address,uint256[2]) (contracts/vulnerable/vuln_046_SC08.sol#380-418)
+	- LedgerChannel.deposit(bytes32,address,uint256,bool) (contracts/vulnerable/vuln_046_SC08.sol#465-492)
+	- LedgerChannel.getChannel(bytes32) (contracts/vulnerable/vuln_046_SC08.sol#837-866)
+	- LedgerChannel.initVCstate(bytes32,bytes32,bytes,address,address,uint256[2],uint256[4],string) (contracts/vulnerable/vuln_046_SC08.sol#615-657)
+	- LedgerChannel.joinChannel(bytes32,uint256[2]) (contracts/vulnerable/vuln_046_SC08.sol#439-460)
+	- LedgerChannel.settleVC(bytes32,bytes32,uint256,address,address,uint256[4],string) (contracts/vulnerable/vuln_046_SC08.sol#662-723)
+	- LedgerChannel.updateLCstate(bytes32,uint256[6],bytes32,string,string) (contracts/vulnerable/vuln_046_SC08.sol#550-612)
+	- Channels[_lcID].initialDeposit = _balances (contracts/vulnerable/vuln_046_SC08.sol#415)
+	LedgerChannel.Channels (contracts/vulnerable/vuln_046_SC08.sol#378) can be used in cross function reentrancies:
+	- LedgerChannel.Channels (contracts/vulnerable/vuln_046_SC08.sol#378)
+	- LedgerChannel.LCOpenTimeout(bytes32) (contracts/vulnerable/vuln_046_SC08.sol#420-437)
+	- LedgerChannel.byzantineCloseChannel(bytes32) (contracts/vulnerable/vuln_046_SC08.sol#756-817)
+	- LedgerChannel.closeVirtualChannel(bytes32,bytes32) (contracts/vulnerable/vuln_046_SC08.sol#725-752)
+	- LedgerChannel.consensusCloseChannel(bytes32,uint256,uint256[4],string,string) (contracts/vulnerable/vuln_046_SC08.sol#495-546)
+	- LedgerChannel.createChannel(bytes32,address,uint256,address,uint256[2]) (contracts/vulnerable/vuln_046_SC08.sol#380-418)
+	- LedgerChannel.deposit(bytes32,address,uint256,bool) (contracts/vulnerable/vuln_046_SC08.sol#465-492)
+	- LedgerChannel.getChannel(bytes32) (contracts/vulnerable/vuln_046_SC08.sol#837-866)
+	- LedgerChannel.initVCstate(bytes32,bytes32,bytes,address,address,uint256[2],uint256[4],string) (contracts/vulnerable/vuln_046_SC08.sol#615-657)
+	- LedgerChannel.joinChannel(bytes32,uint256[2]) (contracts/vulnerable/vuln_046_SC08.sol#439-460)
+	- LedgerChannel.settleVC(bytes32,bytes32,uint256,address,address,uint256[4],string) (contracts/vulnerable/vuln_046_SC08.sol#662-723)
+	- LedgerChannel.updateLCstate(bytes32,uint256[6],bytes32,string,string) (contracts/vulnerable/vuln_046_SC08.sol#550-612)
+Reentrancy in LedgerChannel.deposit(bytes32,address,uint256,bool) (contracts/vulnerable/vuln_046_SC08.sol#465-492):
+	External calls:
+	- require(bool,string)(Channels[_lcID].token.transferFrom(msg.sender,this,_balance),deposit: token transfer failure) (contracts/vulnerable/vuln_046_SC08.sol#473)
+	State variables written after the call(s):
+	- Channels[_lcID].erc20Balances[2] += _balance (contracts/vulnerable/vuln_046_SC08.sol#474)
+	LedgerChannel.Channels (contracts/vulnerable/vuln_046_SC08.sol#378) can be used in cross function reentrancies:
+	- LedgerChannel.Channels (contracts/vulnerable/vuln_046_SC08.sol#378)
+	- LedgerChannel.LCOpenTimeout(bytes32) (contracts/vulnerable/vuln_046_SC08.sol#420-437)
+	- LedgerChannel.byzantineCloseChannel(bytes32) (contracts/vulnerable/vuln_046_SC08.sol#756-817)
+	- LedgerChannel.closeVirtualChannel(bytes32,bytes32) (contracts/vulnerable/vuln_046_SC08.sol#725-752)
+	- LedgerChannel.consensusCloseChannel(bytes32,uint256,uint256[4],string,string) (contracts/vulnerable/vuln_046_SC08.sol#495-546)
+	- LedgerChannel.createChannel(bytes32,address,uint256,address,uint256[2]) (contracts/vulnerable/vuln_046_SC08.sol#380-418)
+	- LedgerChannel.deposit(bytes32,address,uint256,bool) (contracts/vulnerable/vuln_046_SC08.sol#465-492)
+	- LedgerChannel.getChannel(bytes32) (contracts/vulnerable/vuln_046_SC08.sol#837-866)
+	- LedgerChannel.initVCstate(bytes32,bytes32,bytes,address,address,uint256[2],uint256[4],string) (contracts/vulnerable/vuln_046_SC08.sol#615-657)
+	- LedgerChannel.joinChannel(bytes32,uint256[2]) (contracts/vulnerable/vuln_046_SC08.sol#439-460)
+	- LedgerChannel.settleVC(bytes32,bytes32,uint256,address,address,uint256[4],string) (contracts/vulnerable/vuln_046_SC08.sol#662-723)
+	- LedgerChannel.updateLCstate(bytes32,uint256[6],bytes32,string,string) (contracts/vulnerable/vuln_046_SC08.sol#550-612)
+	- Channels[_lcID].ethBalances[3] += msg.value (contracts/vulnerable/vuln_046_SC08.sol#487)
+	LedgerChannel.Channels (contracts/vulnerable/vuln_046_SC08.sol#378) can be used in cross function reentrancies:
+	- LedgerChannel.Channels (contracts/vulnerable/vuln_046_SC08.sol#378)
+	- LedgerChannel.LCOpenTimeout(bytes32) (contracts/vulnerable/vuln_046_SC08.sol#420-437)
+	- LedgerChannel.byzantineCloseChannel(bytes32) (contracts/vulnerable/vuln_046_SC08.sol#756-817)
+	- LedgerChannel.closeVirtualChannel(bytes32,bytes32) (contracts/vulnerable/vuln_046_SC08.sol#725-752)
+	- LedgerChannel.consensusCloseChannel(bytes32,uint256,uint256[4],string,string) (contracts/vulnerable/vuln_046_SC08.sol#495-546)
+	- LedgerChannel.createChannel(bytes32,address,uint256,address,uint256[2]) (contracts/vulnerable/vuln_046_SC08.sol#380-418)
+	- LedgerChannel.deposit(bytes32,address,uint256,bool) (contracts/vulnerable/vuln_046_SC08.sol#465-492)
+	- LedgerChannel.getChannel(bytes32) (contracts/vulnerable/vuln_046_SC08.sol#837-866)
+	- LedgerChannel.initVCstate(bytes32,bytes32,bytes,address,address,uint256[2],uint256[4],string) (contracts/vulnerable/vuln_046_SC08.sol#615-657)
+	- LedgerChannel.joinChannel(bytes32,uint256[2]) (contracts/vulnerable/vuln_046_SC08.sol#439-460)
+	- LedgerChannel.settleVC(bytes32,bytes32,uint256,address,address,uint256[4],string) (contracts/vulnerable/vuln_046_SC08.sol#662-723)
+	- LedgerChannel.updateLCstate(bytes32,uint256[6],bytes32,string,string) (contracts/vulnerable/vuln_046_SC08.sol#550-612)
+Reentrancy in LedgerChannel.deposit(bytes32,address,uint256,bool) (contracts/vulnerable/vuln_046_SC08.sol#465-492):
+	External calls:
+	- require(bool,string)(Channels[_lcID].token.transferFrom(msg.sender,this,_balance),deposit: token transfer failure) (contracts/vulnerable/vuln_046_SC08.sol#473)
+	- require(bool,string)(Channels[_lcID].token.transferFrom(msg.sender,this,_balance),deposit: token transfer failure) (contracts/vulnerable/vuln_046_SC08.sol#483)
+	State variables written after the call(s):
+	- Channels[_lcID].erc20Balances[3] += _balance (contracts/vulnerable/vuln_046_SC08.sol#484)
+	LedgerChannel.Channels (contracts/vulnerable/vuln_046_SC08.sol#378) can be used in cross function reentrancies:
+	- LedgerChannel.Channels (contracts/vulnerable/vuln_046_SC08.sol#378)
+	- LedgerChannel.LCOpenTimeout(bytes32) (contracts/vulnerable/vuln_046_SC08.sol#420-437)
+	- LedgerChannel.byzantineCloseChannel(bytes32) (contracts/vulnerable/vuln_046_SC08.sol#756-817)
+	- LedgerChannel.closeVirtualChannel(bytes32,bytes32) (contracts/vulnerable/vuln_046_SC08.sol#725-752)
+	- LedgerChannel.consensusCloseChannel(bytes32,uint256,uint256[4],string,string) (contracts/vulnerable/vuln_046_SC08.sol#495-546)
+	- LedgerChannel.createChannel(bytes32,address,uint256,address,uint256[2]) (contracts/vulnerable/vuln_046_SC08.sol#380-418)
+	- LedgerChannel.deposit(bytes32,address,uint256,bool) (contracts/vulnerable/vuln_046_SC08.sol#465-492)
+	- LedgerChannel.getChannel(bytes32) (contracts/vulnerable/vuln_046_SC08.sol#837-866)
+	- LedgerChannel.initVCstate(bytes32,bytes32,bytes,address,address,uint256[2],uint256[4],string) (contracts/vulnerable/vuln_046_SC08.sol#615-657)
+	- LedgerChannel.joinChannel(bytes32,uint256[2]) (contracts/vulnerable/vuln_046_SC08.sol#439-460)
+	- LedgerChannel.settleVC(bytes32,bytes32,uint256,address,address,uint256[4],string) (contracts/vulnerable/vuln_046_SC08.sol#662-723)
+	- LedgerChannel.updateLCstate(bytes32,uint256[6],bytes32,string,string) (contracts/vulnerable/vuln_046_SC08.sol#550-612)
+Reentrancy in LedgerChannel.joinChannel(bytes32,uint256[2]) (contracts/vulnerable/vuln_046_SC08.sol#439-460):
+	External calls:
+	- require(bool,string)(Channels[_lcID].token.transferFrom(msg.sender,this,_balances[1]),joinChannel: token transfer failure) (contracts/vulnerable/vuln_046_SC08.sol#449)
+	State variables written after the call(s):
+	- Channels[_lcID].erc20Balances[1] = _balances[1] (contracts/vulnerable/vuln_046_SC08.sol#450)
+	LedgerChannel.Channels (contracts/vulnerable/vuln_046_SC08.sol#378) can be used in cross function reentrancies:
+	- LedgerChannel.Channels (contracts/vulnerable/vuln_046_SC08.sol#378)
+	- LedgerChannel.LCOpenTimeout(bytes32) (contracts/vulnerable/vuln_046_SC08.sol#420-437)
+	- LedgerChannel.byzantineCloseChannel(bytes32) (contracts/vulnerable/vuln_046_SC08.sol#756-817)
+	- LedgerChannel.closeVirtualChannel(bytes32,bytes32) (contracts/vulnerable/vuln_046_SC08.sol#725-752)
+	- LedgerChannel.consensusCloseChannel(bytes32,uint256,uint256[4],string,string) (contracts/vulnerable/vuln_046_SC08.sol#495-546)
+	- LedgerChannel.createChannel(bytes32,address,uint256,address,uint256[2]) (contracts/vulnerable/vuln_046_SC08.sol#380-418)
+	- LedgerChannel.deposit(bytes32,address,uint256,bool) (contracts/vulnerable/vuln_046_SC08.sol#465-492)
+	- LedgerChannel.getChannel(bytes32) (contracts/vulnerable/vuln_046_SC08.sol#837-866)
+	- LedgerChannel.initVCstate(bytes32,bytes32,bytes,address,address,uint256[2],uint256[4],string) (contracts/vulnerable/vuln_046_SC08.sol#615-657)
+	- LedgerChannel.joinChannel(bytes32,uint256[2]) (contracts/vulnerable/vuln_046_SC08.sol#439-460)
+	- LedgerChannel.settleVC(bytes32,bytes32,uint256,address,address,uint256[4],string) (contracts/vulnerable/vuln_046_SC08.sol#662-723)
+	- LedgerChannel.updateLCstate(bytes32,uint256[6],bytes32,string,string) (contracts/vulnerable/vuln_046_SC08.sol#550-612)
+	- Channels[_lcID].initialDeposit[0] += _balances[0] (contracts/vulnerable/vuln_046_SC08.sol#453)
+	LedgerChannel.Channels (contracts/vulnerable/vuln_046_SC08.sol#378) can be used in cross function reentrancies:
+	- LedgerChannel.Channels (contracts/vulnerable/vuln_046_SC08.sol#378)
+	- LedgerChannel.LCOpenTimeout(bytes32) (contracts/vulnerable/vuln_046_SC08.sol#420-437)
+	- LedgerChannel.byzantineCloseChannel(bytes32) (contracts/vulnerable/vuln_046_SC08.sol#756-817)
+	- LedgerChannel.closeVirtualChannel(bytes32,bytes32) (contracts/vulnerable/vuln_046_SC08.sol#725-752)
+	- LedgerChannel.consensusCloseChannel(bytes32,uint256,uint256[4],string,string) (contracts/vulnerable/vuln_046_SC08.sol#495-546)
+	- LedgerChannel.createChannel(bytes32,address,uint256,address,uint256[2]) (contracts/vulnerable/vuln_046_SC08.sol#380-418)
+	- LedgerChannel.deposit(bytes32,address,uint256,bool) (contracts/vulnerable/vuln_046_SC08.sol#465-492)
+	- LedgerChannel.getChannel(bytes32) (contracts/vulnerable/vuln_046_SC08.sol#837-866)
+	- LedgerChannel.initVCstate(bytes32,bytes32,bytes,address,address,uint256[2],uint256[4],string) (contracts/vulnerable/vuln_046_SC08.sol#615-657)
+	- LedgerChannel.joinChannel(bytes32,uint256[2]) (contracts/vulnerable/vuln_046_SC08.sol#439-460)
+	- LedgerChannel.settleVC(bytes32,bytes32,uint256,address,address,uint256[4],string) (contracts/vulnerable/vuln_046_SC08.sol#662-723)
+	- LedgerChannel.updateLCstate(bytes32,uint256[6],bytes32,string,string) (contracts/vulnerable/vuln_046_SC08.sol#550-612)
+	- Channels[_lcID].initialDeposit[1] += _balances[1] (contracts/vulnerable/vuln_046_SC08.sol#454)
+	LedgerChannel.Channels (contracts/vulnerable/vuln_046_SC08.sol#378) can be used in cross function reentrancies:
+	- LedgerChannel.Channels (contracts/vulnerable/vuln_046_SC08.sol#378)
+	- LedgerChannel.LCOpenTimeout(bytes32) (contracts/vulnerable/vuln_046_SC08.sol#420-437)
+	- LedgerChannel.byzantineCloseChannel(bytes32) (contracts/vulnerable/vuln_046_SC08.sol#756-817)
+	- LedgerChannel.closeVirtualChannel(bytes32,bytes32) (contracts/vulnerable/vuln_046_SC08.sol#725-752)
+	- LedgerChannel.consensusCloseChannel(bytes32,uint256,uint256[4],string,string) (contracts/vulnerable/vuln_046_SC08.sol#495-546)
+	- LedgerChannel.createChannel(bytes32,address,uint256,address,uint256[2]) (contracts/vulnerable/vuln_046_SC08.sol#380-418)
+	- LedgerChannel.deposit(bytes32,address,uint256,bool) (contracts/vulnerable/vuln_046_SC08.sol#465-492)
+	- LedgerChannel.getChannel(bytes32) (contracts/vulnerable/vuln_046_SC08.sol#837-866)
+	- LedgerChannel.initVCstate(bytes32,bytes32,bytes,address,address,uint256[2],uint256[4],string) (contracts/vulnerable/vuln_046_SC08.sol#615-657)
+	- LedgerChannel.joinChannel(bytes32,uint256[2]) (contracts/vulnerable/vuln_046_SC08.sol#439-460)
+	- LedgerChannel.settleVC(bytes32,bytes32,uint256,address,address,uint256[4],string) (contracts/vulnerable/vuln_046_SC08.sol#662-723)
+	- LedgerChannel.updateLCstate(bytes32,uint256[6],bytes32,string,string) (contracts/vulnerable/vuln_046_SC08.sol#550-612)
+	- Channels[_lcID].isOpen = true (contracts/vulnerable/vuln_046_SC08.sol#456)
+	LedgerChannel.Channels (contracts/vulnerable/vuln_046_SC08.sol#378) can be used in cross function reentrancies:
+	- LedgerChannel.Channels (contracts/vulnerable/vuln_046_SC08.sol#378)
+	- LedgerChannel.LCOpenTimeout(bytes32) (contracts/vulnerable/vuln_046_SC08.sol#420-437)
+	- LedgerChannel.byzantineCloseChannel(bytes32) (contracts/vulnerable/vuln_046_SC08.sol#756-817)
+	- LedgerChannel.closeVirtualChannel(bytes32,bytes32) (contracts/vulnerable/vuln_046_SC08.sol#725-752)
+	- LedgerChannel.consensusCloseChannel(bytes32,uint256,uint256[4],string,string) (contracts/vulnerable/vuln_046_SC08.sol#495-546)
+	- LedgerChannel.createChannel(bytes32,address,uint256,address,uint256[2]) (contracts/vulnerable/vuln_046_SC08.sol#380-418)
+	- LedgerChannel.deposit(bytes32,address,uint256,bool) (contracts/vulnerable/vuln_046_SC08.sol#465-492)
+	- LedgerChannel.getChannel(bytes32) (contracts/vulnerable/vuln_046_SC08.sol#837-866)
+	- LedgerChannel.initVCstate(bytes32,bytes32,bytes,address,address,uint256[2],uint256[4],string) (contracts/vulnerable/vuln_046_SC08.sol#615-657)
+	- LedgerChannel.joinChannel(bytes32,uint256[2]) (contracts/vulnerable/vuln_046_SC08.sol#439-460)
+	- LedgerChannel.settleVC(bytes32,bytes32,uint256,address,address,uint256[4],string) (contracts/vulnerable/vuln_046_SC08.sol#662-723)
+	- LedgerChannel.updateLCstate(bytes32,uint256[6],bytes32,string,string) (contracts/vulnerable/vuln_046_SC08.sol#550-612)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-2
+
+Detector: tautology
+ECTools.substring(string,uint256,uint256) (contracts/vulnerable/vuln_046_SC08.sol#167-178) contains a tautology or contradiction:
+	- require(bool)(_startIndex >= 0) (contracts/vulnerable/vuln_046_SC08.sol#170)
+LedgerChannel.createChannel(bytes32,address,uint256,address,uint256[2]) (contracts/vulnerable/vuln_046_SC08.sol#380-418) contains a tautology or contradiction:
+	- require(bool,string)(_balances[0] >= 0 && _balances[1] >= 0,Balances cannot be negative) (contracts/vulnerable/vuln_046_SC08.sol#392)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#tautology-or-contradiction
+
+Detector: reentrancy-benign
+Reentrancy in LedgerChannel.byzantineCloseChannel(bytes32) (contracts/vulnerable/vuln_046_SC08.sol#756-817):
+	External calls:
+	- require(bool,string)(channel.token.transfer(channel.partyAddresses[0],tokenbalanceA),byzantineCloseChannel: token transfer failure) (contracts/vulnerable/vuln_046_SC08.sol#803-806)
+	- require(bool,string)(channel.token.transfer(channel.partyAddresses[1],tokenbalanceI),byzantineCloseChannel: token transfer failure) (contracts/vulnerable/vuln_046_SC08.sol#807-810)
+	External calls sending eth:
+	- channel.partyAddresses[0].transfer(ethbalanceA) (contracts/vulnerable/vuln_046_SC08.sol#798)
+	- channel.partyAddresses[1].transfer(ethbalanceI) (contracts/vulnerable/vuln_046_SC08.sol#799)
+	State variables written after the call(s):
+	- numChannels -- (contracts/vulnerable/vuln_046_SC08.sol#814)
+Reentrancy in LedgerChannel.consensusCloseChannel(bytes32,uint256,uint256[4],string,string) (contracts/vulnerable/vuln_046_SC08.sol#495-546):
+	External calls:
+	- require(bool,string)(Channels[_lcID].token.transfer(Channels[_lcID].partyAddresses[0],_balances[2]),happyCloseChannel: token transfer failure) (contracts/vulnerable/vuln_046_SC08.sol#539)
+	- require(bool,string)(Channels[_lcID].token.transfer(Channels[_lcID].partyAddresses[1],_balances[3]),happyCloseChannel: token transfer failure) (contracts/vulnerable/vuln_046_SC08.sol#540)
+	External calls sending eth:
+	- Channels[_lcID].partyAddresses[0].transfer(_balances[0]) (contracts/vulnerable/vuln_046_SC08.sol#534)
+	- Channels[_lcID].partyAddresses[1].transfer(_balances[1]) (contracts/vulnerable/vuln_046_SC08.sol#535)
+	State variables written after the call(s):
+	- numChannels -- (contracts/vulnerable/vuln_046_SC08.sol#543)
+Reentrancy in LedgerChannel.joinChannel(bytes32,uint256[2]) (contracts/vulnerable/vuln_046_SC08.sol#439-460):
+	External calls:
+	- require(bool,string)(Channels[_lcID].token.transferFrom(msg.sender,this,_balances[1]),joinChannel: token transfer failure) (contracts/vulnerable/vuln_046_SC08.sol#449)
+	State variables written after the call(s):
+	- numChannels ++ (contracts/vulnerable/vuln_046_SC08.sol#457)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+
+Detector: reentrancy-events
+Reentrancy in LedgerChannel.LCOpenTimeout(bytes32) (contracts/vulnerable/vuln_046_SC08.sol#420-437):
+	External calls:
+	- require(bool,string)(Channels[_lcID].token.transfer(Channels[_lcID].partyAddresses[0],Channels[_lcID].erc20Balances[0]),CreateChannel: token transfer failure) (contracts/vulnerable/vuln_046_SC08.sol#430)
+	External calls sending eth:
+	- Channels[_lcID].partyAddresses[0].transfer(Channels[_lcID].ethBalances[0]) (contracts/vulnerable/vuln_046_SC08.sol#426)
+	Event emitted after the call(s):
+	- DidLCClose(_lcID,0,Channels[_lcID].ethBalances[0],Channels[_lcID].erc20Balances[0],0,0) (contracts/vulnerable/vuln_046_SC08.sol#433)
+Reentrancy in LedgerChannel.byzantineCloseChannel(bytes32) (contracts/vulnerable/vuln_046_SC08.sol#756-817):
+	External calls:
+	- require(bool,string)(channel.token.transfer(channel.partyAddresses[0],tokenbalanceA),byzantineCloseChannel: token transfer failure) (contracts/vulnerable/vuln_046_SC08.sol#803-806)
+	- require(bool,string)(channel.token.transfer(channel.partyAddresses[1],tokenbalanceI),byzantineCloseChannel: token transfer failure) (contracts/vulnerable/vuln_046_SC08.sol#807-810)
+	External calls sending eth:
+	- channel.partyAddresses[0].transfer(ethbalanceA) (contracts/vulnerable/vuln_046_SC08.sol#798)
+	- channel.partyAddresses[1].transfer(ethbalanceI) (contracts/vulnerable/vuln_046_SC08.sol#799)
+	Event emitted after the call(s):
+	- DidLCClose(_lcID,channel.sequence,ethbalanceA,ethbalanceI,tokenbalanceA,tokenbalanceI) (contracts/vulnerable/vuln_046_SC08.sol#816)
+Reentrancy in LedgerChannel.consensusCloseChannel(bytes32,uint256,uint256[4],string,string) (contracts/vulnerable/vuln_046_SC08.sol#495-546):
+	External calls:
+	- require(bool,string)(Channels[_lcID].token.transfer(Channels[_lcID].partyAddresses[0],_balances[2]),happyCloseChannel: token transfer failure) (contracts/vulnerable/vuln_046_SC08.sol#539)
+	- require(bool,string)(Channels[_lcID].token.transfer(Channels[_lcID].partyAddresses[1],_balances[3]),happyCloseChannel: token transfer failure) (contracts/vulnerable/vuln_046_SC08.sol#540)
+	External calls sending eth:
+	- Channels[_lcID].partyAddresses[0].transfer(_balances[0]) (contracts/vulnerable/vuln_046_SC08.sol#534)
+	- Channels[_lcID].partyAddresses[1].transfer(_balances[1]) (contracts/vulnerable/vuln_046_SC08.sol#535)
+	Event emitted after the call(s):
+	- DidLCClose(_lcID,_sequence,_balances[0],_balances[1],_balances[2],_balances[3]) (contracts/vulnerable/vuln_046_SC08.sol#545)
+Reentrancy in LedgerChannel.createChannel(bytes32,address,uint256,address,uint256[2]) (contracts/vulnerable/vuln_046_SC08.sol#380-418):
+	External calls:
+	- require(bool,string)(Channels[_lcID].token.transferFrom(msg.sender,this,_balances[1]),CreateChannel: token transfer failure) (contracts/vulnerable/vuln_046_SC08.sol#406)
+	Event emitted after the call(s):
+	- DidLCOpen(_lcID,msg.sender,_partyI,_balances[0],_token,_balances[1],Channels[_lcID].LCopenTimeout) (contracts/vulnerable/vuln_046_SC08.sol#417)
+Reentrancy in LedgerChannel.deposit(bytes32,address,uint256,bool) (contracts/vulnerable/vuln_046_SC08.sol#465-492):
+	External calls:
+	- require(bool,string)(Channels[_lcID].token.transferFrom(msg.sender,this,_balance),deposit: token transfer failure) (contracts/vulnerable/vuln_046_SC08.sol#473)
+	- require(bool,string)(Channels[_lcID].token.transferFrom(msg.sender,this,_balance),deposit: token transfer failure) (contracts/vulnerable/vuln_046_SC08.sol#483)
+	Event emitted after the call(s):
+	- DidLCDeposit(_lcID,recipient,_balance,isToken) (contracts/vulnerable/vuln_046_SC08.sol#491)
+Reentrancy in LedgerChannel.joinChannel(bytes32,uint256[2]) (contracts/vulnerable/vuln_046_SC08.sol#439-460):
+	External calls:
+	- require(bool,string)(Channels[_lcID].token.transferFrom(msg.sender,this,_balances[1]),joinChannel: token transfer failure) (contracts/vulnerable/vuln_046_SC08.sol#449)
+	Event emitted after the call(s):
+	- DidLCJoin(_lcID,_balances[0],_balances[1]) (contracts/vulnerable/vuln_046_SC08.sol#459)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-4
+
+Detector: timestamp
+LedgerChannel.createChannel(bytes32,address,uint256,address,uint256[2]) (contracts/vulnerable/vuln_046_SC08.sol#380-418) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(Channels[_lcID].partyAddresses[0] == address(0),Channel has already been created.) (contracts/vulnerable/vuln_046_SC08.sol#390)
+	- require(bool,string)(Channels[_lcID].token.transferFrom(msg.sender,this,_balances[1]),CreateChannel: token transfer failure) (contracts/vulnerable/vuln_046_SC08.sol#406)
+LedgerChannel.LCOpenTimeout(bytes32) (contracts/vulnerable/vuln_046_SC08.sol#420-437) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(msg.sender == Channels[_lcID].partyAddresses[0] && Channels[_lcID].isOpen == false) (contracts/vulnerable/vuln_046_SC08.sol#421)
+	- require(bool)(now > Channels[_lcID].LCopenTimeout) (contracts/vulnerable/vuln_046_SC08.sol#422)
+	- Channels[_lcID].initialDeposit[0] != 0 (contracts/vulnerable/vuln_046_SC08.sol#424)
+	- Channels[_lcID].initialDeposit[1] != 0 (contracts/vulnerable/vuln_046_SC08.sol#428)
+	- require(bool,string)(Channels[_lcID].token.transfer(Channels[_lcID].partyAddresses[0],Channels[_lcID].erc20Balances[0]),CreateChannel: token transfer failure) (contracts/vulnerable/vuln_046_SC08.sol#430)
+LedgerChannel.joinChannel(bytes32,uint256[2]) (contracts/vulnerable/vuln_046_SC08.sol#439-460) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(Channels[_lcID].isOpen == false) (contracts/vulnerable/vuln_046_SC08.sol#441)
+	- require(bool)(msg.sender == Channels[_lcID].partyAddresses[1]) (contracts/vulnerable/vuln_046_SC08.sol#442)
+	- require(bool,string)(Channels[_lcID].token.transferFrom(msg.sender,this,_balances[1]),joinChannel: token transfer failure) (contracts/vulnerable/vuln_046_SC08.sol#449)
+LedgerChannel.deposit(bytes32,address,uint256,bool) (contracts/vulnerable/vuln_046_SC08.sol#465-492) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(Channels[_lcID].isOpen == true,Tried adding funds to a closed channel) (contracts/vulnerable/vuln_046_SC08.sol#466)
+	- require(bool)(recipient == Channels[_lcID].partyAddresses[0] || recipient == Channels[_lcID].partyAddresses[1]) (contracts/vulnerable/vuln_046_SC08.sol#467)
+	- Channels[_lcID].partyAddresses[0] == recipient (contracts/vulnerable/vuln_046_SC08.sol#471)
+	- require(bool,string)(Channels[_lcID].token.transferFrom(msg.sender,this,_balance),deposit: token transfer failure) (contracts/vulnerable/vuln_046_SC08.sol#473)
+	- Channels[_lcID].partyAddresses[1] == recipient (contracts/vulnerable/vuln_046_SC08.sol#481)
+	- require(bool,string)(Channels[_lcID].token.transferFrom(msg.sender,this,_balance),deposit: token transfer failure) (contracts/vulnerable/vuln_046_SC08.sol#483)
+LedgerChannel.consensusCloseChannel(bytes32,uint256,uint256[4],string,string) (contracts/vulnerable/vuln_046_SC08.sol#495-546) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(Channels[_lcID].isOpen == true) (contracts/vulnerable/vuln_046_SC08.sol#506)
+	- require(bool)(totalEthDeposit == _balances[0] + _balances[1]) (contracts/vulnerable/vuln_046_SC08.sol#509)
+	- require(bool)(totalTokenDeposit == _balances[2] + _balances[3]) (contracts/vulnerable/vuln_046_SC08.sol#510)
+	- require(bool)(Channels[_lcID].partyAddresses[0] == ECTools.recoverSigner(_state,_sigA)) (contracts/vulnerable/vuln_046_SC08.sol#528)
+	- require(bool)(Channels[_lcID].partyAddresses[1] == ECTools.recoverSigner(_state,_sigI)) (contracts/vulnerable/vuln_046_SC08.sol#529)
+	- require(bool,string)(Channels[_lcID].token.transfer(Channels[_lcID].partyAddresses[0],_balances[2]),happyCloseChannel: token transfer failure) (contracts/vulnerable/vuln_046_SC08.sol#539)
+	- require(bool,string)(Channels[_lcID].token.transfer(Channels[_lcID].partyAddresses[1],_balances[3]),happyCloseChannel: token transfer failure) (contracts/vulnerable/vuln_046_SC08.sol#540)
+LedgerChannel.updateLCstate(bytes32,uint256[6],bytes32,string,string) (contracts/vulnerable/vuln_046_SC08.sol#550-612) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(channel.isOpen) (contracts/vulnerable/vuln_046_SC08.sol#560)
+	- require(bool)(channel.sequence < updateParams[0]) (contracts/vulnerable/vuln_046_SC08.sol#561)
+	- require(bool)(channel.ethBalances[0] + channel.ethBalances[1] >= updateParams[2] + updateParams[3]) (contracts/vulnerable/vuln_046_SC08.sol#562)
+	- require(bool)(channel.erc20Balances[0] + channel.erc20Balances[1] >= updateParams[4] + updateParams[5]) (contracts/vulnerable/vuln_046_SC08.sol#563)
+	- require(bool)(channel.updateLCtimeout > now) (contracts/vulnerable/vuln_046_SC08.sol#566)
+	- require(bool)(channel.partyAddresses[0] == ECTools.recoverSigner(_state,_sigA)) (contracts/vulnerable/vuln_046_SC08.sol#585)
+	- require(bool)(channel.partyAddresses[1] == ECTools.recoverSigner(_state,_sigI)) (contracts/vulnerable/vuln_046_SC08.sol#586)
+LedgerChannel.initVCstate(bytes32,bytes32,bytes,address,address,uint256[2],uint256[4],string) (contracts/vulnerable/vuln_046_SC08.sol#615-657) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(Channels[_lcID].isOpen,LC is closed.) (contracts/vulnerable/vuln_046_SC08.sol#627)
+	- require(bool,string)(Channels[_lcID].updateLCtimeout < now,LC timeout not over.) (contracts/vulnerable/vuln_046_SC08.sol#631)
+	- require(bool)(_isContained(_initState,_proof,Channels[_lcID].VCrootHash) == true) (contracts/vulnerable/vuln_046_SC08.sol#643)
+LedgerChannel.settleVC(bytes32,bytes32,uint256,address,address,uint256[4],string) (contracts/vulnerable/vuln_046_SC08.sol#662-723) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(Channels[_lcID].isOpen,LC is closed.) (contracts/vulnerable/vuln_046_SC08.sol#673)
+	- require(bool)(Channels[_lcID].updateLCtimeout < now) (contracts/vulnerable/vuln_046_SC08.sol#689)
+LedgerChannel.closeVirtualChannel(bytes32,bytes32) (contracts/vulnerable/vuln_046_SC08.sol#725-752) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(Channels[_lcID].isOpen,LC is closed.) (contracts/vulnerable/vuln_046_SC08.sol#727)
+	- require(bool,string)(virtualChannels[_vcID].updateVCtimeout < now,Update vc timeout has not elapsed.) (contracts/vulnerable/vuln_046_SC08.sol#729)
+	- virtualChannels[_vcID].partyA == Channels[_lcID].partyAddresses[0] (contracts/vulnerable/vuln_046_SC08.sol#737)
+	- virtualChannels[_vcID].partyB == Channels[_lcID].partyAddresses[0] (contracts/vulnerable/vuln_046_SC08.sol#743)
+LedgerChannel.byzantineCloseChannel(bytes32) (contracts/vulnerable/vuln_046_SC08.sol#756-817) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(channel.isOpen,Channel is not open) (contracts/vulnerable/vuln_046_SC08.sol#760)
+	- require(bool)(channel.isUpdateLCSettling == true) (contracts/vulnerable/vuln_046_SC08.sol#761)
+	- require(bool)(channel.numOpenVC == 0) (contracts/vulnerable/vuln_046_SC08.sol#762)
+	- require(bool,string)(channel.updateLCtimeout < now,LC timeout over.) (contracts/vulnerable/vuln_046_SC08.sol#763)
+	- require(bool,string)(channel.token.transfer(channel.partyAddresses[0],tokenbalanceA),byzantineCloseChannel: token transfer failure) (contracts/vulnerable/vuln_046_SC08.sol#803-806)
+	- require(bool,string)(channel.token.transfer(channel.partyAddresses[1],tokenbalanceI),byzantineCloseChannel: token transfer failure) (contracts/vulnerable/vuln_046_SC08.sol#807-810)
+LedgerChannel._isContained(bytes32,bytes,bytes32) (contracts/vulnerable/vuln_046_SC08.sol#819-834) uses timestamp for comparisons
+	Dangerous comparisons:
+	- cursor == _root (contracts/vulnerable/vuln_046_SC08.sol#833)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+
+Detector: assembly
+ECTools.recoverSigner(bytes32,string) (contracts/vulnerable/vuln_046_SC08.sol#62-88) uses assembly
+	- INLINE ASM (contracts/vulnerable/vuln_046_SC08.sol#76-81)
+ECTools.uintToBytes32(uint256) (contracts/vulnerable/vuln_046_SC08.sol#132-135) uses assembly
+	- INLINE ASM (contracts/vulnerable/vuln_046_SC08.sol#134-135)
+LedgerChannel._isContained(bytes32,bytes,bytes32) (contracts/vulnerable/vuln_046_SC08.sol#819-834) uses assembly
+	- INLINE ASM (contracts/vulnerable/vuln_046_SC08.sol#824-826)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#assembly-usage
+
+Detector: boolean-equal
+LedgerChannel.LCOpenTimeout(bytes32) (contracts/vulnerable/vuln_046_SC08.sol#420-437) compares to a boolean constant:
+	-require(bool)(msg.sender == Channels[_lcID].partyAddresses[0] && Channels[_lcID].isOpen == false) (contracts/vulnerable/vuln_046_SC08.sol#421)
+LedgerChannel.joinChannel(bytes32,uint256[2]) (contracts/vulnerable/vuln_046_SC08.sol#439-460) compares to a boolean constant:
+	-require(bool)(Channels[_lcID].isOpen == false) (contracts/vulnerable/vuln_046_SC08.sol#441)
+LedgerChannel.deposit(bytes32,address,uint256,bool) (contracts/vulnerable/vuln_046_SC08.sol#465-492) compares to a boolean constant:
+	-require(bool,string)(Channels[_lcID].isOpen == true,Tried adding funds to a closed channel) (contracts/vulnerable/vuln_046_SC08.sol#466)
+LedgerChannel.consensusCloseChannel(bytes32,uint256,uint256[4],string,string) (contracts/vulnerable/vuln_046_SC08.sol#495-546) compares to a boolean constant:
+	-require(bool)(Channels[_lcID].isOpen == true) (contracts/vulnerable/vuln_046_SC08.sol#506)
+LedgerChannel.updateLCstate(bytes32,uint256[6],bytes32,string,string) (contracts/vulnerable/vuln_046_SC08.sol#550-612) compares to a boolean constant:
+	-channel.isUpdateLCSettling == true (contracts/vulnerable/vuln_046_SC08.sol#565)
+LedgerChannel.initVCstate(bytes32,bytes32,bytes,address,address,uint256[2],uint256[4],string) (contracts/vulnerable/vuln_046_SC08.sol#615-657) compares to a boolean constant:
+	-require(bool)(_isContained(_initState,_proof,Channels[_lcID].VCrootHash) == true) (contracts/vulnerable/vuln_046_SC08.sol#643)
+LedgerChannel.byzantineCloseChannel(bytes32) (contracts/vulnerable/vuln_046_SC08.sol#756-817) compares to a boolean constant:
+	-require(bool)(channel.isUpdateLCSettling == true) (contracts/vulnerable/vuln_046_SC08.sol#761)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#boolean-equality
+
+Detector: solc-version
+Version constraint ^0.4.23 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ABIEncoderV2PackedStorage_0.4.x
+	- ExpExponentCleanup
+	- EventStructWrongData.
+It is used by:
+	- ^0.4.23 (contracts/vulnerable/vuln_046_SC08.sol#9)
+solc-0.4.23 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: low-level-calls
+Low level call in HumanStandardToken.approveAndCall(address,uint256,bytes) (contracts/vulnerable/vuln_046_SC08.sol#252-261):
+	- require(bool)(_spender.call(bytes4(bytes32(keccak256()(receiveApproval(address,uint256,address,bytes)))),msg.sender,_value,this,_extraData)) (contracts/vulnerable/vuln_046_SC08.sol#259)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+
+Detector: naming-convention
+Parameter ECTools.recoverSigner(bytes32,string)._hashedMsg (contracts/vulnerable/vuln_046_SC08.sol#62) is not in mixedCase
+Parameter ECTools.recoverSigner(bytes32,string)._sig (contracts/vulnerable/vuln_046_SC08.sol#62) is not in mixedCase
+Parameter ECTools.isSignedBy(bytes32,string,address)._hashedMsg (contracts/vulnerable/vuln_046_SC08.sol#91) is not in mixedCase
+Parameter ECTools.isSignedBy(bytes32,string,address)._sig (contracts/vulnerable/vuln_046_SC08.sol#91) is not in mixedCase
+Parameter ECTools.isSignedBy(bytes32,string,address)._addr (contracts/vulnerable/vuln_046_SC08.sol#91) is not in mixedCase
+Parameter ECTools.hexstrToBytes(string)._hexstr (contracts/vulnerable/vuln_046_SC08.sol#98) is not in mixedCase
+Parameter ECTools.parseInt16Char(string)._char (contracts/vulnerable/vuln_046_SC08.sol#116) is not in mixedCase
+Parameter ECTools.toEthereumSignedMessage(string)._msg (contracts/vulnerable/vuln_046_SC08.sol#139) is not in mixedCase
+Parameter ECTools.uintToString(uint256)._uint (contracts/vulnerable/vuln_046_SC08.sol#147) is not in mixedCase
+Parameter ECTools.substring(string,uint256,uint256)._str (contracts/vulnerable/vuln_046_SC08.sol#167) is not in mixedCase
+Parameter ECTools.substring(string,uint256,uint256)._startIndex (contracts/vulnerable/vuln_046_SC08.sol#167) is not in mixedCase
+Parameter ECTools.substring(string,uint256,uint256)._endIndex (contracts/vulnerable/vuln_046_SC08.sol#167) is not in mixedCase
+Parameter StandardToken.transfer(address,uint256)._to (contracts/vulnerable/vuln_046_SC08.sol#182) is not in mixedCase
+Parameter StandardToken.transfer(address,uint256)._value (contracts/vulnerable/vuln_046_SC08.sol#182) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._from (contracts/vulnerable/vuln_046_SC08.sol#194) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._to (contracts/vulnerable/vuln_046_SC08.sol#194) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._value (contracts/vulnerable/vuln_046_SC08.sol#194) is not in mixedCase
+Parameter StandardToken.balanceOf(address)._owner (contracts/vulnerable/vuln_046_SC08.sol#205) is not in mixedCase
+Parameter StandardToken.approve(address,uint256)._spender (contracts/vulnerable/vuln_046_SC08.sol#209) is not in mixedCase
+Parameter StandardToken.approve(address,uint256)._value (contracts/vulnerable/vuln_046_SC08.sol#209) is not in mixedCase
+Parameter StandardToken.allowance(address,address)._owner (contracts/vulnerable/vuln_046_SC08.sol#215) is not in mixedCase
+Parameter StandardToken.allowance(address,address)._spender (contracts/vulnerable/vuln_046_SC08.sol#215) is not in mixedCase
+Parameter HumanStandardToken.approveAndCall(address,uint256,bytes)._spender (contracts/vulnerable/vuln_046_SC08.sol#252) is not in mixedCase
+Parameter HumanStandardToken.approveAndCall(address,uint256,bytes)._value (contracts/vulnerable/vuln_046_SC08.sol#252) is not in mixedCase
+Parameter HumanStandardToken.approveAndCall(address,uint256,bytes)._extraData (contracts/vulnerable/vuln_046_SC08.sol#252) is not in mixedCase
+Parameter LedgerChannel.createChannel(bytes32,address,uint256,address,uint256[2])._lcID (contracts/vulnerable/vuln_046_SC08.sol#381) is not in mixedCase
+Parameter LedgerChannel.createChannel(bytes32,address,uint256,address,uint256[2])._partyI (contracts/vulnerable/vuln_046_SC08.sol#382) is not in mixedCase
+Parameter LedgerChannel.createChannel(bytes32,address,uint256,address,uint256[2])._confirmTime (contracts/vulnerable/vuln_046_SC08.sol#383) is not in mixedCase
+Parameter LedgerChannel.createChannel(bytes32,address,uint256,address,uint256[2])._token (contracts/vulnerable/vuln_046_SC08.sol#384) is not in mixedCase
+Parameter LedgerChannel.createChannel(bytes32,address,uint256,address,uint256[2])._balances (contracts/vulnerable/vuln_046_SC08.sol#385) is not in mixedCase
+Function LedgerChannel.LCOpenTimeout(bytes32) (contracts/vulnerable/vuln_046_SC08.sol#420-437) is not in mixedCase
+Parameter LedgerChannel.LCOpenTimeout(bytes32)._lcID (contracts/vulnerable/vuln_046_SC08.sol#420) is not in mixedCase
+Parameter LedgerChannel.joinChannel(bytes32,uint256[2])._lcID (contracts/vulnerable/vuln_046_SC08.sol#439) is not in mixedCase
+Parameter LedgerChannel.joinChannel(bytes32,uint256[2])._balances (contracts/vulnerable/vuln_046_SC08.sol#439) is not in mixedCase
+Parameter LedgerChannel.deposit(bytes32,address,uint256,bool)._lcID (contracts/vulnerable/vuln_046_SC08.sol#465) is not in mixedCase
+Parameter LedgerChannel.deposit(bytes32,address,uint256,bool)._balance (contracts/vulnerable/vuln_046_SC08.sol#465) is not in mixedCase
+Parameter LedgerChannel.consensusCloseChannel(bytes32,uint256,uint256[4],string,string)._lcID (contracts/vulnerable/vuln_046_SC08.sol#496) is not in mixedCase
+Parameter LedgerChannel.consensusCloseChannel(bytes32,uint256,uint256[4],string,string)._sequence (contracts/vulnerable/vuln_046_SC08.sol#497) is not in mixedCase
+Parameter LedgerChannel.consensusCloseChannel(bytes32,uint256,uint256[4],string,string)._balances (contracts/vulnerable/vuln_046_SC08.sol#498) is not in mixedCase
+Parameter LedgerChannel.consensusCloseChannel(bytes32,uint256,uint256[4],string,string)._sigA (contracts/vulnerable/vuln_046_SC08.sol#499) is not in mixedCase
+Parameter LedgerChannel.consensusCloseChannel(bytes32,uint256,uint256[4],string,string)._sigI (contracts/vulnerable/vuln_046_SC08.sol#500) is not in mixedCase
+Parameter LedgerChannel.updateLCstate(bytes32,uint256[6],bytes32,string,string)._lcID (contracts/vulnerable/vuln_046_SC08.sol#551) is not in mixedCase
+Parameter LedgerChannel.updateLCstate(bytes32,uint256[6],bytes32,string,string)._VCroot (contracts/vulnerable/vuln_046_SC08.sol#553) is not in mixedCase
+Parameter LedgerChannel.updateLCstate(bytes32,uint256[6],bytes32,string,string)._sigA (contracts/vulnerable/vuln_046_SC08.sol#554) is not in mixedCase
+Parameter LedgerChannel.updateLCstate(bytes32,uint256[6],bytes32,string,string)._sigI (contracts/vulnerable/vuln_046_SC08.sol#555) is not in mixedCase
+Parameter LedgerChannel.initVCstate(bytes32,bytes32,bytes,address,address,uint256[2],uint256[4],string)._lcID (contracts/vulnerable/vuln_046_SC08.sol#616) is not in mixedCase
+Parameter LedgerChannel.initVCstate(bytes32,bytes32,bytes,address,address,uint256[2],uint256[4],string)._vcID (contracts/vulnerable/vuln_046_SC08.sol#617) is not in mixedCase
+Parameter LedgerChannel.initVCstate(bytes32,bytes32,bytes,address,address,uint256[2],uint256[4],string)._proof (contracts/vulnerable/vuln_046_SC08.sol#618) is not in mixedCase
+Parameter LedgerChannel.initVCstate(bytes32,bytes32,bytes,address,address,uint256[2],uint256[4],string)._partyA (contracts/vulnerable/vuln_046_SC08.sol#619) is not in mixedCase
+Parameter LedgerChannel.initVCstate(bytes32,bytes32,bytes,address,address,uint256[2],uint256[4],string)._partyB (contracts/vulnerable/vuln_046_SC08.sol#620) is not in mixedCase
+Parameter LedgerChannel.initVCstate(bytes32,bytes32,bytes,address,address,uint256[2],uint256[4],string)._bond (contracts/vulnerable/vuln_046_SC08.sol#621) is not in mixedCase
+Parameter LedgerChannel.initVCstate(bytes32,bytes32,bytes,address,address,uint256[2],uint256[4],string)._balances (contracts/vulnerable/vuln_046_SC08.sol#622) is not in mixedCase
+Parameter LedgerChannel.settleVC(bytes32,bytes32,uint256,address,address,uint256[4],string)._lcID (contracts/vulnerable/vuln_046_SC08.sol#663) is not in mixedCase
+Parameter LedgerChannel.settleVC(bytes32,bytes32,uint256,address,address,uint256[4],string)._vcID (contracts/vulnerable/vuln_046_SC08.sol#664) is not in mixedCase
+Parameter LedgerChannel.settleVC(bytes32,bytes32,uint256,address,address,uint256[4],string)._partyA (contracts/vulnerable/vuln_046_SC08.sol#666) is not in mixedCase
+Parameter LedgerChannel.settleVC(bytes32,bytes32,uint256,address,address,uint256[4],string)._partyB (contracts/vulnerable/vuln_046_SC08.sol#667) is not in mixedCase
+Parameter LedgerChannel.closeVirtualChannel(bytes32,bytes32)._lcID (contracts/vulnerable/vuln_046_SC08.sol#725) is not in mixedCase
+Parameter LedgerChannel.closeVirtualChannel(bytes32,bytes32)._vcID (contracts/vulnerable/vuln_046_SC08.sol#725) is not in mixedCase
+Parameter LedgerChannel.byzantineCloseChannel(bytes32)._lcID (contracts/vulnerable/vuln_046_SC08.sol#756) is not in mixedCase
+Variable LedgerChannel.Channels (contracts/vulnerable/vuln_046_SC08.sol#378) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: reentrancy-unlimited-gas
+Reentrancy in LedgerChannel.LCOpenTimeout(bytes32) (contracts/vulnerable/vuln_046_SC08.sol#420-437):
+	External calls:
+	- Channels[_lcID].partyAddresses[0].transfer(Channels[_lcID].ethBalances[0]) (contracts/vulnerable/vuln_046_SC08.sol#426)
+	State variables written after the call(s):
+	- delete Channels[_lcID] (contracts/vulnerable/vuln_046_SC08.sol#436)
+	Event emitted after the call(s):
+	- DidLCClose(_lcID,0,Channels[_lcID].ethBalances[0],Channels[_lcID].erc20Balances[0],0,0) (contracts/vulnerable/vuln_046_SC08.sol#433)
+Reentrancy in LedgerChannel.byzantineCloseChannel(bytes32) (contracts/vulnerable/vuln_046_SC08.sol#756-817):
+	External calls:
+	- channel.partyAddresses[0].transfer(ethbalanceA) (contracts/vulnerable/vuln_046_SC08.sol#798)
+	- channel.partyAddresses[1].transfer(ethbalanceI) (contracts/vulnerable/vuln_046_SC08.sol#799)
+	State variables written after the call(s):
+	- channel.isOpen = false (contracts/vulnerable/vuln_046_SC08.sol#813)
+	- numChannels -- (contracts/vulnerable/vuln_046_SC08.sol#814)
+	Event emitted after the call(s):
+	- DidLCClose(_lcID,channel.sequence,ethbalanceA,ethbalanceI,tokenbalanceA,tokenbalanceI) (contracts/vulnerable/vuln_046_SC08.sol#816)
+Reentrancy in LedgerChannel.consensusCloseChannel(bytes32,uint256,uint256[4],string,string) (contracts/vulnerable/vuln_046_SC08.sol#495-546):
+	External calls:
+	- Channels[_lcID].partyAddresses[0].transfer(_balances[0]) (contracts/vulnerable/vuln_046_SC08.sol#534)
+	- Channels[_lcID].partyAddresses[1].transfer(_balances[1]) (contracts/vulnerable/vuln_046_SC08.sol#535)
+	State variables written after the call(s):
+	- numChannels -- (contracts/vulnerable/vuln_046_SC08.sol#543)
+	Event emitted after the call(s):
+	- DidLCClose(_lcID,_sequence,_balances[0],_balances[1],_balances[2],_balances[3]) (contracts/vulnerable/vuln_046_SC08.sol#545)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-5
+
+Detector: constable-states
+HumanStandardToken.version (contracts/vulnerable/vuln_046_SC08.sol#236) should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+
+Detector: external-function
+isSignedBy(bytes32,string,address) should be declared external:
+	- ECTools.isSignedBy(bytes32,string,address) (contracts/vulnerable/vuln_046_SC08.sol#91-95)
+toEthereumSignedMessage(string) should be declared external:
+	- ECTools.toEthereumSignedMessage(string) (contracts/vulnerable/vuln_046_SC08.sol#139-144)
+approveAndCall(address,uint256,bytes) should be declared external:
+	- HumanStandardToken.approveAndCall(address,uint256,bytes) (contracts/vulnerable/vuln_046_SC08.sol#252-261)
+createChannel(bytes32,address,uint256,address,uint256[2]) should be declared external:
+	- LedgerChannel.createChannel(bytes32,address,uint256,address,uint256[2]) (contracts/vulnerable/vuln_046_SC08.sol#380-418)
+joinChannel(bytes32,uint256[2]) should be declared external:
+	- LedgerChannel.joinChannel(bytes32,uint256[2]) (contracts/vulnerable/vuln_046_SC08.sol#439-460)
+consensusCloseChannel(bytes32,uint256,uint256[4],string,string) should be declared external:
+	- LedgerChannel.consensusCloseChannel(bytes32,uint256,uint256[4],string,string) (contracts/vulnerable/vuln_046_SC08.sol#495-546)
+updateLCstate(bytes32,uint256[6],bytes32,string,string) should be declared external:
+	- LedgerChannel.updateLCstate(bytes32,uint256[6],bytes32,string,string) (contracts/vulnerable/vuln_046_SC08.sol#550-612)
+initVCstate(bytes32,bytes32,bytes,address,address,uint256[2],uint256[4],string) should be declared external:
+	- LedgerChannel.initVCstate(bytes32,bytes32,bytes,address,address,uint256[2],uint256[4],string) (contracts/vulnerable/vuln_046_SC08.sol#615-657)
+settleVC(bytes32,bytes32,uint256,address,address,uint256[4],string) should be declared external:
+	- LedgerChannel.settleVC(bytes32,bytes32,uint256,address,address,uint256[4],string) (contracts/vulnerable/vuln_046_SC08.sol#662-723)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#public-function-that-could-be-declared-external
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_046_SC08.sol analyzed (5 contracts with 101 detectors), 126 result(s) found

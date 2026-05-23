@@ -1,0 +1,64 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_207_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+
+Detector: shadowing-local
+StandardToken.transferFrom(address,address,uint256).allowance (contracts/safe/safe_207_SAFE.sol#76) shadows:
+	- StandardToken.allowance(address,address) (contracts/safe/safe_207_SAFE.sol#97-99) (function)
+	- Token.allowance(address,address) (contracts/safe/safe_207_SAFE.sol#42) (function)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#local-variable-shadowing
+
+Detector: solc-version
+Version constraint ^0.4.17 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- EventStructWrongData
+	- NestedArrayFunctionCallDecoder
+	- ZeroFunctionSelector.
+It is used by:
+	- ^0.4.17 (contracts/safe/safe_207_SAFE.sol#1)
+solc-0.4.17 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: low-level-calls
+Low level call in HumanStandardToken.approveAndCall(address,uint256,bytes) (contracts/safe/safe_207_SAFE.sol#147-156):
+	- require(bool)(_spender.call(bytes4(bytes32(keccak256()(receiveApproval(address,uint256,address,bytes)))),msg.sender,_value,this,_extraData)) (contracts/safe/safe_207_SAFE.sol#154)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+
+Detector: naming-convention
+Parameter StandardToken.transfer(address,uint256)._to (contracts/safe/safe_207_SAFE.sol#61) is not in mixedCase
+Parameter StandardToken.transfer(address,uint256)._value (contracts/safe/safe_207_SAFE.sol#61) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._from (contracts/safe/safe_207_SAFE.sol#73) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._to (contracts/safe/safe_207_SAFE.sol#73) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._value (contracts/safe/safe_207_SAFE.sol#73) is not in mixedCase
+Parameter StandardToken.balanceOf(address)._owner (contracts/safe/safe_207_SAFE.sol#87) is not in mixedCase
+Parameter StandardToken.approve(address,uint256)._spender (contracts/safe/safe_207_SAFE.sol#91) is not in mixedCase
+Parameter StandardToken.approve(address,uint256)._value (contracts/safe/safe_207_SAFE.sol#91) is not in mixedCase
+Parameter StandardToken.allowance(address,address)._owner (contracts/safe/safe_207_SAFE.sol#97) is not in mixedCase
+Parameter StandardToken.allowance(address,address)._spender (contracts/safe/safe_207_SAFE.sol#97) is not in mixedCase
+Parameter HumanStandardToken.approveAndCall(address,uint256,bytes)._spender (contracts/safe/safe_207_SAFE.sol#147) is not in mixedCase
+Parameter HumanStandardToken.approveAndCall(address,uint256,bytes)._value (contracts/safe/safe_207_SAFE.sol#147) is not in mixedCase
+Parameter HumanStandardToken.approveAndCall(address,uint256,bytes)._extraData (contracts/safe/safe_207_SAFE.sol#147) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: constable-states
+HumanStandardToken.version (contracts/safe/safe_207_SAFE.sol#131) should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+
+Detector: external-function
+approveAndCall(address,uint256,bytes) should be declared external:
+	- HumanStandardToken.approveAndCall(address,uint256,bytes) (contracts/safe/safe_207_SAFE.sol#147-156)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#public-function-that-could-be-declared-external
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_207_SAFE.sol analyzed (3 contracts with 101 detectors), 19 result(s) found

@@ -1,0 +1,1 @@
+{"success": false, "error": "Solc experienced a fatal error.\n\n/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_122_SC06.sol:122:27: ParserError: Expected token Semicolon got 'LParen'\n        emit DistrFinished();\r\n                          ^\n", "issues": []}

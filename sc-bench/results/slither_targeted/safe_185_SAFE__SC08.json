@@ -1,0 +1,159 @@
+{
+  "success": true,
+  "error": null,
+  "results": {
+    "detectors": [
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "approve",
+            "source_mapping": {
+              "start": 13237,
+              "length": 857,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "MiniMeToken",
+                "source_mapping": {
+                  "start": 5614,
+                  "length": 19655,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "approve(address,uint256)"
+            }
+          },
+          {
+            "type": "node",
+            "name": "! Controller(controller).onApprove(msg.sender,_spender,_amount)",
+            "source_mapping": {
+              "start": 13863,
+              "length": 64,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "approve",
+                "source_mapping": {
+                  "start": 13237,
+                  "length": 857,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "MiniMeToken",
+                    "source_mapping": {
+                      "start": 5614,
+                      "length": 19655,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "approve(address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "external_calls"
+            }
+          },
+          {
+            "type": "node",
+            "name": "allowed[msg.sender][_spender] = _amount",
+            "source_mapping": {
+              "start": 13975,
+              "length": 39,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "approve",
+                "source_mapping": {
+                  "start": 13237,
+                  "length": 857,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "MiniMeToken",
+                    "source_mapping": {
+                      "start": 5614,
+                      "length": 19655,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "approve(address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "variables_written",
+              "variable_name": "allowed"
+            }
+          }
+        ],
+        "description": "Reentrancy in MiniMeToken.approve(address,uint256) ():\n\tExternal calls:\n\t- ! Controller(controller).onApprove(msg.sender,_spender,_amount) ()\n\tState variables written after the call(s):\n\t- allowed[msg.sender][_spender] = _amount ()\n\tMiniMeToken.allowed () can be used in cross function reentrancies:\n\t- MiniMeToken.allowance(address,address) ()\n\t- MiniMeToken.approve(address,uint256) ()\n\t- MiniMeToken.transferFrom(address,address,uint256) ()\n",
+        "markdown": "Reentrancy in [MiniMeToken.approve(address,uint256)]():\n\tExternal calls:\n\t- [! Controller(controller).onApprove(msg.sender,_spender,_amount)]()\n\tState variables written after the call(s):\n\t- [allowed[msg.sender][_spender] = _amount]()\n\t[MiniMeToken.allowed]() can be used in cross function reentrancies:\n\t- [MiniMeToken.allowance(address,address)]()\n\t- [MiniMeToken.approve(address,uint256)]()\n\t- [MiniMeToken.transferFrom(address,address,uint256)]()\n",
+        "first_markdown_element": "",
+        "id": "56e208a54381ef74f3f30f222713d53294be5e3a69fb2f258f618783128b6991",
+        "check": "reentrancy-no-eth",
+        "impact": "Medium",
+        "confidence": "Medium"
+      }
+    ]
+  }
+}

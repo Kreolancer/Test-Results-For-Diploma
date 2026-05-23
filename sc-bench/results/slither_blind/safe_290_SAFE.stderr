@@ -1,0 +1,92 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_290_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+
+Detector: reentrancy-eth
+Reentrancy in RTB2.buy(uint256) (contracts/safe/safe_290_SAFE.sol#181-192):
+	External calls:
+	- shareContract.increaseProfit.value(_money.mul(20).div(100))() (contracts/safe/safe_290_SAFE.sol#190)
+	External calls sending eth:
+	- finance.transfer(_money.mul(60).div(100)) (contracts/safe/safe_290_SAFE.sol#188)
+	- jackpot.transfer(_money.mul(20).div(100)) (contracts/safe/safe_290_SAFE.sol#189)
+	- shareContract.increaseProfit.value(_money.mul(20).div(100))() (contracts/safe/safe_290_SAFE.sol#190)
+	State variables written after the call(s):
+	- totalSold += _amount (contracts/safe/safe_290_SAFE.sol#191)
+	RTB2.totalSold (contracts/safe/safe_290_SAFE.sol#77) can be used in cross function reentrancies:
+	- RTB2.buy(uint256) (contracts/safe/safe_290_SAFE.sol#181-192)
+	- RTB2.totalSold (contracts/safe/safe_290_SAFE.sol#77)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-1
+
+Detector: unused-return
+RTB2.buy(uint256) (contracts/safe/safe_290_SAFE.sol#181-192) ignores return value by shareContract.increaseProfit.value(_money.mul(20).div(100))() (contracts/safe/safe_290_SAFE.sol#190)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unused-return
+
+Detector: missing-zero-check
+RTB2.setJackpot(address)._addr (contracts/safe/safe_290_SAFE.sol#206) lacks a zero-check on :
+		- jackpot = _addr (contracts/safe/safe_290_SAFE.sol#207)
+RTB2.setFinance(address)._addr (contracts/safe/safe_290_SAFE.sol#214) lacks a zero-check on :
+		- finance = _addr (contracts/safe/safe_290_SAFE.sol#215)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+
+Detector: solc-version
+Version constraint ^0.4.23 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ABIEncoderV2PackedStorage_0.4.x
+	- ExpExponentCleanup
+	- EventStructWrongData.
+It is used by:
+	- ^0.4.23 (contracts/safe/safe_290_SAFE.sol#1)
+solc-0.4.23 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Contract shareProfit (contracts/safe/safe_290_SAFE.sol#68-70) is not in CapWords
+Parameter RTB2.balanceOf(address)._owner (contracts/safe/safe_290_SAFE.sol#140) is not in mixedCase
+Parameter RTB2.approve(address,uint256)._spender (contracts/safe/safe_290_SAFE.sol#144) is not in mixedCase
+Parameter RTB2.approve(address,uint256)._value (contracts/safe/safe_290_SAFE.sol#144) is not in mixedCase
+Parameter RTB2.transferFrom(address,address,uint256)._from (contracts/safe/safe_290_SAFE.sol#151) is not in mixedCase
+Parameter RTB2.transferFrom(address,address,uint256)._to (contracts/safe/safe_290_SAFE.sol#151) is not in mixedCase
+Parameter RTB2.transferFrom(address,address,uint256)._value (contracts/safe/safe_290_SAFE.sol#151) is not in mixedCase
+Parameter RTB2.allowance(address,address)._owner (contracts/safe/safe_290_SAFE.sol#157) is not in mixedCase
+Parameter RTB2.allowance(address,address)._spender (contracts/safe/safe_290_SAFE.sol#157) is not in mixedCase
+Parameter RTB2.transfer(address,uint256)._to (contracts/safe/safe_290_SAFE.sol#161) is not in mixedCase
+Parameter RTB2.transfer(address,uint256)._value (contracts/safe/safe_290_SAFE.sol#161) is not in mixedCase
+Parameter RTB2.buy(uint256)._amount (contracts/safe/safe_290_SAFE.sol#181) is not in mixedCase
+Parameter RTB2.getProfit(address)._addr (contracts/safe/safe_290_SAFE.sol#202) is not in mixedCase
+Parameter RTB2.setJackpot(address)._addr (contracts/safe/safe_290_SAFE.sol#206) is not in mixedCase
+Parameter RTB2.setShare(address)._addr (contracts/safe/safe_290_SAFE.sol#210) is not in mixedCase
+Parameter RTB2.setFinance(address)._addr (contracts/safe/safe_290_SAFE.sol#214) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: reentrancy-unlimited-gas
+Reentrancy in RTB2.buy(uint256) (contracts/safe/safe_290_SAFE.sol#181-192):
+	External calls:
+	- finance.transfer(_money.mul(60).div(100)) (contracts/safe/safe_290_SAFE.sol#188)
+	- jackpot.transfer(_money.mul(20).div(100)) (contracts/safe/safe_290_SAFE.sol#189)
+	External calls sending eth:
+	- finance.transfer(_money.mul(60).div(100)) (contracts/safe/safe_290_SAFE.sol#188)
+	- jackpot.transfer(_money.mul(20).div(100)) (contracts/safe/safe_290_SAFE.sol#189)
+	- shareContract.increaseProfit.value(_money.mul(20).div(100))() (contracts/safe/safe_290_SAFE.sol#190)
+	State variables written after the call(s):
+	- totalSold += _amount (contracts/safe/safe_290_SAFE.sol#191)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-5
+
+Detector: constable-states
+RTB2.decimals (contracts/safe/safe_290_SAFE.sol#75) should be constant 
+RTB2.name (contracts/safe/safe_290_SAFE.sol#79) should be constant 
+RTB2.symbol (contracts/safe/safe_290_SAFE.sol#80) should be constant 
+RTB2.totalSupply (contracts/safe/safe_290_SAFE.sol#76) should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_290_SAFE.sol analyzed (3 contracts with 101 detectors), 27 result(s) found

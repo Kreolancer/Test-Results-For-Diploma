@@ -1,0 +1,8 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_140_SC09.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
+
+Detector: divide-before-multiply
+ICOBucket.tokensAmountForPurchase() (contracts/vulnerable/vuln_140_SC09.sol#313-318) performs a multiplication on the result of a division:
+	- msg.value.mul(10 ** 18).div(tokenCost).mul(100 + bonus).div(100) (contracts/vulnerable/vuln_140_SC09.sol#314-317)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#divide-before-multiply
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_140_SC09.sol analyzed (4 contracts with 2 detectors), 1 result(s) found

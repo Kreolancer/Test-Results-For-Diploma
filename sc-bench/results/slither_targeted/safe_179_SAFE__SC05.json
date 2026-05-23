@@ -1,0 +1,208 @@
+{
+  "success": true,
+  "error": null,
+  "results": {
+    "detectors": [
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "lockOver",
+            "source_mapping": {
+              "start": 2690,
+              "length": 128,
+              "filename_relative": "contracts/safe/safe_179_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_179_SAFE.sol",
+              "filename_short": "contracts/safe/safe_179_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                95,
+                96,
+                97,
+                98
+              ],
+              "starting_column": 3,
+              "ending_column": 4
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "lockEtherPay",
+                "source_mapping": {
+                  "start": 1821,
+                  "length": 1302,
+                  "filename_relative": "contracts/safe/safe_179_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_179_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_179_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    65,
+                    66,
+                    67,
+                    68,
+                    69,
+                    70,
+                    71,
+                    72,
+                    73,
+                    74,
+                    75,
+                    76,
+                    77,
+                    78,
+                    79,
+                    80,
+                    81,
+                    82,
+                    83,
+                    84,
+                    85,
+                    86,
+                    87,
+                    88,
+                    89,
+                    90,
+                    91,
+                    92,
+                    93,
+                    94,
+                    95,
+                    96,
+                    97,
+                    98,
+                    99,
+                    100,
+                    101,
+                    102,
+                    103,
+                    104,
+                    105,
+                    106,
+                    107,
+                    108,
+                    109,
+                    110
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              },
+              "signature": "lockOver()"
+            }
+          },
+          {
+            "type": "node",
+            "name": "current_time > end_time",
+            "source_mapping": {
+              "start": 2782,
+              "length": 30,
+              "filename_relative": "contracts/safe/safe_179_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_179_SAFE.sol",
+              "filename_short": "contracts/safe/safe_179_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                97
+              ],
+              "starting_column": 5,
+              "ending_column": 35
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "lockOver",
+                "source_mapping": {
+                  "start": 2690,
+                  "length": 128,
+                  "filename_relative": "contracts/safe/safe_179_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_179_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_179_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    95,
+                    96,
+                    97,
+                    98
+                  ],
+                  "starting_column": 3,
+                  "ending_column": 4
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "lockEtherPay",
+                    "source_mapping": {
+                      "start": 1821,
+                      "length": 1302,
+                      "filename_relative": "contracts/safe/safe_179_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_179_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_179_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        65,
+                        66,
+                        67,
+                        68,
+                        69,
+                        70,
+                        71,
+                        72,
+                        73,
+                        74,
+                        75,
+                        76,
+                        77,
+                        78,
+                        79,
+                        80,
+                        81,
+                        82,
+                        83,
+                        84,
+                        85,
+                        86,
+                        87,
+                        88,
+                        89,
+                        90,
+                        91,
+                        92,
+                        93,
+                        94,
+                        95,
+                        96,
+                        97,
+                        98,
+                        99,
+                        100,
+                        101,
+                        102,
+                        103,
+                        104,
+                        105,
+                        106,
+                        107,
+                        108,
+                        109,
+                        110
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "lockOver()"
+                }
+              }
+            }
+          }
+        ],
+        "description": "lockEtherPay.lockOver() (contracts/safe/safe_179_SAFE.sol#95-98) uses timestamp for comparisons\n\tDangerous comparisons:\n\t- current_time > end_time (contracts/safe/safe_179_SAFE.sol#97)\n",
+        "markdown": "[lockEtherPay.lockOver()](contracts/safe/safe_179_SAFE.sol#L95-L98) uses timestamp for comparisons\n\tDangerous comparisons:\n\t- [current_time > end_time](contracts/safe/safe_179_SAFE.sol#L97)\n",
+        "first_markdown_element": "contracts/safe/safe_179_SAFE.sol#L95-L98",
+        "id": "495fd300d7eed25df17f6b006bc9d8bc9df07e4f2c3b69bc16e05a003d444d19",
+        "check": "timestamp",
+        "impact": "Low",
+        "confidence": "Medium"
+      }
+    ]
+  }
+}

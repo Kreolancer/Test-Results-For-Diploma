@@ -1,0 +1,2142 @@
+{
+  "success": true,
+  "error": null,
+  "results": {
+    "detectors": [
+      {
+        "elements": [
+          {
+            "type": "contract",
+            "name": "LuckyDoubler",
+            "source_mapping": {
+              "start": 312,
+              "length": 5200,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            }
+          },
+          {
+            "type": "node",
+            "name": "unpaidEntries.push(entries.length - 1)",
+            "source_mapping": {
+              "start": 2298,
+              "length": 37,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "join",
+                "source_mapping": {
+                  "start": 1653,
+                  "length": 1648,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "LuckyDoubler",
+                    "source_mapping": {
+                      "start": 312,
+                      "length": 5200,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "join()"
+                }
+              }
+            }
+          }
+        ],
+        "description": "LuckyDoubler () contract sets array length with a user-controlled value:\n\t- unpaidEntries.push(entries.length - 1) ()\n",
+        "markdown": "[LuckyDoubler]() contract sets array length with a user-controlled value:\n\t- [unpaidEntries.push(entries.length - 1)]()\n",
+        "first_markdown_element": "",
+        "id": "2dafd78108c477f42c0b43c3e645144c43419a1a4cc75049f34dabcad55e2c5f",
+        "check": "controlled-array-length",
+        "impact": "High",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "rand",
+            "source_mapping": {
+              "start": 3506,
+              "length": 298,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "LuckyDoubler",
+                "source_mapping": {
+                  "start": 312,
+                  "length": 5200,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "rand(uint256)"
+            }
+          },
+          {
+            "type": "node",
+            "name": "uint256((uint256(hashVal) / factor)) % max",
+            "source_mapping": {
+              "start": 3748,
+              "length": 49,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "rand",
+                "source_mapping": {
+                  "start": 3506,
+                  "length": 298,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "LuckyDoubler",
+                    "source_mapping": {
+                      "start": 312,
+                      "length": 5200,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "rand(uint256)"
+                }
+              }
+            }
+          }
+        ],
+        "description": "LuckyDoubler.rand(uint256) () uses a weak PRNG: \"uint256((uint256(hashVal) / factor)) % max ()\" \n",
+        "markdown": "[LuckyDoubler.rand(uint256)]() uses a weak PRNG: \"[uint256((uint256(hashVal) / factor)) % max]()\" \n",
+        "first_markdown_element": "",
+        "id": "fe40274ea755a4920565368b77269caab2f81551dc16d9c74617f0700d08c4fa",
+        "check": "weak-prng",
+        "impact": "High",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "join",
+            "source_mapping": {
+              "start": 1653,
+              "length": 1648,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "LuckyDoubler",
+                "source_mapping": {
+                  "start": 312,
+                  "length": 5200,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "join()"
+            }
+          },
+          {
+            "type": "node",
+            "name": "owner.send(fees)",
+            "source_mapping": {
+              "start": 3267,
+              "length": 16,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "join",
+                "source_mapping": {
+                  "start": 1653,
+                  "length": 1648,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "LuckyDoubler",
+                    "source_mapping": {
+                      "start": 312,
+                      "length": 5200,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "join()"
+                }
+              }
+            }
+          }
+        ],
+        "description": "LuckyDoubler.join() () ignores return value by owner.send(fees) ()\n",
+        "markdown": "[LuckyDoubler.join()]() ignores return value by [owner.send(fees)]()\n",
+        "first_markdown_element": "",
+        "id": "6ed4e3aa2ebb6360c216ac153f2285a60c5562dcbf9d05c8dda953b454267303",
+        "check": "unchecked-send",
+        "impact": "Medium",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "join",
+            "source_mapping": {
+              "start": 1653,
+              "length": 1648,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "LuckyDoubler",
+                "source_mapping": {
+                  "start": 312,
+                  "length": 5200,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "join()"
+            }
+          },
+          {
+            "type": "node",
+            "name": "theEntry.entryAddress.send(payout)",
+            "source_mapping": {
+              "start": 2737,
+              "length": 34,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "join",
+                "source_mapping": {
+                  "start": 1653,
+                  "length": 1648,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "LuckyDoubler",
+                    "source_mapping": {
+                      "start": 312,
+                      "length": 5200,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "join()"
+                }
+              }
+            }
+          }
+        ],
+        "description": "LuckyDoubler.join() () ignores return value by theEntry.entryAddress.send(payout) ()\n",
+        "markdown": "[LuckyDoubler.join()]() ignores return value by [theEntry.entryAddress.send(payout)]()\n",
+        "first_markdown_element": "",
+        "id": "a0952d3ba087cd238d8ffadb4133ab7f8d9441078a409da0053207ec02fbedf7",
+        "check": "unchecked-send",
+        "impact": "Medium",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "init",
+            "source_mapping": {
+              "start": 1493,
+              "length": 154,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "LuckyDoubler",
+                "source_mapping": {
+                  "start": 312,
+                  "length": 5200,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "init()"
+            }
+          },
+          {
+            "type": "node",
+            "name": "msg.sender.send(msg.value)",
+            "source_mapping": {
+              "start": 1567,
+              "length": 26,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "init",
+                "source_mapping": {
+                  "start": 1493,
+                  "length": 154,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "LuckyDoubler",
+                    "source_mapping": {
+                      "start": 312,
+                      "length": 5200,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "init()"
+                }
+              }
+            }
+          }
+        ],
+        "description": "LuckyDoubler.init() () ignores return value by msg.sender.send(msg.value) ()\n",
+        "markdown": "[LuckyDoubler.init()]() ignores return value by [msg.sender.send(msg.value)]()\n",
+        "first_markdown_element": "",
+        "id": "ed45ce004566f5745df9a90db6a991f4136118e3d0f62ea61480d798f1e4c54a",
+        "check": "unchecked-send",
+        "impact": "Medium",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "join",
+            "source_mapping": {
+              "start": 1653,
+              "length": 1648,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "LuckyDoubler",
+                "source_mapping": {
+                  "start": 312,
+                  "length": 5200,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "join()"
+            }
+          },
+          {
+            "type": "node",
+            "name": "msg.sender.send(msg.value - 1000000000000000000)",
+            "source_mapping": {
+              "start": 1790,
+              "length": 36,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "join",
+                "source_mapping": {
+                  "start": 1653,
+                  "length": 1648,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "LuckyDoubler",
+                    "source_mapping": {
+                      "start": 312,
+                      "length": 5200,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "join()"
+                }
+              }
+            }
+          }
+        ],
+        "description": "LuckyDoubler.join() () ignores return value by msg.sender.send(msg.value - 1000000000000000000) ()\n",
+        "markdown": "[LuckyDoubler.join()]() ignores return value by [msg.sender.send(msg.value - 1000000000000000000)]()\n",
+        "first_markdown_element": "",
+        "id": "f25433f6b29bd188ebe5ecf1bd2e11c5f092660a142472cfab79cd386e5e2a95",
+        "check": "unchecked-send",
+        "impact": "Medium",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "changeOwner",
+            "source_mapping": {
+              "start": 3837,
+              "length": 82,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "LuckyDoubler",
+                "source_mapping": {
+                  "start": 312,
+                  "length": 5200,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "changeOwner(address)"
+            }
+          },
+          {
+            "type": "node",
+            "name": "owner = newOwner",
+            "source_mapping": {
+              "start": 3896,
+              "length": 16,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "changeOwner",
+                "source_mapping": {
+                  "start": 3837,
+                  "length": 82,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "LuckyDoubler",
+                    "source_mapping": {
+                      "start": 312,
+                      "length": 5200,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "changeOwner(address)"
+                }
+              }
+            }
+          }
+        ],
+        "description": "LuckyDoubler.changeOwner(address) () should emit an event for: \n\t- owner = newOwner () \n",
+        "markdown": "[LuckyDoubler.changeOwner(address)]() should emit an event for: \n\t- [owner = newOwner]() \n",
+        "first_markdown_element": "",
+        "id": "737cccbe18e1bfcbb19bc709cd8d86a6806788d4c4ed02cc086be8e83701097d",
+        "check": "events-access",
+        "impact": "Low",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "changeFee",
+            "source_mapping": {
+              "start": 4062,
+              "length": 111,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "LuckyDoubler",
+                "source_mapping": {
+                  "start": 312,
+                  "length": 5200,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "changeFee(uint256)"
+            }
+          },
+          {
+            "type": "node",
+            "name": "fee = newFee",
+            "source_mapping": {
+              "start": 4154,
+              "length": 12,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "changeFee",
+                "source_mapping": {
+                  "start": 4062,
+                  "length": 111,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "LuckyDoubler",
+                    "source_mapping": {
+                      "start": 312,
+                      "length": 5200,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "changeFee(uint256)"
+                }
+              }
+            }
+          }
+        ],
+        "description": "LuckyDoubler.changeFee(uint256) () should emit an event for: \n\t- fee = newFee () \n",
+        "markdown": "[LuckyDoubler.changeFee(uint256)]() should emit an event for: \n\t- [fee = newFee]() \n",
+        "first_markdown_element": "",
+        "id": "05d572b1adb4578b41e6c6613cca16e0a3c7dad70c8d38622d26f3dc75a46eb0",
+        "check": "events-maths",
+        "impact": "Low",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "changeMultiplier",
+            "source_mapping": {
+              "start": 3925,
+              "length": 131,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "LuckyDoubler",
+                "source_mapping": {
+                  "start": 312,
+                  "length": 5200,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "changeMultiplier(uint256)"
+            }
+          },
+          {
+            "type": "node",
+            "name": "multiplier = multi",
+            "source_mapping": {
+              "start": 4031,
+              "length": 18,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "changeMultiplier",
+                "source_mapping": {
+                  "start": 3925,
+                  "length": 131,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "LuckyDoubler",
+                    "source_mapping": {
+                      "start": 312,
+                      "length": 5200,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "changeMultiplier(uint256)"
+                }
+              }
+            }
+          }
+        ],
+        "description": "LuckyDoubler.changeMultiplier(uint256) () should emit an event for: \n\t- multiplier = multi () \n",
+        "markdown": "[LuckyDoubler.changeMultiplier(uint256)]() should emit an event for: \n\t- [multiplier = multi]() \n",
+        "first_markdown_element": "",
+        "id": "41a21ffa2c3c85256862e539222161a1305ff663dcae2dd41c7c52494349d302",
+        "check": "events-maths",
+        "impact": "Low",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "newOwner",
+            "source_mapping": {
+              "start": 3858,
+              "length": 16,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "changeOwner",
+                "source_mapping": {
+                  "start": 3837,
+                  "length": 82,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "LuckyDoubler",
+                    "source_mapping": {
+                      "start": 312,
+                      "length": 5200,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "changeOwner(address)"
+                }
+              }
+            }
+          },
+          {
+            "type": "node",
+            "name": "owner = newOwner",
+            "source_mapping": {
+              "start": 3896,
+              "length": 16,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "changeOwner",
+                "source_mapping": {
+                  "start": 3837,
+                  "length": 82,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "LuckyDoubler",
+                    "source_mapping": {
+                      "start": 312,
+                      "length": 5200,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "changeOwner(address)"
+                }
+              }
+            }
+          }
+        ],
+        "description": "LuckyDoubler.changeOwner(address).newOwner () lacks a zero-check on :\n\t\t- owner = newOwner ()\n",
+        "markdown": "[LuckyDoubler.changeOwner(address).newOwner]() lacks a zero-check on :\n\t\t- [owner = newOwner]()\n",
+        "first_markdown_element": "",
+        "id": "f98056ccb45b8924a52b5996fb9a56a3d9052fa5f5ec03ba86cb819681eb4592",
+        "check": "missing-zero-check",
+        "impact": "Low",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "onlyowner",
+            "source_mapping": {
+              "start": 1157,
+              "length": 50,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "LuckyDoubler",
+                "source_mapping": {
+                  "start": 312,
+                  "length": 5200,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "onlyowner()"
+            }
+          }
+        ],
+        "description": "Modifier LuckyDoubler.onlyowner() () does not always execute _; or revert\n",
+        "markdown": "Modifier [LuckyDoubler.onlyowner()]() does not always execute _; or revert\n",
+        "first_markdown_element": "",
+        "id": "73b249e163d9f26a16528c1585b7327a4c7a19bae5cdbc852969907697600b25",
+        "check": "incorrect-modifier",
+        "impact": "Low",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "node",
+            "name": "",
+            "source_mapping": {
+              "start": 4015,
+              "length": 5,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "changeMultiplier",
+                "source_mapping": {
+                  "start": 3925,
+                  "length": 131,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "LuckyDoubler",
+                    "source_mapping": {
+                      "start": 312,
+                      "length": 5200,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "changeMultiplier(uint256)"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Deprecated standard detected THROW ():\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+        "markdown": "Deprecated standard detected [THROW]():\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+        "first_markdown_element": "",
+        "id": "f5556cf1c70b64b9e4b1fc32044dd970b5f2c8b9fc21b7971fda01971033f2d5",
+        "check": "deprecated-standards",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "node",
+            "name": "hashVal = uint256(block.blockhash(lastBlockNumber))",
+            "source_mapping": {
+              "start": 3678,
+              "length": 59,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "rand",
+                "source_mapping": {
+                  "start": 3506,
+                  "length": 298,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "LuckyDoubler",
+                    "source_mapping": {
+                      "start": 312,
+                      "length": 5200,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "rand(uint256)"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Deprecated standard detected hashVal = uint256(block.blockhash(lastBlockNumber)) ():\n\t- Usage of \"block.blockhash()\" should be replaced with \"blockhash()\"\n",
+        "markdown": "Deprecated standard detected [hashVal = uint256(block.blockhash(lastBlockNumber))]():\n\t- Usage of \"block.blockhash()\" should be replaced with \"blockhash()\"\n",
+        "first_markdown_element": "",
+        "id": "ff40a80d3de2bec25ec2e1746d25beb60476ce154365a5e72c06aff8103fe19c",
+        "check": "deprecated-standards",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "pragma",
+            "name": "^0.4.0",
+            "source_mapping": {
+              "start": 286,
+              "length": 23,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "directive": [
+                "solidity",
+                "^",
+                "0.4",
+                ".0"
+              ]
+            }
+          }
+        ],
+        "description": "Version constraint ^0.4.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- DirtyBytesArrayToStorage\n\t- KeccakCaching\n\t- EmptyByteArrayCopy\n\t- DynamicArrayCleanup\n\t- TupleAssignmentMultiStackSlotComponents\n\t- MemoryArrayCreationOverflow\n\t- privateCanBeOverridden\n\t- IncorrectEventSignatureInLibraries_0.4.x\n\t- ExpExponentCleanup\n\t- NestedArrayFunctionCallDecoder\n\t- ZeroFunctionSelector\n\t- DelegateCallReturnValue\n\t- ECRecoverMalformedInput\n\t- SkipEmptyStringLiteral\n\t- ConstantOptimizerSubtraction\n\t- IdentityPrecompileReturnIgnored\n\t- HighOrderByteCleanStorage\n\t- OptimizerStaleKnowledgeAboutSHA3\n\t- LibrariesNotCallableFromPayableFunctions.\nIt is used by:\n\t- ^0.4.0 ()\n",
+        "markdown": "Version constraint ^0.4.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- DirtyBytesArrayToStorage\n\t- KeccakCaching\n\t- EmptyByteArrayCopy\n\t- DynamicArrayCleanup\n\t- TupleAssignmentMultiStackSlotComponents\n\t- MemoryArrayCreationOverflow\n\t- privateCanBeOverridden\n\t- IncorrectEventSignatureInLibraries_0.4.x\n\t- ExpExponentCleanup\n\t- NestedArrayFunctionCallDecoder\n\t- ZeroFunctionSelector\n\t- DelegateCallReturnValue\n\t- ECRecoverMalformedInput\n\t- SkipEmptyStringLiteral\n\t- ConstantOptimizerSubtraction\n\t- IdentityPrecompileReturnIgnored\n\t- HighOrderByteCleanStorage\n\t- OptimizerStaleKnowledgeAboutSHA3\n\t- LibrariesNotCallableFromPayableFunctions.\nIt is used by:\n\t- [^0.4.0]()\n",
+        "first_markdown_element": "",
+        "id": "0ac2786c9c7120d39f097c2127bc5eacbc117e78b6989464e7d649f967698498",
+        "check": "solc-version",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [],
+        "description": "solc-0.4.0 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.\n",
+        "markdown": "solc-0.4.0 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.\n",
+        "first_markdown_element": "",
+        "id": "f08241739f2fffeca3419784d6e3cb73331167fd0dfa903e5ba3f841f933f90f",
+        "check": "solc-version",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "FACTOR",
+            "source_mapping": {
+              "start": 3352,
+              "length": 111,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "LuckyDoubler",
+                "source_mapping": {
+                  "start": 312,
+                  "length": 5200,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "variable",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Variable LuckyDoubler.FACTOR () is not in mixedCase\n",
+        "markdown": "Variable [LuckyDoubler.FACTOR]() is not in mixedCase\n",
+        "first_markdown_element": "",
+        "id": "469e4ed4cd7acc992cb0047f92b613c3f75600dd74d1c2321d96486d45ed034c",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "join",
+            "source_mapping": {
+              "start": 1653,
+              "length": 1648,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "LuckyDoubler",
+                "source_mapping": {
+                  "start": 312,
+                  "length": 5200,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "join()"
+            }
+          },
+          {
+            "type": "node",
+            "name": "msg.sender.send(msg.value - 1000000000000000000)",
+            "source_mapping": {
+              "start": 1790,
+              "length": 36,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "join",
+                "source_mapping": {
+                  "start": 1653,
+                  "length": 1648,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "LuckyDoubler",
+                    "source_mapping": {
+                      "start": 312,
+                      "length": 5200,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "join()"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "external_calls"
+            }
+          },
+          {
+            "type": "node",
+            "name": "balance += (dValue * (100 - fee)) / 100",
+            "source_mapping": {
+              "start": 2397,
+              "length": 39,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "join",
+                "source_mapping": {
+                  "start": 1653,
+                  "length": 1648,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "LuckyDoubler",
+                    "source_mapping": {
+                      "start": 312,
+                      "length": 5200,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "join()"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "variables_written",
+              "variable_name": "balance"
+            }
+          },
+          {
+            "type": "node",
+            "name": "entries.push(Entry(msg.sender,dValue,(dValue * (multiplier) / 100),false))",
+            "source_mapping": {
+              "start": 2173,
+              "length": 77,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "join",
+                "source_mapping": {
+                  "start": 1653,
+                  "length": 1648,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "LuckyDoubler",
+                    "source_mapping": {
+                      "start": 312,
+                      "length": 5200,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "join()"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "variables_written",
+              "variable_name": "entries"
+            }
+          },
+          {
+            "type": "node",
+            "name": "unpaidEntries.push(entries.length - 1)",
+            "source_mapping": {
+              "start": 2298,
+              "length": 37,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "join",
+                "source_mapping": {
+                  "start": 1653,
+                  "length": 1648,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "LuckyDoubler",
+                    "source_mapping": {
+                      "start": 312,
+                      "length": 5200,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "join()"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "variables_written",
+              "variable_name": "unpaidEntries"
+            }
+          },
+          {
+            "type": "node",
+            "name": "users[msg.sender].id = msg.sender",
+            "source_mapping": {
+              "start": 1979,
+              "length": 33,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "join",
+                "source_mapping": {
+                  "start": 1653,
+                  "length": 1648,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "LuckyDoubler",
+                    "source_mapping": {
+                      "start": 312,
+                      "length": 5200,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "join()"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "variables_written",
+              "variable_name": "users"
+            }
+          },
+          {
+            "type": "node",
+            "name": "users[msg.sender].deposits = 0",
+            "source_mapping": {
+              "start": 2026,
+              "length": 30,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "join",
+                "source_mapping": {
+                  "start": 1653,
+                  "length": 1648,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "LuckyDoubler",
+                    "source_mapping": {
+                      "start": 312,
+                      "length": 5200,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "join()"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "variables_written",
+              "variable_name": "users"
+            }
+          },
+          {
+            "type": "node",
+            "name": "users[msg.sender].payoutsReceived = 0",
+            "source_mapping": {
+              "start": 2070,
+              "length": 37,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "join",
+                "source_mapping": {
+                  "start": 1653,
+                  "length": 1648,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "LuckyDoubler",
+                    "source_mapping": {
+                      "start": 312,
+                      "length": 5200,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "join()"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "variables_written",
+              "variable_name": "users"
+            }
+          },
+          {
+            "type": "node",
+            "name": "users[msg.sender].deposits ++",
+            "source_mapping": {
+              "start": 2260,
+              "length": 28,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "join",
+                "source_mapping": {
+                  "start": 1653,
+                  "length": 1648,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "LuckyDoubler",
+                    "source_mapping": {
+                      "start": 312,
+                      "length": 5200,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "join()"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "variables_written",
+              "variable_name": "users"
+            }
+          }
+        ],
+        "description": "Reentrancy in LuckyDoubler.join() ():\n\tExternal calls:\n\t- msg.sender.send(msg.value - 1000000000000000000) ()\n\tState variables written after the call(s):\n\t- balance += (dValue * (100 - fee)) / 100 ()\n\t- entries.push(Entry(msg.sender,dValue,(dValue * (multiplier) / 100),false)) ()\n\t- unpaidEntries.push(entries.length - 1) ()\n\t- users[msg.sender].id = msg.sender ()\n\t- users[msg.sender].deposits = 0 ()\n\t- users[msg.sender].payoutsReceived = 0 ()\n\t- users[msg.sender].deposits ++ ()\n",
+        "markdown": "Reentrancy in [LuckyDoubler.join()]():\n\tExternal calls:\n\t- [msg.sender.send(msg.value - 1000000000000000000)]()\n\tState variables written after the call(s):\n\t- [balance += (dValue * (100 - fee)) / 100]()\n\t- [entries.push(Entry(msg.sender,dValue,(dValue * (multiplier) / 100),false))]()\n\t- [unpaidEntries.push(entries.length - 1)]()\n\t- [users[msg.sender].id = msg.sender]()\n\t- [users[msg.sender].deposits = 0]()\n\t- [users[msg.sender].payoutsReceived = 0]()\n\t- [users[msg.sender].deposits ++]()\n",
+        "first_markdown_element": "",
+        "id": "03e5add425b8d5826ead905e0729f4ca1f71d0de4381546d287494d1c2df8a5a",
+        "check": "reentrancy-unlimited-gas",
+        "impact": "Informational",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "join",
+            "source_mapping": {
+              "start": 1653,
+              "length": 1648,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "LuckyDoubler",
+                "source_mapping": {
+                  "start": 312,
+                  "length": 5200,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "join()"
+            }
+          },
+          {
+            "type": "node",
+            "name": "msg.sender.send(msg.value - 1000000000000000000)",
+            "source_mapping": {
+              "start": 1790,
+              "length": 36,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "join",
+                "source_mapping": {
+                  "start": 1653,
+                  "length": 1648,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "LuckyDoubler",
+                    "source_mapping": {
+                      "start": 312,
+                      "length": 5200,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "join()"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "external_calls"
+            }
+          },
+          {
+            "type": "node",
+            "name": "theEntry.entryAddress.send(payout)",
+            "source_mapping": {
+              "start": 2737,
+              "length": 34,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "join",
+                "source_mapping": {
+                  "start": 1653,
+                  "length": 1648,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "LuckyDoubler",
+                    "source_mapping": {
+                      "start": 312,
+                      "length": 5200,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "join()"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "external_calls"
+            }
+          },
+          {
+            "type": "node",
+            "name": "balance -= payout",
+            "source_mapping": {
+              "start": 2880,
+              "length": 17,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "join",
+                "source_mapping": {
+                  "start": 1653,
+                  "length": 1648,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "LuckyDoubler",
+                    "source_mapping": {
+                      "start": 312,
+                      "length": 5200,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "join()"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "variables_written",
+              "variable_name": "balance"
+            }
+          },
+          {
+            "type": "node",
+            "name": "theEntry.paid = true",
+            "source_mapping": {
+              "start": 2785,
+              "length": 20,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "join",
+                "source_mapping": {
+                  "start": 1653,
+                  "length": 1648,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "LuckyDoubler",
+                    "source_mapping": {
+                      "start": 312,
+                      "length": 5200,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "join()"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "variables_written",
+              "variable_name": "entries"
+            }
+          },
+          {
+            "type": "node",
+            "name": "unpaidEntries[index] = unpaidEntries[unpaidEntries.length - 1]",
+            "source_mapping": {
+              "start": 2966,
+              "length": 62,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "join",
+                "source_mapping": {
+                  "start": 1653,
+                  "length": 1648,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "LuckyDoubler",
+                    "source_mapping": {
+                      "start": 312,
+                      "length": 5200,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "join()"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "variables_written",
+              "variable_name": "unpaidEntries"
+            }
+          },
+          {
+            "type": "node",
+            "name": "unpaidEntries.length --",
+            "source_mapping": {
+              "start": 3043,
+              "length": 22,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "join",
+                "source_mapping": {
+                  "start": 1653,
+                  "length": 1648,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "LuckyDoubler",
+                    "source_mapping": {
+                      "start": 312,
+                      "length": 5200,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "join()"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "variables_written",
+              "variable_name": "unpaidEntries"
+            }
+          },
+          {
+            "type": "node",
+            "name": "users[theEntry.entryAddress].payoutsReceived ++",
+            "source_mapping": {
+              "start": 2819,
+              "length": 46,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "join",
+                "source_mapping": {
+                  "start": 1653,
+                  "length": 1648,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "LuckyDoubler",
+                    "source_mapping": {
+                      "start": 312,
+                      "length": 5200,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "join()"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "variables_written",
+              "variable_name": "users"
+            }
+          }
+        ],
+        "description": "Reentrancy in LuckyDoubler.join() ():\n\tExternal calls:\n\t- msg.sender.send(msg.value - 1000000000000000000) ()\n\t- theEntry.entryAddress.send(payout) ()\n\tState variables written after the call(s):\n\t- balance -= payout ()\n\t- theEntry.paid = true ()\n\t- unpaidEntries[index] = unpaidEntries[unpaidEntries.length - 1] ()\n\t- unpaidEntries.length -- ()\n\t- users[theEntry.entryAddress].payoutsReceived ++ ()\n",
+        "markdown": "Reentrancy in [LuckyDoubler.join()]():\n\tExternal calls:\n\t- [msg.sender.send(msg.value - 1000000000000000000)]()\n\t- [theEntry.entryAddress.send(payout)]()\n\tState variables written after the call(s):\n\t- [balance -= payout]()\n\t- [theEntry.paid = true]()\n\t- [unpaidEntries[index] = unpaidEntries[unpaidEntries.length - 1]]()\n\t- [unpaidEntries.length --]()\n\t- [users[theEntry.entryAddress].payoutsReceived ++]()\n",
+        "first_markdown_element": "",
+        "id": "c97077a7df5874f2540f37f2c616b5cc08e09e0d04faac7462700ccc55895841",
+        "check": "reentrancy-unlimited-gas",
+        "impact": "Informational",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "FACTOR",
+            "source_mapping": {
+              "start": 3352,
+              "length": 111,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "LuckyDoubler",
+                "source_mapping": {
+                  "start": 312,
+                  "length": 5200,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              }
+            }
+          }
+        ],
+        "description": "LuckyDoubler.FACTOR () should be constant \n",
+        "markdown": "[LuckyDoubler.FACTOR]() should be constant \n",
+        "first_markdown_element": "",
+        "id": "e47e092cbf17b2ba07dff861395d899f3e85eaee5ef55a3296272613f5516d48",
+        "check": "constable-states",
+        "impact": "Optimization",
+        "confidence": "High"
+      }
+    ]
+  }
+}

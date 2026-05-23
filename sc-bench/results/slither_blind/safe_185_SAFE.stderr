@@ -1,0 +1,274 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_185_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc' running
+
+Detector: arbitrary-send-eth
+SaleWallet.doWithdraw() () sends eth to arbitrary user
+	Dangerous calls:
+	- ! multisig.send(this.balance) ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#functions-that-send-ether-to-arbitrary-destinations
+
+Detector: controlled-array-length
+MiniMeIrrevocableVestedToken () contract sets array length with a user-controlled value:
+	- grants[_to].push(grant) ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#array-length-assignment
+
+Detector: weak-prng
+SafeMath.safeDiv(uint256,uint256) () uses a weak PRNG: "assert(a == b * c + a % b) ()" 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#weak-PRNG
+
+Detector: constant-function-asm
+MiniMeToken.isContract(address) () is declared view but contains assembly code
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#constant-functions-using-assembly-code
+
+Detector: incorrect-equality
+SafeMath.safeDiv(uint256,uint256) () uses a dangerous strict equality:
+	- assert(a == b * c + a % b) ()
+SafeMath.safeMul(uint256,uint256) () uses a dangerous strict equality:
+	- assert(a == 0 || c / a == b) ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dangerous-strict-equalities
+
+Detector: reentrancy-no-eth
+Reentrancy in MiniMeToken.approve(address,uint256) ():
+	External calls:
+	- ! Controller(controller).onApprove(msg.sender,_spender,_amount) ()
+	State variables written after the call(s):
+	- allowed[msg.sender][_spender] = _amount ()
+	MiniMeToken.allowed () can be used in cross function reentrancies:
+	- MiniMeToken.allowance(address,address) ()
+	- MiniMeToken.approve(address,uint256) ()
+	- MiniMeToken.transferFrom(address,address,uint256) ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-2
+
+Detector: shadowing-builtin
+SafeMath.assert(bool) () (function) shadows built-in symbol"
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#builtin-symbol-shadowing
+
+Detector: shadowing-local
+MiniMeToken.getValueAt(MiniMeToken.Checkpoint[],uint256).min () shadows:
+	- MiniMeToken.min(uint256,uint256) () (function)
+MiniMeIrrevocableVestedToken.calculateVestedTokens(uint256,uint256,uint256,uint256,uint256).vestedTokens () shadows:
+	- MiniMeIrrevocableVestedToken.vestedTokens(MiniMeIrrevocableVestedToken.TokenGrant,uint64) () (function)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#local-variable-shadowing
+
+Detector: events-access
+MiniMeIrrevocableVestedToken.changeVestingWhitelister(address) () should emit an event for: 
+	- vestingWhitelister = _newWhitelister () 
+Controlled.changeController(address) () should emit an event for: 
+	- controller = _newController () 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+
+Detector: missing-zero-check
+SaleWallet.SaleWallet(address,uint256,address)._multisig () lacks a zero-check on :
+		- multisig = _multisig ()
+ANPlaceholder.ANPlaceholder(address,address)._sale () lacks a zero-check on :
+		- sale = _sale ()
+MiniMeIrrevocableVestedToken.changeVestingWhitelister(address)._newWhitelister () lacks a zero-check on :
+		- vestingWhitelister = _newWhitelister ()
+Controlled.changeController(address)._newController () lacks a zero-check on :
+		- controller = _newController ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+
+Detector: reentrancy-events
+Reentrancy in MiniMeToken.approve(address,uint256) ():
+	External calls:
+	- ! Controller(controller).onApprove(msg.sender,_spender,_amount) ()
+	Event emitted after the call(s):
+	- Approval(msg.sender,_spender,_amount) ()
+Reentrancy in MiniMeToken.createCloneToken(string,uint8,string,uint256,bool) ():
+	External calls:
+	- cloneToken = tokenFactory.createCloneToken(this,_snapshotBlock,_cloneTokenName,_cloneDecimalUnits,_cloneTokenSymbol,_transfersEnabled) ()
+	- cloneToken.changeController(msg.sender) ()
+	Event emitted after the call(s):
+	- NewCloneToken(address(cloneToken),_snapshotBlock) ()
+Reentrancy in MiniMeToken.destroyTokens(address,uint256) ():
+	External calls:
+	- previousBalanceFrom = balanceOf(_owner) ()
+		- parentToken.balanceOfAt(_owner,min(_blockNumber,parentSnapShotBlock)) ()
+	Event emitted after the call(s):
+	- Transfer(_owner,0,_amount) ()
+Reentrancy in MiniMeToken.doTransfer(address,address,uint256) ():
+	External calls:
+	- previousBalanceFrom = balanceOfAt(_from,block.number) ()
+		- parentToken.balanceOfAt(_owner,min(_blockNumber,parentSnapShotBlock)) ()
+	- ! Controller(controller).onTransfer(_from,_to,_amount) ()
+	- previousBalanceTo = balanceOfAt(_to,block.number) ()
+		- parentToken.balanceOfAt(_owner,min(_blockNumber,parentSnapShotBlock)) ()
+	Event emitted after the call(s):
+	- Transfer(_from,_to,_amount) ()
+Reentrancy in MiniMeToken.generateTokens(address,uint256) ():
+	External calls:
+	- previousBalanceTo = balanceOf(_owner) ()
+		- parentToken.balanceOfAt(_owner,min(_blockNumber,parentSnapShotBlock)) ()
+	Event emitted after the call(s):
+	- Transfer(0,_owner,_amount) ()
+Reentrancy in MiniMeIrrevocableVestedToken.grantVestedTokens(address,uint256,uint64,uint64,uint64) ():
+	External calls:
+	- ! transfer(_to,_value) ()
+		- parentToken.balanceOfAt(_owner,min(_blockNumber,parentSnapShotBlock)) ()
+		- ! Controller(controller).onTransfer(_from,_to,_amount) ()
+	Event emitted after the call(s):
+	- NewTokenGrant(msg.sender,_to,_value,_cliff,_vesting,_start) ()
+Reentrancy in MiniMeIrrevocableVestedToken.transfer(address,uint256) ():
+	External calls:
+	- super.transfer(_to,_value) ()
+		- parentToken.balanceOfAt(_owner,min(_blockNumber,parentSnapShotBlock)) ()
+		- ! Controller(controller).onTransfer(_from,_to,_amount) ()
+	- canTransfer(msg.sender,_value) ()
+		- parentToken.balanceOfAt(_owner,min(_blockNumber,parentSnapShotBlock)) ()
+	Event emitted after the call(s):
+	- Transfer(_from,_to,_amount) ()
+		- super.transfer(_to,_value) ()
+Reentrancy in MiniMeIrrevocableVestedToken.transferFrom(address,address,uint256) ():
+	External calls:
+	- super.transferFrom(_from,_to,_value) ()
+		- parentToken.balanceOfAt(_owner,min(_blockNumber,parentSnapShotBlock)) ()
+		- ! Controller(controller).onTransfer(_from,_to,_amount) ()
+	- canTransfer(_from,_value) ()
+		- parentToken.balanceOfAt(_owner,min(_blockNumber,parentSnapShotBlock)) ()
+	Event emitted after the call(s):
+	- Transfer(_from,_to,_amount) ()
+		- super.transferFrom(_from,_to,_value) ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-4
+
+Detector: timestamp
+MiniMeIrrevocableVestedToken.calculateVestedTokens(uint256,uint256,uint256,uint256,uint256) () uses timestamp for comparisons
+	Dangerous comparisons:
+	- time < cliff ()
+	- time >= vesting ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+
+Detector: assembly
+MiniMeToken.isContract(address) () uses assembly
+	- INLINE ASM ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#assembly-usage
+
+Detector: dead-code
+SafeMath.max256(uint256,uint256) () is never used and should be removed
+SafeMath.min256(uint256,uint256) () is never used and should be removed
+SafeMath.min64(uint64,uint64) () is never used and should be removed
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dead-code
+
+Detector: deprecated-standards
+Deprecated standard detected THROW ():
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected suicide(address)(network) ():
+	- Usage of "suicide()" should be replaced with "selfdestruct()"
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#deprecated-standards
+
+Detector: solc-version
+Version constraint ^0.4.8 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- NestedArrayFunctionCallDecoder
+	- ZeroFunctionSelector
+	- DelegateCallReturnValue
+	- ECRecoverMalformedInput
+	- SkipEmptyStringLiteral
+	- ConstantOptimizerSubtraction.
+It is used by:
+	- ^0.4.8 ()
+solc-0.4.8 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Parameter Controlled.changeController(address)._newController () is not in mixedCase
+Parameter MiniMeToken.transfer(address,uint256)._to () is not in mixedCase
+Parameter MiniMeToken.transfer(address,uint256)._amount () is not in mixedCase
+Parameter MiniMeToken.transferFrom(address,address,uint256)._from () is not in mixedCase
+Parameter MiniMeToken.transferFrom(address,address,uint256)._to () is not in mixedCase
+Parameter MiniMeToken.transferFrom(address,address,uint256)._amount () is not in mixedCase
+Parameter MiniMeToken.doTransfer(address,address,uint256)._from () is not in mixedCase
+Parameter MiniMeToken.doTransfer(address,address,uint256)._to () is not in mixedCase
+Parameter MiniMeToken.doTransfer(address,address,uint256)._amount () is not in mixedCase
+Parameter MiniMeToken.balanceOf(address)._owner () is not in mixedCase
+Parameter MiniMeToken.approve(address,uint256)._spender () is not in mixedCase
+Parameter MiniMeToken.approve(address,uint256)._amount () is not in mixedCase
+Parameter MiniMeToken.allowance(address,address)._owner () is not in mixedCase
+Parameter MiniMeToken.allowance(address,address)._spender () is not in mixedCase
+Parameter MiniMeToken.approveAndCall(address,uint256,bytes)._spender () is not in mixedCase
+Parameter MiniMeToken.approveAndCall(address,uint256,bytes)._amount () is not in mixedCase
+Parameter MiniMeToken.approveAndCall(address,uint256,bytes)._extraData () is not in mixedCase
+Parameter MiniMeToken.balanceOfAt(address,uint256)._owner () is not in mixedCase
+Parameter MiniMeToken.balanceOfAt(address,uint256)._blockNumber () is not in mixedCase
+Parameter MiniMeToken.totalSupplyAt(uint256)._blockNumber () is not in mixedCase
+Parameter MiniMeToken.createCloneToken(string,uint8,string,uint256,bool)._cloneTokenName () is not in mixedCase
+Parameter MiniMeToken.createCloneToken(string,uint8,string,uint256,bool)._cloneDecimalUnits () is not in mixedCase
+Parameter MiniMeToken.createCloneToken(string,uint8,string,uint256,bool)._cloneTokenSymbol () is not in mixedCase
+Parameter MiniMeToken.createCloneToken(string,uint8,string,uint256,bool)._snapshotBlock () is not in mixedCase
+Parameter MiniMeToken.createCloneToken(string,uint8,string,uint256,bool)._transfersEnabled () is not in mixedCase
+Parameter MiniMeToken.generateTokens(address,uint256)._owner () is not in mixedCase
+Parameter MiniMeToken.generateTokens(address,uint256)._amount () is not in mixedCase
+Parameter MiniMeToken.destroyTokens(address,uint256)._owner () is not in mixedCase
+Parameter MiniMeToken.destroyTokens(address,uint256)._amount () is not in mixedCase
+Parameter MiniMeToken.enableTransfers(bool)._transfersEnabled () is not in mixedCase
+Parameter MiniMeToken.getValueAt(MiniMeToken.Checkpoint[],uint256)._block () is not in mixedCase
+Parameter MiniMeToken.updateValueAtNow(MiniMeToken.Checkpoint[],uint256)._value () is not in mixedCase
+Parameter MiniMeToken.isContract(address)._addr () is not in mixedCase
+Parameter MiniMeTokenFactory.createCloneToken(address,uint256,string,uint8,string,bool)._parentToken () is not in mixedCase
+Parameter MiniMeTokenFactory.createCloneToken(address,uint256,string,uint8,string,bool)._snapshotBlock () is not in mixedCase
+Parameter MiniMeTokenFactory.createCloneToken(address,uint256,string,uint8,string,bool)._tokenName () is not in mixedCase
+Parameter MiniMeTokenFactory.createCloneToken(address,uint256,string,uint8,string,bool)._decimalUnits () is not in mixedCase
+Parameter MiniMeTokenFactory.createCloneToken(address,uint256,string,uint8,string,bool)._tokenSymbol () is not in mixedCase
+Parameter MiniMeTokenFactory.createCloneToken(address,uint256,string,uint8,string,bool)._transfersEnabled () is not in mixedCase
+Parameter MiniMeIrrevocableVestedToken.transfer(address,uint256)._to () is not in mixedCase
+Parameter MiniMeIrrevocableVestedToken.transfer(address,uint256)._value () is not in mixedCase
+Parameter MiniMeIrrevocableVestedToken.transferFrom(address,address,uint256)._from () is not in mixedCase
+Parameter MiniMeIrrevocableVestedToken.transferFrom(address,address,uint256)._to () is not in mixedCase
+Parameter MiniMeIrrevocableVestedToken.transferFrom(address,address,uint256)._value () is not in mixedCase
+Parameter MiniMeIrrevocableVestedToken.spendableBalanceOf(address)._holder () is not in mixedCase
+Parameter MiniMeIrrevocableVestedToken.grantVestedTokens(address,uint256,uint64,uint64,uint64)._to () is not in mixedCase
+Parameter MiniMeIrrevocableVestedToken.grantVestedTokens(address,uint256,uint64,uint64,uint64)._value () is not in mixedCase
+Parameter MiniMeIrrevocableVestedToken.grantVestedTokens(address,uint256,uint64,uint64,uint64)._start () is not in mixedCase
+Parameter MiniMeIrrevocableVestedToken.grantVestedTokens(address,uint256,uint64,uint64,uint64)._cliff () is not in mixedCase
+Parameter MiniMeIrrevocableVestedToken.grantVestedTokens(address,uint256,uint64,uint64,uint64)._vesting () is not in mixedCase
+Parameter MiniMeIrrevocableVestedToken.setCanCreateGrants(address,bool)._addr () is not in mixedCase
+Parameter MiniMeIrrevocableVestedToken.setCanCreateGrants(address,bool)._allowed () is not in mixedCase
+Parameter MiniMeIrrevocableVestedToken.doSetCanCreateGrants(address,bool)._addr () is not in mixedCase
+Parameter MiniMeIrrevocableVestedToken.doSetCanCreateGrants(address,bool)._allowed () is not in mixedCase
+Parameter MiniMeIrrevocableVestedToken.changeVestingWhitelister(address)._newWhitelister () is not in mixedCase
+Parameter MiniMeIrrevocableVestedToken.tokenGrantsCount(address)._holder () is not in mixedCase
+Parameter MiniMeIrrevocableVestedToken.tokenGrant(address,uint256)._holder () is not in mixedCase
+Parameter MiniMeIrrevocableVestedToken.tokenGrant(address,uint256)._grantId () is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: erc20-indexed
+ERC20 event ERC20.Transfer(address,address,uint256) ()does not index parameter from
+ERC20 event ERC20.Transfer(address,address,uint256) ()does not index parameter to
+ERC20 event ERC20.Approval(address,address,uint256) ()does not index parameter owner
+ERC20 event ERC20.Approval(address,address,uint256) ()does not index parameter spender
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unindexed-erc20-event-parameters
+
+Detector: unindexed-event-address
+Event ERC20.Transfer(address,address,uint256) () has address parameters but no indexed parameters
+Event ERC20.Approval(address,address,uint256) () has address parameters but no indexed parameters
+Event MiniMeToken.NewCloneToken(address,uint256) () has address parameters but no indexed parameters
+Event MiniMeIrrevocableVestedToken.NewTokenGrant(address,address,uint256,uint64,uint64,uint64) () has address parameters but no indexed parameters
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unindexed-event-address-parameters
+
+Detector: unused-state
+MiniMeToken.version () is never used in ANT ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unused-state-variable
+
+Detector: constable-states
+MiniMeToken.version () should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+
+Detector: external-function
+receiveApproval(address,uint256,address,bytes) should be declared external:
+	- ApproveAndCallReceiver.receiveApproval(address,uint256,address,bytes) ()
+approveAndCall(address,uint256,bytes) should be declared external:
+	- MiniMeToken.approveAndCall(address,uint256,bytes) ()
+createCloneToken(address,uint256,string,uint8,string,bool) should be declared external:
+	- MiniMeTokenFactory.createCloneToken(address,uint256,string,uint8,string,bool) ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#public-function-that-could-be-declared-external
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_185_SAFE.sol analyzed (12 contracts with 101 detectors), 104 result(s) found

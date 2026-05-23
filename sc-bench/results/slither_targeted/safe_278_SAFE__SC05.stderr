@@ -1,0 +1,14 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_278_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+
+Detector: timestamp
+CretToken.transfer(address,uint256) (contracts/safe/safe_278_SAFE.sol#187-200) uses timestamp for comparisons
+	Dangerous comparisons:
+	- now < (timeStamp + 36720000) (contracts/safe/safe_278_SAFE.sol#189)
+	- now < (timeStamp + 20736000) (contracts/safe/safe_278_SAFE.sol#192)
+CretToken.transferFrom(address,address,uint256) (contracts/safe/safe_278_SAFE.sol#205-223) uses timestamp for comparisons
+	Dangerous comparisons:
+	- now < (timeStamp + 36720000) (contracts/safe/safe_278_SAFE.sol#209)
+	- now < (timeStamp + 20736000) (contracts/safe/safe_278_SAFE.sol#213)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_278_SAFE.sol analyzed (4 contracts with 2 detectors), 2 result(s) found

@@ -1,0 +1,587 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_144_SC09.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
+
+Detector: controlled-array-length
+TokenMinter (contracts/vulnerable/vuln_144_SC09.sol#1430-1682) contract sets array length with a user-controlled value:
+	- mintableLots.push(MintableLot(mintableSupply,_vaults[i],0)) (contracts/vulnerable/vuln_144_SC09.sol#1472)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#array-length-assignment
+
+Detector: shadowing-state
+MintableBridgeToken.name (contracts/vulnerable/vuln_144_SC09.sol#1344) shadows:
+	- BridgeToken.name (contracts/vulnerable/vuln_144_SC09.sol#1259)
+MintableBridgeToken.symbol (contracts/vulnerable/vuln_144_SC09.sol#1345) shadows:
+	- BridgeToken.symbol (contracts/vulnerable/vuln_144_SC09.sol#1260)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variable-shadowing
+
+Detector: incorrect-equality
+AuditableToken.updateAudit(address,address,uint256) (contracts/vulnerable/vuln_144_SC09.sol#678-696) uses a dangerous strict equality:
+	- senderAudit.createdAt == 0 (contracts/vulnerable/vuln_144_SC09.sol#685)
+AuditableToken.updateAudit(address,address,uint256) (contracts/vulnerable/vuln_144_SC09.sol#678-696) uses a dangerous strict equality:
+	- receiverAudit.createdAt == 0 (contracts/vulnerable/vuln_144_SC09.sol#693)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dangerous-strict-equalities
+
+Detector: reentrancy-no-eth
+Reentrancy in TokenMinter.mintRemainingLot(uint256) (contracts/vulnerable/vuln_144_SC09.sol#1621-1634):
+	External calls:
+	- require(bool,string)(token.mint(lot.vault,lot.mintableSupply),TM20) (contracts/vulnerable/vuln_144_SC09.sol#1628)
+	State variables written after the call(s):
+	- lot.mintableSupply = 0 (contracts/vulnerable/vuln_144_SC09.sol#1630)
+	TokenMinter.mintableLots (contracts/vulnerable/vuln_144_SC09.sol#1440) can be used in cross function reentrancies:
+	- TokenMinter.constructor(ISaleConfig,address,address[]) (contracts/vulnerable/vuln_144_SC09.sol#1454-1477)
+	- TokenMinter.finishMintingInternal(address) (contracts/vulnerable/vuln_144_SC09.sol#1602-1616)
+	- TokenMinter.isLotMinter(uint256,address) (contracts/vulnerable/vuln_144_SC09.sol#1503-1507)
+	- TokenMinter.lotActiveMinters(uint256) (contracts/vulnerable/vuln_144_SC09.sol#1512-1514)
+	- TokenMinter.lotMintableSupply(uint256) (contracts/vulnerable/vuln_144_SC09.sol#1489-1491)
+	- TokenMinter.lotVault(uint256) (contracts/vulnerable/vuln_144_SC09.sol#1496-1498)
+	- TokenMinter.mint(address,uint256) (contracts/vulnerable/vuln_144_SC09.sol#1567-1581)
+	- TokenMinter.mintAllRemaining() (contracts/vulnerable/vuln_144_SC09.sol#1641-1654)
+	- TokenMinter.mintRemainingLot(uint256) (contracts/vulnerable/vuln_144_SC09.sol#1621-1634)
+	- TokenMinter.setupMinter(address,uint256) (contracts/vulnerable/vuln_144_SC09.sol#1551-1562)
+Reentrancy in TokenMinter.setup(MintableBridgeToken,address[]) (contracts/vulnerable/vuln_144_SC09.sol#1526-1546):
+	External calls:
+	- require(bool,string)(_token.owner() == address(this),TM08) (contracts/vulnerable/vuln_144_SC09.sol#1533)
+	State variables written after the call(s):
+	- token = _token (contracts/vulnerable/vuln_144_SC09.sol#1534)
+	TokenMinter.token (contracts/vulnerable/vuln_144_SC09.sol#1449) can be used in cross function reentrancies:
+	- TokenMinter.finishTokenMinting() (contracts/vulnerable/vuln_144_SC09.sol#1659-1667)
+	- TokenMinter.mint(address,uint256) (contracts/vulnerable/vuln_144_SC09.sol#1567-1581)
+	- TokenMinter.mintAllRemaining() (contracts/vulnerable/vuln_144_SC09.sol#1641-1654)
+	- TokenMinter.mintRemainingLot(uint256) (contracts/vulnerable/vuln_144_SC09.sol#1621-1634)
+	- TokenMinter.mintingFinished() (contracts/vulnerable/vuln_144_SC09.sol#1519-1521)
+	- TokenMinter.setup(MintableBridgeToken,address[]) (contracts/vulnerable/vuln_144_SC09.sol#1526-1546)
+	- TokenMinter.token (contracts/vulnerable/vuln_144_SC09.sol#1449)
+Reentrancy in TokenWithClaims.transfer(address,uint256) (contracts/vulnerable/vuln_144_SC09.sol#985-995):
+	External calls:
+	- proofFrom = hasClaims(msg.sender) (contracts/vulnerable/vuln_144_SC09.sol#986)
+		- claimables[i].hasClaimsSince(_holder,lastTransaction) (contracts/vulnerable/vuln_144_SC09.sol#974)
+	- proofTo = hasClaims(_to) (contracts/vulnerable/vuln_144_SC09.sol#987)
+		- claimables[i].hasClaimsSince(_holder,lastTransaction) (contracts/vulnerable/vuln_144_SC09.sol#974)
+	State variables written after the call(s):
+	- super.transferWithProofs(_to,_value,proofFrom,proofTo) (contracts/vulnerable/vuln_144_SC09.sol#989-994)
+		- senderAudit.lastSentAt = currentTime() (contracts/vulnerable/vuln_144_SC09.sol#682)
+		- senderAudit.sentCount ++ (contracts/vulnerable/vuln_144_SC09.sol#683)
+		- senderAudit.totalSentAmount += _value (contracts/vulnerable/vuln_144_SC09.sol#684)
+		- senderAudit.createdAt = currentTime() (contracts/vulnerable/vuln_144_SC09.sol#686)
+		- receiverAudit.lastReceivedAt = currentTime() (contracts/vulnerable/vuln_144_SC09.sol#690)
+		- receiverAudit.receivedCount ++ (contracts/vulnerable/vuln_144_SC09.sol#691)
+		- receiverAudit.totalReceivedAmount += _value (contracts/vulnerable/vuln_144_SC09.sol#692)
+		- receiverAudit.createdAt = currentTime() (contracts/vulnerable/vuln_144_SC09.sol#694)
+	AuditableToken.audits (contracts/vulnerable/vuln_144_SC09.sol#574) can be used in cross function reentrancies:
+	- AuditableToken.auditCreatedAt(address) (contracts/vulnerable/vuln_144_SC09.sol#579-581)
+	- AuditableToken.lastReceivedAt(address) (contracts/vulnerable/vuln_144_SC09.sol#594-596)
+	- AuditableToken.lastSentAt(address) (contracts/vulnerable/vuln_144_SC09.sol#601-603)
+	- AuditableToken.lastTransactionAt(address) (contracts/vulnerable/vuln_144_SC09.sol#586-589)
+	- AuditableToken.receivedCount(address) (contracts/vulnerable/vuln_144_SC09.sol#615-617)
+	- AuditableToken.sentCount(address) (contracts/vulnerable/vuln_144_SC09.sol#622-624)
+	- AuditableToken.totalReceivedAmount(address) (contracts/vulnerable/vuln_144_SC09.sol#629-633)
+	- AuditableToken.totalSentAmount(address) (contracts/vulnerable/vuln_144_SC09.sol#638-640)
+	- AuditableToken.transactionCount(address) (contracts/vulnerable/vuln_144_SC09.sol#608-610)
+	- AuditableToken.updateAudit(address,address,uint256) (contracts/vulnerable/vuln_144_SC09.sol#678-696)
+Reentrancy in TokenWithClaims.transferFrom(address,address,uint256) (contracts/vulnerable/vuln_144_SC09.sol#1001-1014):
+	External calls:
+	- proofFrom = hasClaims(_from) (contracts/vulnerable/vuln_144_SC09.sol#1004)
+		- claimables[i].hasClaimsSince(_holder,lastTransaction) (contracts/vulnerable/vuln_144_SC09.sol#974)
+	- proofTo = hasClaims(_to) (contracts/vulnerable/vuln_144_SC09.sol#1005)
+		- claimables[i].hasClaimsSince(_holder,lastTransaction) (contracts/vulnerable/vuln_144_SC09.sol#974)
+	State variables written after the call(s):
+	- super.transferFromWithProofs(_from,_to,_value,proofFrom,proofTo) (contracts/vulnerable/vuln_144_SC09.sol#1007-1013)
+		- senderAudit.lastSentAt = currentTime() (contracts/vulnerable/vuln_144_SC09.sol#682)
+		- senderAudit.sentCount ++ (contracts/vulnerable/vuln_144_SC09.sol#683)
+		- senderAudit.totalSentAmount += _value (contracts/vulnerable/vuln_144_SC09.sol#684)
+		- senderAudit.createdAt = currentTime() (contracts/vulnerable/vuln_144_SC09.sol#686)
+		- receiverAudit.lastReceivedAt = currentTime() (contracts/vulnerable/vuln_144_SC09.sol#690)
+		- receiverAudit.receivedCount ++ (contracts/vulnerable/vuln_144_SC09.sol#691)
+		- receiverAudit.totalReceivedAmount += _value (contracts/vulnerable/vuln_144_SC09.sol#692)
+		- receiverAudit.createdAt = currentTime() (contracts/vulnerable/vuln_144_SC09.sol#694)
+	AuditableToken.audits (contracts/vulnerable/vuln_144_SC09.sol#574) can be used in cross function reentrancies:
+	- AuditableToken.auditCreatedAt(address) (contracts/vulnerable/vuln_144_SC09.sol#579-581)
+	- AuditableToken.lastReceivedAt(address) (contracts/vulnerable/vuln_144_SC09.sol#594-596)
+	- AuditableToken.lastSentAt(address) (contracts/vulnerable/vuln_144_SC09.sol#601-603)
+	- AuditableToken.lastTransactionAt(address) (contracts/vulnerable/vuln_144_SC09.sol#586-589)
+	- AuditableToken.receivedCount(address) (contracts/vulnerable/vuln_144_SC09.sol#615-617)
+	- AuditableToken.sentCount(address) (contracts/vulnerable/vuln_144_SC09.sol#622-624)
+	- AuditableToken.totalReceivedAmount(address) (contracts/vulnerable/vuln_144_SC09.sol#629-633)
+	- AuditableToken.totalSentAmount(address) (contracts/vulnerable/vuln_144_SC09.sol#638-640)
+	- AuditableToken.transactionCount(address) (contracts/vulnerable/vuln_144_SC09.sol#608-610)
+	- AuditableToken.updateAudit(address,address,uint256) (contracts/vulnerable/vuln_144_SC09.sol#678-696)
+Reentrancy in TokenWithClaims.transferFromWithProofs(address,address,uint256,bool,bool) (contracts/vulnerable/vuln_144_SC09.sol#1040-1058):
+	External calls:
+	- proofFrom = _proofFrom || hasClaims(_from) (contracts/vulnerable/vuln_144_SC09.sol#1048)
+		- claimables[i].hasClaimsSince(_holder,lastTransaction) (contracts/vulnerable/vuln_144_SC09.sol#974)
+	- proofTo = _proofTo || hasClaims(_to) (contracts/vulnerable/vuln_144_SC09.sol#1049)
+		- claimables[i].hasClaimsSince(_holder,lastTransaction) (contracts/vulnerable/vuln_144_SC09.sol#974)
+	State variables written after the call(s):
+	- super.transferFromWithProofs(_from,_to,_value,proofFrom,proofTo) (contracts/vulnerable/vuln_144_SC09.sol#1051-1057)
+		- senderAudit.lastSentAt = currentTime() (contracts/vulnerable/vuln_144_SC09.sol#682)
+		- senderAudit.sentCount ++ (contracts/vulnerable/vuln_144_SC09.sol#683)
+		- senderAudit.totalSentAmount += _value (contracts/vulnerable/vuln_144_SC09.sol#684)
+		- senderAudit.createdAt = currentTime() (contracts/vulnerable/vuln_144_SC09.sol#686)
+		- receiverAudit.lastReceivedAt = currentTime() (contracts/vulnerable/vuln_144_SC09.sol#690)
+		- receiverAudit.receivedCount ++ (contracts/vulnerable/vuln_144_SC09.sol#691)
+		- receiverAudit.totalReceivedAmount += _value (contracts/vulnerable/vuln_144_SC09.sol#692)
+		- receiverAudit.createdAt = currentTime() (contracts/vulnerable/vuln_144_SC09.sol#694)
+	AuditableToken.audits (contracts/vulnerable/vuln_144_SC09.sol#574) can be used in cross function reentrancies:
+	- AuditableToken.auditCreatedAt(address) (contracts/vulnerable/vuln_144_SC09.sol#579-581)
+	- AuditableToken.lastReceivedAt(address) (contracts/vulnerable/vuln_144_SC09.sol#594-596)
+	- AuditableToken.lastSentAt(address) (contracts/vulnerable/vuln_144_SC09.sol#601-603)
+	- AuditableToken.lastTransactionAt(address) (contracts/vulnerable/vuln_144_SC09.sol#586-589)
+	- AuditableToken.receivedCount(address) (contracts/vulnerable/vuln_144_SC09.sol#615-617)
+	- AuditableToken.sentCount(address) (contracts/vulnerable/vuln_144_SC09.sol#622-624)
+	- AuditableToken.totalReceivedAmount(address) (contracts/vulnerable/vuln_144_SC09.sol#629-633)
+	- AuditableToken.totalSentAmount(address) (contracts/vulnerable/vuln_144_SC09.sol#638-640)
+	- AuditableToken.transactionCount(address) (contracts/vulnerable/vuln_144_SC09.sol#608-610)
+	- AuditableToken.updateAudit(address,address,uint256) (contracts/vulnerable/vuln_144_SC09.sol#678-696)
+Reentrancy in TokenWithClaims.transferWithProofs(address,uint256,bool,bool) (contracts/vulnerable/vuln_144_SC09.sol#1019-1035):
+	External calls:
+	- proofFrom = _proofFrom || hasClaims(msg.sender) (contracts/vulnerable/vuln_144_SC09.sol#1026)
+		- claimables[i].hasClaimsSince(_holder,lastTransaction) (contracts/vulnerable/vuln_144_SC09.sol#974)
+	- proofTo = _proofTo || hasClaims(_to) (contracts/vulnerable/vuln_144_SC09.sol#1027)
+		- claimables[i].hasClaimsSince(_holder,lastTransaction) (contracts/vulnerable/vuln_144_SC09.sol#974)
+	State variables written after the call(s):
+	- super.transferWithProofs(_to,_value,proofFrom,proofTo) (contracts/vulnerable/vuln_144_SC09.sol#1029-1034)
+		- senderAudit.lastSentAt = currentTime() (contracts/vulnerable/vuln_144_SC09.sol#682)
+		- senderAudit.sentCount ++ (contracts/vulnerable/vuln_144_SC09.sol#683)
+		- senderAudit.totalSentAmount += _value (contracts/vulnerable/vuln_144_SC09.sol#684)
+		- senderAudit.createdAt = currentTime() (contracts/vulnerable/vuln_144_SC09.sol#686)
+		- receiverAudit.lastReceivedAt = currentTime() (contracts/vulnerable/vuln_144_SC09.sol#690)
+		- receiverAudit.receivedCount ++ (contracts/vulnerable/vuln_144_SC09.sol#691)
+		- receiverAudit.totalReceivedAmount += _value (contracts/vulnerable/vuln_144_SC09.sol#692)
+		- receiverAudit.createdAt = currentTime() (contracts/vulnerable/vuln_144_SC09.sol#694)
+	AuditableToken.audits (contracts/vulnerable/vuln_144_SC09.sol#574) can be used in cross function reentrancies:
+	- AuditableToken.auditCreatedAt(address) (contracts/vulnerable/vuln_144_SC09.sol#579-581)
+	- AuditableToken.lastReceivedAt(address) (contracts/vulnerable/vuln_144_SC09.sol#594-596)
+	- AuditableToken.lastSentAt(address) (contracts/vulnerable/vuln_144_SC09.sol#601-603)
+	- AuditableToken.lastTransactionAt(address) (contracts/vulnerable/vuln_144_SC09.sol#586-589)
+	- AuditableToken.receivedCount(address) (contracts/vulnerable/vuln_144_SC09.sol#615-617)
+	- AuditableToken.sentCount(address) (contracts/vulnerable/vuln_144_SC09.sol#622-624)
+	- AuditableToken.totalReceivedAmount(address) (contracts/vulnerable/vuln_144_SC09.sol#629-633)
+	- AuditableToken.totalSentAmount(address) (contracts/vulnerable/vuln_144_SC09.sol#638-640)
+	- AuditableToken.transactionCount(address) (contracts/vulnerable/vuln_144_SC09.sol#608-610)
+	- AuditableToken.updateAudit(address,address,uint256) (contracts/vulnerable/vuln_144_SC09.sol#678-696)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-2
+
+Detector: missing-zero-check
+Authority.defineAuthority(string,address)._address (contracts/vulnerable/vuln_144_SC09.sol#289) lacks a zero-check on :
+		- authority = _address (contracts/vulnerable/vuln_144_SC09.sol#291)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+
+Detector: calls-loop
+TokenWithClaims.hasClaims(address) (contracts/vulnerable/vuln_144_SC09.sol#971-979) has external calls inside a loop: claimables[i].hasClaimsSince(_holder,lastTransaction) (contracts/vulnerable/vuln_144_SC09.sol#974)
+TokenWithClaims.hasClaims(address) (contracts/vulnerable/vuln_144_SC09.sol#971-979) has external calls inside a loop: claimables[i].hasClaimsSince(_holder,lastTransaction) (contracts/vulnerable/vuln_144_SC09.sol#974)
+	Calls stack containing the loop:
+		TokenWithClaims.transfer(address,uint256)
+TokenWithClaims.hasClaims(address) (contracts/vulnerable/vuln_144_SC09.sol#971-979) has external calls inside a loop: claimables[i].hasClaimsSince(_holder,lastTransaction) (contracts/vulnerable/vuln_144_SC09.sol#974)
+	Calls stack containing the loop:
+		TokenWithClaims.transferFrom(address,address,uint256)
+TokenWithClaims.hasClaims(address) (contracts/vulnerable/vuln_144_SC09.sol#971-979) has external calls inside a loop: claimables[i].hasClaimsSince(_holder,lastTransaction) (contracts/vulnerable/vuln_144_SC09.sol#974)
+	Calls stack containing the loop:
+		TokenWithClaims.transferWithProofs(address,uint256,bool,bool)
+TokenWithClaims.hasClaims(address) (contracts/vulnerable/vuln_144_SC09.sol#971-979) has external calls inside a loop: claimables[i].hasClaimsSince(_holder,lastTransaction) (contracts/vulnerable/vuln_144_SC09.sol#974)
+	Calls stack containing the loop:
+		TokenWithClaims.transferFromWithProofs(address,address,uint256,bool,bool)
+WithRules.validateAddress(address) (contracts/vulnerable/vuln_144_SC09.sol#1151-1158) has external calls inside a loop: ! rules[i].isAddressValid(_address) (contracts/vulnerable/vuln_144_SC09.sol#1153)
+WithRules.validateTransfer(address,address,uint256) (contracts/vulnerable/vuln_144_SC09.sol#1163-1172) has external calls inside a loop: ! rules[i].isTransferValid(_from,_to,_amount) (contracts/vulnerable/vuln_144_SC09.sol#1167)
+TokenMinter.setupMinter(address,uint256) (contracts/vulnerable/vuln_144_SC09.sol#1551-1562) has external calls inside a loop: lotId = config.lotId(_tokensaleId) (contracts/vulnerable/vuln_144_SC09.sol#1554)
+	Calls stack containing the loop:
+		TokenMinter.setup(MintableBridgeToken,address[])
+TokenMinter.mintRemainingLot(uint256) (contracts/vulnerable/vuln_144_SC09.sol#1621-1634) has external calls inside a loop: require(bool,string)(token.mint(lot.vault,lot.mintableSupply),TM20) (contracts/vulnerable/vuln_144_SC09.sol#1628)
+	Calls stack containing the loop:
+		TokenMinter.mintAllRemaining()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation/#calls-inside-a-loop
+
+Detector: reentrancy-benign
+Reentrancy in TokenMinter.mintRemainingLot(uint256) (contracts/vulnerable/vuln_144_SC09.sol#1621-1634):
+	External calls:
+	- require(bool,string)(token.mint(lot.vault,lot.mintableSupply),TM20) (contracts/vulnerable/vuln_144_SC09.sol#1628)
+	State variables written after the call(s):
+	- finishLotMintingPrivate(_lotId) (contracts/vulnerable/vuln_144_SC09.sol#1632)
+		- activeLots -- (contracts/vulnerable/vuln_144_SC09.sol#1673)
+	- totalMintableSupply = totalMintableSupply.sub(lot.mintableSupply) (contracts/vulnerable/vuln_144_SC09.sol#1629)
+Reentrancy in TokenMinter.setup(MintableBridgeToken,address[]) (contracts/vulnerable/vuln_144_SC09.sol#1526-1546):
+	External calls:
+	- require(bool,string)(_token.owner() == address(this),TM08) (contracts/vulnerable/vuln_144_SC09.sol#1533)
+	- require(bool,string)(token.totalSupply() == 0,TM09) (contracts/vulnerable/vuln_144_SC09.sol#1537)
+	- require(bool,string)(! token.mintingFinished(),TM10) (contracts/vulnerable/vuln_144_SC09.sol#1538)
+	- require(bool,string)(_minters.length == config.tokensalesCount(),TM11) (contracts/vulnerable/vuln_144_SC09.sol#1540)
+	- setupMinter(_minters[i],i) (contracts/vulnerable/vuln_144_SC09.sol#1543)
+		- lotId = config.lotId(_tokensaleId) (contracts/vulnerable/vuln_144_SC09.sol#1554)
+	State variables written after the call(s):
+	- setupMinter(_minters[i],i) (contracts/vulnerable/vuln_144_SC09.sol#1543)
+		- minterLotIds[_minter] = lotId (contracts/vulnerable/vuln_144_SC09.sol#1560)
+Reentrancy in TokenMinter.setupMinter(address,uint256) (contracts/vulnerable/vuln_144_SC09.sol#1551-1562):
+	External calls:
+	- lotId = config.lotId(_tokensaleId) (contracts/vulnerable/vuln_144_SC09.sol#1554)
+	State variables written after the call(s):
+	- lot.minters[_minter] = true (contracts/vulnerable/vuln_144_SC09.sol#1558)
+	- lot.activeMinters ++ (contracts/vulnerable/vuln_144_SC09.sol#1559)
+	- minterLotIds[_minter] = lotId (contracts/vulnerable/vuln_144_SC09.sol#1560)
+Reentrancy in TokenWithClaims.transfer(address,uint256) (contracts/vulnerable/vuln_144_SC09.sol#985-995):
+	External calls:
+	- proofFrom = hasClaims(msg.sender) (contracts/vulnerable/vuln_144_SC09.sol#986)
+		- claimables[i].hasClaimsSince(_holder,lastTransaction) (contracts/vulnerable/vuln_144_SC09.sol#974)
+	- proofTo = hasClaims(_to) (contracts/vulnerable/vuln_144_SC09.sol#987)
+		- claimables[i].hasClaimsSince(_holder,lastTransaction) (contracts/vulnerable/vuln_144_SC09.sol#974)
+	State variables written after the call(s):
+	- super.transferWithProofs(_to,_value,proofFrom,proofTo) (contracts/vulnerable/vuln_144_SC09.sol#989-994)
+		- balances[msg.sender] = balances[msg.sender].sub(_value) (contracts/vulnerable/vuln_144_SC09.sol#217)
+		- balances[_to] = balances[_to].add(_value) (contracts/vulnerable/vuln_144_SC09.sol#218)
+	- super.transferWithProofs(_to,_value,proofFrom,proofTo) (contracts/vulnerable/vuln_144_SC09.sol#989-994)
+		- proofLengths[_holder] = proofId + 1 (contracts/vulnerable/vuln_144_SC09.sol#869)
+	- super.transferWithProofs(_to,_value,proofFrom,proofTo) (contracts/vulnerable/vuln_144_SC09.sol#989-994)
+		- proofs[_holder][proofId] = Proof(_amount,_from,currentTime()) (contracts/vulnerable/vuln_144_SC09.sol#868)
+Reentrancy in TokenWithRules.transfer(address,uint256) (contracts/vulnerable/vuln_144_SC09.sol#1229-1234):
+	External calls:
+	- whenTransferRulesAreValid(msg.sender,_to,_value) (contracts/vulnerable/vuln_144_SC09.sol#1230)
+		- ! rules[i].isTransferValid(_from,_to,_amount) (contracts/vulnerable/vuln_144_SC09.sol#1167)
+	State variables written after the call(s):
+	- super.transfer(_to,_value) (contracts/vulnerable/vuln_144_SC09.sol#1233)
+		- balances[msg.sender] = balances[msg.sender].sub(_value) (contracts/vulnerable/vuln_144_SC09.sol#217)
+		- balances[_to] = balances[_to].add(_value) (contracts/vulnerable/vuln_144_SC09.sol#218)
+Reentrancy in TokenWithClaims.transferFrom(address,address,uint256) (contracts/vulnerable/vuln_144_SC09.sol#1001-1014):
+	External calls:
+	- proofFrom = hasClaims(_from) (contracts/vulnerable/vuln_144_SC09.sol#1004)
+		- claimables[i].hasClaimsSince(_holder,lastTransaction) (contracts/vulnerable/vuln_144_SC09.sol#974)
+	- proofTo = hasClaims(_to) (contracts/vulnerable/vuln_144_SC09.sol#1005)
+		- claimables[i].hasClaimsSince(_holder,lastTransaction) (contracts/vulnerable/vuln_144_SC09.sol#974)
+	State variables written after the call(s):
+	- super.transferFromWithProofs(_from,_to,_value,proofFrom,proofTo) (contracts/vulnerable/vuln_144_SC09.sol#1007-1013)
+		- allowed[_from][msg.sender] = allowed[_from][msg.sender].sub(_value) (contracts/vulnerable/vuln_144_SC09.sol#392)
+	- super.transferFromWithProofs(_from,_to,_value,proofFrom,proofTo) (contracts/vulnerable/vuln_144_SC09.sol#1007-1013)
+		- balances[_from] = balances[_from].sub(_value) (contracts/vulnerable/vuln_144_SC09.sol#390)
+		- balances[_to] = balances[_to].add(_value) (contracts/vulnerable/vuln_144_SC09.sol#391)
+	- super.transferFromWithProofs(_from,_to,_value,proofFrom,proofTo) (contracts/vulnerable/vuln_144_SC09.sol#1007-1013)
+		- proofLengths[_holder] = proofId + 1 (contracts/vulnerable/vuln_144_SC09.sol#869)
+	- super.transferFromWithProofs(_from,_to,_value,proofFrom,proofTo) (contracts/vulnerable/vuln_144_SC09.sol#1007-1013)
+		- proofs[_holder][proofId] = Proof(_amount,_from,currentTime()) (contracts/vulnerable/vuln_144_SC09.sol#868)
+Reentrancy in TokenWithRules.transferFrom(address,address,uint256) (contracts/vulnerable/vuln_144_SC09.sol#1239-1245):
+	External calls:
+	- whenTransferRulesAreValid(_from,_to,_value) (contracts/vulnerable/vuln_144_SC09.sol#1240)
+		- ! rules[i].isTransferValid(_from,_to,_amount) (contracts/vulnerable/vuln_144_SC09.sol#1167)
+	- whenAddressRulesAreValid(msg.sender) (contracts/vulnerable/vuln_144_SC09.sol#1241)
+		- ! rules[i].isAddressValid(_address) (contracts/vulnerable/vuln_144_SC09.sol#1153)
+	State variables written after the call(s):
+	- super.transferFrom(_from,_to,_value) (contracts/vulnerable/vuln_144_SC09.sol#1244)
+		- allowed[_from][msg.sender] = allowed[_from][msg.sender].sub(_value) (contracts/vulnerable/vuln_144_SC09.sol#392)
+	- super.transferFrom(_from,_to,_value) (contracts/vulnerable/vuln_144_SC09.sol#1244)
+		- balances[_from] = balances[_from].sub(_value) (contracts/vulnerable/vuln_144_SC09.sol#390)
+		- balances[_to] = balances[_to].add(_value) (contracts/vulnerable/vuln_144_SC09.sol#391)
+Reentrancy in TokenWithClaims.transferFromWithProofs(address,address,uint256,bool,bool) (contracts/vulnerable/vuln_144_SC09.sol#1040-1058):
+	External calls:
+	- proofFrom = _proofFrom || hasClaims(_from) (contracts/vulnerable/vuln_144_SC09.sol#1048)
+		- claimables[i].hasClaimsSince(_holder,lastTransaction) (contracts/vulnerable/vuln_144_SC09.sol#974)
+	- proofTo = _proofTo || hasClaims(_to) (contracts/vulnerable/vuln_144_SC09.sol#1049)
+		- claimables[i].hasClaimsSince(_holder,lastTransaction) (contracts/vulnerable/vuln_144_SC09.sol#974)
+	State variables written after the call(s):
+	- super.transferFromWithProofs(_from,_to,_value,proofFrom,proofTo) (contracts/vulnerable/vuln_144_SC09.sol#1051-1057)
+		- allowed[_from][msg.sender] = allowed[_from][msg.sender].sub(_value) (contracts/vulnerable/vuln_144_SC09.sol#392)
+	- super.transferFromWithProofs(_from,_to,_value,proofFrom,proofTo) (contracts/vulnerable/vuln_144_SC09.sol#1051-1057)
+		- balances[_from] = balances[_from].sub(_value) (contracts/vulnerable/vuln_144_SC09.sol#390)
+		- balances[_to] = balances[_to].add(_value) (contracts/vulnerable/vuln_144_SC09.sol#391)
+	- super.transferFromWithProofs(_from,_to,_value,proofFrom,proofTo) (contracts/vulnerable/vuln_144_SC09.sol#1051-1057)
+		- proofLengths[_holder] = proofId + 1 (contracts/vulnerable/vuln_144_SC09.sol#869)
+	- super.transferFromWithProofs(_from,_to,_value,proofFrom,proofTo) (contracts/vulnerable/vuln_144_SC09.sol#1051-1057)
+		- proofs[_holder][proofId] = Proof(_amount,_from,currentTime()) (contracts/vulnerable/vuln_144_SC09.sol#868)
+Reentrancy in TokenWithClaims.transferWithProofs(address,uint256,bool,bool) (contracts/vulnerable/vuln_144_SC09.sol#1019-1035):
+	External calls:
+	- proofFrom = _proofFrom || hasClaims(msg.sender) (contracts/vulnerable/vuln_144_SC09.sol#1026)
+		- claimables[i].hasClaimsSince(_holder,lastTransaction) (contracts/vulnerable/vuln_144_SC09.sol#974)
+	- proofTo = _proofTo || hasClaims(_to) (contracts/vulnerable/vuln_144_SC09.sol#1027)
+		- claimables[i].hasClaimsSince(_holder,lastTransaction) (contracts/vulnerable/vuln_144_SC09.sol#974)
+	State variables written after the call(s):
+	- super.transferWithProofs(_to,_value,proofFrom,proofTo) (contracts/vulnerable/vuln_144_SC09.sol#1029-1034)
+		- balances[msg.sender] = balances[msg.sender].sub(_value) (contracts/vulnerable/vuln_144_SC09.sol#217)
+		- balances[_to] = balances[_to].add(_value) (contracts/vulnerable/vuln_144_SC09.sol#218)
+	- super.transferWithProofs(_to,_value,proofFrom,proofTo) (contracts/vulnerable/vuln_144_SC09.sol#1029-1034)
+		- proofLengths[_holder] = proofId + 1 (contracts/vulnerable/vuln_144_SC09.sol#869)
+	- super.transferWithProofs(_to,_value,proofFrom,proofTo) (contracts/vulnerable/vuln_144_SC09.sol#1029-1034)
+		- proofs[_holder][proofId] = Proof(_amount,_from,currentTime()) (contracts/vulnerable/vuln_144_SC09.sol#868)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+
+Detector: reentrancy-events
+Reentrancy in TokenMinter.finishTokenMinting() (contracts/vulnerable/vuln_144_SC09.sol#1659-1667):
+	External calls:
+	- require(bool,string)(! token.mintingFinished(),TM24) (contracts/vulnerable/vuln_144_SC09.sol#1661)
+	- require(bool,string)(token.finishMinting(),TM25) (contracts/vulnerable/vuln_144_SC09.sol#1662)
+	- require(bool,string)(token.mintingFinished(),TM26) (contracts/vulnerable/vuln_144_SC09.sol#1664)
+	- token.transferOwnership(finalTokenOwner) (contracts/vulnerable/vuln_144_SC09.sol#1665)
+	Event emitted after the call(s):
+	- TokenReleased() (contracts/vulnerable/vuln_144_SC09.sol#1666)
+Reentrancy in TokenMinter.mintAllRemaining() (contracts/vulnerable/vuln_144_SC09.sol#1641-1654):
+	External calls:
+	- require(bool,string)(! token.mintingFinished(),TM21) (contracts/vulnerable/vuln_144_SC09.sol#1642)
+	- mintRemainingLot(i) (contracts/vulnerable/vuln_144_SC09.sol#1649)
+		- require(bool,string)(token.mint(lot.vault,lot.mintableSupply),TM20) (contracts/vulnerable/vuln_144_SC09.sol#1628)
+	Event emitted after the call(s):
+	- LotMinted(_lotId) (contracts/vulnerable/vuln_144_SC09.sol#1674)
+		- mintRemainingLot(i) (contracts/vulnerable/vuln_144_SC09.sol#1649)
+Reentrancy in TokenMinter.mintRemainingLot(uint256) (contracts/vulnerable/vuln_144_SC09.sol#1621-1634):
+	External calls:
+	- require(bool,string)(token.mint(lot.vault,lot.mintableSupply),TM20) (contracts/vulnerable/vuln_144_SC09.sol#1628)
+	Event emitted after the call(s):
+	- LotMinted(_lotId) (contracts/vulnerable/vuln_144_SC09.sol#1674)
+		- finishLotMintingPrivate(_lotId) (contracts/vulnerable/vuln_144_SC09.sol#1632)
+Reentrancy in TokenMinter.setup(MintableBridgeToken,address[]) (contracts/vulnerable/vuln_144_SC09.sol#1526-1546):
+	External calls:
+	- require(bool,string)(_token.owner() == address(this),TM08) (contracts/vulnerable/vuln_144_SC09.sol#1533)
+	- require(bool,string)(token.totalSupply() == 0,TM09) (contracts/vulnerable/vuln_144_SC09.sol#1537)
+	- require(bool,string)(! token.mintingFinished(),TM10) (contracts/vulnerable/vuln_144_SC09.sol#1538)
+	- require(bool,string)(_minters.length == config.tokensalesCount(),TM11) (contracts/vulnerable/vuln_144_SC09.sol#1540)
+	- setupMinter(_minters[i],i) (contracts/vulnerable/vuln_144_SC09.sol#1543)
+		- lotId = config.lotId(_tokensaleId) (contracts/vulnerable/vuln_144_SC09.sol#1554)
+	Event emitted after the call(s):
+	- MinterAdded(lotId,_minter) (contracts/vulnerable/vuln_144_SC09.sol#1561)
+		- setupMinter(_minters[i],i) (contracts/vulnerable/vuln_144_SC09.sol#1543)
+Reentrancy in TokenMinter.setupMinter(address,uint256) (contracts/vulnerable/vuln_144_SC09.sol#1551-1562):
+	External calls:
+	- lotId = config.lotId(_tokensaleId) (contracts/vulnerable/vuln_144_SC09.sol#1554)
+	Event emitted after the call(s):
+	- MinterAdded(lotId,_minter) (contracts/vulnerable/vuln_144_SC09.sol#1561)
+Reentrancy in TokenWithClaims.transfer(address,uint256) (contracts/vulnerable/vuln_144_SC09.sol#985-995):
+	External calls:
+	- proofFrom = hasClaims(msg.sender) (contracts/vulnerable/vuln_144_SC09.sol#986)
+		- claimables[i].hasClaimsSince(_holder,lastTransaction) (contracts/vulnerable/vuln_144_SC09.sol#974)
+	- proofTo = hasClaims(_to) (contracts/vulnerable/vuln_144_SC09.sol#987)
+		- claimables[i].hasClaimsSince(_holder,lastTransaction) (contracts/vulnerable/vuln_144_SC09.sol#974)
+	Event emitted after the call(s):
+	- ProofOfOwnership(_holder,proofId) (contracts/vulnerable/vuln_144_SC09.sol#870)
+		- super.transferWithProofs(_to,_value,proofFrom,proofTo) (contracts/vulnerable/vuln_144_SC09.sol#989-994)
+	- Transfer(msg.sender,_to,_value) (contracts/vulnerable/vuln_144_SC09.sol#219)
+		- super.transferWithProofs(_to,_value,proofFrom,proofTo) (contracts/vulnerable/vuln_144_SC09.sol#989-994)
+Reentrancy in TokenWithRules.transfer(address,uint256) (contracts/vulnerable/vuln_144_SC09.sol#1229-1234):
+	External calls:
+	- whenTransferRulesAreValid(msg.sender,_to,_value) (contracts/vulnerable/vuln_144_SC09.sol#1230)
+		- ! rules[i].isTransferValid(_from,_to,_amount) (contracts/vulnerable/vuln_144_SC09.sol#1167)
+	Event emitted after the call(s):
+	- Transfer(msg.sender,_to,_value) (contracts/vulnerable/vuln_144_SC09.sol#219)
+		- super.transfer(_to,_value) (contracts/vulnerable/vuln_144_SC09.sol#1233)
+Reentrancy in TokenWithClaims.transferFrom(address,address,uint256) (contracts/vulnerable/vuln_144_SC09.sol#1001-1014):
+	External calls:
+	- proofFrom = hasClaims(_from) (contracts/vulnerable/vuln_144_SC09.sol#1004)
+		- claimables[i].hasClaimsSince(_holder,lastTransaction) (contracts/vulnerable/vuln_144_SC09.sol#974)
+	- proofTo = hasClaims(_to) (contracts/vulnerable/vuln_144_SC09.sol#1005)
+		- claimables[i].hasClaimsSince(_holder,lastTransaction) (contracts/vulnerable/vuln_144_SC09.sol#974)
+	Event emitted after the call(s):
+	- ProofOfOwnership(_holder,proofId) (contracts/vulnerable/vuln_144_SC09.sol#870)
+		- super.transferFromWithProofs(_from,_to,_value,proofFrom,proofTo) (contracts/vulnerable/vuln_144_SC09.sol#1007-1013)
+	- Transfer(_from,_to,_value) (contracts/vulnerable/vuln_144_SC09.sol#393)
+		- super.transferFromWithProofs(_from,_to,_value,proofFrom,proofTo) (contracts/vulnerable/vuln_144_SC09.sol#1007-1013)
+Reentrancy in TokenWithRules.transferFrom(address,address,uint256) (contracts/vulnerable/vuln_144_SC09.sol#1239-1245):
+	External calls:
+	- whenTransferRulesAreValid(_from,_to,_value) (contracts/vulnerable/vuln_144_SC09.sol#1240)
+		- ! rules[i].isTransferValid(_from,_to,_amount) (contracts/vulnerable/vuln_144_SC09.sol#1167)
+	- whenAddressRulesAreValid(msg.sender) (contracts/vulnerable/vuln_144_SC09.sol#1241)
+		- ! rules[i].isAddressValid(_address) (contracts/vulnerable/vuln_144_SC09.sol#1153)
+	Event emitted after the call(s):
+	- Transfer(_from,_to,_value) (contracts/vulnerable/vuln_144_SC09.sol#393)
+		- super.transferFrom(_from,_to,_value) (contracts/vulnerable/vuln_144_SC09.sol#1244)
+Reentrancy in TokenWithClaims.transferFromWithProofs(address,address,uint256,bool,bool) (contracts/vulnerable/vuln_144_SC09.sol#1040-1058):
+	External calls:
+	- proofFrom = _proofFrom || hasClaims(_from) (contracts/vulnerable/vuln_144_SC09.sol#1048)
+		- claimables[i].hasClaimsSince(_holder,lastTransaction) (contracts/vulnerable/vuln_144_SC09.sol#974)
+	- proofTo = _proofTo || hasClaims(_to) (contracts/vulnerable/vuln_144_SC09.sol#1049)
+		- claimables[i].hasClaimsSince(_holder,lastTransaction) (contracts/vulnerable/vuln_144_SC09.sol#974)
+	Event emitted after the call(s):
+	- ProofOfOwnership(_holder,proofId) (contracts/vulnerable/vuln_144_SC09.sol#870)
+		- super.transferFromWithProofs(_from,_to,_value,proofFrom,proofTo) (contracts/vulnerable/vuln_144_SC09.sol#1051-1057)
+	- Transfer(_from,_to,_value) (contracts/vulnerable/vuln_144_SC09.sol#393)
+		- super.transferFromWithProofs(_from,_to,_value,proofFrom,proofTo) (contracts/vulnerable/vuln_144_SC09.sol#1051-1057)
+Reentrancy in TokenWithClaims.transferWithProofs(address,uint256,bool,bool) (contracts/vulnerable/vuln_144_SC09.sol#1019-1035):
+	External calls:
+	- proofFrom = _proofFrom || hasClaims(msg.sender) (contracts/vulnerable/vuln_144_SC09.sol#1026)
+		- claimables[i].hasClaimsSince(_holder,lastTransaction) (contracts/vulnerable/vuln_144_SC09.sol#974)
+	- proofTo = _proofTo || hasClaims(_to) (contracts/vulnerable/vuln_144_SC09.sol#1027)
+		- claimables[i].hasClaimsSince(_holder,lastTransaction) (contracts/vulnerable/vuln_144_SC09.sol#974)
+	Event emitted after the call(s):
+	- ProofOfOwnership(_holder,proofId) (contracts/vulnerable/vuln_144_SC09.sol#870)
+		- super.transferWithProofs(_to,_value,proofFrom,proofTo) (contracts/vulnerable/vuln_144_SC09.sol#1029-1034)
+	- Transfer(msg.sender,_to,_value) (contracts/vulnerable/vuln_144_SC09.sol#219)
+		- super.transferWithProofs(_to,_value,proofFrom,proofTo) (contracts/vulnerable/vuln_144_SC09.sol#1029-1034)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-4
+
+Detector: timestamp
+AuditableToken.lastTransactionAt(address) (contracts/vulnerable/vuln_144_SC09.sol#586-589) uses timestamp for comparisons
+	Dangerous comparisons:
+	- (audits[_address].lastReceivedAt > audits[_address].lastSentAt) (contracts/vulnerable/vuln_144_SC09.sol#587-588)
+AuditableToken.updateAudit(address,address,uint256) (contracts/vulnerable/vuln_144_SC09.sol#678-696) uses timestamp for comparisons
+	Dangerous comparisons:
+	- senderAudit.createdAt == 0 (contracts/vulnerable/vuln_144_SC09.sol#685)
+	- receiverAudit.createdAt == 0 (contracts/vulnerable/vuln_144_SC09.sol#693)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+
+Detector: costly-loop
+TokenMinter.constructor(ISaleConfig,address,address[]) (contracts/vulnerable/vuln_144_SC09.sol#1454-1477) has costly operations inside a loop:
+	- totalMintableSupply = totalMintableSupply.add(mintableSupply) (contracts/vulnerable/vuln_144_SC09.sol#1473)
+TokenMinter.constructor(ISaleConfig,address,address[]) (contracts/vulnerable/vuln_144_SC09.sol#1454-1477) has costly operations inside a loop:
+	- activeLots ++ (contracts/vulnerable/vuln_144_SC09.sol#1474)
+TokenMinter.mintRemainingLot(uint256) (contracts/vulnerable/vuln_144_SC09.sol#1621-1634) has costly operations inside a loop:
+	- totalMintableSupply = totalMintableSupply.sub(lot.mintableSupply) (contracts/vulnerable/vuln_144_SC09.sol#1629)
+	Calls stack containing the loop:
+		TokenMinter.mintAllRemaining()
+TokenMinter.finishLotMintingPrivate(uint256) (contracts/vulnerable/vuln_144_SC09.sol#1672-1675) has costly operations inside a loop:
+	- activeLots -- (contracts/vulnerable/vuln_144_SC09.sol#1673)
+	Calls stack containing the loop:
+		TokenMinter.mintAllRemaining()
+		TokenMinter.mintRemainingLot(uint256)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#costly-operations-inside-a-loop
+
+Detector: solc-version
+Version constraint ^0.4.24 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ABIEncoderV2PackedStorage_0.4.x
+	- ExpExponentCleanup
+	- EventStructWrongData.
+It is used by:
+	- ^0.4.24 (contracts/vulnerable/vuln_144_SC09.sol#25)
+solc-0.4.24 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Parameter Ownable.transferOwnership(address)._newOwner (contracts/vulnerable/vuln_144_SC09.sol#73) is not in mixedCase
+Parameter BasicToken.transfer(address,uint256)._to (contracts/vulnerable/vuln_144_SC09.sol#213) is not in mixedCase
+Parameter BasicToken.transfer(address,uint256)._value (contracts/vulnerable/vuln_144_SC09.sol#213) is not in mixedCase
+Parameter BasicToken.balanceOf(address)._owner (contracts/vulnerable/vuln_144_SC09.sol#228) is not in mixedCase
+Parameter Authority.defineAuthority(string,address)._name (contracts/vulnerable/vuln_144_SC09.sol#289) is not in mixedCase
+Parameter Authority.defineAuthority(string,address)._address (contracts/vulnerable/vuln_144_SC09.sol#289) is not in mixedCase
+Parameter SeizableToken.seize(address,uint256)._account (contracts/vulnerable/vuln_144_SC09.sol#324) is not in mixedCase
+Parameter SeizableToken.seize(address,uint256)._value (contracts/vulnerable/vuln_144_SC09.sol#324) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._from (contracts/vulnerable/vuln_144_SC09.sol#379) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._to (contracts/vulnerable/vuln_144_SC09.sol#380) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._value (contracts/vulnerable/vuln_144_SC09.sol#381) is not in mixedCase
+Parameter StandardToken.approve(address,uint256)._spender (contracts/vulnerable/vuln_144_SC09.sol#407) is not in mixedCase
+Parameter StandardToken.approve(address,uint256)._value (contracts/vulnerable/vuln_144_SC09.sol#407) is not in mixedCase
+Parameter StandardToken.allowance(address,address)._owner (contracts/vulnerable/vuln_144_SC09.sol#420) is not in mixedCase
+Parameter StandardToken.allowance(address,address)._spender (contracts/vulnerable/vuln_144_SC09.sol#421) is not in mixedCase
+Parameter StandardToken.increaseApproval(address,uint256)._spender (contracts/vulnerable/vuln_144_SC09.sol#441) is not in mixedCase
+Parameter StandardToken.increaseApproval(address,uint256)._addedValue (contracts/vulnerable/vuln_144_SC09.sol#442) is not in mixedCase
+Parameter StandardToken.decreaseApproval(address,uint256)._spender (contracts/vulnerable/vuln_144_SC09.sol#464) is not in mixedCase
+Parameter StandardToken.decreaseApproval(address,uint256)._subtractedValue (contracts/vulnerable/vuln_144_SC09.sol#465) is not in mixedCase
+Parameter AuditableToken.auditCreatedAt(address)._address (contracts/vulnerable/vuln_144_SC09.sol#579) is not in mixedCase
+Parameter AuditableToken.lastTransactionAt(address)._address (contracts/vulnerable/vuln_144_SC09.sol#586) is not in mixedCase
+Parameter AuditableToken.lastReceivedAt(address)._address (contracts/vulnerable/vuln_144_SC09.sol#594) is not in mixedCase
+Parameter AuditableToken.lastSentAt(address)._address (contracts/vulnerable/vuln_144_SC09.sol#601) is not in mixedCase
+Parameter AuditableToken.transactionCount(address)._address (contracts/vulnerable/vuln_144_SC09.sol#608) is not in mixedCase
+Parameter AuditableToken.receivedCount(address)._address (contracts/vulnerable/vuln_144_SC09.sol#615) is not in mixedCase
+Parameter AuditableToken.sentCount(address)._address (contracts/vulnerable/vuln_144_SC09.sol#622) is not in mixedCase
+Parameter AuditableToken.totalReceivedAmount(address)._address (contracts/vulnerable/vuln_144_SC09.sol#629) is not in mixedCase
+Parameter AuditableToken.totalSentAmount(address)._address (contracts/vulnerable/vuln_144_SC09.sol#638) is not in mixedCase
+Parameter AuditableToken.transfer(address,uint256)._to (contracts/vulnerable/vuln_144_SC09.sol#645) is not in mixedCase
+Parameter AuditableToken.transfer(address,uint256)._value (contracts/vulnerable/vuln_144_SC09.sol#645) is not in mixedCase
+Parameter AuditableToken.transferFrom(address,address,uint256)._from (contracts/vulnerable/vuln_144_SC09.sol#656) is not in mixedCase
+Parameter AuditableToken.transferFrom(address,address,uint256)._to (contracts/vulnerable/vuln_144_SC09.sol#656) is not in mixedCase
+Parameter AuditableToken.transferFrom(address,address,uint256)._value (contracts/vulnerable/vuln_144_SC09.sol#656) is not in mixedCase
+Parameter AuditableToken.updateAudit(address,address,uint256)._sender (contracts/vulnerable/vuln_144_SC09.sol#678) is not in mixedCase
+Parameter AuditableToken.updateAudit(address,address,uint256)._receiver (contracts/vulnerable/vuln_144_SC09.sol#678) is not in mixedCase
+Parameter AuditableToken.updateAudit(address,address,uint256)._value (contracts/vulnerable/vuln_144_SC09.sol#678) is not in mixedCase
+Parameter ProvableOwnershipToken.proofLength(address)._holder (contracts/vulnerable/vuln_144_SC09.sol#728) is not in mixedCase
+Parameter ProvableOwnershipToken.proofAmount(address,uint256)._holder (contracts/vulnerable/vuln_144_SC09.sol#735) is not in mixedCase
+Parameter ProvableOwnershipToken.proofAmount(address,uint256)._proofId (contracts/vulnerable/vuln_144_SC09.sol#735) is not in mixedCase
+Parameter ProvableOwnershipToken.proofDateFrom(address,uint256)._holder (contracts/vulnerable/vuln_144_SC09.sol#744) is not in mixedCase
+Parameter ProvableOwnershipToken.proofDateFrom(address,uint256)._proofId (contracts/vulnerable/vuln_144_SC09.sol#744) is not in mixedCase
+Parameter ProvableOwnershipToken.proofDateTo(address,uint256)._holder (contracts/vulnerable/vuln_144_SC09.sol#753) is not in mixedCase
+Parameter ProvableOwnershipToken.proofDateTo(address,uint256)._proofId (contracts/vulnerable/vuln_144_SC09.sol#753) is not in mixedCase
+Parameter ProvableOwnershipToken.checkProof(address,uint256,uint256)._holder (contracts/vulnerable/vuln_144_SC09.sol#763) is not in mixedCase
+Parameter ProvableOwnershipToken.checkProof(address,uint256,uint256)._proofId (contracts/vulnerable/vuln_144_SC09.sol#763) is not in mixedCase
+Parameter ProvableOwnershipToken.checkProof(address,uint256,uint256)._at (contracts/vulnerable/vuln_144_SC09.sol#763) is not in mixedCase
+Parameter ProvableOwnershipToken.createProof(address)._holder (contracts/vulnerable/vuln_144_SC09.sol#779) is not in mixedCase
+Parameter ProvableOwnershipToken.transferWithProofs(address,uint256,bool,bool)._to (contracts/vulnerable/vuln_144_SC09.sol#793) is not in mixedCase
+Parameter ProvableOwnershipToken.transferWithProofs(address,uint256,bool,bool)._value (contracts/vulnerable/vuln_144_SC09.sol#794) is not in mixedCase
+Parameter ProvableOwnershipToken.transferWithProofs(address,uint256,bool,bool)._proofSender (contracts/vulnerable/vuln_144_SC09.sol#795) is not in mixedCase
+Parameter ProvableOwnershipToken.transferWithProofs(address,uint256,bool,bool)._proofReceiver (contracts/vulnerable/vuln_144_SC09.sol#796) is not in mixedCase
+Parameter ProvableOwnershipToken.transferFromWithProofs(address,address,uint256,bool,bool)._from (contracts/vulnerable/vuln_144_SC09.sol#829) is not in mixedCase
+Parameter ProvableOwnershipToken.transferFromWithProofs(address,address,uint256,bool,bool)._to (contracts/vulnerable/vuln_144_SC09.sol#830) is not in mixedCase
+Parameter ProvableOwnershipToken.transferFromWithProofs(address,address,uint256,bool,bool)._value (contracts/vulnerable/vuln_144_SC09.sol#831) is not in mixedCase
+Parameter ProvableOwnershipToken.transferFromWithProofs(address,address,uint256,bool,bool)._proofSender (contracts/vulnerable/vuln_144_SC09.sol#832) is not in mixedCase
+Parameter ProvableOwnershipToken.transferFromWithProofs(address,address,uint256,bool,bool)._proofReceiver (contracts/vulnerable/vuln_144_SC09.sol#832) is not in mixedCase
+Parameter ProvableOwnershipToken.createProofInternal(address,uint256,uint256)._holder (contracts/vulnerable/vuln_144_SC09.sol#864) is not in mixedCase
+Parameter ProvableOwnershipToken.createProofInternal(address,uint256,uint256)._amount (contracts/vulnerable/vuln_144_SC09.sol#864) is not in mixedCase
+Parameter ProvableOwnershipToken.createProofInternal(address,uint256,uint256)._from (contracts/vulnerable/vuln_144_SC09.sol#864) is not in mixedCase
+Parameter ProvableOwnershipToken.transferPostProcessing(address,uint256,uint256,bool)._holder (contracts/vulnerable/vuln_144_SC09.sol#877) is not in mixedCase
+Parameter ProvableOwnershipToken.transferPostProcessing(address,uint256,uint256,bool)._balanceBefore (contracts/vulnerable/vuln_144_SC09.sol#878) is not in mixedCase
+Parameter ProvableOwnershipToken.transferPostProcessing(address,uint256,uint256,bool)._before (contracts/vulnerable/vuln_144_SC09.sol#879) is not in mixedCase
+Parameter ProvableOwnershipToken.transferPostProcessing(address,uint256,uint256,bool)._proof (contracts/vulnerable/vuln_144_SC09.sol#880) is not in mixedCase
+Parameter TokenWithClaims.claimable(uint256)._claimableId (contracts/vulnerable/vuln_144_SC09.sol#963) is not in mixedCase
+Parameter TokenWithClaims.hasClaims(address)._holder (contracts/vulnerable/vuln_144_SC09.sol#971) is not in mixedCase
+Parameter TokenWithClaims.transfer(address,uint256)._to (contracts/vulnerable/vuln_144_SC09.sol#985) is not in mixedCase
+Parameter TokenWithClaims.transfer(address,uint256)._value (contracts/vulnerable/vuln_144_SC09.sol#985) is not in mixedCase
+Parameter TokenWithClaims.transferFrom(address,address,uint256)._from (contracts/vulnerable/vuln_144_SC09.sol#1001) is not in mixedCase
+Parameter TokenWithClaims.transferFrom(address,address,uint256)._to (contracts/vulnerable/vuln_144_SC09.sol#1001) is not in mixedCase
+Parameter TokenWithClaims.transferFrom(address,address,uint256)._value (contracts/vulnerable/vuln_144_SC09.sol#1001) is not in mixedCase
+Parameter TokenWithClaims.transferWithProofs(address,uint256,bool,bool)._to (contracts/vulnerable/vuln_144_SC09.sol#1020) is not in mixedCase
+Parameter TokenWithClaims.transferWithProofs(address,uint256,bool,bool)._value (contracts/vulnerable/vuln_144_SC09.sol#1021) is not in mixedCase
+Parameter TokenWithClaims.transferWithProofs(address,uint256,bool,bool)._proofFrom (contracts/vulnerable/vuln_144_SC09.sol#1022) is not in mixedCase
+Parameter TokenWithClaims.transferWithProofs(address,uint256,bool,bool)._proofTo (contracts/vulnerable/vuln_144_SC09.sol#1023) is not in mixedCase
+Parameter TokenWithClaims.transferFromWithProofs(address,address,uint256,bool,bool)._from (contracts/vulnerable/vuln_144_SC09.sol#1041) is not in mixedCase
+Parameter TokenWithClaims.transferFromWithProofs(address,address,uint256,bool,bool)._to (contracts/vulnerable/vuln_144_SC09.sol#1042) is not in mixedCase
+Parameter TokenWithClaims.transferFromWithProofs(address,address,uint256,bool,bool)._value (contracts/vulnerable/vuln_144_SC09.sol#1043) is not in mixedCase
+Parameter TokenWithClaims.transferFromWithProofs(address,address,uint256,bool,bool)._proofFrom (contracts/vulnerable/vuln_144_SC09.sol#1044) is not in mixedCase
+Parameter TokenWithClaims.transferFromWithProofs(address,address,uint256,bool,bool)._proofTo (contracts/vulnerable/vuln_144_SC09.sol#1045) is not in mixedCase
+Parameter TokenWithClaims.defineClaimables(IClaimable[])._claimables (contracts/vulnerable/vuln_144_SC09.sol#1063) is not in mixedCase
+Parameter WithRules.rule(uint256)._ruleId (contracts/vulnerable/vuln_144_SC09.sol#1144) is not in mixedCase
+Parameter WithRules.validateAddress(address)._address (contracts/vulnerable/vuln_144_SC09.sol#1151) is not in mixedCase
+Parameter WithRules.validateTransfer(address,address,uint256)._from (contracts/vulnerable/vuln_144_SC09.sol#1163) is not in mixedCase
+Parameter WithRules.validateTransfer(address,address,uint256)._to (contracts/vulnerable/vuln_144_SC09.sol#1163) is not in mixedCase
+Parameter WithRules.validateTransfer(address,address,uint256)._amount (contracts/vulnerable/vuln_144_SC09.sol#1163) is not in mixedCase
+Parameter WithRules.defineRules(IRule[])._rules (contracts/vulnerable/vuln_144_SC09.sol#1199) is not in mixedCase
+Parameter TokenWithRules.transfer(address,uint256)._to (contracts/vulnerable/vuln_144_SC09.sol#1229) is not in mixedCase
+Parameter TokenWithRules.transfer(address,uint256)._value (contracts/vulnerable/vuln_144_SC09.sol#1229) is not in mixedCase
+Parameter TokenWithRules.transferFrom(address,address,uint256)._from (contracts/vulnerable/vuln_144_SC09.sol#1239) is not in mixedCase
+Parameter TokenWithRules.transferFrom(address,address,uint256)._to (contracts/vulnerable/vuln_144_SC09.sol#1239) is not in mixedCase
+Parameter TokenWithRules.transferFrom(address,address,uint256)._value (contracts/vulnerable/vuln_144_SC09.sol#1239) is not in mixedCase
+Parameter MintableToken.mint(address,uint256)._to (contracts/vulnerable/vuln_144_SC09.sol#1307) is not in mixedCase
+Parameter MintableToken.mint(address,uint256)._amount (contracts/vulnerable/vuln_144_SC09.sol#1308) is not in mixedCase
+Parameter TokenMinter.minterLotId(address)._minter (contracts/vulnerable/vuln_144_SC09.sol#1482) is not in mixedCase
+Parameter TokenMinter.lotMintableSupply(uint256)._lotId (contracts/vulnerable/vuln_144_SC09.sol#1489) is not in mixedCase
+Parameter TokenMinter.lotVault(uint256)._lotId (contracts/vulnerable/vuln_144_SC09.sol#1496) is not in mixedCase
+Parameter TokenMinter.isLotMinter(uint256,address)._lotId (contracts/vulnerable/vuln_144_SC09.sol#1503) is not in mixedCase
+Parameter TokenMinter.isLotMinter(uint256,address)._minter (contracts/vulnerable/vuln_144_SC09.sol#1503) is not in mixedCase
+Parameter TokenMinter.lotActiveMinters(uint256)._lotId (contracts/vulnerable/vuln_144_SC09.sol#1512) is not in mixedCase
+Parameter TokenMinter.setup(MintableBridgeToken,address[])._token (contracts/vulnerable/vuln_144_SC09.sol#1526) is not in mixedCase
+Parameter TokenMinter.setup(MintableBridgeToken,address[])._minters (contracts/vulnerable/vuln_144_SC09.sol#1526) is not in mixedCase
+Parameter TokenMinter.setupMinter(address,uint256)._minter (contracts/vulnerable/vuln_144_SC09.sol#1551) is not in mixedCase
+Parameter TokenMinter.setupMinter(address,uint256)._tokensaleId (contracts/vulnerable/vuln_144_SC09.sol#1551) is not in mixedCase
+Parameter TokenMinter.mint(address,uint256)._to (contracts/vulnerable/vuln_144_SC09.sol#1567) is not in mixedCase
+Parameter TokenMinter.mint(address,uint256)._amount (contracts/vulnerable/vuln_144_SC09.sol#1567) is not in mixedCase
+Parameter TokenMinter.finishMintingRestricted(address)._minter (contracts/vulnerable/vuln_144_SC09.sol#1593) is not in mixedCase
+Parameter TokenMinter.finishMintingInternal(address)._minter (contracts/vulnerable/vuln_144_SC09.sol#1602) is not in mixedCase
+Parameter TokenMinter.mintRemainingLot(uint256)._lotId (contracts/vulnerable/vuln_144_SC09.sol#1621) is not in mixedCase
+Parameter TokenMinter.finishLotMintingPrivate(uint256)._lotId (contracts/vulnerable/vuln_144_SC09.sol#1672) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: unindexed-event-address
+Event ISeizable.Seize(address,uint256) (contracts/vulnerable/vuln_144_SC09.sol#246) has address parameters but no indexed parameters
+Event Authority.AuthorityDefined(string,address) (contracts/vulnerable/vuln_144_SC09.sol#294-297) has address parameters but no indexed parameters
+Event TokenMinter.MinterAdded(uint256,address) (contracts/vulnerable/vuln_144_SC09.sol#1678) has address parameters but no indexed parameters
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unindexed-event-address-parameters
+
+Detector: cache-array-length
+Loop condition i < claimables.length (contracts/vulnerable/vuln_144_SC09.sol#973) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i < rules.length (contracts/vulnerable/vuln_144_SC09.sol#1152) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i < rules.length (contracts/vulnerable/vuln_144_SC09.sol#1166) should use cached array length instead of referencing `length` member of the storage array.
+ Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#cache-array-length
+
+Detector: external-function
+defineAuthority(string,address) should be declared external:
+	- Authority.defineAuthority(string,address) (contracts/vulnerable/vuln_144_SC09.sol#289-292)
+defineClaimables(IClaimable[]) should be declared external:
+	- IWithClaims.defineClaimables(IClaimable[]) (contracts/vulnerable/vuln_144_SC09.sol#919)
+	- TokenWithClaims.defineClaimables(IClaimable[]) (contracts/vulnerable/vuln_144_SC09.sol#1063-1066)
+defineRules(IRule[]) should be declared external:
+	- IWithRules.defineRules(IRule[]) (contracts/vulnerable/vuln_144_SC09.sol#1102)
+	- WithRules.defineRules(IRule[]) (contracts/vulnerable/vuln_144_SC09.sol#1199-1202)
+setup(MintableBridgeToken,address[]) should be declared external:
+	- TokenMinter.setup(MintableBridgeToken,address[]) (contracts/vulnerable/vuln_144_SC09.sol#1526-1546)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#public-function-that-could-be-declared-external
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_144_SC09.sol analyzed (27 contracts with 101 detectors), 168 result(s) found

@@ -1,0 +1,388 @@
+{
+  "success": true,
+  "error": null,
+  "results": {
+    "detectors": [
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "pause",
+            "source_mapping": {
+              "start": 7516,
+              "length": 181,
+              "filename_relative": "contracts/vulnerable/vuln_108_SC05.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_108_SC05.sol",
+              "filename_short": "contracts/vulnerable/vuln_108_SC05.sol",
+              "is_dependency": false,
+              "lines": [
+                322,
+                323,
+                324,
+                325,
+                326,
+                327,
+                328
+              ],
+              "starting_column": 3,
+              "ending_column": 4
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "DAVToken",
+                "source_mapping": {
+                  "start": 6906,
+                  "length": 796,
+                  "filename_relative": "contracts/vulnerable/vuln_108_SC05.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_108_SC05.sol",
+                  "filename_short": "contracts/vulnerable/vuln_108_SC05.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    294,
+                    295,
+                    296,
+                    297,
+                    298,
+                    299,
+                    300,
+                    301,
+                    302,
+                    303,
+                    304,
+                    305,
+                    306,
+                    307,
+                    308,
+                    309,
+                    310,
+                    311,
+                    312,
+                    313,
+                    314,
+                    315,
+                    316,
+                    317,
+                    318,
+                    319,
+                    320,
+                    321,
+                    322,
+                    323,
+                    324,
+                    325,
+                    326,
+                    327,
+                    328,
+                    329,
+                    330
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 2
+                }
+              },
+              "signature": "pause()"
+            }
+          },
+          {
+            "type": "node",
+            "name": "require(bool)(pauseCutoffTime == 0 || pauseCutoffTime >= block.timestamp)",
+            "source_mapping": {
+              "start": 7585,
+              "length": 67,
+              "filename_relative": "contracts/vulnerable/vuln_108_SC05.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_108_SC05.sol",
+              "filename_short": "contracts/vulnerable/vuln_108_SC05.sol",
+              "is_dependency": false,
+              "lines": [
+                325
+              ],
+              "starting_column": 5,
+              "ending_column": 72
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "pause",
+                "source_mapping": {
+                  "start": 7516,
+                  "length": 181,
+                  "filename_relative": "contracts/vulnerable/vuln_108_SC05.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_108_SC05.sol",
+                  "filename_short": "contracts/vulnerable/vuln_108_SC05.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    322,
+                    323,
+                    324,
+                    325,
+                    326,
+                    327,
+                    328
+                  ],
+                  "starting_column": 3,
+                  "ending_column": 4
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "DAVToken",
+                    "source_mapping": {
+                      "start": 6906,
+                      "length": 796,
+                      "filename_relative": "contracts/vulnerable/vuln_108_SC05.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_108_SC05.sol",
+                      "filename_short": "contracts/vulnerable/vuln_108_SC05.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        294,
+                        295,
+                        296,
+                        297,
+                        298,
+                        299,
+                        300,
+                        301,
+                        302,
+                        303,
+                        304,
+                        305,
+                        306,
+                        307,
+                        308,
+                        309,
+                        310,
+                        311,
+                        312,
+                        313,
+                        314,
+                        315,
+                        316,
+                        317,
+                        318,
+                        319,
+                        320,
+                        321,
+                        322,
+                        323,
+                        324,
+                        325,
+                        326,
+                        327,
+                        328,
+                        329,
+                        330
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "pause()"
+                }
+              }
+            }
+          }
+        ],
+        "description": "DAVToken.pause() (contracts/vulnerable/vuln_108_SC05.sol#322-328) uses timestamp for comparisons\n\tDangerous comparisons:\n\t- require(bool)(pauseCutoffTime == 0 || pauseCutoffTime >= block.timestamp) (contracts/vulnerable/vuln_108_SC05.sol#325)\n",
+        "markdown": "[DAVToken.pause()](contracts/vulnerable/vuln_108_SC05.sol#L322-L328) uses timestamp for comparisons\n\tDangerous comparisons:\n\t- [require(bool)(pauseCutoffTime == 0 || pauseCutoffTime >= block.timestamp)](contracts/vulnerable/vuln_108_SC05.sol#L325)\n",
+        "first_markdown_element": "contracts/vulnerable/vuln_108_SC05.sol#L322-L328",
+        "id": "1f649003a0c056f75b00a6a00ad6d8ab3686a50afbdaa70ea4bc1f563f3922e9",
+        "check": "timestamp",
+        "impact": "Low",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "setPauseCutoffTime",
+            "source_mapping": {
+              "start": 7272,
+              "length": 233,
+              "filename_relative": "contracts/vulnerable/vuln_108_SC05.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_108_SC05.sol",
+              "filename_short": "contracts/vulnerable/vuln_108_SC05.sol",
+              "is_dependency": false,
+              "lines": [
+                311,
+                312,
+                313,
+                314,
+                315,
+                316,
+                317,
+                318,
+                319
+              ],
+              "starting_column": 3,
+              "ending_column": 4
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "DAVToken",
+                "source_mapping": {
+                  "start": 6906,
+                  "length": 796,
+                  "filename_relative": "contracts/vulnerable/vuln_108_SC05.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_108_SC05.sol",
+                  "filename_short": "contracts/vulnerable/vuln_108_SC05.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    294,
+                    295,
+                    296,
+                    297,
+                    298,
+                    299,
+                    300,
+                    301,
+                    302,
+                    303,
+                    304,
+                    305,
+                    306,
+                    307,
+                    308,
+                    309,
+                    310,
+                    311,
+                    312,
+                    313,
+                    314,
+                    315,
+                    316,
+                    317,
+                    318,
+                    319,
+                    320,
+                    321,
+                    322,
+                    323,
+                    324,
+                    325,
+                    326,
+                    327,
+                    328,
+                    329,
+                    330
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 2
+                }
+              },
+              "signature": "setPauseCutoffTime(uint256)"
+            }
+          },
+          {
+            "type": "node",
+            "name": "require(bool)(_pauseCutoffTime >= block.timestamp)",
+            "source_mapping": {
+              "start": 7364,
+              "length": 44,
+              "filename_relative": "contracts/vulnerable/vuln_108_SC05.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_108_SC05.sol",
+              "filename_short": "contracts/vulnerable/vuln_108_SC05.sol",
+              "is_dependency": false,
+              "lines": [
+                314
+              ],
+              "starting_column": 5,
+              "ending_column": 49
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "setPauseCutoffTime",
+                "source_mapping": {
+                  "start": 7272,
+                  "length": 233,
+                  "filename_relative": "contracts/vulnerable/vuln_108_SC05.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_108_SC05.sol",
+                  "filename_short": "contracts/vulnerable/vuln_108_SC05.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    311,
+                    312,
+                    313,
+                    314,
+                    315,
+                    316,
+                    317,
+                    318,
+                    319
+                  ],
+                  "starting_column": 3,
+                  "ending_column": 4
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "DAVToken",
+                    "source_mapping": {
+                      "start": 6906,
+                      "length": 796,
+                      "filename_relative": "contracts/vulnerable/vuln_108_SC05.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_108_SC05.sol",
+                      "filename_short": "contracts/vulnerable/vuln_108_SC05.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        294,
+                        295,
+                        296,
+                        297,
+                        298,
+                        299,
+                        300,
+                        301,
+                        302,
+                        303,
+                        304,
+                        305,
+                        306,
+                        307,
+                        308,
+                        309,
+                        310,
+                        311,
+                        312,
+                        313,
+                        314,
+                        315,
+                        316,
+                        317,
+                        318,
+                        319,
+                        320,
+                        321,
+                        322,
+                        323,
+                        324,
+                        325,
+                        326,
+                        327,
+                        328,
+                        329,
+                        330
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "setPauseCutoffTime(uint256)"
+                }
+              }
+            }
+          }
+        ],
+        "description": "DAVToken.setPauseCutoffTime(uint256) (contracts/vulnerable/vuln_108_SC05.sol#311-319) uses timestamp for comparisons\n\tDangerous comparisons:\n\t- require(bool)(_pauseCutoffTime >= block.timestamp) (contracts/vulnerable/vuln_108_SC05.sol#314)\n",
+        "markdown": "[DAVToken.setPauseCutoffTime(uint256)](contracts/vulnerable/vuln_108_SC05.sol#L311-L319) uses timestamp for comparisons\n\tDangerous comparisons:\n\t- [require(bool)(_pauseCutoffTime >= block.timestamp)](contracts/vulnerable/vuln_108_SC05.sol#L314)\n",
+        "first_markdown_element": "contracts/vulnerable/vuln_108_SC05.sol#L311-L319",
+        "id": "7c3a8161aa6a207642845f286b54bfa8da57c169dfb5f651196b57016936afb4",
+        "check": "timestamp",
+        "impact": "Low",
+        "confidence": "Medium"
+      }
+    ]
+  }
+}

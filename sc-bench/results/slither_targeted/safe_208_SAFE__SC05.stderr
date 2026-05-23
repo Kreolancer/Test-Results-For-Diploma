@@ -1,0 +1,9 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_208_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+
+Detector: timestamp
+Countdown.withdraw() (contracts/safe/safe_208_SAFE.sol#30-46) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(now > deadline) (contracts/safe/safe_208_SAFE.sol#31)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_208_SAFE.sol analyzed (1 contracts with 2 detectors), 1 result(s) found

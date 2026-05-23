@@ -1,0 +1,59 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol:108:5: Warning: Defining constructors as functions with the same name as the contract is deprecated. Use "constructor(...) { ... }" instead.
+    function LolaCoin() {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol:58:9: Warning: Invoking events without "emit" prefix is deprecated.
+        Transfer(msg.sender, _to, _value);
+        ^-------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol:69:9: Warning: Invoking events without "emit" prefix is deprecated.
+        Transfer(_from, _to, _value);
+        ^--------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol:79:9: Warning: Invoking events without "emit" prefix is deprecated.
+        Approval(msg.sender, _spender, _value);
+        ^------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol:119:9: Warning: Invoking events without "emit" prefix is deprecated.
+        Approval(msg.sender, _spender, _value);
+        ^------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol:124:46: Warning: "sha3" has been deprecated in favour of "keccak256"
+        require(_spender.call(bytes4(bytes32(sha3("receiveApproval(address,uint256,address,bytes)"))), msg.sender, _value, this, _extraData));
+                                             ^----------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol:18:5: Warning: No visibility specified. Defaulting to "public". 
+    function balanceOf(address _owner) constant returns (uint256 balance);
+    ^--------------------------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol:24:5: Warning: No visibility specified. Defaulting to "public". 
+    function transfer(address _to, uint256 _value) returns (bool success);
+    ^--------------------------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol:31:5: Warning: No visibility specified. Defaulting to "public". 
+    function transferFrom(address _from, address _to, uint256 _value) returns (bool success);
+    ^---------------------------------------------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol:37:5: Warning: No visibility specified. Defaulting to "public". 
+    function approve(address _spender, uint256 _value) returns (bool success);
+    ^------------------------------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol:42:5: Warning: No visibility specified. Defaulting to "public". 
+    function allowance(address _owner, address _spender) constant returns (uint256 remaining);
+    ^----------------------------------------------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol:50:5: Warning: No visibility specified. Defaulting to "public". 
+    function transfer(address _to, uint256 _value) returns (bool success) {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol:62:5: Warning: No visibility specified. Defaulting to "public". 
+    function transferFrom(address _from, address _to, uint256 _value) returns (bool success) {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol:73:5: Warning: No visibility specified. Defaulting to "public". 
+    function balanceOf(address _owner) constant returns (uint256 balance) {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol:77:5: Warning: No visibility specified. Defaulting to "public". 
+    function approve(address _spender, uint256 _value) returns (bool success) {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol:83:5: Warning: No visibility specified. Defaulting to "public". 
+    function allowance(address _owner, address _spender) constant returns (uint256 remaining) {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol:108:5: Warning: No visibility specified. Defaulting to "public". 
+    function LolaCoin() {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol:117:5: Warning: No visibility specified. Defaulting to "public". 
+    function approveAndCall(address _spender, uint256 _value, bytes _extraData) returns (bool success) {
+    ^ (Relevant source part starts here and spans across multiple lines).
+
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol analyzed (3 contracts with 2 detectors), 0 result(s) found

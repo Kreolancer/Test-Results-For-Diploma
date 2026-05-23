@@ -1,0 +1,3052 @@
+{
+  "success": true,
+  "error": null,
+  "results": {
+    "detectors": [
+      {
+        "elements": [
+          {
+            "type": "node",
+            "name": "",
+            "source_mapping": {
+              "start": 7736,
+              "length": 5,
+              "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+              "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+              "is_dependency": false,
+              "lines": [
+                150
+              ],
+              "starting_column": 141,
+              "ending_column": 146
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "approveAndCall",
+                "source_mapping": {
+                  "start": 6973,
+                  "length": 800,
+                  "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+                  "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    143,
+                    144,
+                    145,
+                    146,
+                    147,
+                    148,
+                    149,
+                    150,
+                    151,
+                    152
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "GoGoPay",
+                    "source_mapping": {
+                      "start": 4152,
+                      "length": 3624,
+                      "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+                      "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        98,
+                        99,
+                        100,
+                        101,
+                        102,
+                        103,
+                        104,
+                        105,
+                        106,
+                        107,
+                        108,
+                        109,
+                        110,
+                        111,
+                        112,
+                        113,
+                        114,
+                        115,
+                        116,
+                        117,
+                        118,
+                        119,
+                        120,
+                        121,
+                        122,
+                        123,
+                        124,
+                        125,
+                        126,
+                        127,
+                        128,
+                        129,
+                        130,
+                        131,
+                        132,
+                        133,
+                        134,
+                        135,
+                        136,
+                        137,
+                        138,
+                        139,
+                        140,
+                        141,
+                        142,
+                        143,
+                        144,
+                        145,
+                        146,
+                        147,
+                        148,
+                        149,
+                        150,
+                        151,
+                        152,
+                        153,
+                        154
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "approveAndCall(address,uint256,bytes)"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Deprecated standard detected THROW (contracts/vulnerable/vuln_135_SC06.sol#150):\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+        "markdown": "Deprecated standard detected [THROW](contracts/vulnerable/vuln_135_SC06.sol#L150):\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+        "first_markdown_element": "contracts/vulnerable/vuln_135_SC06.sol#L150",
+        "id": "334e76e34873385419fa6d93d225df763dcd848be6f5ddf87a55a6bb5345eac4",
+        "check": "deprecated-standards",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "node",
+            "name": "! _spender.call(bytes4(bytes32(sha3()(receiveApproval(address,uint256,address,bytes)))),msg.sender,_value,this,_extraData)",
+            "source_mapping": {
+              "start": 7607,
+              "length": 125,
+              "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+              "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+              "is_dependency": false,
+              "lines": [
+                150
+              ],
+              "starting_column": 12,
+              "ending_column": 137
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "approveAndCall",
+                "source_mapping": {
+                  "start": 6973,
+                  "length": 800,
+                  "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+                  "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    143,
+                    144,
+                    145,
+                    146,
+                    147,
+                    148,
+                    149,
+                    150,
+                    151,
+                    152
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "GoGoPay",
+                    "source_mapping": {
+                      "start": 4152,
+                      "length": 3624,
+                      "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+                      "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        98,
+                        99,
+                        100,
+                        101,
+                        102,
+                        103,
+                        104,
+                        105,
+                        106,
+                        107,
+                        108,
+                        109,
+                        110,
+                        111,
+                        112,
+                        113,
+                        114,
+                        115,
+                        116,
+                        117,
+                        118,
+                        119,
+                        120,
+                        121,
+                        122,
+                        123,
+                        124,
+                        125,
+                        126,
+                        127,
+                        128,
+                        129,
+                        130,
+                        131,
+                        132,
+                        133,
+                        134,
+                        135,
+                        136,
+                        137,
+                        138,
+                        139,
+                        140,
+                        141,
+                        142,
+                        143,
+                        144,
+                        145,
+                        146,
+                        147,
+                        148,
+                        149,
+                        150,
+                        151,
+                        152,
+                        153,
+                        154
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "approveAndCall(address,uint256,bytes)"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Deprecated standard detected ! _spender.call(bytes4(bytes32(sha3()(receiveApproval(address,uint256,address,bytes)))),msg.sender,_value,this,_extraData) (contracts/vulnerable/vuln_135_SC06.sol#150):\n\t- Usage of \"sha3()\" should be replaced with \"keccak256()\"\n",
+        "markdown": "Deprecated standard detected [! _spender.call(bytes4(bytes32(sha3()(receiveApproval(address,uint256,address,bytes)))),msg.sender,_value,this,_extraData)](contracts/vulnerable/vuln_135_SC06.sol#L150):\n\t- Usage of \"sha3()\" should be replaced with \"keccak256()\"\n",
+        "first_markdown_element": "contracts/vulnerable/vuln_135_SC06.sol#L150",
+        "id": "7a062430a3efb8cb00b25aedbb5388d74a66f51c91c6bcee04e76001b8247c7d",
+        "check": "deprecated-standards",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [],
+        "description": "solc-0.4.24 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.\n",
+        "markdown": "solc-0.4.24 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.\n",
+        "first_markdown_element": "",
+        "id": "1d687d794f954ee692ca1d58ad5dd8291a8a0b5c0bcc4409d2dd8afb7258e605",
+        "check": "solc-version",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "approveAndCall",
+            "source_mapping": {
+              "start": 6973,
+              "length": 800,
+              "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+              "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+              "is_dependency": false,
+              "lines": [
+                143,
+                144,
+                145,
+                146,
+                147,
+                148,
+                149,
+                150,
+                151,
+                152
+              ],
+              "starting_column": 5,
+              "ending_column": 6
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "GoGoPay",
+                "source_mapping": {
+                  "start": 4152,
+                  "length": 3624,
+                  "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+                  "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    98,
+                    99,
+                    100,
+                    101,
+                    102,
+                    103,
+                    104,
+                    105,
+                    106,
+                    107,
+                    108,
+                    109,
+                    110,
+                    111,
+                    112,
+                    113,
+                    114,
+                    115,
+                    116,
+                    117,
+                    118,
+                    119,
+                    120,
+                    121,
+                    122,
+                    123,
+                    124,
+                    125,
+                    126,
+                    127,
+                    128,
+                    129,
+                    130,
+                    131,
+                    132,
+                    133,
+                    134,
+                    135,
+                    136,
+                    137,
+                    138,
+                    139,
+                    140,
+                    141,
+                    142,
+                    143,
+                    144,
+                    145,
+                    146,
+                    147,
+                    148,
+                    149,
+                    150,
+                    151,
+                    152,
+                    153,
+                    154
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              },
+              "signature": "approveAndCall(address,uint256,bytes)"
+            }
+          },
+          {
+            "type": "node",
+            "name": "! _spender.call(bytes4(bytes32(sha3()(receiveApproval(address,uint256,address,bytes)))),msg.sender,_value,this,_extraData)",
+            "source_mapping": {
+              "start": 7607,
+              "length": 125,
+              "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+              "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+              "is_dependency": false,
+              "lines": [
+                150
+              ],
+              "starting_column": 12,
+              "ending_column": 137
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "approveAndCall",
+                "source_mapping": {
+                  "start": 6973,
+                  "length": 800,
+                  "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+                  "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    143,
+                    144,
+                    145,
+                    146,
+                    147,
+                    148,
+                    149,
+                    150,
+                    151,
+                    152
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "GoGoPay",
+                    "source_mapping": {
+                      "start": 4152,
+                      "length": 3624,
+                      "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+                      "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        98,
+                        99,
+                        100,
+                        101,
+                        102,
+                        103,
+                        104,
+                        105,
+                        106,
+                        107,
+                        108,
+                        109,
+                        110,
+                        111,
+                        112,
+                        113,
+                        114,
+                        115,
+                        116,
+                        117,
+                        118,
+                        119,
+                        120,
+                        121,
+                        122,
+                        123,
+                        124,
+                        125,
+                        126,
+                        127,
+                        128,
+                        129,
+                        130,
+                        131,
+                        132,
+                        133,
+                        134,
+                        135,
+                        136,
+                        137,
+                        138,
+                        139,
+                        140,
+                        141,
+                        142,
+                        143,
+                        144,
+                        145,
+                        146,
+                        147,
+                        148,
+                        149,
+                        150,
+                        151,
+                        152,
+                        153,
+                        154
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "approveAndCall(address,uint256,bytes)"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Low level call in GoGoPay.approveAndCall(address,uint256,bytes) (contracts/vulnerable/vuln_135_SC06.sol#143-152):\n\t- ! _spender.call(bytes4(bytes32(sha3()(receiveApproval(address,uint256,address,bytes)))),msg.sender,_value,this,_extraData) (contracts/vulnerable/vuln_135_SC06.sol#150)\n",
+        "markdown": "Low level call in [GoGoPay.approveAndCall(address,uint256,bytes)](contracts/vulnerable/vuln_135_SC06.sol#L143-L152):\n\t- [! _spender.call(bytes4(bytes32(sha3()(receiveApproval(address,uint256,address,bytes)))),msg.sender,_value,this,_extraData)](contracts/vulnerable/vuln_135_SC06.sol#L150)\n",
+        "first_markdown_element": "contracts/vulnerable/vuln_135_SC06.sol#L143-L152",
+        "id": "c590bb0c3c62c8106d65f9641c2a6d9ba9465261fb8a30dcaaf8086aef2994ae",
+        "check": "low-level-calls",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_spender",
+            "source_mapping": {
+              "start": 6997,
+              "length": 16,
+              "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+              "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+              "is_dependency": false,
+              "lines": [
+                143
+              ],
+              "starting_column": 29,
+              "ending_column": 45
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "approveAndCall",
+                "source_mapping": {
+                  "start": 6973,
+                  "length": 800,
+                  "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+                  "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    143,
+                    144,
+                    145,
+                    146,
+                    147,
+                    148,
+                    149,
+                    150,
+                    151,
+                    152
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "GoGoPay",
+                    "source_mapping": {
+                      "start": 4152,
+                      "length": 3624,
+                      "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+                      "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        98,
+                        99,
+                        100,
+                        101,
+                        102,
+                        103,
+                        104,
+                        105,
+                        106,
+                        107,
+                        108,
+                        109,
+                        110,
+                        111,
+                        112,
+                        113,
+                        114,
+                        115,
+                        116,
+                        117,
+                        118,
+                        119,
+                        120,
+                        121,
+                        122,
+                        123,
+                        124,
+                        125,
+                        126,
+                        127,
+                        128,
+                        129,
+                        130,
+                        131,
+                        132,
+                        133,
+                        134,
+                        135,
+                        136,
+                        137,
+                        138,
+                        139,
+                        140,
+                        141,
+                        142,
+                        143,
+                        144,
+                        145,
+                        146,
+                        147,
+                        148,
+                        149,
+                        150,
+                        151,
+                        152,
+                        153,
+                        154
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "approveAndCall(address,uint256,bytes)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter GoGoPay.approveAndCall(address,uint256,bytes)._spender (contracts/vulnerable/vuln_135_SC06.sol#143) is not in mixedCase\n",
+        "markdown": "Parameter [GoGoPay.approveAndCall(address,uint256,bytes)._spender](contracts/vulnerable/vuln_135_SC06.sol#L143) is not in mixedCase\n",
+        "first_markdown_element": "contracts/vulnerable/vuln_135_SC06.sol#L143",
+        "id": "02db716813e2bf9975e044a708de0217825380246f2e6f9bde1735165cbefe14",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_spender",
+            "source_mapping": {
+              "start": 3898,
+              "length": 16,
+              "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+              "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+              "is_dependency": false,
+              "lines": [
+                89
+              ],
+              "starting_column": 40,
+              "ending_column": 56
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "allowance",
+                "source_mapping": {
+                  "start": 3863,
+                  "length": 139,
+                  "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+                  "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    89,
+                    90,
+                    91
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "StandardToken",
+                    "source_mapping": {
+                      "start": 2146,
+                      "length": 2002,
+                      "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+                      "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        52,
+                        53,
+                        54,
+                        55,
+                        56,
+                        57,
+                        58,
+                        59,
+                        60,
+                        61,
+                        62,
+                        63,
+                        64,
+                        65,
+                        66,
+                        67,
+                        68,
+                        69,
+                        70,
+                        71,
+                        72,
+                        73,
+                        74,
+                        75,
+                        76,
+                        77,
+                        78,
+                        79,
+                        80,
+                        81,
+                        82,
+                        83,
+                        84,
+                        85,
+                        86,
+                        87,
+                        88,
+                        89,
+                        90,
+                        91,
+                        92,
+                        93,
+                        94,
+                        95,
+                        96
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "allowance(address,address)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter StandardToken.allowance(address,address)._spender (contracts/vulnerable/vuln_135_SC06.sol#89) is not in mixedCase\n",
+        "markdown": "Parameter [StandardToken.allowance(address,address)._spender](contracts/vulnerable/vuln_135_SC06.sol#L89) is not in mixedCase\n",
+        "first_markdown_element": "contracts/vulnerable/vuln_135_SC06.sol#L89",
+        "id": "1dfe198c2dca57c55bebb6453f93f0f0fc9b1e67fc091a4bcfa314300d9a90a6",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_value",
+            "source_mapping": {
+              "start": 3688,
+              "length": 14,
+              "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+              "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+              "is_dependency": false,
+              "lines": [
+                83
+              ],
+              "starting_column": 40,
+              "ending_column": 54
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "approve",
+                "source_mapping": {
+                  "start": 3653,
+                  "length": 202,
+                  "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+                  "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    83,
+                    84,
+                    85,
+                    86,
+                    87
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "StandardToken",
+                    "source_mapping": {
+                      "start": 2146,
+                      "length": 2002,
+                      "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+                      "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        52,
+                        53,
+                        54,
+                        55,
+                        56,
+                        57,
+                        58,
+                        59,
+                        60,
+                        61,
+                        62,
+                        63,
+                        64,
+                        65,
+                        66,
+                        67,
+                        68,
+                        69,
+                        70,
+                        71,
+                        72,
+                        73,
+                        74,
+                        75,
+                        76,
+                        77,
+                        78,
+                        79,
+                        80,
+                        81,
+                        82,
+                        83,
+                        84,
+                        85,
+                        86,
+                        87,
+                        88,
+                        89,
+                        90,
+                        91,
+                        92,
+                        93,
+                        94,
+                        95,
+                        96
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "approve(address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter StandardToken.approve(address,uint256)._value (contracts/vulnerable/vuln_135_SC06.sol#83) is not in mixedCase\n",
+        "markdown": "Parameter [StandardToken.approve(address,uint256)._value](contracts/vulnerable/vuln_135_SC06.sol#L83) is not in mixedCase\n",
+        "first_markdown_element": "contracts/vulnerable/vuln_135_SC06.sol#L83",
+        "id": "1fa3f5bb048f68171399fc7d36b8e34d891cac5b9e22c65b41391d16050e7922",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_owner",
+            "source_mapping": {
+              "start": 3882,
+              "length": 14,
+              "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+              "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+              "is_dependency": false,
+              "lines": [
+                89
+              ],
+              "starting_column": 24,
+              "ending_column": 38
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "allowance",
+                "source_mapping": {
+                  "start": 3863,
+                  "length": 139,
+                  "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+                  "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    89,
+                    90,
+                    91
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "StandardToken",
+                    "source_mapping": {
+                      "start": 2146,
+                      "length": 2002,
+                      "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+                      "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        52,
+                        53,
+                        54,
+                        55,
+                        56,
+                        57,
+                        58,
+                        59,
+                        60,
+                        61,
+                        62,
+                        63,
+                        64,
+                        65,
+                        66,
+                        67,
+                        68,
+                        69,
+                        70,
+                        71,
+                        72,
+                        73,
+                        74,
+                        75,
+                        76,
+                        77,
+                        78,
+                        79,
+                        80,
+                        81,
+                        82,
+                        83,
+                        84,
+                        85,
+                        86,
+                        87,
+                        88,
+                        89,
+                        90,
+                        91,
+                        92,
+                        93,
+                        94,
+                        95,
+                        96
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "allowance(address,address)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter StandardToken.allowance(address,address)._owner (contracts/vulnerable/vuln_135_SC06.sol#89) is not in mixedCase\n",
+        "markdown": "Parameter [StandardToken.allowance(address,address)._owner](contracts/vulnerable/vuln_135_SC06.sol#L89) is not in mixedCase\n",
+        "first_markdown_element": "contracts/vulnerable/vuln_135_SC06.sol#L89",
+        "id": "317c0e860cb8a5338f5dfaf51d2249bbf1eb4e87ed588c7a888b367544a25740",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_value",
+            "source_mapping": {
+              "start": 2218,
+              "length": 14,
+              "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+              "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+              "is_dependency": false,
+              "lines": [
+                54
+              ],
+              "starting_column": 36,
+              "ending_column": 50
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "transfer",
+                "source_mapping": {
+                  "start": 2187,
+                  "length": 669,
+                  "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+                  "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    54,
+                    55,
+                    56,
+                    57,
+                    58,
+                    59,
+                    60,
+                    61,
+                    62,
+                    63,
+                    64,
+                    65
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "StandardToken",
+                    "source_mapping": {
+                      "start": 2146,
+                      "length": 2002,
+                      "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+                      "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        52,
+                        53,
+                        54,
+                        55,
+                        56,
+                        57,
+                        58,
+                        59,
+                        60,
+                        61,
+                        62,
+                        63,
+                        64,
+                        65,
+                        66,
+                        67,
+                        68,
+                        69,
+                        70,
+                        71,
+                        72,
+                        73,
+                        74,
+                        75,
+                        76,
+                        77,
+                        78,
+                        79,
+                        80,
+                        81,
+                        82,
+                        83,
+                        84,
+                        85,
+                        86,
+                        87,
+                        88,
+                        89,
+                        90,
+                        91,
+                        92,
+                        93,
+                        94,
+                        95,
+                        96
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "transfer(address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter StandardToken.transfer(address,uint256)._value (contracts/vulnerable/vuln_135_SC06.sol#54) is not in mixedCase\n",
+        "markdown": "Parameter [StandardToken.transfer(address,uint256)._value](contracts/vulnerable/vuln_135_SC06.sol#L54) is not in mixedCase\n",
+        "first_markdown_element": "contracts/vulnerable/vuln_135_SC06.sol#L54",
+        "id": "31af0fe2efb3149a68bb2fd105d1476f896dc61d738c336bdf7e41a57feb1479",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_to",
+            "source_mapping": {
+              "start": 2205,
+              "length": 11,
+              "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+              "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+              "is_dependency": false,
+              "lines": [
+                54
+              ],
+              "starting_column": 23,
+              "ending_column": 34
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "transfer",
+                "source_mapping": {
+                  "start": 2187,
+                  "length": 669,
+                  "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+                  "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    54,
+                    55,
+                    56,
+                    57,
+                    58,
+                    59,
+                    60,
+                    61,
+                    62,
+                    63,
+                    64,
+                    65
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "StandardToken",
+                    "source_mapping": {
+                      "start": 2146,
+                      "length": 2002,
+                      "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+                      "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        52,
+                        53,
+                        54,
+                        55,
+                        56,
+                        57,
+                        58,
+                        59,
+                        60,
+                        61,
+                        62,
+                        63,
+                        64,
+                        65,
+                        66,
+                        67,
+                        68,
+                        69,
+                        70,
+                        71,
+                        72,
+                        73,
+                        74,
+                        75,
+                        76,
+                        77,
+                        78,
+                        79,
+                        80,
+                        81,
+                        82,
+                        83,
+                        84,
+                        85,
+                        86,
+                        87,
+                        88,
+                        89,
+                        90,
+                        91,
+                        92,
+                        93,
+                        94,
+                        95,
+                        96
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "transfer(address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter StandardToken.transfer(address,uint256)._to (contracts/vulnerable/vuln_135_SC06.sol#54) is not in mixedCase\n",
+        "markdown": "Parameter [StandardToken.transfer(address,uint256)._to](contracts/vulnerable/vuln_135_SC06.sol#L54) is not in mixedCase\n",
+        "first_markdown_element": "contracts/vulnerable/vuln_135_SC06.sol#L54",
+        "id": "3c14db6b6c1ab6ca2562962944c2cf0cfbb75024bfc8414a346a102288fb8c42",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_from",
+            "source_mapping": {
+              "start": 2886,
+              "length": 13,
+              "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+              "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+              "is_dependency": false,
+              "lines": [
+                67
+              ],
+              "starting_column": 27,
+              "ending_column": 40
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "transferFrom",
+                "source_mapping": {
+                  "start": 2864,
+                  "length": 661,
+                  "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+                  "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    67,
+                    68,
+                    69,
+                    70,
+                    71,
+                    72,
+                    73,
+                    74,
+                    75,
+                    76,
+                    77
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "StandardToken",
+                    "source_mapping": {
+                      "start": 2146,
+                      "length": 2002,
+                      "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+                      "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        52,
+                        53,
+                        54,
+                        55,
+                        56,
+                        57,
+                        58,
+                        59,
+                        60,
+                        61,
+                        62,
+                        63,
+                        64,
+                        65,
+                        66,
+                        67,
+                        68,
+                        69,
+                        70,
+                        71,
+                        72,
+                        73,
+                        74,
+                        75,
+                        76,
+                        77,
+                        78,
+                        79,
+                        80,
+                        81,
+                        82,
+                        83,
+                        84,
+                        85,
+                        86,
+                        87,
+                        88,
+                        89,
+                        90,
+                        91,
+                        92,
+                        93,
+                        94,
+                        95,
+                        96
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "transferFrom(address,address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter StandardToken.transferFrom(address,address,uint256)._from (contracts/vulnerable/vuln_135_SC06.sol#67) is not in mixedCase\n",
+        "markdown": "Parameter [StandardToken.transferFrom(address,address,uint256)._from](contracts/vulnerable/vuln_135_SC06.sol#L67) is not in mixedCase\n",
+        "first_markdown_element": "contracts/vulnerable/vuln_135_SC06.sol#L67",
+        "id": "4dd3d547c81f2913d544b98793a5c021fe472f59b45114f773a817330cf34bfc",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_to",
+            "source_mapping": {
+              "start": 2901,
+              "length": 11,
+              "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+              "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+              "is_dependency": false,
+              "lines": [
+                67
+              ],
+              "starting_column": 42,
+              "ending_column": 53
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "transferFrom",
+                "source_mapping": {
+                  "start": 2864,
+                  "length": 661,
+                  "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+                  "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    67,
+                    68,
+                    69,
+                    70,
+                    71,
+                    72,
+                    73,
+                    74,
+                    75,
+                    76,
+                    77
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "StandardToken",
+                    "source_mapping": {
+                      "start": 2146,
+                      "length": 2002,
+                      "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+                      "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        52,
+                        53,
+                        54,
+                        55,
+                        56,
+                        57,
+                        58,
+                        59,
+                        60,
+                        61,
+                        62,
+                        63,
+                        64,
+                        65,
+                        66,
+                        67,
+                        68,
+                        69,
+                        70,
+                        71,
+                        72,
+                        73,
+                        74,
+                        75,
+                        76,
+                        77,
+                        78,
+                        79,
+                        80,
+                        81,
+                        82,
+                        83,
+                        84,
+                        85,
+                        86,
+                        87,
+                        88,
+                        89,
+                        90,
+                        91,
+                        92,
+                        93,
+                        94,
+                        95,
+                        96
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "transferFrom(address,address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter StandardToken.transferFrom(address,address,uint256)._to (contracts/vulnerable/vuln_135_SC06.sol#67) is not in mixedCase\n",
+        "markdown": "Parameter [StandardToken.transferFrom(address,address,uint256)._to](contracts/vulnerable/vuln_135_SC06.sol#L67) is not in mixedCase\n",
+        "first_markdown_element": "contracts/vulnerable/vuln_135_SC06.sol#L67",
+        "id": "6150a62fc365f4a97437d70d15bfe1ca02b48e7695b0f9d432eb82ac34404d51",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_spender",
+            "source_mapping": {
+              "start": 3670,
+              "length": 16,
+              "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+              "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+              "is_dependency": false,
+              "lines": [
+                83
+              ],
+              "starting_column": 22,
+              "ending_column": 38
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "approve",
+                "source_mapping": {
+                  "start": 3653,
+                  "length": 202,
+                  "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+                  "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    83,
+                    84,
+                    85,
+                    86,
+                    87
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "StandardToken",
+                    "source_mapping": {
+                      "start": 2146,
+                      "length": 2002,
+                      "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+                      "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        52,
+                        53,
+                        54,
+                        55,
+                        56,
+                        57,
+                        58,
+                        59,
+                        60,
+                        61,
+                        62,
+                        63,
+                        64,
+                        65,
+                        66,
+                        67,
+                        68,
+                        69,
+                        70,
+                        71,
+                        72,
+                        73,
+                        74,
+                        75,
+                        76,
+                        77,
+                        78,
+                        79,
+                        80,
+                        81,
+                        82,
+                        83,
+                        84,
+                        85,
+                        86,
+                        87,
+                        88,
+                        89,
+                        90,
+                        91,
+                        92,
+                        93,
+                        94,
+                        95,
+                        96
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "approve(address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter StandardToken.approve(address,uint256)._spender (contracts/vulnerable/vuln_135_SC06.sol#83) is not in mixedCase\n",
+        "markdown": "Parameter [StandardToken.approve(address,uint256)._spender](contracts/vulnerable/vuln_135_SC06.sol#L83) is not in mixedCase\n",
+        "first_markdown_element": "contracts/vulnerable/vuln_135_SC06.sol#L83",
+        "id": "70a9b4c8c2d4dca0d12170ecce3b3b3e56f16721a930795c44e5e7b45a10a5c1",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_extraData",
+            "source_mapping": {
+              "start": 7031,
+              "length": 16,
+              "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+              "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+              "is_dependency": false,
+              "lines": [
+                143
+              ],
+              "starting_column": 63,
+              "ending_column": 79
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "approveAndCall",
+                "source_mapping": {
+                  "start": 6973,
+                  "length": 800,
+                  "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+                  "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    143,
+                    144,
+                    145,
+                    146,
+                    147,
+                    148,
+                    149,
+                    150,
+                    151,
+                    152
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "GoGoPay",
+                    "source_mapping": {
+                      "start": 4152,
+                      "length": 3624,
+                      "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+                      "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        98,
+                        99,
+                        100,
+                        101,
+                        102,
+                        103,
+                        104,
+                        105,
+                        106,
+                        107,
+                        108,
+                        109,
+                        110,
+                        111,
+                        112,
+                        113,
+                        114,
+                        115,
+                        116,
+                        117,
+                        118,
+                        119,
+                        120,
+                        121,
+                        122,
+                        123,
+                        124,
+                        125,
+                        126,
+                        127,
+                        128,
+                        129,
+                        130,
+                        131,
+                        132,
+                        133,
+                        134,
+                        135,
+                        136,
+                        137,
+                        138,
+                        139,
+                        140,
+                        141,
+                        142,
+                        143,
+                        144,
+                        145,
+                        146,
+                        147,
+                        148,
+                        149,
+                        150,
+                        151,
+                        152,
+                        153,
+                        154
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "approveAndCall(address,uint256,bytes)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter GoGoPay.approveAndCall(address,uint256,bytes)._extraData (contracts/vulnerable/vuln_135_SC06.sol#143) is not in mixedCase\n",
+        "markdown": "Parameter [GoGoPay.approveAndCall(address,uint256,bytes)._extraData](contracts/vulnerable/vuln_135_SC06.sol#L143) is not in mixedCase\n",
+        "first_markdown_element": "contracts/vulnerable/vuln_135_SC06.sol#L143",
+        "id": "8af86ddc4dd21a825ad5255e08745864fb383a2fc061aa9faa76be4edafcf417",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_value",
+            "source_mapping": {
+              "start": 7015,
+              "length": 14,
+              "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+              "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+              "is_dependency": false,
+              "lines": [
+                143
+              ],
+              "starting_column": 47,
+              "ending_column": 61
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "approveAndCall",
+                "source_mapping": {
+                  "start": 6973,
+                  "length": 800,
+                  "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+                  "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    143,
+                    144,
+                    145,
+                    146,
+                    147,
+                    148,
+                    149,
+                    150,
+                    151,
+                    152
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "GoGoPay",
+                    "source_mapping": {
+                      "start": 4152,
+                      "length": 3624,
+                      "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+                      "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        98,
+                        99,
+                        100,
+                        101,
+                        102,
+                        103,
+                        104,
+                        105,
+                        106,
+                        107,
+                        108,
+                        109,
+                        110,
+                        111,
+                        112,
+                        113,
+                        114,
+                        115,
+                        116,
+                        117,
+                        118,
+                        119,
+                        120,
+                        121,
+                        122,
+                        123,
+                        124,
+                        125,
+                        126,
+                        127,
+                        128,
+                        129,
+                        130,
+                        131,
+                        132,
+                        133,
+                        134,
+                        135,
+                        136,
+                        137,
+                        138,
+                        139,
+                        140,
+                        141,
+                        142,
+                        143,
+                        144,
+                        145,
+                        146,
+                        147,
+                        148,
+                        149,
+                        150,
+                        151,
+                        152,
+                        153,
+                        154
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "approveAndCall(address,uint256,bytes)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter GoGoPay.approveAndCall(address,uint256,bytes)._value (contracts/vulnerable/vuln_135_SC06.sol#143) is not in mixedCase\n",
+        "markdown": "Parameter [GoGoPay.approveAndCall(address,uint256,bytes)._value](contracts/vulnerable/vuln_135_SC06.sol#L143) is not in mixedCase\n",
+        "first_markdown_element": "contracts/vulnerable/vuln_135_SC06.sol#L143",
+        "id": "935b24a30a58916267ea8166255c0795ee9e3fcd4241674f8be1842aeb7a48f0",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_value",
+            "source_mapping": {
+              "start": 2914,
+              "length": 14,
+              "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+              "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+              "is_dependency": false,
+              "lines": [
+                67
+              ],
+              "starting_column": 55,
+              "ending_column": 69
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "transferFrom",
+                "source_mapping": {
+                  "start": 2864,
+                  "length": 661,
+                  "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+                  "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    67,
+                    68,
+                    69,
+                    70,
+                    71,
+                    72,
+                    73,
+                    74,
+                    75,
+                    76,
+                    77
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "StandardToken",
+                    "source_mapping": {
+                      "start": 2146,
+                      "length": 2002,
+                      "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+                      "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        52,
+                        53,
+                        54,
+                        55,
+                        56,
+                        57,
+                        58,
+                        59,
+                        60,
+                        61,
+                        62,
+                        63,
+                        64,
+                        65,
+                        66,
+                        67,
+                        68,
+                        69,
+                        70,
+                        71,
+                        72,
+                        73,
+                        74,
+                        75,
+                        76,
+                        77,
+                        78,
+                        79,
+                        80,
+                        81,
+                        82,
+                        83,
+                        84,
+                        85,
+                        86,
+                        87,
+                        88,
+                        89,
+                        90,
+                        91,
+                        92,
+                        93,
+                        94,
+                        95,
+                        96
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "transferFrom(address,address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter StandardToken.transferFrom(address,address,uint256)._value (contracts/vulnerable/vuln_135_SC06.sol#67) is not in mixedCase\n",
+        "markdown": "Parameter [StandardToken.transferFrom(address,address,uint256)._value](contracts/vulnerable/vuln_135_SC06.sol#L67) is not in mixedCase\n",
+        "first_markdown_element": "contracts/vulnerable/vuln_135_SC06.sol#L67",
+        "id": "e001d55ad5c9886aa799c28ded83887106a3cdbd6a17edfcc0db2c6ef55090d3",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_owner",
+            "source_mapping": {
+              "start": 3552,
+              "length": 14,
+              "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+              "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+              "is_dependency": false,
+              "lines": [
+                79
+              ],
+              "starting_column": 24,
+              "ending_column": 38
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "balanceOf",
+                "source_mapping": {
+                  "start": 3533,
+                  "length": 112,
+                  "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+                  "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    79,
+                    80,
+                    81
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "StandardToken",
+                    "source_mapping": {
+                      "start": 2146,
+                      "length": 2002,
+                      "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+                      "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        52,
+                        53,
+                        54,
+                        55,
+                        56,
+                        57,
+                        58,
+                        59,
+                        60,
+                        61,
+                        62,
+                        63,
+                        64,
+                        65,
+                        66,
+                        67,
+                        68,
+                        69,
+                        70,
+                        71,
+                        72,
+                        73,
+                        74,
+                        75,
+                        76,
+                        77,
+                        78,
+                        79,
+                        80,
+                        81,
+                        82,
+                        83,
+                        84,
+                        85,
+                        86,
+                        87,
+                        88,
+                        89,
+                        90,
+                        91,
+                        92,
+                        93,
+                        94,
+                        95,
+                        96
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "balanceOf(address)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter StandardToken.balanceOf(address)._owner (contracts/vulnerable/vuln_135_SC06.sol#79) is not in mixedCase\n",
+        "markdown": "Parameter [StandardToken.balanceOf(address)._owner](contracts/vulnerable/vuln_135_SC06.sol#L79) is not in mixedCase\n",
+        "first_markdown_element": "contracts/vulnerable/vuln_135_SC06.sol#L79",
+        "id": "e2c602baa3f6215dc1bf4b8f0abe23563363fc889add3f48a208eb560cfca631",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "GoGoPay",
+            "source_mapping": {
+              "start": 5351,
+              "length": 1021,
+              "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+              "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+              "is_dependency": false,
+              "lines": [
+                118,
+                119,
+                120,
+                121,
+                122,
+                123,
+                124,
+                125,
+                126
+              ],
+              "starting_column": 5,
+              "ending_column": 6
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "GoGoPay",
+                "source_mapping": {
+                  "start": 4152,
+                  "length": 3624,
+                  "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+                  "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    98,
+                    99,
+                    100,
+                    101,
+                    102,
+                    103,
+                    104,
+                    105,
+                    106,
+                    107,
+                    108,
+                    109,
+                    110,
+                    111,
+                    112,
+                    113,
+                    114,
+                    115,
+                    116,
+                    117,
+                    118,
+                    119,
+                    120,
+                    121,
+                    122,
+                    123,
+                    124,
+                    125,
+                    126,
+                    127,
+                    128,
+                    129,
+                    130,
+                    131,
+                    132,
+                    133,
+                    134,
+                    135,
+                    136,
+                    137,
+                    138,
+                    139,
+                    140,
+                    141,
+                    142,
+                    143,
+                    144,
+                    145,
+                    146,
+                    147,
+                    148,
+                    149,
+                    150,
+                    151,
+                    152,
+                    153,
+                    154
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              },
+              "signature": "GoGoPay()"
+            }
+          },
+          {
+            "type": "node",
+            "name": "unitsOneEthCanBuy = 20000000",
+            "source_mapping": {
+              "start": 6134,
+              "length": 28,
+              "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+              "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+              "is_dependency": false,
+              "lines": [
+                124
+              ],
+              "starting_column": 9,
+              "ending_column": 37
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "GoGoPay",
+                "source_mapping": {
+                  "start": 5351,
+                  "length": 1021,
+                  "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+                  "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    118,
+                    119,
+                    120,
+                    121,
+                    122,
+                    123,
+                    124,
+                    125,
+                    126
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "GoGoPay",
+                    "source_mapping": {
+                      "start": 4152,
+                      "length": 3624,
+                      "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+                      "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        98,
+                        99,
+                        100,
+                        101,
+                        102,
+                        103,
+                        104,
+                        105,
+                        106,
+                        107,
+                        108,
+                        109,
+                        110,
+                        111,
+                        112,
+                        113,
+                        114,
+                        115,
+                        116,
+                        117,
+                        118,
+                        119,
+                        120,
+                        121,
+                        122,
+                        123,
+                        124,
+                        125,
+                        126,
+                        127,
+                        128,
+                        129,
+                        130,
+                        131,
+                        132,
+                        133,
+                        134,
+                        135,
+                        136,
+                        137,
+                        138,
+                        139,
+                        140,
+                        141,
+                        142,
+                        143,
+                        144,
+                        145,
+                        146,
+                        147,
+                        148,
+                        149,
+                        150,
+                        151,
+                        152,
+                        153,
+                        154
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "GoGoPay()"
+                }
+              }
+            }
+          }
+        ],
+        "description": "GoGoPay.GoGoPay() (contracts/vulnerable/vuln_135_SC06.sol#118-126) uses literals with too many digits:\n\t- unitsOneEthCanBuy = 20000000 (contracts/vulnerable/vuln_135_SC06.sol#124)\n",
+        "markdown": "[GoGoPay.GoGoPay()](contracts/vulnerable/vuln_135_SC06.sol#L118-L126) uses literals with too many digits:\n\t- [unitsOneEthCanBuy = 20000000](contracts/vulnerable/vuln_135_SC06.sol#L124)\n",
+        "first_markdown_element": "contracts/vulnerable/vuln_135_SC06.sol#L118-L126",
+        "id": "0e52b8c206800357494d14052e3d6cd102fab01906c63057f692cb8fc41811de",
+        "check": "too-many-digits",
+        "impact": "Informational",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "GoGoPay",
+            "source_mapping": {
+              "start": 5351,
+              "length": 1021,
+              "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+              "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+              "is_dependency": false,
+              "lines": [
+                118,
+                119,
+                120,
+                121,
+                122,
+                123,
+                124,
+                125,
+                126
+              ],
+              "starting_column": 5,
+              "ending_column": 6
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "GoGoPay",
+                "source_mapping": {
+                  "start": 4152,
+                  "length": 3624,
+                  "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+                  "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    98,
+                    99,
+                    100,
+                    101,
+                    102,
+                    103,
+                    104,
+                    105,
+                    106,
+                    107,
+                    108,
+                    109,
+                    110,
+                    111,
+                    112,
+                    113,
+                    114,
+                    115,
+                    116,
+                    117,
+                    118,
+                    119,
+                    120,
+                    121,
+                    122,
+                    123,
+                    124,
+                    125,
+                    126,
+                    127,
+                    128,
+                    129,
+                    130,
+                    131,
+                    132,
+                    133,
+                    134,
+                    135,
+                    136,
+                    137,
+                    138,
+                    139,
+                    140,
+                    141,
+                    142,
+                    143,
+                    144,
+                    145,
+                    146,
+                    147,
+                    148,
+                    149,
+                    150,
+                    151,
+                    152,
+                    153,
+                    154
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              },
+              "signature": "GoGoPay()"
+            }
+          },
+          {
+            "type": "node",
+            "name": "balances[msg.sender] = 16000000000000000000000000000",
+            "source_mapping": {
+              "start": 5381,
+              "length": 52,
+              "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+              "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+              "is_dependency": false,
+              "lines": [
+                119
+              ],
+              "starting_column": 9,
+              "ending_column": 61
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "GoGoPay",
+                "source_mapping": {
+                  "start": 5351,
+                  "length": 1021,
+                  "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+                  "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    118,
+                    119,
+                    120,
+                    121,
+                    122,
+                    123,
+                    124,
+                    125,
+                    126
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "GoGoPay",
+                    "source_mapping": {
+                      "start": 4152,
+                      "length": 3624,
+                      "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+                      "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        98,
+                        99,
+                        100,
+                        101,
+                        102,
+                        103,
+                        104,
+                        105,
+                        106,
+                        107,
+                        108,
+                        109,
+                        110,
+                        111,
+                        112,
+                        113,
+                        114,
+                        115,
+                        116,
+                        117,
+                        118,
+                        119,
+                        120,
+                        121,
+                        122,
+                        123,
+                        124,
+                        125,
+                        126,
+                        127,
+                        128,
+                        129,
+                        130,
+                        131,
+                        132,
+                        133,
+                        134,
+                        135,
+                        136,
+                        137,
+                        138,
+                        139,
+                        140,
+                        141,
+                        142,
+                        143,
+                        144,
+                        145,
+                        146,
+                        147,
+                        148,
+                        149,
+                        150,
+                        151,
+                        152,
+                        153,
+                        154
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "GoGoPay()"
+                }
+              }
+            }
+          }
+        ],
+        "description": "GoGoPay.GoGoPay() (contracts/vulnerable/vuln_135_SC06.sol#118-126) uses literals with too many digits:\n\t- balances[msg.sender] = 16000000000000000000000000000 (contracts/vulnerable/vuln_135_SC06.sol#119)\n",
+        "markdown": "[GoGoPay.GoGoPay()](contracts/vulnerable/vuln_135_SC06.sol#L118-L126) uses literals with too many digits:\n\t- [balances[msg.sender] = 16000000000000000000000000000](contracts/vulnerable/vuln_135_SC06.sol#L119)\n",
+        "first_markdown_element": "contracts/vulnerable/vuln_135_SC06.sol#L118-L126",
+        "id": "123279cca98647e40af8871b9323944a516fa271ad8e1c2ea90fdc8b38ff4c9c",
+        "check": "too-many-digits",
+        "impact": "Informational",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "GoGoPay",
+            "source_mapping": {
+              "start": 5351,
+              "length": 1021,
+              "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+              "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+              "is_dependency": false,
+              "lines": [
+                118,
+                119,
+                120,
+                121,
+                122,
+                123,
+                124,
+                125,
+                126
+              ],
+              "starting_column": 5,
+              "ending_column": 6
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "GoGoPay",
+                "source_mapping": {
+                  "start": 4152,
+                  "length": 3624,
+                  "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+                  "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    98,
+                    99,
+                    100,
+                    101,
+                    102,
+                    103,
+                    104,
+                    105,
+                    106,
+                    107,
+                    108,
+                    109,
+                    110,
+                    111,
+                    112,
+                    113,
+                    114,
+                    115,
+                    116,
+                    117,
+                    118,
+                    119,
+                    120,
+                    121,
+                    122,
+                    123,
+                    124,
+                    125,
+                    126,
+                    127,
+                    128,
+                    129,
+                    130,
+                    131,
+                    132,
+                    133,
+                    134,
+                    135,
+                    136,
+                    137,
+                    138,
+                    139,
+                    140,
+                    141,
+                    142,
+                    143,
+                    144,
+                    145,
+                    146,
+                    147,
+                    148,
+                    149,
+                    150,
+                    151,
+                    152,
+                    153,
+                    154
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              },
+              "signature": "GoGoPay()"
+            }
+          },
+          {
+            "type": "node",
+            "name": "totalSupply = 16000000000000000000000000000",
+            "source_mapping": {
+              "start": 5638,
+              "length": 43,
+              "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+              "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+              "is_dependency": false,
+              "lines": [
+                120
+              ],
+              "starting_column": 9,
+              "ending_column": 52
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "GoGoPay",
+                "source_mapping": {
+                  "start": 5351,
+                  "length": 1021,
+                  "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+                  "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    118,
+                    119,
+                    120,
+                    121,
+                    122,
+                    123,
+                    124,
+                    125,
+                    126
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "GoGoPay",
+                    "source_mapping": {
+                      "start": 4152,
+                      "length": 3624,
+                      "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+                      "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        98,
+                        99,
+                        100,
+                        101,
+                        102,
+                        103,
+                        104,
+                        105,
+                        106,
+                        107,
+                        108,
+                        109,
+                        110,
+                        111,
+                        112,
+                        113,
+                        114,
+                        115,
+                        116,
+                        117,
+                        118,
+                        119,
+                        120,
+                        121,
+                        122,
+                        123,
+                        124,
+                        125,
+                        126,
+                        127,
+                        128,
+                        129,
+                        130,
+                        131,
+                        132,
+                        133,
+                        134,
+                        135,
+                        136,
+                        137,
+                        138,
+                        139,
+                        140,
+                        141,
+                        142,
+                        143,
+                        144,
+                        145,
+                        146,
+                        147,
+                        148,
+                        149,
+                        150,
+                        151,
+                        152,
+                        153,
+                        154
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "GoGoPay()"
+                }
+              }
+            }
+          }
+        ],
+        "description": "GoGoPay.GoGoPay() (contracts/vulnerable/vuln_135_SC06.sol#118-126) uses literals with too many digits:\n\t- totalSupply = 16000000000000000000000000000 (contracts/vulnerable/vuln_135_SC06.sol#120)\n",
+        "markdown": "[GoGoPay.GoGoPay()](contracts/vulnerable/vuln_135_SC06.sol#L118-L126) uses literals with too many digits:\n\t- [totalSupply = 16000000000000000000000000000](contracts/vulnerable/vuln_135_SC06.sol#L120)\n",
+        "first_markdown_element": "contracts/vulnerable/vuln_135_SC06.sol#L118-L126",
+        "id": "d04b0316a8a89ce87c16b169f7843a812fa2a0eb7ee82ae37008faf9598a534f",
+        "check": "too-many-digits",
+        "impact": "Informational",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "version",
+            "source_mapping": {
+              "start": 4819,
+              "length": 30,
+              "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+              "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+              "is_dependency": false,
+              "lines": [
+                111
+              ],
+              "starting_column": 5,
+              "ending_column": 35
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "GoGoPay",
+                "source_mapping": {
+                  "start": 4152,
+                  "length": 3624,
+                  "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+                  "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    98,
+                    99,
+                    100,
+                    101,
+                    102,
+                    103,
+                    104,
+                    105,
+                    106,
+                    107,
+                    108,
+                    109,
+                    110,
+                    111,
+                    112,
+                    113,
+                    114,
+                    115,
+                    116,
+                    117,
+                    118,
+                    119,
+                    120,
+                    121,
+                    122,
+                    123,
+                    124,
+                    125,
+                    126,
+                    127,
+                    128,
+                    129,
+                    130,
+                    131,
+                    132,
+                    133,
+                    134,
+                    135,
+                    136,
+                    137,
+                    138,
+                    139,
+                    140,
+                    141,
+                    142,
+                    143,
+                    144,
+                    145,
+                    146,
+                    147,
+                    148,
+                    149,
+                    150,
+                    151,
+                    152,
+                    153,
+                    154
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              }
+            }
+          }
+        ],
+        "description": "GoGoPay.version (contracts/vulnerable/vuln_135_SC06.sol#111) should be constant \n",
+        "markdown": "[GoGoPay.version](contracts/vulnerable/vuln_135_SC06.sol#L111) should be constant \n",
+        "first_markdown_element": "contracts/vulnerable/vuln_135_SC06.sol#L111",
+        "id": "6aa0aaf64aff4530803638d7baa8140613d2d42dd17f550a9aef04c5b1903500",
+        "check": "constable-states",
+        "impact": "Optimization",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "approveAndCall",
+            "source_mapping": {
+              "start": 6973,
+              "length": 800,
+              "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+              "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+              "is_dependency": false,
+              "lines": [
+                143,
+                144,
+                145,
+                146,
+                147,
+                148,
+                149,
+                150,
+                151,
+                152
+              ],
+              "starting_column": 5,
+              "ending_column": 6
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "GoGoPay",
+                "source_mapping": {
+                  "start": 4152,
+                  "length": 3624,
+                  "filename_relative": "contracts/vulnerable/vuln_135_SC06.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_135_SC06.sol",
+                  "filename_short": "contracts/vulnerable/vuln_135_SC06.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    98,
+                    99,
+                    100,
+                    101,
+                    102,
+                    103,
+                    104,
+                    105,
+                    106,
+                    107,
+                    108,
+                    109,
+                    110,
+                    111,
+                    112,
+                    113,
+                    114,
+                    115,
+                    116,
+                    117,
+                    118,
+                    119,
+                    120,
+                    121,
+                    122,
+                    123,
+                    124,
+                    125,
+                    126,
+                    127,
+                    128,
+                    129,
+                    130,
+                    131,
+                    132,
+                    133,
+                    134,
+                    135,
+                    136,
+                    137,
+                    138,
+                    139,
+                    140,
+                    141,
+                    142,
+                    143,
+                    144,
+                    145,
+                    146,
+                    147,
+                    148,
+                    149,
+                    150,
+                    151,
+                    152,
+                    153,
+                    154
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              },
+              "signature": "approveAndCall(address,uint256,bytes)"
+            }
+          }
+        ],
+        "description": "approveAndCall(address,uint256,bytes) should be declared external:\n\t- GoGoPay.approveAndCall(address,uint256,bytes) (contracts/vulnerable/vuln_135_SC06.sol#143-152)\n",
+        "markdown": "approveAndCall(address,uint256,bytes) should be declared external:\n\t- [GoGoPay.approveAndCall(address,uint256,bytes)](contracts/vulnerable/vuln_135_SC06.sol#L143-L152)\n",
+        "first_markdown_element": "contracts/vulnerable/vuln_135_SC06.sol#L143-L152",
+        "id": "4c7fd6dd4f85dec9d51457401ef11bb4961f8e9bca9bbcaabcf27c5f58462531",
+        "check": "external-function",
+        "impact": "Optimization",
+        "confidence": "High"
+      }
+    ]
+  }
+}

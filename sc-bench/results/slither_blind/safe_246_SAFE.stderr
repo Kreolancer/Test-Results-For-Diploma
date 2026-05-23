@@ -1,0 +1,46 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_246_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+
+Detector: solc-version
+Version constraint ^0.4.13 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- NestedArrayFunctionCallDecoder
+	- ZeroFunctionSelector
+	- DelegateCallReturnValue
+	- ECRecoverMalformedInput.
+It is used by:
+	- ^0.4.13 (contracts/safe/safe_246_SAFE.sol#1)
+solc-0.4.13 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Parameter InsurChainCoin.transfer(address,uint256)._to (contracts/safe/safe_246_SAFE.sol#30) is not in mixedCase
+Parameter InsurChainCoin.transfer(address,uint256)._value (contracts/safe/safe_246_SAFE.sol#30) is not in mixedCase
+Parameter InsurChainCoin.approve(address,uint256)._spender (contracts/safe/safe_246_SAFE.sol#40) is not in mixedCase
+Parameter InsurChainCoin.approve(address,uint256)._value (contracts/safe/safe_246_SAFE.sol#40) is not in mixedCase
+Parameter InsurChainCoin.transferFrom(address,address,uint256)._from (contracts/safe/safe_246_SAFE.sol#46) is not in mixedCase
+Parameter InsurChainCoin.transferFrom(address,address,uint256)._to (contracts/safe/safe_246_SAFE.sol#46) is not in mixedCase
+Parameter InsurChainCoin.transferFrom(address,address,uint256)._value (contracts/safe/safe_246_SAFE.sol#46) is not in mixedCase
+Parameter InsurChainCoin.burn(uint256)._value (contracts/safe/safe_246_SAFE.sol#57) is not in mixedCase
+Parameter InsurChainCoin.burnFrom(address,uint256)._from (contracts/safe/safe_246_SAFE.sol#66) is not in mixedCase
+Parameter InsurChainCoin.burnFrom(address,uint256)._value (contracts/safe/safe_246_SAFE.sol#66) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: too-many-digits
+InsurChainCoin.InsurChainCoin() (contracts/safe/safe_246_SAFE.sol#20-27) uses literals with too many digits:
+	- totalSupply = 20000000000000000000000000000 (contracts/safe/safe_246_SAFE.sol#25)
+InsurChainCoin.InsurChainCoin() (contracts/safe/safe_246_SAFE.sol#20-27) uses literals with too many digits:
+	- balanceOf[owner] = 20000000000000000000000000000 (contracts/safe/safe_246_SAFE.sol#26)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#too-many-digits
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_246_SAFE.sol analyzed (1 contracts with 101 detectors), 14 result(s) found

@@ -1,0 +1,125 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_270_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_270_SAFE.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_270_SAFE.sol:13:5: Warning: Defining constructors as functions with the same name as the contract is deprecated. Use "constructor(...) { ... }" instead.
+    function SocialNetwork(){
+    ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_270_SAFE.sol:4:1: Warning: Source file does not specify required compiler version!Consider adding "pragma solidity ^0.4.24;"
+contract SocialNetwork{
+^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_270_SAFE.sol:56:16: Warning: This declaration shadows an existing declaration.
+	function post(string post, address userAddress, string password) returns (string status){
+	              ^---------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_270_SAFE.sol:56:2: The shadowed declaration is here:
+	function post(string post, address userAddress, string password) returns (string status){
+ ^ (Relevant source part starts here and spans across multiple lines).
+
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_270_SAFE.sol:25:25: Warning: This function only accepts a single "bytes" argument. Please use "abi.encodePacked(...)" or a similar function to encode the data.
+		bytes32 hashedPword = sha256(password);
+		                      ^--------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_270_SAFE.sol:25:25: Warning: The provided argument of type string memory is not implicitly convertible to expected type bytes memory.
+		bytes32 hashedPword = sha256(password);
+		                      ^--------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_270_SAFE.sol:33:34: Warning: This function only accepts a single "bytes" argument. Please use "abi.encodePacked(...)" or a similar function to encode the data.
+		if(userSecurity[msg.sender] == sha256(password)){
+		                               ^--------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_270_SAFE.sol:33:34: Warning: The provided argument of type string memory is not implicitly convertible to expected type bytes memory.
+		if(userSecurity[msg.sender] == sha256(password)){
+		                               ^--------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_270_SAFE.sol:46:33: Warning: This function only accepts a single "bytes" argument. Please use "abi.encodePacked(...)" or a similar function to encode the data.
+	if(userSecurity[msg.sender] == sha256(password)){
+	                               ^--------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_270_SAFE.sol:46:33: Warning: The provided argument of type string memory is not implicitly convertible to expected type bytes memory.
+	if(userSecurity[msg.sender] == sha256(password)){
+	                               ^--------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_270_SAFE.sol:57:70: Warning: This function only accepts a single "bytes" argument. Please use "abi.encodePacked(...)" or a similar function to encode the data.
+		if(loginState[userAddress] == true && userSecurity[userAddress] == sha256(password) ){
+		                                                                   ^--------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_270_SAFE.sol:57:70: Warning: The provided argument of type string memory is not implicitly convertible to expected type bytes memory.
+		if(loginState[userAddress] == true && userSecurity[userAddress] == sha256(password) ){
+		                                                                   ^--------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_270_SAFE.sol:70:70: Warning: This function only accepts a single "bytes" argument. Please use "abi.encodePacked(...)" or a similar function to encode the data.
+		if(loginState[userAddress] == true && userSecurity[userAddress] == sha256(password) ){
+		                                                                   ^--------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_270_SAFE.sol:70:70: Warning: The provided argument of type string memory is not implicitly convertible to expected type bytes memory.
+		if(loginState[userAddress] == true && userSecurity[userAddress] == sha256(password) ){
+		                                                                   ^--------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_270_SAFE.sol:83:70: Warning: This function only accepts a single "bytes" argument. Please use "abi.encodePacked(...)" or a similar function to encode the data.
+		if(loginState[userAddress] == true && userSecurity[userAddress] == sha256(password) ){
+		                                                                   ^--------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_270_SAFE.sol:83:70: Warning: The provided argument of type string memory is not implicitly convertible to expected type bytes memory.
+		if(loginState[userAddress] == true && userSecurity[userAddress] == sha256(password) ){
+		                                                                   ^--------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_270_SAFE.sol:13:5: Warning: No visibility specified. Defaulting to "public". 
+    function SocialNetwork(){
+    ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_270_SAFE.sol:23:2: Warning: No visibility specified. Defaulting to "public". 
+	function register(string name, string password){
+ ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_270_SAFE.sol:31:2: Warning: No visibility specified. Defaulting to "public". 
+	function login(string password) returns (bool){
+ ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_270_SAFE.sol:44:2: Warning: No visibility specified. Defaulting to "public". 
+	function logout(string password) returns (bool){
+ ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_270_SAFE.sol:56:2: Warning: No visibility specified. Defaulting to "public". 
+	function post(string post, address userAddress, string password) returns (string status){
+ ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_270_SAFE.sol:69:2: Warning: No visibility specified. Defaulting to "public". 
+	function deposit(address userAddress, string password) returns (string status){
+ ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_270_SAFE.sol:72:29: Warning: "msg.value" used in non-payable function. Do you want to add the "payable" modifier to this function?
+			balances[userAddress] += msg.value;
+			                         ^-------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_270_SAFE.sol:82:2: Warning: No visibility specified. Defaulting to "public". 
+	function withdraw(uint256 amount, address userAddress, string password) returns (string status){
+ ^ (Relevant source part starts here and spans across multiple lines).
+
+
+Detector: arbitrary-send-eth
+SocialNetwork.withdraw(uint256,address,string) (contracts/safe/safe_270_SAFE.sol#82-101) sends eth to arbitrary user
+	Dangerous calls:
+	- msg.sender.send(amount) (contracts/safe/safe_270_SAFE.sol#90)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#functions-that-send-ether-to-arbitrary-destinations
+
+Detector: shadowing-local
+SocialNetwork.post(string,address,string).post (contracts/safe/safe_270_SAFE.sol#56) shadows:
+	- SocialNetwork.post(string,address,string) (contracts/safe/safe_270_SAFE.sol#56-67) (function)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#local-variable-shadowing
+
+Detector: boolean-equal
+SocialNetwork.post(string,address,string) (contracts/safe/safe_270_SAFE.sol#56-67) compares to a boolean constant:
+	-loginState[userAddress] == true && userSecurity[userAddress] == sha256()(password) (contracts/safe/safe_270_SAFE.sol#57)
+SocialNetwork.deposit(address,string) (contracts/safe/safe_270_SAFE.sol#69-80) compares to a boolean constant:
+	-loginState[userAddress] == true && userSecurity[userAddress] == sha256()(password) (contracts/safe/safe_270_SAFE.sol#70)
+SocialNetwork.withdraw(uint256,address,string) (contracts/safe/safe_270_SAFE.sol#82-101) compares to a boolean constant:
+	-loginState[userAddress] == true && userSecurity[userAddress] == sha256()(password) (contracts/safe/safe_270_SAFE.sol#83)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#boolean-equality
+
+Detector: solc-version
+solc-0.4.24 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: reentrancy-unlimited-gas
+Reentrancy in SocialNetwork.withdraw(uint256,address,string) (contracts/safe/safe_270_SAFE.sol#82-101):
+	External calls:
+	- msg.sender.send(amount) (contracts/safe/safe_270_SAFE.sol#90)
+	State variables written after the call(s):
+	- balances[userAddress] -= amount (contracts/safe/safe_270_SAFE.sol#91)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-5
+
+Detector: external-function
+register(string,string) should be declared external:
+	- SocialNetwork.register(string,string) (contracts/safe/safe_270_SAFE.sol#23-29)
+login(string) should be declared external:
+	- SocialNetwork.login(string) (contracts/safe/safe_270_SAFE.sol#31-42)
+logout(string) should be declared external:
+	- SocialNetwork.logout(string) (contracts/safe/safe_270_SAFE.sol#44-54)
+post(string,address,string) should be declared external:
+	- SocialNetwork.post(string,address,string) (contracts/safe/safe_270_SAFE.sol#56-67)
+deposit(address,string) should be declared external:
+	- SocialNetwork.deposit(address,string) (contracts/safe/safe_270_SAFE.sol#69-80)
+withdraw(uint256,address,string) should be declared external:
+	- SocialNetwork.withdraw(uint256,address,string) (contracts/safe/safe_270_SAFE.sol#82-101)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#public-function-that-could-be-declared-external
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_270_SAFE.sol analyzed (1 contracts with 101 detectors), 13 result(s) found

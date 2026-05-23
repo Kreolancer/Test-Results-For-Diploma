@@ -1,0 +1,345 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_263_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_263_SAFE.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_263_SAFE.sol:80:5: Warning: Function state mutability can be restricted to pure
+    function name() public view returns (string) {}
+    ^---------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_263_SAFE.sol:81:5: Warning: Function state mutability can be restricted to pure
+    function symbol() public view returns (string) {}
+    ^-----------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_263_SAFE.sol:82:5: Warning: Function state mutability can be restricted to pure
+    function decimals() public view returns (uint8) {}
+    ^------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_263_SAFE.sol:83:5: Warning: Function state mutability can be restricted to pure
+    function totalSupply() public view returns (uint256) {}
+    ^-----------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_263_SAFE.sol:84:5: Warning: Function state mutability can be restricted to pure
+    function balanceOf(address _owner) public view returns (uint256) { _owner; }
+    ^--------------------------------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_263_SAFE.sol:85:5: Warning: Function state mutability can be restricted to pure
+    function allowance(address _owner, address _spender) public view returns (uint256) { _owner; _spender; }
+    ^------------------------------------------------------------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_263_SAFE.sol:97:5: Warning: Function state mutability can be restricted to pure
+    function owner() public view returns (address) {}
+    ^-----------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_263_SAFE.sol:222:5: Warning: Function state mutability can be restricted to pure
+    function gasPrice() public view returns (uint256) {}
+    ^--------------------------------------------------^
+
+
+Detector: locked-ether
+Contract locking ether found:
+	Contract IEtherToken (contracts/safe/safe_263_SAFE.sol#191-195) has payable functions:
+	 - IEtherToken.deposit() (contracts/safe/safe_263_SAFE.sol#192)
+	But does not have a function to withdraw the ether
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#contracts-that-lock-ether
+
+Detector: uninitialized-local
+BancorQuickConverter.convertByPath(IERC20Token[],uint256,uint256,IERC20Token).toToken (contracts/safe/safe_263_SAFE.sol#411) is a local variable never initialized
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#uninitialized-local-variables
+
+Detector: calls-loop
+BancorQuickConverter.convertByPath(IERC20Token[],uint256,uint256,IERC20Token) (contracts/safe/safe_263_SAFE.sol#409-431) has external calls inside a loop: converter = ITokenConverter(smartToken.owner()) (contracts/safe/safe_263_SAFE.sol#420)
+	Calls stack containing the loop:
+		BancorQuickConverter.convertFor(IERC20Token[],uint256,uint256,address)
+		BancorQuickConverter.convertForPrioritized(IERC20Token[],uint256,uint256,address,uint256,uint256,uint8,bytes32,bytes32)
+BancorQuickConverter.ensureAllowance(IERC20Token,address,uint256) (contracts/safe/safe_263_SAFE.sol#491-502) has external calls inside a loop: _token.allowance(this,_spender) >= _value (contracts/safe/safe_263_SAFE.sol#493)
+	Calls stack containing the loop:
+		BancorQuickConverter.convertFor(IERC20Token[],uint256,uint256,address)
+		BancorQuickConverter.convertForPrioritized(IERC20Token[],uint256,uint256,address,uint256,uint256,uint8,bytes32,bytes32)
+		BancorQuickConverter.convertByPath(IERC20Token[],uint256,uint256,IERC20Token)
+BancorQuickConverter.ensureAllowance(IERC20Token,address,uint256) (contracts/safe/safe_263_SAFE.sol#491-502) has external calls inside a loop: _token.allowance(this,_spender) != 0 (contracts/safe/safe_263_SAFE.sol#497)
+	Calls stack containing the loop:
+		BancorQuickConverter.convertFor(IERC20Token[],uint256,uint256,address)
+		BancorQuickConverter.convertForPrioritized(IERC20Token[],uint256,uint256,address,uint256,uint256,uint8,bytes32,bytes32)
+		BancorQuickConverter.convertByPath(IERC20Token[],uint256,uint256,IERC20Token)
+BancorQuickConverter.ensureAllowance(IERC20Token,address,uint256) (contracts/safe/safe_263_SAFE.sol#491-502) has external calls inside a loop: assert(bool)(_token.approve(_spender,0)) (contracts/safe/safe_263_SAFE.sol#498)
+	Calls stack containing the loop:
+		BancorQuickConverter.convertFor(IERC20Token[],uint256,uint256,address)
+		BancorQuickConverter.convertForPrioritized(IERC20Token[],uint256,uint256,address,uint256,uint256,uint8,bytes32,bytes32)
+		BancorQuickConverter.convertByPath(IERC20Token[],uint256,uint256,IERC20Token)
+BancorQuickConverter.ensureAllowance(IERC20Token,address,uint256) (contracts/safe/safe_263_SAFE.sol#491-502) has external calls inside a loop: assert(bool)(_token.approve(_spender,_value)) (contracts/safe/safe_263_SAFE.sol#501)
+	Calls stack containing the loop:
+		BancorQuickConverter.convertFor(IERC20Token[],uint256,uint256,address)
+		BancorQuickConverter.convertForPrioritized(IERC20Token[],uint256,uint256,address,uint256,uint256,uint8,bytes32,bytes32)
+		BancorQuickConverter.convertByPath(IERC20Token[],uint256,uint256,IERC20Token)
+BancorQuickConverter.convertByPath(IERC20Token[],uint256,uint256,IERC20Token) (contracts/safe/safe_263_SAFE.sol#409-431) has external calls inside a loop: _amount = converter.change(_fromToken,toToken,_amount,_minReturn) (contracts/safe/safe_263_SAFE.sol#427)
+	Calls stack containing the loop:
+		BancorQuickConverter.convertFor(IERC20Token[],uint256,uint256,address)
+		BancorQuickConverter.convertForPrioritized(IERC20Token[],uint256,uint256,address,uint256,uint256,uint8,bytes32,bytes32)
+BancorQuickConverter.convertByPath(IERC20Token[],uint256,uint256,IERC20Token) (contracts/safe/safe_263_SAFE.sol#409-431) has external calls inside a loop: _amount = converter.change(_fromToken,toToken,_amount,1) (contracts/safe/safe_263_SAFE.sol#427)
+	Calls stack containing the loop:
+		BancorQuickConverter.convertFor(IERC20Token[],uint256,uint256,address)
+		BancorQuickConverter.convertForPrioritized(IERC20Token[],uint256,uint256,address,uint256,uint256,uint8,bytes32,bytes32)
+BancorQuickConverter.convertByPath(IERC20Token[],uint256,uint256,IERC20Token) (contracts/safe/safe_263_SAFE.sol#409-431) has external calls inside a loop: converter = ITokenConverter(smartToken.owner()) (contracts/safe/safe_263_SAFE.sol#420)
+	Calls stack containing the loop:
+		BancorQuickConverter.convertForPrioritized(IERC20Token[],uint256,uint256,address,uint256,uint256,uint8,bytes32,bytes32)
+BancorQuickConverter.ensureAllowance(IERC20Token,address,uint256) (contracts/safe/safe_263_SAFE.sol#491-502) has external calls inside a loop: _token.allowance(this,_spender) >= _value (contracts/safe/safe_263_SAFE.sol#493)
+	Calls stack containing the loop:
+		BancorQuickConverter.convertForPrioritized(IERC20Token[],uint256,uint256,address,uint256,uint256,uint8,bytes32,bytes32)
+		BancorQuickConverter.convertByPath(IERC20Token[],uint256,uint256,IERC20Token)
+BancorQuickConverter.ensureAllowance(IERC20Token,address,uint256) (contracts/safe/safe_263_SAFE.sol#491-502) has external calls inside a loop: _token.allowance(this,_spender) != 0 (contracts/safe/safe_263_SAFE.sol#497)
+	Calls stack containing the loop:
+		BancorQuickConverter.convertForPrioritized(IERC20Token[],uint256,uint256,address,uint256,uint256,uint8,bytes32,bytes32)
+		BancorQuickConverter.convertByPath(IERC20Token[],uint256,uint256,IERC20Token)
+BancorQuickConverter.ensureAllowance(IERC20Token,address,uint256) (contracts/safe/safe_263_SAFE.sol#491-502) has external calls inside a loop: assert(bool)(_token.approve(_spender,0)) (contracts/safe/safe_263_SAFE.sol#498)
+	Calls stack containing the loop:
+		BancorQuickConverter.convertForPrioritized(IERC20Token[],uint256,uint256,address,uint256,uint256,uint8,bytes32,bytes32)
+		BancorQuickConverter.convertByPath(IERC20Token[],uint256,uint256,IERC20Token)
+BancorQuickConverter.ensureAllowance(IERC20Token,address,uint256) (contracts/safe/safe_263_SAFE.sol#491-502) has external calls inside a loop: assert(bool)(_token.approve(_spender,_value)) (contracts/safe/safe_263_SAFE.sol#501)
+	Calls stack containing the loop:
+		BancorQuickConverter.convertForPrioritized(IERC20Token[],uint256,uint256,address,uint256,uint256,uint8,bytes32,bytes32)
+		BancorQuickConverter.convertByPath(IERC20Token[],uint256,uint256,IERC20Token)
+BancorQuickConverter.convertByPath(IERC20Token[],uint256,uint256,IERC20Token) (contracts/safe/safe_263_SAFE.sol#409-431) has external calls inside a loop: _amount = converter.change(_fromToken,toToken,_amount,_minReturn) (contracts/safe/safe_263_SAFE.sol#427)
+	Calls stack containing the loop:
+		BancorQuickConverter.convertForPrioritized(IERC20Token[],uint256,uint256,address,uint256,uint256,uint8,bytes32,bytes32)
+BancorQuickConverter.convertByPath(IERC20Token[],uint256,uint256,IERC20Token) (contracts/safe/safe_263_SAFE.sol#409-431) has external calls inside a loop: _amount = converter.change(_fromToken,toToken,_amount,1) (contracts/safe/safe_263_SAFE.sol#427)
+	Calls stack containing the loop:
+		BancorQuickConverter.convertForPrioritized(IERC20Token[],uint256,uint256,address,uint256,uint256,uint8,bytes32,bytes32)
+BancorQuickConverter.convertByPath(IERC20Token[],uint256,uint256,IERC20Token) (contracts/safe/safe_263_SAFE.sol#409-431) has external calls inside a loop: converter = ITokenConverter(smartToken.owner()) (contracts/safe/safe_263_SAFE.sol#420)
+	Calls stack containing the loop:
+		BancorQuickConverter.claimAndConvertFor(IERC20Token[],uint256,uint256,address)
+		BancorQuickConverter.convertFor(IERC20Token[],uint256,uint256,address)
+		BancorQuickConverter.convertForPrioritized(IERC20Token[],uint256,uint256,address,uint256,uint256,uint8,bytes32,bytes32)
+BancorQuickConverter.ensureAllowance(IERC20Token,address,uint256) (contracts/safe/safe_263_SAFE.sol#491-502) has external calls inside a loop: _token.allowance(this,_spender) >= _value (contracts/safe/safe_263_SAFE.sol#493)
+	Calls stack containing the loop:
+		BancorQuickConverter.claimAndConvertFor(IERC20Token[],uint256,uint256,address)
+		BancorQuickConverter.convertFor(IERC20Token[],uint256,uint256,address)
+		BancorQuickConverter.convertForPrioritized(IERC20Token[],uint256,uint256,address,uint256,uint256,uint8,bytes32,bytes32)
+		BancorQuickConverter.convertByPath(IERC20Token[],uint256,uint256,IERC20Token)
+BancorQuickConverter.ensureAllowance(IERC20Token,address,uint256) (contracts/safe/safe_263_SAFE.sol#491-502) has external calls inside a loop: _token.allowance(this,_spender) != 0 (contracts/safe/safe_263_SAFE.sol#497)
+	Calls stack containing the loop:
+		BancorQuickConverter.claimAndConvertFor(IERC20Token[],uint256,uint256,address)
+		BancorQuickConverter.convertFor(IERC20Token[],uint256,uint256,address)
+		BancorQuickConverter.convertForPrioritized(IERC20Token[],uint256,uint256,address,uint256,uint256,uint8,bytes32,bytes32)
+		BancorQuickConverter.convertByPath(IERC20Token[],uint256,uint256,IERC20Token)
+BancorQuickConverter.ensureAllowance(IERC20Token,address,uint256) (contracts/safe/safe_263_SAFE.sol#491-502) has external calls inside a loop: assert(bool)(_token.approve(_spender,0)) (contracts/safe/safe_263_SAFE.sol#498)
+	Calls stack containing the loop:
+		BancorQuickConverter.claimAndConvertFor(IERC20Token[],uint256,uint256,address)
+		BancorQuickConverter.convertFor(IERC20Token[],uint256,uint256,address)
+		BancorQuickConverter.convertForPrioritized(IERC20Token[],uint256,uint256,address,uint256,uint256,uint8,bytes32,bytes32)
+		BancorQuickConverter.convertByPath(IERC20Token[],uint256,uint256,IERC20Token)
+BancorQuickConverter.ensureAllowance(IERC20Token,address,uint256) (contracts/safe/safe_263_SAFE.sol#491-502) has external calls inside a loop: assert(bool)(_token.approve(_spender,_value)) (contracts/safe/safe_263_SAFE.sol#501)
+	Calls stack containing the loop:
+		BancorQuickConverter.claimAndConvertFor(IERC20Token[],uint256,uint256,address)
+		BancorQuickConverter.convertFor(IERC20Token[],uint256,uint256,address)
+		BancorQuickConverter.convertForPrioritized(IERC20Token[],uint256,uint256,address,uint256,uint256,uint8,bytes32,bytes32)
+		BancorQuickConverter.convertByPath(IERC20Token[],uint256,uint256,IERC20Token)
+BancorQuickConverter.convertByPath(IERC20Token[],uint256,uint256,IERC20Token) (contracts/safe/safe_263_SAFE.sol#409-431) has external calls inside a loop: _amount = converter.change(_fromToken,toToken,_amount,_minReturn) (contracts/safe/safe_263_SAFE.sol#427)
+	Calls stack containing the loop:
+		BancorQuickConverter.claimAndConvertFor(IERC20Token[],uint256,uint256,address)
+		BancorQuickConverter.convertFor(IERC20Token[],uint256,uint256,address)
+		BancorQuickConverter.convertForPrioritized(IERC20Token[],uint256,uint256,address,uint256,uint256,uint8,bytes32,bytes32)
+BancorQuickConverter.convertByPath(IERC20Token[],uint256,uint256,IERC20Token) (contracts/safe/safe_263_SAFE.sol#409-431) has external calls inside a loop: _amount = converter.change(_fromToken,toToken,_amount,1) (contracts/safe/safe_263_SAFE.sol#427)
+	Calls stack containing the loop:
+		BancorQuickConverter.claimAndConvertFor(IERC20Token[],uint256,uint256,address)
+		BancorQuickConverter.convertFor(IERC20Token[],uint256,uint256,address)
+		BancorQuickConverter.convertForPrioritized(IERC20Token[],uint256,uint256,address,uint256,uint256,uint8,bytes32,bytes32)
+BancorQuickConverter.convertByPath(IERC20Token[],uint256,uint256,IERC20Token) (contracts/safe/safe_263_SAFE.sol#409-431) has external calls inside a loop: converter = ITokenConverter(smartToken.owner()) (contracts/safe/safe_263_SAFE.sol#420)
+	Calls stack containing the loop:
+		BancorQuickConverter.convert(IERC20Token[],uint256,uint256)
+		BancorQuickConverter.convertFor(IERC20Token[],uint256,uint256,address)
+		BancorQuickConverter.convertForPrioritized(IERC20Token[],uint256,uint256,address,uint256,uint256,uint8,bytes32,bytes32)
+BancorQuickConverter.ensureAllowance(IERC20Token,address,uint256) (contracts/safe/safe_263_SAFE.sol#491-502) has external calls inside a loop: _token.allowance(this,_spender) >= _value (contracts/safe/safe_263_SAFE.sol#493)
+	Calls stack containing the loop:
+		BancorQuickConverter.convert(IERC20Token[],uint256,uint256)
+		BancorQuickConverter.convertFor(IERC20Token[],uint256,uint256,address)
+		BancorQuickConverter.convertForPrioritized(IERC20Token[],uint256,uint256,address,uint256,uint256,uint8,bytes32,bytes32)
+		BancorQuickConverter.convertByPath(IERC20Token[],uint256,uint256,IERC20Token)
+BancorQuickConverter.ensureAllowance(IERC20Token,address,uint256) (contracts/safe/safe_263_SAFE.sol#491-502) has external calls inside a loop: _token.allowance(this,_spender) != 0 (contracts/safe/safe_263_SAFE.sol#497)
+	Calls stack containing the loop:
+		BancorQuickConverter.convert(IERC20Token[],uint256,uint256)
+		BancorQuickConverter.convertFor(IERC20Token[],uint256,uint256,address)
+		BancorQuickConverter.convertForPrioritized(IERC20Token[],uint256,uint256,address,uint256,uint256,uint8,bytes32,bytes32)
+		BancorQuickConverter.convertByPath(IERC20Token[],uint256,uint256,IERC20Token)
+BancorQuickConverter.ensureAllowance(IERC20Token,address,uint256) (contracts/safe/safe_263_SAFE.sol#491-502) has external calls inside a loop: assert(bool)(_token.approve(_spender,0)) (contracts/safe/safe_263_SAFE.sol#498)
+	Calls stack containing the loop:
+		BancorQuickConverter.convert(IERC20Token[],uint256,uint256)
+		BancorQuickConverter.convertFor(IERC20Token[],uint256,uint256,address)
+		BancorQuickConverter.convertForPrioritized(IERC20Token[],uint256,uint256,address,uint256,uint256,uint8,bytes32,bytes32)
+		BancorQuickConverter.convertByPath(IERC20Token[],uint256,uint256,IERC20Token)
+BancorQuickConverter.ensureAllowance(IERC20Token,address,uint256) (contracts/safe/safe_263_SAFE.sol#491-502) has external calls inside a loop: assert(bool)(_token.approve(_spender,_value)) (contracts/safe/safe_263_SAFE.sol#501)
+	Calls stack containing the loop:
+		BancorQuickConverter.convert(IERC20Token[],uint256,uint256)
+		BancorQuickConverter.convertFor(IERC20Token[],uint256,uint256,address)
+		BancorQuickConverter.convertForPrioritized(IERC20Token[],uint256,uint256,address,uint256,uint256,uint8,bytes32,bytes32)
+		BancorQuickConverter.convertByPath(IERC20Token[],uint256,uint256,IERC20Token)
+BancorQuickConverter.convertByPath(IERC20Token[],uint256,uint256,IERC20Token) (contracts/safe/safe_263_SAFE.sol#409-431) has external calls inside a loop: _amount = converter.change(_fromToken,toToken,_amount,_minReturn) (contracts/safe/safe_263_SAFE.sol#427)
+	Calls stack containing the loop:
+		BancorQuickConverter.convert(IERC20Token[],uint256,uint256)
+		BancorQuickConverter.convertFor(IERC20Token[],uint256,uint256,address)
+		BancorQuickConverter.convertForPrioritized(IERC20Token[],uint256,uint256,address,uint256,uint256,uint8,bytes32,bytes32)
+BancorQuickConverter.convertByPath(IERC20Token[],uint256,uint256,IERC20Token) (contracts/safe/safe_263_SAFE.sol#409-431) has external calls inside a loop: _amount = converter.change(_fromToken,toToken,_amount,1) (contracts/safe/safe_263_SAFE.sol#427)
+	Calls stack containing the loop:
+		BancorQuickConverter.convert(IERC20Token[],uint256,uint256)
+		BancorQuickConverter.convertFor(IERC20Token[],uint256,uint256,address)
+		BancorQuickConverter.convertForPrioritized(IERC20Token[],uint256,uint256,address,uint256,uint256,uint8,bytes32,bytes32)
+BancorQuickConverter.convertByPath(IERC20Token[],uint256,uint256,IERC20Token) (contracts/safe/safe_263_SAFE.sol#409-431) has external calls inside a loop: converter = ITokenConverter(smartToken.owner()) (contracts/safe/safe_263_SAFE.sol#420)
+	Calls stack containing the loop:
+		BancorQuickConverter.claimAndConvert(IERC20Token[],uint256,uint256)
+		BancorQuickConverter.claimAndConvertFor(IERC20Token[],uint256,uint256,address)
+		BancorQuickConverter.convertFor(IERC20Token[],uint256,uint256,address)
+		BancorQuickConverter.convertForPrioritized(IERC20Token[],uint256,uint256,address,uint256,uint256,uint8,bytes32,bytes32)
+BancorQuickConverter.ensureAllowance(IERC20Token,address,uint256) (contracts/safe/safe_263_SAFE.sol#491-502) has external calls inside a loop: _token.allowance(this,_spender) >= _value (contracts/safe/safe_263_SAFE.sol#493)
+	Calls stack containing the loop:
+		BancorQuickConverter.claimAndConvert(IERC20Token[],uint256,uint256)
+		BancorQuickConverter.claimAndConvertFor(IERC20Token[],uint256,uint256,address)
+		BancorQuickConverter.convertFor(IERC20Token[],uint256,uint256,address)
+		BancorQuickConverter.convertForPrioritized(IERC20Token[],uint256,uint256,address,uint256,uint256,uint8,bytes32,bytes32)
+		BancorQuickConverter.convertByPath(IERC20Token[],uint256,uint256,IERC20Token)
+BancorQuickConverter.ensureAllowance(IERC20Token,address,uint256) (contracts/safe/safe_263_SAFE.sol#491-502) has external calls inside a loop: _token.allowance(this,_spender) != 0 (contracts/safe/safe_263_SAFE.sol#497)
+	Calls stack containing the loop:
+		BancorQuickConverter.claimAndConvert(IERC20Token[],uint256,uint256)
+		BancorQuickConverter.claimAndConvertFor(IERC20Token[],uint256,uint256,address)
+		BancorQuickConverter.convertFor(IERC20Token[],uint256,uint256,address)
+		BancorQuickConverter.convertForPrioritized(IERC20Token[],uint256,uint256,address,uint256,uint256,uint8,bytes32,bytes32)
+		BancorQuickConverter.convertByPath(IERC20Token[],uint256,uint256,IERC20Token)
+BancorQuickConverter.ensureAllowance(IERC20Token,address,uint256) (contracts/safe/safe_263_SAFE.sol#491-502) has external calls inside a loop: assert(bool)(_token.approve(_spender,0)) (contracts/safe/safe_263_SAFE.sol#498)
+	Calls stack containing the loop:
+		BancorQuickConverter.claimAndConvert(IERC20Token[],uint256,uint256)
+		BancorQuickConverter.claimAndConvertFor(IERC20Token[],uint256,uint256,address)
+		BancorQuickConverter.convertFor(IERC20Token[],uint256,uint256,address)
+		BancorQuickConverter.convertForPrioritized(IERC20Token[],uint256,uint256,address,uint256,uint256,uint8,bytes32,bytes32)
+		BancorQuickConverter.convertByPath(IERC20Token[],uint256,uint256,IERC20Token)
+BancorQuickConverter.ensureAllowance(IERC20Token,address,uint256) (contracts/safe/safe_263_SAFE.sol#491-502) has external calls inside a loop: assert(bool)(_token.approve(_spender,_value)) (contracts/safe/safe_263_SAFE.sol#501)
+	Calls stack containing the loop:
+		BancorQuickConverter.claimAndConvert(IERC20Token[],uint256,uint256)
+		BancorQuickConverter.claimAndConvertFor(IERC20Token[],uint256,uint256,address)
+		BancorQuickConverter.convertFor(IERC20Token[],uint256,uint256,address)
+		BancorQuickConverter.convertForPrioritized(IERC20Token[],uint256,uint256,address,uint256,uint256,uint8,bytes32,bytes32)
+		BancorQuickConverter.convertByPath(IERC20Token[],uint256,uint256,IERC20Token)
+BancorQuickConverter.convertByPath(IERC20Token[],uint256,uint256,IERC20Token) (contracts/safe/safe_263_SAFE.sol#409-431) has external calls inside a loop: _amount = converter.change(_fromToken,toToken,_amount,_minReturn) (contracts/safe/safe_263_SAFE.sol#427)
+	Calls stack containing the loop:
+		BancorQuickConverter.claimAndConvert(IERC20Token[],uint256,uint256)
+		BancorQuickConverter.claimAndConvertFor(IERC20Token[],uint256,uint256,address)
+		BancorQuickConverter.convertFor(IERC20Token[],uint256,uint256,address)
+		BancorQuickConverter.convertForPrioritized(IERC20Token[],uint256,uint256,address,uint256,uint256,uint8,bytes32,bytes32)
+BancorQuickConverter.convertByPath(IERC20Token[],uint256,uint256,IERC20Token) (contracts/safe/safe_263_SAFE.sol#409-431) has external calls inside a loop: _amount = converter.change(_fromToken,toToken,_amount,1) (contracts/safe/safe_263_SAFE.sol#427)
+	Calls stack containing the loop:
+		BancorQuickConverter.claimAndConvert(IERC20Token[],uint256,uint256)
+		BancorQuickConverter.claimAndConvertFor(IERC20Token[],uint256,uint256,address)
+		BancorQuickConverter.convertFor(IERC20Token[],uint256,uint256,address)
+		BancorQuickConverter.convertForPrioritized(IERC20Token[],uint256,uint256,address,uint256,uint256,uint8,bytes32,bytes32)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation/#calls-inside-a-loop
+
+Detector: dead-code
+Utils.safeAdd(uint256,uint256) (contracts/safe/safe_263_SAFE.sol#41-45) is never used and should be removed
+Utils.safeMul(uint256,uint256) (contracts/safe/safe_263_SAFE.sol#68-72) is never used and should be removed
+Utils.safeSub(uint256,uint256) (contracts/safe/safe_263_SAFE.sol#55-58) is never used and should be removed
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dead-code
+
+Detector: solc-version
+Version constraint ^0.4.18 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- EventStructWrongData
+	- NestedArrayFunctionCallDecoder.
+It is used by:
+	- ^0.4.18 (contracts/safe/safe_263_SAFE.sol#1)
+solc-0.4.18 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Parameter Utils.safeAdd(uint256,uint256)._x (contracts/safe/safe_263_SAFE.sol#41) is not in mixedCase
+Parameter Utils.safeAdd(uint256,uint256)._y (contracts/safe/safe_263_SAFE.sol#41) is not in mixedCase
+Parameter Utils.safeSub(uint256,uint256)._x (contracts/safe/safe_263_SAFE.sol#55) is not in mixedCase
+Parameter Utils.safeSub(uint256,uint256)._y (contracts/safe/safe_263_SAFE.sol#55) is not in mixedCase
+Parameter Utils.safeMul(uint256,uint256)._x (contracts/safe/safe_263_SAFE.sol#68) is not in mixedCase
+Parameter Utils.safeMul(uint256,uint256)._y (contracts/safe/safe_263_SAFE.sol#68) is not in mixedCase
+Parameter Owned.transferOwnership(address)._newOwner (contracts/safe/safe_263_SAFE.sol#132) is not in mixedCase
+Parameter TokenHolder.withdrawTokens(IERC20Token,address,uint256)._token (contracts/safe/safe_263_SAFE.sol#177) is not in mixedCase
+Parameter TokenHolder.withdrawTokens(IERC20Token,address,uint256)._to (contracts/safe/safe_263_SAFE.sol#177) is not in mixedCase
+Parameter TokenHolder.withdrawTokens(IERC20Token,address,uint256)._amount (contracts/safe/safe_263_SAFE.sol#177) is not in mixedCase
+Parameter BancorQuickConverter.setGasPriceLimit(IBancorGasPriceLimit)._gasPriceLimit (contracts/safe/safe_263_SAFE.sol#275) is not in mixedCase
+Parameter BancorQuickConverter.setSignerAddress(address)._signerAddress (contracts/safe/safe_263_SAFE.sol#289) is not in mixedCase
+Parameter BancorQuickConverter.registerEtherToken(IEtherToken,bool)._token (contracts/safe/safe_263_SAFE.sol#304) is not in mixedCase
+Parameter BancorQuickConverter.registerEtherToken(IEtherToken,bool)._register (contracts/safe/safe_263_SAFE.sol#304) is not in mixedCase
+Parameter BancorQuickConverter.verifyTrustedSender(uint256,address,uint256,uint8,bytes32,bytes32)._block (contracts/safe/safe_263_SAFE.sol#322) is not in mixedCase
+Parameter BancorQuickConverter.verifyTrustedSender(uint256,address,uint256,uint8,bytes32,bytes32)._addr (contracts/safe/safe_263_SAFE.sol#322) is not in mixedCase
+Parameter BancorQuickConverter.verifyTrustedSender(uint256,address,uint256,uint8,bytes32,bytes32)._nonce (contracts/safe/safe_263_SAFE.sol#322) is not in mixedCase
+Parameter BancorQuickConverter.verifyTrustedSender(uint256,address,uint256,uint8,bytes32,bytes32)._v (contracts/safe/safe_263_SAFE.sol#322) is not in mixedCase
+Parameter BancorQuickConverter.verifyTrustedSender(uint256,address,uint256,uint8,bytes32,bytes32)._r (contracts/safe/safe_263_SAFE.sol#322) is not in mixedCase
+Parameter BancorQuickConverter.verifyTrustedSender(uint256,address,uint256,uint8,bytes32,bytes32)._s (contracts/safe/safe_263_SAFE.sol#322) is not in mixedCase
+Parameter BancorQuickConverter.convertFor(IERC20Token[],uint256,uint256,address)._path (contracts/safe/safe_263_SAFE.sol#355) is not in mixedCase
+Parameter BancorQuickConverter.convertFor(IERC20Token[],uint256,uint256,address)._amount (contracts/safe/safe_263_SAFE.sol#355) is not in mixedCase
+Parameter BancorQuickConverter.convertFor(IERC20Token[],uint256,uint256,address)._minReturn (contracts/safe/safe_263_SAFE.sol#355) is not in mixedCase
+Parameter BancorQuickConverter.convertFor(IERC20Token[],uint256,uint256,address)._for (contracts/safe/safe_263_SAFE.sol#355) is not in mixedCase
+Parameter BancorQuickConverter.convertForPrioritized(IERC20Token[],uint256,uint256,address,uint256,uint256,uint8,bytes32,bytes32)._path (contracts/safe/safe_263_SAFE.sol#374) is not in mixedCase
+Parameter BancorQuickConverter.convertForPrioritized(IERC20Token[],uint256,uint256,address,uint256,uint256,uint8,bytes32,bytes32)._amount (contracts/safe/safe_263_SAFE.sol#374) is not in mixedCase
+Parameter BancorQuickConverter.convertForPrioritized(IERC20Token[],uint256,uint256,address,uint256,uint256,uint8,bytes32,bytes32)._minReturn (contracts/safe/safe_263_SAFE.sol#374) is not in mixedCase
+Parameter BancorQuickConverter.convertForPrioritized(IERC20Token[],uint256,uint256,address,uint256,uint256,uint8,bytes32,bytes32)._for (contracts/safe/safe_263_SAFE.sol#374) is not in mixedCase
+Parameter BancorQuickConverter.convertForPrioritized(IERC20Token[],uint256,uint256,address,uint256,uint256,uint8,bytes32,bytes32)._block (contracts/safe/safe_263_SAFE.sol#374) is not in mixedCase
+Parameter BancorQuickConverter.convertForPrioritized(IERC20Token[],uint256,uint256,address,uint256,uint256,uint8,bytes32,bytes32)._nonce (contracts/safe/safe_263_SAFE.sol#374) is not in mixedCase
+Parameter BancorQuickConverter.convertForPrioritized(IERC20Token[],uint256,uint256,address,uint256,uint256,uint8,bytes32,bytes32)._v (contracts/safe/safe_263_SAFE.sol#374) is not in mixedCase
+Parameter BancorQuickConverter.convertForPrioritized(IERC20Token[],uint256,uint256,address,uint256,uint256,uint8,bytes32,bytes32)._r (contracts/safe/safe_263_SAFE.sol#374) is not in mixedCase
+Parameter BancorQuickConverter.convertForPrioritized(IERC20Token[],uint256,uint256,address,uint256,uint256,uint8,bytes32,bytes32)._s (contracts/safe/safe_263_SAFE.sol#374) is not in mixedCase
+Parameter BancorQuickConverter.convertByPath(IERC20Token[],uint256,uint256,IERC20Token)._path (contracts/safe/safe_263_SAFE.sol#409) is not in mixedCase
+Parameter BancorQuickConverter.convertByPath(IERC20Token[],uint256,uint256,IERC20Token)._amount (contracts/safe/safe_263_SAFE.sol#409) is not in mixedCase
+Parameter BancorQuickConverter.convertByPath(IERC20Token[],uint256,uint256,IERC20Token)._minReturn (contracts/safe/safe_263_SAFE.sol#409) is not in mixedCase
+Parameter BancorQuickConverter.convertByPath(IERC20Token[],uint256,uint256,IERC20Token)._fromToken (contracts/safe/safe_263_SAFE.sol#409) is not in mixedCase
+Parameter BancorQuickConverter.claimAndConvertFor(IERC20Token[],uint256,uint256,address)._path (contracts/safe/safe_263_SAFE.sol#445) is not in mixedCase
+Parameter BancorQuickConverter.claimAndConvertFor(IERC20Token[],uint256,uint256,address)._amount (contracts/safe/safe_263_SAFE.sol#445) is not in mixedCase
+Parameter BancorQuickConverter.claimAndConvertFor(IERC20Token[],uint256,uint256,address)._minReturn (contracts/safe/safe_263_SAFE.sol#445) is not in mixedCase
+Parameter BancorQuickConverter.claimAndConvertFor(IERC20Token[],uint256,uint256,address)._for (contracts/safe/safe_263_SAFE.sol#445) is not in mixedCase
+Parameter BancorQuickConverter.convert(IERC20Token[],uint256,uint256)._path (contracts/safe/safe_263_SAFE.sol#465) is not in mixedCase
+Parameter BancorQuickConverter.convert(IERC20Token[],uint256,uint256)._amount (contracts/safe/safe_263_SAFE.sol#465) is not in mixedCase
+Parameter BancorQuickConverter.convert(IERC20Token[],uint256,uint256)._minReturn (contracts/safe/safe_263_SAFE.sol#465) is not in mixedCase
+Parameter BancorQuickConverter.claimAndConvert(IERC20Token[],uint256,uint256)._path (contracts/safe/safe_263_SAFE.sol#480) is not in mixedCase
+Parameter BancorQuickConverter.claimAndConvert(IERC20Token[],uint256,uint256)._amount (contracts/safe/safe_263_SAFE.sol#480) is not in mixedCase
+Parameter BancorQuickConverter.claimAndConvert(IERC20Token[],uint256,uint256)._minReturn (contracts/safe/safe_263_SAFE.sol#480) is not in mixedCase
+Parameter BancorQuickConverter.ensureAllowance(IERC20Token,address,uint256)._token (contracts/safe/safe_263_SAFE.sol#491) is not in mixedCase
+Parameter BancorQuickConverter.ensureAllowance(IERC20Token,address,uint256)._spender (contracts/safe/safe_263_SAFE.sol#491) is not in mixedCase
+Parameter BancorQuickConverter.ensureAllowance(IERC20Token,address,uint256)._value (contracts/safe/safe_263_SAFE.sol#491) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: redundant-statements
+Redundant expression "_owner (contracts/safe/safe_263_SAFE.sol#84)" inIERC20Token (contracts/safe/safe_263_SAFE.sol#78-90)
+Redundant expression "_owner (contracts/safe/safe_263_SAFE.sol#85)" inIERC20Token (contracts/safe/safe_263_SAFE.sol#78-90)
+Redundant expression "_spender (contracts/safe/safe_263_SAFE.sol#85)" inIERC20Token (contracts/safe/safe_263_SAFE.sol#78-90)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#redundant-statements
+
+Detector: unimplemented-functions
+IEtherToken (contracts/safe/safe_263_SAFE.sol#191-195) does not implement functions:
+	- IOwned.acceptOwnership() (contracts/safe/safe_263_SAFE.sol#100)
+	- IERC20Token.approve(address,uint256) (contracts/safe/safe_263_SAFE.sol#89)
+	- IEtherToken.deposit() (contracts/safe/safe_263_SAFE.sol#192)
+	- IERC20Token.transfer(address,uint256) (contracts/safe/safe_263_SAFE.sol#87)
+	- IERC20Token.transferFrom(address,address,uint256) (contracts/safe/safe_263_SAFE.sol#88)
+	- IOwned.transferOwnership(address) (contracts/safe/safe_263_SAFE.sol#99)
+	- IEtherToken.withdraw(uint256) (contracts/safe/safe_263_SAFE.sol#193)
+	- IEtherToken.withdrawTo(address,uint256) (contracts/safe/safe_263_SAFE.sol#194)
+	- ITokenHolder.withdrawTokens(IERC20Token,address,uint256) (contracts/safe/safe_263_SAFE.sol#152)
+ISmartToken (contracts/safe/safe_263_SAFE.sol#200-204) does not implement functions:
+	- IOwned.acceptOwnership() (contracts/safe/safe_263_SAFE.sol#100)
+	- IERC20Token.approve(address,uint256) (contracts/safe/safe_263_SAFE.sol#89)
+	- ISmartToken.destroy(address,uint256) (contracts/safe/safe_263_SAFE.sol#203)
+	- ISmartToken.disableTransfers(bool) (contracts/safe/safe_263_SAFE.sol#201)
+	- ISmartToken.issue(address,uint256) (contracts/safe/safe_263_SAFE.sol#202)
+	- IERC20Token.transfer(address,uint256) (contracts/safe/safe_263_SAFE.sol#87)
+	- IERC20Token.transferFrom(address,address,uint256) (contracts/safe/safe_263_SAFE.sol#88)
+	- IOwned.transferOwnership(address) (contracts/safe/safe_263_SAFE.sol#99)
+IBancorGasPriceLimit (contracts/safe/safe_263_SAFE.sol#221-224) does not implement functions:
+	- IBancorGasPriceLimit.validateGasPrice(uint256) (contracts/safe/safe_263_SAFE.sol#223)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unimplemented-functions
+
+Detector: external-function
+convert(IERC20Token[],uint256,uint256) should be declared external:
+	- BancorQuickConverter.convert(IERC20Token[],uint256,uint256) (contracts/safe/safe_263_SAFE.sol#465-467)
+	- IBancorQuickConverter.convert(IERC20Token[],uint256,uint256) (contracts/safe/safe_263_SAFE.sol#230)
+claimAndConvert(IERC20Token[],uint256,uint256) should be declared external:
+	- BancorQuickConverter.claimAndConvert(IERC20Token[],uint256,uint256) (contracts/safe/safe_263_SAFE.sol#480-482)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#public-function-that-could-be-declared-external
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_263_SAFE.sol analyzed (12 contracts with 101 detectors), 100 result(s) found

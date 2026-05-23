@@ -1,0 +1,9 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_288_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+
+Detector: arbitrary-send-eth
+Crowdsale._forwardFunds() (contracts/safe/safe_288_SAFE.sol#400-402) sends eth to arbitrary user
+	Dangerous calls:
+	- wallet.transfer(address(this).balance) (contracts/safe/safe_288_SAFE.sol#401)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#functions-that-send-ether-to-arbitrary-destinations
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_288_SAFE.sol analyzed (4 contracts with 5 detectors), 1 result(s) found

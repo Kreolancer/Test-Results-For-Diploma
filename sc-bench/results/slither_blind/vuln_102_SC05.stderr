@@ -1,0 +1,97 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_102_SC05.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
+
+Detector: divide-before-multiply
+CSC.fallback() (contracts/vulnerable/vuln_102_SC05.sol#112-131) performs a multiplication on the result of a division:
+	- valueToGive = valueToGive.div(1000000).mul(999999) (contracts/vulnerable/vuln_102_SC05.sol#125)
+CSC.buyToken(address,uint256) (contracts/vulnerable/vuln_102_SC05.sol#133-151) performs a multiplication on the result of a division:
+	- toGive = tokenPerETH.mul(_invest) / 1000000000000000000 (contracts/vulnerable/vuln_102_SC05.sol#134)
+	- bonus = toGive * 30 / 100 (contracts/vulnerable/vuln_102_SC05.sol#144)
+CSC.buyToken(address,uint256) (contracts/vulnerable/vuln_102_SC05.sol#133-151) performs a multiplication on the result of a division:
+	- toGive = tokenPerETH.mul(_invest) / 1000000000000000000 (contracts/vulnerable/vuln_102_SC05.sol#134)
+	- bonus = toGive * 20 / 100 (contracts/vulnerable/vuln_102_SC05.sol#141)
+CSC.buyToken(address,uint256) (contracts/vulnerable/vuln_102_SC05.sol#133-151) performs a multiplication on the result of a division:
+	- toGive = tokenPerETH.mul(_invest) / 1000000000000000000 (contracts/vulnerable/vuln_102_SC05.sol#134)
+	- bonus = toGive * 10 / 100 (contracts/vulnerable/vuln_102_SC05.sol#138)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#divide-before-multiply
+
+Detector: shadowing-abstract
+CSC.totalSupply (contracts/vulnerable/vuln_102_SC05.sol#57) shadows:
+	- ERC20Basic.totalSupply (contracts/vulnerable/vuln_102_SC05.sol#32)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variable-shadowing-from-abstract-contracts
+
+Detector: events-access
+CSC.transferOwnership(address) (contracts/vulnerable/vuln_102_SC05.sol#90-94) should emit an event for: 
+	- owner = newOwner (contracts/vulnerable/vuln_102_SC05.sol#92) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+
+Detector: boolean-equal
+CSC.fallback() (contracts/vulnerable/vuln_102_SC05.sol#112-131) compares to a boolean constant:
+	-require(bool)(blacklist[investor] == false) (contracts/vulnerable/vuln_102_SC05.sol#118)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#boolean-equality
+
+Detector: function-init-state
+CSC.totalRemaining (contracts/vulnerable/vuln_102_SC05.sol#62) is set pre-construction with a non-constant function or state variable:
+	- totalSupply.sub(totalDistributed)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#function-initializing-state
+
+Detector: solc-version
+Version constraint ^0.4.25 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ABIEncoderV2PackedStorage_0.4.x.
+It is used by:
+	- ^0.4.25 (contracts/vulnerable/vuln_102_SC05.sol#1)
+solc-0.4.25 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Function CSC.HP() (contracts/vulnerable/vuln_102_SC05.sol#84-88) is not in mixedCase
+Parameter CSC.distr(address,uint256)._to (contracts/vulnerable/vuln_102_SC05.sol#102) is not in mixedCase
+Parameter CSC.distr(address,uint256)._amount (contracts/vulnerable/vuln_102_SC05.sol#102) is not in mixedCase
+Parameter CSC.buyToken(address,uint256)._investor (contracts/vulnerable/vuln_102_SC05.sol#133) is not in mixedCase
+Parameter CSC.buyToken(address,uint256)._invest (contracts/vulnerable/vuln_102_SC05.sol#133) is not in mixedCase
+Parameter CSC.balanceOf(address)._owner (contracts/vulnerable/vuln_102_SC05.sol#153) is not in mixedCase
+Parameter CSC.transfer(address,uint256)._to (contracts/vulnerable/vuln_102_SC05.sol#162) is not in mixedCase
+Parameter CSC.transfer(address,uint256)._amount (contracts/vulnerable/vuln_102_SC05.sol#162) is not in mixedCase
+Parameter CSC.transferFrom(address,address,uint256)._from (contracts/vulnerable/vuln_102_SC05.sol#173) is not in mixedCase
+Parameter CSC.transferFrom(address,address,uint256)._to (contracts/vulnerable/vuln_102_SC05.sol#173) is not in mixedCase
+Parameter CSC.transferFrom(address,address,uint256)._amount (contracts/vulnerable/vuln_102_SC05.sol#173) is not in mixedCase
+Parameter CSC.approve(address,uint256)._spender (contracts/vulnerable/vuln_102_SC05.sol#186) is not in mixedCase
+Parameter CSC.approve(address,uint256)._value (contracts/vulnerable/vuln_102_SC05.sol#186) is not in mixedCase
+Parameter CSC.allowance(address,address)._owner (contracts/vulnerable/vuln_102_SC05.sol#193) is not in mixedCase
+Parameter CSC.allowance(address,address)._spender (contracts/vulnerable/vuln_102_SC05.sol#193) is not in mixedCase
+Parameter CSC.withdrawAltcoinTokens(address)._tokenContract (contracts/vulnerable/vuln_102_SC05.sol#209) is not in mixedCase
+Parameter CSC.burn(uint256)._value (contracts/vulnerable/vuln_102_SC05.sol#215) is not in mixedCase
+Parameter CSC.burnFrom(uint256,address)._value (contracts/vulnerable/vuln_102_SC05.sol#225) is not in mixedCase
+Parameter CSC.burnFrom(uint256,address)._burner (contracts/vulnerable/vuln_102_SC05.sol#225) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: too-many-digits
+CSC.HP() (contracts/vulnerable/vuln_102_SC05.sol#84-88) uses literals with too many digits:
+	- teamtoken = 2500000000e18 (contracts/vulnerable/vuln_102_SC05.sol#86)
+CSC.fallback() (contracts/vulnerable/vuln_102_SC05.sol#112-131) uses literals with too many digits:
+	- valueToGive = valueToGive.div(1000000).mul(999999) (contracts/vulnerable/vuln_102_SC05.sol#125)
+CSC.slitherConstructorVariables() (contracts/vulnerable/vuln_102_SC05.sol#45-234) uses literals with too many digits:
+	- totalSupply = 18000000000e18 (contracts/vulnerable/vuln_102_SC05.sol#57)
+CSC.slitherConstructorVariables() (contracts/vulnerable/vuln_102_SC05.sol#45-234) uses literals with too many digits:
+	- tokenPerETH = 18000000e18 (contracts/vulnerable/vuln_102_SC05.sol#59)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#too-many-digits
+
+Detector: constable-states
+CSC.tokenPerETH (contracts/vulnerable/vuln_102_SC05.sol#59) should be constant 
+ERC20Basic.totalSupply (contracts/vulnerable/vuln_102_SC05.sol#32) should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_102_SC05.sol analyzed (5 contracts with 101 detectors), 35 result(s) found

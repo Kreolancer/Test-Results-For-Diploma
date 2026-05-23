@@ -1,0 +1,2 @@
+Failed to Derive AST & EVM Info: Encountered invalid solc version in src/vuln_093_SC01.sol: No solc version exists that matches the version requirement: ^0.6.24
+Error making context: Failed to Derive AST / EVM info

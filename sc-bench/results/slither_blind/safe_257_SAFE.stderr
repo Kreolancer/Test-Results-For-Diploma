@@ -1,0 +1,74 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_257_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+
+Detector: unchecked-transfer
+DarkPool.reclaimToken(ERC20Basic) (contracts/safe/safe_257_SAFE.sol#47-50) ignores return value by token.transfer(owner,balance) (contracts/safe/safe_257_SAFE.sol#49)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unchecked-transfer
+
+Detector: missing-zero-check
+DarkPool.withdraw(address).beneficiary (contracts/safe/safe_257_SAFE.sol#41) lacks a zero-check on :
+		- beneficiary.transfer(balance) (contracts/safe/safe_257_SAFE.sol#43)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+
+Detector: reentrancy-benign
+Reentrancy in DarkPool.fallback() (contracts/safe/safe_257_SAFE.sol#33-39):
+	External calls:
+	- require(bool,string)(whitelisted(msg.sender),for hodl owners only) (contracts/safe/safe_257_SAFE.sol#34)
+		- hodl.balanceOf(_address) > 0 (contracts/safe/safe_257_SAFE.sol#53)
+	State variables written after the call(s):
+	- balances[msg.sender] += msg.value (contracts/safe/safe_257_SAFE.sol#36)
+	- raised += msg.value (contracts/safe/safe_257_SAFE.sol#35)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+
+Detector: reentrancy-events
+Reentrancy in DarkPool.fallback() (contracts/safe/safe_257_SAFE.sol#33-39):
+	External calls:
+	- require(bool,string)(whitelisted(msg.sender),for hodl owners only) (contracts/safe/safe_257_SAFE.sol#34)
+		- hodl.balanceOf(_address) > 0 (contracts/safe/safe_257_SAFE.sol#53)
+	Event emitted after the call(s):
+	- Deposit(msg.sender,msg.value) (contracts/safe/safe_257_SAFE.sol#38)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-4
+
+Detector: timestamp
+DarkPool.active() (contracts/safe/safe_257_SAFE.sol#56-58) uses timestamp for comparisons
+	Dangerous comparisons:
+	- now < end (contracts/safe/safe_257_SAFE.sol#57)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+
+Detector: solc-version
+Version constraint ^0.4.22 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ABIEncoderV2PackedStorage_0.4.x
+	- ExpExponentCleanup
+	- EventStructWrongData
+	- OneOfTwoConstructorsSkipped.
+It is used by:
+	- ^0.4.22 (contracts/safe/safe_257_SAFE.sol#1)
+solc-0.4.22 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Parameter DarkPool.whitelisted(address)._address (contracts/safe/safe_257_SAFE.sol#52) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: reentrancy-unlimited-gas
+Reentrancy in DarkPool.withdraw(address) (contracts/safe/safe_257_SAFE.sol#41-45):
+	External calls:
+	- beneficiary.transfer(balance) (contracts/safe/safe_257_SAFE.sol#43)
+	Event emitted after the call(s):
+	- Withdraw(beneficiary,balance) (contracts/safe/safe_257_SAFE.sol#44)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-5
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_257_SAFE.sol analyzed (4 contracts with 101 detectors), 9 result(s) found

@@ -1,0 +1,85 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_029_SC05.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_029_SC05.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_029_SC05.sol:34:5: Warning: Return value of low-level calls not used.
+    lastInvestor.send(jackpot);
+    ^------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_029_SC05.sol:35:5: Warning: Return value of low-level calls not used.
+    owner.send(this.balance-1 ether);
+    ^------------------------------^
+
+
+Detector: arbitrary-send-eth
+Governmental.resetInvestment() () sends eth to arbitrary user
+	Dangerous calls:
+	- owner.send(this.balance - 1000000000000000000) ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#functions-that-send-ether-to-arbitrary-destinations
+
+Detector: tautology
+Attacker.attack(address,uint256) () contains a tautology or contradiction:
+	- 0 <= count && count < 1023 ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#tautology-or-contradiction
+
+Detector: unchecked-send
+Governmental.resetInvestment() () ignores return value by lastInvestor.send(jackpot) ()
+Governmental.resetInvestment() () ignores return value by owner.send(this.balance - 1000000000000000000) ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unchecked-send
+
+Detector: timestamp
+Governmental.resetInvestment() () uses timestamp for comparisons
+	Dangerous comparisons:
+	- block.timestamp < lastInvestmentTimestamp + ONE_MINUTE ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+
+Detector: deprecated-standards
+Deprecated standard detected THROW ():
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected this.attack.gas(msg.gas - 2000)(target,count + 1) ():
+	- Usage of "msg.gas" should be replaced with "gasleft()"
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#deprecated-standards
+
+Detector: solc-version
+Version constraint ^0.4.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- NestedArrayFunctionCallDecoder
+	- ZeroFunctionSelector
+	- DelegateCallReturnValue
+	- ECRecoverMalformedInput
+	- SkipEmptyStringLiteral
+	- ConstantOptimizerSubtraction
+	- IdentityPrecompileReturnIgnored
+	- HighOrderByteCleanStorage
+	- OptimizerStaleKnowledgeAboutSHA3
+	- LibrariesNotCallableFromPayableFunctions.
+It is used by:
+	- ^0.4.0 ()
+solc-0.4.0 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Variable Governmental.ONE_MINUTE () is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: reentrancy-unlimited-gas
+Reentrancy in Governmental.resetInvestment() ():
+	External calls:
+	- lastInvestor.send(jackpot) ()
+	- owner.send(this.balance - 1000000000000000000) ()
+	State variables written after the call(s):
+	- jackpot = 1000000000000000000 ()
+	- lastInvestmentTimestamp = 0 ()
+	- lastInvestor = 0 ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-5
+
+Detector: constable-states
+Governmental.ONE_MINUTE () should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_029_SC05.sol analyzed (2 contracts with 101 detectors), 12 result(s) found

@@ -1,0 +1,130 @@
+{
+  "success": true,
+  "error": null,
+  "results": {
+    "detectors": [
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "isSaleFinished",
+            "source_mapping": {
+              "start": 285,
+              "length": 140,
+              "filename_relative": "contracts/vulnerable/vuln_027_SC05.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_027_SC05.sol",
+              "filename_short": "contracts/vulnerable/vuln_027_SC05.sol",
+              "is_dependency": false,
+              "lines": [
+                11,
+                12,
+                13,
+                14
+              ],
+              "starting_column": 3,
+              "ending_column": 4
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "TimedCrowdsale",
+                "source_mapping": {
+                  "start": 206,
+                  "length": 221,
+                  "filename_relative": "contracts/vulnerable/vuln_027_SC05.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_027_SC05.sol",
+                  "filename_short": "contracts/vulnerable/vuln_027_SC05.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 2
+                }
+              },
+              "signature": "isSaleFinished()"
+            }
+          },
+          {
+            "type": "node",
+            "name": "block.timestamp >= 1546300800",
+            "source_mapping": {
+              "start": 384,
+              "length": 36,
+              "filename_relative": "contracts/vulnerable/vuln_027_SC05.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_027_SC05.sol",
+              "filename_short": "contracts/vulnerable/vuln_027_SC05.sol",
+              "is_dependency": false,
+              "lines": [
+                13
+              ],
+              "starting_column": 5,
+              "ending_column": 41
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "isSaleFinished",
+                "source_mapping": {
+                  "start": 285,
+                  "length": 140,
+                  "filename_relative": "contracts/vulnerable/vuln_027_SC05.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_027_SC05.sol",
+                  "filename_short": "contracts/vulnerable/vuln_027_SC05.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    11,
+                    12,
+                    13,
+                    14
+                  ],
+                  "starting_column": 3,
+                  "ending_column": 4
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "TimedCrowdsale",
+                    "source_mapping": {
+                      "start": 206,
+                      "length": 221,
+                      "filename_relative": "contracts/vulnerable/vuln_027_SC05.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_027_SC05.sol",
+                      "filename_short": "contracts/vulnerable/vuln_027_SC05.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        9,
+                        10,
+                        11,
+                        12,
+                        13,
+                        14,
+                        15
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "isSaleFinished()"
+                }
+              }
+            }
+          }
+        ],
+        "description": "TimedCrowdsale.isSaleFinished() (contracts/vulnerable/vuln_027_SC05.sol#11-14) uses timestamp for comparisons\n\tDangerous comparisons:\n\t- block.timestamp >= 1546300800 (contracts/vulnerable/vuln_027_SC05.sol#13)\n",
+        "markdown": "[TimedCrowdsale.isSaleFinished()](contracts/vulnerable/vuln_027_SC05.sol#L11-L14) uses timestamp for comparisons\n\tDangerous comparisons:\n\t- [block.timestamp >= 1546300800](contracts/vulnerable/vuln_027_SC05.sol#L13)\n",
+        "first_markdown_element": "contracts/vulnerable/vuln_027_SC05.sol#L11-L14",
+        "id": "19a5ba6c54578d183b4a5de6afb0412fe40b84a04bb508276400417b0056ba0f",
+        "check": "timestamp",
+        "impact": "Low",
+        "confidence": "Medium"
+      }
+    ]
+  }
+}

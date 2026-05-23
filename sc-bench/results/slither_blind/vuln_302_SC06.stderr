@@ -1,0 +1,709 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_302_SC06.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_302_SC06.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_302_SC06.sol:780:5: Warning: Function state mutability can be restricted to pure
+    function groupDates(uint256 _date) internal view returns (uint256) {
+    ^ (Relevant source part starts here and spans across multiple lines).
+
+
+Detector: arbitrary-send-eth
+RefundVault.refund(address) (contracts/vulnerable/vuln_302_SC06.sol#667-674) sends eth to arbitrary user
+	Dangerous calls:
+	- investor.transfer(depositedValue) (contracts/vulnerable/vuln_302_SC06.sol#672)
+Crowdsale.forwardFunds() (contracts/vulnerable/vuln_302_SC06.sol#1144-1153) sends eth to arbitrary user
+	Dangerous calls:
+	- wallets[uint8(Roles.beneficiary)].transfer(address(this).balance) (contracts/vulnerable/vuln_302_SC06.sol#1149)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#functions-that-send-ether-to-arbitrary-destinations
+
+Detector: controlled-array-length
+Crowdsale (contracts/vulnerable/vuln_302_SC06.sol#907-1729) contract sets array length with a user-controlled value:
+	- profits.push(Profit(5,345600)) (contracts/vulnerable/vuln_302_SC06.sol#1104)
+Crowdsale (contracts/vulnerable/vuln_302_SC06.sol#907-1729) contract sets array length with a user-controlled value:
+	- bonuses.push(Bonus(71000000000000000000,30)) (contracts/vulnerable/vuln_302_SC06.sol#1100)
+Crowdsale (contracts/vulnerable/vuln_302_SC06.sol#907-1729) contract sets array length with a user-controlled value:
+	- profits.push(Profit(15,172800)) (contracts/vulnerable/vuln_302_SC06.sol#1102)
+Crowdsale (contracts/vulnerable/vuln_302_SC06.sol#907-1729) contract sets array length with a user-controlled value:
+	- bonuses.length = _valueVB.length (contracts/vulnerable/vuln_302_SC06.sol#1378)
+Crowdsale (contracts/vulnerable/vuln_302_SC06.sol#907-1729) contract sets array length with a user-controlled value:
+	- profits.push(Profit(10,172800)) (contracts/vulnerable/vuln_302_SC06.sol#1103)
+Crowdsale (contracts/vulnerable/vuln_302_SC06.sol#907-1729) contract sets array length with a user-controlled value:
+	- profits.length = _percentTB.length (contracts/vulnerable/vuln_302_SC06.sol#1384)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#array-length-assignment
+
+Detector: weak-prng
+AllocationQueue.isLeapYear(uint16) (contracts/vulnerable/vuln_302_SC06.sol#767-778) uses a weak PRNG: "year % 400 != 0 (contracts/vulnerable/vuln_302_SC06.sol#774)" 
+AllocationQueue.isLeapYear(uint16) (contracts/vulnerable/vuln_302_SC06.sol#767-778) uses a weak PRNG: "year % 100 != 0 (contracts/vulnerable/vuln_302_SC06.sol#771)" 
+AllocationQueue.isLeapYear(uint16) (contracts/vulnerable/vuln_302_SC06.sol#767-778) uses a weak PRNG: "year % 4 != 0 (contracts/vulnerable/vuln_302_SC06.sol#768)" 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#weak-PRNG
+
+Detector: unchecked-transfer
+PeriodicAllocation.unlockFor(address) (contracts/vulnerable/vuln_302_SC06.sol#726-744) ignores return value by token.transfer(_owner,unlockedToken) (contracts/vulnerable/vuln_302_SC06.sol#742)
+AllocationQueue.unlockFor(address,uint256) (contracts/vulnerable/vuln_302_SC06.sol#849-862) ignores return value by token.transfer(_owner,share) (contracts/vulnerable/vuln_302_SC06.sol#859)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unchecked-transfer
+
+Detector: divide-before-multiply
+PeriodicAllocation.unlockFor(address) (contracts/vulnerable/vuln_302_SC06.sol#726-744) performs a multiplication on the result of a division:
+	- periodsSinceUnlockStart = (now.sub(unlockStart)).div(shares[_owner].periodLength) (contracts/vulnerable/vuln_302_SC06.sol#730)
+	- share = share.div(shares[_owner].periods).mul(periodsSinceUnlockStart) (contracts/vulnerable/vuln_302_SC06.sol#733)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#divide-before-multiply
+
+Detector: incorrect-equality
+AllocationQueue.addShare(address,uint256,uint256) (contracts/vulnerable/vuln_302_SC06.sol#836-847) uses a dangerous strict equality:
+	- require(bool)(token.balanceOf(this) == totalShare.add(_tokens)) (contracts/vulnerable/vuln_302_SC06.sol#838)
+Crowdsale.finalization() (contracts/vulnerable/vuln_302_SC06.sol#1202-1261) uses a dangerous strict equality:
+	- stopTime == 0 (contracts/vulnerable/vuln_302_SC06.sol#1204)
+Crowdsale.validPurchase() (contracts/vulnerable/vuln_302_SC06.sol#1156-1169) uses a dangerous strict equality:
+	- withinPeriod = (now > startTime && stopTime == 0) (contracts/vulnerable/vuln_302_SC06.sol#1159)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dangerous-strict-equalities
+
+Detector: reentrancy-no-eth
+Reentrancy in AllocationQueue.addShare(address,uint256,uint256) (contracts/vulnerable/vuln_302_SC06.sol#836-847):
+	External calls:
+	- require(bool)(token.balanceOf(this) == totalShare.add(_tokens)) (contracts/vulnerable/vuln_302_SC06.sol#838)
+	State variables written after the call(s):
+	- totalShare = totalShare.add(_tokens) (contracts/vulnerable/vuln_302_SC06.sol#846)
+	AllocationQueue.totalShare (contracts/vulnerable/vuln_302_SC06.sol#752) can be used in cross function reentrancies:
+	- AllocationQueue.addShare(address,uint256,uint256) (contracts/vulnerable/vuln_302_SC06.sol#836-847)
+	- AllocationQueue.totalShare (contracts/vulnerable/vuln_302_SC06.sol#752)
+	- AllocationQueue.unlockFor(address,uint256) (contracts/vulnerable/vuln_302_SC06.sol#849-862)
+Reentrancy in Crowdsale.finalization() (contracts/vulnerable/vuln_302_SC06.sol#1202-1261):
+	External calls:
+	- vault.close(wallets[uint8(Roles.beneficiary)],wallets[uint8(Roles.fees)],ethWeiRaised.mul(7).div(100)) (contracts/vulnerable/vuln_302_SC06.sol#1214)
+	- token.mint(wallets[uint8(Roles.accountant)],tokenReserved) (contracts/vulnerable/vuln_302_SC06.sol#1220)
+	State variables written after the call(s):
+	- ethWeiRaised = 0 (contracts/vulnerable/vuln_302_SC06.sol#1238)
+	Crowdsale.ethWeiRaised (contracts/vulnerable/vuln_302_SC06.sol#1045) can be used in cross function reentrancies:
+	- Crowdsale.buyTokens(address) (contracts/vulnerable/vuln_302_SC06.sol#1682-1719)
+	- Crowdsale.ethWeiRaised (contracts/vulnerable/vuln_302_SC06.sol#1045)
+	- Crowdsale.finalization() (contracts/vulnerable/vuln_302_SC06.sol#1202-1261)
+	- Crowdsale.paymentsInOtherCurrency(uint256,uint256) (contracts/vulnerable/vuln_302_SC06.sol#1633-1644)
+	- Crowdsale.privateMint(uint256) (contracts/vulnerable/vuln_302_SC06.sol#1115-1131)
+	- Crowdsale.weiRaised() (contracts/vulnerable/vuln_302_SC06.sol#1392-1394)
+	- nonEthWeiRaised = 0 (contracts/vulnerable/vuln_302_SC06.sol#1239)
+	Crowdsale.nonEthWeiRaised (contracts/vulnerable/vuln_302_SC06.sol#1046) can be used in cross function reentrancies:
+	- Crowdsale.finalization() (contracts/vulnerable/vuln_302_SC06.sol#1202-1261)
+	- Crowdsale.nonEthWeiRaised (contracts/vulnerable/vuln_302_SC06.sol#1046)
+	- Crowdsale.paymentsInOtherCurrency(uint256,uint256) (contracts/vulnerable/vuln_302_SC06.sol#1633-1644)
+	- Crowdsale.weiRaised() (contracts/vulnerable/vuln_302_SC06.sol#1392-1394)
+	- tokenReserved = 0 (contracts/vulnerable/vuln_302_SC06.sol#1223)
+	Crowdsale.tokenReserved (contracts/vulnerable/vuln_302_SC06.sol#1048) can be used in cross function reentrancies:
+	- Crowdsale.finalization() (contracts/vulnerable/vuln_302_SC06.sol#1202-1261)
+	- Crowdsale.paymentsInOtherCurrency(uint256,uint256) (contracts/vulnerable/vuln_302_SC06.sol#1633-1644)
+	- Crowdsale.tokenReserved (contracts/vulnerable/vuln_302_SC06.sol#1048)
+Reentrancy in Crowdsale.initialize() (contracts/vulnerable/vuln_302_SC06.sol#1290-1307):
+	External calls:
+	- begin() (contracts/vulnerable/vuln_302_SC06.sol#1295)
+		- token = creator.createToken() (contracts/vulnerable/vuln_302_SC06.sol#1078)
+		- allocation = creator.createPeriodicAllocation(token) (contracts/vulnerable/vuln_302_SC06.sol#1079)
+		- allocationQueue = creator.createAllocationQueue(token) (contracts/vulnerable/vuln_302_SC06.sol#1080)
+		- vault = creator.createRefund() (contracts/vulnerable/vuln_302_SC06.sol#1083)
+		- token.setUnpausedWallet(wallets[uint8(Roles.accountant)],true) (contracts/vulnerable/vuln_302_SC06.sol#1086)
+		- token.setUnpausedWallet(wallets[uint8(Roles.manager)],true) (contracts/vulnerable/vuln_302_SC06.sol#1087)
+		- token.setUnpausedWallet(wallets[uint8(Roles.bounty)],true) (contracts/vulnerable/vuln_302_SC06.sol#1088)
+		- token.setUnpausedWallet(wallets[uint8(Roles.advisers)],true) (contracts/vulnerable/vuln_302_SC06.sol#1089)
+		- token.setUnpausedWallet(wallets[uint8(Roles.observer)],true) (contracts/vulnerable/vuln_302_SC06.sol#1090)
+		- token.setUnpausedWallet(wallets[uint8(Roles.players)],true) (contracts/vulnerable/vuln_302_SC06.sol#1091)
+		- token.setUnpausedWallet(wallets[uint8(Roles.airdrop)],true) (contracts/vulnerable/vuln_302_SC06.sol#1092)
+		- token.setUnpausedWallet(wallets[uint8(Roles.fund)],true) (contracts/vulnerable/vuln_302_SC06.sol#1093)
+		- token.setUnpausedWallet(wallets[uint8(Roles.founders)],true) (contracts/vulnerable/vuln_302_SC06.sol#1094)
+		- token.setUnpausedWallet(wallets[uint8(Roles.referrals)],true) (contracts/vulnerable/vuln_302_SC06.sol#1095)
+		- token.setUnpausedWallet(allocation,true) (contracts/vulnerable/vuln_302_SC06.sol#1097)
+		- token.setUnpausedWallet(allocationQueue,true) (contracts/vulnerable/vuln_302_SC06.sol#1098)
+	- initialization() (contracts/vulnerable/vuln_302_SC06.sol#1302)
+		- address(vault) != 0x0 && vault.state() != RefundVault.State.Active (contracts/vulnerable/vuln_302_SC06.sol#1310)
+		- vault.restart() (contracts/vulnerable/vuln_302_SC06.sol#1311)
+	State variables written after the call(s):
+	- isInitialized = true (contracts/vulnerable/vuln_302_SC06.sol#1306)
+	Crowdsale.isInitialized (contracts/vulnerable/vuln_302_SC06.sol#932) can be used in cross function reentrancies:
+	- Crowdsale.changeWallet(Crowdsale.Roles,address) (contracts/vulnerable/vuln_302_SC06.sol#1505-1514)
+	- Crowdsale.finalization() (contracts/vulnerable/vuln_302_SC06.sol#1202-1261)
+	- Crowdsale.hasEnded() (contracts/vulnerable/vuln_302_SC06.sol#1172-1177)
+	- Crowdsale.initialize() (contracts/vulnerable/vuln_302_SC06.sol#1290-1307)
+	- Crowdsale.isInitialized (contracts/vulnerable/vuln_302_SC06.sol#932)
+	- Crowdsale.paymentsInOtherCurrency(uint256,uint256) (contracts/vulnerable/vuln_302_SC06.sol#1633-1644)
+	- Crowdsale.setup(uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256[],uint256[],uint256[],uint256[]) (contracts/vulnerable/vuln_302_SC06.sol#1349-1389)
+	- Crowdsale.validPurchase() (contracts/vulnerable/vuln_302_SC06.sol#1156-1169)
+Reentrancy in Crowdsale.privateMint(uint256) (contracts/vulnerable/vuln_302_SC06.sol#1115-1131):
+	External calls:
+	- begin() (contracts/vulnerable/vuln_302_SC06.sol#1124)
+		- token = creator.createToken() (contracts/vulnerable/vuln_302_SC06.sol#1078)
+		- allocation = creator.createPeriodicAllocation(token) (contracts/vulnerable/vuln_302_SC06.sol#1079)
+		- allocationQueue = creator.createAllocationQueue(token) (contracts/vulnerable/vuln_302_SC06.sol#1080)
+		- vault = creator.createRefund() (contracts/vulnerable/vuln_302_SC06.sol#1083)
+		- token.setUnpausedWallet(wallets[uint8(Roles.accountant)],true) (contracts/vulnerable/vuln_302_SC06.sol#1086)
+		- token.setUnpausedWallet(wallets[uint8(Roles.manager)],true) (contracts/vulnerable/vuln_302_SC06.sol#1087)
+		- token.setUnpausedWallet(wallets[uint8(Roles.bounty)],true) (contracts/vulnerable/vuln_302_SC06.sol#1088)
+		- token.setUnpausedWallet(wallets[uint8(Roles.advisers)],true) (contracts/vulnerable/vuln_302_SC06.sol#1089)
+		- token.setUnpausedWallet(wallets[uint8(Roles.observer)],true) (contracts/vulnerable/vuln_302_SC06.sol#1090)
+		- token.setUnpausedWallet(wallets[uint8(Roles.players)],true) (contracts/vulnerable/vuln_302_SC06.sol#1091)
+		- token.setUnpausedWallet(wallets[uint8(Roles.airdrop)],true) (contracts/vulnerable/vuln_302_SC06.sol#1092)
+		- token.setUnpausedWallet(wallets[uint8(Roles.fund)],true) (contracts/vulnerable/vuln_302_SC06.sol#1093)
+		- token.setUnpausedWallet(wallets[uint8(Roles.founders)],true) (contracts/vulnerable/vuln_302_SC06.sol#1094)
+		- token.setUnpausedWallet(wallets[uint8(Roles.referrals)],true) (contracts/vulnerable/vuln_302_SC06.sol#1095)
+		- token.setUnpausedWallet(allocation,true) (contracts/vulnerable/vuln_302_SC06.sol#1097)
+		- token.setUnpausedWallet(allocationQueue,true) (contracts/vulnerable/vuln_302_SC06.sol#1098)
+	State variables written after the call(s):
+	- ethWeiRaised = ethWeiRaised.add(weiAmount) (contracts/vulnerable/vuln_302_SC06.sol#1127)
+	Crowdsale.ethWeiRaised (contracts/vulnerable/vuln_302_SC06.sol#1045) can be used in cross function reentrancies:
+	- Crowdsale.buyTokens(address) (contracts/vulnerable/vuln_302_SC06.sol#1682-1719)
+	- Crowdsale.ethWeiRaised (contracts/vulnerable/vuln_302_SC06.sol#1045)
+	- Crowdsale.finalization() (contracts/vulnerable/vuln_302_SC06.sol#1202-1261)
+	- Crowdsale.paymentsInOtherCurrency(uint256,uint256) (contracts/vulnerable/vuln_302_SC06.sol#1633-1644)
+	- Crowdsale.privateMint(uint256) (contracts/vulnerable/vuln_302_SC06.sol#1115-1131)
+	- Crowdsale.weiRaised() (contracts/vulnerable/vuln_302_SC06.sol#1392-1394)
+Reentrancy in Crowdsale.setup(uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256[],uint256[],uint256[],uint256[]) (contracts/vulnerable/vuln_302_SC06.sol#1349-1389):
+	External calls:
+	- begin() (contracts/vulnerable/vuln_302_SC06.sol#1358)
+		- token = creator.createToken() (contracts/vulnerable/vuln_302_SC06.sol#1078)
+		- allocation = creator.createPeriodicAllocation(token) (contracts/vulnerable/vuln_302_SC06.sol#1079)
+		- allocationQueue = creator.createAllocationQueue(token) (contracts/vulnerable/vuln_302_SC06.sol#1080)
+		- vault = creator.createRefund() (contracts/vulnerable/vuln_302_SC06.sol#1083)
+		- token.setUnpausedWallet(wallets[uint8(Roles.accountant)],true) (contracts/vulnerable/vuln_302_SC06.sol#1086)
+		- token.setUnpausedWallet(wallets[uint8(Roles.manager)],true) (contracts/vulnerable/vuln_302_SC06.sol#1087)
+		- token.setUnpausedWallet(wallets[uint8(Roles.bounty)],true) (contracts/vulnerable/vuln_302_SC06.sol#1088)
+		- token.setUnpausedWallet(wallets[uint8(Roles.advisers)],true) (contracts/vulnerable/vuln_302_SC06.sol#1089)
+		- token.setUnpausedWallet(wallets[uint8(Roles.observer)],true) (contracts/vulnerable/vuln_302_SC06.sol#1090)
+		- token.setUnpausedWallet(wallets[uint8(Roles.players)],true) (contracts/vulnerable/vuln_302_SC06.sol#1091)
+		- token.setUnpausedWallet(wallets[uint8(Roles.airdrop)],true) (contracts/vulnerable/vuln_302_SC06.sol#1092)
+		- token.setUnpausedWallet(wallets[uint8(Roles.fund)],true) (contracts/vulnerable/vuln_302_SC06.sol#1093)
+		- token.setUnpausedWallet(wallets[uint8(Roles.founders)],true) (contracts/vulnerable/vuln_302_SC06.sol#1094)
+		- token.setUnpausedWallet(wallets[uint8(Roles.referrals)],true) (contracts/vulnerable/vuln_302_SC06.sol#1095)
+		- token.setUnpausedWallet(allocation,true) (contracts/vulnerable/vuln_302_SC06.sol#1097)
+		- token.setUnpausedWallet(allocationQueue,true) (contracts/vulnerable/vuln_302_SC06.sol#1098)
+	State variables written after the call(s):
+	- bonuses.length = _valueVB.length (contracts/vulnerable/vuln_302_SC06.sol#1378)
+	Crowdsale.bonuses (contracts/vulnerable/vuln_302_SC06.sol#1005) can be used in cross function reentrancies:
+	- Crowdsale.begin() (contracts/vulnerable/vuln_302_SC06.sol#1073-1106)
+	- Crowdsale.bonuses (contracts/vulnerable/vuln_302_SC06.sol#1005)
+	- Crowdsale.getBonuses(uint256) (contracts/vulnerable/vuln_302_SC06.sol#1418-1429)
+	- Crowdsale.setup(uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256[],uint256[],uint256[],uint256[]) (contracts/vulnerable/vuln_302_SC06.sol#1349-1389)
+	- bonuses[i] = Bonus(_valueVB[i],_percentVB[i]) (contracts/vulnerable/vuln_302_SC06.sol#1380)
+	Crowdsale.bonuses (contracts/vulnerable/vuln_302_SC06.sol#1005) can be used in cross function reentrancies:
+	- Crowdsale.begin() (contracts/vulnerable/vuln_302_SC06.sol#1073-1106)
+	- Crowdsale.bonuses (contracts/vulnerable/vuln_302_SC06.sol#1005)
+	- Crowdsale.getBonuses(uint256) (contracts/vulnerable/vuln_302_SC06.sol#1418-1429)
+	- Crowdsale.setup(uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256[],uint256[],uint256[],uint256[]) (contracts/vulnerable/vuln_302_SC06.sol#1349-1389)
+	- profits.length = _percentTB.length (contracts/vulnerable/vuln_302_SC06.sol#1384)
+	Crowdsale.profits (contracts/vulnerable/vuln_302_SC06.sol#1006) can be used in cross function reentrancies:
+	- Crowdsale.begin() (contracts/vulnerable/vuln_302_SC06.sol#1073-1106)
+	- Crowdsale.getProfitPercentForData(uint256) (contracts/vulnerable/vuln_302_SC06.sol#1407-1416)
+	- Crowdsale.profits (contracts/vulnerable/vuln_302_SC06.sol#1006)
+	- Crowdsale.setup(uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256[],uint256[],uint256[],uint256[]) (contracts/vulnerable/vuln_302_SC06.sol#1349-1389)
+	- profits[i] = Profit(_percentTB[i],_durationTB[i]) (contracts/vulnerable/vuln_302_SC06.sol#1386)
+	Crowdsale.profits (contracts/vulnerable/vuln_302_SC06.sol#1006) can be used in cross function reentrancies:
+	- Crowdsale.begin() (contracts/vulnerable/vuln_302_SC06.sol#1073-1106)
+	- Crowdsale.getProfitPercentForData(uint256) (contracts/vulnerable/vuln_302_SC06.sol#1407-1416)
+	- Crowdsale.profits (contracts/vulnerable/vuln_302_SC06.sol#1006)
+	- Crowdsale.setup(uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256[],uint256[],uint256[],uint256[]) (contracts/vulnerable/vuln_302_SC06.sol#1349-1389)
+Reentrancy in PeriodicAllocation.unlockFor(address) (contracts/vulnerable/vuln_302_SC06.sol#726-744):
+	External calls:
+	- unlockedToken = token.balanceOf(this).mul(share).div(totalShare) (contracts/vulnerable/vuln_302_SC06.sol#739)
+	State variables written after the call(s):
+	- totalShare = totalShare.sub(share) (contracts/vulnerable/vuln_302_SC06.sol#740)
+	PeriodicAllocation.totalShare (contracts/vulnerable/vuln_302_SC06.sol#702) can be used in cross function reentrancies:
+	- PeriodicAllocation.addShare(address,uint256,uint256,uint256) (contracts/vulnerable/vuln_302_SC06.sol#720-723)
+	- PeriodicAllocation.totalShare (contracts/vulnerable/vuln_302_SC06.sol#702)
+	- PeriodicAllocation.unlockFor(address) (contracts/vulnerable/vuln_302_SC06.sol#726-744)
+	- unlocked[_owner] += share (contracts/vulnerable/vuln_302_SC06.sol#741)
+	PeriodicAllocation.unlocked (contracts/vulnerable/vuln_302_SC06.sol#705) can be used in cross function reentrancies:
+	- PeriodicAllocation.unlockFor(address) (contracts/vulnerable/vuln_302_SC06.sol#726-744)
+	- PeriodicAllocation.unlocked (contracts/vulnerable/vuln_302_SC06.sol#705)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-2
+
+Detector: uninitialized-local
+Crowdsale.getProfitPercentForData(uint256).allDuration (contracts/vulnerable/vuln_302_SC06.sol#1408) is a local variable never initialized
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#uninitialized-local-variables
+
+Detector: unused-return
+Crowdsale.privateMint(uint256) (contracts/vulnerable/vuln_302_SC06.sol#1115-1131) ignores return value by token.mint(wallets[uint8(Roles.accountant)],_amount) (contracts/vulnerable/vuln_302_SC06.sol#1129)
+Crowdsale.finalization() (contracts/vulnerable/vuln_302_SC06.sol#1202-1261) ignores return value by token.mint(wallets[uint8(Roles.accountant)],tokenReserved) (contracts/vulnerable/vuln_302_SC06.sol#1220)
+Crowdsale.queueMint(address,uint256,uint256) (contracts/vulnerable/vuln_302_SC06.sol#1646-1649) ignores return value by token.mint(address(allocationQueue),_value) (contracts/vulnerable/vuln_302_SC06.sol#1647)
+Crowdsale.systemWalletsMint(uint256) (contracts/vulnerable/vuln_302_SC06.sol#1651-1678) ignores return value by token.mint(address(allocation),tokens.mul(7).div(50)) (contracts/vulnerable/vuln_302_SC06.sol#1656)
+Crowdsale.systemWalletsMint(uint256) (contracts/vulnerable/vuln_302_SC06.sol#1651-1678) ignores return value by token.mint(wallets[uint8(Roles.referrals)],tokens.mul(4).div(50)) (contracts/vulnerable/vuln_302_SC06.sol#1677)
+Crowdsale.buyTokens(address) (contracts/vulnerable/vuln_302_SC06.sol#1682-1719) ignores return value by token.mint(beneficiary,tokens) (contracts/vulnerable/vuln_302_SC06.sol#1712)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unused-return
+
+Detector: events-maths
+PeriodicAllocation.setUnlockStart(uint256) (contracts/vulnerable/vuln_302_SC06.sol#713-718) should emit an event for: 
+	- unlockStart = _unlockStart (contracts/vulnerable/vuln_302_SC06.sol#717) 
+PeriodicAllocation.addShare(address,uint256,uint256,uint256) (contracts/vulnerable/vuln_302_SC06.sol#720-723) should emit an event for: 
+	- totalShare = totalShare.add(_proportion) (contracts/vulnerable/vuln_302_SC06.sol#722) 
+AllocationQueue.addShare(address,uint256,uint256) (contracts/vulnerable/vuln_302_SC06.sol#836-847) should emit an event for: 
+	- totalShare = totalShare.add(_tokens) (contracts/vulnerable/vuln_302_SC06.sol#846) 
+Crowdsale.privateMint(uint256) (contracts/vulnerable/vuln_302_SC06.sol#1115-1131) should emit an event for: 
+	- ethWeiRaised = ethWeiRaised.add(weiAmount) (contracts/vulnerable/vuln_302_SC06.sol#1127) 
+Crowdsale.setup(uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256[],uint256[],uint256[],uint256[]) (contracts/vulnerable/vuln_302_SC06.sol#1349-1389) should emit an event for: 
+	- startTime = _startTime (contracts/vulnerable/vuln_302_SC06.sol#1362) 
+	- softCap = _softCap (contracts/vulnerable/vuln_302_SC06.sol#1366) 
+	- hardCap = _hardCap (contracts/vulnerable/vuln_302_SC06.sol#1367) 
+	- rate = _rate (contracts/vulnerable/vuln_302_SC06.sol#1370) 
+	- overLimit = _overLimit (contracts/vulnerable/vuln_302_SC06.sol#1372) 
+	- minPay = _minPay (contracts/vulnerable/vuln_302_SC06.sol#1373) 
+	- maxAllProfit = _maxAllProfit (contracts/vulnerable/vuln_302_SC06.sol#1375) 
+Crowdsale.paymentsInOtherCurrency(uint256,uint256) (contracts/vulnerable/vuln_302_SC06.sol#1633-1644) should emit an event for: 
+	- nonEthWeiRaised = _value (contracts/vulnerable/vuln_302_SC06.sol#1641) 
+	- tokenReserved = _token (contracts/vulnerable/vuln_302_SC06.sol#1642) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-arithmetic
+
+Detector: missing-zero-check
+MigratableToken.setMigrationAgent(address)._migrationAgent (contracts/vulnerable/vuln_302_SC06.sol#411) lacks a zero-check on :
+		- migrationAgent = _migrationAgent (contracts/vulnerable/vuln_302_SC06.sol#413)
+RefundVault.refund(address).investor (contracts/vulnerable/vuln_302_SC06.sol#667) lacks a zero-check on :
+		- investor.transfer(depositedValue) (contracts/vulnerable/vuln_302_SC06.sol#672)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+
+Detector: calls-loop
+MigratableToken.migrateInternal(address) (contracts/vulnerable/vuln_302_SC06.sol#416-427) has external calls inside a loop: MigrationAgent(migrationAgent).migrateFrom(_holder,value) (contracts/vulnerable/vuln_302_SC06.sol#425)
+	Calls stack containing the loop:
+		MigratableToken.migrateAll(address[])
+Crowdsale.massBurnTokens(address[],uint256[]) (contracts/vulnerable/vuln_302_SC06.sol#1543-1550) has external calls inside a loop: token.burn(_beneficiary[i],_value[i]) (contracts/vulnerable/vuln_302_SC06.sol#1548)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation/#calls-inside-a-loop
+
+Detector: reentrancy-benign
+Reentrancy in AllocationQueue.addShare(address,uint256,uint256) (contracts/vulnerable/vuln_302_SC06.sol#836-847):
+	External calls:
+	- require(bool)(token.balanceOf(this) == totalShare.add(_tokens)) (contracts/vulnerable/vuln_302_SC06.sol#838)
+	State variables written after the call(s):
+	- queue[_beneficiary][unfreezeDate] = queue[_beneficiary][unfreezeDate].add(_tokens) (contracts/vulnerable/vuln_302_SC06.sol#845)
+Reentrancy in Crowdsale.begin() (contracts/vulnerable/vuln_302_SC06.sol#1073-1106):
+	External calls:
+	- token = creator.createToken() (contracts/vulnerable/vuln_302_SC06.sol#1078)
+	- allocation = creator.createPeriodicAllocation(token) (contracts/vulnerable/vuln_302_SC06.sol#1079)
+	State variables written after the call(s):
+	- allocation = creator.createPeriodicAllocation(token) (contracts/vulnerable/vuln_302_SC06.sol#1079)
+Reentrancy in Crowdsale.begin() (contracts/vulnerable/vuln_302_SC06.sol#1073-1106):
+	External calls:
+	- token = creator.createToken() (contracts/vulnerable/vuln_302_SC06.sol#1078)
+	- allocation = creator.createPeriodicAllocation(token) (contracts/vulnerable/vuln_302_SC06.sol#1079)
+	- allocationQueue = creator.createAllocationQueue(token) (contracts/vulnerable/vuln_302_SC06.sol#1080)
+	State variables written after the call(s):
+	- allocationQueue = creator.createAllocationQueue(token) (contracts/vulnerable/vuln_302_SC06.sol#1080)
+Reentrancy in Crowdsale.begin() (contracts/vulnerable/vuln_302_SC06.sol#1073-1106):
+	External calls:
+	- token = creator.createToken() (contracts/vulnerable/vuln_302_SC06.sol#1078)
+	- allocation = creator.createPeriodicAllocation(token) (contracts/vulnerable/vuln_302_SC06.sol#1079)
+	- allocationQueue = creator.createAllocationQueue(token) (contracts/vulnerable/vuln_302_SC06.sol#1080)
+	- vault = creator.createRefund() (contracts/vulnerable/vuln_302_SC06.sol#1083)
+	State variables written after the call(s):
+	- vault = creator.createRefund() (contracts/vulnerable/vuln_302_SC06.sol#1083)
+Reentrancy in Crowdsale.begin() (contracts/vulnerable/vuln_302_SC06.sol#1073-1106):
+	External calls:
+	- token = creator.createToken() (contracts/vulnerable/vuln_302_SC06.sol#1078)
+	- allocation = creator.createPeriodicAllocation(token) (contracts/vulnerable/vuln_302_SC06.sol#1079)
+	- allocationQueue = creator.createAllocationQueue(token) (contracts/vulnerable/vuln_302_SC06.sol#1080)
+	- vault = creator.createRefund() (contracts/vulnerable/vuln_302_SC06.sol#1083)
+	- token.setUnpausedWallet(wallets[uint8(Roles.accountant)],true) (contracts/vulnerable/vuln_302_SC06.sol#1086)
+	- token.setUnpausedWallet(wallets[uint8(Roles.manager)],true) (contracts/vulnerable/vuln_302_SC06.sol#1087)
+	- token.setUnpausedWallet(wallets[uint8(Roles.bounty)],true) (contracts/vulnerable/vuln_302_SC06.sol#1088)
+	- token.setUnpausedWallet(wallets[uint8(Roles.advisers)],true) (contracts/vulnerable/vuln_302_SC06.sol#1089)
+	- token.setUnpausedWallet(wallets[uint8(Roles.observer)],true) (contracts/vulnerable/vuln_302_SC06.sol#1090)
+	- token.setUnpausedWallet(wallets[uint8(Roles.players)],true) (contracts/vulnerable/vuln_302_SC06.sol#1091)
+	- token.setUnpausedWallet(wallets[uint8(Roles.airdrop)],true) (contracts/vulnerable/vuln_302_SC06.sol#1092)
+	- token.setUnpausedWallet(wallets[uint8(Roles.fund)],true) (contracts/vulnerable/vuln_302_SC06.sol#1093)
+	- token.setUnpausedWallet(wallets[uint8(Roles.founders)],true) (contracts/vulnerable/vuln_302_SC06.sol#1094)
+	- token.setUnpausedWallet(wallets[uint8(Roles.referrals)],true) (contracts/vulnerable/vuln_302_SC06.sol#1095)
+	- token.setUnpausedWallet(allocation,true) (contracts/vulnerable/vuln_302_SC06.sol#1097)
+	- token.setUnpausedWallet(allocationQueue,true) (contracts/vulnerable/vuln_302_SC06.sol#1098)
+	State variables written after the call(s):
+	- bonuses.push(Bonus(71000000000000000000,30)) (contracts/vulnerable/vuln_302_SC06.sol#1100)
+	- profits.push(Profit(15,172800)) (contracts/vulnerable/vuln_302_SC06.sol#1102)
+	- profits.push(Profit(10,172800)) (contracts/vulnerable/vuln_302_SC06.sol#1103)
+	- profits.push(Profit(5,345600)) (contracts/vulnerable/vuln_302_SC06.sol#1104)
+Reentrancy in Crowdsale.finalization() (contracts/vulnerable/vuln_302_SC06.sol#1202-1261):
+	External calls:
+	- vault.close(wallets[uint8(Roles.beneficiary)],wallets[uint8(Roles.fees)],ethWeiRaised.mul(7).div(100)) (contracts/vulnerable/vuln_302_SC06.sol#1214)
+	- token.mint(wallets[uint8(Roles.accountant)],tokenReserved) (contracts/vulnerable/vuln_302_SC06.sol#1220)
+	State variables written after the call(s):
+	- TokenSale = TokenSaleType.round2 (contracts/vulnerable/vuln_302_SC06.sol#1234)
+	- chargeBonuses = true (contracts/vulnerable/vuln_302_SC06.sol#1248)
+	- isFinalized = false (contracts/vulnerable/vuln_302_SC06.sol#1231)
+	- isInitialized = false (contracts/vulnerable/vuln_302_SC06.sol#1230)
+	- weiRound1 = weiRaised() (contracts/vulnerable/vuln_302_SC06.sol#1237)
+Reentrancy in Crowdsale.finalization() (contracts/vulnerable/vuln_302_SC06.sol#1202-1261):
+	External calls:
+	- vault.close(wallets[uint8(Roles.beneficiary)],wallets[uint8(Roles.fees)],ethWeiRaised.mul(7).div(100)) (contracts/vulnerable/vuln_302_SC06.sol#1214)
+	- token.mint(wallets[uint8(Roles.accountant)],tokenReserved) (contracts/vulnerable/vuln_302_SC06.sol#1220)
+	- totalSaledToken = token.totalSupply() (contracts/vulnerable/vuln_302_SC06.sol#1250)
+	State variables written after the call(s):
+	- totalSaledToken = token.totalSupply() (contracts/vulnerable/vuln_302_SC06.sol#1250)
+Reentrancy in UnburnableListToken.grantToSetUnburnableWallet(address,bool) (contracts/vulnerable/vuln_302_SC06.sol#469-472):
+	External calls:
+	- require(bool)(owner == msg.sender || msg.sender == Crowdsale(owner).wallets(uint8(Crowdsale.Roles.manager))) (contracts/vulnerable/vuln_302_SC06.sol#470)
+	State variables written after the call(s):
+	- grantedToSetUnburnableWallet[_to] = permission (contracts/vulnerable/vuln_302_SC06.sol#471)
+Reentrancy in PausableToken.grantToSetUnpausedWallet(address,bool) (contracts/vulnerable/vuln_302_SC06.sol#299-302):
+	External calls:
+	- require(bool)(owner == msg.sender || msg.sender == Crowdsale(owner).wallets(uint8(Crowdsale.Roles.manager))) (contracts/vulnerable/vuln_302_SC06.sol#300)
+	State variables written after the call(s):
+	- grantedToSetUnpausedWallet[_to] = permission (contracts/vulnerable/vuln_302_SC06.sol#301)
+Reentrancy in UnburnableListToken.setUnburnableWallet(address) (contracts/vulnerable/vuln_302_SC06.sol#475-478):
+	External calls:
+	- require(bool)(owner == msg.sender || grantedToSetUnburnableWallet[msg.sender] || msg.sender == Crowdsale(owner).wallets(uint8(Crowdsale.Roles.manager))) (contracts/vulnerable/vuln_302_SC06.sol#476)
+	State variables written after the call(s):
+	- unburnableWallet[_wallet] = true (contracts/vulnerable/vuln_302_SC06.sol#477)
+Reentrancy in Pausable.setUnpausedWallet(address,bool) (contracts/vulnerable/vuln_302_SC06.sol#95-98):
+	External calls:
+	- require(bool)(owner == msg.sender || msg.sender == Crowdsale(owner).wallets(uint8(Crowdsale.Roles.manager))) (contracts/vulnerable/vuln_302_SC06.sol#96)
+	State variables written after the call(s):
+	- unpausedWallet[_wallet] = mode (contracts/vulnerable/vuln_302_SC06.sol#97)
+Reentrancy in PausableToken.setUnpausedWallet(address,bool) (contracts/vulnerable/vuln_302_SC06.sol#305-308):
+	External calls:
+	- require(bool)(owner == msg.sender || grantedToSetUnpausedWallet[msg.sender] || msg.sender == Crowdsale(owner).wallets(uint8(Crowdsale.Roles.manager))) (contracts/vulnerable/vuln_302_SC06.sol#306)
+	State variables written after the call(s):
+	- unpausedWallet[_wallet] = mode (contracts/vulnerable/vuln_302_SC06.sol#307)
+Reentrancy in Crowdsale.setup(uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256[],uint256[],uint256[],uint256[]) (contracts/vulnerable/vuln_302_SC06.sol#1349-1389):
+	External calls:
+	- begin() (contracts/vulnerable/vuln_302_SC06.sol#1358)
+		- token = creator.createToken() (contracts/vulnerable/vuln_302_SC06.sol#1078)
+		- allocation = creator.createPeriodicAllocation(token) (contracts/vulnerable/vuln_302_SC06.sol#1079)
+		- allocationQueue = creator.createAllocationQueue(token) (contracts/vulnerable/vuln_302_SC06.sol#1080)
+		- vault = creator.createRefund() (contracts/vulnerable/vuln_302_SC06.sol#1083)
+		- token.setUnpausedWallet(wallets[uint8(Roles.accountant)],true) (contracts/vulnerable/vuln_302_SC06.sol#1086)
+		- token.setUnpausedWallet(wallets[uint8(Roles.manager)],true) (contracts/vulnerable/vuln_302_SC06.sol#1087)
+		- token.setUnpausedWallet(wallets[uint8(Roles.bounty)],true) (contracts/vulnerable/vuln_302_SC06.sol#1088)
+		- token.setUnpausedWallet(wallets[uint8(Roles.advisers)],true) (contracts/vulnerable/vuln_302_SC06.sol#1089)
+		- token.setUnpausedWallet(wallets[uint8(Roles.observer)],true) (contracts/vulnerable/vuln_302_SC06.sol#1090)
+		- token.setUnpausedWallet(wallets[uint8(Roles.players)],true) (contracts/vulnerable/vuln_302_SC06.sol#1091)
+		- token.setUnpausedWallet(wallets[uint8(Roles.airdrop)],true) (contracts/vulnerable/vuln_302_SC06.sol#1092)
+		- token.setUnpausedWallet(wallets[uint8(Roles.fund)],true) (contracts/vulnerable/vuln_302_SC06.sol#1093)
+		- token.setUnpausedWallet(wallets[uint8(Roles.founders)],true) (contracts/vulnerable/vuln_302_SC06.sol#1094)
+		- token.setUnpausedWallet(wallets[uint8(Roles.referrals)],true) (contracts/vulnerable/vuln_302_SC06.sol#1095)
+		- token.setUnpausedWallet(allocation,true) (contracts/vulnerable/vuln_302_SC06.sol#1097)
+		- token.setUnpausedWallet(allocationQueue,true) (contracts/vulnerable/vuln_302_SC06.sol#1098)
+	State variables written after the call(s):
+	- exchange = _exchange (contracts/vulnerable/vuln_302_SC06.sol#1374)
+	- hardCap = _hardCap (contracts/vulnerable/vuln_302_SC06.sol#1367)
+	- maxAllProfit = _maxAllProfit (contracts/vulnerable/vuln_302_SC06.sol#1375)
+	- minPay = _minPay (contracts/vulnerable/vuln_302_SC06.sol#1373)
+	- overLimit = _overLimit (contracts/vulnerable/vuln_302_SC06.sol#1372)
+	- rate = _rate (contracts/vulnerable/vuln_302_SC06.sol#1370)
+	- softCap = _softCap (contracts/vulnerable/vuln_302_SC06.sol#1366)
+	- startTime = _startTime (contracts/vulnerable/vuln_302_SC06.sol#1362)
+Reentrancy in AllocationQueue.unlockFor(address,uint256) (contracts/vulnerable/vuln_302_SC06.sol#849-862):
+	External calls:
+	- token.transfer(_owner,share) (contracts/vulnerable/vuln_302_SC06.sol#859)
+	State variables written after the call(s):
+	- totalShare = totalShare.sub(share) (contracts/vulnerable/vuln_302_SC06.sol#860)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+
+Detector: reentrancy-events
+Reentrancy in Crowdsale.buyTokens(address) (contracts/vulnerable/vuln_302_SC06.sol#1682-1719):
+	External calls:
+	- token.mint(beneficiary,tokens) (contracts/vulnerable/vuln_302_SC06.sol#1712)
+	- systemWalletsMint(tokens) (contracts/vulnerable/vuln_302_SC06.sol#1714)
+		- token.mint(address(allocationQueue),_value) (contracts/vulnerable/vuln_302_SC06.sol#1647)
+		- token.mint(address(allocation),tokens.mul(7).div(50)) (contracts/vulnerable/vuln_302_SC06.sol#1656)
+		- allocationQueue.addShare(_beneficiary,_value,_freezeTime) (contracts/vulnerable/vuln_302_SC06.sol#1648)
+		- token.mint(wallets[uint8(Roles.referrals)],tokens.mul(4).div(50)) (contracts/vulnerable/vuln_302_SC06.sol#1677)
+	Event emitted after the call(s):
+	- TokenPurchase(msg.sender,beneficiary,weiAmount,tokens) (contracts/vulnerable/vuln_302_SC06.sol#1716)
+Reentrancy in Crowdsale.finalize() (contracts/vulnerable/vuln_302_SC06.sol#1186-1195):
+	External calls:
+	- finalization() (contracts/vulnerable/vuln_302_SC06.sol#1193)
+		- vault.close(wallets[uint8(Roles.beneficiary)],wallets[uint8(Roles.fees)],ethWeiRaised.mul(7).div(100)) (contracts/vulnerable/vuln_302_SC06.sol#1214)
+		- token.mint(wallets[uint8(Roles.accountant)],tokenReserved) (contracts/vulnerable/vuln_302_SC06.sol#1220)
+		- totalSaledToken = token.totalSupply() (contracts/vulnerable/vuln_302_SC06.sol#1250)
+		- vault.enableRefunds() (contracts/vulnerable/vuln_302_SC06.sol#1259)
+	Event emitted after the call(s):
+	- Finalized() (contracts/vulnerable/vuln_302_SC06.sol#1194)
+Reentrancy in Crowdsale.initialize() (contracts/vulnerable/vuln_302_SC06.sol#1290-1307):
+	External calls:
+	- begin() (contracts/vulnerable/vuln_302_SC06.sol#1295)
+		- token = creator.createToken() (contracts/vulnerable/vuln_302_SC06.sol#1078)
+		- allocation = creator.createPeriodicAllocation(token) (contracts/vulnerable/vuln_302_SC06.sol#1079)
+		- allocationQueue = creator.createAllocationQueue(token) (contracts/vulnerable/vuln_302_SC06.sol#1080)
+		- vault = creator.createRefund() (contracts/vulnerable/vuln_302_SC06.sol#1083)
+		- token.setUnpausedWallet(wallets[uint8(Roles.accountant)],true) (contracts/vulnerable/vuln_302_SC06.sol#1086)
+		- token.setUnpausedWallet(wallets[uint8(Roles.manager)],true) (contracts/vulnerable/vuln_302_SC06.sol#1087)
+		- token.setUnpausedWallet(wallets[uint8(Roles.bounty)],true) (contracts/vulnerable/vuln_302_SC06.sol#1088)
+		- token.setUnpausedWallet(wallets[uint8(Roles.advisers)],true) (contracts/vulnerable/vuln_302_SC06.sol#1089)
+		- token.setUnpausedWallet(wallets[uint8(Roles.observer)],true) (contracts/vulnerable/vuln_302_SC06.sol#1090)
+		- token.setUnpausedWallet(wallets[uint8(Roles.players)],true) (contracts/vulnerable/vuln_302_SC06.sol#1091)
+		- token.setUnpausedWallet(wallets[uint8(Roles.airdrop)],true) (contracts/vulnerable/vuln_302_SC06.sol#1092)
+		- token.setUnpausedWallet(wallets[uint8(Roles.fund)],true) (contracts/vulnerable/vuln_302_SC06.sol#1093)
+		- token.setUnpausedWallet(wallets[uint8(Roles.founders)],true) (contracts/vulnerable/vuln_302_SC06.sol#1094)
+		- token.setUnpausedWallet(wallets[uint8(Roles.referrals)],true) (contracts/vulnerable/vuln_302_SC06.sol#1095)
+		- token.setUnpausedWallet(allocation,true) (contracts/vulnerable/vuln_302_SC06.sol#1097)
+		- token.setUnpausedWallet(allocationQueue,true) (contracts/vulnerable/vuln_302_SC06.sol#1098)
+	- initialization() (contracts/vulnerable/vuln_302_SC06.sol#1302)
+		- address(vault) != 0x0 && vault.state() != RefundVault.State.Active (contracts/vulnerable/vuln_302_SC06.sol#1310)
+		- vault.restart() (contracts/vulnerable/vuln_302_SC06.sol#1311)
+	Event emitted after the call(s):
+	- Initialized() (contracts/vulnerable/vuln_302_SC06.sol#1304)
+Reentrancy in MigratableToken.migrateInternal(address) (contracts/vulnerable/vuln_302_SC06.sol#416-427):
+	External calls:
+	- MigrationAgent(migrationAgent).migrateFrom(_holder,value) (contracts/vulnerable/vuln_302_SC06.sol#425)
+	Event emitted after the call(s):
+	- Migrate(_holder,migrationAgent,value) (contracts/vulnerable/vuln_302_SC06.sol#426)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-4
+
+Detector: timestamp
+FreezingToken.freezedTokenOf(address) (contracts/vulnerable/vuln_302_SC06.sol#325-329) uses timestamp for comparisons
+	Dangerous comparisons:
+	- _freeze.when < now (contracts/vulnerable/vuln_302_SC06.sol#327)
+FreezingToken.defrostDate(address) (contracts/vulnerable/vuln_302_SC06.sol#335-339) uses timestamp for comparisons
+	Dangerous comparisons:
+	- _freeze.when < now (contracts/vulnerable/vuln_302_SC06.sol#337)
+PeriodicAllocation.setUnlockStart(uint256) (contracts/vulnerable/vuln_302_SC06.sol#713-718) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(_unlockStart >= now) (contracts/vulnerable/vuln_302_SC06.sol#715)
+PeriodicAllocation.unlockFor(address) (contracts/vulnerable/vuln_302_SC06.sol#726-744) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(now >= (unlockStart.add(shares[_owner].periodLength))) (contracts/vulnerable/vuln_302_SC06.sol#728)
+	- periodsSinceUnlockStart < shares[_owner].periods (contracts/vulnerable/vuln_302_SC06.sol#732)
+	- share > 0 (contracts/vulnerable/vuln_302_SC06.sol#738)
+AllocationQueue.isLeapYear(uint16) (contracts/vulnerable/vuln_302_SC06.sol#767-778) uses timestamp for comparisons
+	Dangerous comparisons:
+	- year % 4 != 0 (contracts/vulnerable/vuln_302_SC06.sol#768)
+	- year % 100 != 0 (contracts/vulnerable/vuln_302_SC06.sol#771)
+	- year % 400 != 0 (contracts/vulnerable/vuln_302_SC06.sol#774)
+AllocationQueue.groupDates(uint256) (contracts/vulnerable/vuln_302_SC06.sol#780-834) uses timestamp for comparisons
+	Dangerous comparisons:
+	- secondsAccountedFor > _date (contracts/vulnerable/vuln_302_SC06.sol#790)
+	- secondsAccountedFor + seconds31 > _date (contracts/vulnerable/vuln_302_SC06.sol#807)
+	- secondsAccountedFor + seconds31 + secondsFeb > _date (contracts/vulnerable/vuln_302_SC06.sol#809)
+	- secondsAccountedFor + 2 * seconds31 + secondsFeb > _date (contracts/vulnerable/vuln_302_SC06.sol#811)
+	- secondsAccountedFor + 2 * seconds31 + seconds30 + secondsFeb > _date (contracts/vulnerable/vuln_302_SC06.sol#813)
+	- secondsAccountedFor + 3 * seconds31 + seconds30 + secondsFeb > _date (contracts/vulnerable/vuln_302_SC06.sol#815)
+	- secondsAccountedFor + 3 * seconds31 + 2 * seconds30 + secondsFeb > _date (contracts/vulnerable/vuln_302_SC06.sol#817)
+	- secondsAccountedFor + 4 * seconds31 + 2 * seconds30 + secondsFeb > _date (contracts/vulnerable/vuln_302_SC06.sol#819)
+	- secondsAccountedFor + 5 * seconds31 + 2 * seconds30 + secondsFeb > _date (contracts/vulnerable/vuln_302_SC06.sol#821)
+	- secondsAccountedFor + 5 * seconds31 + 3 * seconds30 + secondsFeb > _date (contracts/vulnerable/vuln_302_SC06.sol#823)
+	- secondsAccountedFor + 6 * seconds31 + 3 * seconds30 + secondsFeb > _date (contracts/vulnerable/vuln_302_SC06.sol#825)
+	- secondsAccountedFor + 6 * seconds31 + 4 * seconds30 + secondsFeb > _date (contracts/vulnerable/vuln_302_SC06.sol#827)
+AllocationQueue.addShare(address,uint256,uint256) (contracts/vulnerable/vuln_302_SC06.sol#836-847) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(unfreezeDate > currentDate) (contracts/vulnerable/vuln_302_SC06.sol#843)
+AllocationQueue.unlockFor(address,uint256) (contracts/vulnerable/vuln_302_SC06.sol#849-862) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(date <= groupDates(now)) (contracts/vulnerable/vuln_302_SC06.sol#852)
+Crowdsale.privateMint(uint256) (contracts/vulnerable/vuln_302_SC06.sol#1115-1131) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(stopTime == 0) (contracts/vulnerable/vuln_302_SC06.sol#1117)
+Crowdsale.validPurchase() (contracts/vulnerable/vuln_302_SC06.sol#1156-1169) uses timestamp for comparisons
+	Dangerous comparisons:
+	- withinPeriod = (now > startTime && stopTime == 0) (contracts/vulnerable/vuln_302_SC06.sol#1159)
+	- withinPeriod && nonZeroPurchase && withinCap && isInitialized && ! isPausedCrowdsale (contracts/vulnerable/vuln_302_SC06.sol#1168)
+Crowdsale.hasEnded() (contracts/vulnerable/vuln_302_SC06.sol#1172-1177) uses timestamp for comparisons
+	Dangerous comparisons:
+	- (stopTime > 0 || capReached) && isInitialized (contracts/vulnerable/vuln_302_SC06.sol#1176)
+Crowdsale.finalization() (contracts/vulnerable/vuln_302_SC06.sol#1202-1261) uses timestamp for comparisons
+	Dangerous comparisons:
+	- stopTime == 0 (contracts/vulnerable/vuln_302_SC06.sol#1204)
+Crowdsale.initialize() (contracts/vulnerable/vuln_302_SC06.sol#1290-1307) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(now <= startTime) (contracts/vulnerable/vuln_302_SC06.sol#1300)
+Crowdsale.stop() (contracts/vulnerable/vuln_302_SC06.sol#1320-1326) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(stopTime == 0 && now > startTime) (contracts/vulnerable/vuln_302_SC06.sol#1323)
+Crowdsale.setup(uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256[],uint256[],uint256[],uint256[]) (contracts/vulnerable/vuln_302_SC06.sol#1349-1389) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(now <= _startTime) (contracts/vulnerable/vuln_302_SC06.sol#1361)
+Crowdsale.getProfitPercentForData(uint256) (contracts/vulnerable/vuln_302_SC06.sol#1407-1416) uses timestamp for comparisons
+	Dangerous comparisons:
+	- _timeNow < startTime.add(allDuration) (contracts/vulnerable/vuln_302_SC06.sol#1411)
+Crowdsale.tokenUnpause() (contracts/vulnerable/vuln_302_SC06.sol#1441-1446) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(wallets[uint8(Roles.manager)] == msg.sender || (stopTime != 0 && now > stopTime.add(USER_UNPAUSE_TOKEN_TIMEOUT) && TokenSale == TokenSaleType.round2 && isFinalized && goalReached())) (contracts/vulnerable/vuln_302_SC06.sol#1443-1444)
+Crowdsale.massBurnTokens(address[],uint256[]) (contracts/vulnerable/vuln_302_SC06.sol#1543-1550) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(stopTime == 0 || stopTime.add(BURN_TOKENS_TIME) > now) (contracts/vulnerable/vuln_302_SC06.sol#1545)
+Crowdsale.distructVault() (contracts/vulnerable/vuln_302_SC06.sol#1574-1584) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(stopTime != 0 && ! goalReached()) (contracts/vulnerable/vuln_302_SC06.sol#1576)
+	- wallets[uint8(Roles.beneficiary)] == msg.sender && (now > startTime.add(FORCED_REFUND_TIMEOUT1)) (contracts/vulnerable/vuln_302_SC06.sol#1578)
+	- wallets[uint8(Roles.manager)] == msg.sender && (now > startTime.add(FORCED_REFUND_TIMEOUT2)) (contracts/vulnerable/vuln_302_SC06.sol#1581)
+Crowdsale.paymentsInOtherCurrency(uint256,uint256) (contracts/vulnerable/vuln_302_SC06.sol#1633-1644) uses timestamp for comparisons
+	Dangerous comparisons:
+	- withinPeriod = (now >= startTime && stopTime == 0) (contracts/vulnerable/vuln_302_SC06.sol#1636)
+	- require(bool)(withinPeriod && withinCap && isInitialized) (contracts/vulnerable/vuln_302_SC06.sol#1639)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+
+Detector: boolean-equal
+Crowdsale.onlyAdmin(bool) (contracts/vulnerable/vuln_302_SC06.sol#1063-1066) compares to a boolean constant:
+	-require(bool)(wallets[uint8(Roles.manager)] == msg.sender || wallets[uint8(Roles.beneficiary)] == msg.sender || forObserver == true && wallets[uint8(Roles.observer)] == msg.sender) (contracts/vulnerable/vuln_302_SC06.sol#1064-1065)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#boolean-equality
+
+Detector: costly-loop
+MigratableToken.migrateInternal(address) (contracts/vulnerable/vuln_302_SC06.sol#416-427) has costly operations inside a loop:
+	- totalSupply_ = totalSupply_.sub(value) (contracts/vulnerable/vuln_302_SC06.sol#422)
+	Calls stack containing the loop:
+		MigratableToken.migrateAll(address[])
+MigratableToken.migrateInternal(address) (contracts/vulnerable/vuln_302_SC06.sol#416-427) has costly operations inside a loop:
+	- totalMigrated = totalMigrated.add(value) (contracts/vulnerable/vuln_302_SC06.sol#423)
+	Calls stack containing the loop:
+		MigratableToken.migrateAll(address[])
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#costly-operations-inside-a-loop
+
+Detector: cyclomatic-complexity
+AllocationQueue.groupDates(uint256) (contracts/vulnerable/vuln_302_SC06.sol#780-834) has a high cyclomatic complexity (15).
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#cyclomatic-complexity
+
+Detector: solc-version
+Version constraint ^0.4.21 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ABIEncoderV2PackedStorage_0.4.x
+	- ExpExponentCleanup
+	- EventStructWrongData
+	- NestedArrayFunctionCallDecoder.
+It is used by:
+	- ^0.4.21 (contracts/vulnerable/vuln_302_SC06.sol#1)
+solc-0.4.21 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Parameter Pausable.setUnpausedWallet(address,bool)._wallet (contracts/vulnerable/vuln_302_SC06.sol#95) is not in mixedCase
+Parameter BasicToken.transfer(address,uint256)._to (contracts/vulnerable/vuln_302_SC06.sol#165) is not in mixedCase
+Parameter BasicToken.transfer(address,uint256)._value (contracts/vulnerable/vuln_302_SC06.sol#165) is not in mixedCase
+Parameter BasicToken.balanceOf(address)._owner (contracts/vulnerable/vuln_302_SC06.sol#181) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._from (contracts/vulnerable/vuln_302_SC06.sol#206) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._to (contracts/vulnerable/vuln_302_SC06.sol#206) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._value (contracts/vulnerable/vuln_302_SC06.sol#206) is not in mixedCase
+Parameter StandardToken.approve(address,uint256)._spender (contracts/vulnerable/vuln_302_SC06.sol#228) is not in mixedCase
+Parameter StandardToken.approve(address,uint256)._value (contracts/vulnerable/vuln_302_SC06.sol#228) is not in mixedCase
+Parameter StandardToken.allowance(address,address)._owner (contracts/vulnerable/vuln_302_SC06.sol#240) is not in mixedCase
+Parameter StandardToken.allowance(address,address)._spender (contracts/vulnerable/vuln_302_SC06.sol#240) is not in mixedCase
+Parameter StandardToken.increaseApproval(address,uint256)._spender (contracts/vulnerable/vuln_302_SC06.sol#254) is not in mixedCase
+Parameter StandardToken.increaseApproval(address,uint256)._addedValue (contracts/vulnerable/vuln_302_SC06.sol#254) is not in mixedCase
+Parameter StandardToken.decreaseApproval(address,uint256)._spender (contracts/vulnerable/vuln_302_SC06.sol#270) is not in mixedCase
+Parameter StandardToken.decreaseApproval(address,uint256)._subtractedValue (contracts/vulnerable/vuln_302_SC06.sol#270) is not in mixedCase
+Parameter PausableToken.transfer(address,uint256)._to (contracts/vulnerable/vuln_302_SC06.sol#291) is not in mixedCase
+Parameter PausableToken.transfer(address,uint256)._value (contracts/vulnerable/vuln_302_SC06.sol#291) is not in mixedCase
+Parameter PausableToken.transferFrom(address,address,uint256)._from (contracts/vulnerable/vuln_302_SC06.sol#295) is not in mixedCase
+Parameter PausableToken.transferFrom(address,address,uint256)._to (contracts/vulnerable/vuln_302_SC06.sol#295) is not in mixedCase
+Parameter PausableToken.transferFrom(address,address,uint256)._value (contracts/vulnerable/vuln_302_SC06.sol#295) is not in mixedCase
+Parameter PausableToken.grantToSetUnpausedWallet(address,bool)._to (contracts/vulnerable/vuln_302_SC06.sol#299) is not in mixedCase
+Parameter PausableToken.setUnpausedWallet(address,bool)._wallet (contracts/vulnerable/vuln_302_SC06.sol#305) is not in mixedCase
+Struct FreezingToken.freeze (contracts/vulnerable/vuln_302_SC06.sol#312-315) is not in CapWords
+Parameter FreezingToken.freezedTokenOf(address)._beneficiary (contracts/vulnerable/vuln_302_SC06.sol#325) is not in mixedCase
+Parameter FreezingToken.defrostDate(address)._beneficiary (contracts/vulnerable/vuln_302_SC06.sol#335) is not in mixedCase
+Parameter FreezingToken.freezeTokens(address,uint256,uint256)._beneficiary (contracts/vulnerable/vuln_302_SC06.sol#343) is not in mixedCase
+Parameter FreezingToken.freezeTokens(address,uint256,uint256)._amount (contracts/vulnerable/vuln_302_SC06.sol#343) is not in mixedCase
+Parameter FreezingToken.freezeTokens(address,uint256,uint256)._when (contracts/vulnerable/vuln_302_SC06.sol#343) is not in mixedCase
+Parameter FreezingToken.transferAndFreeze(address,uint256,uint256)._to (contracts/vulnerable/vuln_302_SC06.sol#349) is not in mixedCase
+Parameter FreezingToken.transferAndFreeze(address,uint256,uint256)._value (contracts/vulnerable/vuln_302_SC06.sol#349) is not in mixedCase
+Parameter FreezingToken.transferAndFreeze(address,uint256,uint256)._when (contracts/vulnerable/vuln_302_SC06.sol#349) is not in mixedCase
+Parameter FreezingToken.transfer(address,uint256)._to (contracts/vulnerable/vuln_302_SC06.sol#359) is not in mixedCase
+Parameter FreezingToken.transfer(address,uint256)._value (contracts/vulnerable/vuln_302_SC06.sol#359) is not in mixedCase
+Parameter FreezingToken.transferFrom(address,address,uint256)._from (contracts/vulnerable/vuln_302_SC06.sol#364) is not in mixedCase
+Parameter FreezingToken.transferFrom(address,address,uint256)._to (contracts/vulnerable/vuln_302_SC06.sol#364) is not in mixedCase
+Parameter FreezingToken.transferFrom(address,address,uint256)._value (contracts/vulnerable/vuln_302_SC06.sol#364) is not in mixedCase
+Parameter MintableToken.mint(address,uint256)._to (contracts/vulnerable/vuln_302_SC06.sol#390) is not in mixedCase
+Parameter MintableToken.mint(address,uint256)._amount (contracts/vulnerable/vuln_302_SC06.sol#390) is not in mixedCase
+Parameter MigratableToken.setMigrationAgent(address)._migrationAgent (contracts/vulnerable/vuln_302_SC06.sol#411) is not in mixedCase
+Parameter MigratableToken.migrateInternal(address)._holder (contracts/vulnerable/vuln_302_SC06.sol#416) is not in mixedCase
+Parameter MigratableToken.migrateAll(address[])._holders (contracts/vulnerable/vuln_302_SC06.sol#429) is not in mixedCase
+Parameter BurnableToken.burn(address,uint256)._beneficiary (contracts/vulnerable/vuln_302_SC06.sol#452) is not in mixedCase
+Parameter BurnableToken.burn(address,uint256)._value (contracts/vulnerable/vuln_302_SC06.sol#452) is not in mixedCase
+Parameter UnburnableListToken.grantToSetUnburnableWallet(address,bool)._to (contracts/vulnerable/vuln_302_SC06.sol#469) is not in mixedCase
+Parameter UnburnableListToken.setUnburnableWallet(address)._wallet (contracts/vulnerable/vuln_302_SC06.sol#475) is not in mixedCase
+Parameter UnburnableListToken.burn(address,uint256)._beneficiary (contracts/vulnerable/vuln_302_SC06.sol#484) is not in mixedCase
+Parameter UnburnableListToken.burn(address,uint256)._value (contracts/vulnerable/vuln_302_SC06.sol#484) is not in mixedCase
+Parameter Token.transferToContract(address,uint256,bytes)._to (contracts/vulnerable/vuln_302_SC06.sol#539) is not in mixedCase
+Parameter Token.transferToContract(address,uint256,bytes)._value (contracts/vulnerable/vuln_302_SC06.sol#539) is not in mixedCase
+Parameter Token.transferToContract(address,uint256,bytes)._data (contracts/vulnerable/vuln_302_SC06.sol#539) is not in mixedCase
+Parameter Token.grantToAllowBlocking(address,bool)._contract (contracts/vulnerable/vuln_302_SC06.sol#555) is not in mixedCase
+Parameter Token.allowBlocking(address,address)._owner (contracts/vulnerable/vuln_302_SC06.sol#566) is not in mixedCase
+Parameter Token.allowBlocking(address,address)._contract (contracts/vulnerable/vuln_302_SC06.sol#566) is not in mixedCase
+Parameter Token.blockTokens(address,uint256)._blocking (contracts/vulnerable/vuln_302_SC06.sol#581) is not in mixedCase
+Parameter Token.blockTokens(address,uint256)._value (contracts/vulnerable/vuln_302_SC06.sol#581) is not in mixedCase
+Parameter Token.unblockTokens(address,address,uint256)._blocking (contracts/vulnerable/vuln_302_SC06.sol#597) is not in mixedCase
+Parameter Token.unblockTokens(address,address,uint256)._unblockTo (contracts/vulnerable/vuln_302_SC06.sol#597) is not in mixedCase
+Parameter Token.unblockTokens(address,address,uint256)._value (contracts/vulnerable/vuln_302_SC06.sol#597) is not in mixedCase
+Parameter RefundVault.close(address,address,uint256)._wallet1 (contracts/vulnerable/vuln_302_SC06.sol#646) is not in mixedCase
+Parameter RefundVault.close(address,address,uint256)._wallet2 (contracts/vulnerable/vuln_302_SC06.sol#646) is not in mixedCase
+Parameter RefundVault.close(address,address,uint256)._feesValue (contracts/vulnerable/vuln_302_SC06.sol#646) is not in mixedCase
+Parameter RefundVault.del(address)._wallet (contracts/vulnerable/vuln_302_SC06.sol#685) is not in mixedCase
+Parameter PeriodicAllocation.setUnlockStart(uint256)._unlockStart (contracts/vulnerable/vuln_302_SC06.sol#713) is not in mixedCase
+Parameter PeriodicAllocation.addShare(address,uint256,uint256,uint256)._beneficiary (contracts/vulnerable/vuln_302_SC06.sol#720) is not in mixedCase
+Parameter PeriodicAllocation.addShare(address,uint256,uint256,uint256)._proportion (contracts/vulnerable/vuln_302_SC06.sol#720) is not in mixedCase
+Parameter PeriodicAllocation.addShare(address,uint256,uint256,uint256)._periods (contracts/vulnerable/vuln_302_SC06.sol#720) is not in mixedCase
+Parameter PeriodicAllocation.addShare(address,uint256,uint256,uint256)._periodLength (contracts/vulnerable/vuln_302_SC06.sol#720) is not in mixedCase
+Parameter PeriodicAllocation.unlockFor(address)._owner (contracts/vulnerable/vuln_302_SC06.sol#726) is not in mixedCase
+Parameter AllocationQueue.groupDates(uint256)._date (contracts/vulnerable/vuln_302_SC06.sol#780) is not in mixedCase
+Parameter AllocationQueue.addShare(address,uint256,uint256)._beneficiary (contracts/vulnerable/vuln_302_SC06.sol#836) is not in mixedCase
+Parameter AllocationQueue.addShare(address,uint256,uint256)._tokens (contracts/vulnerable/vuln_302_SC06.sol#836) is not in mixedCase
+Parameter AllocationQueue.addShare(address,uint256,uint256)._freezeTime (contracts/vulnerable/vuln_302_SC06.sol#836) is not in mixedCase
+Parameter AllocationQueue.unlockFor(address,uint256)._owner (contracts/vulnerable/vuln_302_SC06.sol#849) is not in mixedCase
+Parameter AllocationQueue.unlockFor(address,uint256)._date (contracts/vulnerable/vuln_302_SC06.sol#849) is not in mixedCase
+Parameter AllocationQueue.getShare(address,uint256)._owner (contracts/vulnerable/vuln_302_SC06.sol#865) is not in mixedCase
+Parameter AllocationQueue.getShare(address,uint256)._date (contracts/vulnerable/vuln_302_SC06.sol#865) is not in mixedCase
+Parameter Creator.createPeriodicAllocation(Token)._token (contracts/vulnerable/vuln_302_SC06.sol#881) is not in mixedCase
+Parameter Creator.createAllocationQueue(Token)._token (contracts/vulnerable/vuln_302_SC06.sol#887) is not in mixedCase
+Parameter Crowdsale.privateMint(uint256)._amount (contracts/vulnerable/vuln_302_SC06.sol#1115) is not in mixedCase
+Parameter Crowdsale.setup(uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256[],uint256[],uint256[],uint256[])._startTime (contracts/vulnerable/vuln_302_SC06.sol#1349) is not in mixedCase
+Parameter Crowdsale.setup(uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256[],uint256[],uint256[],uint256[])._softCap (contracts/vulnerable/vuln_302_SC06.sol#1349) is not in mixedCase
+Parameter Crowdsale.setup(uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256[],uint256[],uint256[],uint256[])._hardCap (contracts/vulnerable/vuln_302_SC06.sol#1349) is not in mixedCase
+Parameter Crowdsale.setup(uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256[],uint256[],uint256[],uint256[])._rate (contracts/vulnerable/vuln_302_SC06.sol#1350) is not in mixedCase
+Parameter Crowdsale.setup(uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256[],uint256[],uint256[],uint256[])._exchange (contracts/vulnerable/vuln_302_SC06.sol#1350) is not in mixedCase
+Parameter Crowdsale.setup(uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256[],uint256[],uint256[],uint256[])._maxAllProfit (contracts/vulnerable/vuln_302_SC06.sol#1351) is not in mixedCase
+Parameter Crowdsale.setup(uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256[],uint256[],uint256[],uint256[])._overLimit (contracts/vulnerable/vuln_302_SC06.sol#1351) is not in mixedCase
+Parameter Crowdsale.setup(uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256[],uint256[],uint256[],uint256[])._minPay (contracts/vulnerable/vuln_302_SC06.sol#1351) is not in mixedCase
+Parameter Crowdsale.setup(uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256[],uint256[],uint256[],uint256[])._durationTB (contracts/vulnerable/vuln_302_SC06.sol#1352) is not in mixedCase
+Parameter Crowdsale.setup(uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256[],uint256[],uint256[],uint256[])._percentTB (contracts/vulnerable/vuln_302_SC06.sol#1352) is not in mixedCase
+Parameter Crowdsale.setup(uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256[],uint256[],uint256[],uint256[])._valueVB (contracts/vulnerable/vuln_302_SC06.sol#1352) is not in mixedCase
+Parameter Crowdsale.setup(uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256[],uint256[],uint256[],uint256[])._percentVB (contracts/vulnerable/vuln_302_SC06.sol#1352) is not in mixedCase
+Parameter Crowdsale.getProfitPercentForData(uint256)._timeNow (contracts/vulnerable/vuln_302_SC06.sol#1407) is not in mixedCase
+Parameter Crowdsale.getBonuses(uint256)._value (contracts/vulnerable/vuln_302_SC06.sol#1418) is not in mixedCase
+Parameter Crowdsale.moveTokens(address)._migrationAgent (contracts/vulnerable/vuln_302_SC06.sol#1483) is not in mixedCase
+Parameter Crowdsale.migrateAll(address[])._holders (contracts/vulnerable/vuln_302_SC06.sol#1492) is not in mixedCase
+Parameter Crowdsale.changeWallet(Crowdsale.Roles,address)._role (contracts/vulnerable/vuln_302_SC06.sol#1505) is not in mixedCase
+Parameter Crowdsale.changeWallet(Crowdsale.Roles,address)._wallet (contracts/vulnerable/vuln_302_SC06.sol#1505) is not in mixedCase
+Parameter Crowdsale.massBurnTokens(address[],uint256[])._beneficiary (contracts/vulnerable/vuln_302_SC06.sol#1543) is not in mixedCase
+Parameter Crowdsale.massBurnTokens(address[],uint256[])._value (contracts/vulnerable/vuln_302_SC06.sol#1543) is not in mixedCase
+Parameter Crowdsale.paymentsInOtherCurrency(uint256,uint256)._token (contracts/vulnerable/vuln_302_SC06.sol#1633) is not in mixedCase
+Parameter Crowdsale.paymentsInOtherCurrency(uint256,uint256)._value (contracts/vulnerable/vuln_302_SC06.sol#1633) is not in mixedCase
+Parameter Crowdsale.queueMint(address,uint256,uint256)._beneficiary (contracts/vulnerable/vuln_302_SC06.sol#1646) is not in mixedCase
+Parameter Crowdsale.queueMint(address,uint256,uint256)._value (contracts/vulnerable/vuln_302_SC06.sol#1646) is not in mixedCase
+Parameter Crowdsale.queueMint(address,uint256,uint256)._freezeTime (contracts/vulnerable/vuln_302_SC06.sol#1646) is not in mixedCase
+Variable Crowdsale.TokenSale (contracts/vulnerable/vuln_302_SC06.sol#918) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: redundant-statements
+Redundant expression "i (contracts/vulnerable/vuln_302_SC06.sol#1423)" inCrowdsale (contracts/vulnerable/vuln_302_SC06.sol#907-1729)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#redundant-statements
+
+Detector: reentrancy-unlimited-gas
+Reentrancy in RefundVault.refund(address) (contracts/vulnerable/vuln_302_SC06.sol#667-674):
+	External calls:
+	- investor.transfer(depositedValue) (contracts/vulnerable/vuln_302_SC06.sol#672)
+	Event emitted after the call(s):
+	- Refunded(investor,depositedValue) (contracts/vulnerable/vuln_302_SC06.sol#673)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-5
+
+Detector: unused-state
+Crowdsale.ROUND_PROLONGATE (contracts/vulnerable/vuln_302_SC06.sol#912) is never used in Crowdsale (contracts/vulnerable/vuln_302_SC06.sol#907-1729)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unused-state-variable
+
+Detector: cache-array-length
+Loop condition i < wallets.length (contracts/vulnerable/vuln_302_SC06.sol#1527) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i < profits.length (contracts/vulnerable/vuln_302_SC06.sol#1409) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i < bonuses.length (contracts/vulnerable/vuln_302_SC06.sol#1423) should use cached array length instead of referencing `length` member of the storage array.
+ Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#cache-array-length
+
+Detector: external-function
+migrateAll(address[]) should be declared external:
+	- MigratableToken.migrateAll(address[]) (contracts/vulnerable/vuln_302_SC06.sol#429-433)
+tokenFallback(address,uint256,bytes) should be declared external:
+	- ERC223ReceivingContract.tokenFallback(address,uint256,bytes) (contracts/vulnerable/vuln_302_SC06.sol#495)
+transferToContract(address,uint256,bytes) should be declared external:
+	- Token.transferToContract(address,uint256,bytes) (contracts/vulnerable/vuln_302_SC06.sol#539-550)
+setup(uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256[],uint256[],uint256[],uint256[]) should be declared external:
+	- Crowdsale.setup(uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256[],uint256[],uint256[],uint256[]) (contracts/vulnerable/vuln_302_SC06.sol#1349-1389)
+migrateAll(address[]) should be declared external:
+	- Crowdsale.migrateAll(address[]) (contracts/vulnerable/vuln_302_SC06.sol#1492-1495)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#public-function-that-could-be-declared-external
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_302_SC06.sol analyzed (21 contracts with 101 detectors), 200 result(s) found

@@ -1,0 +1,32 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_015_SC01.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_015_SC01.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_015_SC01.sol:83:42: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+                 if (collectedFees == 0) throw;
+                                         ^---^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_015_SC01.sol:93:42: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+                 if (collectedFees == 0) throw;
+                                         ^---^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_015_SC01.sol:100:58: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+                 if (collectedFees == 0 || _pcent > 100) throw;
+                                                         ^---^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_015_SC01.sol:113:50: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+                 if (_mult > 300 || _mult < 120) throw;
+                                                 ^---^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_015_SC01.sol:119:33: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+                 if (_fee > 10) throw;
+                                ^---^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_015_SC01.sol:74:26: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+                         participants[payoutOrder].etherAddress.send(payoutToSend);
+                         ^-------------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_015_SC01.sol:85:18: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+                 creator.send(collectedFees);
+                 ^-------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_015_SC01.sol:95:18: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+                 creator.send(_amt);
+                 ^----------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_015_SC01.sol:103:18: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+                 creator.send(feesToCollect);
+                 ^-------------------------^
+
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_015_SC01.sol analyzed (1 contracts with 5 detectors), 0 result(s) found

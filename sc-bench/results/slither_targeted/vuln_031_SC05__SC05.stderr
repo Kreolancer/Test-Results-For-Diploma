@@ -1,0 +1,17 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_031_SC05.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_031_SC05.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_031_SC05.sol:14:7: Warning: Return value of low-level calls not used.
+      msg.sender.send( msg.value );
+      ^--------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_031_SC05.sol:17:9: Warning: Return value of low-level calls not used.
+        leader.send( this.balance );
+        ^-------------------------^
+
+
+Detector: timestamp
+lottopollo.payOut(uint256) () uses timestamp for comparisons
+	Dangerous comparisons:
+	- rand > 0 && now - rand > 86400 ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_031_SC05.sol analyzed (1 contracts with 2 detectors), 1 result(s) found

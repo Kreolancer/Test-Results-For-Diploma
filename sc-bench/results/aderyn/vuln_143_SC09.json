@@ -1,0 +1,611 @@
+{
+  "files_summary": {
+    "total_source_units": 1,
+    "total_sloc": 306
+  },
+  "files_details": {
+    "files_details": [
+      {
+        "file_path": "src/vuln_143_SC09.sol",
+        "n_sloc": 306
+      }
+    ]
+  },
+  "issue_count": {
+    "high": 5,
+    "low": 6
+  },
+  "high_issues": {
+    "issues": [
+      {
+        "title": "Direct assignment of array length",
+        "description": "If the length of a dynamic array (storage variable) is directly assigned to, it may allow access to other storage slots by tweaking it's value. This practice has been deprecated in newer Solidity versions",
+        "detector_name": "dynamic-array-length-assignment",
+        "instances": [
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 325,
+            "src": "10954:24",
+            "src_char": "10034:24"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 346,
+            "src": "11777:24",
+            "src_char": "10857:24"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 394,
+            "src": "13037:24",
+            "src_char": "12117:24"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 395,
+            "src": "13073:19",
+            "src_char": "12153:19"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 396,
+            "src": "13104:18",
+            "src_char": "12184:18"
+          }
+        ]
+      },
+      {
+        "title": "Usage of variable before declaration",
+        "description": "Declare the variable before using it to avoid unintended consequences.",
+        "detector_name": "pre-declared-local-variable-usage",
+        "instances": [
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 442,
+            "src": "14721:11",
+            "src_char": "13801:11"
+          }
+        ]
+      },
+      {
+        "title": "Reentrancy: State change after external call",
+        "description": "Changing state after an external call can lead to re-entrancy attacks.Use the checks-effects-interactions pattern to avoid this issue.",
+        "detector_name": "reentrancy-state-change",
+        "instances": [
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 230,
+            "src": "7040:46",
+            "src_char": "6580:46",
+            "hint": "State is changed at: `balDailyLotto += (msg.value * 15 ether) / 100 ether`, `invtByOrder.push(msg.sender)`"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 251,
+            "src": "7740:22",
+            "src_char": "7280:22",
+            "hint": "State is changed at: `ttlTicketSold+=num`, `dailyLottoPlayers.push(msg.sender)`"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 410,
+            "src": "13464:24",
+            "src_char": "12544:24",
+            "hint": "State is changed at: `dsInvtBalances[roundId][msg.sender]=0`"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 411,
+            "src": "13509:70",
+            "src_char": "12589:70",
+            "hint": "State is changed at: `dsInvtBalances[roundId][msg.sender]=0`"
+          }
+        ]
+      },
+      {
+        "title": "Tautology or Contradiction in comparison",
+        "description": "The condition has been determined to be either always true or always false due to the integer range in which we're operating.",
+        "detector_name": "tautology-or-contradiction",
+        "instances": [
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 451,
+            "src": "15094:13",
+            "src_char": "14174:13"
+          }
+        ]
+      },
+      {
+        "title": "Weak Randomness",
+        "description": "The use of keccak256 hash functions on predictable values like block.timestamp, block.number, or similar data, including modulo operations on these values, should be avoided for generating randomness, as they are easily predictable and manipulable. The `PREVRANDAO` opcode also should not be used as a source of randomness. Instead, utilize Chainlink VRF for cryptographically secure and provably random values to ensure protocol integrity.",
+        "detector_name": "weak-randomness",
+        "instances": [
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 460,
+            "src": "15424:107",
+            "src_char": "14504:107"
+          }
+        ]
+      }
+    ]
+  },
+  "low_issues": {
+    "issues": [
+      {
+        "title": "Centralization Risk",
+        "description": "Contracts have owners with privileged rights to perform admin tasks and need to be trusted to not perform malicious updates or drain funds.",
+        "detector_name": "centralization-risk",
+        "instances": [
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 28,
+            "src": "593:9",
+            "src_char": "593:9"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 88,
+            "src": "2570:7",
+            "src_char": "2110:7"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 276,
+            "src": "9012:9",
+            "src_char": "8092:9"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 380,
+            "src": "12770:9",
+            "src_char": "11850:9"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 403,
+            "src": "13275:9",
+            "src_char": "12355:9"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 416,
+            "src": "13697:9",
+            "src_char": "12777:9"
+          }
+        ]
+      },
+      {
+        "title": "Empty `require()` / `revert()` Statement",
+        "description": "Use descriptive reason strings or custom errors for revert paths.",
+        "detector_name": "empty-require-revert",
+        "instances": [
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 19,
+            "src": "346:7",
+            "src_char": "346:7"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 29,
+            "src": "616:7",
+            "src_char": "616:7"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 167,
+            "src": "4786:7",
+            "src_char": "4326:7"
+          }
+        ]
+      },
+      {
+        "title": "Literal Instead of Constant",
+        "description": "Define and use `constant` variables instead of using literals. If the same constant literal value is used multiple times, create a constant state variable and reference it throughout the contract.",
+        "detector_name": "literal-instead-of-constant",
+        "instances": [
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 153,
+            "src": "4460:7",
+            "src_char": "4000:7"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 154,
+            "src": "4489:7",
+            "src_char": "4029:7"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 159,
+            "src": "4592:7",
+            "src_char": "4132:7"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 160,
+            "src": "4621:8",
+            "src_char": "4161:8"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 193,
+            "src": "5723:3",
+            "src_char": "5263:3"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 211,
+            "src": "6306:1",
+            "src_char": "5846:1"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 212,
+            "src": "6327:1",
+            "src_char": "5867:1"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 219,
+            "src": "6510:3",
+            "src_char": "6050:3"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 223,
+            "src": "6743:9",
+            "src_char": "6283:9"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 228,
+            "src": "7010:9",
+            "src_char": "6550:9"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 230,
+            "src": "7076:9",
+            "src_char": "6616:9"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 233,
+            "src": "7177:9",
+            "src_char": "6717:9"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 290,
+            "src": "9527:9",
+            "src_char": "8607:9"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 305,
+            "src": "10181:9",
+            "src_char": "9261:9"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 331,
+            "src": "11179:1",
+            "src_char": "10259:1"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 332,
+            "src": "11210:3",
+            "src_char": "10290:3"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 333,
+            "src": "11243:3",
+            "src_char": "10323:3"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 334,
+            "src": "11276:3",
+            "src_char": "10356:3"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 338,
+            "src": "11435:1",
+            "src_char": "10515:1"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 338,
+            "src": "11467:1",
+            "src_char": "10547:1"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 340,
+            "src": "11508:3",
+            "src_char": "10588:3"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 341,
+            "src": "11581:3",
+            "src_char": "10661:3"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 342,
+            "src": "11654:3",
+            "src_char": "10734:3"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 354,
+            "src": "12014:3",
+            "src_char": "11094:3"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 355,
+            "src": "12078:3",
+            "src_char": "11158:3"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 371,
+            "src": "12524:2",
+            "src_char": "11604:2"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 371,
+            "src": "12527:2",
+            "src_char": "11607:2"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 410,
+            "src": "13476:11",
+            "src_char": "12556:11"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 411,
+            "src": "13567:11",
+            "src_char": "12647:11"
+          }
+        ]
+      },
+      {
+        "title": "Uninitialized Local Variable",
+        "description": "Initialize all the variables. If a variable is meant to be initialized to zero, explicitly set it to zero to improve code readability.",
+        "detector_name": "uninitialized-local-variable",
+        "instances": [
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 39,
+            "src": "871:19",
+            "src_char": "871:19"
+          }
+        ]
+      },
+      {
+        "title": "Unsafe ERC20 Operation",
+        "description": "ERC20 functions may not behave as expected. For example: return values are not always meaningful. It is recommended to use OpenZeppelin's SafeERC20 library.",
+        "detector_name": "unsafe-erc20-operation",
+        "instances": [
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 230,
+            "src": "7040:11",
+            "src_char": "6580:11"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 251,
+            "src": "7740:11",
+            "src_char": "7280:11"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 410,
+            "src": "13464:11",
+            "src_char": "12544:11"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 411,
+            "src": "13509:19",
+            "src_char": "12589:19"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 417,
+            "src": "13723:23",
+            "src_char": "12803:23"
+          }
+        ]
+      },
+      {
+        "title": "Public Function Not Used Internally",
+        "description": "If a function is marked public but is not used internally, consider marking it as `external`.",
+        "detector_name": "unused-public-function",
+        "instances": [
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 28,
+            "src": "548:176",
+            "src_char": "548:176"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 166,
+            "src": "4710:2716",
+            "src_char": "4250:2716"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 246,
+            "src": "7436:470",
+            "src_char": "6976:470"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 276,
+            "src": "8988:3163",
+            "src_char": "8068:3163"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 361,
+            "src": "12161:100",
+            "src_char": "11241:100"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 365,
+            "src": "12271:114",
+            "src_char": "11351:114"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 369,
+            "src": "12395:339",
+            "src_char": "11475:339"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 380,
+            "src": "12744:477",
+            "src_char": "11824:477"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 403,
+            "src": "13231:88",
+            "src_char": "12311:88"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 407,
+            "src": "13329:313",
+            "src_char": "12409:313"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 416,
+            "src": "13652:107",
+            "src_char": "12732:107"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 420,
+            "src": "13769:579",
+            "src_char": "12849:579"
+          },
+          {
+            "contract_path": "src/vuln_143_SC09.sol",
+            "line_no": 434,
+            "src": "14358:938",
+            "src_char": "13438:938"
+          }
+        ]
+      }
+    ]
+  },
+  "detectors_used": [
+    "abi-encode-packed-hash-collision",
+    "arbitrary-transfer-from",
+    "assert-state-change",
+    "block-timestamp-deadline",
+    "boolean-equality",
+    "builtin-symbol-shadowing",
+    "centralization-risk",
+    "constant-function-changes-state",
+    "constant-function-contains-assembly",
+    "contract-locks-ether",
+    "costly-loop",
+    "dangerous-unary-operator",
+    "dead-code",
+    "delegate-call-unchecked-address",
+    "delegatecall-in-loop",
+    "delete-nested-mapping",
+    "deprecated-oz-function",
+    "division-before-multiplication",
+    "dynamic-array-length-assignment",
+    "ecrecover",
+    "empty-block",
+    "empty-require-revert",
+    "enumerable-loop-removal",
+    "eth-send-unchecked-address",
+    "experimental-encoder",
+    "function-initializing-state",
+    "function-pointer-in-constructor",
+    "function-selector-collision",
+    "inconsistent-type-names",
+    "incorrect-caret-operator",
+    "incorrect-erc20-interface",
+    "incorrect-erc721-interface",
+    "incorrect-shift-order",
+    "incorrect-use-of-modifier",
+    "internal-function-used-once",
+    "large-numeric-literal",
+    "literal-instead-of-constant",
+    "local-variable-shadowing",
+    "missing-inheritance",
+    "misused-boolean",
+    "modifier-used-only-once",
+    "msg-value-in-loop",
+    "multiple-constructors",
+    "multiple-placeholders",
+    "nested-struct-in-mapping",
+    "non-reentrant-not-first",
+    "out-of-order-retryable",
+    "pre-declared-local-variable-usage",
+    "push-zero-opcode",
+    "redundant-statement",
+    "reentrancy-state-change",
+    "require-revert-in-loop",
+    "return-bomb",
+    "reused-contract-name",
+    "rtlo",
+    "selfdestruct",
+    "signed-integer-storage-array",
+    "solmate-safe-transfer-lib",
+    "state-change-without-event",
+    "state-no-address-check",
+    "state-variable-could-be-constant",
+    "state-variable-could-be-immutable",
+    "state-variable-init-order",
+    "state-variable-read-external",
+    "state-variable-shadowing",
+    "storage-array-length-not-cached",
+    "storage-array-memory-edit",
+    "strict-equality-contract-balance",
+    "tautological-compare",
+    "tautology-or-contradiction",
+    "todo",
+    "tx-origin-used-for-auth",
+    "unchecked-low-level-call",
+    "unchecked-return",
+    "unchecked-send",
+    "uninitialized-local-variable",
+    "unprotected-initializer",
+    "unsafe-casting",
+    "unsafe-erc20-operation",
+    "unsafe-oz-erc721-mint",
+    "unspecific-solidity-pragma",
+    "unused-error",
+    "unused-import",
+    "unused-public-function",
+    "unused-state-variable",
+    "void-constructor",
+    "weak-randomness",
+    "yul-return"
+  ]
+}

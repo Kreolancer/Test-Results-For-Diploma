@@ -1,0 +1,3 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_256_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_256_SAFE.sol analyzed (4 contracts with 5 detectors), 0 result(s) found

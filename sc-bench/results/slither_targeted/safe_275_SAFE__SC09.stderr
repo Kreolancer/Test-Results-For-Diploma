@@ -1,0 +1,21 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_275_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_275_SAFE.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_275_SAFE.sol:29:3: Warning: Function is marked pure. Be careful, pureness is not enforced yet.
+  function mul(uint256 a, uint256 b) internal pure returns (uint256) {
+  ^
+Spanning multiple lines.
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_275_SAFE.sol:41:3: Warning: Function is marked pure. Be careful, pureness is not enforced yet.
+  function div(uint256 a, uint256 b) internal pure returns (uint256) {
+  ^
+Spanning multiple lines.
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_275_SAFE.sol:51:3: Warning: Function is marked pure. Be careful, pureness is not enforced yet.
+  function sub(uint256 a, uint256 b) internal pure returns (uint256) {
+  ^
+Spanning multiple lines.
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_275_SAFE.sol:59:3: Warning: Function is marked pure. Be careful, pureness is not enforced yet.
+  function add(uint256 a, uint256 b) internal pure returns (uint256) {
+  ^
+Spanning multiple lines.
+
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_275_SAFE.sol analyzed (4 contracts with 2 detectors), 0 result(s) found

@@ -1,0 +1,117 @@
+{
+  "success": true,
+  "error": null,
+  "results": {
+    "detectors": [
+      {
+        "elements": [
+          {
+            "type": "contract",
+            "name": "Xtime",
+            "source_mapping": {
+              "start": 2261,
+              "length": 477,
+              "filename_relative": "contracts/safe/safe_214_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_214_SAFE.sol",
+              "filename_short": "contracts/safe/safe_214_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                69,
+                70,
+                71,
+                72,
+                73,
+                74,
+                75,
+                76,
+                77,
+                78,
+                79,
+                80,
+                81,
+                82,
+                83,
+                84,
+                85,
+                86,
+                87,
+                88,
+                89,
+                90
+              ],
+              "starting_column": 1,
+              "ending_column": 0
+            }
+          },
+          {
+            "type": "function",
+            "name": "fallback",
+            "source_mapping": {
+              "start": 2665,
+              "length": 68,
+              "filename_relative": "contracts/safe/safe_214_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_214_SAFE.sol",
+              "filename_short": "contracts/safe/safe_214_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                85,
+                86,
+                87
+              ],
+              "starting_column": 5,
+              "ending_column": 6
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "Xtime",
+                "source_mapping": {
+                  "start": 2261,
+                  "length": 477,
+                  "filename_relative": "contracts/safe/safe_214_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_214_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_214_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    69,
+                    70,
+                    71,
+                    72,
+                    73,
+                    74,
+                    75,
+                    76,
+                    77,
+                    78,
+                    79,
+                    80,
+                    81,
+                    82,
+                    83,
+                    84,
+                    85,
+                    86,
+                    87,
+                    88,
+                    89,
+                    90
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              },
+              "signature": "fallback()"
+            }
+          }
+        ],
+        "description": "Contract locking ether found:\n\tContract Xtime (contracts/safe/safe_214_SAFE.sol#69-90) has payable functions:\n\t - Xtime.fallback() (contracts/safe/safe_214_SAFE.sol#85-87)\n\tBut does not have a function to withdraw the ether\n",
+        "markdown": "Contract locking ether found:\n\tContract [Xtime](contracts/safe/safe_214_SAFE.sol#L69-L90) has payable functions:\n\t - [Xtime.fallback()](contracts/safe/safe_214_SAFE.sol#L85-L87)\n\tBut does not have a function to withdraw the ether\n",
+        "first_markdown_element": "contracts/safe/safe_214_SAFE.sol#L69-L90",
+        "id": "95f0cb6e32987f92689fa11c8fed72b1f87b18836a51e85e71ccd22d481fbcce",
+        "check": "locked-ether",
+        "impact": "Medium",
+        "confidence": "High"
+      }
+    ]
+  }
+}

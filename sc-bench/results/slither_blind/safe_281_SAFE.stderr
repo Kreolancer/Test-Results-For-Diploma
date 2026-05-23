@@ -1,0 +1,75 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_281_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_281_SAFE.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_281_SAFE.sol:70:5: Warning: Function state mutability can be restricted to pure
+    function devFee(uint256 amount) public view returns(uint256){
+    ^
+Spanning multiple lines.
+
+
+Detector: incorrect-equality
+HarjFarmer.getFreeShrimp() (contracts/safe/safe_281_SAFE.sol#78-83) uses a dangerous strict equality:
+	- require(bool)(hatcheryShrimp[msg.sender] == 0) (contracts/safe/safe_281_SAFE.sol#80)
+HarjFarmer.seedMarket(uint256) (contracts/safe/safe_281_SAFE.sol#73-77) uses a dangerous strict equality:
+	- require(bool)(marketEggs == 0) (contracts/safe/safe_281_SAFE.sol#74)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dangerous-strict-equalities
+
+Detector: timestamp
+HarjFarmer.seedMarket(uint256) (contracts/safe/safe_281_SAFE.sol#73-77) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(marketEggs == 0) (contracts/safe/safe_281_SAFE.sol#74)
+HarjFarmer.getFreeShrimp() (contracts/safe/safe_281_SAFE.sol#78-83) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(hatcheryShrimp[msg.sender] == 0) (contracts/safe/safe_281_SAFE.sol#80)
+HarjFarmer.min(uint256,uint256) (contracts/safe/safe_281_SAFE.sol#97-99) uses timestamp for comparisons
+	Dangerous comparisons:
+	- a < b (contracts/safe/safe_281_SAFE.sol#98)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+
+Detector: solc-version
+Version constraint ^0.4.18 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- EventStructWrongData
+	- NestedArrayFunctionCallDecoder.
+It is used by:
+	- ^0.4.18 (contracts/safe/safe_281_SAFE.sol#1)
+solc-0.4.18 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Function HarjFarmer.ShrimpFarmer() (contracts/safe/safe_281_SAFE.sol#18-20) is not in mixedCase
+Variable HarjFarmer.EGGS_TO_HATCH_1SHRIMP (contracts/safe/safe_281_SAFE.sol#7) is not in mixedCase
+Variable HarjFarmer.STARTING_SHRIMP (contracts/safe/safe_281_SAFE.sol#8) is not in mixedCase
+Variable HarjFarmer.PSN (contracts/safe/safe_281_SAFE.sol#9) is not in mixedCase
+Variable HarjFarmer.PSNH (contracts/safe/safe_281_SAFE.sol#10) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: reentrancy-unlimited-gas
+Reentrancy in HarjFarmer.buyEggs() (contracts/safe/safe_281_SAFE.sol#49-55):
+	External calls:
+	- ceoAddress.transfer(devFee(msg.value)) (contracts/safe/safe_281_SAFE.sol#53)
+	State variables written after the call(s):
+	- claimedEggs[msg.sender] = SafeMath.add(claimedEggs[msg.sender],eggsBought) (contracts/safe/safe_281_SAFE.sol#54)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-5
+
+Detector: constable-states
+HarjFarmer.EGGS_TO_HATCH_1SHRIMP (contracts/safe/safe_281_SAFE.sol#7) should be constant 
+HarjFarmer.PSN (contracts/safe/safe_281_SAFE.sol#9) should be constant 
+HarjFarmer.PSNH (contracts/safe/safe_281_SAFE.sol#10) should be constant 
+HarjFarmer.STARTING_SHRIMP (contracts/safe/safe_281_SAFE.sol#8) should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_281_SAFE.sol analyzed (2 contracts with 101 detectors), 17 result(s) found

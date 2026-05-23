@@ -1,0 +1,136 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_130_SC06.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_130_SC06.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_130_SC06.sol:241:17: Warning: This looks like an address but has an invalid checksum. If this is not used as an address, please prepend '00'. Correct checksummed address: '0x0a6AF11D0dB7aC521719c216E4D18530Da428B63'. For more information please see https://solidity.readthedocs.io/en/develop/types.html#address-literals
+    feeWallet = 0x0a6af11d0db7ac521719c216e4d18530da428b63;
+                ^----------------------------------------^
+
+
+Detector: controlled-array-length
+Room1 (contracts/vulnerable/vuln_130_SC06.sol#131-374) contract sets array length with a user-controlled value:
+	- lot.players.push(msg.sender) (contracts/vulnerable/vuln_130_SC06.sol#269)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#array-length-assignment
+
+Detector: unchecked-transfer
+Room1.retrieveTokens(address,address) (contracts/vulnerable/vuln_130_SC06.sol#368-371) ignores return value by token.transfer(to,token.balanceOf(address(this))) (contracts/vulnerable/vuln_130_SC06.sol#370)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unchecked-transfer
+
+Detector: divide-before-multiply
+Room1.fallback() (contracts/vulnerable/vuln_130_SC06.sol#256-285) performs a multiplication on the result of a division:
+	- numTicketsToBuy = msg.value.div(ticketPrice) (contracts/vulnerable/vuln_130_SC06.sol#264)
+	- toInvest = ticketPrice.mul(numTicketsToBuy) (contracts/vulnerable/vuln_130_SC06.sol#266)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#divide-before-multiply
+
+Detector: incorrect-equality
+Room1.getCurLotIndex() (contracts/vulnerable/vuln_130_SC06.sol#227-235) uses a dangerous strict equality:
+	- passed == 0 (contracts/vulnerable/vuln_130_SC06.sol#232)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dangerous-strict-equalities
+
+Detector: missing-zero-check
+Room1.updateParameters(address,uint256,uint256,uint256,uint256,uint256).newFeeWallet (contracts/vulnerable/vuln_130_SC06.sol#202) lacks a zero-check on :
+		- feeWallet = newFeeWallet (contracts/vulnerable/vuln_130_SC06.sol#208)
+Room1.setFeeWallet(address).newFeeWallet (contracts/vulnerable/vuln_130_SC06.sol#248) lacks a zero-check on :
+		- feeWallet = newFeeWallet (contracts/vulnerable/vuln_130_SC06.sol#249)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+
+Detector: calls-loop
+Room1.prepareToRewardProcess() (contracts/vulnerable/vuln_130_SC06.sol#305-366) has external calls inside a loop: ticket.owner.transfer(ticket.win) (contracts/vulnerable/vuln_130_SC06.sol#352)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation/#calls-inside-a-loop
+
+Detector: timestamp
+Room1.updateParameters(address,uint256,uint256,uint256,uint256,uint256) (contracts/vulnerable/vuln_130_SC06.sol#202-215) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(newStarts > now,Lottery can only be started in the future!) (contracts/vulnerable/vuln_130_SC06.sol#203)
+Room1.getCurLotIndex() (contracts/vulnerable/vuln_130_SC06.sol#227-235) uses timestamp for comparisons
+	Dangerous comparisons:
+	- starts > now (contracts/vulnerable/vuln_130_SC06.sol#228)
+	- passed == 0 (contracts/vulnerable/vuln_130_SC06.sol#232)
+Room1.fallback() (contracts/vulnerable/vuln_130_SC06.sol#256-285) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(now < getNotPayableTime(curLotIndex),Game finished!) (contracts/vulnerable/vuln_130_SC06.sol#260)
+Room1.canUpdate() (contracts/vulnerable/vuln_130_SC06.sol#287-294) uses timestamp for comparisons
+	Dangerous comparisons:
+	- starts > now (contracts/vulnerable/vuln_130_SC06.sol#288)
+Room1.isProcessNeeds() (contracts/vulnerable/vuln_130_SC06.sol#296-303) uses timestamp for comparisons
+	Dangerous comparisons:
+	- starts > now (contracts/vulnerable/vuln_130_SC06.sol#297)
+	- lotProcessIndex < curLotIndex || (now >= getNotPayableTime(lotProcessIndex) && lot.state != LotState.Finished) (contracts/vulnerable/vuln_130_SC06.sol#302)
+Room1.prepareToRewardProcess() (contracts/vulnerable/vuln_130_SC06.sol#305-366) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(now >= getNotPayableTime(lotProcessIndex),Lottery stakes accepting time not finished!) (contracts/vulnerable/vuln_130_SC06.sol#309)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+
+Detector: solc-version
+Version constraint ^0.4.24 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ABIEncoderV2PackedStorage_0.4.x
+	- ExpExponentCleanup
+	- EventStructWrongData.
+It is used by:
+	- ^0.4.24 (contracts/vulnerable/vuln_130_SC06.sol#1)
+solc-0.4.24 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Parameter Ownable.transferOwnership(address)._newOwner (contracts/vulnerable/vuln_130_SC06.sol#52) is not in mixedCase
+Variable Room1.LIMIT (contracts/vulnerable/vuln_130_SC06.sol#141) is not in mixedCase
+Variable Room1.RANGE (contracts/vulnerable/vuln_130_SC06.sol#143) is not in mixedCase
+Variable Room1.PERCENT_RATE (contracts/vulnerable/vuln_130_SC06.sol#145) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: reentrancy-unlimited-gas
+Reentrancy in Room1.prepareToRewardProcess() (contracts/vulnerable/vuln_130_SC06.sol#305-366):
+	External calls:
+	- feeWallet.transfer(fee) (contracts/vulnerable/vuln_130_SC06.sol#338)
+	State variables written after the call(s):
+	- lot.rewardBase = lot.summaryInvested.sub(fee) (contracts/vulnerable/vuln_130_SC06.sol#339)
+	- lot.state = LotState.Rewarding (contracts/vulnerable/vuln_130_SC06.sol#340)
+Reentrancy in Room1.prepareToRewardProcess() (contracts/vulnerable/vuln_130_SC06.sol#305-366):
+	External calls:
+	- ticket.owner.transfer(ticket.win) (contracts/vulnerable/vuln_130_SC06.sol#352)
+	State variables written after the call(s):
+	- lotProcessIndex = lotProcessIndex.add(1) (contracts/vulnerable/vuln_130_SC06.sol#361)
+	- lot.state = LotState.Finished (contracts/vulnerable/vuln_130_SC06.sol#360)
+	- summaryPayed[ticket.owner] = summaryPayed[ticket.owner].add(ticket.win) (contracts/vulnerable/vuln_130_SC06.sol#353)
+	Event emitted after the call(s):
+	- TicketWon(address(this),lotProcessIndex,index,ticket.owner,ticket.win) (contracts/vulnerable/vuln_130_SC06.sol#354)
+Reentrancy in Room1.prepareToRewardProcess() (contracts/vulnerable/vuln_130_SC06.sol#305-366):
+	External calls:
+	- feeWallet.transfer(fee) (contracts/vulnerable/vuln_130_SC06.sol#338)
+	- ticket.owner.transfer(ticket.win) (contracts/vulnerable/vuln_130_SC06.sol#352)
+	State variables written after the call(s):
+	- lot.processIndex = index (contracts/vulnerable/vuln_130_SC06.sol#365)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-5
+
+Detector: too-many-digits
+Room1.constructor() (contracts/vulnerable/vuln_130_SC06.sol#237-246) uses literals with too many digits:
+	- ticketPrice = 10000000000000000 (contracts/vulnerable/vuln_130_SC06.sol#239)
+Room1.slitherConstructorVariables() (contracts/vulnerable/vuln_130_SC06.sol#131-374) uses literals with too many digits:
+	- RANGE = 1000000000 (contracts/vulnerable/vuln_130_SC06.sol#143)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#too-many-digits
+
+Detector: unindexed-event-address
+Event Room1.TicketPurchased(address,uint256,uint256,address,uint256) (contracts/vulnerable/vuln_130_SC06.sol#133) has address parameters but no indexed parameters
+Event Room1.TicketWon(address,uint256,uint256,address,uint256) (contracts/vulnerable/vuln_130_SC06.sol#135) has address parameters but no indexed parameters
+Event Room1.ParametersUpdated(uint256,address,uint256,uint256,uint256,uint256,uint256) (contracts/vulnerable/vuln_130_SC06.sol#137) has address parameters but no indexed parameters
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unindexed-event-address-parameters
+
+Detector: constable-states
+Room1.LIMIT (contracts/vulnerable/vuln_130_SC06.sol#141) should be constant 
+Room1.PERCENT_RATE (contracts/vulnerable/vuln_130_SC06.sol#145) should be constant 
+Room1.RANGE (contracts/vulnerable/vuln_130_SC06.sol#143) should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_130_SC06.sol analyzed (4 contracts with 101 detectors), 30 result(s) found

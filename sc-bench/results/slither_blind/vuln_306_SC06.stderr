@@ -1,0 +1,257 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_306_SC06.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
+
+Detector: erc20-interface
+Utcoin (contracts/vulnerable/vuln_306_SC06.sol#182-200) has incorrect ERC20 function interface:StandardToken.transferFrom(address,address,uint256) (contracts/vulnerable/vuln_306_SC06.sol#157-165)
+Utcoin (contracts/vulnerable/vuln_306_SC06.sol#182-200) has incorrect ERC20 function interface:StandardToken.approve(address,uint256) (contracts/vulnerable/vuln_306_SC06.sol#166-174)
+Utcoin (contracts/vulnerable/vuln_306_SC06.sol#182-200) has incorrect ERC20 function interface:ERC20.transferFrom(address,address,uint256) (contracts/vulnerable/vuln_306_SC06.sol#93)
+Utcoin (contracts/vulnerable/vuln_306_SC06.sol#182-200) has incorrect ERC20 function interface:ERC20.approve(address,uint256) (contracts/vulnerable/vuln_306_SC06.sol#94)
+Utcoin (contracts/vulnerable/vuln_306_SC06.sol#182-200) has incorrect ERC20 function interface:ERC20Basic.transfer(address,uint256) (contracts/vulnerable/vuln_306_SC06.sol#88)
+Utcoin (contracts/vulnerable/vuln_306_SC06.sol#182-200) has incorrect ERC20 function interface:BasicToken.transfer(address,uint256) (contracts/vulnerable/vuln_306_SC06.sol#146-150)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-erc20-interface
+
+Detector: reentrancy-no-eth
+Reentrancy in Crowdsale.getRemainUtcoin() (contracts/vulnerable/vuln_306_SC06.sol#370-386):
+	External calls:
+	- utcoin.transfer(owner,remains) (contracts/vulnerable/vuln_306_SC06.sol#377)
+	State variables written after the call(s):
+	- backer.utcoinSent = backer.utcoinSent.add(remains) (contracts/vulnerable/vuln_306_SC06.sol#379)
+	Crowdsale.backers (contracts/vulnerable/vuln_306_SC06.sol#244) can be used in cross function reentrancies:
+	- Crowdsale.backers (contracts/vulnerable/vuln_306_SC06.sol#244)
+	- Crowdsale.getRemainUtcoin() (contracts/vulnerable/vuln_306_SC06.sol#370-386)
+	- Crowdsale.receiveETH(address) (contracts/vulnerable/vuln_306_SC06.sol#294-311)
+	- Crowdsale.refund(uint256) (contracts/vulnerable/vuln_306_SC06.sol#395-409)
+	- utcoinSentToEther = utcoinSentToEther.add(remains) (contracts/vulnerable/vuln_306_SC06.sol#381)
+	Crowdsale.utcoinSentToEther (contracts/vulnerable/vuln_306_SC06.sol#235) can be used in cross function reentrancies:
+	- Crowdsale.finalize() (contracts/vulnerable/vuln_306_SC06.sol#325-343)
+	- Crowdsale.getRemainUtcoin() (contracts/vulnerable/vuln_306_SC06.sol#370-386)
+	- Crowdsale.minCapNotReached() (contracts/vulnerable/vuln_306_SC06.sol#250-253)
+	- Crowdsale.receiveETH(address) (contracts/vulnerable/vuln_306_SC06.sol#294-311)
+	- Crowdsale.utcoinSentToEther (contracts/vulnerable/vuln_306_SC06.sol#235)
+Reentrancy in Crowdsale.receiveETH(address) (contracts/vulnerable/vuln_306_SC06.sol#294-311):
+	External calls:
+	- utcoin.transfer(beneficiary,utcoinToSend) (contracts/vulnerable/vuln_306_SC06.sol#300)
+	State variables written after the call(s):
+	- backer.utcoinSent = backer.utcoinSent.add(utcoinToSend) (contracts/vulnerable/vuln_306_SC06.sol#302)
+	Crowdsale.backers (contracts/vulnerable/vuln_306_SC06.sol#244) can be used in cross function reentrancies:
+	- Crowdsale.backers (contracts/vulnerable/vuln_306_SC06.sol#244)
+	- Crowdsale.getRemainUtcoin() (contracts/vulnerable/vuln_306_SC06.sol#370-386)
+	- Crowdsale.receiveETH(address) (contracts/vulnerable/vuln_306_SC06.sol#294-311)
+	- Crowdsale.refund(uint256) (contracts/vulnerable/vuln_306_SC06.sol#395-409)
+	- backer.weiReceived = backer.weiReceived.add(msg.value) (contracts/vulnerable/vuln_306_SC06.sol#303)
+	Crowdsale.backers (contracts/vulnerable/vuln_306_SC06.sol#244) can be used in cross function reentrancies:
+	- Crowdsale.backers (contracts/vulnerable/vuln_306_SC06.sol#244)
+	- Crowdsale.getRemainUtcoin() (contracts/vulnerable/vuln_306_SC06.sol#370-386)
+	- Crowdsale.receiveETH(address) (contracts/vulnerable/vuln_306_SC06.sol#294-311)
+	- Crowdsale.refund(uint256) (contracts/vulnerable/vuln_306_SC06.sol#395-409)
+	- utcoinSentToEther = utcoinSentToEther.add(utcoinToSend) (contracts/vulnerable/vuln_306_SC06.sol#306)
+	Crowdsale.utcoinSentToEther (contracts/vulnerable/vuln_306_SC06.sol#235) can be used in cross function reentrancies:
+	- Crowdsale.finalize() (contracts/vulnerable/vuln_306_SC06.sol#325-343)
+	- Crowdsale.getRemainUtcoin() (contracts/vulnerable/vuln_306_SC06.sol#370-386)
+	- Crowdsale.minCapNotReached() (contracts/vulnerable/vuln_306_SC06.sol#250-253)
+	- Crowdsale.receiveETH(address) (contracts/vulnerable/vuln_306_SC06.sol#294-311)
+	- Crowdsale.utcoinSentToEther (contracts/vulnerable/vuln_306_SC06.sol#235)
+Reentrancy in Crowdsale.refund(uint256) (contracts/vulnerable/vuln_306_SC06.sol#395-409):
+	External calls:
+	- utcoin.transferFrom(msg.sender,address(this),_value) (contracts/vulnerable/vuln_306_SC06.sol#399)
+	- ! utcoin.burn(_value) (contracts/vulnerable/vuln_306_SC06.sol#401)
+	State variables written after the call(s):
+	- backers[msg.sender].weiReceived = 0 (contracts/vulnerable/vuln_306_SC06.sol#404)
+	Crowdsale.backers (contracts/vulnerable/vuln_306_SC06.sol#244) can be used in cross function reentrancies:
+	- Crowdsale.backers (contracts/vulnerable/vuln_306_SC06.sol#244)
+	- Crowdsale.getRemainUtcoin() (contracts/vulnerable/vuln_306_SC06.sol#370-386)
+	- Crowdsale.receiveETH(address) (contracts/vulnerable/vuln_306_SC06.sol#294-311)
+	- Crowdsale.refund(uint256) (contracts/vulnerable/vuln_306_SC06.sol#395-409)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-2
+
+Detector: shadowing-builtin
+SafeMath.assert(bool) (contracts/vulnerable/vuln_306_SC06.sol#35-39) (function) shadows built-in symbol"
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#builtin-symbol-shadowing
+
+Detector: events-access
+Ownable.transferOwnership(address) (contracts/vulnerable/vuln_306_SC06.sol#50-54) should emit an event for: 
+	- owner = newOwner (contracts/vulnerable/vuln_306_SC06.sol#52) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+
+Detector: missing-zero-check
+Crowdsale.Crowdsale(address,address)._to (contracts/vulnerable/vuln_306_SC06.sol#269) lacks a zero-check on :
+		- multisigEther = _to (contracts/vulnerable/vuln_306_SC06.sol#271)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+
+Detector: reentrancy-benign
+Reentrancy in Crowdsale.finalize() (contracts/vulnerable/vuln_306_SC06.sol#325-343):
+	External calls:
+	- remains = utcoin.balanceOf(this) (contracts/vulnerable/vuln_306_SC06.sol#338)
+	- ! utcoin.burn(remains) (contracts/vulnerable/vuln_306_SC06.sol#340)
+	External calls sending eth:
+	- ! multisigEther.send(this.balance) (contracts/vulnerable/vuln_306_SC06.sol#336)
+	State variables written after the call(s):
+	- crowdsaleClosed = true (contracts/vulnerable/vuln_306_SC06.sol#342)
+Reentrancy in Crowdsale.receiveETH(address) (contracts/vulnerable/vuln_306_SC06.sol#294-311):
+	External calls:
+	- utcoin.transfer(beneficiary,utcoinToSend) (contracts/vulnerable/vuln_306_SC06.sol#300)
+	State variables written after the call(s):
+	- etherReceived = etherReceived.add(msg.value) (contracts/vulnerable/vuln_306_SC06.sol#305)
+Reentrancy in Crowdsale.refund(uint256) (contracts/vulnerable/vuln_306_SC06.sol#395-409):
+	External calls:
+	- utcoin.transferFrom(msg.sender,address(this),_value) (contracts/vulnerable/vuln_306_SC06.sol#399)
+	- ! utcoin.burn(_value) (contracts/vulnerable/vuln_306_SC06.sol#401)
+	State variables written after the call(s):
+	- asyncSend(msg.sender,ETHToSend) (contracts/vulnerable/vuln_306_SC06.sol#407)
+		- payments[dest] = payments[dest].add(amount) (contracts/vulnerable/vuln_306_SC06.sol#111)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+
+Detector: reentrancy-events
+Reentrancy in Crowdsale.getRemainUtcoin() (contracts/vulnerable/vuln_306_SC06.sol#370-386):
+	External calls:
+	- utcoin.transfer(owner,remains) (contracts/vulnerable/vuln_306_SC06.sol#377)
+	Event emitted after the call(s):
+	- LogReceivedETH(owner,etherReceived) (contracts/vulnerable/vuln_306_SC06.sol#385)
+	- LogUtcoinEmited(this,remains) (contracts/vulnerable/vuln_306_SC06.sol#384)
+Reentrancy in Crowdsale.receiveETH(address) (contracts/vulnerable/vuln_306_SC06.sol#294-311):
+	External calls:
+	- utcoin.transfer(beneficiary,utcoinToSend) (contracts/vulnerable/vuln_306_SC06.sol#300)
+	Event emitted after the call(s):
+	- LogReceivedETH(beneficiary,etherReceived) (contracts/vulnerable/vuln_306_SC06.sol#310)
+	- LogUtcoinEmited(msg.sender,utcoinToSend) (contracts/vulnerable/vuln_306_SC06.sol#309)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-4
+
+Detector: timestamp
+Crowdsale.start() (contracts/vulnerable/vuln_306_SC06.sol#284-289) uses timestamp for comparisons
+	Dangerous comparisons:
+	- startTime != 0 (contracts/vulnerable/vuln_306_SC06.sol#285)
+Crowdsale.bonus(uint256) (contracts/vulnerable/vuln_306_SC06.sol#317-320) uses timestamp for comparisons
+	Dangerous comparisons:
+	- now < startTime.add(172800) (contracts/vulnerable/vuln_306_SC06.sol#318)
+Crowdsale.finalize() (contracts/vulnerable/vuln_306_SC06.sol#325-343) uses timestamp for comparisons
+	Dangerous comparisons:
+	- now < endTime (contracts/vulnerable/vuln_306_SC06.sol#327)
+	- utcoinSentToEther < MIN_CAP && now < endTime + 1296000 (contracts/vulnerable/vuln_306_SC06.sol#334)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+
+Detector: dead-code
+SafeMath.add(uint256,uint256) (contracts/vulnerable/vuln_306_SC06.sol#18-22) is never used and should be removed
+SafeMath.div(uint256,uint256) (contracts/vulnerable/vuln_306_SC06.sol#8-13) is never used and should be removed
+SafeMath.max256(uint256,uint256) (contracts/vulnerable/vuln_306_SC06.sol#29-31) is never used and should be removed
+SafeMath.max64(uint64,uint64) (contracts/vulnerable/vuln_306_SC06.sol#23-25) is never used and should be removed
+SafeMath.min256(uint256,uint256) (contracts/vulnerable/vuln_306_SC06.sol#32-34) is never used and should be removed
+SafeMath.min64(uint64,uint64) (contracts/vulnerable/vuln_306_SC06.sol#26-28) is never used and should be removed
+SafeMath.mul(uint256,uint256) (contracts/vulnerable/vuln_306_SC06.sol#3-7) is never used and should be removed
+SafeMath.sub(uint256,uint256) (contracts/vulnerable/vuln_306_SC06.sol#14-17) is never used and should be removed
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dead-code
+
+Detector: deprecated-standards
+Deprecated standard detected THROW (contracts/vulnerable/vuln_306_SC06.sol#37):
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected THROW (contracts/vulnerable/vuln_306_SC06.sol#47):
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected THROW (contracts/vulnerable/vuln_306_SC06.sol#65):
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected THROW (contracts/vulnerable/vuln_306_SC06.sol#72):
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected THROW (contracts/vulnerable/vuln_306_SC06.sol#119):
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected THROW (contracts/vulnerable/vuln_306_SC06.sol#122):
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected THROW (contracts/vulnerable/vuln_306_SC06.sol#126):
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected THROW (contracts/vulnerable/vuln_306_SC06.sol#142):
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected THROW (contracts/vulnerable/vuln_306_SC06.sol#171):
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected THROW (contracts/vulnerable/vuln_306_SC06.sol#285):
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected THROW (contracts/vulnerable/vuln_306_SC06.sol#297):
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected THROW (contracts/vulnerable/vuln_306_SC06.sol#330):
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected THROW (contracts/vulnerable/vuln_306_SC06.sol#334):
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected THROW (contracts/vulnerable/vuln_306_SC06.sol#336):
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected THROW (contracts/vulnerable/vuln_306_SC06.sol#340):
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected THROW (contracts/vulnerable/vuln_306_SC06.sol#349):
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected THROW (contracts/vulnerable/vuln_306_SC06.sol#356):
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected THROW (contracts/vulnerable/vuln_306_SC06.sol#374):
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected THROW (contracts/vulnerable/vuln_306_SC06.sol#397):
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected THROW (contracts/vulnerable/vuln_306_SC06.sol#401):
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected THROW (contracts/vulnerable/vuln_306_SC06.sol#251):
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected THROW (contracts/vulnerable/vuln_306_SC06.sol#256):
+	- Usage of "throw" should be replaced with "revert()"
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#deprecated-standards
+
+Detector: solc-version
+Version constraint ^0.4.11 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- NestedArrayFunctionCallDecoder
+	- ZeroFunctionSelector
+	- DelegateCallReturnValue
+	- ECRecoverMalformedInput
+	- SkipEmptyStringLiteral.
+It is used by:
+	- ^0.4.11 (contracts/vulnerable/vuln_306_SC06.sol#1)
+solc-0.4.11 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Parameter BasicToken.transfer(address,uint256)._to (contracts/vulnerable/vuln_306_SC06.sol#146) is not in mixedCase
+Parameter BasicToken.transfer(address,uint256)._value (contracts/vulnerable/vuln_306_SC06.sol#146) is not in mixedCase
+Parameter BasicToken.balanceOf(address)._owner (contracts/vulnerable/vuln_306_SC06.sol#151) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._from (contracts/vulnerable/vuln_306_SC06.sol#157) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._to (contracts/vulnerable/vuln_306_SC06.sol#157) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._value (contracts/vulnerable/vuln_306_SC06.sol#157) is not in mixedCase
+Parameter StandardToken.approve(address,uint256)._spender (contracts/vulnerable/vuln_306_SC06.sol#166) is not in mixedCase
+Parameter StandardToken.approve(address,uint256)._value (contracts/vulnerable/vuln_306_SC06.sol#166) is not in mixedCase
+Parameter StandardToken.allowance(address,address)._owner (contracts/vulnerable/vuln_306_SC06.sol#175) is not in mixedCase
+Parameter StandardToken.allowance(address,address)._spender (contracts/vulnerable/vuln_306_SC06.sol#175) is not in mixedCase
+Parameter Utcoin.burn(uint256)._value (contracts/vulnerable/vuln_306_SC06.sol#194) is not in mixedCase
+Parameter Crowdsale.refund(uint256)._value (contracts/vulnerable/vuln_306_SC06.sol#395) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: reentrancy-unlimited-gas
+Reentrancy in Crowdsale.finalize() (contracts/vulnerable/vuln_306_SC06.sol#325-343):
+	External calls:
+	- ! multisigEther.send(this.balance) (contracts/vulnerable/vuln_306_SC06.sol#336)
+	State variables written after the call(s):
+	- crowdsaleClosed = true (contracts/vulnerable/vuln_306_SC06.sol#342)
+Reentrancy in PullPayment.withdrawPayments() (contracts/vulnerable/vuln_306_SC06.sol#114-129):
+	External calls:
+	- ! payee.send(payment) (contracts/vulnerable/vuln_306_SC06.sol#125)
+	Event emitted after the call(s):
+	- LogRefundETH(payee,payment) (contracts/vulnerable/vuln_306_SC06.sol#128)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-5
+
+Detector: too-many-digits
+Utcoin.Utcoin() (contracts/vulnerable/vuln_306_SC06.sol#187-190) uses literals with too many digits:
+	- totalSupply = 10000000000000000 (contracts/vulnerable/vuln_306_SC06.sol#188)
+Crowdsale.slitherConstructorConstantVariables() (contracts/vulnerable/vuln_306_SC06.sol#204-412) uses literals with too many digits:
+	- MIN_CAP = 5000000000000000 (contracts/vulnerable/vuln_306_SC06.sol#217)
+Crowdsale.slitherConstructorConstantVariables() (contracts/vulnerable/vuln_306_SC06.sol#204-412) uses literals with too many digits:
+	- MAX_CAP = 8000000000000000 (contracts/vulnerable/vuln_306_SC06.sol#219)
+Crowdsale.slitherConstructorConstantVariables() (contracts/vulnerable/vuln_306_SC06.sol#204-412) uses literals with too many digits:
+	- UTCOIN_PER_ETHER = 45500000000 (contracts/vulnerable/vuln_306_SC06.sol#223)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#too-many-digits
+
+Detector: unindexed-event-address
+Event PullPayment.LogRefundETH(address,uint256) (contracts/vulnerable/vuln_306_SC06.sol#106) has address parameters but no indexed parameters
+Event Crowdsale.LogReceivedETH(address,uint256) (contracts/vulnerable/vuln_306_SC06.sol#263) has address parameters but no indexed parameters
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unindexed-event-address-parameters
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_306_SC06.sol analyzed (10 contracts with 101 detectors), 72 result(s) found

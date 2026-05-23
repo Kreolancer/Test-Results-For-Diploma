@@ -1,0 +1,55 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_151_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+
+Detector: events-access
+Ownable.transferOwnership(address) (contracts/safe/safe_151_SAFE.sol#34-38) should emit an event for: 
+	- owner = newOwner (contracts/safe/safe_151_SAFE.sol#36) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+
+Detector: calls-loop
+BITXMultiTransfer.multisend(address[],uint256[]) (contracts/safe/safe_151_SAFE.sol#49-58) has external calls inside a loop: assert(bool)(bitx.transfer(_to[i],_value[i]) == true) (contracts/safe/safe_151_SAFE.sol#55)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation/#calls-inside-a-loop
+
+Detector: boolean-equal
+BITXMultiTransfer.multisend(address[],uint256[]) (contracts/safe/safe_151_SAFE.sol#49-58) compares to a boolean constant:
+	-assert(bool)(bitx.transfer(_to[i],_value[i]) == true) (contracts/safe/safe_151_SAFE.sol#55)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#boolean-equality
+
+Detector: solc-version
+Version constraint ^0.4.11 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- NestedArrayFunctionCallDecoder
+	- ZeroFunctionSelector
+	- DelegateCallReturnValue
+	- ECRecoverMalformedInput
+	- SkipEmptyStringLiteral.
+It is used by:
+	- ^0.4.11 (contracts/safe/safe_151_SAFE.sol#1)
+solc-0.4.24 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Parameter BITXMultiTransfer.multisend(address[],uint256[])._to (contracts/safe/safe_151_SAFE.sol#49) is not in mixedCase
+Parameter BITXMultiTransfer.multisend(address[],uint256[])._value (contracts/safe/safe_151_SAFE.sol#49) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: constable-states
+BITXMultiTransfer.bitx (contracts/safe/safe_151_SAFE.sol#47) should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+
+Detector: external-function
+multisend(address[],uint256[]) should be declared external:
+	- BITXMultiTransfer.multisend(address[],uint256[]) (contracts/safe/safe_151_SAFE.sol#49-58)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#public-function-that-could-be-declared-external
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_151_SAFE.sol analyzed (3 contracts with 101 detectors), 9 result(s) found

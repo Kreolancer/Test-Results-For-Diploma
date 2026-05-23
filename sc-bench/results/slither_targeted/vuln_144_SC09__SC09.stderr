@@ -1,0 +1,10 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_144_SC09.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
+
+Detector: incorrect-equality
+AuditableToken.updateAudit(address,address,uint256) (contracts/vulnerable/vuln_144_SC09.sol#678-696) uses a dangerous strict equality:
+	- senderAudit.createdAt == 0 (contracts/vulnerable/vuln_144_SC09.sol#685)
+AuditableToken.updateAudit(address,address,uint256) (contracts/vulnerable/vuln_144_SC09.sol#678-696) uses a dangerous strict equality:
+	- receiverAudit.createdAt == 0 (contracts/vulnerable/vuln_144_SC09.sol#693)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dangerous-strict-equalities
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_144_SC09.sol analyzed (27 contracts with 2 detectors), 2 result(s) found

@@ -1,0 +1,234 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_153_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_153_SAFE.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_153_SAFE.sol:180:5: Warning: Function state mutability can be restricted to pure
+    function finalization() internal {}
+    ^---------------------------------^
+
+
+Detector: reentrancy-eth
+Reentrancy in CompliantCrowdsale.approveMint(uint256) (contracts/safe/safe_153_SAFE.sol#878-901):
+	External calls:
+	- token.mint(pendingMints[nonce].to,pendingMints[nonce].tokens) (contracts/safe/safe_153_SAFE.sol#888)
+	- checkIsInvestorApproved(pendingMints[nonce].to) (contracts/safe/safe_153_SAFE.sol#881)
+		- require(bool)(whiteListingContract.isInvestorApproved(_account)) (contracts/safe/safe_153_SAFE.sol#807)
+	External calls sending eth:
+	- forwardFunds(pendingMints[nonce].weiAmount) (contracts/safe/safe_153_SAFE.sol#897)
+		- wallet.transfer(amount) (contracts/safe/safe_153_SAFE.sol#953)
+	State variables written after the call(s):
+	- delete pendingMints[nonce] (contracts/safe/safe_153_SAFE.sol#898)
+	CompliantCrowdsale.pendingMints (contracts/safe/safe_153_SAFE.sol#802) can be used in cross function reentrancies:
+	- CompliantCrowdsale.approveMint(uint256) (contracts/safe/safe_153_SAFE.sol#878-901)
+	- CompliantCrowdsale.buyTokens(address) (contracts/safe/safe_153_SAFE.sol#860-876)
+	- CompliantCrowdsale.pendingMints (contracts/safe/safe_153_SAFE.sol#802)
+	- CompliantCrowdsale.rejectMint(uint256,uint256) (contracts/safe/safe_153_SAFE.sol#903-919)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-1
+
+Detector: reentrancy-no-eth
+Reentrancy in CompliantToken.approveTransfer(uint256) (contracts/safe/safe_153_SAFE.sol#703-762):
+	External calls:
+	- checkIsInvestorApproved(pendingTransactions[nonce].from) (contracts/safe/safe_153_SAFE.sol#706)
+		- require(bool)(whiteListingContract.isInvestorApproved(_account)) (contracts/safe/safe_153_SAFE.sol#554)
+	- checkIsInvestorApproved(pendingTransactions[nonce].to) (contracts/safe/safe_153_SAFE.sol#707)
+		- require(bool)(whiteListingContract.isInvestorApproved(_account)) (contracts/safe/safe_153_SAFE.sol#554)
+	State variables written after the call(s):
+	- delete pendingTransactions[nonce] (contracts/safe/safe_153_SAFE.sol#721)
+	CompliantToken.pendingTransactions (contracts/safe/safe_153_SAFE.sol#547) can be used in cross function reentrancies:
+	- CompliantToken.approveTransfer(uint256) (contracts/safe/safe_153_SAFE.sol#703-762)
+	- CompliantToken.pendingTransactions (contracts/safe/safe_153_SAFE.sol#547)
+	- CompliantToken.rejectTransfer(uint256,uint256) (contracts/safe/safe_153_SAFE.sol#764-789)
+	- CompliantToken.transfer(address,uint256) (contracts/safe/safe_153_SAFE.sol#638-667)
+	- CompliantToken.transferFrom(address,address,uint256) (contracts/safe/safe_153_SAFE.sol#669-701)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-2
+
+Detector: unused-return
+Crowdsale.buyTokens(address) (contracts/safe/safe_153_SAFE.sol#62-78) ignores return value by token.mint(beneficiary,tokens) (contracts/safe/safe_153_SAFE.sol#74)
+CompliantCrowdsale.approveMint(uint256) (contracts/safe/safe_153_SAFE.sol#878-901) ignores return value by token.mint(pendingMints[nonce].to,pendingMints[nonce].tokens) (contracts/safe/safe_153_SAFE.sol#888)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unused-return
+
+Detector: reentrancy-benign
+Reentrancy in CompliantCrowdsale.approveMint(uint256) (contracts/safe/safe_153_SAFE.sol#878-901):
+	External calls:
+	- checkIsInvestorApproved(pendingMints[nonce].to) (contracts/safe/safe_153_SAFE.sol#881)
+		- require(bool)(whiteListingContract.isInvestorApproved(_account)) (contracts/safe/safe_153_SAFE.sol#807)
+	State variables written after the call(s):
+	- weiRaised = weiRaised.add(pendingMints[nonce].weiAmount) (contracts/safe/safe_153_SAFE.sol#885)
+Reentrancy in CompliantToken.approveTransfer(uint256) (contracts/safe/safe_153_SAFE.sol#703-762):
+	External calls:
+	- checkIsInvestorApproved(pendingTransactions[nonce].from) (contracts/safe/safe_153_SAFE.sol#706)
+		- require(bool)(whiteListingContract.isInvestorApproved(_account)) (contracts/safe/safe_153_SAFE.sol#554)
+	- checkIsInvestorApproved(pendingTransactions[nonce].to) (contracts/safe/safe_153_SAFE.sol#707)
+		- require(bool)(whiteListingContract.isInvestorApproved(_account)) (contracts/safe/safe_153_SAFE.sol#554)
+	State variables written after the call(s):
+	- allowed[from][spender] = allowedTransferAmount (contracts/safe/safe_153_SAFE.sol#759)
+	- balances[feeRecipient] = balances[feeRecipient].add(fee) (contracts/safe/safe_153_SAFE.sol#736)
+	- balances[from] = balanceFrom (contracts/safe/safe_153_SAFE.sol#757)
+	- balances[to] = balanceTo (contracts/safe/safe_153_SAFE.sol#758)
+	- pendingApprovalAmount[from][spender] = pendingAmount (contracts/safe/safe_153_SAFE.sol#760)
+Reentrancy in CompliantCrowdsale.buyTokens(address) (contracts/safe/safe_153_SAFE.sol#860-876):
+	External calls:
+	- checkIsInvestorApproved(beneficiary) (contracts/safe/safe_153_SAFE.sol#863)
+		- require(bool)(whiteListingContract.isInvestorApproved(_account)) (contracts/safe/safe_153_SAFE.sol#807)
+	State variables written after the call(s):
+	- currentMintNonce ++ (contracts/safe/safe_153_SAFE.sol#875)
+	- pendingMints[currentMintNonce] = MintStruct(beneficiary,tokens,weiAmount) (contracts/safe/safe_153_SAFE.sol#872)
+Reentrancy in CompliantToken.transfer(address,uint256) (contracts/safe/safe_153_SAFE.sol#638-667):
+	External calls:
+	- checkIsInvestorApproved(msg.sender) (contracts/safe/safe_153_SAFE.sol#640)
+		- require(bool)(whiteListingContract.isInvestorApproved(_account)) (contracts/safe/safe_153_SAFE.sol#554)
+	- checkIsInvestorApproved(_to) (contracts/safe/safe_153_SAFE.sol#641)
+		- require(bool)(whiteListingContract.isInvestorApproved(_account)) (contracts/safe/safe_153_SAFE.sol#554)
+	State variables written after the call(s):
+	- currentNonce ++ (contracts/safe/safe_153_SAFE.sol#664)
+	- pendingApprovalAmount[msg.sender][address(0)] = pendingAmount.add(_value) (contracts/safe/safe_153_SAFE.sol#649)
+	- pendingApprovalAmount[msg.sender][address(0)] = pendingAmount.add(_value).add(transferFee) (contracts/safe/safe_153_SAFE.sol#652)
+	- pendingTransactions[currentNonce] = TransactionStruct(msg.sender,_to,_value,transferFee,address(0)) (contracts/safe/safe_153_SAFE.sol#655-661)
+Reentrancy in CompliantToken.transferFrom(address,address,uint256) (contracts/safe/safe_153_SAFE.sol#669-701):
+	External calls:
+	- checkIsInvestorApproved(_from) (contracts/safe/safe_153_SAFE.sol#671)
+		- require(bool)(whiteListingContract.isInvestorApproved(_account)) (contracts/safe/safe_153_SAFE.sol#554)
+	- checkIsInvestorApproved(_to) (contracts/safe/safe_153_SAFE.sol#672)
+		- require(bool)(whiteListingContract.isInvestorApproved(_account)) (contracts/safe/safe_153_SAFE.sol#554)
+	State variables written after the call(s):
+	- currentNonce ++ (contracts/safe/safe_153_SAFE.sol#698)
+	- pendingApprovalAmount[_from][msg.sender] = pendingAmount.add(_value) (contracts/safe/safe_153_SAFE.sol#682)
+	- pendingApprovalAmount[_from][msg.sender] = pendingAmount.add(_value).add(transferFee) (contracts/safe/safe_153_SAFE.sol#686)
+	- pendingTransactions[currentNonce] = TransactionStruct(_from,_to,_value,transferFee,msg.sender) (contracts/safe/safe_153_SAFE.sol#689-695)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+
+Detector: reentrancy-events
+Reentrancy in CompliantCrowdsale.approveMint(uint256) (contracts/safe/safe_153_SAFE.sol#878-901):
+	External calls:
+	- token.mint(pendingMints[nonce].to,pendingMints[nonce].tokens) (contracts/safe/safe_153_SAFE.sol#888)
+	- checkIsInvestorApproved(pendingMints[nonce].to) (contracts/safe/safe_153_SAFE.sol#881)
+		- require(bool)(whiteListingContract.isInvestorApproved(_account)) (contracts/safe/safe_153_SAFE.sol#807)
+	Event emitted after the call(s):
+	- TokenPurchase(msg.sender,pendingMints[nonce].to,pendingMints[nonce].weiAmount,pendingMints[nonce].tokens) (contracts/safe/safe_153_SAFE.sol#890-895)
+Reentrancy in CompliantToken.approveTransfer(uint256) (contracts/safe/safe_153_SAFE.sol#703-762):
+	External calls:
+	- checkIsInvestorApproved(pendingTransactions[nonce].from) (contracts/safe/safe_153_SAFE.sol#706)
+		- require(bool)(whiteListingContract.isInvestorApproved(_account)) (contracts/safe/safe_153_SAFE.sol#554)
+	- checkIsInvestorApproved(pendingTransactions[nonce].to) (contracts/safe/safe_153_SAFE.sol#707)
+		- require(bool)(whiteListingContract.isInvestorApproved(_account)) (contracts/safe/safe_153_SAFE.sol#554)
+	Event emitted after the call(s):
+	- Transfer(from,to,value) (contracts/safe/safe_153_SAFE.sol#751-755)
+	- TransferWithFee(from,to,value,fee) (contracts/safe/safe_153_SAFE.sol#744-749)
+Reentrancy in Crowdsale.buyTokens(address) (contracts/safe/safe_153_SAFE.sol#62-78):
+	External calls:
+	- token.mint(beneficiary,tokens) (contracts/safe/safe_153_SAFE.sol#74)
+	Event emitted after the call(s):
+	- TokenPurchase(msg.sender,beneficiary,weiAmount,tokens) (contracts/safe/safe_153_SAFE.sol#75)
+Reentrancy in CompliantCrowdsale.buyTokens(address) (contracts/safe/safe_153_SAFE.sol#860-876):
+	External calls:
+	- checkIsInvestorApproved(beneficiary) (contracts/safe/safe_153_SAFE.sol#863)
+		- require(bool)(whiteListingContract.isInvestorApproved(_account)) (contracts/safe/safe_153_SAFE.sol#807)
+	Event emitted after the call(s):
+	- ContributionRegistered(beneficiary,tokens,weiAmount,currentMintNonce) (contracts/safe/safe_153_SAFE.sol#873)
+Reentrancy in CompliantToken.transfer(address,uint256) (contracts/safe/safe_153_SAFE.sol#638-667):
+	External calls:
+	- checkIsInvestorApproved(msg.sender) (contracts/safe/safe_153_SAFE.sol#640)
+		- require(bool)(whiteListingContract.isInvestorApproved(_account)) (contracts/safe/safe_153_SAFE.sol#554)
+	- checkIsInvestorApproved(_to) (contracts/safe/safe_153_SAFE.sol#641)
+		- require(bool)(whiteListingContract.isInvestorApproved(_account)) (contracts/safe/safe_153_SAFE.sol#554)
+	Event emitted after the call(s):
+	- RecordedPendingTransaction(msg.sender,_to,_value,transferFee,address(0)) (contracts/safe/safe_153_SAFE.sol#663)
+Reentrancy in CompliantToken.transferFrom(address,address,uint256) (contracts/safe/safe_153_SAFE.sol#669-701):
+	External calls:
+	- checkIsInvestorApproved(_from) (contracts/safe/safe_153_SAFE.sol#671)
+		- require(bool)(whiteListingContract.isInvestorApproved(_account)) (contracts/safe/safe_153_SAFE.sol#554)
+	- checkIsInvestorApproved(_to) (contracts/safe/safe_153_SAFE.sol#672)
+		- require(bool)(whiteListingContract.isInvestorApproved(_account)) (contracts/safe/safe_153_SAFE.sol#554)
+	Event emitted after the call(s):
+	- RecordedPendingTransaction(_from,_to,_value,transferFee,msg.sender) (contracts/safe/safe_153_SAFE.sol#697)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-4
+
+Detector: timestamp
+Crowdsale.constructor(uint256,uint256,uint256,address,MintableToken) (contracts/safe/safe_153_SAFE.sol#42-54) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(_startTime >= now) (contracts/safe/safe_153_SAFE.sol#43)
+Crowdsale.hasEnded() (contracts/safe/safe_153_SAFE.sol#81-83) uses timestamp for comparisons
+	Dangerous comparisons:
+	- now > endTime (contracts/safe/safe_153_SAFE.sol#82)
+Crowdsale.validPurchase() (contracts/safe/safe_153_SAFE.sol#97-101) uses timestamp for comparisons
+	Dangerous comparisons:
+	- withinPeriod = now >= startTime && now <= endTime (contracts/safe/safe_153_SAFE.sol#98)
+	- withinPeriod && nonZeroPurchase (contracts/safe/safe_153_SAFE.sol#100)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+
+Detector: costly-loop
+Whitelist.disapproveInvestorsInBulk(address[]) (contracts/safe/safe_153_SAFE.sol#217-222) has costly operations inside a loop:
+	- delete investorMap[toDisapprove[i]] (contracts/safe/safe_153_SAFE.sol#219)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#costly-operations-inside-a-loop
+
+Detector: dead-code
+Crowdsale.forwardFunds() (contracts/safe/safe_153_SAFE.sol#92-94) is never used and should be removed
+Crowdsale.getTokenAmount(uint256) (contracts/safe/safe_153_SAFE.sol#86-88) is never used and should be removed
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dead-code
+
+Detector: solc-version
+Version constraint ^0.4.23 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ABIEncoderV2PackedStorage_0.4.x
+	- ExpExponentCleanup
+	- EventStructWrongData.
+It is used by:
+	- ^0.4.23 (contracts/safe/safe_153_SAFE.sol#1)
+solc-0.4.23 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Parameter Whitelist.isInvestorApproved(address)._investor (contracts/safe/safe_153_SAFE.sol#195) is not in mixedCase
+Parameter BasicToken.transfer(address,uint256)._to (contracts/safe/safe_153_SAFE.sol#310) is not in mixedCase
+Parameter BasicToken.transfer(address,uint256)._value (contracts/safe/safe_153_SAFE.sol#310) is not in mixedCase
+Parameter BasicToken.balanceOf(address)._owner (contracts/safe/safe_153_SAFE.sol#326) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._from (contracts/safe/safe_153_SAFE.sol#368) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._to (contracts/safe/safe_153_SAFE.sol#368) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._value (contracts/safe/safe_153_SAFE.sol#368) is not in mixedCase
+Parameter StandardToken.approve(address,uint256)._spender (contracts/safe/safe_153_SAFE.sol#390) is not in mixedCase
+Parameter StandardToken.approve(address,uint256)._value (contracts/safe/safe_153_SAFE.sol#390) is not in mixedCase
+Parameter StandardToken.allowance(address,address)._owner (contracts/safe/safe_153_SAFE.sol#402) is not in mixedCase
+Parameter StandardToken.allowance(address,address)._spender (contracts/safe/safe_153_SAFE.sol#402) is not in mixedCase
+Parameter StandardToken.increaseApproval(address,uint256)._spender (contracts/safe/safe_153_SAFE.sol#416) is not in mixedCase
+Parameter StandardToken.increaseApproval(address,uint256)._addedValue (contracts/safe/safe_153_SAFE.sol#416) is not in mixedCase
+Parameter StandardToken.decreaseApproval(address,uint256)._spender (contracts/safe/safe_153_SAFE.sol#432) is not in mixedCase
+Parameter StandardToken.decreaseApproval(address,uint256)._subtractedValue (contracts/safe/safe_153_SAFE.sol#432) is not in mixedCase
+Parameter MintableToken.mint(address,uint256)._to (contracts/safe/safe_153_SAFE.sol#477) is not in mixedCase
+Parameter MintableToken.mint(address,uint256)._amount (contracts/safe/safe_153_SAFE.sol#477) is not in mixedCase
+Parameter CompliantToken.transfer(address,uint256)._to (contracts/safe/safe_153_SAFE.sol#638) is not in mixedCase
+Parameter CompliantToken.transfer(address,uint256)._value (contracts/safe/safe_153_SAFE.sol#638) is not in mixedCase
+Parameter CompliantToken.transferFrom(address,address,uint256)._from (contracts/safe/safe_153_SAFE.sol#669) is not in mixedCase
+Parameter CompliantToken.transferFrom(address,address,uint256)._to (contracts/safe/safe_153_SAFE.sol#669) is not in mixedCase
+Parameter CompliantToken.transferFrom(address,address,uint256)._value (contracts/safe/safe_153_SAFE.sol#669) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: reentrancy-unlimited-gas
+Reentrancy in CompliantCrowdsale.approveMint(uint256) (contracts/safe/safe_153_SAFE.sol#878-901):
+	External calls:
+	- forwardFunds(pendingMints[nonce].weiAmount) (contracts/safe/safe_153_SAFE.sol#897)
+		- wallet.transfer(amount) (contracts/safe/safe_153_SAFE.sol#953)
+	State variables written after the call(s):
+	- delete pendingMints[nonce] (contracts/safe/safe_153_SAFE.sol#898)
+Reentrancy in CompliantCrowdsale.claim() (contracts/safe/safe_153_SAFE.sol#921-929):
+	External calls:
+	- msg.sender.transfer(value) (contracts/safe/safe_153_SAFE.sol#926)
+	Event emitted after the call(s):
+	- Claimed(msg.sender,value) (contracts/safe/safe_153_SAFE.sol#928)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-5
+
+Detector: unindexed-event-address
+Event CompliantCrowdsale.ContributionRegistered(address,uint256,uint256,uint256) (contracts/safe/safe_153_SAFE.sol#824-829) has address parameters but no indexed parameters
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unindexed-event-address-parameters
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_153_SAFE.sol analyzed (13 contracts with 101 detectors), 48 result(s) found

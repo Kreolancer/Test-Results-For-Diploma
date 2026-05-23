@@ -1,0 +1,3 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_032_SC05.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_032_SC05.sol analyzed (1 contracts with 2 detectors), 0 result(s) found

@@ -1,0 +1,170 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_188_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc' running
+
+Detector: reentrancy-no-eth
+Reentrancy in BitDex.trade(address,uint256,address,uint256,uint256,uint256,address,uint8,bytes32,bytes32,uint256) ():
+	External calls:
+	- tradeBalances(tokenGet,amountGet,tokenGive,amountGive,user,amount) ()
+		- accountLevel = AccountLevels(accountLevelsAddr).accountLevel(user) ()
+	State variables written after the call(s):
+	- orderFills[user][hash] = safeAdd(orderFills[user][hash],amount) ()
+	BitDex.orderFills () can be used in cross function reentrancies:
+	- BitDex.amountFilled(address,uint256,address,uint256,uint256,uint256,address,uint8,bytes32,bytes32) ()
+	- BitDex.availableVolume(address,uint256,address,uint256,uint256,uint256,address,uint8,bytes32,bytes32) ()
+	- BitDex.cancelOrder(address,uint256,address,uint256,uint256,uint256,uint8,bytes32,bytes32) ()
+	- BitDex.trade(address,uint256,address,uint256,uint256,uint256,address,uint8,bytes32,bytes32,uint256) ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-2
+
+Detector: shadowing-builtin
+SafeMath.assert(bool) () (function) shadows built-in symbol"
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#builtin-symbol-shadowing
+
+Detector: events-maths
+BitDex.changeFeeMake(uint256) () should emit an event for: 
+	- feeMake = feeMake_ () 
+BitDex.changeFeeTake(uint256) () should emit an event for: 
+	- feeTake = feeTake_ () 
+BitDex.changeFeeRebate(uint256) () should emit an event for: 
+	- feeRebate = feeRebate_ () 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-arithmetic
+
+Detector: missing-zero-check
+BitDex.BitDex(address,address,address,uint256,uint256,uint256).admin_ () lacks a zero-check on :
+		- admin = admin_ ()
+BitDex.BitDex(address,address,address,uint256,uint256,uint256).feeAccount_ () lacks a zero-check on :
+		- feeAccount = feeAccount_ ()
+BitDex.BitDex(address,address,address,uint256,uint256,uint256).accountLevelsAddr_ () lacks a zero-check on :
+		- accountLevelsAddr = accountLevelsAddr_ ()
+BitDex.changeAdmin(address).admin_ () lacks a zero-check on :
+		- admin = admin_ ()
+BitDex.changeAccountLevelsAddr(address).accountLevelsAddr_ () lacks a zero-check on :
+		- accountLevelsAddr = accountLevelsAddr_ ()
+BitDex.changeFeeAccount(address).feeAccount_ () lacks a zero-check on :
+		- feeAccount = feeAccount_ ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+
+Detector: reentrancy-benign
+Reentrancy in BitDex.depositToken(address,uint256) ():
+	External calls:
+	- ! Token(token).transferFrom(msg.sender,this,amount) ()
+	State variables written after the call(s):
+	- tokens[token][msg.sender] = safeAdd(tokens[token][msg.sender],amount) ()
+Reentrancy in BitDex.tradeBalances(address,uint256,address,uint256,address,uint256) ():
+	External calls:
+	- accountLevel = AccountLevels(accountLevelsAddr).accountLevel(user) ()
+	State variables written after the call(s):
+	- tokens[tokenGet][msg.sender] = safeSub(tokens[tokenGet][msg.sender],safeAdd(amount,feeTakeXfer)) ()
+	- tokens[tokenGet][user] = safeAdd(tokens[tokenGet][user],safeSub(safeAdd(amount,feeRebateXfer),feeMakeXfer)) ()
+	- tokens[tokenGet][feeAccount] = safeAdd(tokens[tokenGet][feeAccount],safeSub(safeAdd(feeMakeXfer,feeTakeXfer),feeRebateXfer)) ()
+	- tokens[tokenGive][user] = safeSub(tokens[tokenGive][user],safeMul(amountGive,amount) / amountGet) ()
+	- tokens[tokenGive][msg.sender] = safeAdd(tokens[tokenGive][msg.sender],safeMul(amountGive,amount) / amountGet) ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+
+Detector: reentrancy-events
+Reentrancy in BitDex.depositToken(address,uint256) ():
+	External calls:
+	- ! Token(token).transferFrom(msg.sender,this,amount) ()
+	Event emitted after the call(s):
+	- Deposit(token,msg.sender,amount,tokens[token][msg.sender]) ()
+Reentrancy in BitDex.trade(address,uint256,address,uint256,uint256,uint256,address,uint8,bytes32,bytes32,uint256) ():
+	External calls:
+	- tradeBalances(tokenGet,amountGet,tokenGive,amountGive,user,amount) ()
+		- accountLevel = AccountLevels(accountLevelsAddr).accountLevel(user) ()
+	Event emitted after the call(s):
+	- Trade(tokenGet,amount,tokenGive,amountGive * amount / amountGet,user,msg.sender) ()
+Reentrancy in BitDex.withdraw(uint256) ():
+	External calls:
+	- ! msg.sender.call.value(amount)() ()
+	Event emitted after the call(s):
+	- Withdraw(0,msg.sender,amount,tokens[0][msg.sender]) ()
+Reentrancy in BitDex.withdrawToken(address,uint256) ():
+	External calls:
+	- ! Token(token).transfer(msg.sender,amount) ()
+	Event emitted after the call(s):
+	- Withdraw(token,msg.sender,amount,tokens[token][msg.sender]) ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-4
+
+Detector: deprecated-standards
+Deprecated standard detected THROW ():
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected ! ((orders[user][hash] || ecrecover(bytes32,uint8,bytes32,bytes32)(sha3()(Ethereum Signed Message:
+32,hash),v,r,s) == user) && block.number <= expires && safeAdd(orderFills[user][hash],amount) <= amountGet) ():
+	- Usage of "sha3()" should be replaced with "keccak256()"
+Deprecated standard detected ! ((orders[user][hash] || ecrecover(bytes32,uint8,bytes32,bytes32)(sha3()(Ethereum Signed Message:
+32,hash),v,r,s) == user) && block.number <= expires) ():
+	- Usage of "sha3()" should be replaced with "keccak256()"
+Deprecated standard detected ! (orders[msg.sender][hash] || ecrecover(bytes32,uint8,bytes32,bytes32)(sha3()(Ethereum Signed Message:
+32,hash),v,r,s) == msg.sender) ():
+	- Usage of "sha3()" should be replaced with "keccak256()"
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#deprecated-standards
+
+Detector: solc-version
+Version constraint ^0.4.9 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- NestedArrayFunctionCallDecoder
+	- ZeroFunctionSelector
+	- DelegateCallReturnValue
+	- ECRecoverMalformedInput
+	- SkipEmptyStringLiteral
+	- ConstantOptimizerSubtraction.
+It is used by:
+	- ^0.4.9 ()
+solc-0.4.9 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: low-level-calls
+Low level call in BitDex.withdraw(uint256) ():
+	- ! msg.sender.call.value(amount)() ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+
+Detector: naming-convention
+Parameter StandardToken.transfer(address,uint256)._to () is not in mixedCase
+Parameter StandardToken.transfer(address,uint256)._value () is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._from () is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._to () is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._value () is not in mixedCase
+Parameter StandardToken.balanceOf(address)._owner () is not in mixedCase
+Parameter StandardToken.approve(address,uint256)._spender () is not in mixedCase
+Parameter StandardToken.approve(address,uint256)._value () is not in mixedCase
+Parameter StandardToken.allowance(address,address)._owner () is not in mixedCase
+Parameter StandardToken.allowance(address,address)._spender () is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: erc20-indexed
+ERC20 event Token.Transfer(address,address,uint256) ()does not index parameter _from
+ERC20 event Token.Transfer(address,address,uint256) ()does not index parameter _to
+ERC20 event Token.Approval(address,address,uint256) ()does not index parameter _owner
+ERC20 event Token.Approval(address,address,uint256) ()does not index parameter _spender
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unindexed-erc20-event-parameters
+
+Detector: unindexed-event-address
+Event Token.Transfer(address,address,uint256) () has address parameters but no indexed parameters
+Event Token.Approval(address,address,uint256) () has address parameters but no indexed parameters
+Event BitDex.Order(address,uint256,address,uint256,uint256,uint256,address) () has address parameters but no indexed parameters
+Event BitDex.Cancel(address,uint256,address,uint256,uint256,uint256,address,uint8,bytes32,bytes32) () has address parameters but no indexed parameters
+Event BitDex.Trade(address,uint256,address,uint256,address,address) () has address parameters but no indexed parameters
+Event BitDex.Deposit(address,address,uint256,uint256) () has address parameters but no indexed parameters
+Event BitDex.Withdraw(address,address,uint256,uint256) () has address parameters but no indexed parameters
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unindexed-event-address-parameters
+
+Detector: unused-state
+Token.decimals () is never used in ReserveToken ()
+Token.name () is never used in ReserveToken ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unused-state-variable
+
+Detector: constable-states
+Token.decimals () should be constant 
+Token.name () should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_188_SAFE.sol analyzed (7 contracts with 101 detectors), 49 result(s) found

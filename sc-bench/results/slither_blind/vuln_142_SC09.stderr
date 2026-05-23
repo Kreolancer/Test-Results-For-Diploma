@@ -1,0 +1,194 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_142_SC09.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_142_SC09.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_142_SC09.sol:344:50: Warning: "block.blockhash()" has been deprecated in favor of "blockhash()"
+            ((uint256(keccak256(abi.encodePacked(block.blockhash(block.number))))) / (block.timestamp)).add
+                                                 ^-------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_142_SC09.sol:345:50: Warning: "block.blockhash()" has been deprecated in favor of "blockhash()"
+            ((uint256(keccak256(abi.encodePacked(block.blockhash(block.number - 1))))) / (block.timestamp)).add
+                                                 ^-------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_142_SC09.sol:346:50: Warning: "block.blockhash()" has been deprecated in favor of "blockhash()"
+            ((uint256(keccak256(abi.encodePacked(block.blockhash(block.number - 2))))) / (block.timestamp)).add
+                                                 ^-------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_142_SC09.sol:347:50: Warning: "block.blockhash()" has been deprecated in favor of "blockhash()"
+            ((uint256(keccak256(abi.encodePacked(block.blockhash(block.number - 3))))) / (block.timestamp)).add
+                                                 ^-------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_142_SC09.sol:348:50: Warning: "block.blockhash()" has been deprecated in favor of "blockhash()"
+            ((uint256(keccak256(abi.encodePacked(block.blockhash(block.number - 4))))) / (block.timestamp)).add
+                                                 ^-------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_142_SC09.sol:349:50: Warning: "block.blockhash()" has been deprecated in favor of "blockhash()"
+            ((uint256(keccak256(abi.encodePacked(block.blockhash(block.number - 5))))) / (block.timestamp)).add
+                                                 ^-------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_142_SC09.sol:350:50: Warning: "block.blockhash()" has been deprecated in favor of "blockhash()"
+            ((uint256(keccak256(abi.encodePacked(block.blockhash(block.number - 6))))) / (block.timestamp))
+                                                 ^-------------^
+
+
+Detector: weak-prng
+Winner.drawNumber() (contracts/vulnerable/vuln_142_SC09.sol#341-354) uses a weak PRNG: "uint256(keccak256()(abi.encodePacked(((uint256(keccak256()(abi.encodePacked(block.blockhash(block.number))))) / (block.timestamp)).add((uint256(keccak256()(abi.encodePacked(block.blockhash(block.number - 1))))) / (block.timestamp)).add((uint256(keccak256()(abi.encodePacked(block.blockhash(block.number - 2))))) / (block.timestamp)).add((uint256(keccak256()(abi.encodePacked(block.blockhash(block.number - 3))))) / (block.timestamp)).add((uint256(keccak256()(abi.encodePacked(block.blockhash(block.number - 4))))) / (block.timestamp)).add((uint256(keccak256()(abi.encodePacked(block.blockhash(block.number - 5))))) / (block.timestamp)).add((uint256(keccak256()(abi.encodePacked(block.blockhash(block.number - 6))))) / (block.timestamp))))) % issued_numbers (contracts/vulnerable/vuln_142_SC09.sol#342-352)" 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#weak-PRNG
+
+Detector: uninitialized-state
+Winner.playerNumbers (contracts/vulnerable/vuln_142_SC09.sol#253) is never initialized. It is used in:
+	- Winner.bet(uint256) (contracts/vulnerable/vuln_142_SC09.sol#360-420)
+	- Winner.assign2(address,uint256) (contracts/vulnerable/vuln_142_SC09.sol#436-460)
+	- Winner.refund2(address) (contracts/vulnerable/vuln_142_SC09.sol#474-506)
+	- Winner.getPlayerRoundNumbers(uint256,address) (contracts/vulnerable/vuln_142_SC09.sol#514-517)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#uninitialized-state-variables
+
+Detector: constant-function-asm
+UpgradeabilityProxy.implementation() (contracts/vulnerable/vuln_142_SC09.sol#621-626) is declared view but contains assembly code
+OwnedUpgradeabilityProxy.proxyOwner() (contracts/vulnerable/vuln_142_SC09.sol#685-690) is declared view but contains assembly code
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#constant-functions-using-assembly-code
+
+Detector: shadowing-local
+OwnedUpgradeabilityProxy.upgradeTo(address).implementation (contracts/vulnerable/vuln_142_SC09.sol#716) shadows:
+	- UpgradeabilityProxy.implementation() (contracts/vulnerable/vuln_142_SC09.sol#621-626) (function)
+	- Proxy.implementation() (contracts/vulnerable/vuln_142_SC09.sol#574) (function)
+OwnedUpgradeabilityProxy.upgradeToAndCall(address,bytes).implementation (contracts/vulnerable/vuln_142_SC09.sol#727) shadows:
+	- UpgradeabilityProxy.implementation() (contracts/vulnerable/vuln_142_SC09.sol#621-626) (function)
+	- Proxy.implementation() (contracts/vulnerable/vuln_142_SC09.sol#574) (function)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#local-variable-shadowing
+
+Detector: missing-zero-check
+Winner.assign2(address,uint256)._player (contracts/vulnerable/vuln_142_SC09.sol#436) lacks a zero-check on :
+		- _player.transfer(bonus) (contracts/vulnerable/vuln_142_SC09.sol#450)
+Winner.refund2(address)._player (contracts/vulnerable/vuln_142_SC09.sol#474) lacks a zero-check on :
+		- _player.transfer(amount) (contracts/vulnerable/vuln_142_SC09.sol#492)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+
+Detector: calls-loop
+Winner.assign2(address,uint256) (contracts/vulnerable/vuln_142_SC09.sol#436-460) has external calls inside a loop: _player.transfer(bonus) (contracts/vulnerable/vuln_142_SC09.sol#450)
+	Calls stack containing the loop:
+		Winner.assign(uint256)
+Winner.assign2(address,uint256) (contracts/vulnerable/vuln_142_SC09.sol#436-460) has external calls inside a loop: platform.transfer(fund) (contracts/vulnerable/vuln_142_SC09.sol#451)
+	Calls stack containing the loop:
+		Winner.assign(uint256)
+Winner.assign2(address,uint256) (contracts/vulnerable/vuln_142_SC09.sol#436-460) has external calls inside a loop: _player.transfer(bonus) (contracts/vulnerable/vuln_142_SC09.sol#450)
+Winner.assign2(address,uint256) (contracts/vulnerable/vuln_142_SC09.sol#436-460) has external calls inside a loop: platform.transfer(fund) (contracts/vulnerable/vuln_142_SC09.sol#451)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation/#calls-inside-a-loop
+
+Detector: timestamp
+Winner.refund2(address) (contracts/vulnerable/vuln_142_SC09.sol#474-506) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(block.timestamp.sub(rounds[curRoundID].timestamp) >= MAX_DURATION,it's not time for refunding) (contracts/vulnerable/vuln_142_SC09.sol#476)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+
+Detector: assembly
+Proxy.fallback() (contracts/vulnerable/vuln_142_SC09.sol#580-595) uses assembly
+	- INLINE ASM (contracts/vulnerable/vuln_142_SC09.sol#584-595)
+UpgradeabilityProxy.implementation() (contracts/vulnerable/vuln_142_SC09.sol#621-626) uses assembly
+	- INLINE ASM (contracts/vulnerable/vuln_142_SC09.sol#623-626)
+UpgradeabilityProxy.setImplementation(address) (contracts/vulnerable/vuln_142_SC09.sol#632-637) uses assembly
+	- INLINE ASM (contracts/vulnerable/vuln_142_SC09.sol#634-637)
+OwnedUpgradeabilityProxy.proxyOwner() (contracts/vulnerable/vuln_142_SC09.sol#685-690) uses assembly
+	- INLINE ASM (contracts/vulnerable/vuln_142_SC09.sol#687-690)
+OwnedUpgradeabilityProxy.setUpgradeabilityOwner(address) (contracts/vulnerable/vuln_142_SC09.sol#695-700) uses assembly
+	- INLINE ASM (contracts/vulnerable/vuln_142_SC09.sol#697-700)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#assembly-usage
+
+Detector: boolean-equal
+Winner.initiate(uint256,uint256) (contracts/vulnerable/vuln_142_SC09.sol#314-336) compares to a boolean constant:
+	-require(bool,string)(initialized == false,it has been initialized already) (contracts/vulnerable/vuln_142_SC09.sol#317)
+Winner.isInitialized() (contracts/vulnerable/vuln_142_SC09.sol#272-275) compares to a boolean constant:
+	-require(bool,string)(initialized == true,game is inactive) (contracts/vulnerable/vuln_142_SC09.sol#273)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#boolean-equality
+
+Detector: deprecated-standards
+Deprecated standard detected uint256(keccak256()(abi.encodePacked(((uint256(keccak256()(abi.encodePacked(block.blockhash(block.number))))) / (block.timestamp)).add((uint256(keccak256()(abi.encodePacked(block.blockhash(block.number - 1))))) / (block.timestamp)).add((uint256(keccak256()(abi.encodePacked(block.blockhash(block.number - 2))))) / (block.timestamp)).add((uint256(keccak256()(abi.encodePacked(block.blockhash(block.number - 3))))) / (block.timestamp)).add((uint256(keccak256()(abi.encodePacked(block.blockhash(block.number - 4))))) / (block.timestamp)).add((uint256(keccak256()(abi.encodePacked(block.blockhash(block.number - 5))))) / (block.timestamp)).add((uint256(keccak256()(abi.encodePacked(block.blockhash(block.number - 6))))) / (block.timestamp))))) % issued_numbers (contracts/vulnerable/vuln_142_SC09.sol#342-352):
+	- Usage of "block.blockhash()" should be replaced with "blockhash()"
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#deprecated-standards
+
+Detector: solc-version
+Version constraint ^0.4.24 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ABIEncoderV2PackedStorage_0.4.x
+	- ExpExponentCleanup
+	- EventStructWrongData.
+It is used by:
+	- ^0.4.24 (contracts/vulnerable/vuln_142_SC09.sol#1)
+solc-0.4.24 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: low-level-calls
+Low level call in OwnedUpgradeabilityProxy.upgradeToAndCall(address,bytes) (contracts/vulnerable/vuln_142_SC09.sol#727-730):
+	- require(bool,string)(address(this).call.value(msg.value)(data),data is invalid) (contracts/vulnerable/vuln_142_SC09.sol#729)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+
+Detector: naming-convention
+Parameter NumberCompressor.encode(uint256,uint256,uint256)._begin (contracts/vulnerable/vuln_142_SC09.sol#34) is not in mixedCase
+Parameter NumberCompressor.encode(uint256,uint256,uint256)._end (contracts/vulnerable/vuln_142_SC09.sol#34) is not in mixedCase
+Parameter NumberCompressor.encode(uint256,uint256,uint256)._ceiling (contracts/vulnerable/vuln_142_SC09.sol#34) is not in mixedCase
+Parameter NumberCompressor.decode(uint256)._value (contracts/vulnerable/vuln_142_SC09.sol#41) is not in mixedCase
+Event Events.onActivate(address,uint256,uint256,uint256) (contracts/vulnerable/vuln_142_SC09.sol#173-179) is not in CapWords
+Event Events.onDraw(uint256,uint256,uint256,uint256) (contracts/vulnerable/vuln_142_SC09.sol#181-187) is not in CapWords
+Event Events.onStartRunnd(uint256,uint256) (contracts/vulnerable/vuln_142_SC09.sol#189-193) is not in CapWords
+Event Events.onBet(address,uint256,uint256,uint256,uint256) (contracts/vulnerable/vuln_142_SC09.sol#195-202) is not in CapWords
+Event Events.onAssign(address,uint256,address,uint256,uint256,uint256,uint256) (contracts/vulnerable/vuln_142_SC09.sol#204-213) is not in CapWords
+Event Events.onRefund(address,uint256,address,uint256,uint256) (contracts/vulnerable/vuln_142_SC09.sol#215-222) is not in CapWords
+Event Events.onLastRefund(address,uint256,address,uint256) (contracts/vulnerable/vuln_142_SC09.sol#224-230) is not in CapWords
+Parameter Winner.initiate(uint256,uint256)._bonus (contracts/vulnerable/vuln_142_SC09.sol#314) is not in mixedCase
+Parameter Winner.initiate(uint256,uint256)._issued_numbers (contracts/vulnerable/vuln_142_SC09.sol#314) is not in mixedCase
+Parameter Winner.bet(uint256)._amount (contracts/vulnerable/vuln_142_SC09.sol#360) is not in mixedCase
+Parameter Winner.assign(uint256)._roundID (contracts/vulnerable/vuln_142_SC09.sol#426) is not in mixedCase
+Parameter Winner.assign2(address,uint256)._player (contracts/vulnerable/vuln_142_SC09.sol#436) is not in mixedCase
+Parameter Winner.assign2(address,uint256)._roundID (contracts/vulnerable/vuln_142_SC09.sol#436) is not in mixedCase
+Parameter Winner.refund2(address)._player (contracts/vulnerable/vuln_142_SC09.sol#474) is not in mixedCase
+Parameter Winner.getPlayerRoundNumbers(uint256,address)._roundID (contracts/vulnerable/vuln_142_SC09.sol#514) is not in mixedCase
+Parameter Winner.getPlayerRoundNumbers(uint256,address)._palyer (contracts/vulnerable/vuln_142_SC09.sol#514) is not in mixedCase
+Parameter Winner.getRoundInfo(uint256)._roundID (contracts/vulnerable/vuln_142_SC09.sol#530) is not in mixedCase
+Constant Winner.platform (contracts/vulnerable/vuln_142_SC09.sol#242) is not in UPPER_CASE_WITH_UNDERSCORES
+Variable Winner.issued_numbers (contracts/vulnerable/vuln_142_SC09.sol#247) is not in mixedCase
+Constant UpgradeabilityProxy.implementationPosition (contracts/vulnerable/vuln_142_SC09.sol#610) is not in UPPER_CASE_WITH_UNDERSCORES
+Constant OwnedUpgradeabilityProxy.proxyOwnerPosition (contracts/vulnerable/vuln_142_SC09.sol#664) is not in UPPER_CASE_WITH_UNDERSCORES
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: reentrancy-unlimited-gas
+Reentrancy in Winner.assign2(address,uint256) (contracts/vulnerable/vuln_142_SC09.sol#436-460):
+	External calls:
+	- _player.transfer(bonus) (contracts/vulnerable/vuln_142_SC09.sol#450)
+	- platform.transfer(fund) (contracts/vulnerable/vuln_142_SC09.sol#451)
+	State variables written after the call(s):
+	- rounds[_roundID].state = DataSet.RoundState.ASSIGNED (contracts/vulnerable/vuln_142_SC09.sol#452)
+	- rounds[_roundID].winner = _player (contracts/vulnerable/vuln_142_SC09.sol#453)
+	Event emitted after the call(s):
+	- onAssign(msg.sender,block.timestamp,_player,_roundID,rounds[_roundID].pond,bonus,fund) (contracts/vulnerable/vuln_142_SC09.sol#455)
+Reentrancy in Winner.refund2(address) (contracts/vulnerable/vuln_142_SC09.sol#474-506):
+	External calls:
+	- _player.transfer(amount) (contracts/vulnerable/vuln_142_SC09.sol#492)
+	State variables written after the call(s):
+	- rounds[curRoundID].count -= count (contracts/vulnerable/vuln_142_SC09.sol#497)
+	Event emitted after the call(s):
+	- onRefund(msg.sender,block.timestamp,_player,count,amount) (contracts/vulnerable/vuln_142_SC09.sol#494)
+Reentrancy in Winner.refund2(address) (contracts/vulnerable/vuln_142_SC09.sol#474-506):
+	External calls:
+	- _player.transfer(amount) (contracts/vulnerable/vuln_142_SC09.sol#492)
+	- platform.transfer(last) (contracts/vulnerable/vuln_142_SC09.sol#501)
+	State variables written after the call(s):
+	- rounds[curRoundID].pond = 0 (contracts/vulnerable/vuln_142_SC09.sol#502)
+	Event emitted after the call(s):
+	- onLastRefund(msg.sender,block.timestamp,platform,last) (contracts/vulnerable/vuln_142_SC09.sol#504)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-5
+
+Detector: unindexed-event-address
+Event OwnedUpgradeabilityProxy.ProxyOwnershipTransferred(address,address) (contracts/vulnerable/vuln_142_SC09.sol#661) has address parameters but no indexed parameters
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unindexed-event-address-parameters
+
+Detector: external-function
+upgradeToAndCall(address,bytes) should be declared external:
+	- OwnedUpgradeabilityProxy.upgradeToAndCall(address,bytes) (contracts/vulnerable/vuln_142_SC09.sol#727-730)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#public-function-that-could-be-declared-external
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_142_SC09.sol analyzed (8 contracts with 101 detectors), 54 result(s) found

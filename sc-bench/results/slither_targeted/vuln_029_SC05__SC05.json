@@ -1,0 +1,102 @@
+{
+  "success": true,
+  "error": null,
+  "results": {
+    "detectors": [
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "resetInvestment",
+            "source_mapping": {
+              "start": 680,
+              "length": 257,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "Governmental",
+                "source_mapping": {
+                  "start": 188,
+                  "length": 751,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "resetInvestment()"
+            }
+          },
+          {
+            "type": "node",
+            "name": "block.timestamp < lastInvestmentTimestamp + ONE_MINUTE",
+            "source_mapping": {
+              "start": 717,
+              "length": 52,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "resetInvestment",
+                "source_mapping": {
+                  "start": 680,
+                  "length": 257,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "Governmental",
+                    "source_mapping": {
+                      "start": 188,
+                      "length": 751,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "resetInvestment()"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Governmental.resetInvestment() () uses timestamp for comparisons\n\tDangerous comparisons:\n\t- block.timestamp < lastInvestmentTimestamp + ONE_MINUTE ()\n",
+        "markdown": "[Governmental.resetInvestment()]() uses timestamp for comparisons\n\tDangerous comparisons:\n\t- [block.timestamp < lastInvestmentTimestamp + ONE_MINUTE]()\n",
+        "first_markdown_element": "",
+        "id": "3741b340bc6651cfa7f4bd189da77fd4f653d4103105ee8ef31fe3a9ea169c9b",
+        "check": "timestamp",
+        "impact": "Low",
+        "confidence": "Medium"
+      }
+    ]
+  }
+}

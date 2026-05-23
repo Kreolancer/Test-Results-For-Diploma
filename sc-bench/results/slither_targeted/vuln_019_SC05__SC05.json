@@ -1,0 +1,102 @@
+{
+  "success": true,
+  "error": null,
+  "results": {
+    "detectors": [
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "deal",
+            "source_mapping": {
+              "start": 510,
+              "length": 335,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "Deck",
+                "source_mapping": {
+                  "start": 277,
+                  "length": 1031,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "deal(address,uint8)"
+            }
+          },
+          {
+            "type": "node",
+            "name": "uint8(uint256(keccak256()(block.blockhash(b),player,cardNumber,timestamp)) % 52)",
+            "source_mapping": {
+              "start": 753,
+              "length": 88,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "deal",
+                "source_mapping": {
+                  "start": 510,
+                  "length": 335,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "Deck",
+                    "source_mapping": {
+                      "start": 277,
+                      "length": 1031,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "deal(address,uint8)"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Deck.deal(address,uint8) () uses a weak PRNG: \"uint8(uint256(keccak256()(block.blockhash(b),player,cardNumber,timestamp)) % 52) ()\" \n",
+        "markdown": "[Deck.deal(address,uint8)]() uses a weak PRNG: \"[uint8(uint256(keccak256()(block.blockhash(b),player,cardNumber,timestamp)) % 52)]()\" \n",
+        "first_markdown_element": "",
+        "id": "7e5cb718ec8b05a9723b533a34f5ed8b791e9ff32262fe53f2686736a48c525e",
+        "check": "weak-prng",
+        "impact": "High",
+        "confidence": "Medium"
+      }
+    ]
+  }
+}

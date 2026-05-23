@@ -1,0 +1,10 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_233_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+
+Detector: arbitrary-send-eth
+CryptoBeauty.purchase(uint256,uint256) (contracts/safe/safe_233_SAFE.sol#206-274) sends eth to arbitrary user
+	Dangerous calls:
+	- charity.transfer(donate) (contracts/safe/safe_233_SAFE.sol#249)
+	- oldOwner.transfer(SafeMath.sub(sellingPrice,devCut)) (contracts/safe/safe_233_SAFE.sol#264)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#functions-that-send-ether-to-arbitrary-destinations
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_233_SAFE.sol analyzed (4 contracts with 5 detectors), 1 result(s) found

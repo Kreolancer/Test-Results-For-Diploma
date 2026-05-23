@@ -1,0 +1,62 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_237_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+
+Detector: shadowing-local
+ERC20Interface.totalSupply().totalSupply (contracts/safe/safe_237_SAFE.sol#11) shadows:
+	- ERC20Interface.totalSupply() (contracts/safe/safe_237_SAFE.sol#11) (function)
+BanliangCoin.totalSupply().totalSupply (contracts/safe/safe_237_SAFE.sol#65) shadows:
+	- BanliangCoin.totalSupply() (contracts/safe/safe_237_SAFE.sol#65-67) (function)
+	- ERC20Interface.totalSupply() (contracts/safe/safe_237_SAFE.sol#11) (function)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#local-variable-shadowing
+
+Detector: deprecated-standards
+Deprecated standard detected THROW (contracts/safe/safe_237_SAFE.sol#54):
+	- Usage of "throw" should be replaced with "revert()"
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#deprecated-standards
+
+Detector: solc-version
+Version constraint ^0.4.11 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- NestedArrayFunctionCallDecoder
+	- ZeroFunctionSelector
+	- DelegateCallReturnValue
+	- ECRecoverMalformedInput
+	- SkipEmptyStringLiteral.
+It is used by:
+	- ^0.4.11 (contracts/safe/safe_237_SAFE.sol#8)
+solc-0.4.11 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Parameter BanliangCoin.balanceOf(address)._owner (contracts/safe/safe_237_SAFE.sol#70) is not in mixedCase
+Parameter BanliangCoin.transfer(address,uint256)._to (contracts/safe/safe_237_SAFE.sol#75) is not in mixedCase
+Parameter BanliangCoin.transfer(address,uint256)._amount (contracts/safe/safe_237_SAFE.sol#75) is not in mixedCase
+Parameter BanliangCoin.transferFrom(address,address,uint256)._from (contracts/safe/safe_237_SAFE.sol#90) is not in mixedCase
+Parameter BanliangCoin.transferFrom(address,address,uint256)._to (contracts/safe/safe_237_SAFE.sol#91) is not in mixedCase
+Parameter BanliangCoin.transferFrom(address,address,uint256)._amount (contracts/safe/safe_237_SAFE.sol#92) is not in mixedCase
+Parameter BanliangCoin.approve(address,uint256)._spender (contracts/safe/safe_237_SAFE.sol#109) is not in mixedCase
+Parameter BanliangCoin.approve(address,uint256)._amount (contracts/safe/safe_237_SAFE.sol#109) is not in mixedCase
+Parameter BanliangCoin.allowance(address,address)._owner (contracts/safe/safe_237_SAFE.sol#116) is not in mixedCase
+Parameter BanliangCoin.allowance(address,address)._spender (contracts/safe/safe_237_SAFE.sol#116) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: too-many-digits
+BanliangCoin.slitherConstructorVariables() (contracts/safe/safe_237_SAFE.sol#36-120) uses literals with too many digits:
+	- _totalSupply = 10000000000 * 10 ** uint256(decimals) (contracts/safe/safe_237_SAFE.sol#40)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#too-many-digits
+
+Detector: constable-states
+BanliangCoin._totalSupply (contracts/safe/safe_237_SAFE.sol#40) should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_237_SAFE.sol analyzed (2 contracts with 101 detectors), 17 result(s) found

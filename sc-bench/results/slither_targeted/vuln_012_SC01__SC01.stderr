@@ -1,0 +1,11 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_012_SC01.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_012_SC01.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_012_SC01.sol:30:23: Warning: Using contract member "balance" inherited from the address type is deprecated. Convert the contract to "address" type to access the member, for example use "address(contract).balance" instead.
+       owner.transfer(this.balance);
+                      ^----------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_012_SC01.sol:24:5: Warning: No visibility specified. Defaulting to "public". 
+    function () payable {}
+    ^--------------------^
+
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_012_SC01.sol analyzed (1 contracts with 5 detectors), 0 result(s) found

@@ -1,0 +1,11 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_183_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_183_SAFE.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_183_SAFE.sol:60:16: Warning: The "returndatasize" instruction is only available after the Metropolis hard fork. Before that it acts as an invalid instruction.
+			let size := returndatasize
+			            ^------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_183_SAFE.sol:62:4: Warning: The "returndatacopy" instruction is only available after the Metropolis hard fork. Before that it acts as an invalid instruction.
+			returndatacopy(ptr, 0, size)
+			^------------^
+
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_183_SAFE.sol analyzed (3 contracts with 5 detectors), 0 result(s) found

@@ -1,0 +1,127 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_172_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_172_SAFE.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_172_SAFE.sol:38:3: Warning: Defining constructors as functions with the same name as the contract is deprecated. Use "constructor(...) { ... }" instead.
+  function Ownable() public {
+  ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_172_SAFE.sol:89:3: Warning: Defining constructors as functions with the same name as the contract is deprecated. Use "constructor(...) { ... }" instead.
+  function BitLoanex() public {
+  ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_172_SAFE.sol:229:11: Warning: Use of the "var" keyword is deprecated.
+      for(var i = 0; i < deadlines.length; i++)
+          ^---^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_172_SAFE.sol:49:5: Warning: Invoking events without "emit" prefix is deprecated.
+    OwnershipTransferred(owner, newOwner);
+    ^-----------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_172_SAFE.sol:101:5: Warning: Invoking events without "emit" prefix is deprecated.
+    Transfer(msg.sender, _to, _value);
+    ^-------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_172_SAFE.sol:119:5: Warning: Invoking events without "emit" prefix is deprecated.
+    Transfer(_from, _to, _value);
+    ^--------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_172_SAFE.sol:126:5: Warning: Invoking events without "emit" prefix is deprecated.
+    Approval(msg.sender, _spender, _value);
+    ^------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_172_SAFE.sol:137:5: Warning: Invoking events without "emit" prefix is deprecated.
+    Approval(msg.sender, _spender, allowed[msg.sender][_spender]);
+    ^-----------------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_172_SAFE.sol:148:5: Warning: Invoking events without "emit" prefix is deprecated.
+    Approval(msg.sender, _spender, allowed[msg.sender][_spender]);
+    ^-----------------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_172_SAFE.sol:194:5: Warning: Invoking events without "emit" prefix is deprecated.
+    BoughtTokens(msg.sender, tokens);
+    ^------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_172_SAFE.sol:229:11: Warning: The type of this variable was inferred as uint8, which can hold values between 0 and 255. This is probably not desired. Use an explicit type to silence this warning.
+      for(var i = 0; i < deadlines.length; i++)
+          ^-------^
+
+
+Detector: unused-return
+BitLoanex.buyTokens() (contracts/safe/safe_172_SAFE.sol#185-204) ignores return value by totalSupply.sub(tokens) (contracts/safe/safe_172_SAFE.sol#198)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unused-return
+
+Detector: events-maths
+BitLoanex.setRate(uint256) (contracts/safe/safe_172_SAFE.sol#215-218) should emit an event for: 
+	- rate = _rate (contracts/safe/safe_172_SAFE.sol#217) 
+BitLoanex.setDays(uint256) (contracts/safe/safe_172_SAFE.sol#220-223) should emit an event for: 
+	- DAYS = _day (contracts/safe/safe_172_SAFE.sol#222) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-arithmetic
+
+Detector: timestamp
+BitLoanex.isActive() (contracts/safe/safe_172_SAFE.sol#166-173) uses timestamp for comparisons
+	Dangerous comparisons:
+	- (initialized == true && now >= START && now <= START.add(DAYS * 86400) && goalReached() == false) (contracts/safe/safe_172_SAFE.sol#167-172)
+BitLoanex.buyTokens() (contracts/safe/safe_172_SAFE.sol#185-204) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(initialized && now <= START.add(DAYS * 86400)) (contracts/safe/safe_172_SAFE.sol#187)
+BitLoanex.getRate() (contracts/safe/safe_172_SAFE.sol#225-233) uses timestamp for comparisons
+	Dangerous comparisons:
+	- now < deadlines[i] (contracts/safe/safe_172_SAFE.sol#230)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+
+Detector: boolean-equal
+BitLoanex.isActive() (contracts/safe/safe_172_SAFE.sol#166-173) compares to a boolean constant:
+	-(initialized == true && now >= START && now <= START.add(DAYS * 86400) && goalReached() == false) (contracts/safe/safe_172_SAFE.sol#167-172)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#boolean-equality
+
+Detector: function-init-state
+BitLoanex.deadlines (contracts/safe/safe_172_SAFE.sol#75) is set pre-construction with a non-constant function or state variable:
+	- (START,START.add(1 * days_interval * 86400),START.add(2 * days_interval * 86400),START.add(3 * days_interval * 86400),START.add(4 * days_interval * 86400),START.add(5 * days_interval * 86400),START.add(6 * days_interval * 86400),START.add(7 * days_interval * 86400),START.add(8 * days_interval * 86400))
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#function-initializing-state
+
+Detector: solc-version
+Version constraint ^0.4.15 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- NestedArrayFunctionCallDecoder
+	- ZeroFunctionSelector.
+It is used by:
+	- ^0.4.15 (contracts/safe/safe_172_SAFE.sol#1)
+solc-0.4.24 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Parameter BitLoanex.transfer(address,uint256)._to (contracts/safe/safe_172_SAFE.sol#94) is not in mixedCase
+Parameter BitLoanex.transfer(address,uint256)._value (contracts/safe/safe_172_SAFE.sol#94) is not in mixedCase
+Parameter BitLoanex.balanceOf(address)._owner (contracts/safe/safe_172_SAFE.sol#106) is not in mixedCase
+Parameter BitLoanex.transferFrom(address,address,uint256)._from (contracts/safe/safe_172_SAFE.sol#111) is not in mixedCase
+Parameter BitLoanex.transferFrom(address,address,uint256)._to (contracts/safe/safe_172_SAFE.sol#111) is not in mixedCase
+Parameter BitLoanex.transferFrom(address,address,uint256)._value (contracts/safe/safe_172_SAFE.sol#111) is not in mixedCase
+Parameter BitLoanex.approve(address,uint256)._spender (contracts/safe/safe_172_SAFE.sol#124) is not in mixedCase
+Parameter BitLoanex.approve(address,uint256)._value (contracts/safe/safe_172_SAFE.sol#124) is not in mixedCase
+Parameter BitLoanex.allowance(address,address)._owner (contracts/safe/safe_172_SAFE.sol#131) is not in mixedCase
+Parameter BitLoanex.allowance(address,address)._spender (contracts/safe/safe_172_SAFE.sol#131) is not in mixedCase
+Parameter BitLoanex.increaseApproval(address,uint256)._spender (contracts/safe/safe_172_SAFE.sol#135) is not in mixedCase
+Parameter BitLoanex.increaseApproval(address,uint256)._addedValue (contracts/safe/safe_172_SAFE.sol#135) is not in mixedCase
+Parameter BitLoanex.decreaseApproval(address,uint256)._spender (contracts/safe/safe_172_SAFE.sol#141) is not in mixedCase
+Parameter BitLoanex.decreaseApproval(address,uint256)._subtractedValue (contracts/safe/safe_172_SAFE.sol#141) is not in mixedCase
+Parameter BitLoanex.initialize(bool)._val (contracts/safe/safe_172_SAFE.sol#159) is not in mixedCase
+Parameter BitLoanex.setRate(uint256)._rate (contracts/safe/safe_172_SAFE.sol#215) is not in mixedCase
+Parameter BitLoanex.setDays(uint256)._day (contracts/safe/safe_172_SAFE.sol#220) is not in mixedCase
+Variable BitLoanex.DAYS (contracts/safe/safe_172_SAFE.sol#73) is not in mixedCase
+Variable BitLoanex.days_interval (contracts/safe/safe_172_SAFE.sol#74) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: too-many-digits
+BitLoanex.slitherConstructorConstantVariables() (contracts/safe/safe_172_SAFE.sol#62-241) uses literals with too many digits:
+	- INITIAL_SUPPLY = 10000000000000000 (contracts/safe/safe_172_SAFE.sol#79)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#too-many-digits
+
+Detector: cache-array-length
+Loop condition i < deadlines.length (contracts/safe/safe_172_SAFE.sol#229) should use cached array length instead of referencing `length` member of the storage array.
+ Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#cache-array-length
+
+Detector: constable-states
+BitLoanex.days_interval (contracts/safe/safe_172_SAFE.sol#74) should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_172_SAFE.sol analyzed (3 contracts with 101 detectors), 32 result(s) found

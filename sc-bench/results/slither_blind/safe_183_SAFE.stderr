@@ -1,0 +1,62 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_183_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_183_SAFE.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_183_SAFE.sol:60:16: Warning: The "returndatasize" instruction is only available after the Metropolis hard fork. Before that it acts as an invalid instruction.
+			let size := returndatasize
+			            ^------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_183_SAFE.sol:62:4: Warning: The "returndatacopy" instruction is only available after the Metropolis hard fork. Before that it acts as an invalid instruction.
+			returndatacopy(ptr, 0, size)
+			^------------^
+
+
+Detector: locked-ether
+Contract locking ether found:
+	Contract BdpEntryPoint (contracts/safe/safe_183_SAFE.sol#51-78) has payable functions:
+	 - BdpEntryPoint.fallback() (contracts/safe/safe_183_SAFE.sol#53-67)
+	But does not have a function to withdraw the ether
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#contracts-that-lock-ether
+
+Detector: assembly
+BdpEntryPoint.fallback() (contracts/safe/safe_183_SAFE.sol#53-67) uses assembly
+	- INLINE ASM (contracts/safe/safe_183_SAFE.sol#58-67)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#assembly-usage
+
+Detector: solc-version
+Version constraint ^0.4.19 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ABIEncoderV2PackedStorage_0.4.x
+	- ExpExponentCleanup
+	- EventStructWrongData
+	- NestedArrayFunctionCallDecoder.
+It is used by:
+	- ^0.4.19 (contracts/safe/safe_183_SAFE.sol#1)
+solc-0.4.19 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Parameter BdpContracts.getBdpEntryPoint(address[16])._contracts (contracts/safe/safe_183_SAFE.sol#21) is not in mixedCase
+Parameter BdpContracts.getBdpController(address[16])._contracts (contracts/safe/safe_183_SAFE.sol#25) is not in mixedCase
+Parameter BdpContracts.getBdpControllerHelper(address[16])._contracts (contracts/safe/safe_183_SAFE.sol#29) is not in mixedCase
+Parameter BdpContracts.getBdpDataStorage(address[16])._contracts (contracts/safe/safe_183_SAFE.sol#33) is not in mixedCase
+Parameter BdpContracts.getBdpImageStorage(address[16])._contracts (contracts/safe/safe_183_SAFE.sol#37) is not in mixedCase
+Parameter BdpContracts.getBdpOwnershipStorage(address[16])._contracts (contracts/safe/safe_183_SAFE.sol#41) is not in mixedCase
+Parameter BdpContracts.getBdpPriceStorage(address[16])._contracts (contracts/safe/safe_183_SAFE.sol#45) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: constable-states
+BdpBaseData.paused (contracts/safe/safe_183_SAFE.sol#11) should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_183_SAFE.sol analyzed (3 contracts with 101 detectors), 12 result(s) found

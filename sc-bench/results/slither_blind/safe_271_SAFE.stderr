@@ -1,0 +1,142 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_271_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_271_SAFE.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_271_SAFE.sol:114:18: Warning: Unused local variable
+            var (_talent, _tactics, _dribbling, _kick, _speed, _pass, _selection) = playerToken.getPlayer(teams[_teamId].playersIds[_playerIndex]);
+                 ^-----^
+
+
+Detector: controlled-array-length
+Team (contracts/safe/safe_271_SAFE.sol#70-262) contract sets array length with a user-controlled value:
+	- teams[_teamId].playersIds.push(_playerId) (contracts/safe/safe_271_SAFE.sol#210)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#array-length-assignment
+
+Detector: reentrancy-no-eth
+Reentrancy in Team.createTeam(string,string,uint256,uint256,address,uint256) (contracts/safe/safe_271_SAFE.sol#160-170):
+	External calls:
+	- _position = playerToken.getPosition(_playerId) (contracts/safe/safe_271_SAFE.sol#163)
+	State variables written after the call(s):
+	- teamsIds.push(_teamId) (contracts/safe/safe_271_SAFE.sol#168)
+	Team.teamsIds (contracts/safe/safe_271_SAFE.sol#85) can be used in cross function reentrancies:
+	- Team.createTeam(string,string,uint256,uint256,address,uint256) (contracts/safe/safe_271_SAFE.sol#160-170)
+	- Team.getAllTeamsIds() (contracts/safe/safe_271_SAFE.sol#131-133)
+	- Team.getCountTeams() (contracts/safe/safe_271_SAFE.sol#127-129)
+	- Team.teamsIds (contracts/safe/safe_271_SAFE.sol#85)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-2
+
+Detector: events-access
+FMWorldAccessControl.setCEO(address) (contracts/safe/safe_271_SAFE.sol#49-53) should emit an event for: 
+	- ceoAddress = _newCEO (contracts/safe/safe_271_SAFE.sol#52) 
+	- ceoAddress = _newCEO (contracts/safe/safe_271_SAFE.sol#52) 
+FMWorldAccessControl.setCOO(address) (contracts/safe/safe_271_SAFE.sol#55-59) should emit an event for: 
+	- cooAddress = _newCOO (contracts/safe/safe_271_SAFE.sol#58) 
+	- cooAddress = _newCOO (contracts/safe/safe_271_SAFE.sol#58) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+
+Detector: missing-zero-check
+Team.Team(address)._playerTokenAddress (contracts/safe/safe_271_SAFE.sol#93) lacks a zero-check on :
+		- playerTokenAddress = _playerTokenAddress (contracts/safe/safe_271_SAFE.sol#95)
+Team.setPlayerTokenAddress(address)._playerTokenAddress (contracts/safe/safe_271_SAFE.sol#119) lacks a zero-check on :
+		- playerTokenAddress = _playerTokenAddress (contracts/safe/safe_271_SAFE.sol#120)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+
+Detector: calls-loop
+Team.getTeamSumSkills(uint256) (contracts/safe/safe_271_SAFE.sol#110-117) has external calls inside a loop: (_talent,_tactics,_dribbling,_kick,_speed,_pass,_selection) = playerToken.getPlayer(teams[_teamId].playersIds[_playerIndex]) (contracts/safe/safe_271_SAFE.sol#114)
+Team.getCountPlayersOfOwner(uint256,address) (contracts/safe/safe_271_SAFE.sol#191-198) has external calls inside a loop: playerToken.ownerOf(teams[_teamId].playersIds[i]) == _owner (contracts/safe/safe_271_SAFE.sol#194)
+Team.leaveTeam(uint256,address,uint256,uint256) (contracts/safe/safe_271_SAFE.sol#220-247) has external calls inside a loop: _owner == playerToken.ownerOf(teams[_teamId].playersIds[pl]) (contracts/safe/safe_271_SAFE.sol#238)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation/#calls-inside-a-loop
+
+Detector: reentrancy-benign
+Reentrancy in Team.createTeam(string,string,uint256,uint256,address,uint256) (contracts/safe/safe_271_SAFE.sol#160-170):
+	External calls:
+	- _position = playerToken.getPosition(_playerId) (contracts/safe/safe_271_SAFE.sol#163)
+	State variables written after the call(s):
+	- _addOwnerPlayerToTeam(_teamId,_owner,_playerId,_position) (contracts/safe/safe_271_SAFE.sol#169)
+		- mapOwnerTeam[_owner] = _teamId (contracts/safe/safe_271_SAFE.sol#212)
+	- _addOwnerPlayerToTeam(_teamId,_owner,_playerId,_position) (contracts/safe/safe_271_SAFE.sol#169)
+		- mapPlayerTeam[_playerId] = _teamId (contracts/safe/safe_271_SAFE.sol#213)
+	- teams[_teamId].name = _name (contracts/safe/safe_271_SAFE.sol#164)
+	- teams[_teamId].minSkills = _minSkills (contracts/safe/safe_271_SAFE.sol#165)
+	- teams[_teamId].minTalent = _minTalent (contracts/safe/safe_271_SAFE.sol#166)
+	- teams[_teamId].logo = _logo (contracts/safe/safe_271_SAFE.sol#167)
+	- _addOwnerPlayerToTeam(_teamId,_owner,_playerId,_position) (contracts/safe/safe_271_SAFE.sol#169)
+		- teams[_teamId].playersIds.push(_playerId) (contracts/safe/safe_271_SAFE.sol#210)
+		- teams[_teamId].countPositions[_position] += 1 (contracts/safe/safe_271_SAFE.sol#211)
+Reentrancy in Team.leaveTeam(uint256,address,uint256,uint256) (contracts/safe/safe_271_SAFE.sol#220-247):
+	External calls:
+	- _owner == playerToken.ownerOf(teams[_teamId].playersIds[pl]) (contracts/safe/safe_271_SAFE.sol#238)
+	State variables written after the call(s):
+	- delete mapOwnerTeam[_owner] (contracts/safe/safe_271_SAFE.sol#245)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+
+Detector: solc-version
+Version constraint ^0.4.16 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- NestedArrayFunctionCallDecoder
+	- ZeroFunctionSelector.
+It is used by:
+	- ^0.4.16 (contracts/safe/safe_271_SAFE.sol#1)
+solc-0.4.16 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Parameter FMWorldAccessControl.setCEO(address)._newCEO (contracts/safe/safe_271_SAFE.sol#49) is not in mixedCase
+Parameter FMWorldAccessControl.setCOO(address)._newCOO (contracts/safe/safe_271_SAFE.sol#55) is not in mixedCase
+Parameter FMWorldAccessControl.setPause(bool)._pause (contracts/safe/safe_271_SAFE.sol#62) is not in mixedCase
+Parameter Team.setName(uint256,string)._teamId (contracts/safe/safe_271_SAFE.sol#101) is not in mixedCase
+Parameter Team.setName(uint256,string)._name (contracts/safe/safe_271_SAFE.sol#101) is not in mixedCase
+Parameter Team.setLogo(uint256,string)._teamId (contracts/safe/safe_271_SAFE.sol#105) is not in mixedCase
+Parameter Team.setLogo(uint256,string)._logo (contracts/safe/safe_271_SAFE.sol#105) is not in mixedCase
+Parameter Team.getTeamSumSkills(uint256)._teamId (contracts/safe/safe_271_SAFE.sol#110) is not in mixedCase
+Parameter Team.setPlayerTokenAddress(address)._playerTokenAddress (contracts/safe/safe_271_SAFE.sol#119) is not in mixedCase
+Parameter Team.getPlayerIdOfIndex(uint256,uint256)._teamId (contracts/safe/safe_271_SAFE.sol#123) is not in mixedCase
+Parameter Team.setCountPlayersInPosition(uint256)._countPlayersInPosition (contracts/safe/safe_271_SAFE.sol#135) is not in mixedCase
+Parameter Team.getMinSkills(uint256)._teamId (contracts/safe/safe_271_SAFE.sol#139) is not in mixedCase
+Parameter Team.getMinTalent(uint256)._teamId (contracts/safe/safe_271_SAFE.sol#143) is not in mixedCase
+Parameter Team.getTeam(uint256)._teamId (contracts/safe/safe_271_SAFE.sol#147) is not in mixedCase
+Parameter Team.createTeam(string,string,uint256,uint256,address,uint256)._name (contracts/safe/safe_271_SAFE.sol#160) is not in mixedCase
+Parameter Team.createTeam(string,string,uint256,uint256,address,uint256)._logo (contracts/safe/safe_271_SAFE.sol#160) is not in mixedCase
+Parameter Team.createTeam(string,string,uint256,uint256,address,uint256)._minTalent (contracts/safe/safe_271_SAFE.sol#160) is not in mixedCase
+Parameter Team.createTeam(string,string,uint256,uint256,address,uint256)._minSkills (contracts/safe/safe_271_SAFE.sol#160) is not in mixedCase
+Parameter Team.createTeam(string,string,uint256,uint256,address,uint256)._owner (contracts/safe/safe_271_SAFE.sol#160) is not in mixedCase
+Parameter Team.createTeam(string,string,uint256,uint256,address,uint256)._playerId (contracts/safe/safe_271_SAFE.sol#160) is not in mixedCase
+Parameter Team.getPlayerTeam(uint256)._playerId (contracts/safe/safe_271_SAFE.sol#172) is not in mixedCase
+Parameter Team.getOwnerTeam(address)._owner (contracts/safe/safe_271_SAFE.sol#176) is not in mixedCase
+Parameter Team.isTeam(uint256)._teamId (contracts/safe/safe_271_SAFE.sol#180) is not in mixedCase
+Parameter Team.getTeamPlayers(uint256)._teamId (contracts/safe/safe_271_SAFE.sol#187) is not in mixedCase
+Parameter Team.getCountPlayersOfOwner(uint256,address)._teamId (contracts/safe/safe_271_SAFE.sol#191) is not in mixedCase
+Parameter Team.getCountPlayersOfOwner(uint256,address)._owner (contracts/safe/safe_271_SAFE.sol#191) is not in mixedCase
+Parameter Team.getCountPlayersOfTeam(uint256)._teamId (contracts/safe/safe_271_SAFE.sol#200) is not in mixedCase
+Parameter Team.getCountPosition(uint256,uint256)._teamId (contracts/safe/safe_271_SAFE.sol#204) is not in mixedCase
+Parameter Team.getCountPosition(uint256,uint256)._position (contracts/safe/safe_271_SAFE.sol#204) is not in mixedCase
+Parameter Team.joinTeam(uint256,address,uint256,uint256)._teamId (contracts/safe/safe_271_SAFE.sol#216) is not in mixedCase
+Parameter Team.joinTeam(uint256,address,uint256,uint256)._owner (contracts/safe/safe_271_SAFE.sol#216) is not in mixedCase
+Parameter Team.joinTeam(uint256,address,uint256,uint256)._playerId (contracts/safe/safe_271_SAFE.sol#216) is not in mixedCase
+Parameter Team.joinTeam(uint256,address,uint256,uint256)._position (contracts/safe/safe_271_SAFE.sol#216) is not in mixedCase
+Parameter Team.leaveTeam(uint256,address,uint256,uint256)._teamId (contracts/safe/safe_271_SAFE.sol#220) is not in mixedCase
+Parameter Team.leaveTeam(uint256,address,uint256,uint256)._owner (contracts/safe/safe_271_SAFE.sol#220) is not in mixedCase
+Parameter Team.leaveTeam(uint256,address,uint256,uint256)._playerId (contracts/safe/safe_271_SAFE.sol#220) is not in mixedCase
+Parameter Team.leaveTeam(uint256,address,uint256,uint256)._position (contracts/safe/safe_271_SAFE.sol#220) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: external-function
+createPlayer(uint32[7],uint256,address) should be declared external:
+	- PlayerToken.createPlayer(uint32[7],uint256,address) (contracts/safe/safe_271_SAFE.sol#10)
+createTeam(string,string,uint256,uint256,address,uint256) should be declared external:
+	- Team.createTeam(string,string,uint256,uint256,address,uint256) (contracts/safe/safe_271_SAFE.sol#160-170)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#public-function-that-could-be-declared-external
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_271_SAFE.sol analyzed (3 contracts with 101 detectors), 52 result(s) found

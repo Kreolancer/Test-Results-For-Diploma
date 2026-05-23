@@ -1,0 +1,108 @@
+{
+  "success": true,
+  "error": null,
+  "results": {
+    "detectors": [
+      {
+        "elements": [
+          {
+            "type": "contract",
+            "name": "ViteToken",
+            "source_mapping": {
+              "start": 7306,
+              "length": 366,
+              "filename_relative": "contracts/safe/safe_291_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_291_SAFE.sol",
+              "filename_short": "contracts/safe/safe_291_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                186,
+                187,
+                188,
+                189,
+                190,
+                191,
+                192,
+                193,
+                194,
+                195,
+                196,
+                197,
+                198,
+                199,
+                200,
+                201
+              ],
+              "starting_column": 1,
+              "ending_column": 0
+            }
+          },
+          {
+            "type": "function",
+            "name": "fallback",
+            "source_mapping": {
+              "start": 7505,
+              "length": 77,
+              "filename_relative": "contracts/safe/safe_291_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_291_SAFE.sol",
+              "filename_short": "contracts/safe/safe_291_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                191,
+                192,
+                193,
+                194,
+                195,
+                196
+              ],
+              "starting_column": 5,
+              "ending_column": 6
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "ViteToken",
+                "source_mapping": {
+                  "start": 7306,
+                  "length": 366,
+                  "filename_relative": "contracts/safe/safe_291_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_291_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_291_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    186,
+                    187,
+                    188,
+                    189,
+                    190,
+                    191,
+                    192,
+                    193,
+                    194,
+                    195,
+                    196,
+                    197,
+                    198,
+                    199,
+                    200,
+                    201
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              },
+              "signature": "fallback()"
+            }
+          }
+        ],
+        "description": "Contract locking ether found:\n\tContract ViteToken (contracts/safe/safe_291_SAFE.sol#186-201) has payable functions:\n\t - ViteToken.fallback() (contracts/safe/safe_291_SAFE.sol#191-196)\n\tBut does not have a function to withdraw the ether\n",
+        "markdown": "Contract locking ether found:\n\tContract [ViteToken](contracts/safe/safe_291_SAFE.sol#L186-L201) has payable functions:\n\t - [ViteToken.fallback()](contracts/safe/safe_291_SAFE.sol#L191-L196)\n\tBut does not have a function to withdraw the ether\n",
+        "first_markdown_element": "contracts/safe/safe_291_SAFE.sol#L186-L201",
+        "id": "7b9d946d8acb37784bc53c31d5f5251756322a51ef7e42259bffd6ff823031a0",
+        "check": "locked-ether",
+        "impact": "Medium",
+        "confidence": "High"
+      }
+    ]
+  }
+}

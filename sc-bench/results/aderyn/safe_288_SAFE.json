@@ -1,0 +1,553 @@
+{
+  "files_summary": {
+    "total_source_units": 1,
+    "total_sloc": 253
+  },
+  "files_details": {
+    "files_details": [
+      {
+        "file_path": "src/safe_288_SAFE.sol",
+        "n_sloc": 253
+      }
+    ]
+  },
+  "issue_count": {
+    "high": 0,
+    "low": 6
+  },
+  "high_issues": {
+    "issues": []
+  },
+  "low_issues": {
+    "issues": [
+      {
+        "title": "Centralization Risk",
+        "description": "Contracts have owners with privileged rights to perform admin tasks and need to be trusted to not perform malicious updates or drain funds.",
+        "detector_name": "centralization-risk",
+        "instances": [
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 80,
+            "src": "1867:9",
+            "src_char": "1867:9"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 89,
+            "src": "2115:9",
+            "src_char": "2115:9"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 111,
+            "src": "3006:7",
+            "src_char": "3006:7"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 404,
+            "src": "12052:9",
+            "src_char": "12052:9"
+          }
+        ]
+      },
+      {
+        "title": "Empty `require()` / `revert()` Statement",
+        "description": "Use descriptive reason strings or custom errors for revert paths.",
+        "detector_name": "empty-require-revert",
+        "instances": [
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 72,
+            "src": "1614:7",
+            "src_char": "1614:7"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 81,
+            "src": "1883:7",
+            "src_char": "1883:7"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 199,
+            "src": "5272:7",
+            "src_char": "5272:7"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 200,
+            "src": "5308:7",
+            "src_char": "5308:7"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 268,
+            "src": "7341:7",
+            "src_char": "7341:7"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 269,
+            "src": "7370:7",
+            "src_char": "7370:7"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 313,
+            "src": "8944:7",
+            "src_char": "8944:7"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 314,
+            "src": "8985:7",
+            "src_char": "8985:7"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 315,
+            "src": "9014:7",
+            "src_char": "9014:7"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 317,
+            "src": "9066:7",
+            "src_char": "9066:7"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 331,
+            "src": "9473:7",
+            "src_char": "9473:7"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 382,
+            "src": "11396:7",
+            "src_char": "11396:7"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 387,
+            "src": "11506:7",
+            "src_char": "11506:7"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 388,
+            "src": "11540:7",
+            "src_char": "11540:7"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 389,
+            "src": "11574:7",
+            "src_char": "11574:7"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 406,
+            "src": "12124:7",
+            "src_char": "12124:7"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 407,
+            "src": "12153:7",
+            "src_char": "12153:7"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 411,
+            "src": "12281:7",
+            "src_char": "12281:7"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 414,
+            "src": "12423:7",
+            "src_char": "12423:7"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 417,
+            "src": "12565:7",
+            "src_char": "12565:7"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 420,
+            "src": "12688:7",
+            "src_char": "12688:7"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 428,
+            "src": "12831:7",
+            "src_char": "12831:7"
+          }
+        ]
+      },
+      {
+        "title": "Literal Instead of Constant",
+        "description": "Define and use `constant` variables instead of using literals. If the same constant literal value is used multiple times, create a constant state variable and reference it throughout the contract.",
+        "detector_name": "literal-instead-of-constant",
+        "instances": [
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 206,
+            "src": "5495:6",
+            "src_char": "5495:6"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 234,
+            "src": "6325:1",
+            "src_char": "6325:1"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 235,
+            "src": "6366:1",
+            "src_char": "6366:1"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 236,
+            "src": "6406:1",
+            "src_char": "6406:1"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 237,
+            "src": "6447:1",
+            "src_char": "6447:1"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 238,
+            "src": "6487:1",
+            "src_char": "6487:1"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 239,
+            "src": "6501:1",
+            "src_char": "6501:1"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 251,
+            "src": "6801:1",
+            "src_char": "6801:1"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 252,
+            "src": "6843:1",
+            "src_char": "6843:1"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 253,
+            "src": "6889:1",
+            "src_char": "6889:1"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 254,
+            "src": "6931:1",
+            "src_char": "6931:1"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 255,
+            "src": "6977:1",
+            "src_char": "6977:1"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 256,
+            "src": "7019:1",
+            "src_char": "7019:1"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 269,
+            "src": "7392:1",
+            "src_char": "7392:1"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 281,
+            "src": "7800:1",
+            "src_char": "7800:1"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 281,
+            "src": "7819:1",
+            "src_char": "7819:1"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 282,
+            "src": "7886:1",
+            "src_char": "7886:1"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 282,
+            "src": "7905:1",
+            "src_char": "7905:1"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 363,
+            "src": "10511:1",
+            "src_char": "10511:1"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 366,
+            "src": "10645:1",
+            "src_char": "10645:1"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 368,
+            "src": "10751:1",
+            "src_char": "10751:1"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 371,
+            "src": "10917:1",
+            "src_char": "10917:1"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 382,
+            "src": "11393:1",
+            "src_char": "11393:1"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 407,
+            "src": "12175:1",
+            "src_char": "12175:1"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 412,
+            "src": "12344:1",
+            "src_char": "12344:1"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 412,
+            "src": "12363:1",
+            "src_char": "12363:1"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 415,
+            "src": "12486:1",
+            "src_char": "12486:1"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 415,
+            "src": "12505:1",
+            "src_char": "12505:1"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 418,
+            "src": "12628:1",
+            "src_char": "12628:1"
+          }
+        ]
+      },
+      {
+        "title": "Address State Variable Set Without Checks",
+        "description": "Check for `address(0)` when assigning values to address state variables.",
+        "detector_name": "state-no-address-check",
+        "instances": [
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 202,
+            "src": "5361:17",
+            "src_char": "5361:17"
+          }
+        ]
+      },
+      {
+        "title": "Unsafe ERC20 Operation",
+        "description": "ERC20 functions may not behave as expected. For example: return values are not always meaningful. It is recommended to use OpenZeppelin's SafeERC20 library.",
+        "detector_name": "unsafe-erc20-operation",
+        "instances": [
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 331,
+            "src": "9481:14",
+            "src_char": "9481:14"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 393,
+            "src": "11752:19",
+            "src_char": "11752:19"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 401,
+            "src": "11926:15",
+            "src_char": "11926:15"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 428,
+            "src": "12839:14",
+            "src_char": "12839:14"
+          }
+        ]
+      },
+      {
+        "title": "Public Function Not Used Internally",
+        "description": "If a function is marked public but is not used internally, consider marking it as `external`.",
+        "detector_name": "unused-public-function",
+        "instances": [
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 80,
+            "src": "1815:174",
+            "src_char": "1815:174"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 89,
+            "src": "2079:111",
+            "src_char": "2079:111"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 96,
+            "src": "2213:69",
+            "src_char": "2213:69"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 246,
+            "src": "6553:513",
+            "src_char": "6553:513"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 386,
+            "src": "11459:348",
+            "src_char": "11459:348"
+          },
+          {
+            "contract_path": "src/safe_288_SAFE.sol",
+            "line_no": 404,
+            "src": "11973:931",
+            "src_char": "11973:931"
+          }
+        ]
+      }
+    ]
+  },
+  "detectors_used": [
+    "abi-encode-packed-hash-collision",
+    "arbitrary-transfer-from",
+    "assert-state-change",
+    "block-timestamp-deadline",
+    "boolean-equality",
+    "builtin-symbol-shadowing",
+    "centralization-risk",
+    "constant-function-changes-state",
+    "constant-function-contains-assembly",
+    "contract-locks-ether",
+    "costly-loop",
+    "dangerous-unary-operator",
+    "dead-code",
+    "delegate-call-unchecked-address",
+    "delegatecall-in-loop",
+    "delete-nested-mapping",
+    "deprecated-oz-function",
+    "division-before-multiplication",
+    "dynamic-array-length-assignment",
+    "ecrecover",
+    "empty-block",
+    "empty-require-revert",
+    "enumerable-loop-removal",
+    "eth-send-unchecked-address",
+    "experimental-encoder",
+    "function-initializing-state",
+    "function-pointer-in-constructor",
+    "function-selector-collision",
+    "inconsistent-type-names",
+    "incorrect-caret-operator",
+    "incorrect-erc20-interface",
+    "incorrect-erc721-interface",
+    "incorrect-shift-order",
+    "incorrect-use-of-modifier",
+    "internal-function-used-once",
+    "large-numeric-literal",
+    "literal-instead-of-constant",
+    "local-variable-shadowing",
+    "missing-inheritance",
+    "misused-boolean",
+    "modifier-used-only-once",
+    "msg-value-in-loop",
+    "multiple-constructors",
+    "multiple-placeholders",
+    "nested-struct-in-mapping",
+    "non-reentrant-not-first",
+    "out-of-order-retryable",
+    "pre-declared-local-variable-usage",
+    "push-zero-opcode",
+    "redundant-statement",
+    "reentrancy-state-change",
+    "require-revert-in-loop",
+    "return-bomb",
+    "reused-contract-name",
+    "rtlo",
+    "selfdestruct",
+    "signed-integer-storage-array",
+    "solmate-safe-transfer-lib",
+    "state-change-without-event",
+    "state-no-address-check",
+    "state-variable-could-be-constant",
+    "state-variable-could-be-immutable",
+    "state-variable-init-order",
+    "state-variable-read-external",
+    "state-variable-shadowing",
+    "storage-array-length-not-cached",
+    "storage-array-memory-edit",
+    "strict-equality-contract-balance",
+    "tautological-compare",
+    "tautology-or-contradiction",
+    "todo",
+    "tx-origin-used-for-auth",
+    "unchecked-low-level-call",
+    "unchecked-return",
+    "unchecked-send",
+    "uninitialized-local-variable",
+    "unprotected-initializer",
+    "unsafe-casting",
+    "unsafe-erc20-operation",
+    "unsafe-oz-erc721-mint",
+    "unspecific-solidity-pragma",
+    "unused-error",
+    "unused-import",
+    "unused-public-function",
+    "unused-state-variable",
+    "void-constructor",
+    "weak-randomness",
+    "yul-return"
+  ]
+}

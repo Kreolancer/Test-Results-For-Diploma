@@ -1,0 +1,4211 @@
+{
+  "success": true,
+  "error": null,
+  "results": {
+    "detectors": [
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "trade",
+            "source_mapping": {
+              "start": 9888,
+              "length": 773,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "BitDex",
+                "source_mapping": {
+                  "start": 5516,
+                  "length": 8249,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "trade(address,uint256,address,uint256,uint256,uint256,address,uint8,bytes32,bytes32,uint256)"
+            }
+          },
+          {
+            "type": "node",
+            "name": "tradeBalances(tokenGet,amountGet,tokenGive,amountGive,user,amount)",
+            "source_mapping": {
+              "start": 10421,
+              "length": 71,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "trade",
+                "source_mapping": {
+                  "start": 9888,
+                  "length": 773,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "BitDex",
+                    "source_mapping": {
+                      "start": 5516,
+                      "length": 8249,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "trade(address,uint256,address,uint256,uint256,uint256,address,uint8,bytes32,bytes32,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "external_calls"
+            }
+          },
+          {
+            "type": "node",
+            "name": "accountLevel = AccountLevels(accountLevelsAddr).accountLevel(user)",
+            "source_mapping": {
+              "start": 10994,
+              "length": 71,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "tradeBalances",
+                "source_mapping": {
+                  "start": 10667,
+                  "length": 1132,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "BitDex",
+                    "source_mapping": {
+                      "start": 5516,
+                      "length": 8249,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "tradeBalances(address,uint256,address,uint256,address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "external_calls_sending_eth"
+            }
+          },
+          {
+            "type": "node",
+            "name": "orderFills[user][hash] = safeAdd(orderFills[user][hash],amount)",
+            "source_mapping": {
+              "start": 10499,
+              "length": 64,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "trade",
+                "source_mapping": {
+                  "start": 9888,
+                  "length": 773,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "BitDex",
+                    "source_mapping": {
+                      "start": 5516,
+                      "length": 8249,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "trade(address,uint256,address,uint256,uint256,uint256,address,uint8,bytes32,bytes32,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "variables_written",
+              "variable_name": "orderFills"
+            }
+          }
+        ],
+        "description": "Reentrancy in BitDex.trade(address,uint256,address,uint256,uint256,uint256,address,uint8,bytes32,bytes32,uint256) ():\n\tExternal calls:\n\t- tradeBalances(tokenGet,amountGet,tokenGive,amountGive,user,amount) ()\n\t\t- accountLevel = AccountLevels(accountLevelsAddr).accountLevel(user) ()\n\tState variables written after the call(s):\n\t- orderFills[user][hash] = safeAdd(orderFills[user][hash],amount) ()\n\tBitDex.orderFills () can be used in cross function reentrancies:\n\t- BitDex.amountFilled(address,uint256,address,uint256,uint256,uint256,address,uint8,bytes32,bytes32) ()\n\t- BitDex.availableVolume(address,uint256,address,uint256,uint256,uint256,address,uint8,bytes32,bytes32) ()\n\t- BitDex.cancelOrder(address,uint256,address,uint256,uint256,uint256,uint8,bytes32,bytes32) ()\n\t- BitDex.trade(address,uint256,address,uint256,uint256,uint256,address,uint8,bytes32,bytes32,uint256) ()\n",
+        "markdown": "Reentrancy in [BitDex.trade(address,uint256,address,uint256,uint256,uint256,address,uint8,bytes32,bytes32,uint256)]():\n\tExternal calls:\n\t- [tradeBalances(tokenGet,amountGet,tokenGive,amountGive,user,amount)]()\n\t\t- [accountLevel = AccountLevels(accountLevelsAddr).accountLevel(user)]()\n\tState variables written after the call(s):\n\t- [orderFills[user][hash] = safeAdd(orderFills[user][hash],amount)]()\n\t[BitDex.orderFills]() can be used in cross function reentrancies:\n\t- [BitDex.amountFilled(address,uint256,address,uint256,uint256,uint256,address,uint8,bytes32,bytes32)]()\n\t- [BitDex.availableVolume(address,uint256,address,uint256,uint256,uint256,address,uint8,bytes32,bytes32)]()\n\t- [BitDex.cancelOrder(address,uint256,address,uint256,uint256,uint256,uint8,bytes32,bytes32)]()\n\t- [BitDex.trade(address,uint256,address,uint256,uint256,uint256,address,uint8,bytes32,bytes32,uint256)]()\n",
+        "first_markdown_element": "",
+        "id": "a9565251ec54500f9d121fa91fec62ec8265f39be70e8e2c3fc01dcd43807884",
+        "check": "reentrancy-no-eth",
+        "impact": "Medium",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "assert",
+            "source_mapping": {
+              "start": 431,
+              "length": 75,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "SafeMath",
+                "source_mapping": {
+                  "start": 27,
+                  "length": 482,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "assert(bool)"
+            }
+          }
+        ],
+        "description": "SafeMath.assert(bool) () (function) shadows built-in symbol\"\n",
+        "markdown": "[SafeMath.assert(bool)]() (function) shadows built-in symbol\"\n",
+        "first_markdown_element": "",
+        "id": "2ed4a8d1ba6e312aa9e54b65a7bd9f8608ba30ae953b80c8ccaa4fae542dd23a",
+        "check": "shadowing-builtin",
+        "impact": "Low",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "changeFeeRebate",
+            "source_mapping": {
+              "start": 8023,
+              "length": 178,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "BitDex",
+                "source_mapping": {
+                  "start": 5516,
+                  "length": 8249,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "changeFeeRebate(uint256)"
+            }
+          },
+          {
+            "type": "node",
+            "name": "feeRebate = feeRebate_",
+            "source_mapping": {
+              "start": 8173,
+              "length": 22,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "changeFeeRebate",
+                "source_mapping": {
+                  "start": 8023,
+                  "length": 178,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "BitDex",
+                    "source_mapping": {
+                      "start": 5516,
+                      "length": 8249,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "changeFeeRebate(uint256)"
+                }
+              }
+            }
+          }
+        ],
+        "description": "BitDex.changeFeeRebate(uint256) () should emit an event for: \n\t- feeRebate = feeRebate_ () \n",
+        "markdown": "[BitDex.changeFeeRebate(uint256)]() should emit an event for: \n\t- [feeRebate = feeRebate_]() \n",
+        "first_markdown_element": "",
+        "id": "1b3d6ff37d67a7cbdb5b5e5f985f84c7dd5c645e2158ece234fd66b9831473e3",
+        "check": "events-maths",
+        "impact": "Low",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "changeFeeMake",
+            "source_mapping": {
+              "start": 7703,
+              "length": 142,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "BitDex",
+                "source_mapping": {
+                  "start": 5516,
+                  "length": 8249,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "changeFeeMake(uint256)"
+            }
+          },
+          {
+            "type": "node",
+            "name": "feeMake = feeMake_",
+            "source_mapping": {
+              "start": 7821,
+              "length": 18,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "changeFeeMake",
+                "source_mapping": {
+                  "start": 7703,
+                  "length": 142,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "BitDex",
+                    "source_mapping": {
+                      "start": 5516,
+                      "length": 8249,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "changeFeeMake(uint256)"
+                }
+              }
+            }
+          }
+        ],
+        "description": "BitDex.changeFeeMake(uint256) () should emit an event for: \n\t- feeMake = feeMake_ () \n",
+        "markdown": "[BitDex.changeFeeMake(uint256)]() should emit an event for: \n\t- [feeMake = feeMake_]() \n",
+        "first_markdown_element": "",
+        "id": "ca38546bf53179b99047977065256f9647bb87dd74c08567830531c55736b5e5",
+        "check": "events-maths",
+        "impact": "Low",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "changeFeeTake",
+            "source_mapping": {
+              "start": 7851,
+              "length": 166,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "BitDex",
+                "source_mapping": {
+                  "start": 5516,
+                  "length": 8249,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "changeFeeTake(uint256)"
+            }
+          },
+          {
+            "type": "node",
+            "name": "feeTake = feeTake_",
+            "source_mapping": {
+              "start": 7993,
+              "length": 18,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "changeFeeTake",
+                "source_mapping": {
+                  "start": 7851,
+                  "length": 166,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "BitDex",
+                    "source_mapping": {
+                      "start": 5516,
+                      "length": 8249,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "changeFeeTake(uint256)"
+                }
+              }
+            }
+          }
+        ],
+        "description": "BitDex.changeFeeTake(uint256) () should emit an event for: \n\t- feeTake = feeTake_ () \n",
+        "markdown": "[BitDex.changeFeeTake(uint256)]() should emit an event for: \n\t- [feeTake = feeTake_]() \n",
+        "first_markdown_element": "",
+        "id": "d09c932f4d115b05f92becd2898a5471fe6dc5993ff4ece48dea6b694544a836",
+        "check": "events-maths",
+        "impact": "Low",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "admin_",
+            "source_mapping": {
+              "start": 6979,
+              "length": 14,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "BitDex",
+                "source_mapping": {
+                  "start": 6963,
+                  "length": 310,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "BitDex",
+                    "source_mapping": {
+                      "start": 5516,
+                      "length": 8249,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "BitDex(address,address,address,uint256,uint256,uint256)"
+                }
+              }
+            }
+          },
+          {
+            "type": "node",
+            "name": "admin = admin_",
+            "source_mapping": {
+              "start": 7098,
+              "length": 14,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "BitDex",
+                "source_mapping": {
+                  "start": 6963,
+                  "length": 310,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "BitDex",
+                    "source_mapping": {
+                      "start": 5516,
+                      "length": 8249,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "BitDex(address,address,address,uint256,uint256,uint256)"
+                }
+              }
+            }
+          }
+        ],
+        "description": "BitDex.BitDex(address,address,address,uint256,uint256,uint256).admin_ () lacks a zero-check on :\n\t\t- admin = admin_ ()\n",
+        "markdown": "[BitDex.BitDex(address,address,address,uint256,uint256,uint256).admin_]() lacks a zero-check on :\n\t\t- [admin = admin_]()\n",
+        "first_markdown_element": "",
+        "id": "18fec3edeb6ab37f0e0f90ef34d66eeb079c5a77ff3266e845aa16e944037d07",
+        "check": "missing-zero-check",
+        "impact": "Low",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "accountLevelsAddr_",
+            "source_mapping": {
+              "start": 7016,
+              "length": 26,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "BitDex",
+                "source_mapping": {
+                  "start": 6963,
+                  "length": 310,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "BitDex",
+                    "source_mapping": {
+                      "start": 5516,
+                      "length": 8249,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "BitDex(address,address,address,uint256,uint256,uint256)"
+                }
+              }
+            }
+          },
+          {
+            "type": "node",
+            "name": "accountLevelsAddr = accountLevelsAddr_",
+            "source_mapping": {
+              "start": 7150,
+              "length": 38,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "BitDex",
+                "source_mapping": {
+                  "start": 6963,
+                  "length": 310,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "BitDex",
+                    "source_mapping": {
+                      "start": 5516,
+                      "length": 8249,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "BitDex(address,address,address,uint256,uint256,uint256)"
+                }
+              }
+            }
+          }
+        ],
+        "description": "BitDex.BitDex(address,address,address,uint256,uint256,uint256).accountLevelsAddr_ () lacks a zero-check on :\n\t\t- accountLevelsAddr = accountLevelsAddr_ ()\n",
+        "markdown": "[BitDex.BitDex(address,address,address,uint256,uint256,uint256).accountLevelsAddr_]() lacks a zero-check on :\n\t\t- [accountLevelsAddr = accountLevelsAddr_]()\n",
+        "first_markdown_element": "",
+        "id": "1f38dade110fb1e69e3f7672d28927130f7d421f451c049ed78690dbd6fd535a",
+        "check": "missing-zero-check",
+        "impact": "Low",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "feeAccount_",
+            "source_mapping": {
+              "start": 7602,
+              "length": 19,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "changeFeeAccount",
+                "source_mapping": {
+                  "start": 7576,
+                  "length": 121,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "BitDex",
+                    "source_mapping": {
+                      "start": 5516,
+                      "length": 8249,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "changeFeeAccount(address)"
+                }
+              }
+            }
+          },
+          {
+            "type": "node",
+            "name": "feeAccount = feeAccount_",
+            "source_mapping": {
+              "start": 7667,
+              "length": 24,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "changeFeeAccount",
+                "source_mapping": {
+                  "start": 7576,
+                  "length": 121,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "BitDex",
+                    "source_mapping": {
+                      "start": 5516,
+                      "length": 8249,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "changeFeeAccount(address)"
+                }
+              }
+            }
+          }
+        ],
+        "description": "BitDex.changeFeeAccount(address).feeAccount_ () lacks a zero-check on :\n\t\t- feeAccount = feeAccount_ ()\n",
+        "markdown": "[BitDex.changeFeeAccount(address).feeAccount_]() lacks a zero-check on :\n\t\t- [feeAccount = feeAccount_]()\n",
+        "first_markdown_element": "",
+        "id": "4ceac22247f382f70a2e8d80cef060126527f9071862bfc1ea9ee23177e99979",
+        "check": "missing-zero-check",
+        "impact": "Low",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "admin_",
+            "source_mapping": {
+              "start": 7335,
+              "length": 14,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "changeAdmin",
+                "source_mapping": {
+                  "start": 7314,
+                  "length": 101,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "BitDex",
+                    "source_mapping": {
+                      "start": 5516,
+                      "length": 8249,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "changeAdmin(address)"
+                }
+              }
+            }
+          },
+          {
+            "type": "node",
+            "name": "admin = admin_",
+            "source_mapping": {
+              "start": 7395,
+              "length": 14,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "changeAdmin",
+                "source_mapping": {
+                  "start": 7314,
+                  "length": 101,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "BitDex",
+                    "source_mapping": {
+                      "start": 5516,
+                      "length": 8249,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "changeAdmin(address)"
+                }
+              }
+            }
+          }
+        ],
+        "description": "BitDex.changeAdmin(address).admin_ () lacks a zero-check on :\n\t\t- admin = admin_ ()\n",
+        "markdown": "[BitDex.changeAdmin(address).admin_]() lacks a zero-check on :\n\t\t- [admin = admin_]()\n",
+        "first_markdown_element": "",
+        "id": "ebb938876790e47a8c2f7a3e9d591ff8287d62f50f526405a1995b2c387463ad",
+        "check": "missing-zero-check",
+        "impact": "Low",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "feeAccount_",
+            "source_mapping": {
+              "start": 6995,
+              "length": 19,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "BitDex",
+                "source_mapping": {
+                  "start": 6963,
+                  "length": 310,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "BitDex",
+                    "source_mapping": {
+                      "start": 5516,
+                      "length": 8249,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "BitDex(address,address,address,uint256,uint256,uint256)"
+                }
+              }
+            }
+          },
+          {
+            "type": "node",
+            "name": "feeAccount = feeAccount_",
+            "source_mapping": {
+              "start": 7119,
+              "length": 24,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "BitDex",
+                "source_mapping": {
+                  "start": 6963,
+                  "length": 310,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "BitDex",
+                    "source_mapping": {
+                      "start": 5516,
+                      "length": 8249,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "BitDex(address,address,address,uint256,uint256,uint256)"
+                }
+              }
+            }
+          }
+        ],
+        "description": "BitDex.BitDex(address,address,address,uint256,uint256,uint256).feeAccount_ () lacks a zero-check on :\n\t\t- feeAccount = feeAccount_ ()\n",
+        "markdown": "[BitDex.BitDex(address,address,address,uint256,uint256,uint256).feeAccount_]() lacks a zero-check on :\n\t\t- [feeAccount = feeAccount_]()\n",
+        "first_markdown_element": "",
+        "id": "f23132a6bf048631843bdd58bf02bddf8ad320d2a1530e44bd4cff5bb8d26105",
+        "check": "missing-zero-check",
+        "impact": "Low",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "accountLevelsAddr_",
+            "source_mapping": {
+              "start": 7454,
+              "length": 26,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "changeAccountLevelsAddr",
+                "source_mapping": {
+                  "start": 7421,
+                  "length": 149,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "BitDex",
+                    "source_mapping": {
+                      "start": 5516,
+                      "length": 8249,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "changeAccountLevelsAddr(address)"
+                }
+              }
+            }
+          },
+          {
+            "type": "node",
+            "name": "accountLevelsAddr = accountLevelsAddr_",
+            "source_mapping": {
+              "start": 7526,
+              "length": 38,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "changeAccountLevelsAddr",
+                "source_mapping": {
+                  "start": 7421,
+                  "length": 149,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "BitDex",
+                    "source_mapping": {
+                      "start": 5516,
+                      "length": 8249,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "changeAccountLevelsAddr(address)"
+                }
+              }
+            }
+          }
+        ],
+        "description": "BitDex.changeAccountLevelsAddr(address).accountLevelsAddr_ () lacks a zero-check on :\n\t\t- accountLevelsAddr = accountLevelsAddr_ ()\n",
+        "markdown": "[BitDex.changeAccountLevelsAddr(address).accountLevelsAddr_]() lacks a zero-check on :\n\t\t- [accountLevelsAddr = accountLevelsAddr_]()\n",
+        "first_markdown_element": "",
+        "id": "f56bde202c51cfc5f4b186fe5740b277497e4a3852c1c88641e1af8d6c98c73b",
+        "check": "missing-zero-check",
+        "impact": "Low",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "tradeBalances",
+            "source_mapping": {
+              "start": 10667,
+              "length": 1132,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "BitDex",
+                "source_mapping": {
+                  "start": 5516,
+                  "length": 8249,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "tradeBalances(address,uint256,address,uint256,address,uint256)"
+            }
+          },
+          {
+            "type": "node",
+            "name": "accountLevel = AccountLevels(accountLevelsAddr).accountLevel(user)",
+            "source_mapping": {
+              "start": 10994,
+              "length": 71,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "tradeBalances",
+                "source_mapping": {
+                  "start": 10667,
+                  "length": 1132,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "BitDex",
+                    "source_mapping": {
+                      "start": 5516,
+                      "length": 8249,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "tradeBalances(address,uint256,address,uint256,address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "external_calls"
+            }
+          },
+          {
+            "type": "node",
+            "name": "accountLevel = AccountLevels(accountLevelsAddr).accountLevel(user)",
+            "source_mapping": {
+              "start": 10994,
+              "length": 71,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "tradeBalances",
+                "source_mapping": {
+                  "start": 10667,
+                  "length": 1132,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "BitDex",
+                    "source_mapping": {
+                      "start": 5516,
+                      "length": 8249,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "tradeBalances(address,uint256,address,uint256,address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "external_calls_sending_eth"
+            }
+          },
+          {
+            "type": "node",
+            "name": "tokens[tokenGet][msg.sender] = safeSub(tokens[tokenGet][msg.sender],safeAdd(amount,feeTakeXfer))",
+            "source_mapping": {
+              "start": 11220,
+              "length": 98,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "tradeBalances",
+                "source_mapping": {
+                  "start": 10667,
+                  "length": 1132,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "BitDex",
+                    "source_mapping": {
+                      "start": 5516,
+                      "length": 8249,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "tradeBalances(address,uint256,address,uint256,address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "variables_written",
+              "variable_name": "tokens"
+            }
+          },
+          {
+            "type": "node",
+            "name": "tokens[tokenGet][user] = safeAdd(tokens[tokenGet][user],safeSub(safeAdd(amount,feeRebateXfer),feeMakeXfer))",
+            "source_mapping": {
+              "start": 11325,
+              "length": 110,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "tradeBalances",
+                "source_mapping": {
+                  "start": 10667,
+                  "length": 1132,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "BitDex",
+                    "source_mapping": {
+                      "start": 5516,
+                      "length": 8249,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "tradeBalances(address,uint256,address,uint256,address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "variables_written",
+              "variable_name": "tokens"
+            }
+          },
+          {
+            "type": "node",
+            "name": "tokens[tokenGet][feeAccount] = safeAdd(tokens[tokenGet][feeAccount],safeSub(safeAdd(feeMakeXfer,feeTakeXfer),feeRebateXfer))",
+            "source_mapping": {
+              "start": 11442,
+              "length": 127,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "tradeBalances",
+                "source_mapping": {
+                  "start": 10667,
+                  "length": 1132,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "BitDex",
+                    "source_mapping": {
+                      "start": 5516,
+                      "length": 8249,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "tradeBalances(address,uint256,address,uint256,address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "variables_written",
+              "variable_name": "tokens"
+            }
+          },
+          {
+            "type": "node",
+            "name": "tokens[tokenGive][user] = safeSub(tokens[tokenGive][user],safeMul(amountGive,amount) / amountGet)",
+            "source_mapping": {
+              "start": 11576,
+              "length": 99,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "tradeBalances",
+                "source_mapping": {
+                  "start": 10667,
+                  "length": 1132,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "BitDex",
+                    "source_mapping": {
+                      "start": 5516,
+                      "length": 8249,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "tradeBalances(address,uint256,address,uint256,address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "variables_written",
+              "variable_name": "tokens"
+            }
+          },
+          {
+            "type": "node",
+            "name": "tokens[tokenGive][msg.sender] = safeAdd(tokens[tokenGive][msg.sender],safeMul(amountGive,amount) / amountGet)",
+            "source_mapping": {
+              "start": 11682,
+              "length": 111,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "tradeBalances",
+                "source_mapping": {
+                  "start": 10667,
+                  "length": 1132,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "BitDex",
+                    "source_mapping": {
+                      "start": 5516,
+                      "length": 8249,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "tradeBalances(address,uint256,address,uint256,address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "variables_written",
+              "variable_name": "tokens"
+            }
+          }
+        ],
+        "description": "Reentrancy in BitDex.tradeBalances(address,uint256,address,uint256,address,uint256) ():\n\tExternal calls:\n\t- accountLevel = AccountLevels(accountLevelsAddr).accountLevel(user) ()\n\tState variables written after the call(s):\n\t- tokens[tokenGet][msg.sender] = safeSub(tokens[tokenGet][msg.sender],safeAdd(amount,feeTakeXfer)) ()\n\t- tokens[tokenGet][user] = safeAdd(tokens[tokenGet][user],safeSub(safeAdd(amount,feeRebateXfer),feeMakeXfer)) ()\n\t- tokens[tokenGet][feeAccount] = safeAdd(tokens[tokenGet][feeAccount],safeSub(safeAdd(feeMakeXfer,feeTakeXfer),feeRebateXfer)) ()\n\t- tokens[tokenGive][user] = safeSub(tokens[tokenGive][user],safeMul(amountGive,amount) / amountGet) ()\n\t- tokens[tokenGive][msg.sender] = safeAdd(tokens[tokenGive][msg.sender],safeMul(amountGive,amount) / amountGet) ()\n",
+        "markdown": "Reentrancy in [BitDex.tradeBalances(address,uint256,address,uint256,address,uint256)]():\n\tExternal calls:\n\t- [accountLevel = AccountLevels(accountLevelsAddr).accountLevel(user)]()\n\tState variables written after the call(s):\n\t- [tokens[tokenGet][msg.sender] = safeSub(tokens[tokenGet][msg.sender],safeAdd(amount,feeTakeXfer))]()\n\t- [tokens[tokenGet][user] = safeAdd(tokens[tokenGet][user],safeSub(safeAdd(amount,feeRebateXfer),feeMakeXfer))]()\n\t- [tokens[tokenGet][feeAccount] = safeAdd(tokens[tokenGet][feeAccount],safeSub(safeAdd(feeMakeXfer,feeTakeXfer),feeRebateXfer))]()\n\t- [tokens[tokenGive][user] = safeSub(tokens[tokenGive][user],safeMul(amountGive,amount) / amountGet)]()\n\t- [tokens[tokenGive][msg.sender] = safeAdd(tokens[tokenGive][msg.sender],safeMul(amountGive,amount) / amountGet)]()\n",
+        "first_markdown_element": "",
+        "id": "52e4358ccc7000274f5a1d75a81d671849fd06c0911dee696376e549ac0a212b",
+        "check": "reentrancy-benign",
+        "impact": "Low",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "depositToken",
+            "source_mapping": {
+              "start": 8652,
+              "length": 427,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "BitDex",
+                "source_mapping": {
+                  "start": 5516,
+                  "length": 8249,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "depositToken(address,uint256)"
+            }
+          },
+          {
+            "type": "node",
+            "name": "! Token(token).transferFrom(msg.sender,this,amount)",
+            "source_mapping": {
+              "start": 8869,
+              "length": 52,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "depositToken",
+                "source_mapping": {
+                  "start": 8652,
+                  "length": 427,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "BitDex",
+                    "source_mapping": {
+                      "start": 5516,
+                      "length": 8249,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "depositToken(address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "external_calls"
+            }
+          },
+          {
+            "type": "node",
+            "name": "! Token(token).transferFrom(msg.sender,this,amount)",
+            "source_mapping": {
+              "start": 8869,
+              "length": 52,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "depositToken",
+                "source_mapping": {
+                  "start": 8652,
+                  "length": 427,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "BitDex",
+                    "source_mapping": {
+                      "start": 5516,
+                      "length": 8249,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "depositToken(address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "external_calls_sending_eth"
+            }
+          },
+          {
+            "type": "node",
+            "name": "tokens[token][msg.sender] = safeAdd(tokens[token][msg.sender],amount)",
+            "source_mapping": {
+              "start": 8935,
+              "length": 70,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "depositToken",
+                "source_mapping": {
+                  "start": 8652,
+                  "length": 427,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "BitDex",
+                    "source_mapping": {
+                      "start": 5516,
+                      "length": 8249,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "depositToken(address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "variables_written",
+              "variable_name": "tokens"
+            }
+          }
+        ],
+        "description": "Reentrancy in BitDex.depositToken(address,uint256) ():\n\tExternal calls:\n\t- ! Token(token).transferFrom(msg.sender,this,amount) ()\n\tState variables written after the call(s):\n\t- tokens[token][msg.sender] = safeAdd(tokens[token][msg.sender],amount) ()\n",
+        "markdown": "Reentrancy in [BitDex.depositToken(address,uint256)]():\n\tExternal calls:\n\t- [! Token(token).transferFrom(msg.sender,this,amount)]()\n\tState variables written after the call(s):\n\t- [tokens[token][msg.sender] = safeAdd(tokens[token][msg.sender],amount)]()\n",
+        "first_markdown_element": "",
+        "id": "bea3a09717f6a5df9a7ea15a25311e0055f705a298ca84e19dab56c84f3d2e6e",
+        "check": "reentrancy-benign",
+        "impact": "Low",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "withdrawToken",
+            "source_mapping": {
+              "start": 9085,
+              "length": 341,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "BitDex",
+                "source_mapping": {
+                  "start": 5516,
+                  "length": 8249,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "withdrawToken(address,uint256)"
+            }
+          },
+          {
+            "type": "node",
+            "name": "! Token(token).transfer(msg.sender,amount)",
+            "source_mapping": {
+              "start": 9302,
+              "length": 42,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "withdrawToken",
+                "source_mapping": {
+                  "start": 9085,
+                  "length": 341,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "BitDex",
+                    "source_mapping": {
+                      "start": 5516,
+                      "length": 8249,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "withdrawToken(address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "external_calls"
+            }
+          },
+          {
+            "type": "node",
+            "name": "Withdraw(token,msg.sender,amount,tokens[token][msg.sender])",
+            "source_mapping": {
+              "start": 9358,
+              "length": 62,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "withdrawToken",
+                "source_mapping": {
+                  "start": 9085,
+                  "length": 341,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "BitDex",
+                    "source_mapping": {
+                      "start": 5516,
+                      "length": 8249,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "withdrawToken(address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "event"
+            }
+          }
+        ],
+        "description": "Reentrancy in BitDex.withdrawToken(address,uint256) ():\n\tExternal calls:\n\t- ! Token(token).transfer(msg.sender,amount) ()\n\tEvent emitted after the call(s):\n\t- Withdraw(token,msg.sender,amount,tokens[token][msg.sender]) ()\n",
+        "markdown": "Reentrancy in [BitDex.withdrawToken(address,uint256)]():\n\tExternal calls:\n\t- [! Token(token).transfer(msg.sender,amount)]()\n\tEvent emitted after the call(s):\n\t- [Withdraw(token,msg.sender,amount,tokens[token][msg.sender])]()\n",
+        "first_markdown_element": "",
+        "id": "07439df7d80516fc4f21731a319e7c434a25b2ef4d3bc45b63312fbfa411c8f6",
+        "check": "reentrancy-events",
+        "impact": "Low",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "depositToken",
+            "source_mapping": {
+              "start": 8652,
+              "length": 427,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "BitDex",
+                "source_mapping": {
+                  "start": 5516,
+                  "length": 8249,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "depositToken(address,uint256)"
+            }
+          },
+          {
+            "type": "node",
+            "name": "! Token(token).transferFrom(msg.sender,this,amount)",
+            "source_mapping": {
+              "start": 8869,
+              "length": 52,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "depositToken",
+                "source_mapping": {
+                  "start": 8652,
+                  "length": 427,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "BitDex",
+                    "source_mapping": {
+                      "start": 5516,
+                      "length": 8249,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "depositToken(address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "external_calls"
+            }
+          },
+          {
+            "type": "node",
+            "name": "Deposit(token,msg.sender,amount,tokens[token][msg.sender])",
+            "source_mapping": {
+              "start": 9012,
+              "length": 61,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "depositToken",
+                "source_mapping": {
+                  "start": 8652,
+                  "length": 427,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "BitDex",
+                    "source_mapping": {
+                      "start": 5516,
+                      "length": 8249,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "depositToken(address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "event"
+            }
+          }
+        ],
+        "description": "Reentrancy in BitDex.depositToken(address,uint256) ():\n\tExternal calls:\n\t- ! Token(token).transferFrom(msg.sender,this,amount) ()\n\tEvent emitted after the call(s):\n\t- Deposit(token,msg.sender,amount,tokens[token][msg.sender]) ()\n",
+        "markdown": "Reentrancy in [BitDex.depositToken(address,uint256)]():\n\tExternal calls:\n\t- [! Token(token).transferFrom(msg.sender,this,amount)]()\n\tEvent emitted after the call(s):\n\t- [Deposit(token,msg.sender,amount,tokens[token][msg.sender])]()\n",
+        "first_markdown_element": "",
+        "id": "c5fbd58a2e08c03efc6c54982349265add09985711e8f464e085d2617fc4e78f",
+        "check": "reentrancy-events",
+        "impact": "Low",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "trade",
+            "source_mapping": {
+              "start": 9888,
+              "length": 773,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "BitDex",
+                "source_mapping": {
+                  "start": 5516,
+                  "length": 8249,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "trade(address,uint256,address,uint256,uint256,uint256,address,uint8,bytes32,bytes32,uint256)"
+            }
+          },
+          {
+            "type": "node",
+            "name": "tradeBalances(tokenGet,amountGet,tokenGive,amountGive,user,amount)",
+            "source_mapping": {
+              "start": 10421,
+              "length": 71,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "trade",
+                "source_mapping": {
+                  "start": 9888,
+                  "length": 773,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "BitDex",
+                    "source_mapping": {
+                      "start": 5516,
+                      "length": 8249,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "trade(address,uint256,address,uint256,uint256,uint256,address,uint8,bytes32,bytes32,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "external_calls"
+            }
+          },
+          {
+            "type": "node",
+            "name": "accountLevel = AccountLevels(accountLevelsAddr).accountLevel(user)",
+            "source_mapping": {
+              "start": 10994,
+              "length": 71,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "tradeBalances",
+                "source_mapping": {
+                  "start": 10667,
+                  "length": 1132,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "BitDex",
+                    "source_mapping": {
+                      "start": 5516,
+                      "length": 8249,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "tradeBalances(address,uint256,address,uint256,address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "external_calls_sending_eth"
+            }
+          },
+          {
+            "type": "node",
+            "name": "Trade(tokenGet,amount,tokenGive,amountGive * amount / amountGet,user,msg.sender)",
+            "source_mapping": {
+              "start": 10570,
+              "length": 85,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "trade",
+                "source_mapping": {
+                  "start": 9888,
+                  "length": 773,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "BitDex",
+                    "source_mapping": {
+                      "start": 5516,
+                      "length": 8249,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "trade(address,uint256,address,uint256,uint256,uint256,address,uint8,bytes32,bytes32,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "event"
+            }
+          }
+        ],
+        "description": "Reentrancy in BitDex.trade(address,uint256,address,uint256,uint256,uint256,address,uint8,bytes32,bytes32,uint256) ():\n\tExternal calls:\n\t- tradeBalances(tokenGet,amountGet,tokenGive,amountGive,user,amount) ()\n\t\t- accountLevel = AccountLevels(accountLevelsAddr).accountLevel(user) ()\n\tEvent emitted after the call(s):\n\t- Trade(tokenGet,amount,tokenGive,amountGive * amount / amountGet,user,msg.sender) ()\n",
+        "markdown": "Reentrancy in [BitDex.trade(address,uint256,address,uint256,uint256,uint256,address,uint8,bytes32,bytes32,uint256)]():\n\tExternal calls:\n\t- [tradeBalances(tokenGet,amountGet,tokenGive,amountGive,user,amount)]()\n\t\t- [accountLevel = AccountLevels(accountLevelsAddr).accountLevel(user)]()\n\tEvent emitted after the call(s):\n\t- [Trade(tokenGet,amount,tokenGive,amountGive * amount / amountGet,user,msg.sender)]()\n",
+        "first_markdown_element": "",
+        "id": "ce5d0b8a035f8bcd352f82c36d7851553a75bbf6c04ca94f0fda6dc1c6396c1e",
+        "check": "reentrancy-events",
+        "impact": "Low",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "withdraw",
+            "source_mapping": {
+              "start": 8381,
+              "length": 265,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "BitDex",
+                "source_mapping": {
+                  "start": 5516,
+                  "length": 8249,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "withdraw(uint256)"
+            }
+          },
+          {
+            "type": "node",
+            "name": "! msg.sender.call.value(amount)()",
+            "source_mapping": {
+              "start": 8540,
+              "length": 32,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "withdraw",
+                "source_mapping": {
+                  "start": 8381,
+                  "length": 265,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "BitDex",
+                    "source_mapping": {
+                      "start": 5516,
+                      "length": 8249,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "withdraw(uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "external_calls"
+            }
+          },
+          {
+            "type": "node",
+            "name": "Withdraw(0,msg.sender,amount,tokens[0][msg.sender])",
+            "source_mapping": {
+              "start": 8586,
+              "length": 54,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "withdraw",
+                "source_mapping": {
+                  "start": 8381,
+                  "length": 265,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "BitDex",
+                    "source_mapping": {
+                      "start": 5516,
+                      "length": 8249,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "withdraw(uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "event"
+            }
+          }
+        ],
+        "description": "Reentrancy in BitDex.withdraw(uint256) ():\n\tExternal calls:\n\t- ! msg.sender.call.value(amount)() ()\n\tEvent emitted after the call(s):\n\t- Withdraw(0,msg.sender,amount,tokens[0][msg.sender]) ()\n",
+        "markdown": "Reentrancy in [BitDex.withdraw(uint256)]():\n\tExternal calls:\n\t- [! msg.sender.call.value(amount)()]()\n\tEvent emitted after the call(s):\n\t- [Withdraw(0,msg.sender,amount,tokens[0][msg.sender])]()\n",
+        "first_markdown_element": "",
+        "id": "e6f9c496f03b60beb8c3c20d50a5e88c292babb4d02f2d0b227061afce96de6c",
+        "check": "reentrancy-events",
+        "impact": "Low",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [
+          {
+            "type": "node",
+            "name": "! ((orders[user][hash] || ecrecover(bytes32,uint8,bytes32,bytes32)(sha3()(\u0019Ethereum Signed Message:\n32,hash),v,r,s) == user) && block.number <= expires && safeAdd(orderFills[user][hash],amount) <= amountGet)",
+            "source_mapping": {
+              "start": 10198,
+              "length": 209,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "trade",
+                "source_mapping": {
+                  "start": 9888,
+                  "length": 773,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "BitDex",
+                    "source_mapping": {
+                      "start": 5516,
+                      "length": 8249,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "trade(address,uint256,address,uint256,uint256,uint256,address,uint8,bytes32,bytes32,uint256)"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Deprecated standard detected ! ((orders[user][hash] || ecrecover(bytes32,uint8,bytes32,bytes32)(sha3()(\u0019Ethereum Signed Message:\n32,hash),v,r,s) == user) && block.number <= expires && safeAdd(orderFills[user][hash],amount) <= amountGet) ():\n\t- Usage of \"sha3()\" should be replaced with \"keccak256()\"\n",
+        "markdown": "Deprecated standard detected [! ((orders[user][hash] || ecrecover(bytes32,uint8,bytes32,bytes32)(sha3()(\u0019Ethereum Signed Message:\n32,hash),v,r,s) == user) && block.number <= expires && safeAdd(orderFills[user][hash],amount) <= amountGet)]():\n\t- Usage of \"sha3()\" should be replaced with \"keccak256()\"\n",
+        "first_markdown_element": "",
+        "id": "11ee83b404d9fda19663a45448fb37f09cb066eabbe3b8861eb54170d9d77e0a",
+        "check": "deprecated-standards",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "node",
+            "name": "! ((orders[user][hash] || ecrecover(bytes32,uint8,bytes32,bytes32)(sha3()(\u0019Ethereum Signed Message:\n32,hash),v,r,s) == user) && block.number <= expires)",
+            "source_mapping": {
+              "start": 12528,
+              "length": 146,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "availableVolume",
+                "source_mapping": {
+                  "start": 12234,
+                  "length": 679,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "BitDex",
+                    "source_mapping": {
+                      "start": 5516,
+                      "length": 8249,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "availableVolume(address,uint256,address,uint256,uint256,uint256,address,uint8,bytes32,bytes32)"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Deprecated standard detected ! ((orders[user][hash] || ecrecover(bytes32,uint8,bytes32,bytes32)(sha3()(\u0019Ethereum Signed Message:\n32,hash),v,r,s) == user) && block.number <= expires) ():\n\t- Usage of \"sha3()\" should be replaced with \"keccak256()\"\n",
+        "markdown": "Deprecated standard detected [! ((orders[user][hash] || ecrecover(bytes32,uint8,bytes32,bytes32)(sha3()(\u0019Ethereum Signed Message:\n32,hash),v,r,s) == user) && block.number <= expires)]():\n\t- Usage of \"sha3()\" should be replaced with \"keccak256()\"\n",
+        "first_markdown_element": "",
+        "id": "984592907aa6ffe582150d40e299e7fe3087e489f580671ea26fa7bdca33e35a",
+        "check": "deprecated-standards",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "node",
+            "name": "! (orders[msg.sender][hash] || ecrecover(bytes32,uint8,bytes32,bytes32)(sha3()(\u0019Ethereum Signed Message:\n32,hash),v,r,s) == msg.sender)",
+            "source_mapping": {
+              "start": 13500,
+              "length": 108,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "cancelOrder",
+                "source_mapping": {
+                  "start": 13247,
+                  "length": 515,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "BitDex",
+                    "source_mapping": {
+                      "start": 5516,
+                      "length": 8249,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "cancelOrder(address,uint256,address,uint256,uint256,uint256,uint8,bytes32,bytes32)"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Deprecated standard detected ! (orders[msg.sender][hash] || ecrecover(bytes32,uint8,bytes32,bytes32)(sha3()(\u0019Ethereum Signed Message:\n32,hash),v,r,s) == msg.sender) ():\n\t- Usage of \"sha3()\" should be replaced with \"keccak256()\"\n",
+        "markdown": "Deprecated standard detected [! (orders[msg.sender][hash] || ecrecover(bytes32,uint8,bytes32,bytes32)(sha3()(\u0019Ethereum Signed Message:\n32,hash),v,r,s) == msg.sender)]():\n\t- Usage of \"sha3()\" should be replaced with \"keccak256()\"\n",
+        "first_markdown_element": "",
+        "id": "a50a813d5112ab1747bf566104a82217d436bd2f0cee2e0834504836c7a43f5f",
+        "check": "deprecated-standards",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "node",
+            "name": "",
+            "source_mapping": {
+              "start": 495,
+              "length": 5,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "assert",
+                "source_mapping": {
+                  "start": 431,
+                  "length": 75,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "SafeMath",
+                    "source_mapping": {
+                      "start": 27,
+                      "length": 482,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "assert(bool)"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Deprecated standard detected THROW ():\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+        "markdown": "Deprecated standard detected [THROW]():\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+        "first_markdown_element": "",
+        "id": "f5556cf1c70b64b9e4b1fc32044dd970b5f2c8b9fc21b7971fda01971033f2d5",
+        "check": "deprecated-standards",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [],
+        "description": "solc-0.4.9 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.\n",
+        "markdown": "solc-0.4.9 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.\n",
+        "first_markdown_element": "",
+        "id": "2d3125ec07b7daa2630c1894a1788429465b9573aa1ae5ce425701b9cfc4f902",
+        "check": "solc-version",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "pragma",
+            "name": "^0.4.9",
+            "source_mapping": {
+              "start": 0,
+              "length": 23,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "directive": [
+                "solidity",
+                "^",
+                "0.4",
+                ".9"
+              ]
+            }
+          }
+        ],
+        "description": "Version constraint ^0.4.9 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- DirtyBytesArrayToStorage\n\t- KeccakCaching\n\t- EmptyByteArrayCopy\n\t- DynamicArrayCleanup\n\t- ImplicitConstructorCallvalueCheck\n\t- TupleAssignmentMultiStackSlotComponents\n\t- MemoryArrayCreationOverflow\n\t- privateCanBeOverridden\n\t- SignedArrayStorageCopy\n\t- UninitializedFunctionPointerInConstructor_0.4.x\n\t- IncorrectEventSignatureInLibraries_0.4.x\n\t- ExpExponentCleanup\n\t- NestedArrayFunctionCallDecoder\n\t- ZeroFunctionSelector\n\t- DelegateCallReturnValue\n\t- ECRecoverMalformedInput\n\t- SkipEmptyStringLiteral\n\t- ConstantOptimizerSubtraction.\nIt is used by:\n\t- ^0.4.9 ()\n",
+        "markdown": "Version constraint ^0.4.9 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- DirtyBytesArrayToStorage\n\t- KeccakCaching\n\t- EmptyByteArrayCopy\n\t- DynamicArrayCleanup\n\t- ImplicitConstructorCallvalueCheck\n\t- TupleAssignmentMultiStackSlotComponents\n\t- MemoryArrayCreationOverflow\n\t- privateCanBeOverridden\n\t- SignedArrayStorageCopy\n\t- UninitializedFunctionPointerInConstructor_0.4.x\n\t- IncorrectEventSignatureInLibraries_0.4.x\n\t- ExpExponentCleanup\n\t- NestedArrayFunctionCallDecoder\n\t- ZeroFunctionSelector\n\t- DelegateCallReturnValue\n\t- ECRecoverMalformedInput\n\t- SkipEmptyStringLiteral\n\t- ConstantOptimizerSubtraction.\nIt is used by:\n\t- [^0.4.9]()\n",
+        "first_markdown_element": "",
+        "id": "abcb50a8f2deb4c0ecfb342119a689c1d0ce7330ad7d137c12d454acc503893c",
+        "check": "solc-version",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "withdraw",
+            "source_mapping": {
+              "start": 8381,
+              "length": 265,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "BitDex",
+                "source_mapping": {
+                  "start": 5516,
+                  "length": 8249,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "withdraw(uint256)"
+            }
+          },
+          {
+            "type": "node",
+            "name": "! msg.sender.call.value(amount)()",
+            "source_mapping": {
+              "start": 8540,
+              "length": 32,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "withdraw",
+                "source_mapping": {
+                  "start": 8381,
+                  "length": 265,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "BitDex",
+                    "source_mapping": {
+                      "start": 5516,
+                      "length": 8249,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "withdraw(uint256)"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Low level call in BitDex.withdraw(uint256) ():\n\t- ! msg.sender.call.value(amount)() ()\n",
+        "markdown": "Low level call in [BitDex.withdraw(uint256)]():\n\t- [! msg.sender.call.value(amount)()]()\n",
+        "first_markdown_element": "",
+        "id": "b69b20a4cd8fa6815094bb10aef52a524438ded2a5c2385f329a833a2eb3e52a",
+        "check": "low-level-calls",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_spender",
+            "source_mapping": {
+              "start": 4004,
+              "length": 16,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "allowance",
+                "source_mapping": {
+                  "start": 3969,
+                  "length": 135,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "StandardToken",
+                    "source_mapping": {
+                      "start": 2380,
+                      "length": 1867,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "allowance(address,address)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter StandardToken.allowance(address,address)._spender () is not in mixedCase\n",
+        "markdown": "Parameter [StandardToken.allowance(address,address)._spender]() is not in mixedCase\n",
+        "first_markdown_element": "",
+        "id": "1dfe198c2dca57c55bebb6453f93f0f0fc9b1e67fc091a4bcfa314300d9a90a6",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_value",
+            "source_mapping": {
+              "start": 3810,
+              "length": 14,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "approve",
+                "source_mapping": {
+                  "start": 3775,
+                  "length": 188,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "StandardToken",
+                    "source_mapping": {
+                      "start": 2380,
+                      "length": 1867,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "approve(address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter StandardToken.approve(address,uint256)._value () is not in mixedCase\n",
+        "markdown": "Parameter [StandardToken.approve(address,uint256)._value]() is not in mixedCase\n",
+        "first_markdown_element": "",
+        "id": "1fa3f5bb048f68171399fc7d36b8e34d891cac5b9e22c65b41391d16050e7922",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_owner",
+            "source_mapping": {
+              "start": 3988,
+              "length": 14,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "allowance",
+                "source_mapping": {
+                  "start": 3969,
+                  "length": 135,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "StandardToken",
+                    "source_mapping": {
+                      "start": 2380,
+                      "length": 1867,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "allowance(address,address)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter StandardToken.allowance(address,address)._owner () is not in mixedCase\n",
+        "markdown": "Parameter [StandardToken.allowance(address,address)._owner]() is not in mixedCase\n",
+        "first_markdown_element": "",
+        "id": "317c0e860cb8a5338f5dfaf51d2249bbf1eb4e87ed588c7a888b367544a25740",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_value",
+            "source_mapping": {
+              "start": 2450,
+              "length": 14,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "transfer",
+                "source_mapping": {
+                  "start": 2419,
+                  "length": 619,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "StandardToken",
+                    "source_mapping": {
+                      "start": 2380,
+                      "length": 1867,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "transfer(address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter StandardToken.transfer(address,uint256)._value () is not in mixedCase\n",
+        "markdown": "Parameter [StandardToken.transfer(address,uint256)._value]() is not in mixedCase\n",
+        "first_markdown_element": "",
+        "id": "31af0fe2efb3149a68bb2fd105d1476f896dc61d738c336bdf7e41a57feb1479",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_to",
+            "source_mapping": {
+              "start": 2437,
+              "length": 11,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "transfer",
+                "source_mapping": {
+                  "start": 2419,
+                  "length": 619,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "StandardToken",
+                    "source_mapping": {
+                      "start": 2380,
+                      "length": 1867,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "transfer(address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter StandardToken.transfer(address,uint256)._to () is not in mixedCase\n",
+        "markdown": "Parameter [StandardToken.transfer(address,uint256)._to]() is not in mixedCase\n",
+        "first_markdown_element": "",
+        "id": "3c14db6b6c1ab6ca2562962944c2cf0cfbb75024bfc8414a346a102288fb8c42",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_from",
+            "source_mapping": {
+              "start": 3066,
+              "length": 13,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "transferFrom",
+                "source_mapping": {
+                  "start": 3044,
+                  "length": 613,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "StandardToken",
+                    "source_mapping": {
+                      "start": 2380,
+                      "length": 1867,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "transferFrom(address,address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter StandardToken.transferFrom(address,address,uint256)._from () is not in mixedCase\n",
+        "markdown": "Parameter [StandardToken.transferFrom(address,address,uint256)._from]() is not in mixedCase\n",
+        "first_markdown_element": "",
+        "id": "4dd3d547c81f2913d544b98793a5c021fe472f59b45114f773a817330cf34bfc",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_to",
+            "source_mapping": {
+              "start": 3081,
+              "length": 11,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "transferFrom",
+                "source_mapping": {
+                  "start": 3044,
+                  "length": 613,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "StandardToken",
+                    "source_mapping": {
+                      "start": 2380,
+                      "length": 1867,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "transferFrom(address,address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter StandardToken.transferFrom(address,address,uint256)._to () is not in mixedCase\n",
+        "markdown": "Parameter [StandardToken.transferFrom(address,address,uint256)._to]() is not in mixedCase\n",
+        "first_markdown_element": "",
+        "id": "6150a62fc365f4a97437d70d15bfe1ca02b48e7695b0f9d432eb82ac34404d51",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_spender",
+            "source_mapping": {
+              "start": 3792,
+              "length": 16,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "approve",
+                "source_mapping": {
+                  "start": 3775,
+                  "length": 188,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "StandardToken",
+                    "source_mapping": {
+                      "start": 2380,
+                      "length": 1867,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "approve(address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter StandardToken.approve(address,uint256)._spender () is not in mixedCase\n",
+        "markdown": "Parameter [StandardToken.approve(address,uint256)._spender]() is not in mixedCase\n",
+        "first_markdown_element": "",
+        "id": "70a9b4c8c2d4dca0d12170ecce3b3b3e56f16721a930795c44e5e7b45a10a5c1",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_value",
+            "source_mapping": {
+              "start": 3094,
+              "length": 14,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "transferFrom",
+                "source_mapping": {
+                  "start": 3044,
+                  "length": 613,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "StandardToken",
+                    "source_mapping": {
+                      "start": 2380,
+                      "length": 1867,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "transferFrom(address,address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter StandardToken.transferFrom(address,address,uint256)._value () is not in mixedCase\n",
+        "markdown": "Parameter [StandardToken.transferFrom(address,address,uint256)._value]() is not in mixedCase\n",
+        "first_markdown_element": "",
+        "id": "e001d55ad5c9886aa799c28ded83887106a3cdbd6a17edfcc0db2c6ef55090d3",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_owner",
+            "source_mapping": {
+              "start": 3682,
+              "length": 14,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "balanceOf",
+                "source_mapping": {
+                  "start": 3663,
+                  "length": 106,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "StandardToken",
+                    "source_mapping": {
+                      "start": 2380,
+                      "length": 1867,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "balanceOf(address)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter StandardToken.balanceOf(address)._owner () is not in mixedCase\n",
+        "markdown": "Parameter [StandardToken.balanceOf(address)._owner]() is not in mixedCase\n",
+        "first_markdown_element": "",
+        "id": "e2c602baa3f6215dc1bf4b8f0abe23563363fc889add3f48a208eb560cfca631",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "event",
+            "name": "Approval",
+            "source_mapping": {
+              "start": 2242,
+              "length": 81,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "Token",
+                "source_mapping": {
+                  "start": 513,
+                  "length": 1863,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "Approval(address,address,uint256)"
+            },
+            "additional_fields": {
+              "parameter_name": "_spender"
+            }
+          }
+        ],
+        "description": "ERC20 event Token.Approval(address,address,uint256) ()does not index parameter _spender\n",
+        "markdown": "ERC20 event [Token.Approval(address,address,uint256)]()does not index parameter _spender\n",
+        "first_markdown_element": "",
+        "id": "60eadee4ba8ea7a4173bda71355566a785d6e3e794ce35c14210e02db8163ae3",
+        "check": "erc20-indexed",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "event",
+            "name": "Transfer",
+            "source_mapping": {
+              "start": 2163,
+              "length": 75,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "Token",
+                "source_mapping": {
+                  "start": 513,
+                  "length": 1863,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "Transfer(address,address,uint256)"
+            },
+            "additional_fields": {
+              "parameter_name": "_from"
+            }
+          }
+        ],
+        "description": "ERC20 event Token.Transfer(address,address,uint256) ()does not index parameter _from\n",
+        "markdown": "ERC20 event [Token.Transfer(address,address,uint256)]()does not index parameter _from\n",
+        "first_markdown_element": "",
+        "id": "8edea97a430bc547f583e65b2fe832da5c54ad0dd3bb7b8d1c72fd51605bb80c",
+        "check": "erc20-indexed",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "event",
+            "name": "Approval",
+            "source_mapping": {
+              "start": 2242,
+              "length": 81,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "Token",
+                "source_mapping": {
+                  "start": 513,
+                  "length": 1863,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "Approval(address,address,uint256)"
+            },
+            "additional_fields": {
+              "parameter_name": "_owner"
+            }
+          }
+        ],
+        "description": "ERC20 event Token.Approval(address,address,uint256) ()does not index parameter _owner\n",
+        "markdown": "ERC20 event [Token.Approval(address,address,uint256)]()does not index parameter _owner\n",
+        "first_markdown_element": "",
+        "id": "c5dd671e74f7dbb2d7f1820600f151db83c15deba6ee5a83d76b801b3ca43a71",
+        "check": "erc20-indexed",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "event",
+            "name": "Transfer",
+            "source_mapping": {
+              "start": 2163,
+              "length": 75,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "Token",
+                "source_mapping": {
+                  "start": 513,
+                  "length": 1863,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "Transfer(address,address,uint256)"
+            },
+            "additional_fields": {
+              "parameter_name": "_to"
+            }
+          }
+        ],
+        "description": "ERC20 event Token.Transfer(address,address,uint256) ()does not index parameter _to\n",
+        "markdown": "ERC20 event [Token.Transfer(address,address,uint256)]()does not index parameter _to\n",
+        "first_markdown_element": "",
+        "id": "cc771b24d9cc10e71569c6f58a49a7077559412783a14209619bb29c5a5251af",
+        "check": "erc20-indexed",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "event",
+            "name": "Cancel",
+            "source_mapping": {
+              "start": 6541,
+              "length": 154,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "BitDex",
+                "source_mapping": {
+                  "start": 5516,
+                  "length": 8249,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "Cancel(address,uint256,address,uint256,uint256,uint256,address,uint8,bytes32,bytes32)"
+            }
+          }
+        ],
+        "description": "Event BitDex.Cancel(address,uint256,address,uint256,uint256,uint256,address,uint8,bytes32,bytes32) () has address parameters but no indexed parameters\n",
+        "markdown": "Event [BitDex.Cancel(address,uint256,address,uint256,uint256,uint256,address,uint8,bytes32,bytes32)]() has address parameters but no indexed parameters\n",
+        "first_markdown_element": "",
+        "id": "0855bf1952943a6198204233d2f47129981f0e9a97a970974976c56446d9c616",
+        "check": "unindexed-event-address",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "event",
+            "name": "Trade",
+            "source_mapping": {
+              "start": 6699,
+              "length": 109,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "BitDex",
+                "source_mapping": {
+                  "start": 5516,
+                  "length": 8249,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "Trade(address,uint256,address,uint256,address,address)"
+            }
+          }
+        ],
+        "description": "Event BitDex.Trade(address,uint256,address,uint256,address,address) () has address parameters but no indexed parameters\n",
+        "markdown": "Event [BitDex.Trade(address,uint256,address,uint256,address,address)]() has address parameters but no indexed parameters\n",
+        "first_markdown_element": "",
+        "id": "14d1bb8934afb5454991d84168a319371447ea41635cc6c5d4211141ba4aa452",
+        "check": "unindexed-event-address",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "event",
+            "name": "Transfer",
+            "source_mapping": {
+              "start": 2163,
+              "length": 75,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "Token",
+                "source_mapping": {
+                  "start": 513,
+                  "length": 1863,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "Transfer(address,address,uint256)"
+            }
+          }
+        ],
+        "description": "Event Token.Transfer(address,address,uint256) () has address parameters but no indexed parameters\n",
+        "markdown": "Event [Token.Transfer(address,address,uint256)]() has address parameters but no indexed parameters\n",
+        "first_markdown_element": "",
+        "id": "5cef4336c899e6ad281418b17ca5d2cecabb3290163d955985cc404a484e2418",
+        "check": "unindexed-event-address",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "event",
+            "name": "Withdraw",
+            "source_mapping": {
+              "start": 6886,
+              "length": 71,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "BitDex",
+                "source_mapping": {
+                  "start": 5516,
+                  "length": 8249,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "Withdraw(address,address,uint256,uint256)"
+            }
+          }
+        ],
+        "description": "Event BitDex.Withdraw(address,address,uint256,uint256) () has address parameters but no indexed parameters\n",
+        "markdown": "Event [BitDex.Withdraw(address,address,uint256,uint256)]() has address parameters but no indexed parameters\n",
+        "first_markdown_element": "",
+        "id": "9365a45abde44c116bcfb56965fd8373b4462f6d8145c5ea0ebcb28f5fc93441",
+        "check": "unindexed-event-address",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "event",
+            "name": "Order",
+            "source_mapping": {
+              "start": 6415,
+              "length": 122,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "BitDex",
+                "source_mapping": {
+                  "start": 5516,
+                  "length": 8249,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "Order(address,uint256,address,uint256,uint256,uint256,address)"
+            }
+          }
+        ],
+        "description": "Event BitDex.Order(address,uint256,address,uint256,uint256,uint256,address) () has address parameters but no indexed parameters\n",
+        "markdown": "Event [BitDex.Order(address,uint256,address,uint256,uint256,uint256,address)]() has address parameters but no indexed parameters\n",
+        "first_markdown_element": "",
+        "id": "d7847393bc53e5f33c4e65fc8e5726d0dc261534655029a8463d8c1b1ef9a1b4",
+        "check": "unindexed-event-address",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "event",
+            "name": "Deposit",
+            "source_mapping": {
+              "start": 6812,
+              "length": 70,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "BitDex",
+                "source_mapping": {
+                  "start": 5516,
+                  "length": 8249,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "Deposit(address,address,uint256,uint256)"
+            }
+          }
+        ],
+        "description": "Event BitDex.Deposit(address,address,uint256,uint256) () has address parameters but no indexed parameters\n",
+        "markdown": "Event [BitDex.Deposit(address,address,uint256,uint256)]() has address parameters but no indexed parameters\n",
+        "first_markdown_element": "",
+        "id": "dffce223cabb4be54b038e3ac3ae94969924c49144eca2e7b5514e0404d19c46",
+        "check": "unindexed-event-address",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "event",
+            "name": "Approval",
+            "source_mapping": {
+              "start": 2242,
+              "length": 81,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "Token",
+                "source_mapping": {
+                  "start": 513,
+                  "length": 1863,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "Approval(address,address,uint256)"
+            }
+          }
+        ],
+        "description": "Event Token.Approval(address,address,uint256) () has address parameters but no indexed parameters\n",
+        "markdown": "Event [Token.Approval(address,address,uint256)]() has address parameters but no indexed parameters\n",
+        "first_markdown_element": "",
+        "id": "ef5c4e2471d2393ba22a2c11b0ffd12f62376bb90d560d59539981712c66eb14",
+        "check": "unindexed-event-address",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "decimals",
+            "source_mapping": {
+              "start": 2329,
+              "length": 20,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "Token",
+                "source_mapping": {
+                  "start": 513,
+                  "length": 1863,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              }
+            }
+          },
+          {
+            "type": "contract",
+            "name": "ReserveToken",
+            "source_mapping": {
+              "start": 4251,
+              "length": 592,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            }
+          }
+        ],
+        "description": "Token.decimals () is never used in ReserveToken ()\n",
+        "markdown": "[Token.decimals]() is never used in [ReserveToken]()\n",
+        "first_markdown_element": "",
+        "id": "35532634864d37ce2b7b65eb85f6b4e72c0ab43374650ee6ef952e820cb00d69",
+        "check": "unused-state",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "name",
+            "source_mapping": {
+              "start": 2354,
+              "length": 18,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "Token",
+                "source_mapping": {
+                  "start": 513,
+                  "length": 1863,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              }
+            }
+          },
+          {
+            "type": "contract",
+            "name": "ReserveToken",
+            "source_mapping": {
+              "start": 4251,
+              "length": 592,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            }
+          }
+        ],
+        "description": "Token.name () is never used in ReserveToken ()\n",
+        "markdown": "[Token.name]() is never used in [ReserveToken]()\n",
+        "first_markdown_element": "",
+        "id": "5c5f1c8cf3d703f259d640d0d03413c249f4e6888b9dd6223e8586759361894e",
+        "check": "unused-state",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "decimals",
+            "source_mapping": {
+              "start": 2329,
+              "length": 20,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "Token",
+                "source_mapping": {
+                  "start": 513,
+                  "length": 1863,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              }
+            }
+          }
+        ],
+        "description": "Token.decimals () should be constant \n",
+        "markdown": "[Token.decimals]() should be constant \n",
+        "first_markdown_element": "",
+        "id": "65898dd75607a25790052ea2a483eb672a6c03c708b872b018ffca3b400812d2",
+        "check": "constable-states",
+        "impact": "Optimization",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "name",
+            "source_mapping": {
+              "start": 2354,
+              "length": 18,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "Token",
+                "source_mapping": {
+                  "start": 513,
+                  "length": 1863,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              }
+            }
+          }
+        ],
+        "description": "Token.name () should be constant \n",
+        "markdown": "[Token.name]() should be constant \n",
+        "first_markdown_element": "",
+        "id": "bfb23c167737cbdee9fbed9faf24b3949b4e43c218cedc0e37f7a1de4ecb8b84",
+        "check": "constable-states",
+        "impact": "Optimization",
+        "confidence": "High"
+      }
+    ]
+  }
+}

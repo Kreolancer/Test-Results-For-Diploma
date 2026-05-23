@@ -1,0 +1,12 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_224_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+
+Detector: divide-before-multiply
+SelfPayPreSale.computeTokenWithBonus(uint256,address) (contracts/safe/safe_224_SAFE.sol#245-266) performs a multiplication on the result of a division:
+	- tokens_ = tokens_.mul(175).div(100) (contracts/safe/safe_224_SAFE.sol#258)
+	- tokens_ = tokens_.mul(160).div(100) (contracts/safe/safe_224_SAFE.sol#262)
+SelfPayPreSale.computeTokenWithBonus(uint256,address) (contracts/safe/safe_224_SAFE.sol#245-266) performs a multiplication on the result of a division:
+	- tokens_ = tokens_.mul(200).div(100) (contracts/safe/safe_224_SAFE.sol#254)
+	- tokens_ = tokens_.mul(175).div(100) (contracts/safe/safe_224_SAFE.sol#258)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#divide-before-multiply
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_224_SAFE.sol analyzed (13 contracts with 2 detectors), 2 result(s) found

@@ -1,0 +1,20 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_145_SC09.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_145_SC09.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_145_SC09.sol:334:10: Warning: Unused local variable.
+        (bool isSet, string memory title, uint possibl ...
+         ^--------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_145_SC09.sol:334:22: Warning: Unused local variable.
+        (bool isSet, string memory title, uint possibleResultsCount, uint   ...
+                     ^-----------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_145_SC09.sol:334:70: Warning: Unused local variable.
+ ...  title, uint possibleResultsCount, uint  eventOutputType, string memory announcement, uint  ...
+                                        ^-------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_145_SC09.sol:334:93: Warning: Unused local variable.
+ ... sultsCount, uint  eventOutputType, string memory announcement, uint decimals) = OracleContract(o ...
+                                        ^------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_145_SC09.sol:334:121: Warning: Unused local variable.
+ ... tType, string memory announcement, uint decimals) = OracleContract(oracleAddress).e ...
+                                        ^-----------^
+
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_145_SC09.sol analyzed (5 contracts with 2 detectors), 0 result(s) found

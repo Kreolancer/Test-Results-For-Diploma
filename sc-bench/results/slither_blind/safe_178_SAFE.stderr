@@ -1,0 +1,221 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_178_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_178_SAFE.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_178_SAFE.sol:16:3: Warning: Defining constructors as functions with the same name as the contract is deprecated. Use "constructor(...) { ... }" instead.
+  function Ownable() public {
+  ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_178_SAFE.sol:321:3: Warning: Defining constructors as functions with the same name as the contract is deprecated. Use "constructor(...) { ... }" instead.
+  function ReporterTokenSale() public {
+  ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_178_SAFE.sol:110:5: Warning: Invoking events without "emit" prefix is deprecated.
+    Transfer(msg.sender, _to, _value);
+    ^-------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_178_SAFE.sol:146:5: Warning: Invoking events without "emit" prefix is deprecated.
+    Transfer(_from, _to, _value);
+    ^--------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_178_SAFE.sol:164:5: Warning: Invoking events without "emit" prefix is deprecated.
+    Approval(msg.sender, _spender, _value);
+    ^------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_178_SAFE.sol:206:5: Warning: Invoking events without "emit" prefix is deprecated.
+    Transfer(0X0, _to, _amount);
+    ^-------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_178_SAFE.sol:216:5: Warning: Invoking events without "emit" prefix is deprecated.
+    MintFinished();
+    ^------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_178_SAFE.sol:426:5: Warning: Invoking events without "emit" prefix is deprecated.
+    TokenPurchase(beneficiary, amount, _tokens);
+    ^-----------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_178_SAFE.sol:448:5: Warning: Invoking events without "emit" prefix is deprecated.
+    TokenPurchase(beneficiary, amount, tokens);
+    ^----------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_178_SAFE.sol:449:23: Warning: Using contract member "balance" inherited from the address type is deprecated. Convert the contract to "address" type to access the member, for example use "address(contract).balance" instead.
+    multiSig.transfer(this.balance); // better in case any other ether ends up here
+                      ^----------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_178_SAFE.sol:464:5: Warning: Invoking events without "emit" prefix is deprecated.
+    SaleClosed();
+    ^----------^
+
+
+Detector: arbitrary-send-eth
+ReporterTokenSale.buyTokens(address,uint256) (contracts/safe/safe_178_SAFE.sol#430-450) sends eth to arbitrary user
+	Dangerous calls:
+	- multiSig.transfer(this.balance) (contracts/safe/safe_178_SAFE.sol#449)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#functions-that-send-ether-to-arbitrary-destinations
+
+Detector: unchecked-transfer
+ReporterToken.emergencyERC20Drain(ERC20,uint256) (contracts/safe/safe_178_SAFE.sol#262-264) ignores return value by oddToken.transfer(owner,amount) (contracts/safe/safe_178_SAFE.sol#263)
+ReporterTokenSale.emergencyERC20Drain(ERC20,uint256) (contracts/safe/safe_178_SAFE.sol#472-474) ignores return value by oddToken.transfer(owner,amount) (contracts/safe/safe_178_SAFE.sol#473)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unchecked-transfer
+
+Detector: incorrect-equality
+ReporterTokenSale.buyTokens(address,uint256) (contracts/safe/safe_178_SAFE.sol#430-450) uses a dangerous strict equality:
+	- token.balanceOf(beneficiary) == 0 (contracts/safe/safe_178_SAFE.sol#443)
+ReporterTokenSale.placeTokens(address,uint256) (contracts/safe/safe_178_SAFE.sol#416-427) uses a dangerous strict equality:
+	- token.balanceOf(beneficiary) == 0 (contracts/safe/safe_178_SAFE.sol#421)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dangerous-strict-equalities
+
+Detector: reentrancy-no-eth
+Reentrancy in ReporterTokenSale.buyTokens(address,uint256) (contracts/safe/safe_178_SAFE.sol#430-450):
+	External calls:
+	- token.balanceOf(beneficiary) == 0 (contracts/safe/safe_178_SAFE.sol#443)
+	State variables written after the call(s):
+	- tokenRaised = tokenRaised.add(tokens) (contracts/safe/safe_178_SAFE.sol#446)
+	ReporterTokenSale.tokenRaised (contracts/safe/safe_178_SAFE.sol#298) can be used in cross function reentrancies:
+	- ReporterTokenSale.buyTokens(address,uint256) (contracts/safe/safe_178_SAFE.sol#430-450)
+	- ReporterTokenSale.finishSale() (contracts/safe/safe_178_SAFE.sol#453-465)
+	- ReporterTokenSale.hasEnded() (contracts/safe/safe_178_SAFE.sol#354-360)
+	- ReporterTokenSale.onlyAuthorised() (contracts/safe/safe_178_SAFE.sol#377-384)
+	- ReporterTokenSale.placeTokens(address,uint256) (contracts/safe/safe_178_SAFE.sol#416-427)
+	- ReporterTokenSale.setTier() (contracts/safe/safe_178_SAFE.sol#336-351)
+	- ReporterTokenSale.tokenRaised (contracts/safe/safe_178_SAFE.sol#298)
+Reentrancy in ReporterTokenSale.placeTokens(address,uint256) (contracts/safe/safe_178_SAFE.sol#416-427):
+	External calls:
+	- token.balanceOf(beneficiary) == 0 (contracts/safe/safe_178_SAFE.sol#421)
+	State variables written after the call(s):
+	- tokenRaised = tokenRaised.add(_tokens) (contracts/safe/safe_178_SAFE.sol#424)
+	ReporterTokenSale.tokenRaised (contracts/safe/safe_178_SAFE.sol#298) can be used in cross function reentrancies:
+	- ReporterTokenSale.buyTokens(address,uint256) (contracts/safe/safe_178_SAFE.sol#430-450)
+	- ReporterTokenSale.finishSale() (contracts/safe/safe_178_SAFE.sol#453-465)
+	- ReporterTokenSale.hasEnded() (contracts/safe/safe_178_SAFE.sol#354-360)
+	- ReporterTokenSale.onlyAuthorised() (contracts/safe/safe_178_SAFE.sol#377-384)
+	- ReporterTokenSale.placeTokens(address,uint256) (contracts/safe/safe_178_SAFE.sol#416-427)
+	- ReporterTokenSale.setTier() (contracts/safe/safe_178_SAFE.sol#336-351)
+	- ReporterTokenSale.tokenRaised (contracts/safe/safe_178_SAFE.sol#298)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-2
+
+Detector: unused-return
+ReporterTokenSale.placeTokens(address,uint256) (contracts/safe/safe_178_SAFE.sol#416-427) ignores return value by token.mint(beneficiary,_tokens) (contracts/safe/safe_178_SAFE.sol#425)
+ReporterTokenSale.buyTokens(address,uint256) (contracts/safe/safe_178_SAFE.sol#430-450) ignores return value by token.mint(beneficiary,tokens) (contracts/safe/safe_178_SAFE.sol#447)
+ReporterTokenSale.finishSale() (contracts/safe/safe_178_SAFE.sol#453-465) ignores return value by token.mint(multiSig,unassigned) (contracts/safe/safe_178_SAFE.sol#460)
+ReporterTokenSale.finishSale() (contracts/safe/safe_178_SAFE.sol#453-465) ignores return value by token.finishMinting() (contracts/safe/safe_178_SAFE.sol#462)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unused-return
+
+Detector: events-access
+Ownable.transferOwnership(address) (contracts/safe/safe_178_SAFE.sol#33-37) should emit an event for: 
+	- owner = newOwner (contracts/safe/safe_178_SAFE.sol#35) 
+Ownable.transferOwnership(address) (contracts/safe/safe_178_SAFE.sol#33-37) should emit an event for: 
+	- owner = newOwner (contracts/safe/safe_178_SAFE.sol#35) 
+	- owner = newOwner (contracts/safe/safe_178_SAFE.sol#35) 
+ReporterTokenSale.setWallet(address) (contracts/safe/safe_178_SAFE.sol#283-285) should emit an event for: 
+	- multiSig = _newWallet (contracts/safe/safe_178_SAFE.sol#284) 
+ReporterTokenSale.setCS(address) (contracts/safe/safe_178_SAFE.sol#412-414) should emit an event for: 
+	- cs = newCS (contracts/safe/safe_178_SAFE.sol#413) 
+	- cs = newCS (contracts/safe/safe_178_SAFE.sol#413) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+
+Detector: missing-zero-check
+ReporterTokenSale.setWallet(address)._newWallet (contracts/safe/safe_178_SAFE.sol#283) lacks a zero-check on :
+		- multiSig = _newWallet (contracts/safe/safe_178_SAFE.sol#284)
+ReporterTokenSale.setCS(address).newCS (contracts/safe/safe_178_SAFE.sol#412) lacks a zero-check on :
+		- cs = newCS (contracts/safe/safe_178_SAFE.sol#413)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+
+Detector: reentrancy-benign
+Reentrancy in ReporterTokenSale.buyTokens(address,uint256) (contracts/safe/safe_178_SAFE.sol#430-450):
+	External calls:
+	- token.balanceOf(beneficiary) == 0 (contracts/safe/safe_178_SAFE.sol#443)
+	State variables written after the call(s):
+	- numberOfPurchasers ++ (contracts/safe/safe_178_SAFE.sol#444)
+Reentrancy in ReporterTokenSale.placeTokens(address,uint256) (contracts/safe/safe_178_SAFE.sol#416-427):
+	External calls:
+	- token.balanceOf(beneficiary) == 0 (contracts/safe/safe_178_SAFE.sol#421)
+	State variables written after the call(s):
+	- numberOfPurchasers ++ (contracts/safe/safe_178_SAFE.sol#422)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+
+Detector: reentrancy-events
+Reentrancy in ReporterTokenSale.buyTokens(address,uint256) (contracts/safe/safe_178_SAFE.sol#430-450):
+	External calls:
+	- token.balanceOf(beneficiary) == 0 (contracts/safe/safe_178_SAFE.sol#443)
+	- token.mint(beneficiary,tokens) (contracts/safe/safe_178_SAFE.sol#447)
+	Event emitted after the call(s):
+	- TokenPurchase(beneficiary,amount,tokens) (contracts/safe/safe_178_SAFE.sol#448)
+Reentrancy in ReporterTokenSale.finishSale() (contracts/safe/safe_178_SAFE.sol#453-465):
+	External calls:
+	- token.mint(multiSig,unassigned) (contracts/safe/safe_178_SAFE.sol#460)
+	- token.finishMinting() (contracts/safe/safe_178_SAFE.sol#462)
+	- token.transferOwnership(owner) (contracts/safe/safe_178_SAFE.sol#463)
+	Event emitted after the call(s):
+	- SaleClosed() (contracts/safe/safe_178_SAFE.sol#464)
+Reentrancy in ReporterTokenSale.placeTokens(address,uint256) (contracts/safe/safe_178_SAFE.sol#416-427):
+	External calls:
+	- token.balanceOf(beneficiary) == 0 (contracts/safe/safe_178_SAFE.sol#421)
+	- token.mint(beneficiary,_tokens) (contracts/safe/safe_178_SAFE.sol#425)
+	Event emitted after the call(s):
+	- TokenPurchase(beneficiary,amount,_tokens) (contracts/safe/safe_178_SAFE.sol#426)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-4
+
+Detector: timestamp
+ReporterTokenSale.hasEnded() (contracts/safe/safe_178_SAFE.sol#354-360) uses timestamp for comparisons
+	Dangerous comparisons:
+	- now > endTimestamp (contracts/safe/safe_178_SAFE.sol#355)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+
+Detector: solc-version
+Version constraint ^0.4.12 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- NestedArrayFunctionCallDecoder
+	- ZeroFunctionSelector
+	- DelegateCallReturnValue
+	- ECRecoverMalformedInput.
+It is used by:
+	- ^0.4.12 (contracts/safe/safe_178_SAFE.sol#1)
+solc-0.4.24 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Parameter BasicToken.transfer(address,uint256)._to (contracts/safe/safe_178_SAFE.sol#107) is not in mixedCase
+Parameter BasicToken.transfer(address,uint256)._value (contracts/safe/safe_178_SAFE.sol#107) is not in mixedCase
+Parameter BasicToken.balanceOf(address)._owner (contracts/safe/safe_178_SAFE.sol#119) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._from (contracts/safe/safe_178_SAFE.sol#140) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._to (contracts/safe/safe_178_SAFE.sol#140) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._value (contracts/safe/safe_178_SAFE.sol#140) is not in mixedCase
+Parameter StandardToken.approve(address,uint256)._spender (contracts/safe/safe_178_SAFE.sol#155) is not in mixedCase
+Parameter StandardToken.approve(address,uint256)._value (contracts/safe/safe_178_SAFE.sol#155) is not in mixedCase
+Parameter StandardToken.allowance(address,address)._owner (contracts/safe/safe_178_SAFE.sol#174) is not in mixedCase
+Parameter StandardToken.allowance(address,address)._spender (contracts/safe/safe_178_SAFE.sol#174) is not in mixedCase
+Parameter MintableToken.mint(address,uint256)._to (contracts/safe/safe_178_SAFE.sol#203) is not in mixedCase
+Parameter MintableToken.mint(address,uint256)._amount (contracts/safe/safe_178_SAFE.sol#203) is not in mixedCase
+Parameter ReporterToken.transfer(address,uint256)._to (contracts/safe/safe_178_SAFE.sol#248) is not in mixedCase
+Parameter ReporterToken.transfer(address,uint256)._value (contracts/safe/safe_178_SAFE.sol#248) is not in mixedCase
+Parameter ReporterToken.transferFrom(address,address,uint256)._from (contracts/safe/safe_178_SAFE.sol#258) is not in mixedCase
+Parameter ReporterToken.transferFrom(address,address,uint256)._to (contracts/safe/safe_178_SAFE.sol#258) is not in mixedCase
+Parameter ReporterToken.transferFrom(address,address,uint256)._value (contracts/safe/safe_178_SAFE.sol#258) is not in mixedCase
+Parameter ReporterTokenSale.setWallet(address)._newWallet (contracts/safe/safe_178_SAFE.sol#283) is not in mixedCase
+Parameter ReporterTokenSale.placeTokens(address,uint256)._tokens (contracts/safe/safe_178_SAFE.sol#416) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: too-many-digits
+ReporterTokenSale.setTier() (contracts/safe/safe_178_SAFE.sol#336-351) uses literals with too many digits:
+	- tokenRaised <= 9000000 * oneCoin (contracts/safe/safe_178_SAFE.sol#338)
+ReporterTokenSale.setTier() (contracts/safe/safe_178_SAFE.sol#336-351) uses literals with too many digits:
+	- tokenRaised <= 18000000 * oneCoin (contracts/safe/safe_178_SAFE.sol#342)
+ReporterTokenSale.slitherConstructorVariables() (contracts/safe/safe_178_SAFE.sol#267-476) uses literals with too many digits:
+	- maxContribution = 200000000000000000000000 (contracts/safe/safe_178_SAFE.sol#290)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#too-many-digits
+
+Detector: constable-states
+ReporterToken.decimals (contracts/safe/safe_178_SAFE.sol#224) should be constant 
+ReporterToken.name (contracts/safe/safe_178_SAFE.sol#222) should be constant 
+ReporterToken.symbol (contracts/safe/safe_178_SAFE.sol#223) should be constant 
+ReporterTokenSale.freeForAll (contracts/safe/safe_178_SAFE.sol#314) should be constant 
+ReporterTokenSale.maxContribution (contracts/safe/safe_178_SAFE.sol#290) should be constant 
+ReporterTokenSale.minContribution (contracts/safe/safe_178_SAFE.sol#289) should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+
+Detector: external-function
+authoriseManyAccounts(address[]) should be declared external:
+	- ReporterTokenSale.authoriseManyAccounts(address[]) (contracts/safe/safe_178_SAFE.sol#396-400)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#public-function-that-could-be-declared-external
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_178_SAFE.sol analyzed (9 contracts with 101 detectors), 54 result(s) found

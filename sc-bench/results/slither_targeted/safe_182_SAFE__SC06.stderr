@@ -1,0 +1,13 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_182_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_182_SAFE.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_182_SAFE.sol:177:5: Warning: No visibility specified. Defaulting to "public".
+    function multisend(address _tokenAddr, address[] dests, uint256[] values)
+    ^
+Spanning multiple lines.
+
+
+Detector: unchecked-transfer
+Airdropper.multisend(address,address[],uint256[]) (contracts/safe/safe_182_SAFE.sol#177-186) ignores return value by ERC20(_tokenAddr).transfer(dests[i],values[i]) (contracts/safe/safe_182_SAFE.sol#182)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unchecked-transfer
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_182_SAFE.sol analyzed (7 contracts with 5 detectors), 1 result(s) found

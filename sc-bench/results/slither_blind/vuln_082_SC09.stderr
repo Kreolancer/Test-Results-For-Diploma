@@ -1,0 +1,66 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_082_SC09.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
+
+Detector: solc-version
+Version constraint ^0.4.16 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- NestedArrayFunctionCallDecoder
+	- ZeroFunctionSelector.
+It is used by:
+	- ^0.4.16 (contracts/vulnerable/vuln_082_SC09.sol#7)
+solc-0.4.16 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Parameter BasicToken.transfer(address,uint256)._to (contracts/vulnerable/vuln_082_SC09.sol#65) is not in mixedCase
+Parameter BasicToken.transfer(address,uint256)._value (contracts/vulnerable/vuln_082_SC09.sol#65) is not in mixedCase
+Parameter BasicToken.balanceOf(address)._owner (contracts/vulnerable/vuln_082_SC09.sol#81) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._from (contracts/vulnerable/vuln_082_SC09.sol#116) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._to (contracts/vulnerable/vuln_082_SC09.sol#116) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._value (contracts/vulnerable/vuln_082_SC09.sol#116) is not in mixedCase
+Parameter StandardToken.approve(address,uint256)._spender (contracts/vulnerable/vuln_082_SC09.sol#138) is not in mixedCase
+Parameter StandardToken.approve(address,uint256)._value (contracts/vulnerable/vuln_082_SC09.sol#138) is not in mixedCase
+Parameter StandardToken.allowance(address,address)._owner (contracts/vulnerable/vuln_082_SC09.sol#150) is not in mixedCase
+Parameter StandardToken.allowance(address,address)._spender (contracts/vulnerable/vuln_082_SC09.sol#150) is not in mixedCase
+Parameter PausableToken.transfer(address,uint256)._to (contracts/vulnerable/vuln_082_SC09.sol#249) is not in mixedCase
+Parameter PausableToken.transfer(address,uint256)._value (contracts/vulnerable/vuln_082_SC09.sol#249) is not in mixedCase
+Parameter PausableToken.transferFrom(address,address,uint256)._from (contracts/vulnerable/vuln_082_SC09.sol#253) is not in mixedCase
+Parameter PausableToken.transferFrom(address,address,uint256)._to (contracts/vulnerable/vuln_082_SC09.sol#253) is not in mixedCase
+Parameter PausableToken.transferFrom(address,address,uint256)._value (contracts/vulnerable/vuln_082_SC09.sol#253) is not in mixedCase
+Parameter PausableToken.approve(address,uint256)._spender (contracts/vulnerable/vuln_082_SC09.sol#257) is not in mixedCase
+Parameter PausableToken.approve(address,uint256)._value (contracts/vulnerable/vuln_082_SC09.sol#257) is not in mixedCase
+Parameter PausableToken.batchTransfer(address[],uint256)._receivers (contracts/vulnerable/vuln_082_SC09.sol#261) is not in mixedCase
+Parameter PausableToken.batchTransfer(address[],uint256)._value (contracts/vulnerable/vuln_082_SC09.sol#261) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: too-many-digits
+BecToken.BecToken() (contracts/vulnerable/vuln_082_SC09.sol#297-300) uses literals with too many digits:
+	- totalSupply = 7000000000 * (10 ** (uint256(decimals))) (contracts/vulnerable/vuln_082_SC09.sol#298)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#too-many-digits
+
+Detector: constable-states
+BecToken.decimals (contracts/vulnerable/vuln_082_SC09.sol#292) should be constant 
+BecToken.name (contracts/vulnerable/vuln_082_SC09.sol#289) should be constant 
+BecToken.symbol (contracts/vulnerable/vuln_082_SC09.sol#290) should be constant 
+BecToken.version (contracts/vulnerable/vuln_082_SC09.sol#291) should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+
+Detector: external-function
+batchTransfer(address[],uint256) should be declared external:
+	- PausableToken.batchTransfer(address[],uint256) (contracts/vulnerable/vuln_082_SC09.sol#261-274)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#public-function-that-could-be-declared-external
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_082_SC09.sol analyzed (9 contracts with 101 detectors), 27 result(s) found

@@ -1,0 +1,268 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_177_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_177_SAFE.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_177_SAFE.sol:57:3: Warning: Defining constructors as functions with the same name as the contract is deprecated. Use "constructor(...) { ... }" instead.
+  function Ownable() public {
+  ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_177_SAFE.sol:462:3: Warning: Defining constructors as functions with the same name as the contract is deprecated. Use "constructor(...) { ... }" instead.
+  function EvaCurrency(string _name, string _symbol) public {
+  ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_177_SAFE.sol:74:5: Warning: Invoking events without "emit" prefix is deprecated.
+    OwnershipTransferred(owner, newOwner);
+    ^-----------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_177_SAFE.sol:102:5: Warning: Invoking events without "emit" prefix is deprecated.
+    OwnershipTransferred(owner, pendingOwner);
+    ^---------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_177_SAFE.sol:374:5: Warning: Invoking events without "emit" prefix is deprecated.
+    RefillCommisionIsChanged(_paySystem, _stat, _perc);
+    ^------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_177_SAFE.sol:382:5: Warning: Invoking events without "emit" prefix is deprecated.
+    WidthrawCommisionIsChanged(_paySystem, _stat, _perc);
+    ^--------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_177_SAFE.sol:390:5: Warning: Invoking events without "emit" prefix is deprecated.
+    TransferCommisionIsChanged(_stat, _perc);
+    ^--------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_177_SAFE.sol:519:5: Warning: Invoking events without "emit" prefix is deprecated.
+    Burn(sender, resultAmount);
+    ^------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_177_SAFE.sol:536:7: Warning: Invoking events without "emit" prefix is deprecated.
+      Mint(_to, resultAmount);
+      ^---------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_177_SAFE.sol:540:68: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+  function changeStaker(address _staker) onlyOwner public returns (bool success) {
+                                                                   ^----------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_177_SAFE.sol:544:3: Warning: Function state mutability can be restricted to pure
+  function getNullAddress() public view returns (address) {
+  ^ (Relevant source part starts here and spans across multiple lines).
+
+
+Detector: divide-before-multiply
+ComissionList.calcWidthraw(string,uint256) (contracts/safe/safe_177_SAFE.sol#424-429) performs a multiplication on the result of a division:
+	- _totalComission = widthrawPaySystemInfo[_paySystem].stat + (_value / 100) * widthrawPaySystemInfo[_paySystem].perc (contracts/safe/safe_177_SAFE.sol#426)
+ComissionList.calcRefill(string,uint256) (contracts/safe/safe_177_SAFE.sol#432-437) performs a multiplication on the result of a division:
+	- _totalComission = refillPaySystemInfo[_paySystem].stat + (_value / 100) * refillPaySystemInfo[_paySystem].perc (contracts/safe/safe_177_SAFE.sol#434)
+ComissionList.calcTransfer(uint256) (contracts/safe/safe_177_SAFE.sol#440-445) performs a multiplication on the result of a division:
+	- _totalComission = transferInfo.stat + (_value / 100) * transferInfo.perc (contracts/safe/safe_177_SAFE.sol#442)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#divide-before-multiply
+
+Detector: reentrancy-no-eth
+Reentrancy in EvaCurrency.transferOnBehalf(address,uint256,uint256,uint8,bytes32,bytes32) (contracts/safe/safe_177_SAFE.sol#483-501):
+	External calls:
+	- fee = comissionList.calcTransfer(_amount) (contracts/safe/safe_177_SAFE.sol#492)
+	State variables written after the call(s):
+	- balances[sender] = balances[sender].sub(_amount) (contracts/safe/safe_177_SAFE.sol#495)
+	BasicToken.balances (contracts/safe/safe_177_SAFE.sol#178) can be used in cross function reentrancies:
+	- BurnableToken._burn(address,uint256) (contracts/safe/safe_177_SAFE.sol#228-237)
+	- BasicToken.balanceOf(address) (contracts/safe/safe_177_SAFE.sol#209-211)
+	- BasicToken.balances (contracts/safe/safe_177_SAFE.sol#178)
+	- EvaCurrency.refill(address,uint256,string) (contracts/safe/safe_177_SAFE.sol#525-538)
+	- BasicToken.transfer(address,uint256) (contracts/safe/safe_177_SAFE.sol#194-202)
+	- StandardToken.transferFrom(address,address,uint256) (contracts/safe/safe_177_SAFE.sol#251-261)
+	- EvaCurrency.transferOnBehalf(address,uint256,uint256,uint8,bytes32,bytes32) (contracts/safe/safe_177_SAFE.sol#483-501)
+	- EvaCurrency.withdrawOnBehalf(uint256,string,uint256,uint8,bytes32,bytes32) (contracts/safe/safe_177_SAFE.sol#503-521)
+	- balances[_to] = balances[_to].add(resultAmount) (contracts/safe/safe_177_SAFE.sol#496)
+	BasicToken.balances (contracts/safe/safe_177_SAFE.sol#178) can be used in cross function reentrancies:
+	- BurnableToken._burn(address,uint256) (contracts/safe/safe_177_SAFE.sol#228-237)
+	- BasicToken.balanceOf(address) (contracts/safe/safe_177_SAFE.sol#209-211)
+	- BasicToken.balances (contracts/safe/safe_177_SAFE.sol#178)
+	- EvaCurrency.refill(address,uint256,string) (contracts/safe/safe_177_SAFE.sol#525-538)
+	- BasicToken.transfer(address,uint256) (contracts/safe/safe_177_SAFE.sol#194-202)
+	- StandardToken.transferFrom(address,address,uint256) (contracts/safe/safe_177_SAFE.sol#251-261)
+	- EvaCurrency.transferOnBehalf(address,uint256,uint256,uint8,bytes32,bytes32) (contracts/safe/safe_177_SAFE.sol#483-501)
+	- EvaCurrency.withdrawOnBehalf(uint256,string,uint256,uint8,bytes32,bytes32) (contracts/safe/safe_177_SAFE.sol#503-521)
+	- balances[staker] = balances[staker].add(fee) (contracts/safe/safe_177_SAFE.sol#497)
+	BasicToken.balances (contracts/safe/safe_177_SAFE.sol#178) can be used in cross function reentrancies:
+	- BurnableToken._burn(address,uint256) (contracts/safe/safe_177_SAFE.sol#228-237)
+	- BasicToken.balanceOf(address) (contracts/safe/safe_177_SAFE.sol#209-211)
+	- BasicToken.balances (contracts/safe/safe_177_SAFE.sol#178)
+	- EvaCurrency.refill(address,uint256,string) (contracts/safe/safe_177_SAFE.sol#525-538)
+	- BasicToken.transfer(address,uint256) (contracts/safe/safe_177_SAFE.sol#194-202)
+	- StandardToken.transferFrom(address,address,uint256) (contracts/safe/safe_177_SAFE.sol#251-261)
+	- EvaCurrency.transferOnBehalf(address,uint256,uint256,uint8,bytes32,bytes32) (contracts/safe/safe_177_SAFE.sol#483-501)
+	- EvaCurrency.withdrawOnBehalf(uint256,string,uint256,uint8,bytes32,bytes32) (contracts/safe/safe_177_SAFE.sol#503-521)
+	- lastUsedNonce[sender] = _nonce (contracts/safe/safe_177_SAFE.sol#498)
+	EvaCurrency.lastUsedNonce (contracts/safe/safe_177_SAFE.sol#456) can be used in cross function reentrancies:
+	- EvaCurrency.transferOnBehalf(address,uint256,uint256,uint8,bytes32,bytes32) (contracts/safe/safe_177_SAFE.sol#483-501)
+	- EvaCurrency.withdrawOnBehalf(uint256,string,uint256,uint8,bytes32,bytes32) (contracts/safe/safe_177_SAFE.sol#503-521)
+Reentrancy in EvaCurrency.withdrawOnBehalf(uint256,string,uint256,uint8,bytes32,bytes32) (contracts/safe/safe_177_SAFE.sol#503-521):
+	External calls:
+	- fee = comissionList.calcWidthraw(_paySystem,_amount) (contracts/safe/safe_177_SAFE.sol#512)
+	State variables written after the call(s):
+	- balances[sender] = balances[sender].sub(_amount) (contracts/safe/safe_177_SAFE.sol#515)
+	BasicToken.balances (contracts/safe/safe_177_SAFE.sol#178) can be used in cross function reentrancies:
+	- BurnableToken._burn(address,uint256) (contracts/safe/safe_177_SAFE.sol#228-237)
+	- BasicToken.balanceOf(address) (contracts/safe/safe_177_SAFE.sol#209-211)
+	- BasicToken.balances (contracts/safe/safe_177_SAFE.sol#178)
+	- EvaCurrency.refill(address,uint256,string) (contracts/safe/safe_177_SAFE.sol#525-538)
+	- BasicToken.transfer(address,uint256) (contracts/safe/safe_177_SAFE.sol#194-202)
+	- StandardToken.transferFrom(address,address,uint256) (contracts/safe/safe_177_SAFE.sol#251-261)
+	- EvaCurrency.transferOnBehalf(address,uint256,uint256,uint8,bytes32,bytes32) (contracts/safe/safe_177_SAFE.sol#483-501)
+	- EvaCurrency.withdrawOnBehalf(uint256,string,uint256,uint8,bytes32,bytes32) (contracts/safe/safe_177_SAFE.sol#503-521)
+	- balances[staker] = balances[staker].add(fee) (contracts/safe/safe_177_SAFE.sol#516)
+	BasicToken.balances (contracts/safe/safe_177_SAFE.sol#178) can be used in cross function reentrancies:
+	- BurnableToken._burn(address,uint256) (contracts/safe/safe_177_SAFE.sol#228-237)
+	- BasicToken.balanceOf(address) (contracts/safe/safe_177_SAFE.sol#209-211)
+	- BasicToken.balances (contracts/safe/safe_177_SAFE.sol#178)
+	- EvaCurrency.refill(address,uint256,string) (contracts/safe/safe_177_SAFE.sol#525-538)
+	- BasicToken.transfer(address,uint256) (contracts/safe/safe_177_SAFE.sol#194-202)
+	- StandardToken.transferFrom(address,address,uint256) (contracts/safe/safe_177_SAFE.sol#251-261)
+	- EvaCurrency.transferOnBehalf(address,uint256,uint256,uint8,bytes32,bytes32) (contracts/safe/safe_177_SAFE.sol#483-501)
+	- EvaCurrency.withdrawOnBehalf(uint256,string,uint256,uint8,bytes32,bytes32) (contracts/safe/safe_177_SAFE.sol#503-521)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-2
+
+Detector: events-access
+Claimable.transferOwnership(address) (contracts/safe/safe_177_SAFE.sol#94-96) should emit an event for: 
+	- pendingOwner = newOwner (contracts/safe/safe_177_SAFE.sol#95) 
+EvaCurrency.changeStaker(address) (contracts/safe/safe_177_SAFE.sol#540-542) should emit an event for: 
+	- staker = _staker (contracts/safe/safe_177_SAFE.sol#541) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+
+Detector: missing-zero-check
+Claimable.transferOwnership(address).newOwner (contracts/safe/safe_177_SAFE.sol#94) lacks a zero-check on :
+		- pendingOwner = newOwner (contracts/safe/safe_177_SAFE.sol#95)
+EvaCurrency.changeStaker(address)._staker (contracts/safe/safe_177_SAFE.sol#540) lacks a zero-check on :
+		- staker = _staker (contracts/safe/safe_177_SAFE.sol#541)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+
+Detector: reentrancy-benign
+Reentrancy in EvaCurrency.refill(address,uint256,string) (contracts/safe/safe_177_SAFE.sol#525-538):
+	External calls:
+	- fee = comissionList.calcRefill(_paySystem,_amount) (contracts/safe/safe_177_SAFE.sol#529)
+	State variables written after the call(s):
+	- balances[_to] = balances[staker].add(resultAmount) (contracts/safe/safe_177_SAFE.sol#532)
+	- balances[staker] = balances[staker].add(fee) (contracts/safe/safe_177_SAFE.sol#533)
+	- totalSupply_ = totalSupply_.add(_amount) (contracts/safe/safe_177_SAFE.sol#534)
+Reentrancy in EvaCurrency.withdrawOnBehalf(uint256,string,uint256,uint8,bytes32,bytes32) (contracts/safe/safe_177_SAFE.sol#503-521):
+	External calls:
+	- fee = comissionList.calcWidthraw(_paySystem,_amount) (contracts/safe/safe_177_SAFE.sol#512)
+	State variables written after the call(s):
+	- totalSupply_ = totalSupply_.sub(resultAmount) (contracts/safe/safe_177_SAFE.sol#517)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+
+Detector: reentrancy-events
+Reentrancy in EvaCurrency.refill(address,uint256,string) (contracts/safe/safe_177_SAFE.sol#525-538):
+	External calls:
+	- fee = comissionList.calcRefill(_paySystem,_amount) (contracts/safe/safe_177_SAFE.sol#529)
+	Event emitted after the call(s):
+	- Mint(_to,resultAmount) (contracts/safe/safe_177_SAFE.sol#536)
+Reentrancy in EvaCurrency.withdrawOnBehalf(uint256,string,uint256,uint8,bytes32,bytes32) (contracts/safe/safe_177_SAFE.sol#503-521):
+	External calls:
+	- fee = comissionList.calcWidthraw(_paySystem,_amount) (contracts/safe/safe_177_SAFE.sol#512)
+	Event emitted after the call(s):
+	- Burn(sender,resultAmount) (contracts/safe/safe_177_SAFE.sol#519)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-4
+
+Detector: solc-version
+Version constraint ^0.4.23 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ABIEncoderV2PackedStorage_0.4.x
+	- ExpExponentCleanup
+	- EventStructWrongData.
+It is used by:
+	- ^0.4.23 (contracts/safe/safe_177_SAFE.sol#1)
+solc-0.4.23 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Parameter BasicToken.transfer(address,uint256)._to (contracts/safe/safe_177_SAFE.sol#194) is not in mixedCase
+Parameter BasicToken.transfer(address,uint256)._value (contracts/safe/safe_177_SAFE.sol#194) is not in mixedCase
+Parameter BasicToken.balanceOf(address)._owner (contracts/safe/safe_177_SAFE.sol#209) is not in mixedCase
+Parameter BurnableToken.burn(uint256)._value (contracts/safe/safe_177_SAFE.sol#224) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._from (contracts/safe/safe_177_SAFE.sol#251) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._to (contracts/safe/safe_177_SAFE.sol#251) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._value (contracts/safe/safe_177_SAFE.sol#251) is not in mixedCase
+Parameter StandardToken.approve(address,uint256)._spender (contracts/safe/safe_177_SAFE.sol#273) is not in mixedCase
+Parameter StandardToken.approve(address,uint256)._value (contracts/safe/safe_177_SAFE.sol#273) is not in mixedCase
+Parameter StandardToken.allowance(address,address)._owner (contracts/safe/safe_177_SAFE.sol#285) is not in mixedCase
+Parameter StandardToken.allowance(address,address)._spender (contracts/safe/safe_177_SAFE.sol#285) is not in mixedCase
+Parameter StandardToken.increaseApproval(address,uint256)._spender (contracts/safe/safe_177_SAFE.sol#299) is not in mixedCase
+Parameter StandardToken.increaseApproval(address,uint256)._addedValue (contracts/safe/safe_177_SAFE.sol#299) is not in mixedCase
+Parameter StandardToken.decreaseApproval(address,uint256)._spender (contracts/safe/safe_177_SAFE.sol#316) is not in mixedCase
+Parameter StandardToken.decreaseApproval(address,uint256)._subtractedValue (contracts/safe/safe_177_SAFE.sol#316) is not in mixedCase
+Parameter PausableToken.transfer(address,uint256)._to (contracts/safe/safe_177_SAFE.sol#330) is not in mixedCase
+Parameter PausableToken.transfer(address,uint256)._value (contracts/safe/safe_177_SAFE.sol#330) is not in mixedCase
+Parameter PausableToken.transferFrom(address,address,uint256)._from (contracts/safe/safe_177_SAFE.sol#334) is not in mixedCase
+Parameter PausableToken.transferFrom(address,address,uint256)._to (contracts/safe/safe_177_SAFE.sol#334) is not in mixedCase
+Parameter PausableToken.transferFrom(address,address,uint256)._value (contracts/safe/safe_177_SAFE.sol#334) is not in mixedCase
+Parameter PausableToken.approve(address,uint256)._spender (contracts/safe/safe_177_SAFE.sol#338) is not in mixedCase
+Parameter PausableToken.approve(address,uint256)._value (contracts/safe/safe_177_SAFE.sol#338) is not in mixedCase
+Parameter PausableToken.increaseApproval(address,uint256)._spender (contracts/safe/safe_177_SAFE.sol#342) is not in mixedCase
+Parameter PausableToken.increaseApproval(address,uint256)._addedValue (contracts/safe/safe_177_SAFE.sol#342) is not in mixedCase
+Parameter PausableToken.decreaseApproval(address,uint256)._spender (contracts/safe/safe_177_SAFE.sol#346) is not in mixedCase
+Parameter PausableToken.decreaseApproval(address,uint256)._subtractedValue (contracts/safe/safe_177_SAFE.sol#346) is not in mixedCase
+Parameter ComissionList.setRefillFor(string,uint256,uint256)._paySystem (contracts/safe/safe_177_SAFE.sol#370) is not in mixedCase
+Parameter ComissionList.setRefillFor(string,uint256,uint256)._stat (contracts/safe/safe_177_SAFE.sol#370) is not in mixedCase
+Parameter ComissionList.setRefillFor(string,uint256,uint256)._perc (contracts/safe/safe_177_SAFE.sol#370) is not in mixedCase
+Parameter ComissionList.setWidthrawFor(string,uint256,uint256)._paySystem (contracts/safe/safe_177_SAFE.sol#378) is not in mixedCase
+Parameter ComissionList.setWidthrawFor(string,uint256,uint256)._stat (contracts/safe/safe_177_SAFE.sol#378) is not in mixedCase
+Parameter ComissionList.setWidthrawFor(string,uint256,uint256)._perc (contracts/safe/safe_177_SAFE.sol#378) is not in mixedCase
+Parameter ComissionList.setTransfer(uint256,uint256)._stat (contracts/safe/safe_177_SAFE.sol#386) is not in mixedCase
+Parameter ComissionList.setTransfer(uint256,uint256)._perc (contracts/safe/safe_177_SAFE.sol#386) is not in mixedCase
+Parameter ComissionList.getRefillStatFor(string)._paySystem (contracts/safe/safe_177_SAFE.sol#394) is not in mixedCase
+Parameter ComissionList.getRefillPercFor(string)._paySystem (contracts/safe/safe_177_SAFE.sol#399) is not in mixedCase
+Parameter ComissionList.getWidthrawStatFor(string)._paySystem (contracts/safe/safe_177_SAFE.sol#404) is not in mixedCase
+Parameter ComissionList.getWidthrawPercFor(string)._paySystem (contracts/safe/safe_177_SAFE.sol#409) is not in mixedCase
+Parameter ComissionList.calcWidthraw(string,uint256)._paySystem (contracts/safe/safe_177_SAFE.sol#424) is not in mixedCase
+Parameter ComissionList.calcWidthraw(string,uint256)._value (contracts/safe/safe_177_SAFE.sol#424) is not in mixedCase
+Parameter ComissionList.calcRefill(string,uint256)._paySystem (contracts/safe/safe_177_SAFE.sol#432) is not in mixedCase
+Parameter ComissionList.calcRefill(string,uint256)._value (contracts/safe/safe_177_SAFE.sol#432) is not in mixedCase
+Parameter ComissionList.calcTransfer(uint256)._value (contracts/safe/safe_177_SAFE.sol#440) is not in mixedCase
+Parameter EvaCurrency.changeName(string,string)._name (contracts/safe/safe_177_SAFE.sol#468) is not in mixedCase
+Parameter EvaCurrency.changeName(string,string)._symbol (contracts/safe/safe_177_SAFE.sol#468) is not in mixedCase
+Parameter EvaCurrency.setComissionList(ComissionList)._comissionList (contracts/safe/safe_177_SAFE.sol#473) is not in mixedCase
+Parameter EvaCurrency.transferOnBehalf(address,uint256,uint256,uint8,bytes32,bytes32)._to (contracts/safe/safe_177_SAFE.sol#483) is not in mixedCase
+Parameter EvaCurrency.transferOnBehalf(address,uint256,uint256,uint8,bytes32,bytes32)._amount (contracts/safe/safe_177_SAFE.sol#483) is not in mixedCase
+Parameter EvaCurrency.transferOnBehalf(address,uint256,uint256,uint8,bytes32,bytes32)._nonce (contracts/safe/safe_177_SAFE.sol#483) is not in mixedCase
+Parameter EvaCurrency.transferOnBehalf(address,uint256,uint256,uint8,bytes32,bytes32)._v (contracts/safe/safe_177_SAFE.sol#483) is not in mixedCase
+Parameter EvaCurrency.transferOnBehalf(address,uint256,uint256,uint8,bytes32,bytes32)._r (contracts/safe/safe_177_SAFE.sol#483) is not in mixedCase
+Parameter EvaCurrency.transferOnBehalf(address,uint256,uint256,uint8,bytes32,bytes32)._s (contracts/safe/safe_177_SAFE.sol#483) is not in mixedCase
+Parameter EvaCurrency.withdrawOnBehalf(uint256,string,uint256,uint8,bytes32,bytes32)._amount (contracts/safe/safe_177_SAFE.sol#503) is not in mixedCase
+Parameter EvaCurrency.withdrawOnBehalf(uint256,string,uint256,uint8,bytes32,bytes32)._paySystem (contracts/safe/safe_177_SAFE.sol#503) is not in mixedCase
+Parameter EvaCurrency.withdrawOnBehalf(uint256,string,uint256,uint8,bytes32,bytes32)._nonce (contracts/safe/safe_177_SAFE.sol#503) is not in mixedCase
+Parameter EvaCurrency.withdrawOnBehalf(uint256,string,uint256,uint8,bytes32,bytes32)._v (contracts/safe/safe_177_SAFE.sol#503) is not in mixedCase
+Parameter EvaCurrency.withdrawOnBehalf(uint256,string,uint256,uint8,bytes32,bytes32)._r (contracts/safe/safe_177_SAFE.sol#503) is not in mixedCase
+Parameter EvaCurrency.withdrawOnBehalf(uint256,string,uint256,uint8,bytes32,bytes32)._s (contracts/safe/safe_177_SAFE.sol#503) is not in mixedCase
+Parameter EvaCurrency.refill(address,uint256,string)._to (contracts/safe/safe_177_SAFE.sol#525) is not in mixedCase
+Parameter EvaCurrency.refill(address,uint256,string)._amount (contracts/safe/safe_177_SAFE.sol#525) is not in mixedCase
+Parameter EvaCurrency.refill(address,uint256,string)._paySystem (contracts/safe/safe_177_SAFE.sol#525) is not in mixedCase
+Parameter EvaCurrency.changeStaker(address)._staker (contracts/safe/safe_177_SAFE.sol#540) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: external-function
+setRefillFor(string,uint256,uint256) should be declared external:
+	- ComissionList.setRefillFor(string,uint256,uint256) (contracts/safe/safe_177_SAFE.sol#370-375)
+setWidthrawFor(string,uint256,uint256) should be declared external:
+	- ComissionList.setWidthrawFor(string,uint256,uint256) (contracts/safe/safe_177_SAFE.sol#378-383)
+getRefillStatFor(string) should be declared external:
+	- ComissionList.getRefillStatFor(string) (contracts/safe/safe_177_SAFE.sol#394-396)
+getRefillPercFor(string) should be declared external:
+	- ComissionList.getRefillPercFor(string) (contracts/safe/safe_177_SAFE.sol#399-401)
+getWidthrawStatFor(string) should be declared external:
+	- ComissionList.getWidthrawStatFor(string) (contracts/safe/safe_177_SAFE.sol#404-406)
+getWidthrawPercFor(string) should be declared external:
+	- ComissionList.getWidthrawPercFor(string) (contracts/safe/safe_177_SAFE.sol#409-411)
+calcWidthraw(string,uint256) should be declared external:
+	- ComissionList.calcWidthraw(string,uint256) (contracts/safe/safe_177_SAFE.sol#424-429)
+calcRefill(string,uint256) should be declared external:
+	- ComissionList.calcRefill(string,uint256) (contracts/safe/safe_177_SAFE.sol#432-437)
+changeName(string,string) should be declared external:
+	- EvaCurrency.changeName(string,string) (contracts/safe/safe_177_SAFE.sol#468-471)
+withdrawOnBehalf(uint256,string,uint256,uint8,bytes32,bytes32) should be declared external:
+	- EvaCurrency.withdrawOnBehalf(uint256,string,uint256,uint8,bytes32,bytes32) (contracts/safe/safe_177_SAFE.sol#503-521)
+refill(address,uint256,string) should be declared external:
+	- EvaCurrency.refill(address,uint256,string) (contracts/safe/safe_177_SAFE.sol#525-538)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#public-function-that-could-be-declared-external
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_177_SAFE.sol analyzed (12 contracts with 101 detectors), 88 result(s) found

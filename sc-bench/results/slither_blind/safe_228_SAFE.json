@@ -1,0 +1,2313 @@
+{
+  "success": true,
+  "error": null,
+  "results": {
+    "detectors": [
+      {
+        "elements": [
+          {
+            "type": "node",
+            "name": "require(bool)(_spender.call(bytes4(bytes32(sha3()(receiveApproval(address,uint256,address,bytes)))),msg.sender,_value,this,_extraData))",
+            "source_mapping": {
+              "start": 6233,
+              "length": 133,
+              "filename_relative": "contracts/safe/safe_228_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol",
+              "filename_short": "contracts/safe/safe_228_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                124
+              ],
+              "starting_column": 9,
+              "ending_column": 142
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "approveAndCall",
+                "source_mapping": {
+                  "start": 5602,
+                  "length": 794,
+                  "filename_relative": "contracts/safe/safe_228_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_228_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    117,
+                    118,
+                    119,
+                    120,
+                    121,
+                    122,
+                    123,
+                    124,
+                    125,
+                    126
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "LolaCoin",
+                    "source_mapping": {
+                      "start": 4163,
+                      "length": 2236,
+                      "filename_relative": "contracts/safe/safe_228_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_228_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        92,
+                        93,
+                        94,
+                        95,
+                        96,
+                        97,
+                        98,
+                        99,
+                        100,
+                        101,
+                        102,
+                        103,
+                        104,
+                        105,
+                        106,
+                        107,
+                        108,
+                        109,
+                        110,
+                        111,
+                        112,
+                        113,
+                        114,
+                        115,
+                        116,
+                        117,
+                        118,
+                        119,
+                        120,
+                        121,
+                        122,
+                        123,
+                        124,
+                        125,
+                        126,
+                        127,
+                        128
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "approveAndCall(address,uint256,bytes)"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Deprecated standard detected require(bool)(_spender.call(bytes4(bytes32(sha3()(receiveApproval(address,uint256,address,bytes)))),msg.sender,_value,this,_extraData)) (contracts/safe/safe_228_SAFE.sol#124):\n\t- Usage of \"sha3()\" should be replaced with \"keccak256()\"\n",
+        "markdown": "Deprecated standard detected [require(bool)(_spender.call(bytes4(bytes32(sha3()(receiveApproval(address,uint256,address,bytes)))),msg.sender,_value,this,_extraData))](contracts/safe/safe_228_SAFE.sol#L124):\n\t- Usage of \"sha3()\" should be replaced with \"keccak256()\"\n",
+        "first_markdown_element": "contracts/safe/safe_228_SAFE.sol#L124",
+        "id": "f2cb67c905f7115cc7c80a68a9ef6ba1842bdd29381368bc805f2501cb55d660",
+        "check": "deprecated-standards",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [],
+        "description": "solc-0.4.24 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.\n",
+        "markdown": "solc-0.4.24 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.\n",
+        "first_markdown_element": "",
+        "id": "1d687d794f954ee692ca1d58ad5dd8291a8a0b5c0bcc4409d2dd8afb7258e605",
+        "check": "solc-version",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "pragma",
+            "name": "^0.4.0",
+            "source_mapping": {
+              "start": 0,
+              "length": 23,
+              "filename_relative": "contracts/safe/safe_228_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol",
+              "filename_short": "contracts/safe/safe_228_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                1
+              ],
+              "starting_column": 1,
+              "ending_column": 24
+            },
+            "type_specific_fields": {
+              "directive": [
+                "solidity",
+                "^",
+                "0.4",
+                ".0"
+              ]
+            }
+          }
+        ],
+        "description": "Version constraint ^0.4.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- DirtyBytesArrayToStorage\n\t- KeccakCaching\n\t- EmptyByteArrayCopy\n\t- DynamicArrayCleanup\n\t- TupleAssignmentMultiStackSlotComponents\n\t- MemoryArrayCreationOverflow\n\t- privateCanBeOverridden\n\t- IncorrectEventSignatureInLibraries_0.4.x\n\t- ExpExponentCleanup\n\t- NestedArrayFunctionCallDecoder\n\t- ZeroFunctionSelector\n\t- DelegateCallReturnValue\n\t- ECRecoverMalformedInput\n\t- SkipEmptyStringLiteral\n\t- ConstantOptimizerSubtraction\n\t- IdentityPrecompileReturnIgnored\n\t- HighOrderByteCleanStorage\n\t- OptimizerStaleKnowledgeAboutSHA3\n\t- LibrariesNotCallableFromPayableFunctions.\nIt is used by:\n\t- ^0.4.0 (contracts/safe/safe_228_SAFE.sol#1)\n",
+        "markdown": "Version constraint ^0.4.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- DirtyBytesArrayToStorage\n\t- KeccakCaching\n\t- EmptyByteArrayCopy\n\t- DynamicArrayCleanup\n\t- TupleAssignmentMultiStackSlotComponents\n\t- MemoryArrayCreationOverflow\n\t- privateCanBeOverridden\n\t- IncorrectEventSignatureInLibraries_0.4.x\n\t- ExpExponentCleanup\n\t- NestedArrayFunctionCallDecoder\n\t- ZeroFunctionSelector\n\t- DelegateCallReturnValue\n\t- ECRecoverMalformedInput\n\t- SkipEmptyStringLiteral\n\t- ConstantOptimizerSubtraction\n\t- IdentityPrecompileReturnIgnored\n\t- HighOrderByteCleanStorage\n\t- OptimizerStaleKnowledgeAboutSHA3\n\t- LibrariesNotCallableFromPayableFunctions.\nIt is used by:\n\t- [^0.4.0](contracts/safe/safe_228_SAFE.sol#L1)\n",
+        "first_markdown_element": "contracts/safe/safe_228_SAFE.sol#L1",
+        "id": "a67628e11da96ba3d783d2932e4f8e493ea7c5e43fe2d51185445a0efaf37a4c",
+        "check": "solc-version",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "approveAndCall",
+            "source_mapping": {
+              "start": 5602,
+              "length": 794,
+              "filename_relative": "contracts/safe/safe_228_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol",
+              "filename_short": "contracts/safe/safe_228_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                117,
+                118,
+                119,
+                120,
+                121,
+                122,
+                123,
+                124,
+                125,
+                126
+              ],
+              "starting_column": 5,
+              "ending_column": 6
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "LolaCoin",
+                "source_mapping": {
+                  "start": 4163,
+                  "length": 2236,
+                  "filename_relative": "contracts/safe/safe_228_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_228_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    92,
+                    93,
+                    94,
+                    95,
+                    96,
+                    97,
+                    98,
+                    99,
+                    100,
+                    101,
+                    102,
+                    103,
+                    104,
+                    105,
+                    106,
+                    107,
+                    108,
+                    109,
+                    110,
+                    111,
+                    112,
+                    113,
+                    114,
+                    115,
+                    116,
+                    117,
+                    118,
+                    119,
+                    120,
+                    121,
+                    122,
+                    123,
+                    124,
+                    125,
+                    126,
+                    127,
+                    128
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              },
+              "signature": "approveAndCall(address,uint256,bytes)"
+            }
+          },
+          {
+            "type": "node",
+            "name": "require(bool)(_spender.call(bytes4(bytes32(sha3()(receiveApproval(address,uint256,address,bytes)))),msg.sender,_value,this,_extraData))",
+            "source_mapping": {
+              "start": 6233,
+              "length": 133,
+              "filename_relative": "contracts/safe/safe_228_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol",
+              "filename_short": "contracts/safe/safe_228_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                124
+              ],
+              "starting_column": 9,
+              "ending_column": 142
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "approveAndCall",
+                "source_mapping": {
+                  "start": 5602,
+                  "length": 794,
+                  "filename_relative": "contracts/safe/safe_228_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_228_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    117,
+                    118,
+                    119,
+                    120,
+                    121,
+                    122,
+                    123,
+                    124,
+                    125,
+                    126
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "LolaCoin",
+                    "source_mapping": {
+                      "start": 4163,
+                      "length": 2236,
+                      "filename_relative": "contracts/safe/safe_228_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_228_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        92,
+                        93,
+                        94,
+                        95,
+                        96,
+                        97,
+                        98,
+                        99,
+                        100,
+                        101,
+                        102,
+                        103,
+                        104,
+                        105,
+                        106,
+                        107,
+                        108,
+                        109,
+                        110,
+                        111,
+                        112,
+                        113,
+                        114,
+                        115,
+                        116,
+                        117,
+                        118,
+                        119,
+                        120,
+                        121,
+                        122,
+                        123,
+                        124,
+                        125,
+                        126,
+                        127,
+                        128
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "approveAndCall(address,uint256,bytes)"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Low level call in LolaCoin.approveAndCall(address,uint256,bytes) (contracts/safe/safe_228_SAFE.sol#117-126):\n\t- require(bool)(_spender.call(bytes4(bytes32(sha3()(receiveApproval(address,uint256,address,bytes)))),msg.sender,_value,this,_extraData)) (contracts/safe/safe_228_SAFE.sol#124)\n",
+        "markdown": "Low level call in [LolaCoin.approveAndCall(address,uint256,bytes)](contracts/safe/safe_228_SAFE.sol#L117-L126):\n\t- [require(bool)(_spender.call(bytes4(bytes32(sha3()(receiveApproval(address,uint256,address,bytes)))),msg.sender,_value,this,_extraData))](contracts/safe/safe_228_SAFE.sol#L124)\n",
+        "first_markdown_element": "contracts/safe/safe_228_SAFE.sol#L117-L126",
+        "id": "b3b07275ee86e3d981f260707120e1e102071c95b7e434aea5526956669d574c",
+        "check": "low-level-calls",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_spender",
+            "source_mapping": {
+              "start": 3940,
+              "length": 16,
+              "filename_relative": "contracts/safe/safe_228_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol",
+              "filename_short": "contracts/safe/safe_228_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                83
+              ],
+              "starting_column": 40,
+              "ending_column": 56
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "allowance",
+                "source_mapping": {
+                  "start": 3905,
+                  "length": 139,
+                  "filename_relative": "contracts/safe/safe_228_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_228_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    83,
+                    84,
+                    85
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "StandardToken",
+                    "source_mapping": {
+                      "start": 2308,
+                      "length": 1849,
+                      "filename_relative": "contracts/safe/safe_228_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_228_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        48,
+                        49,
+                        50,
+                        51,
+                        52,
+                        53,
+                        54,
+                        55,
+                        56,
+                        57,
+                        58,
+                        59,
+                        60,
+                        61,
+                        62,
+                        63,
+                        64,
+                        65,
+                        66,
+                        67,
+                        68,
+                        69,
+                        70,
+                        71,
+                        72,
+                        73,
+                        74,
+                        75,
+                        76,
+                        77,
+                        78,
+                        79,
+                        80,
+                        81,
+                        82,
+                        83,
+                        84,
+                        85,
+                        86,
+                        87,
+                        88,
+                        89
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "allowance(address,address)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter StandardToken.allowance(address,address)._spender (contracts/safe/safe_228_SAFE.sol#83) is not in mixedCase\n",
+        "markdown": "Parameter [StandardToken.allowance(address,address)._spender](contracts/safe/safe_228_SAFE.sol#L83) is not in mixedCase\n",
+        "first_markdown_element": "contracts/safe/safe_228_SAFE.sol#L83",
+        "id": "1dfe198c2dca57c55bebb6453f93f0f0fc9b1e67fc091a4bcfa314300d9a90a6",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_value",
+            "source_mapping": {
+              "start": 3730,
+              "length": 14,
+              "filename_relative": "contracts/safe/safe_228_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol",
+              "filename_short": "contracts/safe/safe_228_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                77
+              ],
+              "starting_column": 40,
+              "ending_column": 54
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "approve",
+                "source_mapping": {
+                  "start": 3695,
+                  "length": 202,
+                  "filename_relative": "contracts/safe/safe_228_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_228_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    77,
+                    78,
+                    79,
+                    80,
+                    81
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "StandardToken",
+                    "source_mapping": {
+                      "start": 2308,
+                      "length": 1849,
+                      "filename_relative": "contracts/safe/safe_228_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_228_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        48,
+                        49,
+                        50,
+                        51,
+                        52,
+                        53,
+                        54,
+                        55,
+                        56,
+                        57,
+                        58,
+                        59,
+                        60,
+                        61,
+                        62,
+                        63,
+                        64,
+                        65,
+                        66,
+                        67,
+                        68,
+                        69,
+                        70,
+                        71,
+                        72,
+                        73,
+                        74,
+                        75,
+                        76,
+                        77,
+                        78,
+                        79,
+                        80,
+                        81,
+                        82,
+                        83,
+                        84,
+                        85,
+                        86,
+                        87,
+                        88,
+                        89
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "approve(address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter StandardToken.approve(address,uint256)._value (contracts/safe/safe_228_SAFE.sol#77) is not in mixedCase\n",
+        "markdown": "Parameter [StandardToken.approve(address,uint256)._value](contracts/safe/safe_228_SAFE.sol#L77) is not in mixedCase\n",
+        "first_markdown_element": "contracts/safe/safe_228_SAFE.sol#L77",
+        "id": "1fa3f5bb048f68171399fc7d36b8e34d891cac5b9e22c65b41391d16050e7922",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_spender",
+            "source_mapping": {
+              "start": 5626,
+              "length": 16,
+              "filename_relative": "contracts/safe/safe_228_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol",
+              "filename_short": "contracts/safe/safe_228_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                117
+              ],
+              "starting_column": 29,
+              "ending_column": 45
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "approveAndCall",
+                "source_mapping": {
+                  "start": 5602,
+                  "length": 794,
+                  "filename_relative": "contracts/safe/safe_228_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_228_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    117,
+                    118,
+                    119,
+                    120,
+                    121,
+                    122,
+                    123,
+                    124,
+                    125,
+                    126
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "LolaCoin",
+                    "source_mapping": {
+                      "start": 4163,
+                      "length": 2236,
+                      "filename_relative": "contracts/safe/safe_228_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_228_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        92,
+                        93,
+                        94,
+                        95,
+                        96,
+                        97,
+                        98,
+                        99,
+                        100,
+                        101,
+                        102,
+                        103,
+                        104,
+                        105,
+                        106,
+                        107,
+                        108,
+                        109,
+                        110,
+                        111,
+                        112,
+                        113,
+                        114,
+                        115,
+                        116,
+                        117,
+                        118,
+                        119,
+                        120,
+                        121,
+                        122,
+                        123,
+                        124,
+                        125,
+                        126,
+                        127,
+                        128
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "approveAndCall(address,uint256,bytes)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter LolaCoin.approveAndCall(address,uint256,bytes)._spender (contracts/safe/safe_228_SAFE.sol#117) is not in mixedCase\n",
+        "markdown": "Parameter [LolaCoin.approveAndCall(address,uint256,bytes)._spender](contracts/safe/safe_228_SAFE.sol#L117) is not in mixedCase\n",
+        "first_markdown_element": "contracts/safe/safe_228_SAFE.sol#L117",
+        "id": "2741fee675ece4d006f4c948fdb4bd3f77fa86cc5c96b867e70ac36d48a3fec9",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_owner",
+            "source_mapping": {
+              "start": 3924,
+              "length": 14,
+              "filename_relative": "contracts/safe/safe_228_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol",
+              "filename_short": "contracts/safe/safe_228_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                83
+              ],
+              "starting_column": 24,
+              "ending_column": 38
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "allowance",
+                "source_mapping": {
+                  "start": 3905,
+                  "length": 139,
+                  "filename_relative": "contracts/safe/safe_228_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_228_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    83,
+                    84,
+                    85
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "StandardToken",
+                    "source_mapping": {
+                      "start": 2308,
+                      "length": 1849,
+                      "filename_relative": "contracts/safe/safe_228_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_228_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        48,
+                        49,
+                        50,
+                        51,
+                        52,
+                        53,
+                        54,
+                        55,
+                        56,
+                        57,
+                        58,
+                        59,
+                        60,
+                        61,
+                        62,
+                        63,
+                        64,
+                        65,
+                        66,
+                        67,
+                        68,
+                        69,
+                        70,
+                        71,
+                        72,
+                        73,
+                        74,
+                        75,
+                        76,
+                        77,
+                        78,
+                        79,
+                        80,
+                        81,
+                        82,
+                        83,
+                        84,
+                        85,
+                        86,
+                        87,
+                        88,
+                        89
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "allowance(address,address)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter StandardToken.allowance(address,address)._owner (contracts/safe/safe_228_SAFE.sol#83) is not in mixedCase\n",
+        "markdown": "Parameter [StandardToken.allowance(address,address)._owner](contracts/safe/safe_228_SAFE.sol#L83) is not in mixedCase\n",
+        "first_markdown_element": "contracts/safe/safe_228_SAFE.sol#L83",
+        "id": "317c0e860cb8a5338f5dfaf51d2249bbf1eb4e87ed588c7a888b367544a25740",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_value",
+            "source_mapping": {
+              "start": 2380,
+              "length": 14,
+              "filename_relative": "contracts/safe/safe_228_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol",
+              "filename_short": "contracts/safe/safe_228_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                50
+              ],
+              "starting_column": 36,
+              "ending_column": 50
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "transfer",
+                "source_mapping": {
+                  "start": 2349,
+                  "length": 611,
+                  "filename_relative": "contracts/safe/safe_228_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_228_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    50,
+                    51,
+                    52,
+                    53,
+                    54,
+                    55,
+                    56,
+                    57,
+                    58,
+                    59,
+                    60
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "StandardToken",
+                    "source_mapping": {
+                      "start": 2308,
+                      "length": 1849,
+                      "filename_relative": "contracts/safe/safe_228_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_228_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        48,
+                        49,
+                        50,
+                        51,
+                        52,
+                        53,
+                        54,
+                        55,
+                        56,
+                        57,
+                        58,
+                        59,
+                        60,
+                        61,
+                        62,
+                        63,
+                        64,
+                        65,
+                        66,
+                        67,
+                        68,
+                        69,
+                        70,
+                        71,
+                        72,
+                        73,
+                        74,
+                        75,
+                        76,
+                        77,
+                        78,
+                        79,
+                        80,
+                        81,
+                        82,
+                        83,
+                        84,
+                        85,
+                        86,
+                        87,
+                        88,
+                        89
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "transfer(address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter StandardToken.transfer(address,uint256)._value (contracts/safe/safe_228_SAFE.sol#50) is not in mixedCase\n",
+        "markdown": "Parameter [StandardToken.transfer(address,uint256)._value](contracts/safe/safe_228_SAFE.sol#L50) is not in mixedCase\n",
+        "first_markdown_element": "contracts/safe/safe_228_SAFE.sol#L50",
+        "id": "31af0fe2efb3149a68bb2fd105d1476f896dc61d738c336bdf7e41a57feb1479",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_extraData",
+            "source_mapping": {
+              "start": 5660,
+              "length": 16,
+              "filename_relative": "contracts/safe/safe_228_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol",
+              "filename_short": "contracts/safe/safe_228_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                117
+              ],
+              "starting_column": 63,
+              "ending_column": 79
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "approveAndCall",
+                "source_mapping": {
+                  "start": 5602,
+                  "length": 794,
+                  "filename_relative": "contracts/safe/safe_228_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_228_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    117,
+                    118,
+                    119,
+                    120,
+                    121,
+                    122,
+                    123,
+                    124,
+                    125,
+                    126
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "LolaCoin",
+                    "source_mapping": {
+                      "start": 4163,
+                      "length": 2236,
+                      "filename_relative": "contracts/safe/safe_228_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_228_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        92,
+                        93,
+                        94,
+                        95,
+                        96,
+                        97,
+                        98,
+                        99,
+                        100,
+                        101,
+                        102,
+                        103,
+                        104,
+                        105,
+                        106,
+                        107,
+                        108,
+                        109,
+                        110,
+                        111,
+                        112,
+                        113,
+                        114,
+                        115,
+                        116,
+                        117,
+                        118,
+                        119,
+                        120,
+                        121,
+                        122,
+                        123,
+                        124,
+                        125,
+                        126,
+                        127,
+                        128
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "approveAndCall(address,uint256,bytes)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter LolaCoin.approveAndCall(address,uint256,bytes)._extraData (contracts/safe/safe_228_SAFE.sol#117) is not in mixedCase\n",
+        "markdown": "Parameter [LolaCoin.approveAndCall(address,uint256,bytes)._extraData](contracts/safe/safe_228_SAFE.sol#L117) is not in mixedCase\n",
+        "first_markdown_element": "contracts/safe/safe_228_SAFE.sol#L117",
+        "id": "37a854539b8dceb5186982c8f2ca8beda33aaaeecb315b528ec2b18a6d485a84",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_to",
+            "source_mapping": {
+              "start": 2367,
+              "length": 11,
+              "filename_relative": "contracts/safe/safe_228_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol",
+              "filename_short": "contracts/safe/safe_228_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                50
+              ],
+              "starting_column": 23,
+              "ending_column": 34
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "transfer",
+                "source_mapping": {
+                  "start": 2349,
+                  "length": 611,
+                  "filename_relative": "contracts/safe/safe_228_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_228_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    50,
+                    51,
+                    52,
+                    53,
+                    54,
+                    55,
+                    56,
+                    57,
+                    58,
+                    59,
+                    60
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "StandardToken",
+                    "source_mapping": {
+                      "start": 2308,
+                      "length": 1849,
+                      "filename_relative": "contracts/safe/safe_228_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_228_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        48,
+                        49,
+                        50,
+                        51,
+                        52,
+                        53,
+                        54,
+                        55,
+                        56,
+                        57,
+                        58,
+                        59,
+                        60,
+                        61,
+                        62,
+                        63,
+                        64,
+                        65,
+                        66,
+                        67,
+                        68,
+                        69,
+                        70,
+                        71,
+                        72,
+                        73,
+                        74,
+                        75,
+                        76,
+                        77,
+                        78,
+                        79,
+                        80,
+                        81,
+                        82,
+                        83,
+                        84,
+                        85,
+                        86,
+                        87,
+                        88,
+                        89
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "transfer(address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter StandardToken.transfer(address,uint256)._to (contracts/safe/safe_228_SAFE.sol#50) is not in mixedCase\n",
+        "markdown": "Parameter [StandardToken.transfer(address,uint256)._to](contracts/safe/safe_228_SAFE.sol#L50) is not in mixedCase\n",
+        "first_markdown_element": "contracts/safe/safe_228_SAFE.sol#L50",
+        "id": "3c14db6b6c1ab6ca2562962944c2cf0cfbb75024bfc8414a346a102288fb8c42",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_from",
+            "source_mapping": {
+              "start": 2990,
+              "length": 13,
+              "filename_relative": "contracts/safe/safe_228_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol",
+              "filename_short": "contracts/safe/safe_228_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                62
+              ],
+              "starting_column": 27,
+              "ending_column": 40
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "transferFrom",
+                "source_mapping": {
+                  "start": 2968,
+                  "length": 599,
+                  "filename_relative": "contracts/safe/safe_228_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_228_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    62,
+                    63,
+                    64,
+                    65,
+                    66,
+                    67,
+                    68,
+                    69,
+                    70,
+                    71
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "StandardToken",
+                    "source_mapping": {
+                      "start": 2308,
+                      "length": 1849,
+                      "filename_relative": "contracts/safe/safe_228_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_228_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        48,
+                        49,
+                        50,
+                        51,
+                        52,
+                        53,
+                        54,
+                        55,
+                        56,
+                        57,
+                        58,
+                        59,
+                        60,
+                        61,
+                        62,
+                        63,
+                        64,
+                        65,
+                        66,
+                        67,
+                        68,
+                        69,
+                        70,
+                        71,
+                        72,
+                        73,
+                        74,
+                        75,
+                        76,
+                        77,
+                        78,
+                        79,
+                        80,
+                        81,
+                        82,
+                        83,
+                        84,
+                        85,
+                        86,
+                        87,
+                        88,
+                        89
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "transferFrom(address,address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter StandardToken.transferFrom(address,address,uint256)._from (contracts/safe/safe_228_SAFE.sol#62) is not in mixedCase\n",
+        "markdown": "Parameter [StandardToken.transferFrom(address,address,uint256)._from](contracts/safe/safe_228_SAFE.sol#L62) is not in mixedCase\n",
+        "first_markdown_element": "contracts/safe/safe_228_SAFE.sol#L62",
+        "id": "4dd3d547c81f2913d544b98793a5c021fe472f59b45114f773a817330cf34bfc",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_to",
+            "source_mapping": {
+              "start": 3005,
+              "length": 11,
+              "filename_relative": "contracts/safe/safe_228_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol",
+              "filename_short": "contracts/safe/safe_228_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                62
+              ],
+              "starting_column": 42,
+              "ending_column": 53
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "transferFrom",
+                "source_mapping": {
+                  "start": 2968,
+                  "length": 599,
+                  "filename_relative": "contracts/safe/safe_228_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_228_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    62,
+                    63,
+                    64,
+                    65,
+                    66,
+                    67,
+                    68,
+                    69,
+                    70,
+                    71
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "StandardToken",
+                    "source_mapping": {
+                      "start": 2308,
+                      "length": 1849,
+                      "filename_relative": "contracts/safe/safe_228_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_228_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        48,
+                        49,
+                        50,
+                        51,
+                        52,
+                        53,
+                        54,
+                        55,
+                        56,
+                        57,
+                        58,
+                        59,
+                        60,
+                        61,
+                        62,
+                        63,
+                        64,
+                        65,
+                        66,
+                        67,
+                        68,
+                        69,
+                        70,
+                        71,
+                        72,
+                        73,
+                        74,
+                        75,
+                        76,
+                        77,
+                        78,
+                        79,
+                        80,
+                        81,
+                        82,
+                        83,
+                        84,
+                        85,
+                        86,
+                        87,
+                        88,
+                        89
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "transferFrom(address,address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter StandardToken.transferFrom(address,address,uint256)._to (contracts/safe/safe_228_SAFE.sol#62) is not in mixedCase\n",
+        "markdown": "Parameter [StandardToken.transferFrom(address,address,uint256)._to](contracts/safe/safe_228_SAFE.sol#L62) is not in mixedCase\n",
+        "first_markdown_element": "contracts/safe/safe_228_SAFE.sol#L62",
+        "id": "6150a62fc365f4a97437d70d15bfe1ca02b48e7695b0f9d432eb82ac34404d51",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_spender",
+            "source_mapping": {
+              "start": 3712,
+              "length": 16,
+              "filename_relative": "contracts/safe/safe_228_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol",
+              "filename_short": "contracts/safe/safe_228_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                77
+              ],
+              "starting_column": 22,
+              "ending_column": 38
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "approve",
+                "source_mapping": {
+                  "start": 3695,
+                  "length": 202,
+                  "filename_relative": "contracts/safe/safe_228_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_228_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    77,
+                    78,
+                    79,
+                    80,
+                    81
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "StandardToken",
+                    "source_mapping": {
+                      "start": 2308,
+                      "length": 1849,
+                      "filename_relative": "contracts/safe/safe_228_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_228_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        48,
+                        49,
+                        50,
+                        51,
+                        52,
+                        53,
+                        54,
+                        55,
+                        56,
+                        57,
+                        58,
+                        59,
+                        60,
+                        61,
+                        62,
+                        63,
+                        64,
+                        65,
+                        66,
+                        67,
+                        68,
+                        69,
+                        70,
+                        71,
+                        72,
+                        73,
+                        74,
+                        75,
+                        76,
+                        77,
+                        78,
+                        79,
+                        80,
+                        81,
+                        82,
+                        83,
+                        84,
+                        85,
+                        86,
+                        87,
+                        88,
+                        89
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "approve(address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter StandardToken.approve(address,uint256)._spender (contracts/safe/safe_228_SAFE.sol#77) is not in mixedCase\n",
+        "markdown": "Parameter [StandardToken.approve(address,uint256)._spender](contracts/safe/safe_228_SAFE.sol#L77) is not in mixedCase\n",
+        "first_markdown_element": "contracts/safe/safe_228_SAFE.sol#L77",
+        "id": "70a9b4c8c2d4dca0d12170ecce3b3b3e56f16721a930795c44e5e7b45a10a5c1",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_value",
+            "source_mapping": {
+              "start": 5644,
+              "length": 14,
+              "filename_relative": "contracts/safe/safe_228_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol",
+              "filename_short": "contracts/safe/safe_228_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                117
+              ],
+              "starting_column": 47,
+              "ending_column": 61
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "approveAndCall",
+                "source_mapping": {
+                  "start": 5602,
+                  "length": 794,
+                  "filename_relative": "contracts/safe/safe_228_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_228_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    117,
+                    118,
+                    119,
+                    120,
+                    121,
+                    122,
+                    123,
+                    124,
+                    125,
+                    126
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "LolaCoin",
+                    "source_mapping": {
+                      "start": 4163,
+                      "length": 2236,
+                      "filename_relative": "contracts/safe/safe_228_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_228_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        92,
+                        93,
+                        94,
+                        95,
+                        96,
+                        97,
+                        98,
+                        99,
+                        100,
+                        101,
+                        102,
+                        103,
+                        104,
+                        105,
+                        106,
+                        107,
+                        108,
+                        109,
+                        110,
+                        111,
+                        112,
+                        113,
+                        114,
+                        115,
+                        116,
+                        117,
+                        118,
+                        119,
+                        120,
+                        121,
+                        122,
+                        123,
+                        124,
+                        125,
+                        126,
+                        127,
+                        128
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "approveAndCall(address,uint256,bytes)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter LolaCoin.approveAndCall(address,uint256,bytes)._value (contracts/safe/safe_228_SAFE.sol#117) is not in mixedCase\n",
+        "markdown": "Parameter [LolaCoin.approveAndCall(address,uint256,bytes)._value](contracts/safe/safe_228_SAFE.sol#L117) is not in mixedCase\n",
+        "first_markdown_element": "contracts/safe/safe_228_SAFE.sol#L117",
+        "id": "7327b36b84dfc2b6d39b21bd6587af96bdb27ee421d155688347d5dcecf59442",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_value",
+            "source_mapping": {
+              "start": 3018,
+              "length": 14,
+              "filename_relative": "contracts/safe/safe_228_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol",
+              "filename_short": "contracts/safe/safe_228_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                62
+              ],
+              "starting_column": 55,
+              "ending_column": 69
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "transferFrom",
+                "source_mapping": {
+                  "start": 2968,
+                  "length": 599,
+                  "filename_relative": "contracts/safe/safe_228_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_228_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    62,
+                    63,
+                    64,
+                    65,
+                    66,
+                    67,
+                    68,
+                    69,
+                    70,
+                    71
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "StandardToken",
+                    "source_mapping": {
+                      "start": 2308,
+                      "length": 1849,
+                      "filename_relative": "contracts/safe/safe_228_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_228_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        48,
+                        49,
+                        50,
+                        51,
+                        52,
+                        53,
+                        54,
+                        55,
+                        56,
+                        57,
+                        58,
+                        59,
+                        60,
+                        61,
+                        62,
+                        63,
+                        64,
+                        65,
+                        66,
+                        67,
+                        68,
+                        69,
+                        70,
+                        71,
+                        72,
+                        73,
+                        74,
+                        75,
+                        76,
+                        77,
+                        78,
+                        79,
+                        80,
+                        81,
+                        82,
+                        83,
+                        84,
+                        85,
+                        86,
+                        87,
+                        88,
+                        89
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "transferFrom(address,address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter StandardToken.transferFrom(address,address,uint256)._value (contracts/safe/safe_228_SAFE.sol#62) is not in mixedCase\n",
+        "markdown": "Parameter [StandardToken.transferFrom(address,address,uint256)._value](contracts/safe/safe_228_SAFE.sol#L62) is not in mixedCase\n",
+        "first_markdown_element": "contracts/safe/safe_228_SAFE.sol#L62",
+        "id": "e001d55ad5c9886aa799c28ded83887106a3cdbd6a17edfcc0db2c6ef55090d3",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_owner",
+            "source_mapping": {
+              "start": 3594,
+              "length": 14,
+              "filename_relative": "contracts/safe/safe_228_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol",
+              "filename_short": "contracts/safe/safe_228_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                73
+              ],
+              "starting_column": 24,
+              "ending_column": 38
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "balanceOf",
+                "source_mapping": {
+                  "start": 3575,
+                  "length": 112,
+                  "filename_relative": "contracts/safe/safe_228_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_228_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    73,
+                    74,
+                    75
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "StandardToken",
+                    "source_mapping": {
+                      "start": 2308,
+                      "length": 1849,
+                      "filename_relative": "contracts/safe/safe_228_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_228_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        48,
+                        49,
+                        50,
+                        51,
+                        52,
+                        53,
+                        54,
+                        55,
+                        56,
+                        57,
+                        58,
+                        59,
+                        60,
+                        61,
+                        62,
+                        63,
+                        64,
+                        65,
+                        66,
+                        67,
+                        68,
+                        69,
+                        70,
+                        71,
+                        72,
+                        73,
+                        74,
+                        75,
+                        76,
+                        77,
+                        78,
+                        79,
+                        80,
+                        81,
+                        82,
+                        83,
+                        84,
+                        85,
+                        86,
+                        87,
+                        88,
+                        89
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "balanceOf(address)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter StandardToken.balanceOf(address)._owner (contracts/safe/safe_228_SAFE.sol#73) is not in mixedCase\n",
+        "markdown": "Parameter [StandardToken.balanceOf(address)._owner](contracts/safe/safe_228_SAFE.sol#L73) is not in mixedCase\n",
+        "first_markdown_element": "contracts/safe/safe_228_SAFE.sol#L73",
+        "id": "e2c602baa3f6215dc1bf4b8f0abe23563363fc889add3f48a208eb560cfca631",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "slitherConstructorConstantVariables",
+            "source_mapping": {
+              "start": 4163,
+              "length": 2236,
+              "filename_relative": "contracts/safe/safe_228_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol",
+              "filename_short": "contracts/safe/safe_228_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                92,
+                93,
+                94,
+                95,
+                96,
+                97,
+                98,
+                99,
+                100,
+                101,
+                102,
+                103,
+                104,
+                105,
+                106,
+                107,
+                108,
+                109,
+                110,
+                111,
+                112,
+                113,
+                114,
+                115,
+                116,
+                117,
+                118,
+                119,
+                120,
+                121,
+                122,
+                123,
+                124,
+                125,
+                126,
+                127,
+                128
+              ],
+              "starting_column": 1,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "LolaCoin",
+                "source_mapping": {
+                  "start": 4163,
+                  "length": 2236,
+                  "filename_relative": "contracts/safe/safe_228_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_228_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    92,
+                    93,
+                    94,
+                    95,
+                    96,
+                    97,
+                    98,
+                    99,
+                    100,
+                    101,
+                    102,
+                    103,
+                    104,
+                    105,
+                    106,
+                    107,
+                    108,
+                    109,
+                    110,
+                    111,
+                    112,
+                    113,
+                    114,
+                    115,
+                    116,
+                    117,
+                    118,
+                    119,
+                    120,
+                    121,
+                    122,
+                    123,
+                    124,
+                    125,
+                    126,
+                    127,
+                    128
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              },
+              "signature": "slitherConstructorConstantVariables()"
+            }
+          },
+          {
+            "type": "node",
+            "name": "TOTAL = 1000000000000000000000000000",
+            "source_mapping": {
+              "start": 4979,
+              "length": 60,
+              "filename_relative": "contracts/safe/safe_228_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol",
+              "filename_short": "contracts/safe/safe_228_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                106
+              ],
+              "starting_column": 5,
+              "ending_column": 65
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "slitherConstructorConstantVariables",
+                "source_mapping": {
+                  "start": 4163,
+                  "length": 2236,
+                  "filename_relative": "contracts/safe/safe_228_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_228_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    92,
+                    93,
+                    94,
+                    95,
+                    96,
+                    97,
+                    98,
+                    99,
+                    100,
+                    101,
+                    102,
+                    103,
+                    104,
+                    105,
+                    106,
+                    107,
+                    108,
+                    109,
+                    110,
+                    111,
+                    112,
+                    113,
+                    114,
+                    115,
+                    116,
+                    117,
+                    118,
+                    119,
+                    120,
+                    121,
+                    122,
+                    123,
+                    124,
+                    125,
+                    126,
+                    127,
+                    128
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "LolaCoin",
+                    "source_mapping": {
+                      "start": 4163,
+                      "length": 2236,
+                      "filename_relative": "contracts/safe/safe_228_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_228_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        92,
+                        93,
+                        94,
+                        95,
+                        96,
+                        97,
+                        98,
+                        99,
+                        100,
+                        101,
+                        102,
+                        103,
+                        104,
+                        105,
+                        106,
+                        107,
+                        108,
+                        109,
+                        110,
+                        111,
+                        112,
+                        113,
+                        114,
+                        115,
+                        116,
+                        117,
+                        118,
+                        119,
+                        120,
+                        121,
+                        122,
+                        123,
+                        124,
+                        125,
+                        126,
+                        127,
+                        128
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "slitherConstructorConstantVariables()"
+                }
+              }
+            }
+          }
+        ],
+        "description": "LolaCoin.slitherConstructorConstantVariables() (contracts/safe/safe_228_SAFE.sol#92-128) uses literals with too many digits:\n\t- TOTAL = 1000000000000000000000000000 (contracts/safe/safe_228_SAFE.sol#106)\n",
+        "markdown": "[LolaCoin.slitherConstructorConstantVariables()](contracts/safe/safe_228_SAFE.sol#L92-L128) uses literals with too many digits:\n\t- [TOTAL = 1000000000000000000000000000](contracts/safe/safe_228_SAFE.sol#L106)\n",
+        "first_markdown_element": "contracts/safe/safe_228_SAFE.sol#L92-L128",
+        "id": "510e29287f77e7e42da1e68cc6ecaf5f43be37f286ef3e55df5dbd58f4dd0987",
+        "check": "too-many-digits",
+        "impact": "Informational",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "version",
+            "source_mapping": {
+              "start": 4877,
+              "length": 30,
+              "filename_relative": "contracts/safe/safe_228_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol",
+              "filename_short": "contracts/safe/safe_228_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                105
+              ],
+              "starting_column": 5,
+              "ending_column": 35
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "LolaCoin",
+                "source_mapping": {
+                  "start": 4163,
+                  "length": 2236,
+                  "filename_relative": "contracts/safe/safe_228_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_228_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    92,
+                    93,
+                    94,
+                    95,
+                    96,
+                    97,
+                    98,
+                    99,
+                    100,
+                    101,
+                    102,
+                    103,
+                    104,
+                    105,
+                    106,
+                    107,
+                    108,
+                    109,
+                    110,
+                    111,
+                    112,
+                    113,
+                    114,
+                    115,
+                    116,
+                    117,
+                    118,
+                    119,
+                    120,
+                    121,
+                    122,
+                    123,
+                    124,
+                    125,
+                    126,
+                    127,
+                    128
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              }
+            }
+          }
+        ],
+        "description": "LolaCoin.version (contracts/safe/safe_228_SAFE.sol#105) should be constant \n",
+        "markdown": "[LolaCoin.version](contracts/safe/safe_228_SAFE.sol#L105) should be constant \n",
+        "first_markdown_element": "contracts/safe/safe_228_SAFE.sol#L105",
+        "id": "aa308c325ea3163b742d551524eff66d9acca2d2b4880ecf2486d922e1c4d243",
+        "check": "constable-states",
+        "impact": "Optimization",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "approveAndCall",
+            "source_mapping": {
+              "start": 5602,
+              "length": 794,
+              "filename_relative": "contracts/safe/safe_228_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol",
+              "filename_short": "contracts/safe/safe_228_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                117,
+                118,
+                119,
+                120,
+                121,
+                122,
+                123,
+                124,
+                125,
+                126
+              ],
+              "starting_column": 5,
+              "ending_column": 6
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "LolaCoin",
+                "source_mapping": {
+                  "start": 4163,
+                  "length": 2236,
+                  "filename_relative": "contracts/safe/safe_228_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_228_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_228_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    92,
+                    93,
+                    94,
+                    95,
+                    96,
+                    97,
+                    98,
+                    99,
+                    100,
+                    101,
+                    102,
+                    103,
+                    104,
+                    105,
+                    106,
+                    107,
+                    108,
+                    109,
+                    110,
+                    111,
+                    112,
+                    113,
+                    114,
+                    115,
+                    116,
+                    117,
+                    118,
+                    119,
+                    120,
+                    121,
+                    122,
+                    123,
+                    124,
+                    125,
+                    126,
+                    127,
+                    128
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              },
+              "signature": "approveAndCall(address,uint256,bytes)"
+            }
+          }
+        ],
+        "description": "approveAndCall(address,uint256,bytes) should be declared external:\n\t- LolaCoin.approveAndCall(address,uint256,bytes) (contracts/safe/safe_228_SAFE.sol#117-126)\n",
+        "markdown": "approveAndCall(address,uint256,bytes) should be declared external:\n\t- [LolaCoin.approveAndCall(address,uint256,bytes)](contracts/safe/safe_228_SAFE.sol#L117-L126)\n",
+        "first_markdown_element": "contracts/safe/safe_228_SAFE.sol#L117-L126",
+        "id": "86aef962e00b6b1ff8325c0bb2dd7684e03c7946bfe1e20f8d2d2fcc29838a24",
+        "check": "external-function",
+        "impact": "Optimization",
+        "confidence": "High"
+      }
+    ]
+  }
+}

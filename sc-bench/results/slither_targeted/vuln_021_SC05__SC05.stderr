@@ -1,0 +1,7 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_021_SC05.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
+
+Detector: weak-prng
+RandomNumberGenerator.random(uint256) (contracts/vulnerable/vuln_021_SC05.sol#14-25) uses a weak PRNG: "uint256((h / x)) % max + 1 (contracts/vulnerable/vuln_021_SC05.sol#24)" 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#weak-PRNG
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_021_SC05.sol analyzed (1 contracts with 2 detectors), 1 result(s) found

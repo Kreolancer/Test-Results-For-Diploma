@@ -1,0 +1,84 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_140_SC09.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
+
+Detector: divide-before-multiply
+ICOBucket.tokensAmountForPurchase() (contracts/vulnerable/vuln_140_SC09.sol#313-318) performs a multiplication on the result of a division:
+	- msg.value.mul(10 ** 18).div(tokenCost).mul(100 + bonus).div(100) (contracts/vulnerable/vuln_140_SC09.sol#314-317)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#divide-before-multiply
+
+Detector: events-maths
+ICOBucket.setSize(uint256) (contracts/vulnerable/vuln_140_SC09.sol#245-248) should emit an event for: 
+	- size = _size (contracts/vulnerable/vuln_140_SC09.sol#246) 
+ICOBucket.setRate(uint256) (contracts/vulnerable/vuln_140_SC09.sol#254-257) should emit an event for: 
+	- rate = _rate (contracts/vulnerable/vuln_140_SC09.sol#255) 
+ICOBucket.setBonus(uint256) (contracts/vulnerable/vuln_140_SC09.sol#290-292) should emit an event for: 
+	- bonus = _bonus (contracts/vulnerable/vuln_140_SC09.sol#291) 
+ICOBucket.setMinimumTokensForPurchase(uint256) (contracts/vulnerable/vuln_140_SC09.sol#294-296) should emit an event for: 
+	- minimumTokensForPurchase = _minimum (contracts/vulnerable/vuln_140_SC09.sol#295) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-arithmetic
+
+Detector: missing-zero-check
+ICOBucket.constructor(address,uint256,uint256,uint256,address,uint256,uint256)._wallet (contracts/vulnerable/vuln_140_SC09.sol#230) lacks a zero-check on :
+		- wallet = _wallet (contracts/vulnerable/vuln_140_SC09.sol#236)
+ICOBucket.setWallet(address)._wallet (contracts/vulnerable/vuln_140_SC09.sol#286) lacks a zero-check on :
+		- wallet = _wallet (contracts/vulnerable/vuln_140_SC09.sol#287)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+
+Detector: timestamp
+ICOBucket.availableTokens() (contracts/vulnerable/vuln_140_SC09.sol#270-275) uses timestamp for comparisons
+	Dangerous comparisons:
+	- size < refillAmount (contracts/vulnerable/vuln_140_SC09.sol#274)
+ICOBucket.fallback() (contracts/vulnerable/vuln_140_SC09.sol#300-311) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(tokensAmount <= available) (contracts/vulnerable/vuln_140_SC09.sol#304)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+
+Detector: solc-version
+Version constraint ^0.4.25 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ABIEncoderV2PackedStorage_0.4.x.
+It is used by:
+	- ^0.4.25 (contracts/vulnerable/vuln_140_SC09.sol#1)
+solc-0.4.25 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Parameter RBACMixin.isOwner(address)._who (contracts/vulnerable/vuln_140_SC09.sol#97) is not in mixedCase
+Parameter RBACMixin.isMinter(address)._who (contracts/vulnerable/vuln_140_SC09.sol#104) is not in mixedCase
+Parameter RBACMixin.addOwner(address)._who (contracts/vulnerable/vuln_140_SC09.sol#112) is not in mixedCase
+Parameter RBACMixin.deleteOwner(address)._who (contracts/vulnerable/vuln_140_SC09.sol#120) is not in mixedCase
+Parameter RBACMixin.addMinter(address)._who (contracts/vulnerable/vuln_140_SC09.sol#128) is not in mixedCase
+Parameter RBACMixin.deleteMinter(address)._who (contracts/vulnerable/vuln_140_SC09.sol#136) is not in mixedCase
+Parameter ICOBucket.setSize(uint256)._size (contracts/vulnerable/vuln_140_SC09.sol#245) is not in mixedCase
+Parameter ICOBucket.setRate(uint256)._rate (contracts/vulnerable/vuln_140_SC09.sol#254) is not in mixedCase
+Parameter ICOBucket.setSizeAndRate(uint256,uint256)._size (contracts/vulnerable/vuln_140_SC09.sol#264) is not in mixedCase
+Parameter ICOBucket.setSizeAndRate(uint256,uint256)._rate (contracts/vulnerable/vuln_140_SC09.sol#264) is not in mixedCase
+Parameter ICOBucket.addToWhiteList(address)._address (contracts/vulnerable/vuln_140_SC09.sol#278) is not in mixedCase
+Parameter ICOBucket.removeFromWhiteList(address)._address (contracts/vulnerable/vuln_140_SC09.sol#282) is not in mixedCase
+Parameter ICOBucket.setWallet(address)._wallet (contracts/vulnerable/vuln_140_SC09.sol#286) is not in mixedCase
+Parameter ICOBucket.setBonus(uint256)._bonus (contracts/vulnerable/vuln_140_SC09.sol#290) is not in mixedCase
+Parameter ICOBucket.setMinimumTokensForPurchase(uint256)._minimum (contracts/vulnerable/vuln_140_SC09.sol#294) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: reentrancy-unlimited-gas
+Reentrancy in ICOBucket.fallback() (contracts/vulnerable/vuln_140_SC09.sol#300-311):
+	External calls:
+	- wallet.transfer(msg.value) (contracts/vulnerable/vuln_140_SC09.sol#307)
+	State variables written after the call(s):
+	- lastMintTime = now (contracts/vulnerable/vuln_140_SC09.sol#309)
+	- leftOnLastMint = available.sub(tokensAmount) (contracts/vulnerable/vuln_140_SC09.sol#308)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-5
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_140_SC09.sol analyzed (4 contracts with 101 detectors), 27 result(s) found

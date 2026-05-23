@@ -1,0 +1,101 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_258_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+
+Detector: constant-function-asm
+TheEthGame.isContract(address) (contracts/safe/safe_258_SAFE.sol#527-531) is declared view but contains assembly code
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#constant-functions-using-assembly-code
+
+Detector: uninitialized-local
+TheEthGame.getRankOnePlayer(address).oldOwnerIndex (contracts/safe/safe_258_SAFE.sol#196) is a local variable never initialized
+TheEthGame.calculateNumberOfNeighbours(uint256,address).numberOfNeighbours (contracts/safe/safe_258_SAFE.sol#404) is a local variable never initialized
+TheEthGame.getRankOnePlayer(address).rankOnePlayer (contracts/safe/safe_258_SAFE.sol#195) is a local variable never initialized
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#uninitialized-local-variables
+
+Detector: missing-zero-check
+TheEthGameTrophy.award(address,string)._address (contracts/safe/safe_258_SAFE.sol#584) lacks a zero-check on :
+		- owner = _address (contracts/safe/safe_258_SAFE.sol#587)
+		- winner = _address (contracts/safe/safe_258_SAFE.sol#588)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+
+Detector: assembly
+TheEthGame.isContract(address) (contracts/safe/safe_258_SAFE.sol#527-531) uses assembly
+	- INLINE ASM (contracts/safe/safe_258_SAFE.sol#529-530)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#assembly-usage
+
+Detector: dead-code
+TheEthGameTrophy.transfer(address) (contracts/safe/safe_258_SAFE.sol#594-599) is never used and should be removed
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dead-code
+
+Detector: solc-version
+Version constraint ^0.4.13 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- NestedArrayFunctionCallDecoder
+	- ZeroFunctionSelector
+	- DelegateCallReturnValue
+	- ECRecoverMalformedInput.
+It is used by:
+	- ^0.4.13 (contracts/safe/safe_258_SAFE.sol#32)
+solc-0.4.24 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Parameter SafeMath.mul(uint256,uint256)._a (contracts/safe/safe_258_SAFE.sol#42) is not in mixedCase
+Parameter SafeMath.mul(uint256,uint256)._b (contracts/safe/safe_258_SAFE.sol#42) is not in mixedCase
+Parameter SafeMath.div(uint256,uint256)._a (contracts/safe/safe_258_SAFE.sol#58) is not in mixedCase
+Parameter SafeMath.div(uint256,uint256)._b (contracts/safe/safe_258_SAFE.sol#58) is not in mixedCase
+Parameter SafeMath.sub(uint256,uint256)._a (contracts/safe/safe_258_SAFE.sol#68) is not in mixedCase
+Parameter SafeMath.sub(uint256,uint256)._b (contracts/safe/safe_258_SAFE.sol#68) is not in mixedCase
+Parameter SafeMath.add(uint256,uint256)._a (contracts/safe/safe_258_SAFE.sol#76) is not in mixedCase
+Parameter SafeMath.add(uint256,uint256)._b (contracts/safe/safe_258_SAFE.sol#76) is not in mixedCase
+Parameter TheEthGame.nextPriceOf(uint256)._cellId (contracts/safe/safe_258_SAFE.sol#155) is not in mixedCase
+Parameter TheEthGame.priceOf(uint256)._cellId (contracts/safe/safe_258_SAFE.sol#159) is not in mixedCase
+Parameter TheEthGame.earningsFromNumberOfCells(address)._address (contracts/safe/safe_258_SAFE.sol#167) is not in mixedCase
+Parameter TheEthGame.distributeEarningsBasedOnNumberOfCells(address)._address (contracts/safe/safe_258_SAFE.sol#171) is not in mixedCase
+Parameter TheEthGame.earningsFromScore(address)._address (contracts/safe/safe_258_SAFE.sol#176) is not in mixedCase
+Parameter TheEthGame.distributeEarningsBasedOnScore(address,address)._newOwner (contracts/safe/safe_258_SAFE.sol#180) is not in mixedCase
+Parameter TheEthGame.distributeEarningsBasedOnScore(address,address)._oldOwner (contracts/safe/safe_258_SAFE.sol#180) is not in mixedCase
+Parameter TheEthGame.getRankOnePlayer(address)._oldOwner (contracts/safe/safe_258_SAFE.sol#194) is not in mixedCase
+Parameter TheEthGame.buy(uint256,address)._cellId (contracts/safe/safe_258_SAFE.sol#214) is not in mixedCase
+Parameter TheEthGame.buy(uint256,address)._referreal (contracts/safe/safe_258_SAFE.sol#214) is not in mixedCase
+Parameter TheEthGame.distributeToReferreal(uint256,address)._price (contracts/safe/safe_258_SAFE.sol#305) is not in mixedCase
+Parameter TheEthGame.distributeToReferreal(uint256,address)._referreal (contracts/safe/safe_258_SAFE.sol#305) is not in mixedCase
+Parameter TheEthGame.scoreOf(address)._address (contracts/safe/safe_258_SAFE.sol#371) is not in mixedCase
+Parameter TheEthGame.ownerOf(uint256)._cellId (contracts/safe/safe_258_SAFE.sol#375) is not in mixedCase
+Parameter TheEthGame.calculateScoresIfCellIsBought(address,address,uint256)._newOwner (contracts/safe/safe_258_SAFE.sol#383) is not in mixedCase
+Parameter TheEthGame.calculateScoresIfCellIsBought(address,address,uint256)._oldOwner (contracts/safe/safe_258_SAFE.sol#383) is not in mixedCase
+Parameter TheEthGame.calculateScoresIfCellIsBought(address,address,uint256)._cellId (contracts/safe/safe_258_SAFE.sol#383) is not in mixedCase
+Parameter TheEthGame.calculateNumberOfNeighbours(uint256,address)._cellId (contracts/safe/safe_258_SAFE.sol#403) is not in mixedCase
+Parameter TheEthGame.calculateNumberOfNeighbours(uint256,address)._address (contracts/safe/safe_258_SAFE.sol#403) is not in mixedCase
+Parameter TheEthGame.getNeighbourhoodOf(uint256)._cellId (contracts/safe/safe_258_SAFE.sol#427) is not in mixedCase
+Parameter TheEthGame.withdrawPot(string)._message (contracts/safe/safe_258_SAFE.sol#476) is not in mixedCase
+Parameter TheEthGame.setName(bytes32)._name (contracts/safe/safe_258_SAFE.sol#509) is not in mixedCase
+Parameter TheEthGame.nameOf(address)._address (contracts/safe/safe_258_SAFE.sol#518) is not in mixedCase
+Parameter TheEthGame.addressOf(bytes32)._name (contracts/safe/safe_258_SAFE.sol#522) is not in mixedCase
+Parameter TheEthGameTrophy.award(address,string)._address (contracts/safe/safe_258_SAFE.sol#584) is not in mixedCase
+Parameter TheEthGameTrophy.award(address,string)._message (contracts/safe/safe_258_SAFE.sol#584) is not in mixedCase
+Parameter TheEthGameTrophy.transfer(address)._to (contracts/safe/safe_258_SAFE.sol#594) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: cache-array-length
+Loop condition i < ranking.length (contracts/safe/safe_258_SAFE.sol#198) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i < ranking.length (contracts/safe/safe_258_SAFE.sol#327) should use cached array length instead of referencing `length` member of the storage array.
+ Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#cache-array-length
+
+Detector: external-function
+withdrawPot(string) should be declared external:
+	- TheEthGame.withdrawPot(string) (contracts/safe/safe_258_SAFE.sol#476-490)
+award(address,string) should be declared external:
+	- TheEthGameTrophy.award(address,string) (contracts/safe/safe_258_SAFE.sol#584-592)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#public-function-that-could-be-declared-external
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_258_SAFE.sol analyzed (3 contracts with 101 detectors), 48 result(s) found

@@ -1,0 +1,104 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_165_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+
+Detector: events-access
+CouponToken.setContractAddresses(address,address,address) (contracts/safe/safe_165_SAFE.sol#423-433) should emit an event for: 
+	- couponTokenSaleAddr = _couponTokenSaleAddr (contracts/safe/safe_165_SAFE.sol#430) 
+	- couponTokenSaleAddr = _couponTokenSaleAddr (contracts/safe/safe_165_SAFE.sol#430) 
+	- couponTokenSaleAddr = _couponTokenSaleAddr (contracts/safe/safe_165_SAFE.sol#430) 
+	- couponTokenBountyAddr = _couponTokenBountyAddr (contracts/safe/safe_165_SAFE.sol#431) 
+	- couponTokenBountyAddr = _couponTokenBountyAddr (contracts/safe/safe_165_SAFE.sol#431) 
+	- couponTokenCampaignAddr = _couponTokenCampaignAddr (contracts/safe/safe_165_SAFE.sol#432) 
+	- couponTokenCampaignAddr = _couponTokenCampaignAddr (contracts/safe/safe_165_SAFE.sol#432) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+
+Detector: events-maths
+CouponToken.setSalesEndTime(uint256) (contracts/safe/safe_165_SAFE.sol#436-440) should emit an event for: 
+	- endSaleTime = _endSaleTime (contracts/safe/safe_165_SAFE.sol#439) 
+CouponToken.setSaleLot4StartTime(uint256) (contracts/safe/safe_165_SAFE.sol#442-446) should emit an event for: 
+	- startTimeOfSaleLot4 = _startTime (contracts/safe/safe_165_SAFE.sol#445) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-arithmetic
+
+Detector: missing-zero-check
+CouponToken.setContractAddresses(address,address,address)._couponTokenSaleAddr (contracts/safe/safe_165_SAFE.sol#424) lacks a zero-check on :
+		- couponTokenSaleAddr = _couponTokenSaleAddr (contracts/safe/safe_165_SAFE.sol#430)
+CouponToken.setContractAddresses(address,address,address)._couponTokenBountyAddr (contracts/safe/safe_165_SAFE.sol#425) lacks a zero-check on :
+		- couponTokenBountyAddr = _couponTokenBountyAddr (contracts/safe/safe_165_SAFE.sol#431)
+CouponToken.setContractAddresses(address,address,address)._couponTokenCampaignAddr (contracts/safe/safe_165_SAFE.sol#426) lacks a zero-check on :
+		- couponTokenCampaignAddr = _couponTokenCampaignAddr (contracts/safe/safe_165_SAFE.sol#432)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+
+Detector: timestamp
+CouponToken.isTransferAllowed(address) (contracts/safe/safe_165_SAFE.sol#470-485) uses timestamp for comparisons
+	Dangerous comparisons:
+	- endSaleTime == 0 || (now < (endSaleTime + 63072000)) (contracts/safe/safe_165_SAFE.sol#475-476)
+	- startTimeOfSaleLot4 == 0 || (now < (startTimeOfSaleLot4 + 7776000)) (contracts/safe/safe_165_SAFE.sol#480-481)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+
+Detector: boolean-equal
+CouponToken.onlyIfValidTransfer(address) (contracts/safe/safe_165_SAFE.sol#350-353) compares to a boolean constant:
+	-require(bool)(isTransferAllowed(sender) == true) (contracts/safe/safe_165_SAFE.sol#351)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#boolean-equality
+
+Detector: solc-version
+Version constraint ^0.4.24 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ABIEncoderV2PackedStorage_0.4.x
+	- ExpExponentCleanup
+	- EventStructWrongData.
+It is used by:
+	- ^0.4.24 (contracts/safe/safe_165_SAFE.sol#1)
+solc-0.4.24 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Parameter BasicToken.transfer(address,uint256)._to (contracts/safe/safe_165_SAFE.sol#44) is not in mixedCase
+Parameter BasicToken.transfer(address,uint256)._value (contracts/safe/safe_165_SAFE.sol#44) is not in mixedCase
+Parameter BasicToken.balanceOf(address)._owner (contracts/safe/safe_165_SAFE.sol#59) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._from (contracts/safe/safe_165_SAFE.sol#77) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._to (contracts/safe/safe_165_SAFE.sol#78) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._value (contracts/safe/safe_165_SAFE.sol#79) is not in mixedCase
+Parameter StandardToken.approve(address,uint256)._spender (contracts/safe/safe_165_SAFE.sol#104) is not in mixedCase
+Parameter StandardToken.approve(address,uint256)._value (contracts/safe/safe_165_SAFE.sol#104) is not in mixedCase
+Parameter StandardToken.allowance(address,address)._owner (contracts/safe/safe_165_SAFE.sol#117) is not in mixedCase
+Parameter StandardToken.allowance(address,address)._spender (contracts/safe/safe_165_SAFE.sol#118) is not in mixedCase
+Parameter StandardToken.increaseApproval(address,uint256)._spender (contracts/safe/safe_165_SAFE.sol#137) is not in mixedCase
+Parameter StandardToken.increaseApproval(address,uint256)._addedValue (contracts/safe/safe_165_SAFE.sol#138) is not in mixedCase
+Parameter StandardToken.decreaseApproval(address,uint256)._spender (contracts/safe/safe_165_SAFE.sol#159) is not in mixedCase
+Parameter StandardToken.decreaseApproval(address,uint256)._subtractedValue (contracts/safe/safe_165_SAFE.sol#160) is not in mixedCase
+Parameter Ownable.transferOwnership(address)._newOwner (contracts/safe/safe_165_SAFE.sol#219) is not in mixedCase
+Parameter CouponToken.mint(address,uint256)._to (contracts/safe/safe_165_SAFE.sol#385) is not in mixedCase
+Parameter CouponToken.mint(address,uint256)._amount (contracts/safe/safe_165_SAFE.sol#385) is not in mixedCase
+Parameter CouponToken.setContractAddresses(address,address,address)._couponTokenSaleAddr (contracts/safe/safe_165_SAFE.sol#424) is not in mixedCase
+Parameter CouponToken.setContractAddresses(address,address,address)._couponTokenBountyAddr (contracts/safe/safe_165_SAFE.sol#425) is not in mixedCase
+Parameter CouponToken.setContractAddresses(address,address,address)._couponTokenCampaignAddr (contracts/safe/safe_165_SAFE.sol#426) is not in mixedCase
+Parameter CouponToken.setSalesEndTime(uint256)._endSaleTime (contracts/safe/safe_165_SAFE.sol#436) is not in mixedCase
+Parameter CouponToken.setSaleLot4StartTime(uint256)._startTime (contracts/safe/safe_165_SAFE.sol#442) is not in mixedCase
+Parameter CouponToken.setFounderUser(address)._user (contracts/safe/safe_165_SAFE.sol#449) is not in mixedCase
+Parameter CouponToken.setSalesUser(address)._user (contracts/safe/safe_165_SAFE.sol#456) is not in mixedCase
+Parameter CouponToken.setBonusUser(address)._user (contracts/safe/safe_165_SAFE.sol#463) is not in mixedCase
+Parameter CouponToken.isTransferAllowed(address)._user (contracts/safe/safe_165_SAFE.sol#470) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: too-many-digits
+CouponToken.slitherConstructorConstantVariables() (contracts/safe/safe_165_SAFE.sol#302-487) uses literals with too many digits:
+	- TOTAL_COUPON_SUPPLY = 1000000000 * DECIMALS_FACTOR (contracts/safe/safe_165_SAFE.sol#292)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#too-many-digits
+
+Detector: unused-state
+CouponTokenConfig.USER_NONE (contracts/safe/safe_165_SAFE.sol#294) is never used in CouponToken (contracts/safe/safe_165_SAFE.sol#302-487)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unused-state-variable
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_165_SAFE.sol analyzed (8 contracts with 101 detectors), 38 result(s) found

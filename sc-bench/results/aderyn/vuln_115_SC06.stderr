@@ -1,0 +1,4 @@
+Compilation Error: [1;31mError[0m[1;37m: Source file requires different compiler version (current compiler is 0.4.26+commit.4563c3fc.Linux.g++ - note that nightly builds are considered to be strictly less than the released version[0m
+src/vuln_115_SC06.sol:110:1: SyntaxError: Source file requires different compiler version (current compiler is 0.4.26+commit.4563c3fc.Linux.g++ - note that nightly builds are considered to be strictly less than the released version
+pragma solidity ^0.6.24;
+^----------------------^

@@ -1,0 +1,28 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_267_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_267_SAFE.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_267_SAFE.sol:41:36: Warning: Unused local variable
+contract token { function transfer(address receiver, uint amount){  } }
+                                   ^--------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_267_SAFE.sol:41:54: Warning: Unused local variable
+contract token { function transfer(address receiver, uint amount){  } }
+                                                     ^---------^
+
+
+Detector: timestamp
+Crowdsale.buyTokens(address) (contracts/safe/safe_267_SAFE.sol#88-115) uses timestamp for comparisons
+	Dangerous comparisons:
+	- now < startTime + 1 * 7 * 24 * 60 * 60 (contracts/safe/safe_267_SAFE.sol#97)
+	- now < startTime + 2 * 7 * 24 * 60 * 60 (contracts/safe/safe_267_SAFE.sol#99)
+	- now < startTime + 3 * 7 * 24 * 60 * 60 (contracts/safe/safe_267_SAFE.sol#101)
+	- now < startTime + 4 * 7 * 24 * 60 * 60 (contracts/safe/safe_267_SAFE.sol#103)
+	- now < startTime + 5 * 7 * 24 * 60 * 60 (contracts/safe/safe_267_SAFE.sol#105)
+Crowdsale.validPurchase() (contracts/safe/safe_267_SAFE.sol#127-131) uses timestamp for comparisons
+	Dangerous comparisons:
+	- withinPeriod = now >= startTime && now <= endTime (contracts/safe/safe_267_SAFE.sol#128)
+	- withinPeriod && nonZeroPurchase (contracts/safe/safe_267_SAFE.sol#130)
+Crowdsale.hasEnded() (contracts/safe/safe_267_SAFE.sol#134-136) uses timestamp for comparisons
+	Dangerous comparisons:
+	- now > endTime (contracts/safe/safe_267_SAFE.sol#135)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_267_SAFE.sol analyzed (3 contracts with 2 detectors), 3 result(s) found

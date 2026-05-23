@@ -1,0 +1,100 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_150_SC09.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
+
+Detector: arbitrary-send-eth
+AthleteToken.purchase(uint256) (contracts/vulnerable/vuln_150_SC09.sol#199-239) sends eth to arbitrary user
+	Dangerous calls:
+	- oldOwner.transfer(payment) (contracts/vulnerable/vuln_150_SC09.sol#233)
+AthleteToken._payout(address) (contracts/vulnerable/vuln_150_SC09.sol#379-385) sends eth to arbitrary user
+	Dangerous calls:
+	- roleAdminAddress.transfer(this.balance) (contracts/vulnerable/vuln_150_SC09.sol#381)
+	- _to.transfer(this.balance) (contracts/vulnerable/vuln_150_SC09.sol#383)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#functions-that-send-ether-to-arbitrary-destinations
+
+Detector: events-access
+AthleteToken.setAdmin(address) (contracts/vulnerable/vuln_150_SC09.sol#247-250) should emit an event for: 
+	- roleAdminAddress = _newAdmin (contracts/vulnerable/vuln_150_SC09.sol#249) 
+	- roleAdminAddress = _newAdmin (contracts/vulnerable/vuln_150_SC09.sol#249) 
+AthleteToken.setEditor(address) (contracts/vulnerable/vuln_150_SC09.sol#254-257) should emit an event for: 
+	- roleEditorAddress = _newEditor (contracts/vulnerable/vuln_150_SC09.sol#256) 
+	- roleEditorAddress = _newEditor (contracts/vulnerable/vuln_150_SC09.sol#256) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+
+Detector: solc-version
+Version constraint ^0.4.18 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- EventStructWrongData
+	- NestedArrayFunctionCallDecoder.
+It is used by:
+	- ^0.4.18 (contracts/vulnerable/vuln_150_SC09.sol#1)
+solc-0.4.18 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Parameter AthleteToken.approve(address,uint256)._to (contracts/vulnerable/vuln_150_SC09.sol#120) is not in mixedCase
+Parameter AthleteToken.approve(address,uint256)._tokenId (contracts/vulnerable/vuln_150_SC09.sol#121) is not in mixedCase
+Parameter AthleteToken.balanceOf(address)._owner (contracts/vulnerable/vuln_150_SC09.sol#134) is not in mixedCase
+Parameter AthleteToken.createAssignedAthlete(address,string,uint256)._owner (contracts/vulnerable/vuln_150_SC09.sol#139) is not in mixedCase
+Parameter AthleteToken.createAssignedAthlete(address,string,uint256)._name (contracts/vulnerable/vuln_150_SC09.sol#139) is not in mixedCase
+Parameter AthleteToken.createAssignedAthlete(address,string,uint256)._price (contracts/vulnerable/vuln_150_SC09.sol#139) is not in mixedCase
+Parameter AthleteToken.createContractAthlete(string)._name (contracts/vulnerable/vuln_150_SC09.sol#156) is not in mixedCase
+Parameter AthleteToken.getAthlete(uint256)._tokenId (contracts/vulnerable/vuln_150_SC09.sol#162) is not in mixedCase
+Parameter AthleteToken.ownerOf(uint256)._tokenId (contracts/vulnerable/vuln_150_SC09.sol#185) is not in mixedCase
+Parameter AthleteToken.payout(address)._to (contracts/vulnerable/vuln_150_SC09.sol#194) is not in mixedCase
+Parameter AthleteToken.purchase(uint256)._tokenId (contracts/vulnerable/vuln_150_SC09.sol#199) is not in mixedCase
+Parameter AthleteToken.priceOf(uint256)._tokenId (contracts/vulnerable/vuln_150_SC09.sol#241) is not in mixedCase
+Parameter AthleteToken.setAdmin(address)._newAdmin (contracts/vulnerable/vuln_150_SC09.sol#247) is not in mixedCase
+Parameter AthleteToken.setEditor(address)._newEditor (contracts/vulnerable/vuln_150_SC09.sol#254) is not in mixedCase
+Parameter AthleteToken.takeOwnership(uint256)._tokenId (contracts/vulnerable/vuln_150_SC09.sol#267) is not in mixedCase
+Parameter AthleteToken.tokensOfOwner(address)._owner (contracts/vulnerable/vuln_150_SC09.sol#283) is not in mixedCase
+Parameter AthleteToken.transfer(address,uint256)._to (contracts/vulnerable/vuln_150_SC09.sol#315) is not in mixedCase
+Parameter AthleteToken.transfer(address,uint256)._tokenId (contracts/vulnerable/vuln_150_SC09.sol#316) is not in mixedCase
+Parameter AthleteToken.transferFrom(address,address,uint256)._from (contracts/vulnerable/vuln_150_SC09.sol#330) is not in mixedCase
+Parameter AthleteToken.transferFrom(address,address,uint256)._to (contracts/vulnerable/vuln_150_SC09.sol#331) is not in mixedCase
+Parameter AthleteToken.transferFrom(address,address,uint256)._tokenId (contracts/vulnerable/vuln_150_SC09.sol#332) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: reentrancy-unlimited-gas
+Reentrancy in AthleteToken.purchase(uint256) (contracts/vulnerable/vuln_150_SC09.sol#199-239):
+	External calls:
+	- oldOwner.transfer(payment) (contracts/vulnerable/vuln_150_SC09.sol#233)
+	Event emitted after the call(s):
+	- TokenSold(_tokenId,sellingPrice,athleteIdToPrice[_tokenId],oldOwner,newOwner,athletes[_tokenId].name) (contracts/vulnerable/vuln_150_SC09.sol#236)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-5
+
+Detector: unindexed-event-address
+Event AthleteToken.Transfer(address,address,uint256) (contracts/vulnerable/vuln_150_SC09.sol#40) has address parameters but no indexed parameters
+Event AthleteToken.Birth(uint256,string,address) (contracts/vulnerable/vuln_150_SC09.sol#34) has address parameters but no indexed parameters
+Event AthleteToken.TokenSold(uint256,uint256,uint256,address,address,string) (contracts/vulnerable/vuln_150_SC09.sol#37) has address parameters but no indexed parameters
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unindexed-event-address-parameters
+
+Detector: unused-state
+AthleteToken.thirdStepLimit (contracts/vulnerable/vuln_150_SC09.sol#52) is never used in AthleteToken (contracts/vulnerable/vuln_150_SC09.sol#29-404)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unused-state-variable
+
+Detector: constable-states
+AthleteToken.firstStepLimit (contracts/vulnerable/vuln_150_SC09.sol#50) should be constant 
+AthleteToken.secondStepLimit (contracts/vulnerable/vuln_150_SC09.sol#51) should be constant 
+AthleteToken.startingPrice (contracts/vulnerable/vuln_150_SC09.sol#48) should be constant 
+AthleteToken.thirdStepLimit (contracts/vulnerable/vuln_150_SC09.sol#52) should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+
+Detector: external-function
+createContractAthlete(string) should be declared external:
+	- AthleteToken.createContractAthlete(string) (contracts/vulnerable/vuln_150_SC09.sol#156-158)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#public-function-that-could-be-declared-external
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_150_SC09.sol analyzed (3 contracts with 101 detectors), 37 result(s) found

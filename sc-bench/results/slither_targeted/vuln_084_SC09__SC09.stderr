@@ -1,0 +1,12 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_084_SC09.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_084_SC09.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_084_SC09.sol:17:9: Warning: Unused local variable.
+        uint res = count - input;
+        ^------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_084_SC09.sol:15:5: Warning: Function state mutability can be restricted to view
+    function run(uint256 input) public {
+    ^
+Spanning multiple lines.
+
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_084_SC09.sol analyzed (1 contracts with 2 detectors), 0 result(s) found

@@ -1,0 +1,43 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_159_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+
+Detector: divide-before-multiply
+CryptoSagaDungeonVer1.enterDungeon(uint256[4],uint32) (contracts/safe/safe_159_SAFE.sol#1713-1996) performs a multiplication on the result of a division:
+	- _damage = _damage * 150 / 100 (contracts/safe/safe_159_SAFE.sol#1918)
+	- _damage = _damage * 150 / 100 (contracts/safe/safe_159_SAFE.sol#1920)
+CryptoSagaDungeonVer1.enterDungeon(uint256[4],uint32) (contracts/safe/safe_159_SAFE.sol#1713-1996) performs a multiplication on the result of a division:
+	- _damage = _damage * 150 / 100 (contracts/safe/safe_159_SAFE.sol#1916)
+	- _damage = _damage * 150 / 100 (contracts/safe/safe_159_SAFE.sol#1918)
+CryptoSagaDungeonVer1.enterDungeon(uint256[4],uint32) (contracts/safe/safe_159_SAFE.sol#1713-1996) performs a multiplication on the result of a division:
+	- _damage = _damage * 150 / 100 (contracts/safe/safe_159_SAFE.sol#1914)
+	- _damage = _damage * 150 / 100 (contracts/safe/safe_159_SAFE.sol#1916)
+CryptoSagaDungeonVer1.enterDungeon(uint256[4],uint32) (contracts/safe/safe_159_SAFE.sol#1713-1996) performs a multiplication on the result of a division:
+	- _damage = _damage * 150 / 100 (contracts/safe/safe_159_SAFE.sol#1912)
+	- _damage = _damage * 150 / 100 (contracts/safe/safe_159_SAFE.sol#1914)
+CryptoSagaDungeonVer1.enterDungeon(uint256[4],uint32) (contracts/safe/safe_159_SAFE.sol#1713-1996) performs a multiplication on the result of a division:
+	- _damage = _damage * 125 / 100 (contracts/safe/safe_159_SAFE.sol#1908)
+	- _damage = _damage * 150 / 100 (contracts/safe/safe_159_SAFE.sol#1912)
+CryptoSagaDungeonVer1.enterDungeon(uint256[4],uint32) (contracts/safe/safe_159_SAFE.sol#1713-1996) performs a multiplication on the result of a division:
+	- _damage = _damage * 125 / 100 (contracts/safe/safe_159_SAFE.sol#1906)
+	- _damage = _damage * 125 / 100 (contracts/safe/safe_159_SAFE.sol#1908)
+CryptoSagaDungeonVer1.enterDungeon(uint256[4],uint32) (contracts/safe/safe_159_SAFE.sol#1713-1996) performs a multiplication on the result of a division:
+	- _damage = _damage * 125 / 100 (contracts/safe/safe_159_SAFE.sol#1904)
+	- _damage = _damage * 125 / 100 (contracts/safe/safe_159_SAFE.sol#1906)
+CryptoSagaDungeonVer1.enterDungeon(uint256[4],uint32) (contracts/safe/safe_159_SAFE.sol#1713-1996) performs a multiplication on the result of a division:
+	- _damage = _damage * 150 / 100 (contracts/safe/safe_159_SAFE.sol#1899)
+	- _damage = _damage * 125 / 100 (contracts/safe/safe_159_SAFE.sol#1904)
+CryptoSagaDungeonVer1.enterDungeon(uint256[4],uint32) (contracts/safe/safe_159_SAFE.sol#1713-1996) performs a multiplication on the result of a division:
+	- _damage = _damage * 150 / 100 (contracts/safe/safe_159_SAFE.sol#1895)
+	- _damage = _damage * 150 / 100 (contracts/safe/safe_159_SAFE.sol#1899)
+CryptoSagaDungeonVer1.enterDungeon(uint256[4],uint32) (contracts/safe/safe_159_SAFE.sol#1713-1996) performs a multiplication on the result of a division:
+	- _damage = _damage * 0 (contracts/safe/safe_159_SAFE.sol#1889)
+	- _damage = _damage * 150 / 100 (contracts/safe/safe_159_SAFE.sol#1895)
+CryptoSagaDungeonVer1.enterDungeon(uint256[4],uint32) (contracts/safe/safe_159_SAFE.sol#1713-1996) performs a multiplication on the result of a division:
+	- _damage = _damage * 0 (contracts/safe/safe_159_SAFE.sol#1885)
+	- _damage = _damage * 150 / 100 (contracts/safe/safe_159_SAFE.sol#1895)
+CryptoSagaDungeonVer1.giveReward(uint256[4],uint32,uint8,bool,uint32[4]) (contracts/safe/safe_159_SAFE.sol#2040-2075) performs a multiplication on the result of a division:
+	- _goldRewardGiven = goldReward / 5 * sqrt(_progress) (contracts/safe/safe_159_SAFE.sol#2053)
+CryptoSagaDungeonVer1.giveReward(uint256[4],uint32,uint8,bool,uint32[4]) (contracts/safe/safe_159_SAFE.sol#2040-2075) performs a multiplication on the result of a division:
+	- _goldRewardGiven = goldReward / 25 * sqrt(_progress) (contracts/safe/safe_159_SAFE.sol#2049)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#divide-before-multiply
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_159_SAFE.sol analyzed (20 contracts with 2 detectors), 13 result(s) found

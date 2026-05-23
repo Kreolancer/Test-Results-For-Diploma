@@ -1,0 +1,490 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_231_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_231_SAFE.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_231_SAFE.sol:186:35: Warning: This function only accepts a single "bytes" argument. Please use "abi.encodePacked(...)" or a similar function to encode the data.
+            seed = uint(keccak256(keccak256(blockhash(block.number), seed), now));
+                                  ^--------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_231_SAFE.sol:186:25: Warning: This function only accepts a single "bytes" argument. Please use "abi.encodePacked(...)" or a similar function to encode the data.
+            seed = uint(keccak256(keccak256(blockhash(block.number), seed), now));
+                        ^------------------------------------------------------^
+
+
+Detector: weak-prng
+BWService.random(uint256) (contracts/safe/safe_231_SAFE.sol#185-188) uses a weak PRNG: "seed % _upper (contracts/safe/safe_231_SAFE.sol#187)" 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#weak-PRNG
+
+Detector: divide-before-multiply
+BWUtility.ceil(uint256,uint256) (contracts/safe/safe_231_SAFE.sol#9-11) performs a multiplication on the result of a division:
+	- ((_amount + _multiple - 1) / _multiple) * _multiple (contracts/safe/safe_231_SAFE.sol#10)
+BWData.calculateBattleBoost(uint16,address,address) (contracts/safe/safe_231_SAFE.sol#535-593) performs a multiplication on the result of a division:
+	- boost.attackBoost = (boost.attackBoost / 10 * boost.numAttackBoosts) (contracts/safe/safe_231_SAFE.sol#589)
+BWData.calculateBattleBoost(uint16,address,address) (contracts/safe/safe_231_SAFE.sol#535-593) performs a multiplication on the result of a division:
+	- boost.defendBoost = (boost.defendBoost / 10 * boost.numDefendBoosts) (contracts/safe/safe_231_SAFE.sol#590)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#divide-before-multiply
+
+Detector: events-access
+BWService.setValidBwCaller(address) (contracts/safe/safe_231_SAFE.sol#98-100) should emit an event for: 
+	- bw = _bw (contracts/safe/safe_231_SAFE.sol#99) 
+BWService.setValidBwMarketCaller(address) (contracts/safe/safe_231_SAFE.sol#102-104) should emit an event for: 
+	- bwMarket = _bwMarket (contracts/safe/safe_231_SAFE.sol#103) 
+BWData.setBwServiceValidCaller(address) (contracts/safe/safe_231_SAFE.sol#407-409) should emit an event for: 
+	- bwService = _bwService (contracts/safe/safe_231_SAFE.sol#408) 
+BWData.setBwValidCaller(address) (contracts/safe/safe_231_SAFE.sol#411-413) should emit an event for: 
+	- bw = _bw (contracts/safe/safe_231_SAFE.sol#412) 
+BWData.setBwMarketValidCaller(address) (contracts/safe/safe_231_SAFE.sol#415-417) should emit an event for: 
+	- bwMarket = _bwMarket (contracts/safe/safe_231_SAFE.sol#416) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+
+Detector: missing-zero-check
+BWService.setValidBwCaller(address)._bw (contracts/safe/safe_231_SAFE.sol#98) lacks a zero-check on :
+		- bw = _bw (contracts/safe/safe_231_SAFE.sol#99)
+BWService.setValidBwMarketCaller(address)._bwMarket (contracts/safe/safe_231_SAFE.sol#102) lacks a zero-check on :
+		- bwMarket = _bwMarket (contracts/safe/safe_231_SAFE.sol#103)
+BWData.setBwServiceValidCaller(address)._bwService (contracts/safe/safe_231_SAFE.sol#407) lacks a zero-check on :
+		- bwService = _bwService (contracts/safe/safe_231_SAFE.sol#408)
+BWData.setBwValidCaller(address)._bw (contracts/safe/safe_231_SAFE.sol#411) lacks a zero-check on :
+		- bw = _bw (contracts/safe/safe_231_SAFE.sol#412)
+BWData.setBwMarketValidCaller(address)._bwMarket (contracts/safe/safe_231_SAFE.sol#415) lacks a zero-check on :
+		- bwMarket = _bwMarket (contracts/safe/safe_231_SAFE.sol#416)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+
+Detector: calls-loop
+BWService.storeInitialClaim(address,uint16[],uint256,bool) (contracts/safe/safe_231_SAFE.sol#111-138) has external calls inside a loop: isNewTile = bwData.isNewTile(tileId) (contracts/safe/safe_231_SAFE.sol#129)
+BWService.storeInitialClaim(address,uint16[],uint256,bool) (contracts/safe/safe_231_SAFE.sol#111-138) has external calls inside a loop: bwData.storeClaim(tileId,_msgSender,valuePerBlockInWei) (contracts/safe/safe_231_SAFE.sol#136)
+BWService.fortifyClaims(address,uint16[],uint256,bool) (contracts/safe/safe_231_SAFE.sol#140-163) has external calls inside a loop: (claimer,blockValue) = bwData.getTileClaimerAndBlockValue(_claimedTileIds[i]) (contracts/safe/safe_231_SAFE.sol#153)
+BWService.subUserBattleValue(address,uint256,bool) (contracts/safe/safe_231_SAFE.sol#323-329) has external calls inside a loop: userBattleValue = bwData.getUserBattleValue(_userId) (contracts/safe/safe_231_SAFE.sol#324)
+	Calls stack containing the loop:
+		BWService.fortifyClaims(address,uint16[],uint256,bool)
+BWService.subUserBattleValue(address,uint256,bool) (contracts/safe/safe_231_SAFE.sol#323-329) has external calls inside a loop: bwData.setUserBattleValue(_userId,newBattleValue) (contracts/safe/safe_231_SAFE.sol#327)
+	Calls stack containing the loop:
+		BWService.fortifyClaims(address,uint16[],uint256,bool)
+BWService.fortifyClaim(address,uint16,uint256) (contracts/safe/safe_231_SAFE.sol#165-178) has external calls inside a loop: (blockValue,sellPrice) = bwData.getCurrentBlockValueAndSellPriceForTile(_claimedTileId) (contracts/safe/safe_231_SAFE.sol#168)
+	Calls stack containing the loop:
+		BWService.fortifyClaims(address,uint16[],uint256,bool)
+BWService.fortifyClaim(address,uint16,uint256) (contracts/safe/safe_231_SAFE.sol#165-178) has external calls inside a loop: bwData.updateTileBlockValue(_claimedTileId,updatedBlockValue) (contracts/safe/safe_231_SAFE.sol#174)
+	Calls stack containing the loop:
+		BWService.fortifyClaims(address,uint16[],uint256,bool)
+BWService.addGlobalBlockValueBalance(uint256) (contracts/safe/safe_231_SAFE.sol#331-336) has external calls inside a loop: blockValueBalance = bwData.getBlockValueBalance() (contracts/safe/safe_231_SAFE.sol#333)
+	Calls stack containing the loop:
+		BWService.fortifyClaims(address,uint16[],uint256,bool)
+		BWService.fortifyClaim(address,uint16,uint256)
+BWService.addGlobalBlockValueBalance(uint256) (contracts/safe/safe_231_SAFE.sol#331-336) has external calls inside a loop: bwData.setBlockValueBalance(blockValueBalance + _amount) (contracts/safe/safe_231_SAFE.sol#335)
+	Calls stack containing the loop:
+		BWService.fortifyClaims(address,uint16[],uint256,bool)
+		BWService.fortifyClaim(address,uint16,uint256)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation/#calls-inside-a-loop
+
+Detector: reentrancy-benign
+Reentrancy in BWService.attackTile(address,uint16,uint256,bool,bool) (contracts/safe/safe_231_SAFE.sol#192-259):
+	External calls:
+	- (claimer,blockValue) = bwData.getTileClaimerAndBlockValue(_tileId) (contracts/safe/safe_231_SAFE.sol#198)
+	- (attackBoost,defendBoost) = bwData.calculateBattleBoost(_tileId,_msgSender,claimer) (contracts/safe/safe_231_SAFE.sol#209)
+	State variables written after the call(s):
+	- attackRoll = random(totalAttackAmount + totalDefendAmount) (contracts/safe/safe_231_SAFE.sol#221)
+		- seed = uint256(keccak256()(keccak256()(blockhash(uint256)(block.number),seed),now)) (contracts/safe/safe_231_SAFE.sol#186)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+
+Detector: reentrancy-events
+Reentrancy in BWService.addUserBattleValue(address,uint256) (contracts/safe/safe_231_SAFE.sol#315-321):
+	External calls:
+	- userBattleValue = bwData.getUserBattleValue(_userId) (contracts/safe/safe_231_SAFE.sol#316)
+	- bwData.setUserBattleValue(_userId,newBattleValue) (contracts/safe/safe_231_SAFE.sol#319)
+	Event emitted after the call(s):
+	- UserBattleValueUpdated(_userId,newBattleValue,false) (contracts/safe/safe_231_SAFE.sol#320)
+Reentrancy in BWService.attackTile(address,uint16,uint256,bool,bool) (contracts/safe/safe_231_SAFE.sol#192-259):
+	External calls:
+	- (claimer,blockValue) = bwData.getTileClaimerAndBlockValue(_tileId) (contracts/safe/safe_231_SAFE.sol#198)
+	- (attackBoost,defendBoost) = bwData.calculateBattleBoost(_tileId,_msgSender,claimer) (contracts/safe/safe_231_SAFE.sol#209)
+	Event emitted after the call(s):
+	- TileAttackedSuccessfully(_tileId,_msgSender,_attackAmount,totalAttackAmount,claimer,blockValue,totalDefendAmount,attackRoll,block.timestamp) (contracts/safe/safe_231_SAFE.sol#224)
+Reentrancy in BWService.attackTile(address,uint16,uint256,bool,bool) (contracts/safe/safe_231_SAFE.sol#192-259):
+	External calls:
+	- (claimer,blockValue) = bwData.getTileClaimerAndBlockValue(_tileId) (contracts/safe/safe_231_SAFE.sol#198)
+	- (attackBoost,defendBoost) = bwData.calculateBattleBoost(_tileId,_msgSender,claimer) (contracts/safe/safe_231_SAFE.sol#209)
+	- bwData.setClaimerForTile(_tileId,_msgSender) (contracts/safe/safe_231_SAFE.sol#227)
+	- fortifyClaim(_msgSender,_tileId,_attackAmount) (contracts/safe/safe_231_SAFE.sol#233)
+		- blockValueBalance = bwData.getBlockValueBalance() (contracts/safe/safe_231_SAFE.sol#333)
+		- (blockValue,sellPrice) = bwData.getCurrentBlockValueAndSellPriceForTile(_claimedTileId) (contracts/safe/safe_231_SAFE.sol#168)
+		- bwData.setBlockValueBalance(blockValueBalance + _amount) (contracts/safe/safe_231_SAFE.sol#335)
+		- bwData.updateTileBlockValue(_claimedTileId,updatedBlockValue) (contracts/safe/safe_231_SAFE.sol#174)
+	Event emitted after the call(s):
+	- TileFortified(_claimedTileId,_msgSender,_fortifyAmount,updatedBlockValue,block.timestamp) (contracts/safe/safe_231_SAFE.sol#171)
+		- fortifyClaim(_msgSender,_tileId,_attackAmount) (contracts/safe/safe_231_SAFE.sol#233)
+Reentrancy in BWService.attackTile(address,uint16,uint256,bool,bool) (contracts/safe/safe_231_SAFE.sol#192-259):
+	External calls:
+	- (claimer,blockValue) = bwData.getTileClaimerAndBlockValue(_tileId) (contracts/safe/safe_231_SAFE.sol#198)
+	- (attackBoost,defendBoost) = bwData.calculateBattleBoost(_tileId,_msgSender,claimer) (contracts/safe/safe_231_SAFE.sol#209)
+	- bwData.setClaimerForTile(_tileId,_msgSender) (contracts/safe/safe_231_SAFE.sol#227)
+	- fortifyClaim(_msgSender,_tileId,_attackAmount) (contracts/safe/safe_231_SAFE.sol#233)
+		- blockValueBalance = bwData.getBlockValueBalance() (contracts/safe/safe_231_SAFE.sol#333)
+		- (blockValue,sellPrice) = bwData.getCurrentBlockValueAndSellPriceForTile(_claimedTileId) (contracts/safe/safe_231_SAFE.sol#168)
+		- bwData.setBlockValueBalance(blockValueBalance + _amount) (contracts/safe/safe_231_SAFE.sol#335)
+		- bwData.updateTileBlockValue(_claimedTileId,updatedBlockValue) (contracts/safe/safe_231_SAFE.sol#174)
+	- subUserBattleValue(_msgSender,_attackAmount,false) (contracts/safe/safe_231_SAFE.sol#234)
+		- userBattleValue = bwData.getUserBattleValue(_userId) (contracts/safe/safe_231_SAFE.sol#324)
+		- bwData.setUserBattleValue(_userId,newBattleValue) (contracts/safe/safe_231_SAFE.sol#327)
+	Event emitted after the call(s):
+	- UserBattleValueUpdated(_userId,newBattleValue,_isWithdraw) (contracts/safe/safe_231_SAFE.sol#328)
+		- subUserBattleValue(_msgSender,_attackAmount,false) (contracts/safe/safe_231_SAFE.sol#234)
+Reentrancy in BWService.attackTile(address,uint16,uint256,bool,bool) (contracts/safe/safe_231_SAFE.sol#192-259):
+	External calls:
+	- (claimer,blockValue) = bwData.getTileClaimerAndBlockValue(_tileId) (contracts/safe/safe_231_SAFE.sol#198)
+	- (attackBoost,defendBoost) = bwData.calculateBattleBoost(_tileId,_msgSender,claimer) (contracts/safe/safe_231_SAFE.sol#209)
+	- bwData.setClaimerForTile(_tileId,_msgSender) (contracts/safe/safe_231_SAFE.sol#227)
+	- fortifyClaim(_msgSender,_tileId,_attackAmount) (contracts/safe/safe_231_SAFE.sol#241)
+		- blockValueBalance = bwData.getBlockValueBalance() (contracts/safe/safe_231_SAFE.sol#333)
+		- (blockValue,sellPrice) = bwData.getCurrentBlockValueAndSellPriceForTile(_claimedTileId) (contracts/safe/safe_231_SAFE.sol#168)
+		- bwData.setBlockValueBalance(blockValueBalance + _amount) (contracts/safe/safe_231_SAFE.sol#335)
+		- bwData.updateTileBlockValue(_claimedTileId,updatedBlockValue) (contracts/safe/safe_231_SAFE.sol#174)
+	Event emitted after the call(s):
+	- TileFortified(_claimedTileId,_msgSender,_fortifyAmount,updatedBlockValue,block.timestamp) (contracts/safe/safe_231_SAFE.sol#171)
+		- fortifyClaim(_msgSender,_tileId,_attackAmount) (contracts/safe/safe_231_SAFE.sol#241)
+Reentrancy in BWService.attackTile(address,uint16,uint256,bool,bool) (contracts/safe/safe_231_SAFE.sol#192-259):
+	External calls:
+	- (claimer,blockValue) = bwData.getTileClaimerAndBlockValue(_tileId) (contracts/safe/safe_231_SAFE.sol#198)
+	- (attackBoost,defendBoost) = bwData.calculateBattleBoost(_tileId,_msgSender,claimer) (contracts/safe/safe_231_SAFE.sol#209)
+	- bwData.setClaimerForTile(_tileId,_msgSender) (contracts/safe/safe_231_SAFE.sol#227)
+	- addUserBattleValue(_msgSender,_attackAmount) (contracts/safe/safe_231_SAFE.sol#243)
+		- userBattleValue = bwData.getUserBattleValue(_userId) (contracts/safe/safe_231_SAFE.sol#316)
+		- bwData.setUserBattleValue(_userId,newBattleValue) (contracts/safe/safe_231_SAFE.sol#319)
+	Event emitted after the call(s):
+	- UserBattleValueUpdated(_userId,newBattleValue,false) (contracts/safe/safe_231_SAFE.sol#320)
+		- addUserBattleValue(_msgSender,_attackAmount) (contracts/safe/safe_231_SAFE.sol#243)
+Reentrancy in BWService.attackTile(address,uint16,uint256,bool,bool) (contracts/safe/safe_231_SAFE.sol#192-259):
+	External calls:
+	- (claimer,blockValue) = bwData.getTileClaimerAndBlockValue(_tileId) (contracts/safe/safe_231_SAFE.sol#198)
+	- (attackBoost,defendBoost) = bwData.calculateBattleBoost(_tileId,_msgSender,claimer) (contracts/safe/safe_231_SAFE.sol#209)
+	- subUserBattleValue(_msgSender,_attackAmount,false) (contracts/safe/safe_231_SAFE.sol#249)
+		- userBattleValue = bwData.getUserBattleValue(_userId) (contracts/safe/safe_231_SAFE.sol#324)
+		- bwData.setUserBattleValue(_userId,newBattleValue) (contracts/safe/safe_231_SAFE.sol#327)
+	Event emitted after the call(s):
+	- UserBattleValueUpdated(_userId,newBattleValue,_isWithdraw) (contracts/safe/safe_231_SAFE.sol#328)
+		- subUserBattleValue(_msgSender,_attackAmount,false) (contracts/safe/safe_231_SAFE.sol#249)
+Reentrancy in BWService.attackTile(address,uint16,uint256,bool,bool) (contracts/safe/safe_231_SAFE.sol#192-259):
+	External calls:
+	- (claimer,blockValue) = bwData.getTileClaimerAndBlockValue(_tileId) (contracts/safe/safe_231_SAFE.sol#198)
+	- (attackBoost,defendBoost) = bwData.calculateBattleBoost(_tileId,_msgSender,claimer) (contracts/safe/safe_231_SAFE.sol#209)
+	- subUserBattleValue(_msgSender,_attackAmount,false) (contracts/safe/safe_231_SAFE.sol#249)
+		- userBattleValue = bwData.getUserBattleValue(_userId) (contracts/safe/safe_231_SAFE.sol#324)
+		- bwData.setUserBattleValue(_userId,newBattleValue) (contracts/safe/safe_231_SAFE.sol#327)
+	- addUserBattleValue(claimer,_attackAmount) (contracts/safe/safe_231_SAFE.sol#251)
+		- userBattleValue = bwData.getUserBattleValue(_userId) (contracts/safe/safe_231_SAFE.sol#316)
+		- bwData.setUserBattleValue(_userId,newBattleValue) (contracts/safe/safe_231_SAFE.sol#319)
+	Event emitted after the call(s):
+	- TileDefendedSuccessfully(_tileId,_msgSender,_attackAmount,totalAttackAmount,claimer,blockValue,totalDefendAmount,attackRoll,block.timestamp) (contracts/safe/safe_231_SAFE.sol#254)
+	- UserBattleValueUpdated(_userId,newBattleValue,false) (contracts/safe/safe_231_SAFE.sol#320)
+		- addUserBattleValue(claimer,_attackAmount) (contracts/safe/safe_231_SAFE.sol#251)
+Reentrancy in BW.attackTileForNewUser(uint16,bytes32,bytes,bytes32,bytes32,address) (contracts/safe/safe_231_SAFE.sol#695-699):
+	External calls:
+	- bwData.addUser(msg.sender) (contracts/safe/safe_231_SAFE.sol#696)
+	Event emitted after the call(s):
+	- UserCreated(msg.sender,_name,_imageUrl,_tag,_homeUrl,block.timestamp,_invitedBy) (contracts/safe/safe_231_SAFE.sol#697)
+Reentrancy in BW.censorUser(address,bool) (contracts/safe/safe_231_SAFE.sol#731-734):
+	External calls:
+	- bwData.censorUser(_userAddress,_censored) (contracts/safe/safe_231_SAFE.sol#732)
+	Event emitted after the call(s):
+	- UserCensored(_userAddress,_censored) (contracts/safe/safe_231_SAFE.sol#733)
+Reentrancy in BW.claimTilesForNewUser(bytes32,bytes,bytes32,bytes32,uint16[],address) (contracts/safe/safe_231_SAFE.sol#666-670):
+	External calls:
+	- bwData.addUser(msg.sender) (contracts/safe/safe_231_SAFE.sol#667)
+	Event emitted after the call(s):
+	- UserCreated(msg.sender,_name,_imageUrl,_tag,_homeUrl,block.timestamp,_invitedBy) (contracts/safe/safe_231_SAFE.sol#668)
+Reentrancy in BW.createNewUser(bytes32,bytes,address) (contracts/safe/safe_231_SAFE.sol#723-726):
+	External calls:
+	- bwData.addUser(_user) (contracts/safe/safe_231_SAFE.sol#724)
+	Event emitted after the call(s):
+	- UserCreated(msg.sender,_name,_imageUrl,0x0,0x0,block.timestamp,0x0) (contracts/safe/safe_231_SAFE.sol#725)
+Reentrancy in BWService.fortifyClaim(address,uint16,uint256) (contracts/safe/safe_231_SAFE.sol#165-178):
+	External calls:
+	- (blockValue,sellPrice) = bwData.getCurrentBlockValueAndSellPriceForTile(_claimedTileId) (contracts/safe/safe_231_SAFE.sol#168)
+	Event emitted after the call(s):
+	- TileFortified(_claimedTileId,_msgSender,_fortifyAmount,updatedBlockValue,block.timestamp) (contracts/safe/safe_231_SAFE.sol#171)
+Reentrancy in BWService.fortifyClaims(address,uint16[],uint256,bool) (contracts/safe/safe_231_SAFE.sol#140-163):
+	External calls:
+	- (claimer,blockValue) = bwData.getTileClaimerAndBlockValue(_claimedTileIds[i]) (contracts/safe/safe_231_SAFE.sol#153)
+	- subUserBattleValue(_msgSender,addedValuePerTileInWei,false) (contracts/safe/safe_231_SAFE.sol#158)
+		- userBattleValue = bwData.getUserBattleValue(_userId) (contracts/safe/safe_231_SAFE.sol#324)
+		- bwData.setUserBattleValue(_userId,newBattleValue) (contracts/safe/safe_231_SAFE.sol#327)
+	- fortifyClaim(_msgSender,_claimedTileIds[i],addedValuePerTileInWei) (contracts/safe/safe_231_SAFE.sol#161)
+		- blockValueBalance = bwData.getBlockValueBalance() (contracts/safe/safe_231_SAFE.sol#333)
+		- (blockValue,sellPrice) = bwData.getCurrentBlockValueAndSellPriceForTile(_claimedTileId) (contracts/safe/safe_231_SAFE.sol#168)
+		- bwData.setBlockValueBalance(blockValueBalance + _amount) (contracts/safe/safe_231_SAFE.sol#335)
+		- bwData.updateTileBlockValue(_claimedTileId,updatedBlockValue) (contracts/safe/safe_231_SAFE.sol#174)
+	Event emitted after the call(s):
+	- TileFortified(_claimedTileId,_msgSender,_fortifyAmount,updatedBlockValue,block.timestamp) (contracts/safe/safe_231_SAFE.sol#171)
+		- fortifyClaim(_msgSender,_claimedTileIds[i],addedValuePerTileInWei) (contracts/safe/safe_231_SAFE.sol#161)
+	- UserBattleValueUpdated(_userId,newBattleValue,_isWithdraw) (contracts/safe/safe_231_SAFE.sol#328)
+		- subUserBattleValue(_msgSender,addedValuePerTileInWei,false) (contracts/safe/safe_231_SAFE.sol#158)
+Reentrancy in BWService.moveBlockValue(address,uint8,uint8,uint8,uint8,uint256) (contracts/safe/safe_231_SAFE.sol#261-296):
+	External calls:
+	- (sourceTileClaimer,sourceTileBlockValue) = bwData.getTileClaimerAndBlockValue(sourceTileId) (contracts/safe/safe_231_SAFE.sol#269)
+	- (destTileClaimer,destTileBlockValue) = bwData.getTileClaimerAndBlockValue(destTileId) (contracts/safe/safe_231_SAFE.sol#270)
+	- bwData.deleteTile(sourceTileId) (contracts/safe/safe_231_SAFE.sol#287)
+	- bwData.updateTileBlockValue(sourceTileId,sourceTileBlockValue) (contracts/safe/safe_231_SAFE.sol#289)
+	- bwData.deleteOffer(sourceTileId) (contracts/safe/safe_231_SAFE.sol#290)
+	- bwData.updateTileBlockValue(destTileId,destTileBlockValue) (contracts/safe/safe_231_SAFE.sol#293)
+	- bwData.deleteOffer(destTileId) (contracts/safe/safe_231_SAFE.sol#294)
+	Event emitted after the call(s):
+	- BlockValueMoved(sourceTileId,destTileId,_msgSender,_moveAmount,sourceTileBlockValue,destTileBlockValue,block.timestamp) (contracts/safe/safe_231_SAFE.sol#295)
+Reentrancy in BWService.storeInitialClaim(address,uint16[],uint256,bool) (contracts/safe/safe_231_SAFE.sol#111-138):
+	External calls:
+	- subUserBattleValue(_msgSender,_claimAmount,false) (contracts/safe/safe_231_SAFE.sol#120)
+		- userBattleValue = bwData.getUserBattleValue(_userId) (contracts/safe/safe_231_SAFE.sol#324)
+		- bwData.setUserBattleValue(_userId,newBattleValue) (contracts/safe/safe_231_SAFE.sol#327)
+	- addGlobalBlockValueBalance(_claimAmount) (contracts/safe/safe_231_SAFE.sol#123)
+		- blockValueBalance = bwData.getBlockValueBalance() (contracts/safe/safe_231_SAFE.sol#333)
+		- bwData.setBlockValueBalance(blockValueBalance + _amount) (contracts/safe/safe_231_SAFE.sol#335)
+	- isNewTile = bwData.isNewTile(tileId) (contracts/safe/safe_231_SAFE.sol#129)
+	- bwData.storeClaim(tileId,_msgSender,valuePerBlockInWei) (contracts/safe/safe_231_SAFE.sol#136)
+	Event emitted after the call(s):
+	- TileClaimed(tileId,_msgSender,valuePerBlockInWei,block.timestamp) (contracts/safe/safe_231_SAFE.sol#133)
+Reentrancy in BWService.subUserBattleValue(address,uint256,bool) (contracts/safe/safe_231_SAFE.sol#323-329):
+	External calls:
+	- userBattleValue = bwData.getUserBattleValue(_userId) (contracts/safe/safe_231_SAFE.sol#324)
+	- bwData.setUserBattleValue(_userId,newBattleValue) (contracts/safe/safe_231_SAFE.sol#327)
+	Event emitted after the call(s):
+	- UserBattleValueUpdated(_userId,newBattleValue,_isWithdraw) (contracts/safe/safe_231_SAFE.sol#328)
+Reentrancy in BW.transferTileFromOwner(uint16,address) (contracts/safe/safe_231_SAFE.sol#775-786):
+	External calls:
+	- claimer = bwData.getCurrentClaimerForTile(_tileId) (contracts/safe/safe_231_SAFE.sol#776)
+	- require(bool)(bwData.hasUser(_newOwner)) (contracts/safe/safe_231_SAFE.sol#778)
+	- bwData.setClaimerForTile(_tileId,_newOwner) (contracts/safe/safe_231_SAFE.sol#782)
+	- bwService.addUserBattleValue(_newOwner,msg.value) (contracts/safe/safe_231_SAFE.sol#783)
+	Event emitted after the call(s):
+	- TransferTileFromOwner(_tileId,claimer,msg.sender,block.timestamp) (contracts/safe/safe_231_SAFE.sol#785)
+Reentrancy in BW.updateUser(bytes32,bytes,bytes32,bytes32) (contracts/safe/safe_231_SAFE.sol#679-683):
+	External calls:
+	- require(bool)(bwData.hasUser(msg.sender)) (contracts/safe/safe_231_SAFE.sol#680)
+	Event emitted after the call(s):
+	- UserUpdated(msg.sender,_name,_imageUrl,_tag,_homeUrl,block.timestamp) (contracts/safe/safe_231_SAFE.sol#682)
+Reentrancy in BWService.withdrawBattleValue(address,uint256) (contracts/safe/safe_231_SAFE.sol#300-313):
+	External calls:
+	- require(bool)(bwData.hasUser(msgSender)) (contracts/safe/safe_231_SAFE.sol#301)
+	- feeBalance = bwData.getFeeBalance() (contracts/safe/safe_231_SAFE.sol#307)
+	- bwData.setFeeBalance(feeBalance) (contracts/safe/safe_231_SAFE.sol#310)
+	- subUserBattleValue(msgSender,_battleValueInWei,true) (contracts/safe/safe_231_SAFE.sol#311)
+		- userBattleValue = bwData.getUserBattleValue(_userId) (contracts/safe/safe_231_SAFE.sol#324)
+		- bwData.setUserBattleValue(_userId,newBattleValue) (contracts/safe/safe_231_SAFE.sol#327)
+	Event emitted after the call(s):
+	- UserBattleValueUpdated(_userId,newBattleValue,_isWithdraw) (contracts/safe/safe_231_SAFE.sol#328)
+		- subUserBattleValue(msgSender,_battleValueInWei,true) (contracts/safe/safe_231_SAFE.sol#311)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-4
+
+Detector: timestamp
+BWService.attackTile(address,uint16,uint256,bool,bool) (contracts/safe/safe_231_SAFE.sol#192-259) uses timestamp for comparisons
+	Dangerous comparisons:
+	- attackRoll > totalDefendAmount (contracts/safe/safe_231_SAFE.sol#222)
+BWData.addUser(address) (contracts/safe/safe_231_SAFE.sol#427-431) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(user.creationTime == 0) (contracts/safe/safe_231_SAFE.sol#429)
+BWData.verifyAmount(address,uint256,uint256,bool) (contracts/safe/safe_231_SAFE.sol#511-521) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(user.creationTime != 0) (contracts/safe/safe_231_SAFE.sol#513)
+	- require(bool)(user.battleValue >= _amount) (contracts/safe/safe_231_SAFE.sol#517)
+BWData.censorUser(address,bool) (contracts/safe/safe_231_SAFE.sol#595-599) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(user.creationTime != 0) (contracts/safe/safe_231_SAFE.sol#597)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+
+Detector: solc-version
+Version constraint ^0.4.21 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ABIEncoderV2PackedStorage_0.4.x
+	- ExpExponentCleanup
+	- EventStructWrongData
+	- NestedArrayFunctionCallDecoder.
+It is used by:
+	- ^0.4.21 (contracts/safe/safe_231_SAFE.sol#1)
+solc-0.4.24 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Parameter BWUtility.ceil(uint256,uint256)._amount (contracts/safe/safe_231_SAFE.sol#9) is not in mixedCase
+Parameter BWUtility.ceil(uint256,uint256)._multiple (contracts/safe/safe_231_SAFE.sol#9) is not in mixedCase
+Parameter BWUtility.isAdjacent(uint8,uint8,uint8,uint8)._x1 (contracts/safe/safe_231_SAFE.sol#19) is not in mixedCase
+Parameter BWUtility.isAdjacent(uint8,uint8,uint8,uint8)._y1 (contracts/safe/safe_231_SAFE.sol#19) is not in mixedCase
+Parameter BWUtility.isAdjacent(uint8,uint8,uint8,uint8)._x2 (contracts/safe/safe_231_SAFE.sol#19) is not in mixedCase
+Parameter BWUtility.isAdjacent(uint8,uint8,uint8,uint8)._y2 (contracts/safe/safe_231_SAFE.sol#19) is not in mixedCase
+Parameter BWUtility.toTileId(uint8,uint8)._x (contracts/safe/safe_231_SAFE.sol#27) is not in mixedCase
+Parameter BWUtility.toTileId(uint8,uint8)._y (contracts/safe/safe_231_SAFE.sol#27) is not in mixedCase
+Parameter BWUtility.fromTileId(uint16)._tileId (contracts/safe/safe_231_SAFE.sol#32) is not in mixedCase
+Parameter BWUtility.getBoostFromTile(address,address,address,uint256)._claimer (contracts/safe/safe_231_SAFE.sol#38) is not in mixedCase
+Parameter BWUtility.getBoostFromTile(address,address,address,uint256)._attacker (contracts/safe/safe_231_SAFE.sol#38) is not in mixedCase
+Parameter BWUtility.getBoostFromTile(address,address,address,uint256)._defender (contracts/safe/safe_231_SAFE.sol#38) is not in mixedCase
+Parameter BWUtility.getBoostFromTile(address,address,address,uint256)._blockValue (contracts/safe/safe_231_SAFE.sol#38) is not in mixedCase
+Parameter BWService.setValidBwCaller(address)._bw (contracts/safe/safe_231_SAFE.sol#98) is not in mixedCase
+Parameter BWService.setValidBwMarketCaller(address)._bwMarket (contracts/safe/safe_231_SAFE.sol#102) is not in mixedCase
+Parameter BWService.storeInitialClaim(address,uint16[],uint256,bool)._msgSender (contracts/safe/safe_231_SAFE.sol#111) is not in mixedCase
+Parameter BWService.storeInitialClaim(address,uint16[],uint256,bool)._claimedTileIds (contracts/safe/safe_231_SAFE.sol#111) is not in mixedCase
+Parameter BWService.storeInitialClaim(address,uint16[],uint256,bool)._claimAmount (contracts/safe/safe_231_SAFE.sol#111) is not in mixedCase
+Parameter BWService.storeInitialClaim(address,uint16[],uint256,bool)._useBattleValue (contracts/safe/safe_231_SAFE.sol#111) is not in mixedCase
+Parameter BWService.fortifyClaims(address,uint16[],uint256,bool)._msgSender (contracts/safe/safe_231_SAFE.sol#140) is not in mixedCase
+Parameter BWService.fortifyClaims(address,uint16[],uint256,bool)._claimedTileIds (contracts/safe/safe_231_SAFE.sol#140) is not in mixedCase
+Parameter BWService.fortifyClaims(address,uint16[],uint256,bool)._fortifyAmount (contracts/safe/safe_231_SAFE.sol#140) is not in mixedCase
+Parameter BWService.fortifyClaims(address,uint16[],uint256,bool)._useBattleValue (contracts/safe/safe_231_SAFE.sol#140) is not in mixedCase
+Parameter BWService.fortifyClaim(address,uint16,uint256)._msgSender (contracts/safe/safe_231_SAFE.sol#165) is not in mixedCase
+Parameter BWService.fortifyClaim(address,uint16,uint256)._claimedTileId (contracts/safe/safe_231_SAFE.sol#165) is not in mixedCase
+Parameter BWService.fortifyClaim(address,uint16,uint256)._fortifyAmount (contracts/safe/safe_231_SAFE.sol#165) is not in mixedCase
+Parameter BWService.random(uint256)._upper (contracts/safe/safe_231_SAFE.sol#185) is not in mixedCase
+Parameter BWService.attackTile(address,uint16,uint256,bool,bool)._msgSender (contracts/safe/safe_231_SAFE.sol#192) is not in mixedCase
+Parameter BWService.attackTile(address,uint16,uint256,bool,bool)._tileId (contracts/safe/safe_231_SAFE.sol#192) is not in mixedCase
+Parameter BWService.attackTile(address,uint16,uint256,bool,bool)._attackAmount (contracts/safe/safe_231_SAFE.sol#192) is not in mixedCase
+Parameter BWService.attackTile(address,uint16,uint256,bool,bool)._useBattleValue (contracts/safe/safe_231_SAFE.sol#192) is not in mixedCase
+Parameter BWService.attackTile(address,uint16,uint256,bool,bool)._autoFortify (contracts/safe/safe_231_SAFE.sol#192) is not in mixedCase
+Parameter BWService.moveBlockValue(address,uint8,uint8,uint8,uint8,uint256)._msgSender (contracts/safe/safe_231_SAFE.sol#261) is not in mixedCase
+Parameter BWService.moveBlockValue(address,uint8,uint8,uint8,uint8,uint256)._xSource (contracts/safe/safe_231_SAFE.sol#261) is not in mixedCase
+Parameter BWService.moveBlockValue(address,uint8,uint8,uint8,uint8,uint256)._ySource (contracts/safe/safe_231_SAFE.sol#261) is not in mixedCase
+Parameter BWService.moveBlockValue(address,uint8,uint8,uint8,uint8,uint256)._xDest (contracts/safe/safe_231_SAFE.sol#261) is not in mixedCase
+Parameter BWService.moveBlockValue(address,uint8,uint8,uint8,uint8,uint256)._yDest (contracts/safe/safe_231_SAFE.sol#261) is not in mixedCase
+Parameter BWService.moveBlockValue(address,uint8,uint8,uint8,uint8,uint256)._moveAmount (contracts/safe/safe_231_SAFE.sol#261) is not in mixedCase
+Parameter BWService.withdrawBattleValue(address,uint256)._battleValueInWei (contracts/safe/safe_231_SAFE.sol#300) is not in mixedCase
+Parameter BWService.addUserBattleValue(address,uint256)._userId (contracts/safe/safe_231_SAFE.sol#315) is not in mixedCase
+Parameter BWService.addUserBattleValue(address,uint256)._amount (contracts/safe/safe_231_SAFE.sol#315) is not in mixedCase
+Parameter BWService.subUserBattleValue(address,uint256,bool)._userId (contracts/safe/safe_231_SAFE.sol#323) is not in mixedCase
+Parameter BWService.subUserBattleValue(address,uint256,bool)._amount (contracts/safe/safe_231_SAFE.sol#323) is not in mixedCase
+Parameter BWService.subUserBattleValue(address,uint256,bool)._isWithdraw (contracts/safe/safe_231_SAFE.sol#323) is not in mixedCase
+Parameter BWService.addGlobalBlockValueBalance(uint256)._amount (contracts/safe/safe_231_SAFE.sol#331) is not in mixedCase
+Parameter BWService.transferTokens(address,address)._tokenAddress (contracts/safe/safe_231_SAFE.sol#339) is not in mixedCase
+Parameter BWService.transferTokens(address,address)._recipient (contracts/safe/safe_231_SAFE.sol#339) is not in mixedCase
+Variable BWService.WITHDRAW_FEE (contracts/safe/safe_231_SAFE.sol#59) is not in mixedCase
+Parameter BWData.setBwServiceValidCaller(address)._bwService (contracts/safe/safe_231_SAFE.sol#407) is not in mixedCase
+Parameter BWData.setBwValidCaller(address)._bw (contracts/safe/safe_231_SAFE.sol#411) is not in mixedCase
+Parameter BWData.setBwMarketValidCaller(address)._bwMarket (contracts/safe/safe_231_SAFE.sol#415) is not in mixedCase
+Parameter BWData.addUser(address)._msgSender (contracts/safe/safe_231_SAFE.sol#427) is not in mixedCase
+Parameter BWData.hasUser(address)._user (contracts/safe/safe_231_SAFE.sol#433) is not in mixedCase
+Parameter BWData.getTile(uint16)._tileId (contracts/safe/safe_231_SAFE.sol#440) is not in mixedCase
+Parameter BWData.getTileClaimerAndBlockValue(uint16)._tileId (contracts/safe/safe_231_SAFE.sol#445) is not in mixedCase
+Parameter BWData.isNewTile(uint16)._tileId (contracts/safe/safe_231_SAFE.sol#450) is not in mixedCase
+Parameter BWData.storeClaim(uint16,address,uint256)._tileId (contracts/safe/safe_231_SAFE.sol#455) is not in mixedCase
+Parameter BWData.storeClaim(uint16,address,uint256)._claimer (contracts/safe/safe_231_SAFE.sol#455) is not in mixedCase
+Parameter BWData.storeClaim(uint16,address,uint256)._blockValue (contracts/safe/safe_231_SAFE.sol#455) is not in mixedCase
+Parameter BWData.updateTileBlockValue(uint16,uint256)._tileId (contracts/safe/safe_231_SAFE.sol#459) is not in mixedCase
+Parameter BWData.updateTileBlockValue(uint16,uint256)._blockValue (contracts/safe/safe_231_SAFE.sol#459) is not in mixedCase
+Parameter BWData.setClaimerForTile(uint16,address)._tileId (contracts/safe/safe_231_SAFE.sol#463) is not in mixedCase
+Parameter BWData.setClaimerForTile(uint16,address)._claimer (contracts/safe/safe_231_SAFE.sol#463) is not in mixedCase
+Parameter BWData.updateTileTimeStamp(uint16)._tileId (contracts/safe/safe_231_SAFE.sol#467) is not in mixedCase
+Parameter BWData.getCurrentClaimerForTile(uint16)._tileId (contracts/safe/safe_231_SAFE.sol#471) is not in mixedCase
+Parameter BWData.getCurrentBlockValueAndSellPriceForTile(uint16)._tileId (contracts/safe/safe_231_SAFE.sol#479) is not in mixedCase
+Parameter BWData.setBlockValueBalance(uint256)._blockValueBalance (contracts/safe/safe_231_SAFE.sol#491) is not in mixedCase
+Parameter BWData.setFeeBalance(uint256)._feeBalance (contracts/safe/safe_231_SAFE.sol#499) is not in mixedCase
+Parameter BWData.getUserBattleValue(address)._userId (contracts/safe/safe_231_SAFE.sol#503) is not in mixedCase
+Parameter BWData.setUserBattleValue(address,uint256)._userId (contracts/safe/safe_231_SAFE.sol#507) is not in mixedCase
+Parameter BWData.setUserBattleValue(address,uint256)._battleValue (contracts/safe/safe_231_SAFE.sol#507) is not in mixedCase
+Parameter BWData.verifyAmount(address,uint256,uint256,bool)._msgSender (contracts/safe/safe_231_SAFE.sol#511) is not in mixedCase
+Parameter BWData.verifyAmount(address,uint256,uint256,bool)._msgValue (contracts/safe/safe_231_SAFE.sol#511) is not in mixedCase
+Parameter BWData.verifyAmount(address,uint256,uint256,bool)._amount (contracts/safe/safe_231_SAFE.sol#511) is not in mixedCase
+Parameter BWData.verifyAmount(address,uint256,uint256,bool)._useBattleValue (contracts/safe/safe_231_SAFE.sol#511) is not in mixedCase
+Parameter BWData.addBoostFromTile(BWData.Tile,address,address,BWData.Boost)._tile (contracts/safe/safe_231_SAFE.sol#523) is not in mixedCase
+Parameter BWData.addBoostFromTile(BWData.Tile,address,address,BWData.Boost)._attacker (contracts/safe/safe_231_SAFE.sol#523) is not in mixedCase
+Parameter BWData.addBoostFromTile(BWData.Tile,address,address,BWData.Boost)._defender (contracts/safe/safe_231_SAFE.sol#523) is not in mixedCase
+Parameter BWData.addBoostFromTile(BWData.Tile,address,address,BWData.Boost)._boost (contracts/safe/safe_231_SAFE.sol#523) is not in mixedCase
+Parameter BWData.calculateBattleBoost(uint16,address,address)._tileId (contracts/safe/safe_231_SAFE.sol#535) is not in mixedCase
+Parameter BWData.calculateBattleBoost(uint16,address,address)._attacker (contracts/safe/safe_231_SAFE.sol#535) is not in mixedCase
+Parameter BWData.calculateBattleBoost(uint16,address,address)._defender (contracts/safe/safe_231_SAFE.sol#535) is not in mixedCase
+Parameter BWData.censorUser(address,bool)._userAddress (contracts/safe/safe_231_SAFE.sol#595) is not in mixedCase
+Parameter BWData.censorUser(address,bool)._censored (contracts/safe/safe_231_SAFE.sol#595) is not in mixedCase
+Parameter BWData.deleteTile(uint16)._tileId (contracts/safe/safe_231_SAFE.sol#601) is not in mixedCase
+Parameter BWData.setSellPrice(uint16,uint256)._tileId (contracts/safe/safe_231_SAFE.sol#605) is not in mixedCase
+Parameter BWData.setSellPrice(uint16,uint256)._sellPrice (contracts/safe/safe_231_SAFE.sol#605) is not in mixedCase
+Parameter BWData.deleteOffer(uint16)._tileId (contracts/safe/safe_231_SAFE.sol#609) is not in mixedCase
+Variable BWData.BASE_TILE_PRICE_WEI (contracts/safe/safe_231_SAFE.sol#353) is not in mixedCase
+Parameter BW.claimTilesForNewUser(bytes32,bytes,bytes32,bytes32,uint16[],address)._name (contracts/safe/safe_231_SAFE.sol#666) is not in mixedCase
+Parameter BW.claimTilesForNewUser(bytes32,bytes,bytes32,bytes32,uint16[],address)._imageUrl (contracts/safe/safe_231_SAFE.sol#666) is not in mixedCase
+Parameter BW.claimTilesForNewUser(bytes32,bytes,bytes32,bytes32,uint16[],address)._tag (contracts/safe/safe_231_SAFE.sol#666) is not in mixedCase
+Parameter BW.claimTilesForNewUser(bytes32,bytes,bytes32,bytes32,uint16[],address)._homeUrl (contracts/safe/safe_231_SAFE.sol#666) is not in mixedCase
+Parameter BW.claimTilesForNewUser(bytes32,bytes,bytes32,bytes32,uint16[],address)._claimedTileIds (contracts/safe/safe_231_SAFE.sol#666) is not in mixedCase
+Parameter BW.claimTilesForNewUser(bytes32,bytes,bytes32,bytes32,uint16[],address)._invitedBy (contracts/safe/safe_231_SAFE.sol#666) is not in mixedCase
+Parameter BW.claimTilesForExistingUser(uint16[],uint256,bool)._claimedTileIds (contracts/safe/safe_231_SAFE.sol#673) is not in mixedCase
+Parameter BW.claimTilesForExistingUser(uint16[],uint256,bool)._claimAmount (contracts/safe/safe_231_SAFE.sol#673) is not in mixedCase
+Parameter BW.claimTilesForExistingUser(uint16[],uint256,bool)._useBattleValue (contracts/safe/safe_231_SAFE.sol#673) is not in mixedCase
+Parameter BW.updateUser(bytes32,bytes,bytes32,bytes32)._name (contracts/safe/safe_231_SAFE.sol#679) is not in mixedCase
+Parameter BW.updateUser(bytes32,bytes,bytes32,bytes32)._imageUrl (contracts/safe/safe_231_SAFE.sol#679) is not in mixedCase
+Parameter BW.updateUser(bytes32,bytes,bytes32,bytes32)._tag (contracts/safe/safe_231_SAFE.sol#679) is not in mixedCase
+Parameter BW.updateUser(bytes32,bytes,bytes32,bytes32)._homeUrl (contracts/safe/safe_231_SAFE.sol#679) is not in mixedCase
+Parameter BW.fortifyClaims(uint16[],uint256,bool)._claimedTileIds (contracts/safe/safe_231_SAFE.sol#689) is not in mixedCase
+Parameter BW.fortifyClaims(uint16[],uint256,bool)._fortifyAmount (contracts/safe/safe_231_SAFE.sol#689) is not in mixedCase
+Parameter BW.fortifyClaims(uint16[],uint256,bool)._useBattleValue (contracts/safe/safe_231_SAFE.sol#689) is not in mixedCase
+Parameter BW.attackTileForNewUser(uint16,bytes32,bytes,bytes32,bytes32,address)._tileId (contracts/safe/safe_231_SAFE.sol#695) is not in mixedCase
+Parameter BW.attackTileForNewUser(uint16,bytes32,bytes,bytes32,bytes32,address)._name (contracts/safe/safe_231_SAFE.sol#695) is not in mixedCase
+Parameter BW.attackTileForNewUser(uint16,bytes32,bytes,bytes32,bytes32,address)._imageUrl (contracts/safe/safe_231_SAFE.sol#695) is not in mixedCase
+Parameter BW.attackTileForNewUser(uint16,bytes32,bytes,bytes32,bytes32,address)._tag (contracts/safe/safe_231_SAFE.sol#695) is not in mixedCase
+Parameter BW.attackTileForNewUser(uint16,bytes32,bytes,bytes32,bytes32,address)._homeUrl (contracts/safe/safe_231_SAFE.sol#695) is not in mixedCase
+Parameter BW.attackTileForNewUser(uint16,bytes32,bytes,bytes32,bytes32,address)._invitedBy (contracts/safe/safe_231_SAFE.sol#695) is not in mixedCase
+Parameter BW.attackTileForExistingUser(uint16,uint256,bool,bool)._tileId (contracts/safe/safe_231_SAFE.sol#702) is not in mixedCase
+Parameter BW.attackTileForExistingUser(uint16,uint256,bool,bool)._attackAmount (contracts/safe/safe_231_SAFE.sol#702) is not in mixedCase
+Parameter BW.attackTileForExistingUser(uint16,uint256,bool,bool)._useBattleValue (contracts/safe/safe_231_SAFE.sol#702) is not in mixedCase
+Parameter BW.attackTileForExistingUser(uint16,uint256,bool,bool)._autoFortify (contracts/safe/safe_231_SAFE.sol#702) is not in mixedCase
+Parameter BW.moveBlockValue(uint8,uint8,uint8,uint8,uint256)._xSource (contracts/safe/safe_231_SAFE.sol#708) is not in mixedCase
+Parameter BW.moveBlockValue(uint8,uint8,uint8,uint8,uint256)._ySource (contracts/safe/safe_231_SAFE.sol#708) is not in mixedCase
+Parameter BW.moveBlockValue(uint8,uint8,uint8,uint8,uint256)._xDest (contracts/safe/safe_231_SAFE.sol#708) is not in mixedCase
+Parameter BW.moveBlockValue(uint8,uint8,uint8,uint8,uint256)._yDest (contracts/safe/safe_231_SAFE.sol#708) is not in mixedCase
+Parameter BW.moveBlockValue(uint8,uint8,uint8,uint8,uint256)._moveAmount (contracts/safe/safe_231_SAFE.sol#708) is not in mixedCase
+Parameter BW.withdrawBattleValue(uint256)._battleValueInWei (contracts/safe/safe_231_SAFE.sol#713) is not in mixedCase
+Parameter BW.createNewUser(bytes32,bytes,address)._name (contracts/safe/safe_231_SAFE.sol#723) is not in mixedCase
+Parameter BW.createNewUser(bytes32,bytes,address)._imageUrl (contracts/safe/safe_231_SAFE.sol#723) is not in mixedCase
+Parameter BW.createNewUser(bytes32,bytes,address)._user (contracts/safe/safe_231_SAFE.sol#723) is not in mixedCase
+Parameter BW.censorUser(address,bool)._userAddress (contracts/safe/safe_231_SAFE.sol#731) is not in mixedCase
+Parameter BW.censorUser(address,bool)._censored (contracts/safe/safe_231_SAFE.sol#731) is not in mixedCase
+Parameter BW.setPaused(bool)._paused (contracts/safe/safe_231_SAFE.sol#737) is not in mixedCase
+Parameter BW.withdrawValue(bool)._isFee (contracts/safe/safe_231_SAFE.sol#745) is not in mixedCase
+Parameter BW.depositBattleValue(address)._user (contracts/safe/safe_231_SAFE.sol#768) is not in mixedCase
+Parameter BW.transferTileFromOwner(uint16,address)._tileId (contracts/safe/safe_231_SAFE.sol#775) is not in mixedCase
+Parameter BW.transferTileFromOwner(uint16,address)._newOwner (contracts/safe/safe_231_SAFE.sol#775) is not in mixedCase
+Parameter BW.transferTokens(address,address)._tokenAddress (contracts/safe/safe_231_SAFE.sol#789) is not in mixedCase
+Parameter BW.transferTokens(address,address)._recipient (contracts/safe/safe_231_SAFE.sol#789) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: unindexed-event-address
+Event BWService.TileClaimed(uint16,address,uint256,uint256) (contracts/safe/safe_231_SAFE.sol#75) has address parameters but no indexed parameters
+Event BWService.TileFortified(uint16,address,uint256,uint256,uint256) (contracts/safe/safe_231_SAFE.sol#76) has address parameters but no indexed parameters
+Event BWService.TileAttackedSuccessfully(uint16,address,uint256,uint256,address,uint256,uint256,uint256,uint256) (contracts/safe/safe_231_SAFE.sol#77) has address parameters but no indexed parameters
+Event BWService.TileDefendedSuccessfully(uint16,address,uint256,uint256,address,uint256,uint256,uint256,uint256) (contracts/safe/safe_231_SAFE.sol#78) has address parameters but no indexed parameters
+Event BWService.BlockValueMoved(uint16,uint16,address,uint256,uint256,uint256,uint256) (contracts/safe/safe_231_SAFE.sol#79) has address parameters but no indexed parameters
+Event BWService.UserBattleValueUpdated(address,uint256,bool) (contracts/safe/safe_231_SAFE.sol#80) has address parameters but no indexed parameters
+Event BW.UserCreated(address,bytes32,bytes,bytes32,bytes32,uint256,address) (contracts/safe/safe_231_SAFE.sol#647) has address parameters but no indexed parameters
+Event BW.UserCensored(address,bool) (contracts/safe/safe_231_SAFE.sol#648) has address parameters but no indexed parameters
+Event BW.TransferTileFromOwner(uint16,address,address,uint256) (contracts/safe/safe_231_SAFE.sol#649) has address parameters but no indexed parameters
+Event BW.UserUpdated(address,bytes32,bytes,bytes32,bytes32,uint256) (contracts/safe/safe_231_SAFE.sol#650) has address parameters but no indexed parameters
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unindexed-event-address-parameters
+
+Detector: unused-state
+BWData.BASE_TILE_PRICE_WEI (contracts/safe/safe_231_SAFE.sol#353) is never used in BWData (contracts/safe/safe_231_SAFE.sol#345-612)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unused-state-variable
+
+Detector: constable-states
+BWData.BASE_TILE_PRICE_WEI (contracts/safe/safe_231_SAFE.sol#353) should be constant 
+BWService.WITHDRAW_FEE (contracts/safe/safe_231_SAFE.sol#59) should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+
+Detector: external-function
+storeInitialClaim(address,uint16[],uint256,bool) should be declared external:
+	- BWService.storeInitialClaim(address,uint16[],uint256,bool) (contracts/safe/safe_231_SAFE.sol#111-138)
+fortifyClaims(address,uint16[],uint256,bool) should be declared external:
+	- BWService.fortifyClaims(address,uint16[],uint256,bool) (contracts/safe/safe_231_SAFE.sol#140-163)
+claimTilesForNewUser(bytes32,bytes,bytes32,bytes32,uint16[],address) should be declared external:
+	- BW.claimTilesForNewUser(bytes32,bytes,bytes32,bytes32,uint16[],address) (contracts/safe/safe_231_SAFE.sol#666-670)
+claimTilesForExistingUser(uint16[],uint256,bool) should be declared external:
+	- BW.claimTilesForExistingUser(uint16[],uint256,bool) (contracts/safe/safe_231_SAFE.sol#673-676)
+updateUser(bytes32,bytes,bytes32,bytes32) should be declared external:
+	- BW.updateUser(bytes32,bytes,bytes32,bytes32) (contracts/safe/safe_231_SAFE.sol#679-683)
+fortifyClaims(uint16[],uint256,bool) should be declared external:
+	- BW.fortifyClaims(uint16[],uint256,bool) (contracts/safe/safe_231_SAFE.sol#689-692)
+attackTileForNewUser(uint16,bytes32,bytes,bytes32,bytes32,address) should be declared external:
+	- BW.attackTileForNewUser(uint16,bytes32,bytes,bytes32,bytes32,address) (contracts/safe/safe_231_SAFE.sol#695-699)
+createNewUser(bytes32,bytes,address) should be declared external:
+	- BW.createNewUser(bytes32,bytes,address) (contracts/safe/safe_231_SAFE.sol#723-726)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#public-function-that-could-be-declared-external
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_231_SAFE.sol analyzed (5 contracts with 101 detectors), 204 result(s) found

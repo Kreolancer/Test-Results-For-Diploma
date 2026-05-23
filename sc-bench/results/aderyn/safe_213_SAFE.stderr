@@ -1,0 +1,17 @@
+error: Fatal compiler bug!
+
+This is a fatal bug in Aderyn, sorry!
+
+Please report this crash to https://github.com/cyfrin/aderyn/issues/new and include this error message with your report.
+
+Panic: aderyn_core/src/detect/high/nested_struct_in_mapping.rs:71
+	called `Option::unwrap()` on a `None` value
+Aderyn version: 0.6.8
+Operating system: linux
+
+If you can also share your code and say what file you were editing or any
+steps to reproduce the crash that would be a great help.
+
+You may also want to try again with the `ADERYN_LOG=trace` environment
+variable set.
+

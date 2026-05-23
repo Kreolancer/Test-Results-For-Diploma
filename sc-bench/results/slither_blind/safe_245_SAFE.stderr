@@ -1,0 +1,60 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_245_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+
+Detector: events-access
+Ownable.transferOwnership(address) (contracts/safe/safe_245_SAFE.sol#32-35) should emit an event for: 
+	- owner = newOwner (contracts/safe/safe_245_SAFE.sol#34) 
+	- owner = newOwner (contracts/safe/safe_245_SAFE.sol#34) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+
+Detector: solc-version
+Version constraint ^0.4.16 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- NestedArrayFunctionCallDecoder
+	- ZeroFunctionSelector.
+It is used by:
+	- ^0.4.16 (contracts/safe/safe_245_SAFE.sol#1)
+solc-0.4.16 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Parameter BWCToken.transfer(address,uint256)._to (contracts/safe/safe_245_SAFE.sol#72) is not in mixedCase
+Parameter BWCToken.transfer(address,uint256)._value (contracts/safe/safe_245_SAFE.sol#72) is not in mixedCase
+Parameter BWCToken.balanceOf(address)._owner (contracts/safe/safe_245_SAFE.sol#83) is not in mixedCase
+Parameter BWCToken.transferFrom(address,address,uint256)._from (contracts/safe/safe_245_SAFE.sol#87) is not in mixedCase
+Parameter BWCToken.transferFrom(address,address,uint256)._to (contracts/safe/safe_245_SAFE.sol#87) is not in mixedCase
+Parameter BWCToken.transferFrom(address,address,uint256)._value (contracts/safe/safe_245_SAFE.sol#87) is not in mixedCase
+Parameter BWCToken.approve(address,uint256)._spender (contracts/safe/safe_245_SAFE.sol#100) is not in mixedCase
+Parameter BWCToken.approve(address,uint256)._value (contracts/safe/safe_245_SAFE.sol#100) is not in mixedCase
+Parameter BWCToken.allowance(address,address)._owner (contracts/safe/safe_245_SAFE.sol#111) is not in mixedCase
+Parameter BWCToken.allowance(address,address)._spender (contracts/safe/safe_245_SAFE.sol#111) is not in mixedCase
+Parameter BWCToken.mint(address,uint256)._to (contracts/safe/safe_245_SAFE.sol#119) is not in mixedCase
+Parameter BWCToken.mint(address,uint256)._value (contracts/safe/safe_245_SAFE.sol#119) is not in mixedCase
+Parameter BWCToken.burn(uint256)._value (contracts/safe/safe_245_SAFE.sol#147) is not in mixedCase
+Parameter BWCToken.burnFrom(address,uint256)._from (contracts/safe/safe_245_SAFE.sol#157) is not in mixedCase
+Parameter BWCToken.burnFrom(address,uint256)._value (contracts/safe/safe_245_SAFE.sol#157) is not in mixedCase
+Constant BWCToken.start (contracts/safe/safe_245_SAFE.sol#48) is not in UPPER_CASE_WITH_UNDERSCORES
+Constant BWCToken.period (contracts/safe/safe_245_SAFE.sol#49) is not in UPPER_CASE_WITH_UNDERSCORES
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: too-many-digits
+BWCToken.slitherConstructorConstantVariables() (contracts/safe/safe_245_SAFE.sol#38-178) uses literals with too many digits:
+	- start = 1517418000000 (contracts/safe/safe_245_SAFE.sol#48)
+BWCToken.slitherConstructorConstantVariables() (contracts/safe/safe_245_SAFE.sol#38-178) uses literals with too many digits:
+	- hardcap = 25 * 1000000 * (10 ** uint256(decimals)) (contracts/safe/safe_245_SAFE.sol#50)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#too-many-digits
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_245_SAFE.sol analyzed (2 contracts with 101 detectors), 22 result(s) found

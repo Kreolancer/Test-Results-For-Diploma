@@ -1,0 +1,313 @@
+{
+  "files_summary": {
+    "total_source_units": 1,
+    "total_sloc": 89
+  },
+  "files_details": {
+    "files_details": [
+      {
+        "file_path": "src/safe_272_SAFE.sol",
+        "n_sloc": 89
+      }
+    ]
+  },
+  "issue_count": {
+    "high": 0,
+    "low": 6
+  },
+  "high_issues": {
+    "issues": []
+  },
+  "low_issues": {
+    "issues": [
+      {
+        "title": "Centralization Risk",
+        "description": "Contracts have owners with privileged rights to perform admin tasks and need to be trusted to not perform malicious updates or drain funds.",
+        "detector_name": "centralization-risk",
+        "instances": [
+          {
+            "contract_path": "src/safe_272_SAFE.sol",
+            "line_no": 38,
+            "src": "875:9",
+            "src_char": "875:9"
+          },
+          {
+            "contract_path": "src/safe_272_SAFE.sol",
+            "line_no": 52,
+            "src": "1145:7",
+            "src_char": "1145:7"
+          },
+          {
+            "contract_path": "src/safe_272_SAFE.sol",
+            "line_no": 78,
+            "src": "1630:9",
+            "src_char": "1630:9"
+          },
+          {
+            "contract_path": "src/safe_272_SAFE.sol",
+            "line_no": 86,
+            "src": "1804:9",
+            "src_char": "1804:9"
+          }
+        ]
+      },
+      {
+        "title": "Empty `require()` / `revert()` Statement",
+        "description": "Use descriptive reason strings or custom errors for revert paths.",
+        "detector_name": "empty-require-revert",
+        "instances": [
+          {
+            "contract_path": "src/safe_272_SAFE.sol",
+            "line_no": 29,
+            "src": "628:7",
+            "src_char": "628:7"
+          },
+          {
+            "contract_path": "src/safe_272_SAFE.sol",
+            "line_no": 39,
+            "src": "898:7",
+            "src_char": "898:7"
+          },
+          {
+            "contract_path": "src/safe_272_SAFE.sol",
+            "line_no": 63,
+            "src": "1354:7",
+            "src_char": "1354:7"
+          },
+          {
+            "contract_path": "src/safe_272_SAFE.sol",
+            "line_no": 71,
+            "src": "1507:7",
+            "src_char": "1507:7"
+          },
+          {
+            "contract_path": "src/safe_272_SAFE.sol",
+            "line_no": 143,
+            "src": "4270:7",
+            "src_char": "4270:7"
+          },
+          {
+            "contract_path": "src/safe_272_SAFE.sol",
+            "line_no": 151,
+            "src": "4621:7",
+            "src_char": "4621:7"
+          }
+        ]
+      },
+      {
+        "title": "Large Numeric Literal",
+        "description": "Large literal values multiples of 10000 can be replaced with scientific notation.Use `e` notation, for example: `1e18`, instead of its full numeric value.",
+        "detector_name": "large-numeric-literal",
+        "instances": [
+          {
+            "contract_path": "src/safe_272_SAFE.sol",
+            "line_no": 184,
+            "src": "5763:10",
+            "src_char": "5763:10"
+          }
+        ]
+      },
+      {
+        "title": "Modifier Invoked Only Once",
+        "description": "Consider removing the modifier or inlining the logic into the calling function.",
+        "detector_name": "modifier-used-only-once",
+        "instances": [
+          {
+            "contract_path": "src/safe_272_SAFE.sol",
+            "line_no": 70,
+            "src": "1479:55",
+            "src_char": "1479:55"
+          }
+        ]
+      },
+      {
+        "title": "Unspecific Solidity Pragma",
+        "description": "Consider using a specific version of Solidity in your contracts instead of a wide version. For example, instead of `pragma solidity ^0.8.0;`, use `pragma solidity 0.8.0;`",
+        "detector_name": "unspecific-solidity-pragma",
+        "instances": [
+          {
+            "contract_path": "src/safe_272_SAFE.sol",
+            "line_no": 1,
+            "src": "0:24",
+            "src_char": "0:24"
+          }
+        ]
+      },
+      {
+        "title": "Public Function Not Used Internally",
+        "description": "If a function is marked public but is not used internally, consider marking it as `external`.",
+        "detector_name": "unused-public-function",
+        "instances": [
+          {
+            "contract_path": "src/safe_272_SAFE.sol",
+            "line_no": 38,
+            "src": "830:174",
+            "src_char": "830:174"
+          },
+          {
+            "contract_path": "src/safe_272_SAFE.sol",
+            "line_no": 78,
+            "src": "1613:90",
+            "src_char": "1613:90"
+          },
+          {
+            "contract_path": "src/safe_272_SAFE.sol",
+            "line_no": 86,
+            "src": "1785:92",
+            "src_char": "1785:92"
+          },
+          {
+            "contract_path": "src/safe_272_SAFE.sol",
+            "line_no": 108,
+            "src": "2500:70",
+            "src_char": "2500:70"
+          },
+          {
+            "contract_path": "src/safe_272_SAFE.sol",
+            "line_no": 114,
+            "src": "2806:70",
+            "src_char": "2806:70"
+          },
+          {
+            "contract_path": "src/safe_272_SAFE.sol",
+            "line_no": 121,
+            "src": "3197:89",
+            "src_char": "3197:89"
+          },
+          {
+            "contract_path": "src/safe_272_SAFE.sol",
+            "line_no": 127,
+            "src": "3575:74",
+            "src_char": "3575:74"
+          },
+          {
+            "contract_path": "src/safe_272_SAFE.sol",
+            "line_no": 132,
+            "src": "3857:90",
+            "src_char": "3857:90"
+          },
+          {
+            "contract_path": "src/safe_272_SAFE.sol",
+            "line_no": 142,
+            "src": "4169:326",
+            "src_char": "4169:326"
+          },
+          {
+            "contract_path": "src/safe_272_SAFE.sol",
+            "line_no": 150,
+            "src": "4501:416",
+            "src_char": "4501:416"
+          },
+          {
+            "contract_path": "src/safe_272_SAFE.sol",
+            "line_no": 159,
+            "src": "4923:110",
+            "src_char": "4923:110"
+          },
+          {
+            "contract_path": "src/safe_272_SAFE.sol",
+            "line_no": 163,
+            "src": "5039:212",
+            "src_char": "5039:212"
+          },
+          {
+            "contract_path": "src/safe_272_SAFE.sol",
+            "line_no": 169,
+            "src": "5257:137",
+            "src_char": "5257:137"
+          }
+        ]
+      }
+    ]
+  },
+  "detectors_used": [
+    "abi-encode-packed-hash-collision",
+    "arbitrary-transfer-from",
+    "assert-state-change",
+    "block-timestamp-deadline",
+    "boolean-equality",
+    "builtin-symbol-shadowing",
+    "centralization-risk",
+    "constant-function-changes-state",
+    "constant-function-contains-assembly",
+    "contract-locks-ether",
+    "costly-loop",
+    "dangerous-unary-operator",
+    "dead-code",
+    "delegate-call-unchecked-address",
+    "delegatecall-in-loop",
+    "delete-nested-mapping",
+    "deprecated-oz-function",
+    "division-before-multiplication",
+    "dynamic-array-length-assignment",
+    "ecrecover",
+    "empty-block",
+    "empty-require-revert",
+    "enumerable-loop-removal",
+    "eth-send-unchecked-address",
+    "experimental-encoder",
+    "function-initializing-state",
+    "function-pointer-in-constructor",
+    "function-selector-collision",
+    "inconsistent-type-names",
+    "incorrect-caret-operator",
+    "incorrect-erc20-interface",
+    "incorrect-erc721-interface",
+    "incorrect-shift-order",
+    "incorrect-use-of-modifier",
+    "internal-function-used-once",
+    "large-numeric-literal",
+    "literal-instead-of-constant",
+    "local-variable-shadowing",
+    "missing-inheritance",
+    "misused-boolean",
+    "modifier-used-only-once",
+    "msg-value-in-loop",
+    "multiple-constructors",
+    "multiple-placeholders",
+    "nested-struct-in-mapping",
+    "non-reentrant-not-first",
+    "out-of-order-retryable",
+    "pre-declared-local-variable-usage",
+    "push-zero-opcode",
+    "redundant-statement",
+    "reentrancy-state-change",
+    "require-revert-in-loop",
+    "return-bomb",
+    "reused-contract-name",
+    "rtlo",
+    "selfdestruct",
+    "signed-integer-storage-array",
+    "solmate-safe-transfer-lib",
+    "state-change-without-event",
+    "state-no-address-check",
+    "state-variable-could-be-constant",
+    "state-variable-could-be-immutable",
+    "state-variable-init-order",
+    "state-variable-read-external",
+    "state-variable-shadowing",
+    "storage-array-length-not-cached",
+    "storage-array-memory-edit",
+    "strict-equality-contract-balance",
+    "tautological-compare",
+    "tautology-or-contradiction",
+    "todo",
+    "tx-origin-used-for-auth",
+    "unchecked-low-level-call",
+    "unchecked-return",
+    "unchecked-send",
+    "uninitialized-local-variable",
+    "unprotected-initializer",
+    "unsafe-casting",
+    "unsafe-erc20-operation",
+    "unsafe-oz-erc721-mint",
+    "unspecific-solidity-pragma",
+    "unused-error",
+    "unused-import",
+    "unused-public-function",
+    "unused-state-variable",
+    "void-constructor",
+    "weak-randomness",
+    "yul-return"
+  ]
+}

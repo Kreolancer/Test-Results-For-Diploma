@@ -1,0 +1,123 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_100_SC05.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
+
+Detector: divide-before-multiply
+LootEther.sell(uint256) (contracts/vulnerable/vuln_100_SC05.sol#256-282) performs a multiplication on the result of a division:
+	- _dividends = SafeMath.div(SafeMath.mul(_ethereum,exitFee_),100) (contracts/vulnerable/vuln_100_SC05.sol#263)
+	- profitPerShare_ = SafeMath.add(profitPerShare_,(_dividends * magnitude) / tokenSupply_) (contracts/vulnerable/vuln_100_SC05.sol#277)
+LootEther.purchaseTokens(uint256,address) (contracts/vulnerable/vuln_100_SC05.sol#527-607) performs a multiplication on the result of a division:
+	- _undividedDividends = SafeMath.div(SafeMath.mul(_incomingEthereum,entryFee_),100) (contracts/vulnerable/vuln_100_SC05.sol#534)
+	- _referralBonus = SafeMath.div(SafeMath.mul(_undividedDividends,refferalFee_),100) (contracts/vulnerable/vuln_100_SC05.sol#535)
+LootEther.purchaseTokens(uint256,address) (contracts/vulnerable/vuln_100_SC05.sol#527-607) performs a multiplication on the result of a division:
+	- _fee = _fee - (_fee - (_amountOfTokens * (_dividends * magnitude / (tokenSupply_)))) (contracts/vulnerable/vuln_100_SC05.sol#588)
+LootEther.tokensToEthereum_(uint256) (contracts/vulnerable/vuln_100_SC05.sol#649-671) performs a multiplication on the result of a division:
+	- _etherReceived = (SafeMath.sub((((tokenPriceInitial_ + (tokenPriceIncremental_ * (_tokenSupply / 1e18))) - tokenPriceIncremental_) * (tokens_ - 1e18)),(tokenPriceIncremental_ * ((tokens_ ** 2 - tokens_) / 1e18)) / 2) / 1e18) (contracts/vulnerable/vuln_100_SC05.sol#657-669)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#divide-before-multiply
+
+Detector: missing-zero-check
+LootEther.withdraw()._customerAddress (contracts/vulnerable/vuln_100_SC05.sol#238) lacks a zero-check on :
+		- _customerAddress.transfer(_dividends) (contracts/vulnerable/vuln_100_SC05.sol#249)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+
+Detector: boolean-equal
+LootEther.purchaseTokens(uint256,address) (contracts/vulnerable/vuln_100_SC05.sol#527-607) compares to a boolean constant:
+	-isUser[_customerAddress] == false (contracts/vulnerable/vuln_100_SC05.sol#562)
+LootEther.purchaseTokens(uint256,address) (contracts/vulnerable/vuln_100_SC05.sol#527-607) compares to a boolean constant:
+	-isUser[_customerAddress] == false (contracts/vulnerable/vuln_100_SC05.sol#573)
+LootEther.antiEarlyWhale(uint256) (contracts/vulnerable/vuln_100_SC05.sol#55-80) compares to a boolean constant:
+	-require(bool)(ambassadors_[_customerAddress] == true && (ambassadorAccumulatedQuota_[_customerAddress] + _amountOfEthereum) <= ambassadorMaxPurchase_) (contracts/vulnerable/vuln_100_SC05.sol#61-68)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#boolean-equality
+
+Detector: solc-version
+Version constraint ^0.4.20 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ABIEncoderV2PackedStorage_0.4.x
+	- ExpExponentCleanup
+	- EventStructWrongData
+	- NestedArrayFunctionCallDecoder.
+It is used by:
+	- ^0.4.20 (contracts/vulnerable/vuln_100_SC05.sol#1)
+solc-0.4.20 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Event LootEther.onTokenPurchase(address,uint256,uint256,address) (contracts/vulnerable/vuln_100_SC05.sol#85-90) is not in CapWords
+Event LootEther.onTokenSell(address,uint256,uint256) (contracts/vulnerable/vuln_100_SC05.sol#92-96) is not in CapWords
+Event LootEther.onReinvestment(address,uint256,uint256) (contracts/vulnerable/vuln_100_SC05.sol#98-102) is not in CapWords
+Event LootEther.onWithdraw(address,uint256) (contracts/vulnerable/vuln_100_SC05.sol#104-107) is not in CapWords
+Function LootEther.LootEtherCom() (contracts/vulnerable/vuln_100_SC05.sol#165-179) is not in mixedCase
+Parameter LootEther.buy(address)._referredBy (contracts/vulnerable/vuln_100_SC05.sol#185) is not in mixedCase
+Parameter LootEther.sell(uint256)._amountOfTokens (contracts/vulnerable/vuln_100_SC05.sol#256) is not in mixedCase
+Parameter LootEther.transfer(address,uint256)._toAddress (contracts/vulnerable/vuln_100_SC05.sol#286) is not in mixedCase
+Parameter LootEther.transfer(address,uint256)._amountOfTokens (contracts/vulnerable/vuln_100_SC05.sol#286) is not in mixedCase
+Parameter LootEther.setAdministrator(address,bool)._identifier (contracts/vulnerable/vuln_100_SC05.sol#328) is not in mixedCase
+Parameter LootEther.setAdministrator(address,bool)._status (contracts/vulnerable/vuln_100_SC05.sol#328) is not in mixedCase
+Parameter LootEther.setStakingRequirement(uint256)._amountOfTokens (contracts/vulnerable/vuln_100_SC05.sol#338) is not in mixedCase
+Parameter LootEther.setName(string)._name (contracts/vulnerable/vuln_100_SC05.sol#348) is not in mixedCase
+Parameter LootEther.setSymbol(string)._symbol (contracts/vulnerable/vuln_100_SC05.sol#358) is not in mixedCase
+Parameter LootEther.referralsOf(address)._customerAddress (contracts/vulnerable/vuln_100_SC05.sol#402) is not in mixedCase
+Parameter LootEther.myDividends(bool)._includeReferralBonus (contracts/vulnerable/vuln_100_SC05.sol#424) is not in mixedCase
+Parameter LootEther.balanceOf(address)._customerAddress (contracts/vulnerable/vuln_100_SC05.sol#436) is not in mixedCase
+Parameter LootEther.dividendsOf(address)._customerAddress (contracts/vulnerable/vuln_100_SC05.sol#447) is not in mixedCase
+Parameter LootEther.calculateTokensReceived(uint256)._ethereumToSpend (contracts/vulnerable/vuln_100_SC05.sol#496) is not in mixedCase
+Parameter LootEther.calculateEthereumReceived(uint256)._tokensToSell (contracts/vulnerable/vuln_100_SC05.sol#511) is not in mixedCase
+Parameter LootEther.purchaseTokens(uint256,address)._incomingEthereum (contracts/vulnerable/vuln_100_SC05.sol#527) is not in mixedCase
+Parameter LootEther.purchaseTokens(uint256,address)._referredBy (contracts/vulnerable/vuln_100_SC05.sol#527) is not in mixedCase
+Parameter LootEther.ethereumToTokens_(uint256)._ethereum (contracts/vulnerable/vuln_100_SC05.sol#614) is not in mixedCase
+Parameter LootEther.tokensToEthereum_(uint256)._tokens (contracts/vulnerable/vuln_100_SC05.sol#649) is not in mixedCase
+Constant LootEther.entryFee_ (contracts/vulnerable/vuln_100_SC05.sol#122) is not in UPPER_CASE_WITH_UNDERSCORES
+Constant LootEther.refferalFee_ (contracts/vulnerable/vuln_100_SC05.sol#123) is not in UPPER_CASE_WITH_UNDERSCORES
+Constant LootEther.exitFee_ (contracts/vulnerable/vuln_100_SC05.sol#124) is not in UPPER_CASE_WITH_UNDERSCORES
+Constant LootEther.tokenPriceInitial_ (contracts/vulnerable/vuln_100_SC05.sol#125) is not in UPPER_CASE_WITH_UNDERSCORES
+Constant LootEther.tokenPriceIncremental_ (contracts/vulnerable/vuln_100_SC05.sol#126) is not in UPPER_CASE_WITH_UNDERSCORES
+Constant LootEther.magnitude (contracts/vulnerable/vuln_100_SC05.sol#127) is not in UPPER_CASE_WITH_UNDERSCORES
+Constant LootEther.ambassadorMaxPurchase_ (contracts/vulnerable/vuln_100_SC05.sol#134) is not in UPPER_CASE_WITH_UNDERSCORES
+Constant LootEther.ambassadorQuota_ (contracts/vulnerable/vuln_100_SC05.sol#135) is not in UPPER_CASE_WITH_UNDERSCORES
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: reentrancy-unlimited-gas
+Reentrancy in LootEther.transfer(address,uint256) (contracts/vulnerable/vuln_100_SC05.sol#286-312):
+	External calls:
+	- withdraw() (contracts/vulnerable/vuln_100_SC05.sol#296)
+		- _customerAddress.transfer(_dividends) (contracts/vulnerable/vuln_100_SC05.sol#249)
+	State variables written after the call(s):
+	- payoutsTo_[_customerAddress] -= int256(profitPerShare_ * _amountOfTokens) (contracts/vulnerable/vuln_100_SC05.sol#303)
+	- payoutsTo_[_toAddress] += int256(profitPerShare_ * _amountOfTokens) (contracts/vulnerable/vuln_100_SC05.sol#304)
+	- tokenBalanceLedger_[_customerAddress] = SafeMath.sub(tokenBalanceLedger_[_customerAddress],_amountOfTokens) (contracts/vulnerable/vuln_100_SC05.sol#299)
+	- tokenBalanceLedger_[_toAddress] = SafeMath.add(tokenBalanceLedger_[_toAddress],_amountOfTokens) (contracts/vulnerable/vuln_100_SC05.sol#300)
+	Event emitted after the call(s):
+	- Transfer(_customerAddress,_toAddress,_amountOfTokens) (contracts/vulnerable/vuln_100_SC05.sol#307)
+Reentrancy in LootEther.withdraw() (contracts/vulnerable/vuln_100_SC05.sol#236-253):
+	External calls:
+	- _customerAddress.transfer(_dividends) (contracts/vulnerable/vuln_100_SC05.sol#249)
+	Event emitted after the call(s):
+	- onWithdraw(_customerAddress,_dividends) (contracts/vulnerable/vuln_100_SC05.sol#252)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-5
+
+Detector: too-many-digits
+LootEther.slitherConstructorConstantVariables() (contracts/vulnerable/vuln_100_SC05.sol#20-684) uses literals with too many digits:
+	- tokenPriceInitial_ = 100000000000 (contracts/vulnerable/vuln_100_SC05.sol#125)
+LootEther.slitherConstructorConstantVariables() (contracts/vulnerable/vuln_100_SC05.sol#20-684) uses literals with too many digits:
+	- tokenPriceIncremental_ = 10000000000 (contracts/vulnerable/vuln_100_SC05.sol#126)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#too-many-digits
+
+Detector: external-function
+setName(string) should be declared external:
+	- LootEther.setName(string) (contracts/vulnerable/vuln_100_SC05.sol#348-353)
+setSymbol(string) should be declared external:
+	- LootEther.setSymbol(string) (contracts/vulnerable/vuln_100_SC05.sol#358-363)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#public-function-that-could-be-declared-external
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_100_SC05.sol analyzed (2 contracts with 101 detectors), 48 result(s) found

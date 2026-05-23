@@ -1,0 +1,243 @@
+{
+  "files_summary": {
+    "total_source_units": 1,
+    "total_sloc": 72
+  },
+  "files_details": {
+    "files_details": [
+      {
+        "file_path": "src/vuln_042_SC08.sol",
+        "n_sloc": 72
+      }
+    ]
+  },
+  "issue_count": {
+    "high": 1,
+    "low": 5
+  },
+  "high_issues": {
+    "issues": [
+      {
+        "title": "Reentrancy: State change after external call",
+        "description": "Changing state after an external call can lead to re-entrancy attacks.Use the checks-effects-interactions pattern to avoid this issue.",
+        "detector_name": "reentrancy-state-change",
+        "instances": [
+          {
+            "contract_path": "src/vuln_042_SC08.sol",
+            "line_no": 54,
+            "src": "1006:28",
+            "src_char": "1006:28",
+            "hint": "State is changed at: `balances[msg.sender]-=_am`"
+          }
+        ]
+      }
+    ]
+  },
+  "low_issues": {
+    "issues": [
+      {
+        "title": "Empty `require()` / `revert()` Statement",
+        "description": "Use descriptive reason strings or custom errors for revert paths.",
+        "detector_name": "empty-require-revert",
+        "instances": [
+          {
+            "contract_path": "src/vuln_042_SC08.sol",
+            "line_no": 22,
+            "src": "398:6",
+            "src_char": "398:6"
+          },
+          {
+            "contract_path": "src/vuln_042_SC08.sol",
+            "line_no": 29,
+            "src": "520:6",
+            "src_char": "520:6"
+          }
+        ]
+      },
+      {
+        "title": "Inconsistent uint256/uint (or) int256/int types",
+        "description": "Inconsistency in declaring uint256/uint (or) int256/int variables within a contract. Use explicit size declarations (uint256 or int256). Consider keeping the naming convention consistent in a given contract. Explicit size declarations are preferred (uint256, int256) over implicit ones (uint, int) to avoid confusion.",
+        "detector_name": "inconsistent-type-names",
+        "instances": [
+          {
+            "contract_path": "src/vuln_042_SC08.sol",
+            "line_no": 13,
+            "src": "186:28",
+            "src_char": "186:28"
+          },
+          {
+            "contract_path": "src/vuln_042_SC08.sol",
+            "line_no": 19,
+            "src": "347:9",
+            "src_char": "347:9"
+          },
+          {
+            "contract_path": "src/vuln_042_SC08.sol",
+            "line_no": 47,
+            "src": "831:8",
+            "src_char": "831:8"
+          }
+        ]
+      },
+      {
+        "title": "Address State Variable Set Without Checks",
+        "description": "Check for `address(0)` when assigning values to address state variables.",
+        "detector_name": "state-no-address-check",
+        "instances": [
+          {
+            "contract_path": "src/vuln_042_SC08.sol",
+            "line_no": 30,
+            "src": "538:19",
+            "src_char": "538:19"
+          }
+        ]
+      },
+      {
+        "title": "Unspecific Solidity Pragma",
+        "description": "Consider using a specific version of Solidity in your contracts instead of a wide version. For example, instead of `pragma solidity ^0.8.0;`, use `pragma solidity 0.8.0;`",
+        "detector_name": "unspecific-solidity-pragma",
+        "instances": [
+          {
+            "contract_path": "src/vuln_042_SC08.sol",
+            "line_no": 7,
+            "src": "76:24",
+            "src_char": "76:24"
+          }
+        ]
+      },
+      {
+        "title": "Public Function Not Used Internally",
+        "description": "If a function is marked public but is not used internally, consider marking it as `external`.",
+        "detector_name": "unused-public-function",
+        "instances": [
+          {
+            "contract_path": "src/vuln_042_SC08.sol",
+            "line_no": 19,
+            "src": "328:108",
+            "src_char": "328:108"
+          },
+          {
+            "contract_path": "src/vuln_042_SC08.sol",
+            "line_no": 26,
+            "src": "446:118",
+            "src_char": "446:118"
+          },
+          {
+            "contract_path": "src/vuln_042_SC08.sol",
+            "line_no": 33,
+            "src": "574:73",
+            "src_char": "574:73"
+          },
+          {
+            "contract_path": "src/vuln_042_SC08.sol",
+            "line_no": 47,
+            "src": "814:366",
+            "src_char": "814:366"
+          },
+          {
+            "contract_path": "src/vuln_042_SC08.sol",
+            "line_no": 62,
+            "src": "1190:66",
+            "src_char": "1190:66"
+          },
+          {
+            "contract_path": "src/vuln_042_SC08.sol",
+            "line_no": 87,
+            "src": "1471:227",
+            "src_char": "1471:227"
+          }
+        ]
+      }
+    ]
+  },
+  "detectors_used": [
+    "abi-encode-packed-hash-collision",
+    "arbitrary-transfer-from",
+    "assert-state-change",
+    "block-timestamp-deadline",
+    "boolean-equality",
+    "builtin-symbol-shadowing",
+    "centralization-risk",
+    "constant-function-changes-state",
+    "constant-function-contains-assembly",
+    "contract-locks-ether",
+    "costly-loop",
+    "dangerous-unary-operator",
+    "dead-code",
+    "delegate-call-unchecked-address",
+    "delegatecall-in-loop",
+    "delete-nested-mapping",
+    "deprecated-oz-function",
+    "division-before-multiplication",
+    "dynamic-array-length-assignment",
+    "ecrecover",
+    "empty-block",
+    "empty-require-revert",
+    "enumerable-loop-removal",
+    "eth-send-unchecked-address",
+    "experimental-encoder",
+    "function-initializing-state",
+    "function-pointer-in-constructor",
+    "function-selector-collision",
+    "inconsistent-type-names",
+    "incorrect-caret-operator",
+    "incorrect-erc20-interface",
+    "incorrect-erc721-interface",
+    "incorrect-shift-order",
+    "incorrect-use-of-modifier",
+    "internal-function-used-once",
+    "large-numeric-literal",
+    "literal-instead-of-constant",
+    "local-variable-shadowing",
+    "missing-inheritance",
+    "misused-boolean",
+    "modifier-used-only-once",
+    "msg-value-in-loop",
+    "multiple-constructors",
+    "multiple-placeholders",
+    "nested-struct-in-mapping",
+    "non-reentrant-not-first",
+    "out-of-order-retryable",
+    "pre-declared-local-variable-usage",
+    "push-zero-opcode",
+    "redundant-statement",
+    "reentrancy-state-change",
+    "require-revert-in-loop",
+    "return-bomb",
+    "reused-contract-name",
+    "rtlo",
+    "selfdestruct",
+    "signed-integer-storage-array",
+    "solmate-safe-transfer-lib",
+    "state-change-without-event",
+    "state-no-address-check",
+    "state-variable-could-be-constant",
+    "state-variable-could-be-immutable",
+    "state-variable-init-order",
+    "state-variable-read-external",
+    "state-variable-shadowing",
+    "storage-array-length-not-cached",
+    "storage-array-memory-edit",
+    "strict-equality-contract-balance",
+    "tautological-compare",
+    "tautology-or-contradiction",
+    "todo",
+    "tx-origin-used-for-auth",
+    "unchecked-low-level-call",
+    "unchecked-return",
+    "unchecked-send",
+    "uninitialized-local-variable",
+    "unprotected-initializer",
+    "unsafe-casting",
+    "unsafe-erc20-operation",
+    "unsafe-oz-erc721-mint",
+    "unspecific-solidity-pragma",
+    "unused-error",
+    "unused-import",
+    "unused-public-function",
+    "unused-state-variable",
+    "void-constructor",
+    "weak-randomness",
+    "yul-return"
+  ]
+}

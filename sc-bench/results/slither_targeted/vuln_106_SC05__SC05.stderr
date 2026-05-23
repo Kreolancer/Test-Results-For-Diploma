@@ -1,0 +1,11 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_106_SC05.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_106_SC05.sol:
+Warning: SPDX license identifier not provided in source file. Before publishing, consider adding a comment containing "SPDX-License-Identifier: <SPDX-License>" to each source file. Use "SPDX-License-Identifier: UNLICENSED" for non-open-source code. Please see https://spdx.org for more information.
+--> contracts/vulnerable/vuln_106_SC05.sol
+
+Warning: Source file does not specify required compiler version! Consider adding "pragma solidity ^0.8.20;"
+--> contracts/vulnerable/vuln_106_SC05.sol
+
+
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_106_SC05.sol analyzed (1 contracts with 2 detectors), 0 result(s) found

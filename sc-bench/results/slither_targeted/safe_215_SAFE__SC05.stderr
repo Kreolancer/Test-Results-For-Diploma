@@ -1,0 +1,29 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_215_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+
+Detector: timestamp
+DaoCasinoToken.buyPriceAt(uint256) (contracts/safe/safe_215_SAFE.sol#220-240) uses timestamp for comparisons
+	Dangerous comparisons:
+	- at < STARTDATE (contracts/safe/safe_215_SAFE.sol#221)
+	- at < (STARTDATE + 86400) (contracts/safe/safe_215_SAFE.sol#223)
+	- at < (STARTDATE + 1296000) (contracts/safe/safe_215_SAFE.sol#225)
+	- at < (STARTDATE + 1555200) (contracts/safe/safe_215_SAFE.sol#227)
+	- at < (STARTDATE + 1814400) (contracts/safe/safe_215_SAFE.sol#229)
+	- at < (STARTDATE + 2073600) (contracts/safe/safe_215_SAFE.sol#231)
+	- at < (STARTDATE + 2332800) (contracts/safe/safe_215_SAFE.sol#233)
+	- at <= ENDDATE (contracts/safe/safe_215_SAFE.sol#235)
+DaoCasinoToken.proxyPayment(address) (contracts/safe/safe_215_SAFE.sol#254-296) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(now >= STARTDATE) (contracts/safe/safe_215_SAFE.sol#256)
+	- require(bool)(now <= ENDDATE) (contracts/safe/safe_215_SAFE.sol#258)
+DaoCasinoToken.addPrecommitment(address,uint256) (contracts/safe/safe_215_SAFE.sol#306-312) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(now < STARTDATE) (contracts/safe/safe_215_SAFE.sol#307)
+DaoCasinoToken.transfer(address,uint256) (contracts/safe/safe_215_SAFE.sol#319-324) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(now > ENDDATE || totalEthers == CAP) (contracts/safe/safe_215_SAFE.sol#321)
+DaoCasinoToken.transferFrom(address,address,uint256) (contracts/safe/safe_215_SAFE.sol#332-339) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(now > ENDDATE || totalEthers == CAP) (contracts/safe/safe_215_SAFE.sol#336)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_215_SAFE.sol analyzed (4 contracts with 2 detectors), 5 result(s) found

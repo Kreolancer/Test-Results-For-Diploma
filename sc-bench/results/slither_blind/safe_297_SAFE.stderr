@@ -1,0 +1,365 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_297_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_297_SAFE.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_297_SAFE.sol:157:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        _addr.send(this.balance);
+        ^----------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_297_SAFE.sol:57:67: Warning: Unused local variable
+    function addCbAddress(address newCbAddress, byte addressType, bytes proof)
+                                                                  ^---------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_297_SAFE.sol:137:47: Warning: Unused local variable
+    function setBasePrice(uint new_baseprice, bytes proofID)
+                                              ^-----------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_297_SAFE.sol:269:26: Warning: Unused local variable
+    function getCodeSize(address _addr)
+                         ^-----------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_297_SAFE.sol:272:13: Warning: Unused local variable
+    returns(uint _size)
+            ^--------^
+
+
+Detector: controlled-array-length
+Oraclize (contracts/safe/safe_297_SAFE.sol#15-468) contract sets array length with a user-controlled value:
+	- randomDS_sessionPubKeysHash.push(_newSessionPubKeysHash[i]) (contracts/safe/safe_297_SAFE.sol#204)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#array-length-assignment
+
+Detector: constant-function-asm
+Oraclize.getCodeSize(address) (contracts/safe/safe_297_SAFE.sol#269-277) is declared view but contains assembly code
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#constant-functions-using-assembly-code
+
+Detector: tx-origin
+Oraclize.cbAddress() (contracts/safe/safe_297_SAFE.sol#71-77) uses tx.origin for authorization: cbAddresses[tx.origin] != 0 (contracts/safe/safe_297_SAFE.sol#75)
+Oraclize.getPrice(string,uint256,address) (contracts/safe/safe_297_SAFE.sol#248-267) uses tx.origin for authorization: (offchainPayment[_addr]) || ((_gaslimit <= 200000) && (reqc[_addr] == 0) && (gasprice_ <= gasprice) && (tx.origin != cbAddress())) (contracts/safe/safe_297_SAFE.sol#254-260)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dangerous-usage-of-txorigin
+
+Detector: unchecked-send
+Oraclize.withdrawFunds(address) (contracts/safe/safe_297_SAFE.sol#153-158) ignores return value by _addr.send(this.balance) (contracts/safe/safe_297_SAFE.sol#157)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unchecked-send
+
+Detector: shadowing-local
+Oraclize.costs(string,uint256).price (contracts/safe/safe_297_SAFE.sol#176) shadows:
+	- Oraclize.price (contracts/safe/safe_297_SAFE.sol#193) (state variable)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#local-variable-shadowing
+
+Detector: events-maths
+Oraclize.setGasPrice(uint256) (contracts/safe/safe_297_SAFE.sol#122-127) should emit an event for: 
+	- gasprice = newgasprice (contracts/safe/safe_297_SAFE.sol#126) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-arithmetic
+
+Detector: missing-zero-check
+Oraclize.changeAdmin(address)._newAdmin (contracts/safe/safe_297_SAFE.sol#34) lacks a zero-check on :
+		- owner = _newAdmin (contracts/safe/safe_297_SAFE.sol#38)
+Oraclize.changePaymentFlagger(address)._newFlagger (contracts/safe/safe_297_SAFE.sol#41) lacks a zero-check on :
+		- paymentFlagger = _newFlagger (contracts/safe/safe_297_SAFE.sol#45)
+Oraclize.withdrawFunds(address)._addr (contracts/safe/safe_297_SAFE.sol#153) lacks a zero-check on :
+		- _addr.send(this.balance) (contracts/safe/safe_297_SAFE.sol#157)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+
+Detector: timestamp
+Oraclize.query1(uint256,string,string,uint256) (contracts/safe/safe_297_SAFE.sol#384-396) uses timestamp for comparisons
+	Dangerous comparisons:
+	- (_timestamp > now + 3600 * 24 * 60) || (_gaslimit > block.gaslimit) (contracts/safe/safe_297_SAFE.sol#390)
+Oraclize.query2(uint256,string,string,string,uint256) (contracts/safe/safe_297_SAFE.sol#398-410) uses timestamp for comparisons
+	Dangerous comparisons:
+	- (_timestamp > now + 3600 * 24 * 60) || (_gaslimit > block.gaslimit) (contracts/safe/safe_297_SAFE.sol#404)
+Oraclize.queryN(uint256,string,bytes,uint256) (contracts/safe/safe_297_SAFE.sol#412-424) uses timestamp for comparisons
+	Dangerous comparisons:
+	- (_timestamp > now + 3600 * 24 * 60) || (_gaslimit > block.gaslimit) (contracts/safe/safe_297_SAFE.sol#418)
+Oraclize.query1_fnc(uint256,string,string,function(),uint256) (contracts/safe/safe_297_SAFE.sol#426-438) uses timestamp for comparisons
+	Dangerous comparisons:
+	- (_timestamp > now + 3600 * 24 * 60) || (_gaslimit > block.gaslimit) || address(_fnc) != msg.sender (contracts/safe/safe_297_SAFE.sol#432)
+Oraclize.query2_fnc(uint256,string,string,string,function(),uint256) (contracts/safe/safe_297_SAFE.sol#440-452) uses timestamp for comparisons
+	Dangerous comparisons:
+	- (_timestamp > now + 3600 * 24 * 60) || (_gaslimit > block.gaslimit) || address(_fnc) != msg.sender (contracts/safe/safe_297_SAFE.sol#446)
+Oraclize.queryN_fnc(uint256,string,bytes,function(),uint256) (contracts/safe/safe_297_SAFE.sol#454-466) uses timestamp for comparisons
+	Dangerous comparisons:
+	- (_timestamp > now + 3600 * 24 * 60) || (_gaslimit > block.gaslimit) || address(_fnc) != msg.sender (contracts/safe/safe_297_SAFE.sol#460)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+
+Detector: assembly
+Oraclize.getCodeSize(address) (contracts/safe/safe_297_SAFE.sol#269-277) uses assembly
+	- INLINE ASM (contracts/safe/safe_297_SAFE.sol#274-277)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#assembly-usage
+
+Detector: dead-code
+Oraclize.getCodeSize(address) (contracts/safe/safe_297_SAFE.sol#269-277) is never used and should be removed
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dead-code
+
+Detector: deprecated-standards
+Deprecated standard detected dsname_hash = sha3()(dsname,proofType) (contracts/safe/safe_297_SAFE.sol#89):
+	- Usage of "sha3()" should be replaced with "keccak256()"
+Deprecated standard detected THROW (contracts/safe/safe_297_SAFE.sol#148):
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected THROW (contracts/safe/safe_297_SAFE.sol#171):
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected THROW (contracts/safe/safe_297_SAFE.sol#184):
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected THROW (contracts/safe/safe_297_SAFE.sol#187):
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected i = uint256(sha3()(reqc[msg.sender])) % randomDS_sessionPubKeysHash.length (contracts/safe/safe_297_SAFE.sol#211):
+	- Usage of "sha3()" should be replaced with "keccak256()"
+Deprecated standard detected _dsprice = price[sha3()(_datasource,addr_proofType[_addr])] (contracts/safe/safe_297_SAFE.sol#264):
+	- Usage of "sha3()" should be replaced with "keccak256()"
+Deprecated standard detected THROW (contracts/safe/safe_297_SAFE.sol#390):
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected _id = sha3()(this,msg.sender,reqc[msg.sender]) (contracts/safe/safe_297_SAFE.sol#392):
+	- Usage of "sha3()" should be replaced with "keccak256()"
+Deprecated standard detected THROW (contracts/safe/safe_297_SAFE.sol#404):
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected _id = sha3()(this,msg.sender,reqc[msg.sender]) (contracts/safe/safe_297_SAFE.sol#406):
+	- Usage of "sha3()" should be replaced with "keccak256()"
+Deprecated standard detected THROW (contracts/safe/safe_297_SAFE.sol#418):
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected _id = sha3()(this,msg.sender,reqc[msg.sender]) (contracts/safe/safe_297_SAFE.sol#420):
+	- Usage of "sha3()" should be replaced with "keccak256()"
+Deprecated standard detected THROW (contracts/safe/safe_297_SAFE.sol#432):
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected _id = sha3()(this,msg.sender,reqc[msg.sender]) (contracts/safe/safe_297_SAFE.sol#434):
+	- Usage of "sha3()" should be replaced with "keccak256()"
+Deprecated standard detected THROW (contracts/safe/safe_297_SAFE.sol#446):
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected _id = sha3()(this,msg.sender,reqc[msg.sender]) (contracts/safe/safe_297_SAFE.sol#448):
+	- Usage of "sha3()" should be replaced with "keccak256()"
+Deprecated standard detected THROW (contracts/safe/safe_297_SAFE.sol#460):
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected _id = sha3()(this,msg.sender,reqc[msg.sender]) (contracts/safe/safe_297_SAFE.sol#462):
+	- Usage of "sha3()" should be replaced with "keccak256()"
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#deprecated-standards
+
+Detector: solc-version
+Version constraint ^0.4.11 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- NestedArrayFunctionCallDecoder
+	- ZeroFunctionSelector
+	- DelegateCallReturnValue
+	- ECRecoverMalformedInput
+	- SkipEmptyStringLiteral.
+It is used by:
+	- ^0.4.11 (contracts/safe/safe_297_SAFE.sol#13)
+solc-0.4.11 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Event Oraclize.Log1_fnc(address,bytes32,uint256,string,string,function(),uint256,bytes1,uint256) (contracts/safe/safe_297_SAFE.sol#25) is not in CapWords
+Event Oraclize.Log2_fnc(address,bytes32,uint256,string,string,string,function(),uint256,bytes1,uint256) (contracts/safe/safe_297_SAFE.sol#26) is not in CapWords
+Event Oraclize.LogN_fnc(address,bytes32,uint256,string,bytes,function(),uint256,bytes1,uint256) (contracts/safe/safe_297_SAFE.sol#27) is not in CapWords
+Event Oraclize.Emit_OffchainPaymentFlag(address,address,bool,bool) (contracts/safe/safe_297_SAFE.sol#29) is not in CapWords
+Parameter Oraclize.changeAdmin(address)._newAdmin (contracts/safe/safe_297_SAFE.sol#34) is not in mixedCase
+Parameter Oraclize.changePaymentFlagger(address)._newFlagger (contracts/safe/safe_297_SAFE.sol#41) is not in mixedCase
+Parameter Oraclize.multisetProofType(uint256[],address[])._proofType (contracts/safe/safe_297_SAFE.sol#106) is not in mixedCase
+Parameter Oraclize.multisetProofType(uint256[],address[])._addr (contracts/safe/safe_297_SAFE.sol#106) is not in mixedCase
+Parameter Oraclize.multisetCustomGasPrice(uint256[],address[])._gasPrice (contracts/safe/safe_297_SAFE.sol#113) is not in mixedCase
+Parameter Oraclize.multisetCustomGasPrice(uint256[],address[])._addr (contracts/safe/safe_297_SAFE.sol#113) is not in mixedCase
+Parameter Oraclize.setBasePrice(uint256).new_baseprice (contracts/safe/safe_297_SAFE.sol#129) is not in mixedCase
+Parameter Oraclize.setBasePrice(uint256,bytes).new_baseprice (contracts/safe/safe_297_SAFE.sol#137) is not in mixedCase
+Parameter Oraclize.setOffchainPayment(address,bool)._addr (contracts/safe/safe_297_SAFE.sol#145) is not in mixedCase
+Parameter Oraclize.setOffchainPayment(address,bool)._flag (contracts/safe/safe_297_SAFE.sol#145) is not in mixedCase
+Parameter Oraclize.withdrawFunds(address)._addr (contracts/safe/safe_297_SAFE.sol#153) is not in mixedCase
+Function Oraclize.randomDS_updateSessionPubKeysHash(bytes32[]) (contracts/safe/safe_297_SAFE.sol#199-205) is not in mixedCase
+Parameter Oraclize.randomDS_updateSessionPubKeysHash(bytes32[])._newSessionPubKeysHash (contracts/safe/safe_297_SAFE.sol#199) is not in mixedCase
+Function Oraclize.randomDS_getSessionPubKeyHash() (contracts/safe/safe_297_SAFE.sol#207-213) is not in mixedCase
+Parameter Oraclize.setProofType(bytes1)._proofType (contracts/safe/safe_297_SAFE.sol#215) is not in mixedCase
+Parameter Oraclize.setCustomGasPrice(uint256)._gasPrice (contracts/safe/safe_297_SAFE.sol#221) is not in mixedCase
+Parameter Oraclize.getPrice(string)._datasource (contracts/safe/safe_297_SAFE.sol#227) is not in mixedCase
+Parameter Oraclize.getPrice(string,uint256)._datasource (contracts/safe/safe_297_SAFE.sol#234) is not in mixedCase
+Parameter Oraclize.getPrice(string,uint256)._gaslimit (contracts/safe/safe_297_SAFE.sol#234) is not in mixedCase
+Parameter Oraclize.getPrice(string,address)._datasource (contracts/safe/safe_297_SAFE.sol#241) is not in mixedCase
+Parameter Oraclize.getPrice(string,address)._addr (contracts/safe/safe_297_SAFE.sol#241) is not in mixedCase
+Parameter Oraclize.getPrice(string,uint256,address)._datasource (contracts/safe/safe_297_SAFE.sol#248) is not in mixedCase
+Parameter Oraclize.getPrice(string,uint256,address)._gaslimit (contracts/safe/safe_297_SAFE.sol#248) is not in mixedCase
+Parameter Oraclize.getPrice(string,uint256,address)._addr (contracts/safe/safe_297_SAFE.sol#248) is not in mixedCase
+Parameter Oraclize.query(string,string)._datasource (contracts/safe/safe_297_SAFE.sol#279) is not in mixedCase
+Parameter Oraclize.query(string,string)._arg (contracts/safe/safe_297_SAFE.sol#279) is not in mixedCase
+Parameter Oraclize.query1(string,string)._datasource (contracts/safe/safe_297_SAFE.sol#287) is not in mixedCase
+Parameter Oraclize.query1(string,string)._arg (contracts/safe/safe_297_SAFE.sol#287) is not in mixedCase
+Parameter Oraclize.query2(string,string,string)._datasource (contracts/safe/safe_297_SAFE.sol#295) is not in mixedCase
+Parameter Oraclize.query2(string,string,string)._arg1 (contracts/safe/safe_297_SAFE.sol#295) is not in mixedCase
+Parameter Oraclize.query2(string,string,string)._arg2 (contracts/safe/safe_297_SAFE.sol#295) is not in mixedCase
+Parameter Oraclize.queryN(string,bytes)._datasource (contracts/safe/safe_297_SAFE.sol#303) is not in mixedCase
+Parameter Oraclize.queryN(string,bytes)._args (contracts/safe/safe_297_SAFE.sol#303) is not in mixedCase
+Parameter Oraclize.query(uint256,string,string)._timestamp (contracts/safe/safe_297_SAFE.sol#311) is not in mixedCase
+Parameter Oraclize.query(uint256,string,string)._datasource (contracts/safe/safe_297_SAFE.sol#311) is not in mixedCase
+Parameter Oraclize.query(uint256,string,string)._arg (contracts/safe/safe_297_SAFE.sol#311) is not in mixedCase
+Parameter Oraclize.query1(uint256,string,string)._timestamp (contracts/safe/safe_297_SAFE.sol#319) is not in mixedCase
+Parameter Oraclize.query1(uint256,string,string)._datasource (contracts/safe/safe_297_SAFE.sol#319) is not in mixedCase
+Parameter Oraclize.query1(uint256,string,string)._arg (contracts/safe/safe_297_SAFE.sol#319) is not in mixedCase
+Parameter Oraclize.query2(uint256,string,string,string)._timestamp (contracts/safe/safe_297_SAFE.sol#327) is not in mixedCase
+Parameter Oraclize.query2(uint256,string,string,string)._datasource (contracts/safe/safe_297_SAFE.sol#327) is not in mixedCase
+Parameter Oraclize.query2(uint256,string,string,string)._arg1 (contracts/safe/safe_297_SAFE.sol#327) is not in mixedCase
+Parameter Oraclize.query2(uint256,string,string,string)._arg2 (contracts/safe/safe_297_SAFE.sol#327) is not in mixedCase
+Parameter Oraclize.queryN(uint256,string,bytes)._timestamp (contracts/safe/safe_297_SAFE.sol#335) is not in mixedCase
+Parameter Oraclize.queryN(uint256,string,bytes)._datasource (contracts/safe/safe_297_SAFE.sol#335) is not in mixedCase
+Parameter Oraclize.queryN(uint256,string,bytes)._args (contracts/safe/safe_297_SAFE.sol#335) is not in mixedCase
+Function Oraclize.query_withGasLimit(uint256,string,string,uint256) (contracts/safe/safe_297_SAFE.sol#352-358) is not in mixedCase
+Parameter Oraclize.query_withGasLimit(uint256,string,string,uint256)._timestamp (contracts/safe/safe_297_SAFE.sol#352) is not in mixedCase
+Parameter Oraclize.query_withGasLimit(uint256,string,string,uint256)._datasource (contracts/safe/safe_297_SAFE.sol#352) is not in mixedCase
+Parameter Oraclize.query_withGasLimit(uint256,string,string,uint256)._arg (contracts/safe/safe_297_SAFE.sol#352) is not in mixedCase
+Parameter Oraclize.query_withGasLimit(uint256,string,string,uint256)._gaslimit (contracts/safe/safe_297_SAFE.sol#352) is not in mixedCase
+Function Oraclize.query1_withGasLimit(uint256,string,string,uint256) (contracts/safe/safe_297_SAFE.sol#360-366) is not in mixedCase
+Parameter Oraclize.query1_withGasLimit(uint256,string,string,uint256)._timestamp (contracts/safe/safe_297_SAFE.sol#360) is not in mixedCase
+Parameter Oraclize.query1_withGasLimit(uint256,string,string,uint256)._datasource (contracts/safe/safe_297_SAFE.sol#360) is not in mixedCase
+Parameter Oraclize.query1_withGasLimit(uint256,string,string,uint256)._arg (contracts/safe/safe_297_SAFE.sol#360) is not in mixedCase
+Parameter Oraclize.query1_withGasLimit(uint256,string,string,uint256)._gaslimit (contracts/safe/safe_297_SAFE.sol#360) is not in mixedCase
+Function Oraclize.query2_withGasLimit(uint256,string,string,string,uint256) (contracts/safe/safe_297_SAFE.sol#368-374) is not in mixedCase
+Parameter Oraclize.query2_withGasLimit(uint256,string,string,string,uint256)._timestamp (contracts/safe/safe_297_SAFE.sol#368) is not in mixedCase
+Parameter Oraclize.query2_withGasLimit(uint256,string,string,string,uint256)._datasource (contracts/safe/safe_297_SAFE.sol#368) is not in mixedCase
+Parameter Oraclize.query2_withGasLimit(uint256,string,string,string,uint256)._arg1 (contracts/safe/safe_297_SAFE.sol#368) is not in mixedCase
+Parameter Oraclize.query2_withGasLimit(uint256,string,string,string,uint256)._arg2 (contracts/safe/safe_297_SAFE.sol#368) is not in mixedCase
+Parameter Oraclize.query2_withGasLimit(uint256,string,string,string,uint256)._gaslimit (contracts/safe/safe_297_SAFE.sol#368) is not in mixedCase
+Function Oraclize.queryN_withGasLimit(uint256,string,bytes,uint256) (contracts/safe/safe_297_SAFE.sol#376-382) is not in mixedCase
+Parameter Oraclize.queryN_withGasLimit(uint256,string,bytes,uint256)._timestamp (contracts/safe/safe_297_SAFE.sol#376) is not in mixedCase
+Parameter Oraclize.queryN_withGasLimit(uint256,string,bytes,uint256)._datasource (contracts/safe/safe_297_SAFE.sol#376) is not in mixedCase
+Parameter Oraclize.queryN_withGasLimit(uint256,string,bytes,uint256)._args (contracts/safe/safe_297_SAFE.sol#376) is not in mixedCase
+Parameter Oraclize.queryN_withGasLimit(uint256,string,bytes,uint256)._gaslimit (contracts/safe/safe_297_SAFE.sol#376) is not in mixedCase
+Parameter Oraclize.query1(uint256,string,string,uint256)._timestamp (contracts/safe/safe_297_SAFE.sol#384) is not in mixedCase
+Parameter Oraclize.query1(uint256,string,string,uint256)._datasource (contracts/safe/safe_297_SAFE.sol#384) is not in mixedCase
+Parameter Oraclize.query1(uint256,string,string,uint256)._arg (contracts/safe/safe_297_SAFE.sol#384) is not in mixedCase
+Parameter Oraclize.query1(uint256,string,string,uint256)._gaslimit (contracts/safe/safe_297_SAFE.sol#384) is not in mixedCase
+Parameter Oraclize.query2(uint256,string,string,string,uint256)._timestamp (contracts/safe/safe_297_SAFE.sol#398) is not in mixedCase
+Parameter Oraclize.query2(uint256,string,string,string,uint256)._datasource (contracts/safe/safe_297_SAFE.sol#398) is not in mixedCase
+Parameter Oraclize.query2(uint256,string,string,string,uint256)._arg1 (contracts/safe/safe_297_SAFE.sol#398) is not in mixedCase
+Parameter Oraclize.query2(uint256,string,string,string,uint256)._arg2 (contracts/safe/safe_297_SAFE.sol#398) is not in mixedCase
+Parameter Oraclize.query2(uint256,string,string,string,uint256)._gaslimit (contracts/safe/safe_297_SAFE.sol#398) is not in mixedCase
+Parameter Oraclize.queryN(uint256,string,bytes,uint256)._timestamp (contracts/safe/safe_297_SAFE.sol#412) is not in mixedCase
+Parameter Oraclize.queryN(uint256,string,bytes,uint256)._datasource (contracts/safe/safe_297_SAFE.sol#412) is not in mixedCase
+Parameter Oraclize.queryN(uint256,string,bytes,uint256)._args (contracts/safe/safe_297_SAFE.sol#412) is not in mixedCase
+Parameter Oraclize.queryN(uint256,string,bytes,uint256)._gaslimit (contracts/safe/safe_297_SAFE.sol#412) is not in mixedCase
+Function Oraclize.query1_fnc(uint256,string,string,function(),uint256) (contracts/safe/safe_297_SAFE.sol#426-438) is not in mixedCase
+Parameter Oraclize.query1_fnc(uint256,string,string,function(),uint256)._timestamp (contracts/safe/safe_297_SAFE.sol#426) is not in mixedCase
+Parameter Oraclize.query1_fnc(uint256,string,string,function(),uint256)._datasource (contracts/safe/safe_297_SAFE.sol#426) is not in mixedCase
+Parameter Oraclize.query1_fnc(uint256,string,string,function(),uint256)._arg (contracts/safe/safe_297_SAFE.sol#426) is not in mixedCase
+Parameter Oraclize.query1_fnc(uint256,string,string,function(),uint256)._fnc (contracts/safe/safe_297_SAFE.sol#426) is not in mixedCase
+Parameter Oraclize.query1_fnc(uint256,string,string,function(),uint256)._gaslimit (contracts/safe/safe_297_SAFE.sol#426) is not in mixedCase
+Function Oraclize.query2_fnc(uint256,string,string,string,function(),uint256) (contracts/safe/safe_297_SAFE.sol#440-452) is not in mixedCase
+Parameter Oraclize.query2_fnc(uint256,string,string,string,function(),uint256)._timestamp (contracts/safe/safe_297_SAFE.sol#440) is not in mixedCase
+Parameter Oraclize.query2_fnc(uint256,string,string,string,function(),uint256)._datasource (contracts/safe/safe_297_SAFE.sol#440) is not in mixedCase
+Parameter Oraclize.query2_fnc(uint256,string,string,string,function(),uint256)._arg1 (contracts/safe/safe_297_SAFE.sol#440) is not in mixedCase
+Parameter Oraclize.query2_fnc(uint256,string,string,string,function(),uint256)._arg2 (contracts/safe/safe_297_SAFE.sol#440) is not in mixedCase
+Parameter Oraclize.query2_fnc(uint256,string,string,string,function(),uint256)._fnc (contracts/safe/safe_297_SAFE.sol#440) is not in mixedCase
+Parameter Oraclize.query2_fnc(uint256,string,string,string,function(),uint256)._gaslimit (contracts/safe/safe_297_SAFE.sol#440) is not in mixedCase
+Function Oraclize.queryN_fnc(uint256,string,bytes,function(),uint256) (contracts/safe/safe_297_SAFE.sol#454-466) is not in mixedCase
+Parameter Oraclize.queryN_fnc(uint256,string,bytes,function(),uint256)._timestamp (contracts/safe/safe_297_SAFE.sol#454) is not in mixedCase
+Parameter Oraclize.queryN_fnc(uint256,string,bytes,function(),uint256)._datasource (contracts/safe/safe_297_SAFE.sol#454) is not in mixedCase
+Parameter Oraclize.queryN_fnc(uint256,string,bytes,function(),uint256)._args (contracts/safe/safe_297_SAFE.sol#454) is not in mixedCase
+Parameter Oraclize.queryN_fnc(uint256,string,bytes,function(),uint256)._fnc (contracts/safe/safe_297_SAFE.sol#454) is not in mixedCase
+Parameter Oraclize.queryN_fnc(uint256,string,bytes,function(),uint256)._gaslimit (contracts/safe/safe_297_SAFE.sol#454) is not in mixedCase
+Variable Oraclize.addr_proofType (contracts/safe/safe_297_SAFE.sol#190) is not in mixedCase
+Variable Oraclize.addr_gasPrice (contracts/safe/safe_297_SAFE.sol#191) is not in mixedCase
+Variable Oraclize.price_multiplier (contracts/safe/safe_297_SAFE.sol#194) is not in mixedCase
+Variable Oraclize.randomDS_sessionPubKeysHash (contracts/safe/safe_297_SAFE.sol#197) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: reentrancy-unlimited-gas
+Reentrancy in Oraclize.query1(uint256,string,string,uint256) (contracts/safe/safe_297_SAFE.sol#384-396):
+	External calls:
+	- costs(_datasource,_gaslimit) (contracts/safe/safe_297_SAFE.sol#389)
+		- ! msg.sender.send(diff) (contracts/safe/safe_297_SAFE.sol#183)
+	State variables written after the call(s):
+	- reqc[msg.sender] ++ (contracts/safe/safe_297_SAFE.sol#393)
+	Event emitted after the call(s):
+	- Log1(msg.sender,_id,_timestamp,_datasource,_arg,_gaslimit,addr_proofType[msg.sender],addr_gasPrice[msg.sender]) (contracts/safe/safe_297_SAFE.sol#394)
+Reentrancy in Oraclize.query1_fnc(uint256,string,string,function(),uint256) (contracts/safe/safe_297_SAFE.sol#426-438):
+	External calls:
+	- costs(_datasource,_gaslimit) (contracts/safe/safe_297_SAFE.sol#431)
+		- ! msg.sender.send(diff) (contracts/safe/safe_297_SAFE.sol#183)
+	State variables written after the call(s):
+	- reqc[msg.sender] ++ (contracts/safe/safe_297_SAFE.sol#435)
+	Event emitted after the call(s):
+	- Log1_fnc(msg.sender,_id,_timestamp,_datasource,_arg,_fnc,_gaslimit,addr_proofType[msg.sender],addr_gasPrice[msg.sender]) (contracts/safe/safe_297_SAFE.sol#436)
+Reentrancy in Oraclize.query2(uint256,string,string,string,uint256) (contracts/safe/safe_297_SAFE.sol#398-410):
+	External calls:
+	- costs(_datasource,_gaslimit) (contracts/safe/safe_297_SAFE.sol#403)
+		- ! msg.sender.send(diff) (contracts/safe/safe_297_SAFE.sol#183)
+	State variables written after the call(s):
+	- reqc[msg.sender] ++ (contracts/safe/safe_297_SAFE.sol#407)
+	Event emitted after the call(s):
+	- Log2(msg.sender,_id,_timestamp,_datasource,_arg1,_arg2,_gaslimit,addr_proofType[msg.sender],addr_gasPrice[msg.sender]) (contracts/safe/safe_297_SAFE.sol#408)
+Reentrancy in Oraclize.query2_fnc(uint256,string,string,string,function(),uint256) (contracts/safe/safe_297_SAFE.sol#440-452):
+	External calls:
+	- costs(_datasource,_gaslimit) (contracts/safe/safe_297_SAFE.sol#445)
+		- ! msg.sender.send(diff) (contracts/safe/safe_297_SAFE.sol#183)
+	State variables written after the call(s):
+	- reqc[msg.sender] ++ (contracts/safe/safe_297_SAFE.sol#449)
+	Event emitted after the call(s):
+	- Log2_fnc(msg.sender,_id,_timestamp,_datasource,_arg1,_arg2,_fnc,_gaslimit,addr_proofType[msg.sender],addr_gasPrice[msg.sender]) (contracts/safe/safe_297_SAFE.sol#450)
+Reentrancy in Oraclize.queryN(uint256,string,bytes,uint256) (contracts/safe/safe_297_SAFE.sol#412-424):
+	External calls:
+	- costs(_datasource,_gaslimit) (contracts/safe/safe_297_SAFE.sol#417)
+		- ! msg.sender.send(diff) (contracts/safe/safe_297_SAFE.sol#183)
+	State variables written after the call(s):
+	- reqc[msg.sender] ++ (contracts/safe/safe_297_SAFE.sol#421)
+	Event emitted after the call(s):
+	- LogN(msg.sender,_id,_timestamp,_datasource,_args,_gaslimit,addr_proofType[msg.sender],addr_gasPrice[msg.sender]) (contracts/safe/safe_297_SAFE.sol#422)
+Reentrancy in Oraclize.queryN_fnc(uint256,string,bytes,function(),uint256) (contracts/safe/safe_297_SAFE.sol#454-466):
+	External calls:
+	- costs(_datasource,_gaslimit) (contracts/safe/safe_297_SAFE.sol#459)
+		- ! msg.sender.send(diff) (contracts/safe/safe_297_SAFE.sol#183)
+	State variables written after the call(s):
+	- reqc[msg.sender] ++ (contracts/safe/safe_297_SAFE.sol#463)
+	Event emitted after the call(s):
+	- LogN_fnc(msg.sender,_id,_timestamp,_datasource,_args,_fnc,_gaslimit,addr_proofType[msg.sender],addr_gasPrice[msg.sender]) (contracts/safe/safe_297_SAFE.sol#464)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-5
+
+Detector: too-many-digits
+Oraclize.getPrice(string,address) (contracts/safe/safe_297_SAFE.sol#241-246) uses literals with too many digits:
+	- getPrice(_datasource,200000,_addr) (contracts/safe/safe_297_SAFE.sol#245)
+Oraclize.getPrice(string,uint256,address) (contracts/safe/safe_297_SAFE.sol#248-267) uses literals with too many digits:
+	- (offchainPayment[_addr]) || ((_gaslimit <= 200000) && (reqc[_addr] == 0) && (gasprice_ <= gasprice) && (tx.origin != cbAddress())) (contracts/safe/safe_297_SAFE.sol#254-260)
+Oraclize.query(string,string) (contracts/safe/safe_297_SAFE.sol#279-285) uses literals with too many digits:
+	- query1(0,_datasource,_arg,200000) (contracts/safe/safe_297_SAFE.sol#284)
+Oraclize.query1(string,string) (contracts/safe/safe_297_SAFE.sol#287-293) uses literals with too many digits:
+	- query1(0,_datasource,_arg,200000) (contracts/safe/safe_297_SAFE.sol#292)
+Oraclize.query2(string,string,string) (contracts/safe/safe_297_SAFE.sol#295-301) uses literals with too many digits:
+	- query2(0,_datasource,_arg1,_arg2,200000) (contracts/safe/safe_297_SAFE.sol#300)
+Oraclize.queryN(string,bytes) (contracts/safe/safe_297_SAFE.sol#303-309) uses literals with too many digits:
+	- queryN(0,_datasource,_args,200000) (contracts/safe/safe_297_SAFE.sol#308)
+Oraclize.query(uint256,string,string) (contracts/safe/safe_297_SAFE.sol#311-317) uses literals with too many digits:
+	- query1(_timestamp,_datasource,_arg,200000) (contracts/safe/safe_297_SAFE.sol#316)
+Oraclize.query1(uint256,string,string) (contracts/safe/safe_297_SAFE.sol#319-325) uses literals with too many digits:
+	- query1(_timestamp,_datasource,_arg,200000) (contracts/safe/safe_297_SAFE.sol#324)
+Oraclize.query2(uint256,string,string,string) (contracts/safe/safe_297_SAFE.sol#327-333) uses literals with too many digits:
+	- query2(_timestamp,_datasource,_arg1,_arg2,200000) (contracts/safe/safe_297_SAFE.sol#332)
+Oraclize.queryN(uint256,string,bytes) (contracts/safe/safe_297_SAFE.sol#335-341) uses literals with too many digits:
+	- queryN(_timestamp,_datasource,_args,200000) (contracts/safe/safe_297_SAFE.sol#340)
+Oraclize.slitherConstructorVariables() (contracts/safe/safe_297_SAFE.sol#15-468) uses literals with too many digits:
+	- gasprice = 20000000000 (contracts/safe/safe_297_SAFE.sol#120)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#too-many-digits
+
+Detector: unindexed-event-address
+Event Oraclize.Log1(address,bytes32,uint256,string,string,uint256,bytes1,uint256) (contracts/safe/safe_297_SAFE.sol#22) has address parameters but no indexed parameters
+Event Oraclize.Log2(address,bytes32,uint256,string,string,string,uint256,bytes1,uint256) (contracts/safe/safe_297_SAFE.sol#23) has address parameters but no indexed parameters
+Event Oraclize.LogN(address,bytes32,uint256,string,bytes,uint256,bytes1,uint256) (contracts/safe/safe_297_SAFE.sol#24) has address parameters but no indexed parameters
+Event Oraclize.Log1_fnc(address,bytes32,uint256,string,string,function(),uint256,bytes1,uint256) (contracts/safe/safe_297_SAFE.sol#25) has address parameters but no indexed parameters
+Event Oraclize.Log2_fnc(address,bytes32,uint256,string,string,string,function(),uint256,bytes1,uint256) (contracts/safe/safe_297_SAFE.sol#26) has address parameters but no indexed parameters
+Event Oraclize.LogN_fnc(address,bytes32,uint256,string,bytes,function(),uint256,bytes1,uint256) (contracts/safe/safe_297_SAFE.sol#27) has address parameters but no indexed parameters
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unindexed-event-address-parameters
+
+Detector: cache-array-length
+Loop condition i < dsources.length (contracts/safe/safe_297_SAFE.sol#134) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i < dsources.length (contracts/safe/safe_297_SAFE.sol#142) should use cached array length instead of referencing `length` member of the storage array.
+ Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#cache-array-length
+
+Detector: external-function
+getPrice(string) should be declared external:
+	- Oraclize.getPrice(string) (contracts/safe/safe_297_SAFE.sol#227-232)
+getPrice(string,uint256) should be declared external:
+	- Oraclize.getPrice(string,uint256) (contracts/safe/safe_297_SAFE.sol#234-239)
+query1_fnc(uint256,string,string,function(),uint256) should be declared external:
+	- Oraclize.query1_fnc(uint256,string,string,function(),uint256) (contracts/safe/safe_297_SAFE.sol#426-438)
+query2_fnc(uint256,string,string,string,function(),uint256) should be declared external:
+	- Oraclize.query2_fnc(uint256,string,string,string,function(),uint256) (contracts/safe/safe_297_SAFE.sol#440-452)
+queryN_fnc(uint256,string,bytes,function(),uint256) should be declared external:
+	- Oraclize.queryN_fnc(uint256,string,bytes,function(),uint256) (contracts/safe/safe_297_SAFE.sol#454-466)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#public-function-that-could-be-declared-external
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_297_SAFE.sol analyzed (1 contracts with 101 detectors), 176 result(s) found

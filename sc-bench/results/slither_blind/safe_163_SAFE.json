@@ -1,0 +1,3485 @@
+{
+  "success": true,
+  "error": null,
+  "results": {
+    "detectors": [
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "newOwner",
+            "source_mapping": {
+              "start": 3570,
+              "length": 23,
+              "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+              "filename_short": "contracts/safe/safe_163_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                88
+              ],
+              "starting_column": 5,
+              "ending_column": 28
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "Ownable",
+                "source_mapping": {
+                  "start": 3519,
+                  "length": 915,
+                  "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_163_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    86,
+                    87,
+                    88,
+                    89,
+                    90,
+                    91,
+                    92,
+                    93,
+                    94,
+                    95,
+                    96,
+                    97,
+                    98,
+                    99,
+                    100,
+                    101,
+                    102,
+                    103,
+                    104,
+                    105,
+                    106,
+                    107,
+                    108,
+                    109,
+                    110,
+                    111,
+                    112,
+                    113,
+                    114,
+                    115,
+                    116,
+                    117,
+                    118,
+                    119,
+                    120,
+                    121
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 2
+                }
+              }
+            }
+          },
+          {
+            "type": "function",
+            "name": "acceptOwnership",
+            "source_mapping": {
+              "start": 4202,
+              "length": 152,
+              "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+              "filename_short": "contracts/safe/safe_163_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                115,
+                116,
+                117,
+                118,
+                119
+              ],
+              "starting_column": 5,
+              "ending_column": 6
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "Ownable",
+                "source_mapping": {
+                  "start": 3519,
+                  "length": 915,
+                  "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_163_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    86,
+                    87,
+                    88,
+                    89,
+                    90,
+                    91,
+                    92,
+                    93,
+                    94,
+                    95,
+                    96,
+                    97,
+                    98,
+                    99,
+                    100,
+                    101,
+                    102,
+                    103,
+                    104,
+                    105,
+                    106,
+                    107,
+                    108,
+                    109,
+                    110,
+                    111,
+                    112,
+                    113,
+                    114,
+                    115,
+                    116,
+                    117,
+                    118,
+                    119,
+                    120,
+                    121
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 2
+                }
+              },
+              "signature": "acceptOwnership()"
+            }
+          }
+        ],
+        "description": "Ownable.newOwner (contracts/safe/safe_163_SAFE.sol#88) is never initialized. It is used in:\n\t- Ownable.acceptOwnership() (contracts/safe/safe_163_SAFE.sol#115-119)\n",
+        "markdown": "[Ownable.newOwner](contracts/safe/safe_163_SAFE.sol#L88) is never initialized. It is used in:\n\t- [Ownable.acceptOwnership()](contracts/safe/safe_163_SAFE.sol#L115-L119)\n",
+        "first_markdown_element": "contracts/safe/safe_163_SAFE.sol#L88",
+        "id": "629ac43bdda0dfc43545623f2169c272dbdd8be5c08d98d11483fee5a07b068b",
+        "check": "uninitialized-state",
+        "impact": "High",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "totalSupply",
+            "source_mapping": {
+              "start": 8032,
+              "length": 46,
+              "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+              "filename_short": "contracts/safe/safe_163_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                206
+              ],
+              "starting_column": 5,
+              "ending_column": 51
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "ObsidianSmartPay",
+                "source_mapping": {
+                  "start": 7594,
+                  "length": 1635,
+                  "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_163_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    195,
+                    196,
+                    197,
+                    198,
+                    199,
+                    200,
+                    201,
+                    202,
+                    203,
+                    204,
+                    205,
+                    206,
+                    207,
+                    208,
+                    209,
+                    210,
+                    211,
+                    212,
+                    213,
+                    214,
+                    215,
+                    216,
+                    217,
+                    218,
+                    219,
+                    220,
+                    221,
+                    222,
+                    223,
+                    224,
+                    225,
+                    226
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              }
+            }
+          },
+          {
+            "type": "variable",
+            "name": "totalSupply",
+            "source_mapping": {
+              "start": 847,
+              "length": 26,
+              "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+              "filename_short": "contracts/safe/safe_163_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                20
+              ],
+              "starting_column": 5,
+              "ending_column": 31
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "ObsidianSmartPayToken",
+                "source_mapping": {
+                  "start": 337,
+                  "length": 2292,
+                  "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_163_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15,
+                    16,
+                    17,
+                    18,
+                    19,
+                    20,
+                    21,
+                    22,
+                    23,
+                    24,
+                    25,
+                    26,
+                    27,
+                    28,
+                    29,
+                    30,
+                    31,
+                    32,
+                    33,
+                    34,
+                    35,
+                    36,
+                    37,
+                    38,
+                    39,
+                    40,
+                    41,
+                    42,
+                    43,
+                    44,
+                    45,
+                    46,
+                    47,
+                    48,
+                    49,
+                    50,
+                    51,
+                    52
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 2
+                }
+              }
+            }
+          }
+        ],
+        "description": "ObsidianSmartPay.totalSupply (contracts/safe/safe_163_SAFE.sol#206) shadows:\n\t- ObsidianSmartPayToken.totalSupply (contracts/safe/safe_163_SAFE.sol#20)\n",
+        "markdown": "[ObsidianSmartPay.totalSupply](contracts/safe/safe_163_SAFE.sol#L206) shadows:\n\t- [ObsidianSmartPayToken.totalSupply](contracts/safe/safe_163_SAFE.sol#L20)\n",
+        "first_markdown_element": "contracts/safe/safe_163_SAFE.sol#L206",
+        "id": "f86205185333f531805f26f8cf3011d0ba97f7a075fdea5f825e3cd691dc9a72",
+        "check": "shadowing-abstract",
+        "impact": "Medium",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "transferOwnership",
+            "source_mapping": {
+              "start": 4047,
+              "length": 147,
+              "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+              "filename_short": "contracts/safe/safe_163_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                109,
+                110,
+                111,
+                112,
+                113
+              ],
+              "starting_column": 5,
+              "ending_column": 6
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "Ownable",
+                "source_mapping": {
+                  "start": 3519,
+                  "length": 915,
+                  "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_163_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    86,
+                    87,
+                    88,
+                    89,
+                    90,
+                    91,
+                    92,
+                    93,
+                    94,
+                    95,
+                    96,
+                    97,
+                    98,
+                    99,
+                    100,
+                    101,
+                    102,
+                    103,
+                    104,
+                    105,
+                    106,
+                    107,
+                    108,
+                    109,
+                    110,
+                    111,
+                    112,
+                    113,
+                    114,
+                    115,
+                    116,
+                    117,
+                    118,
+                    119,
+                    120,
+                    121
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 2
+                }
+              },
+              "signature": "transferOwnership(address)"
+            }
+          },
+          {
+            "type": "node",
+            "name": "owner = _newOwner",
+            "source_mapping": {
+              "start": 4158,
+              "length": 17,
+              "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+              "filename_short": "contracts/safe/safe_163_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                111
+              ],
+              "starting_column": 13,
+              "ending_column": 30
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "transferOwnership",
+                "source_mapping": {
+                  "start": 4047,
+                  "length": 147,
+                  "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_163_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    109,
+                    110,
+                    111,
+                    112,
+                    113
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "Ownable",
+                    "source_mapping": {
+                      "start": 3519,
+                      "length": 915,
+                      "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_163_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        86,
+                        87,
+                        88,
+                        89,
+                        90,
+                        91,
+                        92,
+                        93,
+                        94,
+                        95,
+                        96,
+                        97,
+                        98,
+                        99,
+                        100,
+                        101,
+                        102,
+                        103,
+                        104,
+                        105,
+                        106,
+                        107,
+                        108,
+                        109,
+                        110,
+                        111,
+                        112,
+                        113,
+                        114,
+                        115,
+                        116,
+                        117,
+                        118,
+                        119,
+                        120,
+                        121
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "transferOwnership(address)"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Ownable.transferOwnership(address) (contracts/safe/safe_163_SAFE.sol#109-113) should emit an event for: \n\t- owner = _newOwner (contracts/safe/safe_163_SAFE.sol#111) \n",
+        "markdown": "[Ownable.transferOwnership(address)](contracts/safe/safe_163_SAFE.sol#L109-L113) should emit an event for: \n\t- [owner = _newOwner](contracts/safe/safe_163_SAFE.sol#L111) \n",
+        "first_markdown_element": "contracts/safe/safe_163_SAFE.sol#L109-L113",
+        "id": "8e0b51b7b4a12f8321a7a51f655fbbe7c25a729eed5b44b3ce6102c9e4e3beb2",
+        "check": "events-access",
+        "impact": "Low",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [
+          {
+            "type": "node",
+            "name": "require(bool)(_spender.call(bytes4(bytes32(sha3()(receiveApproval(address,uint256,address,bytes)))),msg.sender,_value,this,_extraData))",
+            "source_mapping": {
+              "start": 9063,
+              "length": 133,
+              "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+              "filename_short": "contracts/safe/safe_163_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                222
+              ],
+              "starting_column": 9,
+              "ending_column": 142
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "approveAndCall",
+                "source_mapping": {
+                  "start": 8432,
+                  "length": 794,
+                  "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_163_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    215,
+                    216,
+                    217,
+                    218,
+                    219,
+                    220,
+                    221,
+                    222,
+                    223,
+                    224
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "ObsidianSmartPay",
+                    "source_mapping": {
+                      "start": 7594,
+                      "length": 1635,
+                      "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_163_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        195,
+                        196,
+                        197,
+                        198,
+                        199,
+                        200,
+                        201,
+                        202,
+                        203,
+                        204,
+                        205,
+                        206,
+                        207,
+                        208,
+                        209,
+                        210,
+                        211,
+                        212,
+                        213,
+                        214,
+                        215,
+                        216,
+                        217,
+                        218,
+                        219,
+                        220,
+                        221,
+                        222,
+                        223,
+                        224,
+                        225,
+                        226
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "approveAndCall(address,uint256,bytes)"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Deprecated standard detected require(bool)(_spender.call(bytes4(bytes32(sha3()(receiveApproval(address,uint256,address,bytes)))),msg.sender,_value,this,_extraData)) (contracts/safe/safe_163_SAFE.sol#222):\n\t- Usage of \"sha3()\" should be replaced with \"keccak256()\"\n",
+        "markdown": "Deprecated standard detected [require(bool)(_spender.call(bytes4(bytes32(sha3()(receiveApproval(address,uint256,address,bytes)))),msg.sender,_value,this,_extraData))](contracts/safe/safe_163_SAFE.sol#L222):\n\t- Usage of \"sha3()\" should be replaced with \"keccak256()\"\n",
+        "first_markdown_element": "contracts/safe/safe_163_SAFE.sol#L222",
+        "id": "6474bb12fb9c98954c00b31745ea3bc292552545e1df7257600866b8a33e33f8",
+        "check": "deprecated-standards",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "pragma",
+            "name": "^0.4.16",
+            "source_mapping": {
+              "start": 0,
+              "length": 24,
+              "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+              "filename_short": "contracts/safe/safe_163_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                1
+              ],
+              "starting_column": 1,
+              "ending_column": 25
+            },
+            "type_specific_fields": {
+              "directive": [
+                "solidity",
+                "^",
+                "0.4",
+                ".16"
+              ]
+            }
+          }
+        ],
+        "description": "Version constraint ^0.4.16 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- DirtyBytesArrayToStorage\n\t- ABIDecodeTwoDimensionalArrayMemory\n\t- KeccakCaching\n\t- EmptyByteArrayCopy\n\t- DynamicArrayCleanup\n\t- ImplicitConstructorCallvalueCheck\n\t- TupleAssignmentMultiStackSlotComponents\n\t- MemoryArrayCreationOverflow\n\t- privateCanBeOverridden\n\t- SignedArrayStorageCopy\n\t- ABIEncoderV2StorageArrayWithMultiSlotElement\n\t- DynamicConstructorArgumentsClippedABIV2\n\t- UninitializedFunctionPointerInConstructor_0.4.x\n\t- IncorrectEventSignatureInLibraries_0.4.x\n\t- ExpExponentCleanup\n\t- NestedArrayFunctionCallDecoder\n\t- ZeroFunctionSelector.\nIt is used by:\n\t- ^0.4.16 (contracts/safe/safe_163_SAFE.sol#1)\n",
+        "markdown": "Version constraint ^0.4.16 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- DirtyBytesArrayToStorage\n\t- ABIDecodeTwoDimensionalArrayMemory\n\t- KeccakCaching\n\t- EmptyByteArrayCopy\n\t- DynamicArrayCleanup\n\t- ImplicitConstructorCallvalueCheck\n\t- TupleAssignmentMultiStackSlotComponents\n\t- MemoryArrayCreationOverflow\n\t- privateCanBeOverridden\n\t- SignedArrayStorageCopy\n\t- ABIEncoderV2StorageArrayWithMultiSlotElement\n\t- DynamicConstructorArgumentsClippedABIV2\n\t- UninitializedFunctionPointerInConstructor_0.4.x\n\t- IncorrectEventSignatureInLibraries_0.4.x\n\t- ExpExponentCleanup\n\t- NestedArrayFunctionCallDecoder\n\t- ZeroFunctionSelector.\nIt is used by:\n\t- [^0.4.16](contracts/safe/safe_163_SAFE.sol#L1)\n",
+        "first_markdown_element": "contracts/safe/safe_163_SAFE.sol#L1",
+        "id": "27fe443a2b56be40fcef79422383e12ba300fb2245fe7e0ec127d989cf3dba15",
+        "check": "solc-version",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [],
+        "description": "solc-0.4.16 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.\n",
+        "markdown": "solc-0.4.16 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.\n",
+        "first_markdown_element": "",
+        "id": "fb08d63da731a31c744000d8c123182556ea6bf4d937a4d4b2c20a360b729acd",
+        "check": "solc-version",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "approveAndCall",
+            "source_mapping": {
+              "start": 8432,
+              "length": 794,
+              "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+              "filename_short": "contracts/safe/safe_163_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                215,
+                216,
+                217,
+                218,
+                219,
+                220,
+                221,
+                222,
+                223,
+                224
+              ],
+              "starting_column": 5,
+              "ending_column": 6
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "ObsidianSmartPay",
+                "source_mapping": {
+                  "start": 7594,
+                  "length": 1635,
+                  "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_163_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    195,
+                    196,
+                    197,
+                    198,
+                    199,
+                    200,
+                    201,
+                    202,
+                    203,
+                    204,
+                    205,
+                    206,
+                    207,
+                    208,
+                    209,
+                    210,
+                    211,
+                    212,
+                    213,
+                    214,
+                    215,
+                    216,
+                    217,
+                    218,
+                    219,
+                    220,
+                    221,
+                    222,
+                    223,
+                    224,
+                    225,
+                    226
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              },
+              "signature": "approveAndCall(address,uint256,bytes)"
+            }
+          },
+          {
+            "type": "node",
+            "name": "require(bool)(_spender.call(bytes4(bytes32(sha3()(receiveApproval(address,uint256,address,bytes)))),msg.sender,_value,this,_extraData))",
+            "source_mapping": {
+              "start": 9063,
+              "length": 133,
+              "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+              "filename_short": "contracts/safe/safe_163_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                222
+              ],
+              "starting_column": 9,
+              "ending_column": 142
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "approveAndCall",
+                "source_mapping": {
+                  "start": 8432,
+                  "length": 794,
+                  "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_163_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    215,
+                    216,
+                    217,
+                    218,
+                    219,
+                    220,
+                    221,
+                    222,
+                    223,
+                    224
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "ObsidianSmartPay",
+                    "source_mapping": {
+                      "start": 7594,
+                      "length": 1635,
+                      "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_163_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        195,
+                        196,
+                        197,
+                        198,
+                        199,
+                        200,
+                        201,
+                        202,
+                        203,
+                        204,
+                        205,
+                        206,
+                        207,
+                        208,
+                        209,
+                        210,
+                        211,
+                        212,
+                        213,
+                        214,
+                        215,
+                        216,
+                        217,
+                        218,
+                        219,
+                        220,
+                        221,
+                        222,
+                        223,
+                        224,
+                        225,
+                        226
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "approveAndCall(address,uint256,bytes)"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Low level call in ObsidianSmartPay.approveAndCall(address,uint256,bytes) (contracts/safe/safe_163_SAFE.sol#215-224):\n\t- require(bool)(_spender.call(bytes4(bytes32(sha3()(receiveApproval(address,uint256,address,bytes)))),msg.sender,_value,this,_extraData)) (contracts/safe/safe_163_SAFE.sol#222)\n",
+        "markdown": "Low level call in [ObsidianSmartPay.approveAndCall(address,uint256,bytes)](contracts/safe/safe_163_SAFE.sol#L215-L224):\n\t- [require(bool)(_spender.call(bytes4(bytes32(sha3()(receiveApproval(address,uint256,address,bytes)))),msg.sender,_value,this,_extraData))](contracts/safe/safe_163_SAFE.sol#L222)\n",
+        "first_markdown_element": "contracts/safe/safe_163_SAFE.sol#L215-L224",
+        "id": "7f7e7e24f7b44390f6ab47b2ad357d0bdf12fe46e9c339a3794300a814514b22",
+        "check": "low-level-calls",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_owner",
+            "source_mapping": {
+              "start": 7465,
+              "length": 14,
+              "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+              "filename_short": "contracts/safe/safe_163_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                190
+              ],
+              "starting_column": 24,
+              "ending_column": 38
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "allowance",
+                "source_mapping": {
+                  "start": 7446,
+                  "length": 139,
+                  "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_163_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    190,
+                    191,
+                    192
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "OSPStandardToken",
+                    "source_mapping": {
+                      "start": 4440,
+                      "length": 3152,
+                      "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_163_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        124,
+                        125,
+                        126,
+                        127,
+                        128,
+                        129,
+                        130,
+                        131,
+                        132,
+                        133,
+                        134,
+                        135,
+                        136,
+                        137,
+                        138,
+                        139,
+                        140,
+                        141,
+                        142,
+                        143,
+                        144,
+                        145,
+                        146,
+                        147,
+                        148,
+                        149,
+                        150,
+                        151,
+                        152,
+                        153,
+                        154,
+                        155,
+                        156,
+                        157,
+                        158,
+                        159,
+                        160,
+                        161,
+                        162,
+                        163,
+                        164,
+                        165,
+                        166,
+                        167,
+                        168,
+                        169,
+                        170,
+                        171,
+                        172,
+                        173,
+                        174,
+                        175,
+                        176,
+                        177,
+                        178,
+                        179,
+                        180,
+                        181,
+                        182,
+                        183,
+                        184,
+                        185,
+                        186,
+                        187,
+                        188,
+                        189,
+                        190,
+                        191,
+                        192,
+                        193,
+                        194
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "allowance(address,address)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter OSPStandardToken.allowance(address,address)._owner (contracts/safe/safe_163_SAFE.sol#190) is not in mixedCase\n",
+        "markdown": "Parameter [OSPStandardToken.allowance(address,address)._owner](contracts/safe/safe_163_SAFE.sol#L190) is not in mixedCase\n",
+        "first_markdown_element": "contracts/safe/safe_163_SAFE.sol#L190",
+        "id": "0a08a443d34a819a9a6ad37ae42c17eb1563138188fd4a5f2442dd65c90c1b98",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_spender",
+            "source_mapping": {
+              "start": 6796,
+              "length": 16,
+              "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+              "filename_short": "contracts/safe/safe_163_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                176
+              ],
+              "starting_column": 22,
+              "ending_column": 38
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "approve",
+                "source_mapping": {
+                  "start": 6779,
+                  "length": 655,
+                  "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_163_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    176,
+                    177,
+                    178,
+                    179,
+                    180,
+                    181,
+                    182,
+                    183,
+                    184,
+                    185,
+                    186,
+                    187,
+                    188
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "OSPStandardToken",
+                    "source_mapping": {
+                      "start": 4440,
+                      "length": 3152,
+                      "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_163_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        124,
+                        125,
+                        126,
+                        127,
+                        128,
+                        129,
+                        130,
+                        131,
+                        132,
+                        133,
+                        134,
+                        135,
+                        136,
+                        137,
+                        138,
+                        139,
+                        140,
+                        141,
+                        142,
+                        143,
+                        144,
+                        145,
+                        146,
+                        147,
+                        148,
+                        149,
+                        150,
+                        151,
+                        152,
+                        153,
+                        154,
+                        155,
+                        156,
+                        157,
+                        158,
+                        159,
+                        160,
+                        161,
+                        162,
+                        163,
+                        164,
+                        165,
+                        166,
+                        167,
+                        168,
+                        169,
+                        170,
+                        171,
+                        172,
+                        173,
+                        174,
+                        175,
+                        176,
+                        177,
+                        178,
+                        179,
+                        180,
+                        181,
+                        182,
+                        183,
+                        184,
+                        185,
+                        186,
+                        187,
+                        188,
+                        189,
+                        190,
+                        191,
+                        192,
+                        193,
+                        194
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "approve(address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter OSPStandardToken.approve(address,uint256)._spender (contracts/safe/safe_163_SAFE.sol#176) is not in mixedCase\n",
+        "markdown": "Parameter [OSPStandardToken.approve(address,uint256)._spender](contracts/safe/safe_163_SAFE.sol#L176) is not in mixedCase\n",
+        "first_markdown_element": "contracts/safe/safe_163_SAFE.sol#L176",
+        "id": "276e7e3245daf3ff58e3ff39f666291adc48a1b1775814f36c2d01054987bfa6",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_owner",
+            "source_mapping": {
+              "start": 4788,
+              "length": 14,
+              "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+              "filename_short": "contracts/safe/safe_163_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                133
+              ],
+              "starting_column": 24,
+              "ending_column": 38
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "balanceOf",
+                "source_mapping": {
+                  "start": 4769,
+                  "length": 112,
+                  "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_163_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    133,
+                    134,
+                    135
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "OSPStandardToken",
+                    "source_mapping": {
+                      "start": 4440,
+                      "length": 3152,
+                      "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_163_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        124,
+                        125,
+                        126,
+                        127,
+                        128,
+                        129,
+                        130,
+                        131,
+                        132,
+                        133,
+                        134,
+                        135,
+                        136,
+                        137,
+                        138,
+                        139,
+                        140,
+                        141,
+                        142,
+                        143,
+                        144,
+                        145,
+                        146,
+                        147,
+                        148,
+                        149,
+                        150,
+                        151,
+                        152,
+                        153,
+                        154,
+                        155,
+                        156,
+                        157,
+                        158,
+                        159,
+                        160,
+                        161,
+                        162,
+                        163,
+                        164,
+                        165,
+                        166,
+                        167,
+                        168,
+                        169,
+                        170,
+                        171,
+                        172,
+                        173,
+                        174,
+                        175,
+                        176,
+                        177,
+                        178,
+                        179,
+                        180,
+                        181,
+                        182,
+                        183,
+                        184,
+                        185,
+                        186,
+                        187,
+                        188,
+                        189,
+                        190,
+                        191,
+                        192,
+                        193,
+                        194
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "balanceOf(address)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter OSPStandardToken.balanceOf(address)._owner (contracts/safe/safe_163_SAFE.sol#133) is not in mixedCase\n",
+        "markdown": "Parameter [OSPStandardToken.balanceOf(address)._owner](contracts/safe/safe_163_SAFE.sol#L133) is not in mixedCase\n",
+        "first_markdown_element": "contracts/safe/safe_163_SAFE.sol#L133",
+        "id": "30dddd0ba26503c23409d3e6bc9641bbeaff7943a6c5b3845e672a3e83f52600",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_spender",
+            "source_mapping": {
+              "start": 7481,
+              "length": 16,
+              "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+              "filename_short": "contracts/safe/safe_163_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                190
+              ],
+              "starting_column": 40,
+              "ending_column": 56
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "allowance",
+                "source_mapping": {
+                  "start": 7446,
+                  "length": 139,
+                  "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_163_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    190,
+                    191,
+                    192
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "OSPStandardToken",
+                    "source_mapping": {
+                      "start": 4440,
+                      "length": 3152,
+                      "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_163_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        124,
+                        125,
+                        126,
+                        127,
+                        128,
+                        129,
+                        130,
+                        131,
+                        132,
+                        133,
+                        134,
+                        135,
+                        136,
+                        137,
+                        138,
+                        139,
+                        140,
+                        141,
+                        142,
+                        143,
+                        144,
+                        145,
+                        146,
+                        147,
+                        148,
+                        149,
+                        150,
+                        151,
+                        152,
+                        153,
+                        154,
+                        155,
+                        156,
+                        157,
+                        158,
+                        159,
+                        160,
+                        161,
+                        162,
+                        163,
+                        164,
+                        165,
+                        166,
+                        167,
+                        168,
+                        169,
+                        170,
+                        171,
+                        172,
+                        173,
+                        174,
+                        175,
+                        176,
+                        177,
+                        178,
+                        179,
+                        180,
+                        181,
+                        182,
+                        183,
+                        184,
+                        185,
+                        186,
+                        187,
+                        188,
+                        189,
+                        190,
+                        191,
+                        192,
+                        193,
+                        194
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "allowance(address,address)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter OSPStandardToken.allowance(address,address)._spender (contracts/safe/safe_163_SAFE.sol#190) is not in mixedCase\n",
+        "markdown": "Parameter [OSPStandardToken.allowance(address,address)._spender](contracts/safe/safe_163_SAFE.sol#L190) is not in mixedCase\n",
+        "first_markdown_element": "contracts/safe/safe_163_SAFE.sol#L190",
+        "id": "42aed582096338f84374efbf85b6d4337733924e8542bc093fed75fa7b86d77e",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_value",
+            "source_mapping": {
+              "start": 5883,
+              "length": 14,
+              "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+              "filename_short": "contracts/safe/safe_163_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                158
+              ],
+              "starting_column": 55,
+              "ending_column": 69
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "transferFrom",
+                "source_mapping": {
+                  "start": 5833,
+                  "length": 938,
+                  "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_163_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    158,
+                    159,
+                    160,
+                    161,
+                    162,
+                    163,
+                    164,
+                    165,
+                    166,
+                    167,
+                    168,
+                    169,
+                    170,
+                    171,
+                    172,
+                    173,
+                    174
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "OSPStandardToken",
+                    "source_mapping": {
+                      "start": 4440,
+                      "length": 3152,
+                      "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_163_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        124,
+                        125,
+                        126,
+                        127,
+                        128,
+                        129,
+                        130,
+                        131,
+                        132,
+                        133,
+                        134,
+                        135,
+                        136,
+                        137,
+                        138,
+                        139,
+                        140,
+                        141,
+                        142,
+                        143,
+                        144,
+                        145,
+                        146,
+                        147,
+                        148,
+                        149,
+                        150,
+                        151,
+                        152,
+                        153,
+                        154,
+                        155,
+                        156,
+                        157,
+                        158,
+                        159,
+                        160,
+                        161,
+                        162,
+                        163,
+                        164,
+                        165,
+                        166,
+                        167,
+                        168,
+                        169,
+                        170,
+                        171,
+                        172,
+                        173,
+                        174,
+                        175,
+                        176,
+                        177,
+                        178,
+                        179,
+                        180,
+                        181,
+                        182,
+                        183,
+                        184,
+                        185,
+                        186,
+                        187,
+                        188,
+                        189,
+                        190,
+                        191,
+                        192,
+                        193,
+                        194
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "transferFrom(address,address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter OSPStandardToken.transferFrom(address,address,uint256)._value (contracts/safe/safe_163_SAFE.sol#158) is not in mixedCase\n",
+        "markdown": "Parameter [OSPStandardToken.transferFrom(address,address,uint256)._value](contracts/safe/safe_163_SAFE.sol#L158) is not in mixedCase\n",
+        "first_markdown_element": "contracts/safe/safe_163_SAFE.sol#L158",
+        "id": "466724db838e30b850810970ee5b6025bfada421cd20c0b074e53926b4a2ed65",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_spender",
+            "source_mapping": {
+              "start": 8456,
+              "length": 16,
+              "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+              "filename_short": "contracts/safe/safe_163_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                215
+              ],
+              "starting_column": 29,
+              "ending_column": 45
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "approveAndCall",
+                "source_mapping": {
+                  "start": 8432,
+                  "length": 794,
+                  "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_163_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    215,
+                    216,
+                    217,
+                    218,
+                    219,
+                    220,
+                    221,
+                    222,
+                    223,
+                    224
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "ObsidianSmartPay",
+                    "source_mapping": {
+                      "start": 7594,
+                      "length": 1635,
+                      "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_163_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        195,
+                        196,
+                        197,
+                        198,
+                        199,
+                        200,
+                        201,
+                        202,
+                        203,
+                        204,
+                        205,
+                        206,
+                        207,
+                        208,
+                        209,
+                        210,
+                        211,
+                        212,
+                        213,
+                        214,
+                        215,
+                        216,
+                        217,
+                        218,
+                        219,
+                        220,
+                        221,
+                        222,
+                        223,
+                        224,
+                        225,
+                        226
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "approveAndCall(address,uint256,bytes)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter ObsidianSmartPay.approveAndCall(address,uint256,bytes)._spender (contracts/safe/safe_163_SAFE.sol#215) is not in mixedCase\n",
+        "markdown": "Parameter [ObsidianSmartPay.approveAndCall(address,uint256,bytes)._spender](contracts/safe/safe_163_SAFE.sol#L215) is not in mixedCase\n",
+        "first_markdown_element": "contracts/safe/safe_163_SAFE.sol#L215",
+        "id": "4ffcdc2fd777e3c55bb3862bcf453b0b1be3852acdb7c90d041bbd26b5bfc9f3",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_value",
+            "source_mapping": {
+              "start": 8474,
+              "length": 14,
+              "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+              "filename_short": "contracts/safe/safe_163_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                215
+              ],
+              "starting_column": 47,
+              "ending_column": 61
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "approveAndCall",
+                "source_mapping": {
+                  "start": 8432,
+                  "length": 794,
+                  "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_163_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    215,
+                    216,
+                    217,
+                    218,
+                    219,
+                    220,
+                    221,
+                    222,
+                    223,
+                    224
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "ObsidianSmartPay",
+                    "source_mapping": {
+                      "start": 7594,
+                      "length": 1635,
+                      "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_163_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        195,
+                        196,
+                        197,
+                        198,
+                        199,
+                        200,
+                        201,
+                        202,
+                        203,
+                        204,
+                        205,
+                        206,
+                        207,
+                        208,
+                        209,
+                        210,
+                        211,
+                        212,
+                        213,
+                        214,
+                        215,
+                        216,
+                        217,
+                        218,
+                        219,
+                        220,
+                        221,
+                        222,
+                        223,
+                        224,
+                        225,
+                        226
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "approveAndCall(address,uint256,bytes)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter ObsidianSmartPay.approveAndCall(address,uint256,bytes)._value (contracts/safe/safe_163_SAFE.sol#215) is not in mixedCase\n",
+        "markdown": "Parameter [ObsidianSmartPay.approveAndCall(address,uint256,bytes)._value](contracts/safe/safe_163_SAFE.sol#L215) is not in mixedCase\n",
+        "first_markdown_element": "contracts/safe/safe_163_SAFE.sol#L215",
+        "id": "537ad4d72fb137588b5b7125339cde9f3b9ed148caa04de46bde9548c4d20f5b",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_value",
+            "source_mapping": {
+              "start": 5077,
+              "length": 14,
+              "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+              "filename_short": "contracts/safe/safe_163_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                142
+              ],
+              "starting_column": 36,
+              "ending_column": 50
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "transfer",
+                "source_mapping": {
+                  "start": 5046,
+                  "length": 779,
+                  "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_163_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    142,
+                    143,
+                    144,
+                    145,
+                    146,
+                    147,
+                    148,
+                    149,
+                    150,
+                    151,
+                    152,
+                    153,
+                    154,
+                    155,
+                    156
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "OSPStandardToken",
+                    "source_mapping": {
+                      "start": 4440,
+                      "length": 3152,
+                      "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_163_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        124,
+                        125,
+                        126,
+                        127,
+                        128,
+                        129,
+                        130,
+                        131,
+                        132,
+                        133,
+                        134,
+                        135,
+                        136,
+                        137,
+                        138,
+                        139,
+                        140,
+                        141,
+                        142,
+                        143,
+                        144,
+                        145,
+                        146,
+                        147,
+                        148,
+                        149,
+                        150,
+                        151,
+                        152,
+                        153,
+                        154,
+                        155,
+                        156,
+                        157,
+                        158,
+                        159,
+                        160,
+                        161,
+                        162,
+                        163,
+                        164,
+                        165,
+                        166,
+                        167,
+                        168,
+                        169,
+                        170,
+                        171,
+                        172,
+                        173,
+                        174,
+                        175,
+                        176,
+                        177,
+                        178,
+                        179,
+                        180,
+                        181,
+                        182,
+                        183,
+                        184,
+                        185,
+                        186,
+                        187,
+                        188,
+                        189,
+                        190,
+                        191,
+                        192,
+                        193,
+                        194
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "transfer(address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter OSPStandardToken.transfer(address,uint256)._value (contracts/safe/safe_163_SAFE.sol#142) is not in mixedCase\n",
+        "markdown": "Parameter [OSPStandardToken.transfer(address,uint256)._value](contracts/safe/safe_163_SAFE.sol#L142) is not in mixedCase\n",
+        "first_markdown_element": "contracts/safe/safe_163_SAFE.sol#L142",
+        "id": "8c442991ad54e06bf3b2595bf58687b5d90373d3b74d9b6337532704ebb5e4b3",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_from",
+            "source_mapping": {
+              "start": 5855,
+              "length": 13,
+              "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+              "filename_short": "contracts/safe/safe_163_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                158
+              ],
+              "starting_column": 27,
+              "ending_column": 40
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "transferFrom",
+                "source_mapping": {
+                  "start": 5833,
+                  "length": 938,
+                  "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_163_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    158,
+                    159,
+                    160,
+                    161,
+                    162,
+                    163,
+                    164,
+                    165,
+                    166,
+                    167,
+                    168,
+                    169,
+                    170,
+                    171,
+                    172,
+                    173,
+                    174
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "OSPStandardToken",
+                    "source_mapping": {
+                      "start": 4440,
+                      "length": 3152,
+                      "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_163_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        124,
+                        125,
+                        126,
+                        127,
+                        128,
+                        129,
+                        130,
+                        131,
+                        132,
+                        133,
+                        134,
+                        135,
+                        136,
+                        137,
+                        138,
+                        139,
+                        140,
+                        141,
+                        142,
+                        143,
+                        144,
+                        145,
+                        146,
+                        147,
+                        148,
+                        149,
+                        150,
+                        151,
+                        152,
+                        153,
+                        154,
+                        155,
+                        156,
+                        157,
+                        158,
+                        159,
+                        160,
+                        161,
+                        162,
+                        163,
+                        164,
+                        165,
+                        166,
+                        167,
+                        168,
+                        169,
+                        170,
+                        171,
+                        172,
+                        173,
+                        174,
+                        175,
+                        176,
+                        177,
+                        178,
+                        179,
+                        180,
+                        181,
+                        182,
+                        183,
+                        184,
+                        185,
+                        186,
+                        187,
+                        188,
+                        189,
+                        190,
+                        191,
+                        192,
+                        193,
+                        194
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "transferFrom(address,address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter OSPStandardToken.transferFrom(address,address,uint256)._from (contracts/safe/safe_163_SAFE.sol#158) is not in mixedCase\n",
+        "markdown": "Parameter [OSPStandardToken.transferFrom(address,address,uint256)._from](contracts/safe/safe_163_SAFE.sol#L158) is not in mixedCase\n",
+        "first_markdown_element": "contracts/safe/safe_163_SAFE.sol#L158",
+        "id": "945ea0d360032dabae7b3c44b6ad6f4118677dca4b83c0f20e3b81115c508f12",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_value",
+            "source_mapping": {
+              "start": 6814,
+              "length": 14,
+              "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+              "filename_short": "contracts/safe/safe_163_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                176
+              ],
+              "starting_column": 40,
+              "ending_column": 54
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "approve",
+                "source_mapping": {
+                  "start": 6779,
+                  "length": 655,
+                  "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_163_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    176,
+                    177,
+                    178,
+                    179,
+                    180,
+                    181,
+                    182,
+                    183,
+                    184,
+                    185,
+                    186,
+                    187,
+                    188
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "OSPStandardToken",
+                    "source_mapping": {
+                      "start": 4440,
+                      "length": 3152,
+                      "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_163_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        124,
+                        125,
+                        126,
+                        127,
+                        128,
+                        129,
+                        130,
+                        131,
+                        132,
+                        133,
+                        134,
+                        135,
+                        136,
+                        137,
+                        138,
+                        139,
+                        140,
+                        141,
+                        142,
+                        143,
+                        144,
+                        145,
+                        146,
+                        147,
+                        148,
+                        149,
+                        150,
+                        151,
+                        152,
+                        153,
+                        154,
+                        155,
+                        156,
+                        157,
+                        158,
+                        159,
+                        160,
+                        161,
+                        162,
+                        163,
+                        164,
+                        165,
+                        166,
+                        167,
+                        168,
+                        169,
+                        170,
+                        171,
+                        172,
+                        173,
+                        174,
+                        175,
+                        176,
+                        177,
+                        178,
+                        179,
+                        180,
+                        181,
+                        182,
+                        183,
+                        184,
+                        185,
+                        186,
+                        187,
+                        188,
+                        189,
+                        190,
+                        191,
+                        192,
+                        193,
+                        194
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "approve(address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter OSPStandardToken.approve(address,uint256)._value (contracts/safe/safe_163_SAFE.sol#176) is not in mixedCase\n",
+        "markdown": "Parameter [OSPStandardToken.approve(address,uint256)._value](contracts/safe/safe_163_SAFE.sol#L176) is not in mixedCase\n",
+        "first_markdown_element": "contracts/safe/safe_163_SAFE.sol#L176",
+        "id": "961195700026078f6873c8737d3a21a00019edf9cf58c3e1838ff0e0cd815842",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_extraData",
+            "source_mapping": {
+              "start": 8490,
+              "length": 16,
+              "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+              "filename_short": "contracts/safe/safe_163_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                215
+              ],
+              "starting_column": 63,
+              "ending_column": 79
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "approveAndCall",
+                "source_mapping": {
+                  "start": 8432,
+                  "length": 794,
+                  "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_163_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    215,
+                    216,
+                    217,
+                    218,
+                    219,
+                    220,
+                    221,
+                    222,
+                    223,
+                    224
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "ObsidianSmartPay",
+                    "source_mapping": {
+                      "start": 7594,
+                      "length": 1635,
+                      "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_163_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        195,
+                        196,
+                        197,
+                        198,
+                        199,
+                        200,
+                        201,
+                        202,
+                        203,
+                        204,
+                        205,
+                        206,
+                        207,
+                        208,
+                        209,
+                        210,
+                        211,
+                        212,
+                        213,
+                        214,
+                        215,
+                        216,
+                        217,
+                        218,
+                        219,
+                        220,
+                        221,
+                        222,
+                        223,
+                        224,
+                        225,
+                        226
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "approveAndCall(address,uint256,bytes)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter ObsidianSmartPay.approveAndCall(address,uint256,bytes)._extraData (contracts/safe/safe_163_SAFE.sol#215) is not in mixedCase\n",
+        "markdown": "Parameter [ObsidianSmartPay.approveAndCall(address,uint256,bytes)._extraData](contracts/safe/safe_163_SAFE.sol#L215) is not in mixedCase\n",
+        "first_markdown_element": "contracts/safe/safe_163_SAFE.sol#L215",
+        "id": "9667c2fa68eeabf0f8145581876624db7923b6a8375f1506f95a35974dcaf198",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_to",
+            "source_mapping": {
+              "start": 5870,
+              "length": 11,
+              "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+              "filename_short": "contracts/safe/safe_163_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                158
+              ],
+              "starting_column": 42,
+              "ending_column": 53
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "transferFrom",
+                "source_mapping": {
+                  "start": 5833,
+                  "length": 938,
+                  "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_163_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    158,
+                    159,
+                    160,
+                    161,
+                    162,
+                    163,
+                    164,
+                    165,
+                    166,
+                    167,
+                    168,
+                    169,
+                    170,
+                    171,
+                    172,
+                    173,
+                    174
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "OSPStandardToken",
+                    "source_mapping": {
+                      "start": 4440,
+                      "length": 3152,
+                      "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_163_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        124,
+                        125,
+                        126,
+                        127,
+                        128,
+                        129,
+                        130,
+                        131,
+                        132,
+                        133,
+                        134,
+                        135,
+                        136,
+                        137,
+                        138,
+                        139,
+                        140,
+                        141,
+                        142,
+                        143,
+                        144,
+                        145,
+                        146,
+                        147,
+                        148,
+                        149,
+                        150,
+                        151,
+                        152,
+                        153,
+                        154,
+                        155,
+                        156,
+                        157,
+                        158,
+                        159,
+                        160,
+                        161,
+                        162,
+                        163,
+                        164,
+                        165,
+                        166,
+                        167,
+                        168,
+                        169,
+                        170,
+                        171,
+                        172,
+                        173,
+                        174,
+                        175,
+                        176,
+                        177,
+                        178,
+                        179,
+                        180,
+                        181,
+                        182,
+                        183,
+                        184,
+                        185,
+                        186,
+                        187,
+                        188,
+                        189,
+                        190,
+                        191,
+                        192,
+                        193,
+                        194
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "transferFrom(address,address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter OSPStandardToken.transferFrom(address,address,uint256)._to (contracts/safe/safe_163_SAFE.sol#158) is not in mixedCase\n",
+        "markdown": "Parameter [OSPStandardToken.transferFrom(address,address,uint256)._to](contracts/safe/safe_163_SAFE.sol#L158) is not in mixedCase\n",
+        "first_markdown_element": "contracts/safe/safe_163_SAFE.sol#L158",
+        "id": "c094c71797d66bb6f1c2a7eb647fd0ba0542213d6a2a5d1bd626986adc6e5a17",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_newOwner",
+            "source_mapping": {
+              "start": 4074,
+              "length": 17,
+              "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+              "filename_short": "contracts/safe/safe_163_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                109
+              ],
+              "starting_column": 32,
+              "ending_column": 49
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "transferOwnership",
+                "source_mapping": {
+                  "start": 4047,
+                  "length": 147,
+                  "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_163_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    109,
+                    110,
+                    111,
+                    112,
+                    113
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "Ownable",
+                    "source_mapping": {
+                      "start": 3519,
+                      "length": 915,
+                      "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_163_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        86,
+                        87,
+                        88,
+                        89,
+                        90,
+                        91,
+                        92,
+                        93,
+                        94,
+                        95,
+                        96,
+                        97,
+                        98,
+                        99,
+                        100,
+                        101,
+                        102,
+                        103,
+                        104,
+                        105,
+                        106,
+                        107,
+                        108,
+                        109,
+                        110,
+                        111,
+                        112,
+                        113,
+                        114,
+                        115,
+                        116,
+                        117,
+                        118,
+                        119,
+                        120,
+                        121
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "transferOwnership(address)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter Ownable.transferOwnership(address)._newOwner (contracts/safe/safe_163_SAFE.sol#109) is not in mixedCase\n",
+        "markdown": "Parameter [Ownable.transferOwnership(address)._newOwner](contracts/safe/safe_163_SAFE.sol#L109) is not in mixedCase\n",
+        "first_markdown_element": "contracts/safe/safe_163_SAFE.sol#L109",
+        "id": "d3c2fb5d8122c23f32efa2e8abca71edf28dfbf644c45f99af28a91029723542",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_to",
+            "source_mapping": {
+              "start": 5064,
+              "length": 11,
+              "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+              "filename_short": "contracts/safe/safe_163_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                142
+              ],
+              "starting_column": 23,
+              "ending_column": 34
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "transfer",
+                "source_mapping": {
+                  "start": 5046,
+                  "length": 779,
+                  "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_163_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    142,
+                    143,
+                    144,
+                    145,
+                    146,
+                    147,
+                    148,
+                    149,
+                    150,
+                    151,
+                    152,
+                    153,
+                    154,
+                    155,
+                    156
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "OSPStandardToken",
+                    "source_mapping": {
+                      "start": 4440,
+                      "length": 3152,
+                      "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_163_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        124,
+                        125,
+                        126,
+                        127,
+                        128,
+                        129,
+                        130,
+                        131,
+                        132,
+                        133,
+                        134,
+                        135,
+                        136,
+                        137,
+                        138,
+                        139,
+                        140,
+                        141,
+                        142,
+                        143,
+                        144,
+                        145,
+                        146,
+                        147,
+                        148,
+                        149,
+                        150,
+                        151,
+                        152,
+                        153,
+                        154,
+                        155,
+                        156,
+                        157,
+                        158,
+                        159,
+                        160,
+                        161,
+                        162,
+                        163,
+                        164,
+                        165,
+                        166,
+                        167,
+                        168,
+                        169,
+                        170,
+                        171,
+                        172,
+                        173,
+                        174,
+                        175,
+                        176,
+                        177,
+                        178,
+                        179,
+                        180,
+                        181,
+                        182,
+                        183,
+                        184,
+                        185,
+                        186,
+                        187,
+                        188,
+                        189,
+                        190,
+                        191,
+                        192,
+                        193,
+                        194
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "transfer(address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter OSPStandardToken.transfer(address,uint256)._to (contracts/safe/safe_163_SAFE.sol#142) is not in mixedCase\n",
+        "markdown": "Parameter [OSPStandardToken.transfer(address,uint256)._to](contracts/safe/safe_163_SAFE.sol#L142) is not in mixedCase\n",
+        "first_markdown_element": "contracts/safe/safe_163_SAFE.sol#L142",
+        "id": "e5137e22ea43ae74f88375c00b039498e3662c99ffb451db84893c1396f6a079",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "slitherConstructorVariables",
+            "source_mapping": {
+              "start": 7594,
+              "length": 1635,
+              "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+              "filename_short": "contracts/safe/safe_163_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                195,
+                196,
+                197,
+                198,
+                199,
+                200,
+                201,
+                202,
+                203,
+                204,
+                205,
+                206,
+                207,
+                208,
+                209,
+                210,
+                211,
+                212,
+                213,
+                214,
+                215,
+                216,
+                217,
+                218,
+                219,
+                220,
+                221,
+                222,
+                223,
+                224,
+                225,
+                226
+              ],
+              "starting_column": 1,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "ObsidianSmartPay",
+                "source_mapping": {
+                  "start": 7594,
+                  "length": 1635,
+                  "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_163_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    195,
+                    196,
+                    197,
+                    198,
+                    199,
+                    200,
+                    201,
+                    202,
+                    203,
+                    204,
+                    205,
+                    206,
+                    207,
+                    208,
+                    209,
+                    210,
+                    211,
+                    212,
+                    213,
+                    214,
+                    215,
+                    216,
+                    217,
+                    218,
+                    219,
+                    220,
+                    221,
+                    222,
+                    223,
+                    224,
+                    225,
+                    226
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              },
+              "signature": "slitherConstructorVariables()"
+            }
+          },
+          {
+            "type": "node",
+            "name": "totalSupply = 21400000000000000",
+            "source_mapping": {
+              "start": 8032,
+              "length": 46,
+              "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+              "filename_short": "contracts/safe/safe_163_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                206
+              ],
+              "starting_column": 5,
+              "ending_column": 51
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "slitherConstructorVariables",
+                "source_mapping": {
+                  "start": 7594,
+                  "length": 1635,
+                  "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_163_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    195,
+                    196,
+                    197,
+                    198,
+                    199,
+                    200,
+                    201,
+                    202,
+                    203,
+                    204,
+                    205,
+                    206,
+                    207,
+                    208,
+                    209,
+                    210,
+                    211,
+                    212,
+                    213,
+                    214,
+                    215,
+                    216,
+                    217,
+                    218,
+                    219,
+                    220,
+                    221,
+                    222,
+                    223,
+                    224,
+                    225,
+                    226
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "ObsidianSmartPay",
+                    "source_mapping": {
+                      "start": 7594,
+                      "length": 1635,
+                      "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_163_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        195,
+                        196,
+                        197,
+                        198,
+                        199,
+                        200,
+                        201,
+                        202,
+                        203,
+                        204,
+                        205,
+                        206,
+                        207,
+                        208,
+                        209,
+                        210,
+                        211,
+                        212,
+                        213,
+                        214,
+                        215,
+                        216,
+                        217,
+                        218,
+                        219,
+                        220,
+                        221,
+                        222,
+                        223,
+                        224,
+                        225,
+                        226
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "slitherConstructorVariables()"
+                }
+              }
+            }
+          }
+        ],
+        "description": "ObsidianSmartPay.slitherConstructorVariables() (contracts/safe/safe_163_SAFE.sol#195-226) uses literals with too many digits:\n\t- totalSupply = 21400000000000000 (contracts/safe/safe_163_SAFE.sol#206)\n",
+        "markdown": "[ObsidianSmartPay.slitherConstructorVariables()](contracts/safe/safe_163_SAFE.sol#L195-L226) uses literals with too many digits:\n\t- [totalSupply = 21400000000000000](contracts/safe/safe_163_SAFE.sol#L206)\n",
+        "first_markdown_element": "contracts/safe/safe_163_SAFE.sol#L195-L226",
+        "id": "1addb489f0ae20c0d04459a6f3cc4214d3b5bf56349a2ee1120d219a5571adc1",
+        "check": "too-many-digits",
+        "impact": "Informational",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [
+          {
+            "type": "event",
+            "name": "FrozenFunds",
+            "source_mapping": {
+              "start": 4709,
+              "length": 47,
+              "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+              "filename_short": "contracts/safe/safe_163_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                131
+              ],
+              "starting_column": 5,
+              "ending_column": 52
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "OSPStandardToken",
+                "source_mapping": {
+                  "start": 4440,
+                  "length": 3152,
+                  "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_163_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    124,
+                    125,
+                    126,
+                    127,
+                    128,
+                    129,
+                    130,
+                    131,
+                    132,
+                    133,
+                    134,
+                    135,
+                    136,
+                    137,
+                    138,
+                    139,
+                    140,
+                    141,
+                    142,
+                    143,
+                    144,
+                    145,
+                    146,
+                    147,
+                    148,
+                    149,
+                    150,
+                    151,
+                    152,
+                    153,
+                    154,
+                    155,
+                    156,
+                    157,
+                    158,
+                    159,
+                    160,
+                    161,
+                    162,
+                    163,
+                    164,
+                    165,
+                    166,
+                    167,
+                    168,
+                    169,
+                    170,
+                    171,
+                    172,
+                    173,
+                    174,
+                    175,
+                    176,
+                    177,
+                    178,
+                    179,
+                    180,
+                    181,
+                    182,
+                    183,
+                    184,
+                    185,
+                    186,
+                    187,
+                    188,
+                    189,
+                    190,
+                    191,
+                    192,
+                    193,
+                    194
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 2
+                }
+              },
+              "signature": "FrozenFunds(address,bool)"
+            }
+          }
+        ],
+        "description": "Event OSPStandardToken.FrozenFunds(address,bool) (contracts/safe/safe_163_SAFE.sol#131) has address parameters but no indexed parameters\n",
+        "markdown": "Event [OSPStandardToken.FrozenFunds(address,bool)](contracts/safe/safe_163_SAFE.sol#L131) has address parameters but no indexed parameters\n",
+        "first_markdown_element": "contracts/safe/safe_163_SAFE.sol#L131",
+        "id": "b02d83eddc545d08e188297f96422ed740ae0f965fde3977383ac7525a3f76f4",
+        "check": "unindexed-event-address",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "totalSupply",
+            "source_mapping": {
+              "start": 847,
+              "length": 26,
+              "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+              "filename_short": "contracts/safe/safe_163_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                20
+              ],
+              "starting_column": 5,
+              "ending_column": 31
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "ObsidianSmartPayToken",
+                "source_mapping": {
+                  "start": 337,
+                  "length": 2292,
+                  "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_163_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15,
+                    16,
+                    17,
+                    18,
+                    19,
+                    20,
+                    21,
+                    22,
+                    23,
+                    24,
+                    25,
+                    26,
+                    27,
+                    28,
+                    29,
+                    30,
+                    31,
+                    32,
+                    33,
+                    34,
+                    35,
+                    36,
+                    37,
+                    38,
+                    39,
+                    40,
+                    41,
+                    42,
+                    43,
+                    44,
+                    45,
+                    46,
+                    47,
+                    48,
+                    49,
+                    50,
+                    51,
+                    52
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 2
+                }
+              }
+            }
+          }
+        ],
+        "description": "ObsidianSmartPayToken.totalSupply (contracts/safe/safe_163_SAFE.sol#20) should be constant \n",
+        "markdown": "[ObsidianSmartPayToken.totalSupply](contracts/safe/safe_163_SAFE.sol#L20) should be constant \n",
+        "first_markdown_element": "contracts/safe/safe_163_SAFE.sol#L20",
+        "id": "29b84ac6ff8124d75960c52cdb65f0e466f1e9a6455808abfb5b4939b8002e9b",
+        "check": "constable-states",
+        "impact": "Optimization",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "totalSupply",
+            "source_mapping": {
+              "start": 8032,
+              "length": 46,
+              "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+              "filename_short": "contracts/safe/safe_163_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                206
+              ],
+              "starting_column": 5,
+              "ending_column": 51
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "ObsidianSmartPay",
+                "source_mapping": {
+                  "start": 7594,
+                  "length": 1635,
+                  "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_163_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    195,
+                    196,
+                    197,
+                    198,
+                    199,
+                    200,
+                    201,
+                    202,
+                    203,
+                    204,
+                    205,
+                    206,
+                    207,
+                    208,
+                    209,
+                    210,
+                    211,
+                    212,
+                    213,
+                    214,
+                    215,
+                    216,
+                    217,
+                    218,
+                    219,
+                    220,
+                    221,
+                    222,
+                    223,
+                    224,
+                    225,
+                    226
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              }
+            }
+          }
+        ],
+        "description": "ObsidianSmartPay.totalSupply (contracts/safe/safe_163_SAFE.sol#206) should be constant \n",
+        "markdown": "[ObsidianSmartPay.totalSupply](contracts/safe/safe_163_SAFE.sol#L206) should be constant \n",
+        "first_markdown_element": "contracts/safe/safe_163_SAFE.sol#L206",
+        "id": "3e10a579e467efa6b093b9cdd0b1ae1f898f1e50c7cb4afc43c8885593b813f5",
+        "check": "constable-states",
+        "impact": "Optimization",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "newOwner",
+            "source_mapping": {
+              "start": 3570,
+              "length": 23,
+              "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+              "filename_short": "contracts/safe/safe_163_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                88
+              ],
+              "starting_column": 5,
+              "ending_column": 28
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "Ownable",
+                "source_mapping": {
+                  "start": 3519,
+                  "length": 915,
+                  "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_163_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    86,
+                    87,
+                    88,
+                    89,
+                    90,
+                    91,
+                    92,
+                    93,
+                    94,
+                    95,
+                    96,
+                    97,
+                    98,
+                    99,
+                    100,
+                    101,
+                    102,
+                    103,
+                    104,
+                    105,
+                    106,
+                    107,
+                    108,
+                    109,
+                    110,
+                    111,
+                    112,
+                    113,
+                    114,
+                    115,
+                    116,
+                    117,
+                    118,
+                    119,
+                    120,
+                    121
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 2
+                }
+              }
+            }
+          }
+        ],
+        "description": "Ownable.newOwner (contracts/safe/safe_163_SAFE.sol#88) should be constant \n",
+        "markdown": "[Ownable.newOwner](contracts/safe/safe_163_SAFE.sol#L88) should be constant \n",
+        "first_markdown_element": "contracts/safe/safe_163_SAFE.sol#L88",
+        "id": "cb3a537e88a9abb279fe04090119a0e07d8bfa1d9097231d4e73e1783f1cbb7d",
+        "check": "constable-states",
+        "impact": "Optimization",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "approveAndCall",
+            "source_mapping": {
+              "start": 8432,
+              "length": 794,
+              "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+              "filename_short": "contracts/safe/safe_163_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                215,
+                216,
+                217,
+                218,
+                219,
+                220,
+                221,
+                222,
+                223,
+                224
+              ],
+              "starting_column": 5,
+              "ending_column": 6
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "ObsidianSmartPay",
+                "source_mapping": {
+                  "start": 7594,
+                  "length": 1635,
+                  "filename_relative": "contracts/safe/safe_163_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_163_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_163_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    195,
+                    196,
+                    197,
+                    198,
+                    199,
+                    200,
+                    201,
+                    202,
+                    203,
+                    204,
+                    205,
+                    206,
+                    207,
+                    208,
+                    209,
+                    210,
+                    211,
+                    212,
+                    213,
+                    214,
+                    215,
+                    216,
+                    217,
+                    218,
+                    219,
+                    220,
+                    221,
+                    222,
+                    223,
+                    224,
+                    225,
+                    226
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              },
+              "signature": "approveAndCall(address,uint256,bytes)"
+            }
+          }
+        ],
+        "description": "approveAndCall(address,uint256,bytes) should be declared external:\n\t- ObsidianSmartPay.approveAndCall(address,uint256,bytes) (contracts/safe/safe_163_SAFE.sol#215-224)\n",
+        "markdown": "approveAndCall(address,uint256,bytes) should be declared external:\n\t- [ObsidianSmartPay.approveAndCall(address,uint256,bytes)](contracts/safe/safe_163_SAFE.sol#L215-L224)\n",
+        "first_markdown_element": "contracts/safe/safe_163_SAFE.sol#L215-L224",
+        "id": "3d11692d559ad0c50bed48e950f08b2eed4ce10c10a080ead5d6c2533695a785",
+        "check": "external-function",
+        "impact": "Optimization",
+        "confidence": "High"
+      }
+    ]
+  }
+}

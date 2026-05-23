@@ -1,0 +1,881 @@
+{
+  "success": true,
+  "error": null,
+  "results": {
+    "detectors": [
+      {
+        "elements": [
+          {
+            "type": "contract",
+            "name": "PayVor",
+            "source_mapping": {
+              "start": 0,
+              "length": 1553,
+              "filename_relative": "contracts/safe/safe_184_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_184_SAFE.sol",
+              "filename_short": "contracts/safe/safe_184_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41,
+                42,
+                43,
+                44,
+                45,
+                46,
+                47,
+                48
+              ],
+              "starting_column": 1,
+              "ending_column": 0
+            }
+          },
+          {
+            "type": "function",
+            "name": "transfer",
+            "source_mapping": {
+              "start": 925,
+              "length": 429,
+              "filename_relative": "contracts/safe/safe_184_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_184_SAFE.sol",
+              "filename_short": "contracts/safe/safe_184_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35
+              ],
+              "starting_column": 5,
+              "ending_column": 6
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "PayVor",
+                "source_mapping": {
+                  "start": 0,
+                  "length": 1553,
+                  "filename_relative": "contracts/safe/safe_184_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_184_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_184_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15,
+                    16,
+                    17,
+                    18,
+                    19,
+                    20,
+                    21,
+                    22,
+                    23,
+                    24,
+                    25,
+                    26,
+                    27,
+                    28,
+                    29,
+                    30,
+                    31,
+                    32,
+                    33,
+                    34,
+                    35,
+                    36,
+                    37,
+                    38,
+                    39,
+                    40,
+                    41,
+                    42,
+                    43,
+                    44,
+                    45,
+                    46,
+                    47,
+                    48
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              },
+              "signature": "transfer(address,uint256)"
+            }
+          }
+        ],
+        "description": "PayVor (contracts/safe/safe_184_SAFE.sol#1-48) has incorrect ERC20 function interface:PayVor.transfer(address,uint256) (contracts/safe/safe_184_SAFE.sol#29-35)\n",
+        "markdown": "[PayVor](contracts/safe/safe_184_SAFE.sol#L1-L48) has incorrect ERC20 function interface:[PayVor.transfer(address,uint256)](contracts/safe/safe_184_SAFE.sol#L29-L35)\n",
+        "first_markdown_element": "contracts/safe/safe_184_SAFE.sol#L1-L48",
+        "id": "9d9dc1f7e87fdf21c5e14abd8989abed3feedad19ebdafb69f7c5642912de82d",
+        "check": "erc20-interface",
+        "impact": "Medium",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "node",
+            "name": "",
+            "source_mapping": {
+              "start": 1493,
+              "length": 5,
+              "filename_relative": "contracts/safe/safe_184_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_184_SAFE.sol",
+              "filename_short": "contracts/safe/safe_184_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                45
+              ],
+              "starting_column": 9,
+              "ending_column": 14
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "fallback",
+                "source_mapping": {
+                  "start": 1470,
+                  "length": 80,
+                  "filename_relative": "contracts/safe/safe_184_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_184_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_184_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    44,
+                    45,
+                    46
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "PayVor",
+                    "source_mapping": {
+                      "start": 0,
+                      "length": 1553,
+                      "filename_relative": "contracts/safe/safe_184_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_184_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_184_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        1,
+                        2,
+                        3,
+                        4,
+                        5,
+                        6,
+                        7,
+                        8,
+                        9,
+                        10,
+                        11,
+                        12,
+                        13,
+                        14,
+                        15,
+                        16,
+                        17,
+                        18,
+                        19,
+                        20,
+                        21,
+                        22,
+                        23,
+                        24,
+                        25,
+                        26,
+                        27,
+                        28,
+                        29,
+                        30,
+                        31,
+                        32,
+                        33,
+                        34,
+                        35,
+                        36,
+                        37,
+                        38,
+                        39,
+                        40,
+                        41,
+                        42,
+                        43,
+                        44,
+                        45,
+                        46,
+                        47,
+                        48
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "fallback()"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Deprecated standard detected THROW (contracts/safe/safe_184_SAFE.sol#45):\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+        "markdown": "Deprecated standard detected [THROW](contracts/safe/safe_184_SAFE.sol#L45):\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+        "first_markdown_element": "contracts/safe/safe_184_SAFE.sol#L45",
+        "id": "3bf31b378ecc8b17672f8040f65960db5a2ae4d3318a1a84229b72e7328e272b",
+        "check": "deprecated-standards",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "node",
+            "name": "",
+            "source_mapping": {
+              "start": 1019,
+              "length": 5,
+              "filename_relative": "contracts/safe/safe_184_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_184_SAFE.sol",
+              "filename_short": "contracts/safe/safe_184_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                30
+              ],
+              "starting_column": 45,
+              "ending_column": 50
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "transfer",
+                "source_mapping": {
+                  "start": 925,
+                  "length": 429,
+                  "filename_relative": "contracts/safe/safe_184_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_184_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_184_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    29,
+                    30,
+                    31,
+                    32,
+                    33,
+                    34,
+                    35
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "PayVor",
+                    "source_mapping": {
+                      "start": 0,
+                      "length": 1553,
+                      "filename_relative": "contracts/safe/safe_184_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_184_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_184_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        1,
+                        2,
+                        3,
+                        4,
+                        5,
+                        6,
+                        7,
+                        8,
+                        9,
+                        10,
+                        11,
+                        12,
+                        13,
+                        14,
+                        15,
+                        16,
+                        17,
+                        18,
+                        19,
+                        20,
+                        21,
+                        22,
+                        23,
+                        24,
+                        25,
+                        26,
+                        27,
+                        28,
+                        29,
+                        30,
+                        31,
+                        32,
+                        33,
+                        34,
+                        35,
+                        36,
+                        37,
+                        38,
+                        39,
+                        40,
+                        41,
+                        42,
+                        43,
+                        44,
+                        45,
+                        46,
+                        47,
+                        48
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "transfer(address,uint256)"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Deprecated standard detected THROW (contracts/safe/safe_184_SAFE.sol#30):\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+        "markdown": "Deprecated standard detected [THROW](contracts/safe/safe_184_SAFE.sol#L30):\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+        "first_markdown_element": "contracts/safe/safe_184_SAFE.sol#L30",
+        "id": "458549fc82c4c107171e20f6ace058854d359e287da3f0253efdb2f0ea1406c5",
+        "check": "deprecated-standards",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "node",
+            "name": "",
+            "source_mapping": {
+              "start": 1125,
+              "length": 5,
+              "filename_relative": "contracts/safe/safe_184_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_184_SAFE.sol",
+              "filename_short": "contracts/safe/safe_184_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                31
+              ],
+              "starting_column": 55,
+              "ending_column": 60
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "transfer",
+                "source_mapping": {
+                  "start": 925,
+                  "length": 429,
+                  "filename_relative": "contracts/safe/safe_184_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_184_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_184_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    29,
+                    30,
+                    31,
+                    32,
+                    33,
+                    34,
+                    35
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "PayVor",
+                    "source_mapping": {
+                      "start": 0,
+                      "length": 1553,
+                      "filename_relative": "contracts/safe/safe_184_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_184_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_184_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        1,
+                        2,
+                        3,
+                        4,
+                        5,
+                        6,
+                        7,
+                        8,
+                        9,
+                        10,
+                        11,
+                        12,
+                        13,
+                        14,
+                        15,
+                        16,
+                        17,
+                        18,
+                        19,
+                        20,
+                        21,
+                        22,
+                        23,
+                        24,
+                        25,
+                        26,
+                        27,
+                        28,
+                        29,
+                        30,
+                        31,
+                        32,
+                        33,
+                        34,
+                        35,
+                        36,
+                        37,
+                        38,
+                        39,
+                        40,
+                        41,
+                        42,
+                        43,
+                        44,
+                        45,
+                        46,
+                        47,
+                        48
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "transfer(address,uint256)"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Deprecated standard detected THROW (contracts/safe/safe_184_SAFE.sol#31):\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+        "markdown": "Deprecated standard detected [THROW](contracts/safe/safe_184_SAFE.sol#L31):\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+        "first_markdown_element": "contracts/safe/safe_184_SAFE.sol#L31",
+        "id": "d1a4a402bf0477efedbd42a42c45a5417c78d19c2f3c380edab617f800120bdb",
+        "check": "deprecated-standards",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [],
+        "description": "solc-0.4.24 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.\n",
+        "markdown": "solc-0.4.24 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.\n",
+        "first_markdown_element": "",
+        "id": "1d687d794f954ee692ca1d58ad5dd8291a8a0b5c0bcc4409d2dd8afb7258e605",
+        "check": "solc-version",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_value",
+            "source_mapping": {
+              "start": 956,
+              "length": 14,
+              "filename_relative": "contracts/safe/safe_184_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_184_SAFE.sol",
+              "filename_short": "contracts/safe/safe_184_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                29
+              ],
+              "starting_column": 36,
+              "ending_column": 50
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "transfer",
+                "source_mapping": {
+                  "start": 925,
+                  "length": 429,
+                  "filename_relative": "contracts/safe/safe_184_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_184_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_184_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    29,
+                    30,
+                    31,
+                    32,
+                    33,
+                    34,
+                    35
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "PayVor",
+                    "source_mapping": {
+                      "start": 0,
+                      "length": 1553,
+                      "filename_relative": "contracts/safe/safe_184_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_184_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_184_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        1,
+                        2,
+                        3,
+                        4,
+                        5,
+                        6,
+                        7,
+                        8,
+                        9,
+                        10,
+                        11,
+                        12,
+                        13,
+                        14,
+                        15,
+                        16,
+                        17,
+                        18,
+                        19,
+                        20,
+                        21,
+                        22,
+                        23,
+                        24,
+                        25,
+                        26,
+                        27,
+                        28,
+                        29,
+                        30,
+                        31,
+                        32,
+                        33,
+                        34,
+                        35,
+                        36,
+                        37,
+                        38,
+                        39,
+                        40,
+                        41,
+                        42,
+                        43,
+                        44,
+                        45,
+                        46,
+                        47,
+                        48
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "transfer(address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter PayVor.transfer(address,uint256)._value (contracts/safe/safe_184_SAFE.sol#29) is not in mixedCase\n",
+        "markdown": "Parameter [PayVor.transfer(address,uint256)._value](contracts/safe/safe_184_SAFE.sol#L29) is not in mixedCase\n",
+        "first_markdown_element": "contracts/safe/safe_184_SAFE.sol#L29",
+        "id": "9b5aca62ff0416041e843acff1c996320b3281d3513d237bba5e83a94da21f76",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_to",
+            "source_mapping": {
+              "start": 943,
+              "length": 11,
+              "filename_relative": "contracts/safe/safe_184_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_184_SAFE.sol",
+              "filename_short": "contracts/safe/safe_184_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                29
+              ],
+              "starting_column": 23,
+              "ending_column": 34
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "transfer",
+                "source_mapping": {
+                  "start": 925,
+                  "length": 429,
+                  "filename_relative": "contracts/safe/safe_184_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_184_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_184_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    29,
+                    30,
+                    31,
+                    32,
+                    33,
+                    34,
+                    35
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "PayVor",
+                    "source_mapping": {
+                      "start": 0,
+                      "length": 1553,
+                      "filename_relative": "contracts/safe/safe_184_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_184_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_184_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        1,
+                        2,
+                        3,
+                        4,
+                        5,
+                        6,
+                        7,
+                        8,
+                        9,
+                        10,
+                        11,
+                        12,
+                        13,
+                        14,
+                        15,
+                        16,
+                        17,
+                        18,
+                        19,
+                        20,
+                        21,
+                        22,
+                        23,
+                        24,
+                        25,
+                        26,
+                        27,
+                        28,
+                        29,
+                        30,
+                        31,
+                        32,
+                        33,
+                        34,
+                        35,
+                        36,
+                        37,
+                        38,
+                        39,
+                        40,
+                        41,
+                        42,
+                        43,
+                        44,
+                        45,
+                        46,
+                        47,
+                        48
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "transfer(address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter PayVor.transfer(address,uint256)._to (contracts/safe/safe_184_SAFE.sol#29) is not in mixedCase\n",
+        "markdown": "Parameter [PayVor.transfer(address,uint256)._to](contracts/safe/safe_184_SAFE.sol#L29) is not in mixedCase\n",
+        "first_markdown_element": "contracts/safe/safe_184_SAFE.sol#L29",
+        "id": "b51a452cc8d40db31044d1d35591fa5eeb4847346d15367a996be830a1bf3219",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "standard",
+            "source_mapping": {
+              "start": 64,
+              "length": 36,
+              "filename_relative": "contracts/safe/safe_184_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_184_SAFE.sol",
+              "filename_short": "contracts/safe/safe_184_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                3
+              ],
+              "starting_column": 5,
+              "ending_column": 41
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "PayVor",
+                "source_mapping": {
+                  "start": 0,
+                  "length": 1553,
+                  "filename_relative": "contracts/safe/safe_184_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_184_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_184_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15,
+                    16,
+                    17,
+                    18,
+                    19,
+                    20,
+                    21,
+                    22,
+                    23,
+                    24,
+                    25,
+                    26,
+                    27,
+                    28,
+                    29,
+                    30,
+                    31,
+                    32,
+                    33,
+                    34,
+                    35,
+                    36,
+                    37,
+                    38,
+                    39,
+                    40,
+                    41,
+                    42,
+                    43,
+                    44,
+                    45,
+                    46,
+                    47,
+                    48
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              }
+            }
+          }
+        ],
+        "description": "PayVor.standard (contracts/safe/safe_184_SAFE.sol#3) should be constant \n",
+        "markdown": "[PayVor.standard](contracts/safe/safe_184_SAFE.sol#L3) should be constant \n",
+        "first_markdown_element": "contracts/safe/safe_184_SAFE.sol#L3",
+        "id": "eef131ab949d2c318fa65944bc9ed51f6b1b5e365fcd52dbd43763ca51405b64",
+        "check": "constable-states",
+        "impact": "Optimization",
+        "confidence": "High"
+      }
+    ]
+  }
+}

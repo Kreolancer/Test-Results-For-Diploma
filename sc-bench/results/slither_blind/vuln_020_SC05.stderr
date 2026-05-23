@@ -1,0 +1,119 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_020_SC05.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_020_SC05.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_020_SC05.sol:60:14: Warning: Return value of low-level calls not used.
+             msg.sender.send(msg.value);
+             ^------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_020_SC05.sol:74:10: Warning: Return value of low-level calls not used.
+        	msg.sender.send(msg.value - 1 ether);
+        	^----------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_020_SC05.sol:102:13: Warning: Return value of low-level calls not used.
+            theEntry.entryAddress.send(payout);
+            ^--------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_020_SC05.sol:119:17: Warning: Return value of low-level calls not used.
+                owner.send(fees);
+                ^--------------^
+
+
+Detector: controlled-array-length
+LuckyDoubler () contract sets array length with a user-controlled value:
+	- unpaidEntries.push(entries.length - 1) ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#array-length-assignment
+
+Detector: weak-prng
+LuckyDoubler.rand(uint256) () uses a weak PRNG: "uint256((uint256(hashVal) / factor)) % max ()" 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#weak-PRNG
+
+Detector: unchecked-send
+LuckyDoubler.init() () ignores return value by msg.sender.send(msg.value) ()
+LuckyDoubler.join() () ignores return value by msg.sender.send(msg.value - 1000000000000000000) ()
+LuckyDoubler.join() () ignores return value by theEntry.entryAddress.send(payout) ()
+LuckyDoubler.join() () ignores return value by owner.send(fees) ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unchecked-send
+
+Detector: events-access
+LuckyDoubler.changeOwner(address) () should emit an event for: 
+	- owner = newOwner () 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+
+Detector: events-maths
+LuckyDoubler.changeMultiplier(uint256) () should emit an event for: 
+	- multiplier = multi () 
+LuckyDoubler.changeFee(uint256) () should emit an event for: 
+	- fee = newFee () 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-arithmetic
+
+Detector: missing-zero-check
+LuckyDoubler.changeOwner(address).newOwner () lacks a zero-check on :
+		- owner = newOwner ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+
+Detector: incorrect-modifier
+Modifier LuckyDoubler.onlyowner() () does not always execute _; or revert
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-modifier
+
+Detector: deprecated-standards
+Deprecated standard detected hashVal = uint256(block.blockhash(lastBlockNumber)) ():
+	- Usage of "block.blockhash()" should be replaced with "blockhash()"
+Deprecated standard detected THROW ():
+	- Usage of "throw" should be replaced with "revert()"
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#deprecated-standards
+
+Detector: solc-version
+Version constraint ^0.4.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- NestedArrayFunctionCallDecoder
+	- ZeroFunctionSelector
+	- DelegateCallReturnValue
+	- ECRecoverMalformedInput
+	- SkipEmptyStringLiteral
+	- ConstantOptimizerSubtraction
+	- IdentityPrecompileReturnIgnored
+	- HighOrderByteCleanStorage
+	- OptimizerStaleKnowledgeAboutSHA3
+	- LibrariesNotCallableFromPayableFunctions.
+It is used by:
+	- ^0.4.0 ()
+solc-0.4.0 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Variable LuckyDoubler.FACTOR () is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: reentrancy-unlimited-gas
+Reentrancy in LuckyDoubler.join() ():
+	External calls:
+	- msg.sender.send(msg.value - 1000000000000000000) ()
+	State variables written after the call(s):
+	- balance += (dValue * (100 - fee)) / 100 ()
+	- entries.push(Entry(msg.sender,dValue,(dValue * (multiplier) / 100),false)) ()
+	- unpaidEntries.push(entries.length - 1) ()
+	- users[msg.sender].id = msg.sender ()
+	- users[msg.sender].deposits = 0 ()
+	- users[msg.sender].payoutsReceived = 0 ()
+	- users[msg.sender].deposits ++ ()
+Reentrancy in LuckyDoubler.join() ():
+	External calls:
+	- msg.sender.send(msg.value - 1000000000000000000) ()
+	- theEntry.entryAddress.send(payout) ()
+	State variables written after the call(s):
+	- balance -= payout ()
+	- theEntry.paid = true ()
+	- unpaidEntries[index] = unpaidEntries[unpaidEntries.length - 1] ()
+	- unpaidEntries.length -- ()
+	- users[theEntry.entryAddress].payoutsReceived ++ ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-5
+
+Detector: constable-states
+LuckyDoubler.FACTOR () should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_020_SC05.sol analyzed (1 contracts with 101 detectors), 19 result(s) found

@@ -1,0 +1,16 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_067_SC08.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
+
+Detector: reentrancy-eth
+Reentrancy in Reentrance.withdraw(uint256) (contracts/vulnerable/vuln_067_SC08.sol#21-29):
+	External calls:
+	- msg.sender.call.value(_amount)() (contracts/vulnerable/vuln_067_SC08.sol#24)
+	State variables written after the call(s):
+	- balances[msg.sender] -= _amount (contracts/vulnerable/vuln_067_SC08.sol#27)
+	Reentrance.balances (contracts/vulnerable/vuln_067_SC08.sol#11) can be used in cross function reentrancies:
+	- Reentrance.balanceOf(address) (contracts/vulnerable/vuln_067_SC08.sol#17-19)
+	- Reentrance.balances (contracts/vulnerable/vuln_067_SC08.sol#11)
+	- Reentrance.donate(address) (contracts/vulnerable/vuln_067_SC08.sol#13-15)
+	- Reentrance.withdraw(uint256) (contracts/vulnerable/vuln_067_SC08.sol#21-29)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-1
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_067_SC08.sol analyzed (1 contracts with 2 detectors), 1 result(s) found

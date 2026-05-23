@@ -1,0 +1,159 @@
+{
+  "success": true,
+  "error": null,
+  "results": {
+    "detectors": [
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "withdrawBalance",
+            "source_mapping": {
+              "start": 412,
+              "length": 217,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "EtherBank",
+                "source_mapping": {
+                  "start": 175,
+                  "length": 460,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "withdrawBalance()"
+            }
+          },
+          {
+            "type": "node",
+            "name": "! (msg.sender.call.value(amountToWithdraw)())",
+            "source_mapping": {
+              "start": 538,
+              "length": 44,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "withdrawBalance",
+                "source_mapping": {
+                  "start": 412,
+                  "length": 217,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "EtherBank",
+                    "source_mapping": {
+                      "start": 175,
+                      "length": 460,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "withdrawBalance()"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "external_calls"
+            }
+          },
+          {
+            "type": "node",
+            "name": "userBalances[msg.sender] = 0",
+            "source_mapping": {
+              "start": 597,
+              "length": 28,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "withdrawBalance",
+                "source_mapping": {
+                  "start": 412,
+                  "length": 217,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "EtherBank",
+                    "source_mapping": {
+                      "start": 175,
+                      "length": 460,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "withdrawBalance()"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "variables_written",
+              "variable_name": "userBalances"
+            }
+          }
+        ],
+        "description": "Reentrancy in EtherBank.withdrawBalance() ():\n\tExternal calls:\n\t- ! (msg.sender.call.value(amountToWithdraw)()) ()\n\tState variables written after the call(s):\n\t- userBalances[msg.sender] = 0 ()\n\tEtherBank.userBalances () can be used in cross function reentrancies:\n\t- EtherBank.addToBalance() ()\n\t- EtherBank.getBalance(address) ()\n\t- EtherBank.withdrawBalance() ()\n",
+        "markdown": "Reentrancy in [EtherBank.withdrawBalance()]():\n\tExternal calls:\n\t- [! (msg.sender.call.value(amountToWithdraw)())]()\n\tState variables written after the call(s):\n\t- [userBalances[msg.sender] = 0]()\n\t[EtherBank.userBalances]() can be used in cross function reentrancies:\n\t- [EtherBank.addToBalance()]()\n\t- [EtherBank.getBalance(address)]()\n\t- [EtherBank.withdrawBalance()]()\n",
+        "first_markdown_element": "",
+        "id": "09f0c0e79c11cc4d57b83658158c680be491b391676b96ebe61d2cfeb0db7cfd",
+        "check": "reentrancy-eth",
+        "impact": "High",
+        "confidence": "Medium"
+      }
+    ]
+  }
+}

@@ -1,0 +1,122 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_173_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc' running
+
+Detector: controlled-array-length
+BuilderTokenEther () contract sets array length with a user-controlled value:
+	- getContractsOf[_client].push(inst) ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#array-length-assignment
+
+Detector: shadowing-abstract
+Token.totalSupply () shadows:
+	- ERC20.totalSupply ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variable-shadowing-from-abstract-contracts
+
+Detector: shadowing-builtin
+CreatorTokenEther.abi() () (function) shadows built-in symbol"
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#builtin-symbol-shadowing
+
+Detector: events-access
+Destroyable.setHammer(address) () should emit an event for: 
+	- hammer = _hammer () 
+Owned.setOwner(address) () should emit an event for: 
+	- owner = _owner () 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+
+Detector: events-maths
+Builder.setCost(uint256) () should emit an event for: 
+	- buildingCostWei = _buildingCostWei () 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-arithmetic
+
+Detector: missing-zero-check
+Destroyable.setHammer(address)._hammer () lacks a zero-check on :
+		- hammer = _hammer ()
+Owned.setOwner(address)._owner () lacks a zero-check on :
+		- owner = _owner ()
+Builder.setBeneficiary(address)._beneficiary () lacks a zero-check on :
+		- beneficiary = _beneficiary ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+
+Detector: deprecated-standards
+Deprecated standard detected THROW ():
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected suicide(address)(msg.sender) ():
+	- Usage of "suicide()" should be replaced with "selfdestruct()"
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#deprecated-standards
+
+Detector: solc-version
+Version constraint ^0.4.4 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- NestedArrayFunctionCallDecoder
+	- ZeroFunctionSelector
+	- DelegateCallReturnValue
+	- ECRecoverMalformedInput
+	- SkipEmptyStringLiteral
+	- ConstantOptimizerSubtraction
+	- IdentityPrecompileReturnIgnored.
+It is used by:
+	- ^0.4.4 ()
+solc-0.4.4 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Parameter Owned.setOwner(address)._owner () is not in mixedCase
+Parameter Destroyable.setHammer(address)._hammer () is not in mixedCase
+Parameter Token.balanceOf(address)._owner () is not in mixedCase
+Parameter Token.allowance(address,address)._owner () is not in mixedCase
+Parameter Token.allowance(address,address)._spender () is not in mixedCase
+Parameter Token.transfer(address,uint256)._to () is not in mixedCase
+Parameter Token.transfer(address,uint256)._value () is not in mixedCase
+Parameter Token.transferFrom(address,address,uint256)._from () is not in mixedCase
+Parameter Token.transferFrom(address,address,uint256)._to () is not in mixedCase
+Parameter Token.transferFrom(address,address,uint256)._value () is not in mixedCase
+Parameter Token.approve(address,uint256)._spender () is not in mixedCase
+Parameter Token.approve(address,uint256)._value () is not in mixedCase
+Parameter Token.unapprove(address)._spender () is not in mixedCase
+Parameter TokenEther.withdraw(uint256)._value () is not in mixedCase
+Parameter CreatorTokenEther.create(string,string)._name () is not in mixedCase
+Parameter CreatorTokenEther.create(string,string)._symbol () is not in mixedCase
+Parameter Builder.setBeneficiary(address)._beneficiary () is not in mixedCase
+Parameter Builder.setCost(uint256)._buildingCostWei () is not in mixedCase
+Parameter Builder.setSecurityCheck(string)._uri () is not in mixedCase
+Parameter BuilderTokenEther.create(string,string,address)._name () is not in mixedCase
+Parameter BuilderTokenEther.create(string,string,address)._symbol () is not in mixedCase
+Parameter BuilderTokenEther.create(string,string,address)._client () is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: reentrancy-unlimited-gas
+Reentrancy in BuilderTokenEther.create(string,string,address) ():
+	External calls:
+	- ! beneficiary.send(buildingCostWei) ()
+	- ! msg.sender.send(msg.value - buildingCostWei) ()
+	- ! msg.sender.send(msg.value) ()
+	State variables written after the call(s):
+	- getContractsOf[_client].push(inst) ()
+	Event emitted after the call(s):
+	- Builded(_client,inst) ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-5
+
+Detector: unindexed-event-address
+Event ERC20.Transfer(address,address,uint256) () has address parameters but no indexed parameters
+Event ERC20.Approval(address,address,uint256) () has address parameters but no indexed parameters
+Event Builder.Builded(address,address) () has address parameters but no indexed parameters
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unindexed-event-address-parameters
+
+Detector: constable-states
+ERC20.totalSupply () should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+
+Detector: external-function
+create(string,string) should be declared external:
+	- CreatorTokenEther.create(string,string) ()
+setSecurityCheck(string) should be declared external:
+	- Builder.setSecurityCheck(string) ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#public-function-that-could-be-declared-external
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_173_SAFE.sol analyzed (9 contracts with 101 detectors), 42 result(s) found

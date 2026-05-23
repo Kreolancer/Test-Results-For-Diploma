@@ -1,0 +1,128 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_235_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_235_SAFE.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_235_SAFE.sol:7:5: Warning: Defining constructors as functions with the same name as the contract is deprecated. Use "constructor(...) { ... }" instead.
+    function owned() public {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_235_SAFE.sol:60:5: Warning: Defining constructors as functions with the same name as the contract is deprecated. Use "constructor(...) { ... }" instead.
+    function TokenERC20() public {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_235_SAFE.sol:199:5: Warning: Defining constructors as functions with the same name as the contract is deprecated. Use "constructor(...) { ... }" instead.
+    function Ldt() TokenERC20() public {}
+    ^-----------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_235_SAFE.sol:27:9: Warning: Invoking events without "emit" prefix is deprecated.
+        OwnerTransfer(owner, ownerCandidate);
+        ^----------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_235_SAFE.sol:33:28: Warning: Functions in interfaces should be declared external.
+interface tokenRecipient { function receiveApproval(address _from, uint256 _value, address _token, bytes _extraData) public; }
+                           ^-----------------------------------------------------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_235_SAFE.sol:83:9: Warning: Invoking events without "emit" prefix is deprecated.
+        Transfer(_from, _to, _value);
+        ^--------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_235_SAFE.sol:161:9: Warning: Invoking events without "emit" prefix is deprecated.
+        Burn(msg.sender, _value);
+        ^----------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_235_SAFE.sol:179:9: Warning: Invoking events without "emit" prefix is deprecated.
+        Burn(_from, _value);
+        ^-----------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_235_SAFE.sol:210:9: Warning: Invoking events without "emit" prefix is deprecated.
+        Transfer(_from, _to, _value);
+        ^--------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_235_SAFE.sol:222:9: Warning: Invoking events without "emit" prefix is deprecated.
+        Transfer(0, this, mintedAmount);
+        ^-----------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_235_SAFE.sol:223:9: Warning: Invoking events without "emit" prefix is deprecated.
+        Transfer(this, target, mintedAmount);
+        ^----------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_235_SAFE.sol:231:9: Warning: Invoking events without "emit" prefix is deprecated.
+        FrozenFunds(target, freeze);
+        ^-------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_235_SAFE.sol:234:5: Warning: No visibility specified. Defaulting to "public". 
+    function setPrices(uint256 newSellPrice, uint256 newBuyPrice) onlyOwner {
+    ^ (Relevant source part starts here and spans across multiple lines).
+
+
+Detector: events-access
+owned.transferOwnership(address) (contracts/safe/safe_235_SAFE.sol#16-18) should emit an event for: 
+	- owner = newOwner (contracts/safe/safe_235_SAFE.sol#17) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+
+Detector: missing-zero-check
+owned.transferOwnership(address).newOwner (contracts/safe/safe_235_SAFE.sol#16) lacks a zero-check on :
+		- owner = newOwner (contracts/safe/safe_235_SAFE.sol#17)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+
+Detector: dead-code
+TokenERC20._transfer(address,address,uint256) (contracts/safe/safe_235_SAFE.sol#70-86) is never used and should be removed
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dead-code
+
+Detector: solc-version
+Version constraint ^0.4.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- NestedArrayFunctionCallDecoder
+	- ZeroFunctionSelector
+	- DelegateCallReturnValue
+	- ECRecoverMalformedInput
+	- SkipEmptyStringLiteral
+	- ConstantOptimizerSubtraction
+	- IdentityPrecompileReturnIgnored
+	- HighOrderByteCleanStorage
+	- OptimizerStaleKnowledgeAboutSHA3
+	- LibrariesNotCallableFromPayableFunctions.
+It is used by:
+	- ^0.4.0 (contracts/safe/safe_235_SAFE.sol#1)
+solc-0.4.24 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Contract owned (contracts/safe/safe_235_SAFE.sol#2-31) is not in CapWords
+Contract tokenRecipient (contracts/safe/safe_235_SAFE.sol#33) is not in CapWords
+Parameter TokenERC20.transfer(address,uint256)._to (contracts/safe/safe_235_SAFE.sol#96) is not in mixedCase
+Parameter TokenERC20.transfer(address,uint256)._value (contracts/safe/safe_235_SAFE.sol#96) is not in mixedCase
+Parameter TokenERC20.transferFrom(address,address,uint256)._from (contracts/safe/safe_235_SAFE.sol#110) is not in mixedCase
+Parameter TokenERC20.transferFrom(address,address,uint256)._to (contracts/safe/safe_235_SAFE.sol#110) is not in mixedCase
+Parameter TokenERC20.transferFrom(address,address,uint256)._value (contracts/safe/safe_235_SAFE.sol#110) is not in mixedCase
+Parameter TokenERC20.approve(address,uint256)._spender (contracts/safe/safe_235_SAFE.sol#125) is not in mixedCase
+Parameter TokenERC20.approve(address,uint256)._value (contracts/safe/safe_235_SAFE.sol#125) is not in mixedCase
+Parameter TokenERC20.approveAndCall(address,uint256,bytes)._spender (contracts/safe/safe_235_SAFE.sol#140) is not in mixedCase
+Parameter TokenERC20.approveAndCall(address,uint256,bytes)._value (contracts/safe/safe_235_SAFE.sol#140) is not in mixedCase
+Parameter TokenERC20.approveAndCall(address,uint256,bytes)._extraData (contracts/safe/safe_235_SAFE.sol#140) is not in mixedCase
+Parameter TokenERC20.burn(uint256)._value (contracts/safe/safe_235_SAFE.sol#157) is not in mixedCase
+Parameter TokenERC20.burnFrom(address,uint256)._from (contracts/safe/safe_235_SAFE.sol#173) is not in mixedCase
+Parameter TokenERC20.burnFrom(address,uint256)._value (contracts/safe/safe_235_SAFE.sol#173) is not in mixedCase
+Variable TokenERC20.MAX_CAP (contracts/safe/safe_235_SAFE.sol#41) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: too-many-digits
+Ldt.slitherConstructorVariables() (contracts/safe/safe_235_SAFE.sol#188-253) uses literals with too many digits:
+	- initialSupply = 4000000000 (contracts/safe/safe_235_SAFE.sol#40)
+Ldt.slitherConstructorVariables() (contracts/safe/safe_235_SAFE.sol#188-253) uses literals with too many digits:
+	- MAX_CAP = 4000000000 (contracts/safe/safe_235_SAFE.sol#41)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#too-many-digits
+
+Detector: unindexed-event-address
+Event owned.OwnerTransfer(address,address) (contracts/safe/safe_235_SAFE.sol#5) has address parameters but no indexed parameters
+Event Ldt.FrozenFunds(address,bool) (contracts/safe/safe_235_SAFE.sol#196) has address parameters but no indexed parameters
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unindexed-event-address-parameters
+
+Detector: constable-states
+TokenERC20.MAX_CAP (contracts/safe/safe_235_SAFE.sol#41) should be constant 
+TokenERC20.decimals (contracts/safe/safe_235_SAFE.sol#39) should be constant 
+TokenERC20.initialSupply (contracts/safe/safe_235_SAFE.sol#40) should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+
+Detector: external-function
+receiveApproval(address,uint256,address,bytes) should be declared external:
+	- tokenRecipient.receiveApproval(address,uint256,address,bytes) (contracts/safe/safe_235_SAFE.sol#33)
+approveAndCall(address,uint256,bytes) should be declared external:
+	- TokenERC20.approveAndCall(address,uint256,bytes) (contracts/safe/safe_235_SAFE.sol#140-148)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#public-function-that-could-be-declared-external
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_235_SAFE.sol analyzed (4 contracts with 101 detectors), 30 result(s) found

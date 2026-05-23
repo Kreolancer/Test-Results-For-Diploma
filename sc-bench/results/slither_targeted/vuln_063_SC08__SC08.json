@@ -1,0 +1,349 @@
+{
+  "success": true,
+  "error": null,
+  "results": {
+    "detectors": [
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "CashOut",
+            "source_mapping": {
+              "start": 639,
+              "length": 366,
+              "filename_relative": "contracts/vulnerable/vuln_063_SC08.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_063_SC08.sol",
+              "filename_short": "contracts/vulnerable/vuln_063_SC08.sol",
+              "is_dependency": false,
+              "lines": [
+                37,
+                38,
+                39,
+                40,
+                41,
+                42,
+                43,
+                44,
+                45,
+                46,
+                47,
+                48,
+                49,
+                50
+              ],
+              "starting_column": 5,
+              "ending_column": 6
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "ETH_FUND",
+                "source_mapping": {
+                  "start": 102,
+                  "length": 951,
+                  "filename_relative": "contracts/vulnerable/vuln_063_SC08.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_063_SC08.sol",
+                  "filename_short": "contracts/vulnerable/vuln_063_SC08.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15,
+                    16,
+                    17,
+                    18,
+                    19,
+                    20,
+                    21,
+                    22,
+                    23,
+                    24,
+                    25,
+                    26,
+                    27,
+                    28,
+                    29,
+                    30,
+                    31,
+                    32,
+                    33,
+                    34,
+                    35,
+                    36,
+                    37,
+                    38,
+                    39,
+                    40,
+                    41,
+                    42,
+                    43,
+                    44,
+                    45,
+                    46,
+                    47,
+                    48,
+                    49,
+                    50,
+                    51,
+                    52,
+                    53,
+                    54
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 2
+                }
+              },
+              "signature": "CashOut(uint256)"
+            }
+          },
+          {
+            "type": "node",
+            "name": "msg.sender.call.value(_am)()",
+            "source_mapping": {
+              "start": 823,
+              "length": 28,
+              "filename_relative": "contracts/vulnerable/vuln_063_SC08.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_063_SC08.sol",
+              "filename_short": "contracts/vulnerable/vuln_063_SC08.sol",
+              "is_dependency": false,
+              "lines": [
+                44
+              ],
+              "starting_column": 16,
+              "ending_column": 44
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "CashOut",
+                "source_mapping": {
+                  "start": 639,
+                  "length": 366,
+                  "filename_relative": "contracts/vulnerable/vuln_063_SC08.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_063_SC08.sol",
+                  "filename_short": "contracts/vulnerable/vuln_063_SC08.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    37,
+                    38,
+                    39,
+                    40,
+                    41,
+                    42,
+                    43,
+                    44,
+                    45,
+                    46,
+                    47,
+                    48,
+                    49,
+                    50
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "ETH_FUND",
+                    "source_mapping": {
+                      "start": 102,
+                      "length": 951,
+                      "filename_relative": "contracts/vulnerable/vuln_063_SC08.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_063_SC08.sol",
+                      "filename_short": "contracts/vulnerable/vuln_063_SC08.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        9,
+                        10,
+                        11,
+                        12,
+                        13,
+                        14,
+                        15,
+                        16,
+                        17,
+                        18,
+                        19,
+                        20,
+                        21,
+                        22,
+                        23,
+                        24,
+                        25,
+                        26,
+                        27,
+                        28,
+                        29,
+                        30,
+                        31,
+                        32,
+                        33,
+                        34,
+                        35,
+                        36,
+                        37,
+                        38,
+                        39,
+                        40,
+                        41,
+                        42,
+                        43,
+                        44,
+                        45,
+                        46,
+                        47,
+                        48,
+                        49,
+                        50,
+                        51,
+                        52,
+                        53,
+                        54
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "CashOut(uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "external_calls"
+            }
+          },
+          {
+            "type": "node",
+            "name": "balances[msg.sender] -= _am",
+            "source_mapping": {
+              "start": 883,
+              "length": 25,
+              "filename_relative": "contracts/vulnerable/vuln_063_SC08.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_063_SC08.sol",
+              "filename_short": "contracts/vulnerable/vuln_063_SC08.sol",
+              "is_dependency": false,
+              "lines": [
+                46
+              ],
+              "starting_column": 17,
+              "ending_column": 42
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "CashOut",
+                "source_mapping": {
+                  "start": 639,
+                  "length": 366,
+                  "filename_relative": "contracts/vulnerable/vuln_063_SC08.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_063_SC08.sol",
+                  "filename_short": "contracts/vulnerable/vuln_063_SC08.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    37,
+                    38,
+                    39,
+                    40,
+                    41,
+                    42,
+                    43,
+                    44,
+                    45,
+                    46,
+                    47,
+                    48,
+                    49,
+                    50
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "ETH_FUND",
+                    "source_mapping": {
+                      "start": 102,
+                      "length": 951,
+                      "filename_relative": "contracts/vulnerable/vuln_063_SC08.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_063_SC08.sol",
+                      "filename_short": "contracts/vulnerable/vuln_063_SC08.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        9,
+                        10,
+                        11,
+                        12,
+                        13,
+                        14,
+                        15,
+                        16,
+                        17,
+                        18,
+                        19,
+                        20,
+                        21,
+                        22,
+                        23,
+                        24,
+                        25,
+                        26,
+                        27,
+                        28,
+                        29,
+                        30,
+                        31,
+                        32,
+                        33,
+                        34,
+                        35,
+                        36,
+                        37,
+                        38,
+                        39,
+                        40,
+                        41,
+                        42,
+                        43,
+                        44,
+                        45,
+                        46,
+                        47,
+                        48,
+                        49,
+                        50,
+                        51,
+                        52,
+                        53,
+                        54
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "CashOut(uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "variables_written",
+              "variable_name": "balances"
+            }
+          }
+        ],
+        "description": "Reentrancy in ETH_FUND.CashOut(uint256) (contracts/vulnerable/vuln_063_SC08.sol#37-50):\n\tExternal calls:\n\t- msg.sender.call.value(_am)() (contracts/vulnerable/vuln_063_SC08.sol#44)\n\tState variables written after the call(s):\n\t- balances[msg.sender] -= _am (contracts/vulnerable/vuln_063_SC08.sol#46)\n\tETH_FUND.balances (contracts/vulnerable/vuln_063_SC08.sol#11) can be used in cross function reentrancies:\n\t- ETH_FUND.CashOut(uint256) (contracts/vulnerable/vuln_063_SC08.sol#37-50)\n\t- ETH_FUND.Deposit() (contracts/vulnerable/vuln_063_SC08.sol#25-35)\n\t- ETH_FUND.balances (contracts/vulnerable/vuln_063_SC08.sol#11)\n",
+        "markdown": "Reentrancy in [ETH_FUND.CashOut(uint256)](contracts/vulnerable/vuln_063_SC08.sol#L37-L50):\n\tExternal calls:\n\t- [msg.sender.call.value(_am)()](contracts/vulnerable/vuln_063_SC08.sol#L44)\n\tState variables written after the call(s):\n\t- [balances[msg.sender] -= _am](contracts/vulnerable/vuln_063_SC08.sol#L46)\n\t[ETH_FUND.balances](contracts/vulnerable/vuln_063_SC08.sol#L11) can be used in cross function reentrancies:\n\t- [ETH_FUND.CashOut(uint256)](contracts/vulnerable/vuln_063_SC08.sol#L37-L50)\n\t- [ETH_FUND.Deposit()](contracts/vulnerable/vuln_063_SC08.sol#L25-L35)\n\t- [ETH_FUND.balances](contracts/vulnerable/vuln_063_SC08.sol#L11)\n",
+        "first_markdown_element": "contracts/vulnerable/vuln_063_SC08.sol#L37-L50",
+        "id": "4fbfe8c2295f6de569ab6eeac2107339812ba50739ec9f300551a8af6119cad0",
+        "check": "reentrancy-eth",
+        "impact": "High",
+        "confidence": "Medium"
+      }
+    ]
+  }
+}

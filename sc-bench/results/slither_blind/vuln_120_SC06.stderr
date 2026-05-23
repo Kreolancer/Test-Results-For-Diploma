@@ -1,0 +1,30 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_120_SC06.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
+
+Detector: solc-version
+Version constraint ^0.5.1 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor
+	- IncorrectEventSignatureInLibraries
+	- ABIEncoderV2PackedStorage.
+It is used by:
+	- ^0.5.1 (contracts/vulnerable/vuln_120_SC06.sol#1)
+solc-0.5.1 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: too-many-digits
+Token.slitherConstructorConstantVariables() (contracts/vulnerable/vuln_120_SC06.sol#3-74) uses literals with too many digits:
+	- _totalSupply = 100000000 * 10 ** uint256(decimals) (contracts/vulnerable/vuln_120_SC06.sol#11)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#too-many-digits
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_120_SC06.sol analyzed (1 contracts with 101 detectors), 3 result(s) found

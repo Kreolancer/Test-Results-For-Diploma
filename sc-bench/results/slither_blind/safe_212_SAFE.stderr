@@ -1,0 +1,40 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_212_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+
+Detector: missing-zero-check
+RefundVault.refund(address).investor (contracts/safe/safe_212_SAFE.sol#126) lacks a zero-check on :
+		- investor.transfer(depositedValue) (contracts/safe/safe_212_SAFE.sol#130)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+
+Detector: solc-version
+Version constraint ^0.4.18 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- EventStructWrongData
+	- NestedArrayFunctionCallDecoder.
+It is used by:
+	- ^0.4.18 (contracts/safe/safe_212_SAFE.sol#1)
+solc-0.4.18 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: reentrancy-unlimited-gas
+Reentrancy in RefundVault.refund(address) (contracts/safe/safe_212_SAFE.sol#126-132):
+	External calls:
+	- investor.transfer(depositedValue) (contracts/safe/safe_212_SAFE.sol#130)
+	Event emitted after the call(s):
+	- Refunded(investor,depositedValue) (contracts/safe/safe_212_SAFE.sol#131)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-5
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_212_SAFE.sol analyzed (3 contracts with 101 detectors), 4 result(s) found

@@ -1,0 +1,245 @@
+{
+  "files_summary": {
+    "total_source_units": 1,
+    "total_sloc": 99
+  },
+  "files_details": {
+    "files_details": [
+      {
+        "file_path": "src/safe_276_SAFE.sol",
+        "n_sloc": 99
+      }
+    ]
+  },
+  "issue_count": {
+    "high": 2,
+    "low": 5
+  },
+  "high_issues": {
+    "issues": [
+      {
+        "title": "Reentrancy: State change after external call",
+        "description": "Changing state after an external call can lead to re-entrancy attacks.Use the checks-effects-interactions pattern to avoid this issue.",
+        "detector_name": "reentrancy-state-change",
+        "instances": [
+          {
+            "contract_path": "src/safe_276_SAFE.sol",
+            "line_no": 51,
+            "src": "1660:25",
+            "src_char": "1660:25",
+            "hint": "State is changed at: `owner=_newowner`"
+          },
+          {
+            "contract_path": "src/safe_276_SAFE.sol",
+            "line_no": 52,
+            "src": "1699:28",
+            "src_char": "1699:28",
+            "hint": "State is changed at: `owner=_newowner`"
+          }
+        ]
+      },
+      {
+        "title": "`selfdestruct` is Deprecated",
+        "description": "Remove the `selfdestruct` instruction from the code.",
+        "detector_name": "selfdestruct",
+        "instances": [
+          {
+            "contract_path": "src/safe_276_SAFE.sol",
+            "line_no": 61,
+            "src": "1927:12",
+            "src_char": "1927:12"
+          }
+        ]
+      }
+    ]
+  },
+  "low_issues": {
+    "issues": [
+      {
+        "title": "Empty `require()` / `revert()` Statement",
+        "description": "Use descriptive reason strings or custom errors for revert paths.",
+        "detector_name": "empty-require-revert",
+        "instances": [
+          {
+            "contract_path": "src/safe_276_SAFE.sol",
+            "line_no": 136,
+            "src": "4463:6",
+            "src_char": "4463:6"
+          },
+          {
+            "contract_path": "src/safe_276_SAFE.sol",
+            "line_no": 139,
+            "src": "4574:6",
+            "src_char": "4574:6"
+          }
+        ]
+      },
+      {
+        "title": "Address State Variable Set Without Checks",
+        "description": "Check for `address(0)` when assigning values to address state variables.",
+        "detector_name": "state-no-address-check",
+        "instances": [
+          {
+            "contract_path": "src/safe_276_SAFE.sol",
+            "line_no": 53,
+            "src": "1741:15",
+            "src_char": "1741:15"
+          }
+        ]
+      },
+      {
+        "title": "Unsafe ERC20 Operation",
+        "description": "ERC20 functions may not behave as expected. For example: return values are not always meaningful. It is recommended to use OpenZeppelin's SafeERC20 library.",
+        "detector_name": "unsafe-erc20-operation",
+        "instances": [
+          {
+            "contract_path": "src/safe_276_SAFE.sol",
+            "line_no": 51,
+            "src": "1660:14",
+            "src_char": "1660:14"
+          },
+          {
+            "contract_path": "src/safe_276_SAFE.sol",
+            "line_no": 52,
+            "src": "1699:14",
+            "src_char": "1699:14"
+          }
+        ]
+      },
+      {
+        "title": "Unspecific Solidity Pragma",
+        "description": "Consider using a specific version of Solidity in your contracts instead of a wide version. For example, instead of `pragma solidity ^0.8.0;`, use `pragma solidity 0.8.0;`",
+        "detector_name": "unspecific-solidity-pragma",
+        "instances": [
+          {
+            "contract_path": "src/safe_276_SAFE.sol",
+            "line_no": 1,
+            "src": "0:24",
+            "src_char": "0:24"
+          }
+        ]
+      },
+      {
+        "title": "Public Function Not Used Internally",
+        "description": "If a function is marked public but is not used internally, consider marking it as `external`.",
+        "detector_name": "unused-public-function",
+        "instances": [
+          {
+            "contract_path": "src/safe_276_SAFE.sol",
+            "line_no": 71,
+            "src": "2364:462",
+            "src_char": "2364:462"
+          },
+          {
+            "contract_path": "src/safe_276_SAFE.sol",
+            "line_no": 85,
+            "src": "2836:238",
+            "src_char": "2836:238"
+          },
+          {
+            "contract_path": "src/safe_276_SAFE.sol",
+            "line_no": 103,
+            "src": "3303:531",
+            "src_char": "3303:531"
+          },
+          {
+            "contract_path": "src/safe_276_SAFE.sol",
+            "line_no": 121,
+            "src": "3840:222",
+            "src_char": "3840:222"
+          }
+        ]
+      }
+    ]
+  },
+  "detectors_used": [
+    "abi-encode-packed-hash-collision",
+    "arbitrary-transfer-from",
+    "assert-state-change",
+    "block-timestamp-deadline",
+    "boolean-equality",
+    "builtin-symbol-shadowing",
+    "centralization-risk",
+    "constant-function-changes-state",
+    "constant-function-contains-assembly",
+    "contract-locks-ether",
+    "costly-loop",
+    "dangerous-unary-operator",
+    "dead-code",
+    "delegate-call-unchecked-address",
+    "delegatecall-in-loop",
+    "delete-nested-mapping",
+    "deprecated-oz-function",
+    "division-before-multiplication",
+    "dynamic-array-length-assignment",
+    "ecrecover",
+    "empty-block",
+    "empty-require-revert",
+    "enumerable-loop-removal",
+    "eth-send-unchecked-address",
+    "experimental-encoder",
+    "function-initializing-state",
+    "function-pointer-in-constructor",
+    "function-selector-collision",
+    "inconsistent-type-names",
+    "incorrect-caret-operator",
+    "incorrect-erc20-interface",
+    "incorrect-erc721-interface",
+    "incorrect-shift-order",
+    "incorrect-use-of-modifier",
+    "internal-function-used-once",
+    "large-numeric-literal",
+    "literal-instead-of-constant",
+    "local-variable-shadowing",
+    "missing-inheritance",
+    "misused-boolean",
+    "modifier-used-only-once",
+    "msg-value-in-loop",
+    "multiple-constructors",
+    "multiple-placeholders",
+    "nested-struct-in-mapping",
+    "non-reentrant-not-first",
+    "out-of-order-retryable",
+    "pre-declared-local-variable-usage",
+    "push-zero-opcode",
+    "redundant-statement",
+    "reentrancy-state-change",
+    "require-revert-in-loop",
+    "return-bomb",
+    "reused-contract-name",
+    "rtlo",
+    "selfdestruct",
+    "signed-integer-storage-array",
+    "solmate-safe-transfer-lib",
+    "state-change-without-event",
+    "state-no-address-check",
+    "state-variable-could-be-constant",
+    "state-variable-could-be-immutable",
+    "state-variable-init-order",
+    "state-variable-read-external",
+    "state-variable-shadowing",
+    "storage-array-length-not-cached",
+    "storage-array-memory-edit",
+    "strict-equality-contract-balance",
+    "tautological-compare",
+    "tautology-or-contradiction",
+    "todo",
+    "tx-origin-used-for-auth",
+    "unchecked-low-level-call",
+    "unchecked-return",
+    "unchecked-send",
+    "uninitialized-local-variable",
+    "unprotected-initializer",
+    "unsafe-casting",
+    "unsafe-erc20-operation",
+    "unsafe-oz-erc721-mint",
+    "unspecific-solidity-pragma",
+    "unused-error",
+    "unused-import",
+    "unused-public-function",
+    "unused-state-variable",
+    "void-constructor",
+    "weak-randomness",
+    "yul-return"
+  ]
+}

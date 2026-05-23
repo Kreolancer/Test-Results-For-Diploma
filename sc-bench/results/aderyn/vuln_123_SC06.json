@@ -1,0 +1,471 @@
+{
+  "files_summary": {
+    "total_source_units": 1,
+    "total_sloc": 248
+  },
+  "files_details": {
+    "files_details": [
+      {
+        "file_path": "src/vuln_123_SC06.sol",
+        "n_sloc": 248
+      }
+    ]
+  },
+  "issue_count": {
+    "high": 1,
+    "low": 6
+  },
+  "high_issues": {
+    "issues": [
+      {
+        "title": "`selfdestruct` is Deprecated",
+        "description": "Remove the `selfdestruct` instruction from the code.",
+        "detector_name": "selfdestruct",
+        "instances": [
+          {
+            "contract_path": "src/vuln_123_SC06.sol",
+            "line_no": 440,
+            "src": "12644:12",
+            "src_char": "12570:12"
+          }
+        ]
+      }
+    ]
+  },
+  "low_issues": {
+    "issues": [
+      {
+        "title": "Centralization Risk",
+        "description": "Contracts have owners with privileged rights to perform admin tasks and need to be trusted to not perform malicious updates or drain funds.",
+        "detector_name": "centralization-risk",
+        "instances": [
+          {
+            "contract_path": "src/vuln_123_SC06.sol",
+            "line_no": 347,
+            "src": "10151:9",
+            "src_char": "10151:9"
+          },
+          {
+            "contract_path": "src/vuln_123_SC06.sol",
+            "line_no": 358,
+            "src": "10445:9",
+            "src_char": "10445:9"
+          },
+          {
+            "contract_path": "src/vuln_123_SC06.sol",
+            "line_no": 388,
+            "src": "11215:9",
+            "src_char": "11141:9"
+          },
+          {
+            "contract_path": "src/vuln_123_SC06.sol",
+            "line_no": 395,
+            "src": "11399:9",
+            "src_char": "11325:9"
+          },
+          {
+            "contract_path": "src/vuln_123_SC06.sol",
+            "line_no": 402,
+            "src": "11563:9",
+            "src_char": "11489:9"
+          },
+          {
+            "contract_path": "src/vuln_123_SC06.sol",
+            "line_no": 409,
+            "src": "11706:9",
+            "src_char": "11632:9"
+          }
+        ]
+      },
+      {
+        "title": "Empty Block",
+        "description": "Consider removing empty blocks.",
+        "detector_name": "empty-block",
+        "instances": [
+          {
+            "contract_path": "src/vuln_123_SC06.sol",
+            "line_no": 310,
+            "src": "9169:27",
+            "src_char": "9169:27"
+          }
+        ]
+      },
+      {
+        "title": "Empty `require()` / `revert()` Statement",
+        "description": "Use descriptive reason strings or custom errors for revert paths.",
+        "detector_name": "empty-require-revert",
+        "instances": [
+          {
+            "contract_path": "src/vuln_123_SC06.sol",
+            "line_no": 103,
+            "src": "2657:7",
+            "src_char": "2657:7"
+          },
+          {
+            "contract_path": "src/vuln_123_SC06.sol",
+            "line_no": 104,
+            "src": "2689:7",
+            "src_char": "2689:7"
+          },
+          {
+            "contract_path": "src/vuln_123_SC06.sol",
+            "line_no": 149,
+            "src": "3978:7",
+            "src_char": "3978:7"
+          },
+          {
+            "contract_path": "src/vuln_123_SC06.sol",
+            "line_no": 150,
+            "src": "4010:7",
+            "src_char": "4010:7"
+          },
+          {
+            "contract_path": "src/vuln_123_SC06.sol",
+            "line_no": 151,
+            "src": "4050:7",
+            "src_char": "4050:7"
+          },
+          {
+            "contract_path": "src/vuln_123_SC06.sol",
+            "line_no": 255,
+            "src": "7646:7",
+            "src_char": "7646:7"
+          },
+          {
+            "contract_path": "src/vuln_123_SC06.sol",
+            "line_no": 260,
+            "src": "7734:7",
+            "src_char": "7734:7"
+          },
+          {
+            "contract_path": "src/vuln_123_SC06.sol",
+            "line_no": 265,
+            "src": "7865:7",
+            "src_char": "7865:7"
+          },
+          {
+            "contract_path": "src/vuln_123_SC06.sol",
+            "line_no": 273,
+            "src": "8079:7",
+            "src_char": "8079:7"
+          },
+          {
+            "contract_path": "src/vuln_123_SC06.sol",
+            "line_no": 304,
+            "src": "9024:7",
+            "src_char": "9024:7"
+          },
+          {
+            "contract_path": "src/vuln_123_SC06.sol",
+            "line_no": 331,
+            "src": "9682:7",
+            "src_char": "9682:7"
+          },
+          {
+            "contract_path": "src/vuln_123_SC06.sol",
+            "line_no": 384,
+            "src": "11109:7",
+            "src_char": "11035:7"
+          }
+        ]
+      },
+      {
+        "title": "Address State Variable Set Without Checks",
+        "description": "Check for `address(0)` when assigning values to address state variables.",
+        "detector_name": "state-no-address-check",
+        "instances": [
+          {
+            "contract_path": "src/vuln_123_SC06.sol",
+            "line_no": 282,
+            "src": "8324:24",
+            "src_char": "8324:24"
+          }
+        ]
+      },
+      {
+        "title": "Unsafe ERC20 Operation",
+        "description": "ERC20 functions may not behave as expected. For example: return values are not always meaningful. It is recommended to use OpenZeppelin's SafeERC20 library.",
+        "detector_name": "unsafe-erc20-operation",
+        "instances": [
+          {
+            "contract_path": "src/vuln_123_SC06.sol",
+            "line_no": 317,
+            "src": "9357:19",
+            "src_char": "9357:19"
+          },
+          {
+            "contract_path": "src/vuln_123_SC06.sol",
+            "line_no": 417,
+            "src": "11934:14",
+            "src_char": "11860:14"
+          }
+        ]
+      },
+      {
+        "title": "Public Function Not Used Internally",
+        "description": "If a function is marked public but is not used internally, consider marking it as `external`.",
+        "detector_name": "unused-public-function",
+        "instances": [
+          {
+            "contract_path": "src/vuln_123_SC06.sol",
+            "line_no": 4,
+            "src": "52:53",
+            "src_char": "52:53"
+          },
+          {
+            "contract_path": "src/vuln_123_SC06.sol",
+            "line_no": 5,
+            "src": "110:62",
+            "src_char": "110:62"
+          },
+          {
+            "contract_path": "src/vuln_123_SC06.sol",
+            "line_no": 6,
+            "src": "177:67",
+            "src_char": "177:67"
+          },
+          {
+            "contract_path": "src/vuln_123_SC06.sol",
+            "line_no": 11,
+            "src": "360:89",
+            "src_char": "360:89"
+          },
+          {
+            "contract_path": "src/vuln_123_SC06.sol",
+            "line_no": 14,
+            "src": "455:93",
+            "src_char": "455:93"
+          },
+          {
+            "contract_path": "src/vuln_123_SC06.sol",
+            "line_no": 17,
+            "src": "554:71",
+            "src_char": "554:71"
+          },
+          {
+            "contract_path": "src/vuln_123_SC06.sol",
+            "line_no": 93,
+            "src": "2345:83",
+            "src_char": "2345:83"
+          },
+          {
+            "contract_path": "src/vuln_123_SC06.sol",
+            "line_no": 102,
+            "src": "2582:321",
+            "src_char": "2582:321"
+          },
+          {
+            "contract_path": "src/vuln_123_SC06.sol",
+            "line_no": 117,
+            "src": "3105:99",
+            "src_char": "3105:99"
+          },
+          {
+            "contract_path": "src/vuln_123_SC06.sol",
+            "line_no": 141,
+            "src": "3858:470",
+            "src_char": "3858:470"
+          },
+          {
+            "contract_path": "src/vuln_123_SC06.sol",
+            "line_no": 169,
+            "src": "4946:188",
+            "src_char": "4946:188"
+          },
+          {
+            "contract_path": "src/vuln_123_SC06.sol",
+            "line_no": 181,
+            "src": "5453:153",
+            "src_char": "5453:153"
+          },
+          {
+            "contract_path": "src/vuln_123_SC06.sol",
+            "line_no": 201,
+            "src": "6058:296",
+            "src_char": "6058:296"
+          },
+          {
+            "contract_path": "src/vuln_123_SC06.sol",
+            "line_no": 223,
+            "src": "6811:431",
+            "src_char": "6811:431"
+          },
+          {
+            "contract_path": "src/vuln_123_SC06.sol",
+            "line_no": 264,
+            "src": "7785:196",
+            "src_char": "7785:196"
+          },
+          {
+            "contract_path": "src/vuln_123_SC06.sol",
+            "line_no": 271,
+            "src": "7987:230",
+            "src_char": "7987:230"
+          },
+          {
+            "contract_path": "src/vuln_123_SC06.sol",
+            "line_no": 280,
+            "src": "8222:216",
+            "src_char": "8222:216"
+          },
+          {
+            "contract_path": "src/vuln_123_SC06.sol",
+            "line_no": 289,
+            "src": "8444:97",
+            "src_char": "8444:97"
+          },
+          {
+            "contract_path": "src/vuln_123_SC06.sol",
+            "line_no": 339,
+            "src": "9880:104",
+            "src_char": "9880:104"
+          },
+          {
+            "contract_path": "src/vuln_123_SC06.sol",
+            "line_no": 347,
+            "src": "10111:178",
+            "src_char": "10111:178"
+          },
+          {
+            "contract_path": "src/vuln_123_SC06.sol",
+            "line_no": 358,
+            "src": "10403:181",
+            "src_char": "10403:181"
+          },
+          {
+            "contract_path": "src/vuln_123_SC06.sol",
+            "line_no": 388,
+            "src": "11170:180",
+            "src_char": "11096:180"
+          },
+          {
+            "contract_path": "src/vuln_123_SC06.sol",
+            "line_no": 395,
+            "src": "11356:177",
+            "src_char": "11282:177"
+          },
+          {
+            "contract_path": "src/vuln_123_SC06.sol",
+            "line_no": 402,
+            "src": "11539:135",
+            "src_char": "11465:135"
+          },
+          {
+            "contract_path": "src/vuln_123_SC06.sol",
+            "line_no": 409,
+            "src": "11680:140",
+            "src_char": "11606:140"
+          },
+          {
+            "contract_path": "src/vuln_123_SC06.sol",
+            "line_no": 416,
+            "src": "11826:140",
+            "src_char": "11752:140"
+          },
+          {
+            "contract_path": "src/vuln_123_SC06.sol",
+            "line_no": 420,
+            "src": "11972:162",
+            "src_char": "11898:162"
+          },
+          {
+            "contract_path": "src/vuln_123_SC06.sol",
+            "line_no": 438,
+            "src": "12569:129",
+            "src_char": "12495:129"
+          }
+        ]
+      }
+    ]
+  },
+  "detectors_used": [
+    "abi-encode-packed-hash-collision",
+    "arbitrary-transfer-from",
+    "assert-state-change",
+    "block-timestamp-deadline",
+    "boolean-equality",
+    "builtin-symbol-shadowing",
+    "centralization-risk",
+    "constant-function-changes-state",
+    "constant-function-contains-assembly",
+    "contract-locks-ether",
+    "costly-loop",
+    "dangerous-unary-operator",
+    "dead-code",
+    "delegate-call-unchecked-address",
+    "delegatecall-in-loop",
+    "delete-nested-mapping",
+    "deprecated-oz-function",
+    "division-before-multiplication",
+    "dynamic-array-length-assignment",
+    "ecrecover",
+    "empty-block",
+    "empty-require-revert",
+    "enumerable-loop-removal",
+    "eth-send-unchecked-address",
+    "experimental-encoder",
+    "function-initializing-state",
+    "function-pointer-in-constructor",
+    "function-selector-collision",
+    "inconsistent-type-names",
+    "incorrect-caret-operator",
+    "incorrect-erc20-interface",
+    "incorrect-erc721-interface",
+    "incorrect-shift-order",
+    "incorrect-use-of-modifier",
+    "internal-function-used-once",
+    "large-numeric-literal",
+    "literal-instead-of-constant",
+    "local-variable-shadowing",
+    "missing-inheritance",
+    "misused-boolean",
+    "modifier-used-only-once",
+    "msg-value-in-loop",
+    "multiple-constructors",
+    "multiple-placeholders",
+    "nested-struct-in-mapping",
+    "non-reentrant-not-first",
+    "out-of-order-retryable",
+    "pre-declared-local-variable-usage",
+    "push-zero-opcode",
+    "redundant-statement",
+    "reentrancy-state-change",
+    "require-revert-in-loop",
+    "return-bomb",
+    "reused-contract-name",
+    "rtlo",
+    "selfdestruct",
+    "signed-integer-storage-array",
+    "solmate-safe-transfer-lib",
+    "state-change-without-event",
+    "state-no-address-check",
+    "state-variable-could-be-constant",
+    "state-variable-could-be-immutable",
+    "state-variable-init-order",
+    "state-variable-read-external",
+    "state-variable-shadowing",
+    "storage-array-length-not-cached",
+    "storage-array-memory-edit",
+    "strict-equality-contract-balance",
+    "tautological-compare",
+    "tautology-or-contradiction",
+    "todo",
+    "tx-origin-used-for-auth",
+    "unchecked-low-level-call",
+    "unchecked-return",
+    "unchecked-send",
+    "uninitialized-local-variable",
+    "unprotected-initializer",
+    "unsafe-casting",
+    "unsafe-erc20-operation",
+    "unsafe-oz-erc721-mint",
+    "unspecific-solidity-pragma",
+    "unused-error",
+    "unused-import",
+    "unused-public-function",
+    "unused-state-variable",
+    "void-constructor",
+    "weak-randomness",
+    "yul-return"
+  ]
+}

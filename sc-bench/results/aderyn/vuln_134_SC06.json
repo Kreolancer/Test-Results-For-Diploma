@@ -1,0 +1,221 @@
+{
+  "files_summary": {
+    "total_source_units": 1,
+    "total_sloc": 72
+  },
+  "files_details": {
+    "files_details": [
+      {
+        "file_path": "src/vuln_134_SC06.sol",
+        "n_sloc": 72
+      }
+    ]
+  },
+  "issue_count": {
+    "high": 0,
+    "low": 4
+  },
+  "high_issues": {
+    "issues": []
+  },
+  "low_issues": {
+    "issues": [
+      {
+        "title": "Centralization Risk",
+        "description": "Contracts have owners with privileged rights to perform admin tasks and need to be trusted to not perform malicious updates or drain funds.",
+        "detector_name": "centralization-risk",
+        "instances": [
+          {
+            "contract_path": "src/vuln_134_SC06.sol",
+            "line_no": 80,
+            "src": "1860:9",
+            "src_char": "1860:9"
+          },
+          {
+            "contract_path": "src/vuln_134_SC06.sol",
+            "line_no": 88,
+            "src": "1999:7",
+            "src_char": "1999:7"
+          },
+          {
+            "contract_path": "src/vuln_134_SC06.sol",
+            "line_no": 118,
+            "src": "2808:9",
+            "src_char": "2808:9"
+          }
+        ]
+      },
+      {
+        "title": "Empty `require()` / `revert()` Statement",
+        "description": "Use descriptive reason strings or custom errors for revert paths.",
+        "detector_name": "empty-require-revert",
+        "instances": [
+          {
+            "contract_path": "src/vuln_134_SC06.sol",
+            "line_no": 71,
+            "src": "1606:7",
+            "src_char": "1606:7"
+          },
+          {
+            "contract_path": "src/vuln_134_SC06.sol",
+            "line_no": 81,
+            "src": "1876:7",
+            "src_char": "1876:7"
+          },
+          {
+            "contract_path": "src/vuln_134_SC06.sol",
+            "line_no": 101,
+            "src": "2365:7",
+            "src_char": "2365:7"
+          },
+          {
+            "contract_path": "src/vuln_134_SC06.sol",
+            "line_no": 102,
+            "src": "2401:7",
+            "src_char": "2401:7"
+          },
+          {
+            "contract_path": "src/vuln_134_SC06.sol",
+            "line_no": 109,
+            "src": "2522:7",
+            "src_char": "2522:7"
+          },
+          {
+            "contract_path": "src/vuln_134_SC06.sol",
+            "line_no": 110,
+            "src": "2554:7",
+            "src_char": "2554:7"
+          }
+        ]
+      },
+      {
+        "title": "Unsafe ERC20 Operation",
+        "description": "ERC20 functions may not behave as expected. For example: return values are not always meaningful. It is recommended to use OpenZeppelin's SafeERC20 library.",
+        "detector_name": "unsafe-erc20-operation",
+        "instances": [
+          {
+            "contract_path": "src/vuln_134_SC06.sol",
+            "line_no": 114,
+            "src": "2700:15",
+            "src_char": "2700:15"
+          }
+        ]
+      },
+      {
+        "title": "Public Function Not Used Internally",
+        "description": "If a function is marked public but is not used internally, consider marking it as `external`.",
+        "detector_name": "unused-public-function",
+        "instances": [
+          {
+            "contract_path": "src/vuln_134_SC06.sol",
+            "line_no": 80,
+            "src": "1808:169",
+            "src_char": "1808:169"
+          },
+          {
+            "contract_path": "src/vuln_134_SC06.sol",
+            "line_no": 118,
+            "src": "2782:133",
+            "src_char": "2782:133"
+          },
+          {
+            "contract_path": "src/vuln_134_SC06.sol",
+            "line_no": 124,
+            "src": "2921:107",
+            "src_char": "2921:107"
+          }
+        ]
+      }
+    ]
+  },
+  "detectors_used": [
+    "abi-encode-packed-hash-collision",
+    "arbitrary-transfer-from",
+    "assert-state-change",
+    "block-timestamp-deadline",
+    "boolean-equality",
+    "builtin-symbol-shadowing",
+    "centralization-risk",
+    "constant-function-changes-state",
+    "constant-function-contains-assembly",
+    "contract-locks-ether",
+    "costly-loop",
+    "dangerous-unary-operator",
+    "dead-code",
+    "delegate-call-unchecked-address",
+    "delegatecall-in-loop",
+    "delete-nested-mapping",
+    "deprecated-oz-function",
+    "division-before-multiplication",
+    "dynamic-array-length-assignment",
+    "ecrecover",
+    "empty-block",
+    "empty-require-revert",
+    "enumerable-loop-removal",
+    "eth-send-unchecked-address",
+    "experimental-encoder",
+    "function-initializing-state",
+    "function-pointer-in-constructor",
+    "function-selector-collision",
+    "inconsistent-type-names",
+    "incorrect-caret-operator",
+    "incorrect-erc20-interface",
+    "incorrect-erc721-interface",
+    "incorrect-shift-order",
+    "incorrect-use-of-modifier",
+    "internal-function-used-once",
+    "large-numeric-literal",
+    "literal-instead-of-constant",
+    "local-variable-shadowing",
+    "missing-inheritance",
+    "misused-boolean",
+    "modifier-used-only-once",
+    "msg-value-in-loop",
+    "multiple-constructors",
+    "multiple-placeholders",
+    "nested-struct-in-mapping",
+    "non-reentrant-not-first",
+    "out-of-order-retryable",
+    "pre-declared-local-variable-usage",
+    "push-zero-opcode",
+    "redundant-statement",
+    "reentrancy-state-change",
+    "require-revert-in-loop",
+    "return-bomb",
+    "reused-contract-name",
+    "rtlo",
+    "selfdestruct",
+    "signed-integer-storage-array",
+    "solmate-safe-transfer-lib",
+    "state-change-without-event",
+    "state-no-address-check",
+    "state-variable-could-be-constant",
+    "state-variable-could-be-immutable",
+    "state-variable-init-order",
+    "state-variable-read-external",
+    "state-variable-shadowing",
+    "storage-array-length-not-cached",
+    "storage-array-memory-edit",
+    "strict-equality-contract-balance",
+    "tautological-compare",
+    "tautology-or-contradiction",
+    "todo",
+    "tx-origin-used-for-auth",
+    "unchecked-low-level-call",
+    "unchecked-return",
+    "unchecked-send",
+    "uninitialized-local-variable",
+    "unprotected-initializer",
+    "unsafe-casting",
+    "unsafe-erc20-operation",
+    "unsafe-oz-erc721-mint",
+    "unspecific-solidity-pragma",
+    "unused-error",
+    "unused-import",
+    "unused-public-function",
+    "unused-state-variable",
+    "void-constructor",
+    "weak-randomness",
+    "yul-return"
+  ]
+}

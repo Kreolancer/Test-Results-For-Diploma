@@ -1,0 +1,302 @@
+{
+  "files_summary": {
+    "total_source_units": 1,
+    "total_sloc": 68
+  },
+  "files_details": {
+    "files_details": [
+      {
+        "file_path": "src/safe_230_SAFE.sol",
+        "n_sloc": 68
+      }
+    ]
+  },
+  "issue_count": {
+    "high": 0,
+    "low": 7
+  },
+  "high_issues": {
+    "issues": []
+  },
+  "low_issues": {
+    "issues": [
+      {
+        "title": "Centralization Risk",
+        "description": "Contracts have owners with privileged rights to perform admin tasks and need to be trusted to not perform malicious updates or drain funds.",
+        "detector_name": "centralization-risk",
+        "instances": [
+          {
+            "contract_path": "src/safe_230_SAFE.sol",
+            "line_no": 38,
+            "src": "872:9",
+            "src_char": "872:9"
+          },
+          {
+            "contract_path": "src/safe_230_SAFE.sol",
+            "line_no": 100,
+            "src": "2270:7",
+            "src_char": "2270:7"
+          },
+          {
+            "contract_path": "src/safe_230_SAFE.sol",
+            "line_no": 121,
+            "src": "2832:9",
+            "src_char": "2832:9"
+          },
+          {
+            "contract_path": "src/safe_230_SAFE.sol",
+            "line_no": 132,
+            "src": "3107:9",
+            "src_char": "3106:9"
+          },
+          {
+            "contract_path": "src/safe_230_SAFE.sol",
+            "line_no": 139,
+            "src": "3367:9",
+            "src_char": "3365:9"
+          }
+        ]
+      },
+      {
+        "title": "Constant Function Contains Assembly",
+        "description": "constant/pure/view was not enforced prior to Solidity 0.5. Starting from Solidity 0.5, a call to a constant/pure/view function uses the STATICCALL opcode, which reverts in case of state modification. As a result, a call to an incorrectly labeled function may trap a contract compiled with Solidity 0.5. https://docs.soliditylang.org/en/develop/050-breaking-changes.html#interoperability-with-older-contracts",
+        "detector_name": "constant-function-contains-assembly",
+        "instances": [
+          {
+            "contract_path": "src/safe_230_SAFE.sol",
+            "line_no": 63,
+            "src": "1437:693",
+            "src_char": "1437:693"
+          },
+          {
+            "contract_path": "src/safe_230_SAFE.sol",
+            "line_no": 146,
+            "src": "3538:213",
+            "src_char": "3536:213"
+          }
+        ]
+      },
+      {
+        "title": "`ecrecover` Signature Malleability",
+        "description": "The `ecrecover` function is susceptible to signature malleability. This means that the same message can be signed in multiple ways, allowing an attacker to change the message signature without invalidating it. This can lead to unexpected behavior in smart contracts, such as the loss of funds or the ability to bypass access control. Consider using OpenZeppelin's ECDSA library instead of the built-in function.",
+        "detector_name": "ecrecover",
+        "instances": [
+          {
+            "contract_path": "src/safe_230_SAFE.sol",
+            "line_no": 89,
+            "src": "2095:9",
+            "src_char": "2095:9"
+          }
+        ]
+      },
+      {
+        "title": "Empty `require()` / `revert()` Statement",
+        "description": "Use descriptive reason strings or custom errors for revert paths.",
+        "detector_name": "empty-require-revert",
+        "instances": [
+          {
+            "contract_path": "src/safe_230_SAFE.sol",
+            "line_no": 29,
+            "src": "625:7",
+            "src_char": "625:7"
+          },
+          {
+            "contract_path": "src/safe_230_SAFE.sol",
+            "line_no": 39,
+            "src": "895:7",
+            "src_char": "895:7"
+          },
+          {
+            "contract_path": "src/safe_230_SAFE.sol",
+            "line_no": 115,
+            "src": "2666:7",
+            "src_char": "2666:7"
+          },
+          {
+            "contract_path": "src/safe_230_SAFE.sol",
+            "line_no": 122,
+            "src": "2852:7",
+            "src_char": "2852:7"
+          },
+          {
+            "contract_path": "src/safe_230_SAFE.sol",
+            "line_no": 133,
+            "src": "3127:7",
+            "src_char": "3126:7"
+          }
+        ]
+      },
+      {
+        "title": "Literal Instead of Constant",
+        "description": "Define and use `constant` variables instead of using literals. If the same constant literal value is used multiple times, create a constant state variable and reference it throughout the contract.",
+        "detector_name": "literal-instead-of-constant",
+        "instances": [
+          {
+            "contract_path": "src/safe_230_SAFE.sol",
+            "line_no": 81,
+            "src": "1925:2",
+            "src_char": "1925:2"
+          },
+          {
+            "contract_path": "src/safe_230_SAFE.sol",
+            "line_no": 82,
+            "src": "1942:2",
+            "src_char": "1942:2"
+          },
+          {
+            "contract_path": "src/safe_230_SAFE.sol",
+            "line_no": 86,
+            "src": "2025:2",
+            "src_char": "2025:2"
+          }
+        ]
+      },
+      {
+        "title": "Uninitialized Local Variable",
+        "description": "Initialize all the variables. If a variable is meant to be initialized to zero, explicitly set it to zero to improve code readability.",
+        "detector_name": "uninitialized-local-variable",
+        "instances": [
+          {
+            "contract_path": "src/safe_230_SAFE.sol",
+            "line_no": 64,
+            "src": "1515:9",
+            "src_char": "1515:9"
+          },
+          {
+            "contract_path": "src/safe_230_SAFE.sol",
+            "line_no": 65,
+            "src": "1530:9",
+            "src_char": "1530:9"
+          }
+        ]
+      },
+      {
+        "title": "Public Function Not Used Internally",
+        "description": "If a function is marked public but is not used internally, consider marking it as `external`.",
+        "detector_name": "unused-public-function",
+        "instances": [
+          {
+            "contract_path": "src/safe_230_SAFE.sol",
+            "line_no": 38,
+            "src": "827:169",
+            "src_char": "827:169"
+          },
+          {
+            "contract_path": "src/safe_230_SAFE.sol",
+            "line_no": 63,
+            "src": "1437:693",
+            "src_char": "1437:693"
+          },
+          {
+            "contract_path": "src/safe_230_SAFE.sol",
+            "line_no": 121,
+            "src": "2789:127",
+            "src_char": "2789:127"
+          },
+          {
+            "contract_path": "src/safe_230_SAFE.sol",
+            "line_no": 139,
+            "src": "3304:187",
+            "src_char": "3302:187"
+          },
+          {
+            "contract_path": "src/safe_230_SAFE.sol",
+            "line_no": 146,
+            "src": "3538:213",
+            "src_char": "3536:213"
+          }
+        ]
+      }
+    ]
+  },
+  "detectors_used": [
+    "abi-encode-packed-hash-collision",
+    "arbitrary-transfer-from",
+    "assert-state-change",
+    "block-timestamp-deadline",
+    "boolean-equality",
+    "builtin-symbol-shadowing",
+    "centralization-risk",
+    "constant-function-changes-state",
+    "constant-function-contains-assembly",
+    "contract-locks-ether",
+    "costly-loop",
+    "dangerous-unary-operator",
+    "dead-code",
+    "delegate-call-unchecked-address",
+    "delegatecall-in-loop",
+    "delete-nested-mapping",
+    "deprecated-oz-function",
+    "division-before-multiplication",
+    "dynamic-array-length-assignment",
+    "ecrecover",
+    "empty-block",
+    "empty-require-revert",
+    "enumerable-loop-removal",
+    "eth-send-unchecked-address",
+    "experimental-encoder",
+    "function-initializing-state",
+    "function-pointer-in-constructor",
+    "function-selector-collision",
+    "inconsistent-type-names",
+    "incorrect-caret-operator",
+    "incorrect-erc20-interface",
+    "incorrect-erc721-interface",
+    "incorrect-shift-order",
+    "incorrect-use-of-modifier",
+    "internal-function-used-once",
+    "large-numeric-literal",
+    "literal-instead-of-constant",
+    "local-variable-shadowing",
+    "missing-inheritance",
+    "misused-boolean",
+    "modifier-used-only-once",
+    "msg-value-in-loop",
+    "multiple-constructors",
+    "multiple-placeholders",
+    "nested-struct-in-mapping",
+    "non-reentrant-not-first",
+    "out-of-order-retryable",
+    "pre-declared-local-variable-usage",
+    "push-zero-opcode",
+    "redundant-statement",
+    "reentrancy-state-change",
+    "require-revert-in-loop",
+    "return-bomb",
+    "reused-contract-name",
+    "rtlo",
+    "selfdestruct",
+    "signed-integer-storage-array",
+    "solmate-safe-transfer-lib",
+    "state-change-without-event",
+    "state-no-address-check",
+    "state-variable-could-be-constant",
+    "state-variable-could-be-immutable",
+    "state-variable-init-order",
+    "state-variable-read-external",
+    "state-variable-shadowing",
+    "storage-array-length-not-cached",
+    "storage-array-memory-edit",
+    "strict-equality-contract-balance",
+    "tautological-compare",
+    "tautology-or-contradiction",
+    "todo",
+    "tx-origin-used-for-auth",
+    "unchecked-low-level-call",
+    "unchecked-return",
+    "unchecked-send",
+    "uninitialized-local-variable",
+    "unprotected-initializer",
+    "unsafe-casting",
+    "unsafe-erc20-operation",
+    "unsafe-oz-erc721-mint",
+    "unspecific-solidity-pragma",
+    "unused-error",
+    "unused-import",
+    "unused-public-function",
+    "unused-state-variable",
+    "void-constructor",
+    "weak-randomness",
+    "yul-return"
+  ]
+}

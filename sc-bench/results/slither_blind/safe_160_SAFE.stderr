@@ -1,0 +1,45 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_160_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+
+Detector: solc-version
+Version constraint ^0.4.21 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ABIEncoderV2PackedStorage_0.4.x
+	- ExpExponentCleanup
+	- EventStructWrongData
+	- NestedArrayFunctionCallDecoder.
+It is used by:
+	- ^0.4.21 (contracts/safe/safe_160_SAFE.sol#1)
+solc-0.4.21 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Contract BAZAN__20230515 (contracts/safe/safe_160_SAFE.sol#3-56) is not in CapWords
+Function BAZAN__20230515.SimpleERC20Token() (contracts/safe/safe_160_SAFE.sol#15-18) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: too-many-digits
+BAZAN__20230515.slitherConstructorVariables() (contracts/safe/safe_160_SAFE.sol#3-56) uses literals with too many digits:
+	- totalSupply = 15649075219292400000000000 (contracts/safe/safe_160_SAFE.sol#11)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#too-many-digits
+
+Detector: constable-states
+BAZAN__20230515.decimals (contracts/safe/safe_160_SAFE.sol#9) should be constant 
+BAZAN__20230515.name (contracts/safe/safe_160_SAFE.sol#7) should be constant 
+BAZAN__20230515.symbol (contracts/safe/safe_160_SAFE.sol#8) should be constant 
+BAZAN__20230515.totalSupply (contracts/safe/safe_160_SAFE.sol#11) should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_160_SAFE.sol analyzed (1 contracts with 101 detectors), 9 result(s) found

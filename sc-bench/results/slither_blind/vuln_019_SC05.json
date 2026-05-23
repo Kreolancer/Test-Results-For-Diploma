@@ -1,0 +1,1466 @@
+{
+  "success": true,
+  "error": null,
+  "results": {
+    "detectors": [
+      {
+        "elements": [
+          {
+            "type": "contract",
+            "name": "BlackJack",
+            "source_mapping": {
+              "start": 1311,
+              "length": 7299,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            }
+          },
+          {
+            "type": "node",
+            "name": "games[msg.sender].playerCards.push(Deck.deal(msg.sender,nextCard))",
+            "source_mapping": {
+              "start": 3230,
+              "length": 67,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "hit",
+                "source_mapping": {
+                  "start": 3141,
+                  "length": 339,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "BlackJack",
+                    "source_mapping": {
+                      "start": 1311,
+                      "length": 7299,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "hit()"
+                }
+              }
+            }
+          }
+        ],
+        "description": "BlackJack () contract sets array length with a user-controlled value:\n\t- games[msg.sender].playerCards.push(Deck.deal(msg.sender,nextCard)) ()\n",
+        "markdown": "[BlackJack]() contract sets array length with a user-controlled value:\n\t- [games[msg.sender].playerCards.push(Deck.deal(msg.sender,nextCard))]()\n",
+        "first_markdown_element": "",
+        "id": "3467986bedd172c7e0c474c24817cbb3e6f6b7f20e56a553e26ba5847b94d302",
+        "check": "controlled-array-length",
+        "impact": "High",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [
+          {
+            "type": "contract",
+            "name": "BlackJack",
+            "source_mapping": {
+              "start": 1311,
+              "length": 7299,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            }
+          },
+          {
+            "type": "node",
+            "name": "games[msg.sender].houseCards.push(newCard)",
+            "source_mapping": {
+              "start": 3765,
+              "length": 42,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "stand",
+                "source_mapping": {
+                  "start": 3505,
+                  "length": 477,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "BlackJack",
+                    "source_mapping": {
+                      "start": 1311,
+                      "length": 7299,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "stand()"
+                }
+              }
+            }
+          }
+        ],
+        "description": "BlackJack () contract sets array length with a user-controlled value:\n\t- games[msg.sender].houseCards.push(newCard) ()\n",
+        "markdown": "[BlackJack]() contract sets array length with a user-controlled value:\n\t- [games[msg.sender].houseCards.push(newCard)]()\n",
+        "first_markdown_element": "",
+        "id": "b32eceddfef79f670a8851733d08b92a8311358cc7aad67dfc9ed4700d73bf27",
+        "check": "controlled-array-length",
+        "impact": "High",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "deal",
+            "source_mapping": {
+              "start": 510,
+              "length": 335,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "Deck",
+                "source_mapping": {
+                  "start": 277,
+                  "length": 1031,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "deal(address,uint8)"
+            }
+          },
+          {
+            "type": "node",
+            "name": "uint8(uint256(keccak256()(block.blockhash(b),player,cardNumber,timestamp)) % 52)",
+            "source_mapping": {
+              "start": 753,
+              "length": 88,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "deal",
+                "source_mapping": {
+                  "start": 510,
+                  "length": 335,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "Deck",
+                    "source_mapping": {
+                      "start": 277,
+                      "length": 1031,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "deal(address,uint8)"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Deck.deal(address,uint8) () uses a weak PRNG: \"uint8(uint256(keccak256()(block.blockhash(b),player,cardNumber,timestamp)) % 52) ()\" \n",
+        "markdown": "[Deck.deal(address,uint8)]() uses a weak PRNG: \"[uint8(uint256(keccak256()(block.blockhash(b),player,cardNumber,timestamp)) % 52)]()\" \n",
+        "first_markdown_element": "",
+        "id": "7e5cb718ec8b05a9723b533a34f5ed8b791e9ff32262fe53f2686736a48c525e",
+        "check": "weak-prng",
+        "impact": "High",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "getPlayerCard",
+            "source_mapping": {
+              "start": 7564,
+              "length": 201,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "BlackJack",
+                "source_mapping": {
+                  "start": 1311,
+                  "length": 7299,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "getPlayerCard(uint8)"
+            }
+          },
+          {
+            "type": "node",
+            "name": "id < 0 || id > games[msg.sender].playerCards.length",
+            "source_mapping": {
+              "start": 7650,
+              "length": 51,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "getPlayerCard",
+                "source_mapping": {
+                  "start": 7564,
+                  "length": 201,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "BlackJack",
+                    "source_mapping": {
+                      "start": 1311,
+                      "length": 7299,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "getPlayerCard(uint8)"
+                }
+              }
+            }
+          }
+        ],
+        "description": "BlackJack.getPlayerCard(uint8) () contains a tautology or contradiction:\n\t- id < 0 || id > games[msg.sender].playerCards.length ()\n",
+        "markdown": "[BlackJack.getPlayerCard(uint8)]() contains a tautology or contradiction:\n\t- [id < 0 || id > games[msg.sender].playerCards.length]()\n",
+        "first_markdown_element": "",
+        "id": "06a801a515b72340f890ed95cb59ae766d8e36dc70973f1d3f735b1811a4e92c",
+        "check": "tautology",
+        "impact": "Medium",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "getHouseCard",
+            "source_mapping": {
+              "start": 7768,
+              "length": 198,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "BlackJack",
+                "source_mapping": {
+                  "start": 1311,
+                  "length": 7299,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "getHouseCard(uint8)"
+            }
+          },
+          {
+            "type": "node",
+            "name": "id < 0 || id > games[msg.sender].houseCards.length",
+            "source_mapping": {
+              "start": 7853,
+              "length": 50,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "getHouseCard",
+                "source_mapping": {
+                  "start": 7768,
+                  "length": 198,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "BlackJack",
+                    "source_mapping": {
+                      "start": 1311,
+                      "length": 7299,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "getHouseCard(uint8)"
+                }
+              }
+            }
+          }
+        ],
+        "description": "BlackJack.getHouseCard(uint8) () contains a tautology or contradiction:\n\t- id < 0 || id > games[msg.sender].houseCards.length ()\n",
+        "markdown": "[BlackJack.getHouseCard(uint8)]() contains a tautology or contradiction:\n\t- [id < 0 || id > games[msg.sender].houseCards.length]()\n",
+        "first_markdown_element": "",
+        "id": "fc753bb896637469eb295808eae9368d462b53f0beacfd4327ebd55a9d018d4c",
+        "check": "tautology",
+        "impact": "Medium",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "isAce",
+            "source_mapping": {
+              "start": 1126,
+              "length": 88,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "Deck",
+                "source_mapping": {
+                  "start": 277,
+                  "length": 1031,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "isAce(uint8)"
+            }
+          }
+        ],
+        "description": "Deck.isAce(uint8) () is never used and should be removed\n",
+        "markdown": "[Deck.isAce(uint8)]() is never used and should be removed\n",
+        "first_markdown_element": "",
+        "id": "27f88628eeec3c9f58d693ce7b391b7212cc14ba433664dc64b439c029bcef96",
+        "check": "dead-code",
+        "impact": "Informational",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "isTen",
+            "source_mapping": {
+              "start": 1217,
+              "length": 89,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "Deck",
+                "source_mapping": {
+                  "start": 277,
+                  "length": 1031,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "isTen(uint8)"
+            }
+          }
+        ],
+        "description": "Deck.isTen(uint8) () is never used and should be removed\n",
+        "markdown": "[Deck.isTen(uint8)]() is never used and should be removed\n",
+        "first_markdown_element": "",
+        "id": "336d8ed23e6a125d3fb791a2dc0264d36d3e2370cd732018d63e70604acb76c8",
+        "check": "dead-code",
+        "impact": "Informational",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "valueOf",
+            "source_mapping": {
+              "start": 848,
+              "length": 275,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "Deck",
+                "source_mapping": {
+                  "start": 277,
+                  "length": 1031,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "valueOf(uint8,bool)"
+            }
+          }
+        ],
+        "description": "Deck.valueOf(uint8,bool) () is never used and should be removed\n",
+        "markdown": "[Deck.valueOf(uint8,bool)]() is never used and should be removed\n",
+        "first_markdown_element": "",
+        "id": "444f678f6ddaf7c3bfb1f8e5fc131cb768ab09dc7e7a8f4d4b512b776d3e97bb",
+        "check": "dead-code",
+        "impact": "Informational",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "deal",
+            "source_mapping": {
+              "start": 510,
+              "length": 335,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "Deck",
+                "source_mapping": {
+                  "start": 277,
+                  "length": 1031,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "deal(address,uint8)"
+            }
+          }
+        ],
+        "description": "Deck.deal(address,uint8) () is never used and should be removed\n",
+        "markdown": "[Deck.deal(address,uint8)]() is never used and should be removed\n",
+        "first_markdown_element": "",
+        "id": "4b9fdbc47da5dee140e32190ac7c352e8e310256d61f2867444327abe51f3203",
+        "check": "dead-code",
+        "impact": "Informational",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [
+          {
+            "type": "node",
+            "name": "uint8(uint256(keccak256()(block.blockhash(b),player,cardNumber,timestamp)) % 52)",
+            "source_mapping": {
+              "start": 753,
+              "length": 88,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "deal",
+                "source_mapping": {
+                  "start": 510,
+                  "length": 335,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "Deck",
+                    "source_mapping": {
+                      "start": 277,
+                      "length": 1031,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "deal(address,uint8)"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Deprecated standard detected uint8(uint256(keccak256()(block.blockhash(b),player,cardNumber,timestamp)) % 52) ():\n\t- Usage of \"block.blockhash()\" should be replaced with \"blockhash()\"\n",
+        "markdown": "Deprecated standard detected [uint8(uint256(keccak256()(block.blockhash(b),player,cardNumber,timestamp)) % 52)]():\n\t- Usage of \"block.blockhash()\" should be replaced with \"blockhash()\"\n",
+        "first_markdown_element": "",
+        "id": "89a22392619706e4e34bc39fc872a943785512caa4e83cd559380c4e819e57ff",
+        "check": "deprecated-standards",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "node",
+            "name": "",
+            "source_mapping": {
+              "start": 2412,
+              "length": 5,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "deal",
+                "source_mapping": {
+                  "start": 2289,
+                  "length": 811,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "BlackJack",
+                    "source_mapping": {
+                      "start": 1311,
+                      "length": 7299,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "deal()"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Deprecated standard detected THROW ():\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+        "markdown": "Deprecated standard detected [THROW]():\n\t- Usage of \"throw\" should be replaced with \"revert()\"\n",
+        "first_markdown_element": "",
+        "id": "f5556cf1c70b64b9e4b1fc32044dd970b5f2c8b9fc21b7971fda01971033f2d5",
+        "check": "deprecated-standards",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [],
+        "description": "solc-0.4.9 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.\n",
+        "markdown": "solc-0.4.9 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.\n",
+        "first_markdown_element": "",
+        "id": "2d3125ec07b7daa2630c1894a1788429465b9573aa1ae5ce425701b9cfc4f902",
+        "check": "solc-version",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "pragma",
+            "name": "^0.4.9",
+            "source_mapping": {
+              "start": 252,
+              "length": 23,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "directive": [
+                "solidity",
+                "^",
+                "0.4",
+                ".9"
+              ]
+            }
+          }
+        ],
+        "description": "Version constraint ^0.4.9 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- DirtyBytesArrayToStorage\n\t- KeccakCaching\n\t- EmptyByteArrayCopy\n\t- DynamicArrayCleanup\n\t- ImplicitConstructorCallvalueCheck\n\t- TupleAssignmentMultiStackSlotComponents\n\t- MemoryArrayCreationOverflow\n\t- privateCanBeOverridden\n\t- SignedArrayStorageCopy\n\t- UninitializedFunctionPointerInConstructor_0.4.x\n\t- IncorrectEventSignatureInLibraries_0.4.x\n\t- ExpExponentCleanup\n\t- NestedArrayFunctionCallDecoder\n\t- ZeroFunctionSelector\n\t- DelegateCallReturnValue\n\t- ECRecoverMalformedInput\n\t- SkipEmptyStringLiteral\n\t- ConstantOptimizerSubtraction.\nIt is used by:\n\t- ^0.4.9 ()\n",
+        "markdown": "Version constraint ^0.4.9 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- DirtyBytesArrayToStorage\n\t- KeccakCaching\n\t- EmptyByteArrayCopy\n\t- DynamicArrayCleanup\n\t- ImplicitConstructorCallvalueCheck\n\t- TupleAssignmentMultiStackSlotComponents\n\t- MemoryArrayCreationOverflow\n\t- privateCanBeOverridden\n\t- SignedArrayStorageCopy\n\t- UninitializedFunctionPointerInConstructor_0.4.x\n\t- IncorrectEventSignatureInLibraries_0.4.x\n\t- ExpExponentCleanup\n\t- NestedArrayFunctionCallDecoder\n\t- ZeroFunctionSelector\n\t- DelegateCallReturnValue\n\t- ECRecoverMalformedInput\n\t- SkipEmptyStringLiteral\n\t- ConstantOptimizerSubtraction.\nIt is used by:\n\t- [^0.4.9]()\n",
+        "first_markdown_element": "",
+        "id": "abcb50a8f2deb4c0ecfb342119a689c1d0ce7330ad7d137c12d454acc503893c",
+        "check": "solc-version",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "BLACKJACK",
+            "source_mapping": {
+              "start": 1430,
+              "length": 20,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "BlackJack",
+                "source_mapping": {
+                  "start": 1311,
+                  "length": 7299,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "variable",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Variable BlackJack.BLACKJACK () is not in mixedCase\n",
+        "markdown": "Variable [BlackJack.BLACKJACK]() is not in mixedCase\n",
+        "first_markdown_element": "",
+        "id": "a79597a30cbea5f3d4f42cf143d6134182a169628262b7fd1d2b7e7951192309",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "checkGameResult",
+            "source_mapping": {
+              "start": 4091,
+              "length": 2874,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "BlackJack",
+                "source_mapping": {
+                  "start": 1311,
+                  "length": 7299,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "checkGameResult(BlackJack.Game,bool)"
+            }
+          },
+          {
+            "type": "node",
+            "name": "! msg.sender.send(game.bet)",
+            "source_mapping": {
+              "start": 4570,
+              "length": 26,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "checkGameResult",
+                "source_mapping": {
+                  "start": 4091,
+                  "length": 2874,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "BlackJack",
+                    "source_mapping": {
+                      "start": 1311,
+                      "length": 7299,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "checkGameResult(BlackJack.Game,bool)"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "external_calls"
+            }
+          },
+          {
+            "type": "node",
+            "name": "games[msg.sender].state = GameState.Tie",
+            "source_mapping": {
+              "start": 4637,
+              "length": 39,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "checkGameResult",
+                "source_mapping": {
+                  "start": 4091,
+                  "length": 2874,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "BlackJack",
+                    "source_mapping": {
+                      "start": 1311,
+                      "length": 7299,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "checkGameResult(BlackJack.Game,bool)"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "variables_written",
+              "variable_name": "games"
+            }
+          }
+        ],
+        "description": "Reentrancy in BlackJack.checkGameResult(BlackJack.Game,bool) ():\n\tExternal calls:\n\t- ! msg.sender.send(game.bet) ()\n\tState variables written after the call(s):\n\t- games[msg.sender].state = GameState.Tie ()\n",
+        "markdown": "Reentrancy in [BlackJack.checkGameResult(BlackJack.Game,bool)]():\n\tExternal calls:\n\t- [! msg.sender.send(game.bet)]()\n\tState variables written after the call(s):\n\t- [games[msg.sender].state = GameState.Tie]()\n",
+        "first_markdown_element": "",
+        "id": "5d323ad0e06d54ee385c01b70e23d721552cc0788a25593091774a36eeaad0ed",
+        "check": "reentrancy-unlimited-gas",
+        "impact": "Informational",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "checkGameResult",
+            "source_mapping": {
+              "start": 4091,
+              "length": 2874,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "BlackJack",
+                "source_mapping": {
+                  "start": 1311,
+                  "length": 7299,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "checkGameResult(BlackJack.Game,bool)"
+            }
+          },
+          {
+            "type": "node",
+            "name": "! msg.sender.send((game.bet * 5) / 2)",
+            "source_mapping": {
+              "start": 5085,
+              "length": 36,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "checkGameResult",
+                "source_mapping": {
+                  "start": 4091,
+                  "length": 2874,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "BlackJack",
+                    "source_mapping": {
+                      "start": 1311,
+                      "length": 7299,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "checkGameResult(BlackJack.Game,bool)"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "external_calls"
+            }
+          },
+          {
+            "type": "node",
+            "name": "! msg.sender.send(game.bet * 2)",
+            "source_mapping": {
+              "start": 5217,
+              "length": 30,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "checkGameResult",
+                "source_mapping": {
+                  "start": 4091,
+                  "length": 2874,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "BlackJack",
+                    "source_mapping": {
+                      "start": 1311,
+                      "length": 7299,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "checkGameResult(BlackJack.Game,bool)"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "external_calls"
+            }
+          },
+          {
+            "type": "node",
+            "name": "games[msg.sender].state = GameState.Player",
+            "source_mapping": {
+              "start": 5294,
+              "length": 42,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "checkGameResult",
+                "source_mapping": {
+                  "start": 4091,
+                  "length": 2874,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "BlackJack",
+                    "source_mapping": {
+                      "start": 1311,
+                      "length": 7299,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "checkGameResult(BlackJack.Game,bool)"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "variables_written",
+              "variable_name": "games"
+            }
+          }
+        ],
+        "description": "Reentrancy in BlackJack.checkGameResult(BlackJack.Game,bool) ():\n\tExternal calls:\n\t- ! msg.sender.send((game.bet * 5) / 2) ()\n\t- ! msg.sender.send(game.bet * 2) ()\n\tState variables written after the call(s):\n\t- games[msg.sender].state = GameState.Player ()\n",
+        "markdown": "Reentrancy in [BlackJack.checkGameResult(BlackJack.Game,bool)]():\n\tExternal calls:\n\t- [! msg.sender.send((game.bet * 5) / 2)]()\n\t- [! msg.sender.send(game.bet * 2)]()\n\tState variables written after the call(s):\n\t- [games[msg.sender].state = GameState.Player]()\n",
+        "first_markdown_element": "",
+        "id": "6a37de92e364a16f7c5fd6acb3e075a461d341adb51c7d61161a7c7fb5b7ef16",
+        "check": "reentrancy-unlimited-gas",
+        "impact": "Informational",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "checkGameResult",
+            "source_mapping": {
+              "start": 4091,
+              "length": 2874,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "BlackJack",
+                "source_mapping": {
+                  "start": 1311,
+                  "length": 7299,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "checkGameResult(BlackJack.Game,bool)"
+            }
+          },
+          {
+            "type": "node",
+            "name": "! msg.sender.send(game.bet * 2)",
+            "source_mapping": {
+              "start": 6163,
+              "length": 30,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "checkGameResult",
+                "source_mapping": {
+                  "start": 4091,
+                  "length": 2874,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "BlackJack",
+                    "source_mapping": {
+                      "start": 1311,
+                      "length": 7299,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "checkGameResult(BlackJack.Game,bool)"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "external_calls"
+            }
+          },
+          {
+            "type": "node",
+            "name": "games[msg.sender].state = GameState.Player",
+            "source_mapping": {
+              "start": 6236,
+              "length": 42,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "checkGameResult",
+                "source_mapping": {
+                  "start": 4091,
+                  "length": 2874,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "BlackJack",
+                    "source_mapping": {
+                      "start": 1311,
+                      "length": 7299,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "checkGameResult(BlackJack.Game,bool)"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "variables_written",
+              "variable_name": "games"
+            }
+          }
+        ],
+        "description": "Reentrancy in BlackJack.checkGameResult(BlackJack.Game,bool) ():\n\tExternal calls:\n\t- ! msg.sender.send(game.bet * 2) ()\n\tState variables written after the call(s):\n\t- games[msg.sender].state = GameState.Player ()\n",
+        "markdown": "Reentrancy in [BlackJack.checkGameResult(BlackJack.Game,bool)]():\n\tExternal calls:\n\t- [! msg.sender.send(game.bet * 2)]()\n\tState variables written after the call(s):\n\t- [games[msg.sender].state = GameState.Player]()\n",
+        "first_markdown_element": "",
+        "id": "a8ef70234d4b1bea6b1726db0130f61c64725839bad81e352035dec1b609df94",
+        "check": "reentrancy-unlimited-gas",
+        "impact": "Informational",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "minBet",
+            "source_mapping": {
+              "start": 1353,
+              "length": 30,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "BlackJack",
+                "source_mapping": {
+                  "start": 1311,
+                  "length": 7299,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              }
+            }
+          }
+        ],
+        "description": "BlackJack.minBet () should be constant \n",
+        "markdown": "[BlackJack.minBet]() should be constant \n",
+        "first_markdown_element": "",
+        "id": "7beb290e7b1c486ae1ded16ab48c0871ee6f1639990e34be843f58128e6e00c5",
+        "check": "constable-states",
+        "impact": "Optimization",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "maxBet",
+            "source_mapping": {
+              "start": 1398,
+              "length": 28,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "BlackJack",
+                "source_mapping": {
+                  "start": 1311,
+                  "length": 7299,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              }
+            }
+          }
+        ],
+        "description": "BlackJack.maxBet () should be constant \n",
+        "markdown": "[BlackJack.maxBet]() should be constant \n",
+        "first_markdown_element": "",
+        "id": "7c1e0380ec5ab859f33a2bd74f5e61f85e3c6f0b33c8ca0b97b7ab94525628a1",
+        "check": "constable-states",
+        "impact": "Optimization",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "BLACKJACK",
+            "source_mapping": {
+              "start": 1430,
+              "length": 20,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "BlackJack",
+                "source_mapping": {
+                  "start": 1311,
+                  "length": 7299,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              }
+            }
+          }
+        ],
+        "description": "BlackJack.BLACKJACK () should be constant \n",
+        "markdown": "[BlackJack.BLACKJACK]() should be constant \n",
+        "first_markdown_element": "",
+        "id": "a0ed1ed6e014de6effe85b205b3127d626553d47ad9daa8893c5a386b70aaf30",
+        "check": "constable-states",
+        "impact": "Optimization",
+        "confidence": "High"
+      }
+    ]
+  }
+}

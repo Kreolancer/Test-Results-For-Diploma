@@ -1,0 +1,7 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_170_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+
+Detector: weak-prng
+Zlots.random(uint256,uint256,address) (contracts/safe/safe_170_SAFE.sol#427-429) uses a weak PRNG: "maxRandom(blockn,entropy) % upper (contracts/safe/safe_170_SAFE.sol#428)" 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#weak-PRNG
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_170_SAFE.sol analyzed (4 contracts with 2 detectors), 1 result(s) found

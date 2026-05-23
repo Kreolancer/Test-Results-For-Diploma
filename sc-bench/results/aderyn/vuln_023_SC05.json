@@ -1,0 +1,268 @@
+{
+  "files_summary": {
+    "total_source_units": 1,
+    "total_sloc": 122
+  },
+  "files_details": {
+    "files_details": [
+      {
+        "file_path": "src/vuln_023_SC05.sol",
+        "n_sloc": 122
+      }
+    ]
+  },
+  "issue_count": {
+    "high": 3,
+    "low": 4
+  },
+  "high_issues": {
+    "issues": [
+      {
+        "title": "Direct assignment of array length",
+        "description": "If the length of a dynamic array (storage variable) is directly assigned to, it may allow access to other storage slots by tweaking it's value. This practice has been deprecated in newer Solidity versions",
+        "detector_name": "dynamic-array-length-assignment",
+        "instances": [
+          {
+            "contract_path": "src/vuln_023_SC05.sol",
+            "line_no": 76,
+            "src": "1961:11",
+            "src_char": "1961:11"
+          },
+          {
+            "contract_path": "src/vuln_023_SC05.sol",
+            "line_no": 159,
+            "src": "4787:11",
+            "src_char": "4787:11"
+          }
+        ]
+      },
+      {
+        "title": "Reentrancy: State change after external call",
+        "description": "Changing state after an external call can lead to re-entrancy attacks.Use the checks-effects-interactions pattern to avoid this issue.",
+        "detector_name": "reentrancy-state-change",
+        "instances": [
+          {
+            "contract_path": "src/vuln_023_SC05.sol",
+            "line_no": 150,
+            "src": "4467:44",
+            "src_char": "4467:44",
+            "hint": "State is changed at: `raffleId++`, `nextTicket = 0`, `blockNumber = block.number`, `gaps.length = 0`"
+          }
+        ]
+      },
+      {
+        "title": "`selfdestruct` is Deprecated",
+        "description": "Remove the `selfdestruct` instruction from the code.",
+        "detector_name": "selfdestruct",
+        "instances": [
+          {
+            "contract_path": "src/vuln_023_SC05.sol",
+            "line_no": 171,
+            "src": "5025:12",
+            "src_char": "5025:12"
+          }
+        ]
+      }
+    ]
+  },
+  "low_issues": {
+    "issues": [
+      {
+        "title": "Local Variable Shadows State Variable",
+        "description": "Rename the local variable that shadows another state variable.",
+        "detector_name": "local-variable-shadowing",
+        "instances": [
+          {
+            "contract_path": "src/vuln_023_SC05.sol",
+            "line_no": 13,
+            "src": "370:13",
+            "src_char": "370:13"
+          }
+        ]
+      },
+      {
+        "title": "Unsafe ERC20 Operation",
+        "description": "ERC20 functions may not behave as expected. For example: return values are not always meaningful. It is recommended to use OpenZeppelin's SafeERC20 library.",
+        "detector_name": "unsafe-erc20-operation",
+        "instances": [
+          {
+            "contract_path": "src/vuln_023_SC05.sol",
+            "line_no": 66,
+            "src": "1652:19",
+            "src_char": "1652:19"
+          },
+          {
+            "contract_path": "src/vuln_023_SC05.sol",
+            "line_no": 93,
+            "src": "2451:19",
+            "src_char": "2451:19"
+          },
+          {
+            "contract_path": "src/vuln_023_SC05.sol",
+            "line_no": 121,
+            "src": "3476:23",
+            "src_char": "3476:23"
+          },
+          {
+            "contract_path": "src/vuln_023_SC05.sol",
+            "line_no": 122,
+            "src": "3516:19",
+            "src_char": "3516:19"
+          },
+          {
+            "contract_path": "src/vuln_023_SC05.sol",
+            "line_no": 138,
+            "src": "4052:19",
+            "src_char": "4052:19"
+          },
+          {
+            "contract_path": "src/vuln_023_SC05.sol",
+            "line_no": 150,
+            "src": "4467:28",
+            "src_char": "4467:28"
+          }
+        ]
+      },
+      {
+        "title": "Unspecific Solidity Pragma",
+        "description": "Consider using a specific version of Solidity in your contracts instead of a wide version. For example, instead of `pragma solidity ^0.8.0;`, use `pragma solidity 0.8.0;`",
+        "detector_name": "unspecific-solidity-pragma",
+        "instances": [
+          {
+            "contract_path": "src/vuln_023_SC05.sol",
+            "line_no": 8,
+            "src": "265:24",
+            "src_char": "265:24"
+          }
+        ]
+      },
+      {
+        "title": "Public Function Not Used Internally",
+        "description": "If a function is marked public but is not used internally, consider marking it as `external`.",
+        "detector_name": "unused-public-function",
+        "instances": [
+          {
+            "contract_path": "src/vuln_023_SC05.sol",
+            "line_no": 60,
+            "src": "1517:56",
+            "src_char": "1517:56"
+          },
+          {
+            "contract_path": "src/vuln_023_SC05.sol",
+            "line_no": 126,
+            "src": "3605:491",
+            "src_char": "3605:491"
+          },
+          {
+            "contract_path": "src/vuln_023_SC05.sol",
+            "line_no": 143,
+            "src": "4168:651",
+            "src_char": "4168:651"
+          },
+          {
+            "contract_path": "src/vuln_023_SC05.sol",
+            "line_no": 163,
+            "src": "4825:117",
+            "src_char": "4825:117"
+          },
+          {
+            "contract_path": "src/vuln_023_SC05.sol",
+            "line_no": 169,
+            "src": "4948:118",
+            "src_char": "4948:118"
+          }
+        ]
+      }
+    ]
+  },
+  "detectors_used": [
+    "abi-encode-packed-hash-collision",
+    "arbitrary-transfer-from",
+    "assert-state-change",
+    "block-timestamp-deadline",
+    "boolean-equality",
+    "builtin-symbol-shadowing",
+    "centralization-risk",
+    "constant-function-changes-state",
+    "constant-function-contains-assembly",
+    "contract-locks-ether",
+    "costly-loop",
+    "dangerous-unary-operator",
+    "dead-code",
+    "delegate-call-unchecked-address",
+    "delegatecall-in-loop",
+    "delete-nested-mapping",
+    "deprecated-oz-function",
+    "division-before-multiplication",
+    "dynamic-array-length-assignment",
+    "ecrecover",
+    "empty-block",
+    "empty-require-revert",
+    "enumerable-loop-removal",
+    "eth-send-unchecked-address",
+    "experimental-encoder",
+    "function-initializing-state",
+    "function-pointer-in-constructor",
+    "function-selector-collision",
+    "inconsistent-type-names",
+    "incorrect-caret-operator",
+    "incorrect-erc20-interface",
+    "incorrect-erc721-interface",
+    "incorrect-shift-order",
+    "incorrect-use-of-modifier",
+    "internal-function-used-once",
+    "large-numeric-literal",
+    "literal-instead-of-constant",
+    "local-variable-shadowing",
+    "missing-inheritance",
+    "misused-boolean",
+    "modifier-used-only-once",
+    "msg-value-in-loop",
+    "multiple-constructors",
+    "multiple-placeholders",
+    "nested-struct-in-mapping",
+    "non-reentrant-not-first",
+    "out-of-order-retryable",
+    "pre-declared-local-variable-usage",
+    "push-zero-opcode",
+    "redundant-statement",
+    "reentrancy-state-change",
+    "require-revert-in-loop",
+    "return-bomb",
+    "reused-contract-name",
+    "rtlo",
+    "selfdestruct",
+    "signed-integer-storage-array",
+    "solmate-safe-transfer-lib",
+    "state-change-without-event",
+    "state-no-address-check",
+    "state-variable-could-be-constant",
+    "state-variable-could-be-immutable",
+    "state-variable-init-order",
+    "state-variable-read-external",
+    "state-variable-shadowing",
+    "storage-array-length-not-cached",
+    "storage-array-memory-edit",
+    "strict-equality-contract-balance",
+    "tautological-compare",
+    "tautology-or-contradiction",
+    "todo",
+    "tx-origin-used-for-auth",
+    "unchecked-low-level-call",
+    "unchecked-return",
+    "unchecked-send",
+    "uninitialized-local-variable",
+    "unprotected-initializer",
+    "unsafe-casting",
+    "unsafe-erc20-operation",
+    "unsafe-oz-erc721-mint",
+    "unspecific-solidity-pragma",
+    "unused-error",
+    "unused-import",
+    "unused-public-function",
+    "unused-state-variable",
+    "void-constructor",
+    "weak-randomness",
+    "yul-return"
+  ]
+}

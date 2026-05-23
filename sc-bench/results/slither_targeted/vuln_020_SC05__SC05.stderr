@@ -1,0 +1,21 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_020_SC05.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_020_SC05.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_020_SC05.sol:60:14: Warning: Return value of low-level calls not used.
+             msg.sender.send(msg.value);
+             ^------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_020_SC05.sol:74:10: Warning: Return value of low-level calls not used.
+        	msg.sender.send(msg.value - 1 ether);
+        	^----------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_020_SC05.sol:102:13: Warning: Return value of low-level calls not used.
+            theEntry.entryAddress.send(payout);
+            ^--------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_020_SC05.sol:119:17: Warning: Return value of low-level calls not used.
+                owner.send(fees);
+                ^--------------^
+
+
+Detector: weak-prng
+LuckyDoubler.rand(uint256) () uses a weak PRNG: "uint256((uint256(hashVal) / factor)) % max ()" 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#weak-PRNG
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_020_SC05.sol analyzed (1 contracts with 2 detectors), 1 result(s) found

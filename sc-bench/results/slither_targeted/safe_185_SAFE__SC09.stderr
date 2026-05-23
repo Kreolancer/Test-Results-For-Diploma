@@ -1,0 +1,10 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_185_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc' running
+
+Detector: incorrect-equality
+SafeMath.safeDiv(uint256,uint256) () uses a dangerous strict equality:
+	- assert(a == b * c + a % b) ()
+SafeMath.safeMul(uint256,uint256) () uses a dangerous strict equality:
+	- assert(a == 0 || c / a == b) ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dangerous-strict-equalities
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_185_SAFE.sol analyzed (12 contracts with 2 detectors), 2 result(s) found

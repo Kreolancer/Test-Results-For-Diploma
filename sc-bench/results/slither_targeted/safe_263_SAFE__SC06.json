@@ -1,0 +1,81 @@
+{
+  "success": true,
+  "error": null,
+  "results": {
+    "detectors": [
+      {
+        "elements": [
+          {
+            "type": "contract",
+            "name": "IEtherToken",
+            "source_mapping": {
+              "start": 5392,
+              "length": 205,
+              "filename_relative": "contracts/safe/safe_263_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_263_SAFE.sol",
+              "filename_short": "contracts/safe/safe_263_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                191,
+                192,
+                193,
+                194,
+                195
+              ],
+              "starting_column": 1,
+              "ending_column": 2
+            }
+          },
+          {
+            "type": "function",
+            "name": "deposit",
+            "source_mapping": {
+              "start": 5449,
+              "length": 34,
+              "filename_relative": "contracts/safe/safe_263_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_263_SAFE.sol",
+              "filename_short": "contracts/safe/safe_263_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                192
+              ],
+              "starting_column": 5,
+              "ending_column": 39
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "IEtherToken",
+                "source_mapping": {
+                  "start": 5392,
+                  "length": 205,
+                  "filename_relative": "contracts/safe/safe_263_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_263_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_263_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    191,
+                    192,
+                    193,
+                    194,
+                    195
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 2
+                }
+              },
+              "signature": "deposit()"
+            }
+          }
+        ],
+        "description": "Contract locking ether found:\n\tContract IEtherToken (contracts/safe/safe_263_SAFE.sol#191-195) has payable functions:\n\t - IEtherToken.deposit() (contracts/safe/safe_263_SAFE.sol#192)\n\tBut does not have a function to withdraw the ether\n",
+        "markdown": "Contract locking ether found:\n\tContract [IEtherToken](contracts/safe/safe_263_SAFE.sol#L191-L195) has payable functions:\n\t - [IEtherToken.deposit()](contracts/safe/safe_263_SAFE.sol#L192)\n\tBut does not have a function to withdraw the ether\n",
+        "first_markdown_element": "contracts/safe/safe_263_SAFE.sol#L191-L195",
+        "id": "da84e9f774d21c429f120968835a3a24da2aef02aa73ca0d446c6d5a848fead7",
+        "check": "locked-ether",
+        "impact": "Medium",
+        "confidence": "High"
+      }
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_045_SC08.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_045_SC08.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_045_SC08.sol:17:5: Warning: No visibility specified. Defaulting to "public".
+    function Private_Bank(address _log)
+    ^
+Spanning multiple lines.
+
+
+Detector: reentrancy-eth
+Reentrancy in Private_Bank.CashOut(uint256) (contracts/vulnerable/vuln_045_SC08.sol#33-46):
+	External calls:
+	- msg.sender.call.value(_am)() (contracts/vulnerable/vuln_045_SC08.sol#40)
+	State variables written after the call(s):
+	- balances[msg.sender] -= _am (contracts/vulnerable/vuln_045_SC08.sol#42)
+	Private_Bank.balances (contracts/vulnerable/vuln_045_SC08.sol#11) can be used in cross function reentrancies:
+	- Private_Bank.CashOut(uint256) (contracts/vulnerable/vuln_045_SC08.sol#33-46)
+	- Private_Bank.Deposit() (contracts/vulnerable/vuln_045_SC08.sol#22-31)
+	- Private_Bank.balances (contracts/vulnerable/vuln_045_SC08.sol#11)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-1
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_045_SC08.sol analyzed (2 contracts with 2 detectors), 1 result(s) found

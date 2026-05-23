@@ -1,0 +1,65 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_232_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+
+Detector: uninitialized-state
+BasicToken.totalSupply_ (contracts/safe/safe_232_SAFE.sol#133) is never initialized. It is used in:
+	- BasicToken.totalSupply() (contracts/safe/safe_232_SAFE.sol#138-140)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#uninitialized-state-variables
+
+Detector: solc-version
+Version constraint ^0.4.24 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ABIEncoderV2PackedStorage_0.4.x
+	- ExpExponentCleanup
+	- EventStructWrongData.
+It is used by:
+	- ^0.4.24 (contracts/safe/safe_232_SAFE.sol#1)
+solc-0.4.24 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Parameter Ownable.transferOwnership(address)._newOwner (contracts/safe/safe_232_SAFE.sol#47) is not in mixedCase
+Parameter BasicToken.transfer(address,uint256)._to (contracts/safe/safe_232_SAFE.sol#147) is not in mixedCase
+Parameter BasicToken.transfer(address,uint256)._value (contracts/safe/safe_232_SAFE.sol#147) is not in mixedCase
+Parameter BasicToken.balanceOf(address)._owner (contracts/safe/safe_232_SAFE.sol#162) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._from (contracts/safe/safe_232_SAFE.sol#206) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._to (contracts/safe/safe_232_SAFE.sol#207) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._value (contracts/safe/safe_232_SAFE.sol#208) is not in mixedCase
+Parameter StandardToken.approve(address,uint256)._spender (contracts/safe/safe_232_SAFE.sol#234) is not in mixedCase
+Parameter StandardToken.approve(address,uint256)._value (contracts/safe/safe_232_SAFE.sol#234) is not in mixedCase
+Parameter StandardToken.allowance(address,address)._owner (contracts/safe/safe_232_SAFE.sol#247) is not in mixedCase
+Parameter StandardToken.allowance(address,address)._spender (contracts/safe/safe_232_SAFE.sol#248) is not in mixedCase
+Parameter StandardToken.increaseApproval(address,uint256)._spender (contracts/safe/safe_232_SAFE.sol#268) is not in mixedCase
+Parameter StandardToken.increaseApproval(address,uint256)._addedValue (contracts/safe/safe_232_SAFE.sol#269) is not in mixedCase
+Parameter StandardToken.decreaseApproval(address,uint256)._spender (contracts/safe/safe_232_SAFE.sol#291) is not in mixedCase
+Parameter StandardToken.decreaseApproval(address,uint256)._subtractedValue (contracts/safe/safe_232_SAFE.sol#292) is not in mixedCase
+Parameter NaviCoin.transfer(address,uint256)._to (contracts/safe/safe_232_SAFE.sol#328) is not in mixedCase
+Parameter NaviCoin.transfer(address,uint256)._value (contracts/safe/safe_232_SAFE.sol#328) is not in mixedCase
+Parameter NaviCoin.transferFrom(address,address,uint256)._from (contracts/safe/safe_232_SAFE.sol#333) is not in mixedCase
+Parameter NaviCoin.transferFrom(address,address,uint256)._to (contracts/safe/safe_232_SAFE.sol#333) is not in mixedCase
+Parameter NaviCoin.transferFrom(address,address,uint256)._value (contracts/safe/safe_232_SAFE.sol#333) is not in mixedCase
+Parameter NaviCoin.issue(address,uint256)._recepient (contracts/safe/safe_232_SAFE.sol#344) is not in mixedCase
+Parameter NaviCoin.issue(address,uint256)._amount (contracts/safe/safe_232_SAFE.sol#344) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: unindexed-event-address
+Event NaviCoin.Issue(address,uint256) (contracts/safe/safe_232_SAFE.sol#320) has address parameters but no indexed parameters
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unindexed-event-address-parameters
+
+Detector: constable-states
+BasicToken.totalSupply_ (contracts/safe/safe_232_SAFE.sol#133) should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_232_SAFE.sol analyzed (7 contracts with 101 detectors), 27 result(s) found

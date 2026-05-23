@@ -1,0 +1,8 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_114_SC06.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_114_SC06.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_114_SC06.sol:219:61: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transferToAddress(address _to, uint256 _value, bytes _data) private returns (bool) {
+                                                            ^---------^
+
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_114_SC06.sol analyzed (9 contracts with 5 detectors), 0 result(s) found

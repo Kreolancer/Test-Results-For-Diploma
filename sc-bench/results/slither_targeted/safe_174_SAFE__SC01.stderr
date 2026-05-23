@@ -1,0 +1,10 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_174_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+
+Detector: arbitrary-send-eth
+Snake.buy(uint256) (contracts/safe/safe_174_SAFE.sol#20-38) sends eth to arbitrary user
+	Dangerous calls:
+	- owner.transfer(amount / 100 * 125) (contracts/safe/safe_174_SAFE.sol#30)
+	- ownerAddress.transfer(this.balance) (contracts/safe/safe_174_SAFE.sol#37)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#functions-that-send-ether-to-arbitrary-destinations
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_174_SAFE.sol analyzed (1 contracts with 5 detectors), 1 result(s) found

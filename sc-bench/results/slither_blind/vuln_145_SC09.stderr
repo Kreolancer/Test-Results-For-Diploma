@@ -1,0 +1,159 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_145_SC09.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_145_SC09.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_145_SC09.sol:334:10: Warning: Unused local variable.
+        (bool isSet, string memory title, uint possibl ...
+         ^--------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_145_SC09.sol:334:22: Warning: Unused local variable.
+        (bool isSet, string memory title, uint possibleResultsCount, uint   ...
+                     ^-----------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_145_SC09.sol:334:70: Warning: Unused local variable.
+ ...  title, uint possibleResultsCount, uint  eventOutputType, string memory announcement, uint  ...
+                                        ^-------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_145_SC09.sol:334:93: Warning: Unused local variable.
+ ... sultsCount, uint  eventOutputType, string memory announcement, uint decimals) = OracleContract(o ...
+                                        ^------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_145_SC09.sol:334:121: Warning: Unused local variable.
+ ... tType, string memory announcement, uint decimals) = OracleContract(oracleAddress).e ...
+                                        ^-----------^
+
+
+Detector: events-access
+Owned.transferOwnership(address) (contracts/vulnerable/vuln_145_SC09.sol#69-72) should emit an event for: 
+	- owner = newOwner (contracts/vulnerable/vuln_145_SC09.sol#71) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+
+Detector: missing-zero-check
+House.withdrawToAddress(address,uint256).destinationAddress (contracts/vulnerable/vuln_145_SC09.sol#718) lacks a zero-check on :
+		- destinationAddress.transfer(amount) (contracts/vulnerable/vuln_145_SC09.sol#722)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+
+Detector: timestamp
+House.updateBetDataFromOracle(uint256) (contracts/vulnerable/vuln_145_SC09.sol#314-327) uses timestamp for comparisons
+	Dangerous comparisons:
+	- ! bets[betId].isOutcomeSet && bets[betId].freezeDateTime <= now (contracts/vulnerable/vuln_145_SC09.sol#324)
+House.placeBet(uint256,House.BetType,uint256,uint256,uint256,uint256,uint256,uint256,uint256,string) (contracts/vulnerable/vuln_145_SC09.sol#356-421) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(bets[betNextId].closeDateTime >= now,Close time has passed) (contracts/vulnerable/vuln_145_SC09.sol#374)
+House.callBet(uint256,uint256,uint256,string) (contracts/vulnerable/vuln_145_SC09.sol#426-475) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(bets[betId].closeDateTime >= now,Close time has passed) (contracts/vulnerable/vuln_145_SC09.sol#436)
+House.increaseWager(uint256,uint256,uint256,string) (contracts/vulnerable/vuln_145_SC09.sol#480-513) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(bets[betId].closeDateTime >= now,Close time has passed) (contracts/vulnerable/vuln_145_SC09.sol#490)
+House.refuteBet(uint256,string) (contracts/vulnerable/vuln_145_SC09.sol#544-558) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(bets[betId].freezeDateTime > now,Refute isn't allowed when Event freeze has passed) (contracts/vulnerable/vuln_145_SC09.sol#550)
+House.settleBet(uint256,string) (contracts/vulnerable/vuln_145_SC09.sol#564-611) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(bets[betId].freezeDateTime <= now,Bet payments are freezed) (contracts/vulnerable/vuln_145_SC09.sol#570)
+House.cancelBet(uint256) (contracts/vulnerable/vuln_145_SC09.sol#676-682) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(bets[betId].freezeDateTime > now,Freeze time passed) (contracts/vulnerable/vuln_145_SC09.sol#679)
+House.settleBetFees(uint256) (contracts/vulnerable/vuln_145_SC09.sol#687-702) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(bets[betId].freezeDateTime <= now,Bet payments are freezed) (contracts/vulnerable/vuln_145_SC09.sol#689)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+
+Detector: solc-version
+Version constraint ^0.5.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor
+	- IncorrectEventSignatureInLibraries
+	- ABIEncoderV2PackedStorage.
+It is used by:
+	- ^0.5.0 (contracts/vulnerable/vuln_145_SC09.sol#20)
+solc-0.5.0 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Event House.transfer(address,uint256,bool) (contracts/vulnerable/vuln_145_SC09.sol#236) is not in CapWords
+Event House.testevent(uint256,uint256,uint256,uint256,uint256,uint256) (contracts/vulnerable/vuln_145_SC09.sol#238) is not in CapWords
+Variable House._newHouseAddress (contracts/vulnerable/vuln_145_SC09.sol#143) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: reentrancy-unlimited-gas
+Reentrancy in House.withdraw(uint256) (contracts/vulnerable/vuln_145_SC09.sol#707-713):
+	External calls:
+	- msg.sender.transfer(amount) (contracts/vulnerable/vuln_145_SC09.sol#711)
+	Event emitted after the call(s):
+	- transfer(msg.sender,amount,false) (contracts/vulnerable/vuln_145_SC09.sol#712)
+Reentrancy in House.withdrawToAddress(address,uint256) (contracts/vulnerable/vuln_145_SC09.sol#718-724):
+	External calls:
+	- destinationAddress.transfer(amount) (contracts/vulnerable/vuln_145_SC09.sol#722)
+	Event emitted after the call(s):
+	- transfer(msg.sender,amount,false) (contracts/vulnerable/vuln_145_SC09.sol#723)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-5
+
+Detector: too-many-digits
+House.checkPayoutRate(uint256) (contracts/vulnerable/vuln_145_SC09.sol#339-350) uses literals with too many digits:
+	- check1 = div(mul(100000,check1),multBase) (contracts/vulnerable/vuln_145_SC09.sol#343)
+House.checkPayoutRate(uint256) (contracts/vulnerable/vuln_145_SC09.sol#339-350) uses literals with too many digits:
+	- check2 = div(mul(100000,check2),multBase) (contracts/vulnerable/vuln_145_SC09.sol#347)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#too-many-digits
+
+Detector: unindexed-event-address
+Event House.BetPlacedOrModified(uint256,address,House.BetEvent,uint256,uint256,string,uint256) (contracts/vulnerable/vuln_145_SC09.sol#233) has address parameters but no indexed parameters
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unindexed-event-address-parameters
+
+Detector: cache-array-length
+Loop condition i < owners.length (contracts/vulnerable/vuln_145_SC09.sol#691) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i < owners.length (contracts/vulnerable/vuln_145_SC09.sol#579) should use cached array length instead of referencing `length` member of the storage array.
+ Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#cache-array-length
+
+Detector: external-function
+updateHouseProperties(string,string,string) should be declared external:
+	- House.updateHouseProperties(string,string,string) (contracts/vulnerable/vuln_145_SC09.sol#280-285)
+Moreover, the following function parameters should change its data location:
+houseName location should be calldata
+houseCreatorName location should be calldata
+houseCountryISO location should be calldata
+placeBet(uint256,House.BetType,uint256,uint256,uint256,uint256,uint256,uint256,uint256,string) should be declared external:
+	- House.placeBet(uint256,House.BetType,uint256,uint256,uint256,uint256,uint256,uint256,uint256,string) (contracts/vulnerable/vuln_145_SC09.sol#356-421)
+Moreover, the following function parameters should change its data location:
+createdBy location should be calldata
+callBet(uint256,uint256,uint256,string) should be declared external:
+	- House.callBet(uint256,uint256,uint256,string) (contracts/vulnerable/vuln_145_SC09.sol#426-475)
+Moreover, the following function parameters should change its data location:
+createdBy location should be calldata
+increaseWager(uint256,uint256,uint256,string) should be declared external:
+	- House.increaseWager(uint256,uint256,uint256,string) (contracts/vulnerable/vuln_145_SC09.sol#480-513)
+Moreover, the following function parameters should change its data location:
+createdBy location should be calldata
+removeBet(uint256,string) should be declared external:
+	- House.removeBet(uint256,string) (contracts/vulnerable/vuln_145_SC09.sol#518-539)
+Moreover, the following function parameters should change its data location:
+createdBy location should be calldata
+refuteBet(uint256,string) should be declared external:
+	- House.refuteBet(uint256,string) (contracts/vulnerable/vuln_145_SC09.sol#544-558)
+Moreover, the following function parameters should change its data location:
+createdBy location should be calldata
+settleBet(uint256,string) should be declared external:
+	- House.settleBet(uint256,string) (contracts/vulnerable/vuln_145_SC09.sol#564-611)
+Moreover, the following function parameters should change its data location:
+createdBy location should be calldata
+updateShortMessage(string) should be declared external:
+	- House.updateShortMessage(string) (contracts/vulnerable/vuln_145_SC09.sol#629-632)
+Moreover, the following function parameters should change its data location:
+shortMessage location should be calldata
+startNewBets(string) should be declared external:
+	- House.startNewBets(string) (contracts/vulnerable/vuln_145_SC09.sol#638-642)
+Moreover, the following function parameters should change its data location:
+shortMessage location should be calldata
+stopNewBets(string) should be declared external:
+	- House.stopNewBets(string) (contracts/vulnerable/vuln_145_SC09.sol#647-651)
+Moreover, the following function parameters should change its data location:
+shortMessage location should be calldata
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#public-function-that-could-be-declared-external
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_145_SC09.sol analyzed (5 contracts with 101 detectors), 32 result(s) found

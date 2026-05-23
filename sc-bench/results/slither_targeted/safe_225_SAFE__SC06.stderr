@@ -1,0 +1,12 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_225_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_225_SAFE.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_225_SAFE.sol:26:13: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+            msg.sender.send(amount);
+            ^---------------------^
+
+
+Detector: unchecked-send
+ETHVault.withdraw(uint256) () ignores return value by msg.sender.send(amount) ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unchecked-send
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_225_SAFE.sol analyzed (2 contracts with 5 detectors), 1 result(s) found

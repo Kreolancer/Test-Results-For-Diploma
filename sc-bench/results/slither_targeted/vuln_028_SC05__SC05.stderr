@@ -1,0 +1,19 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_028_SC05.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_028_SC05.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_028_SC05.sol:22:33: Warning: Using contract member "balance" inherited from the address type is deprecated. Convert the contract to "address" type to access the member, for example use "address(contract).balance" instead.
+            msg.sender.transfer(this.balance);
+                                ^----------^
+
+
+Detector: weak-prng
+Roulette.fallback() (contracts/vulnerable/vuln_028_SC05.sol#15-24) uses a weak PRNG: "now % 15 == 0 (contracts/vulnerable/vuln_028_SC05.sol#21)" 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#weak-PRNG
+
+Detector: timestamp
+Roulette.fallback() (contracts/vulnerable/vuln_028_SC05.sol#15-24) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(now != pastBlockTime) (contracts/vulnerable/vuln_028_SC05.sol#18)
+	- now % 15 == 0 (contracts/vulnerable/vuln_028_SC05.sol#21)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_028_SC05.sol analyzed (1 contracts with 2 detectors), 2 result(s) found

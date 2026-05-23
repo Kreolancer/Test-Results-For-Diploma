@@ -1,0 +1,16 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_214_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_214_SAFE.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_214_SAFE.sol:78:5: Warning: No visibility specified. Defaulting to "public".
+    function Xtime (address _addressFounder)  {
+    ^
+Spanning multiple lines.
+
+
+Detector: locked-ether
+Contract locking ether found:
+	Contract Xtime (contracts/safe/safe_214_SAFE.sol#69-90) has payable functions:
+	 - Xtime.fallback() (contracts/safe/safe_214_SAFE.sol#85-87)
+	But does not have a function to withdraw the ether
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#contracts-that-lock-ether
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_214_SAFE.sol analyzed (3 contracts with 5 detectors), 1 result(s) found

@@ -1,0 +1,40 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_192_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+
+Detector: timestamp
+Fomo60Min.withdraw() (contracts/safe/safe_192_SAFE.sol#506-572) uses timestamp for comparisons
+	Dangerous comparisons:
+	- _now > round_[_rID].end && round_[_rID].ended == false && round_[_rID].plyr != 0 (contracts/safe/safe_192_SAFE.sol#524)
+Fomo60Min.getBuyPrice() (contracts/safe/safe_192_SAFE.sol#654-670) uses timestamp for comparisons
+	Dangerous comparisons:
+	- _now > round_[_rID].strt + rndGap_ && (_now <= round_[_rID].end || (_now > round_[_rID].end && round_[_rID].plyr == 0)) (contracts/safe/safe_192_SAFE.sol#666)
+Fomo60Min.getTimeLeft() (contracts/safe/safe_192_SAFE.sol#678-696) uses timestamp for comparisons
+	Dangerous comparisons:
+	- _now < round_[_rID].end (contracts/safe/safe_192_SAFE.sol#689)
+	- _now > round_[_rID].strt + rndGap_ (contracts/safe/safe_192_SAFE.sol#690)
+Fomo60Min.getPlayerVaults(uint256) (contracts/safe/safe_192_SAFE.sol#705-744) uses timestamp for comparisons
+	Dangerous comparisons:
+	- now > round_[_rID].end && round_[_rID].ended == false && round_[_rID].plyr != 0 (contracts/safe/safe_192_SAFE.sol#714)
+Fomo60Min.buyCore(uint256,uint256,uint256,F3Ddatasets.EventReturns) (contracts/safe/safe_192_SAFE.sol#849-897) uses timestamp for comparisons
+	Dangerous comparisons:
+	- _now > round_[_rID].strt + rndGap_ && (_now <= round_[_rID].end || (_now > round_[_rID].end && round_[_rID].plyr == 0)) (contracts/safe/safe_192_SAFE.sol#859)
+	- _now > round_[_rID].end && round_[_rID].ended == false (contracts/safe/safe_192_SAFE.sol#867)
+Fomo60Min.reLoadCore(uint256,uint256,uint256,uint256,F3Ddatasets.EventReturns) (contracts/safe/safe_192_SAFE.sol#903-948) uses timestamp for comparisons
+	Dangerous comparisons:
+	- _now > round_[_rID].strt + rndGap_ && (_now <= round_[_rID].end || (_now > round_[_rID].end && round_[_rID].plyr == 0)) (contracts/safe/safe_192_SAFE.sol#913)
+	- _now > round_[_rID].end && round_[_rID].ended == false (contracts/safe/safe_192_SAFE.sol#924)
+Fomo60Min.calcKeysReceived(uint256,uint256) (contracts/safe/safe_192_SAFE.sol#1085-1098) uses timestamp for comparisons
+	Dangerous comparisons:
+	- _now > round_[_rID].strt + rndGap_ && (_now <= round_[_rID].end || (_now > round_[_rID].end && round_[_rID].plyr == 0)) (contracts/safe/safe_192_SAFE.sol#1094)
+Fomo60Min.iWantXKeys(uint256) (contracts/safe/safe_192_SAFE.sol#1106-1122) uses timestamp for comparisons
+	Dangerous comparisons:
+	- _now > round_[_rID].strt + rndGap_ && (_now <= round_[_rID].end || (_now > round_[_rID].end && round_[_rID].plyr == 0)) (contracts/safe/safe_192_SAFE.sol#1118)
+Fomo60Min.updateTimer(uint256,uint256) (contracts/safe/safe_192_SAFE.sol#1318-1336) uses timestamp for comparisons
+	Dangerous comparisons:
+	- _now > round_[_rID].end && round_[_rID].plyr == 0 (contracts/safe/safe_192_SAFE.sol#1326)
+	- _newTime < (rndMax_).add(_now) (contracts/safe/safe_192_SAFE.sol#1332)
+Fomo60Min.airdrop() (contracts/safe/safe_192_SAFE.sol#1343-1362) uses timestamp for comparisons
+	Dangerous comparisons:
+	- (seed - ((seed / 1000) * 1000)) < airDropTracker_ (contracts/safe/safe_192_SAFE.sol#1358)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_192_SAFE.sol analyzed (8 contracts with 2 detectors), 10 result(s) found

@@ -1,0 +1,61 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_054_SC08.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc' running
+
+Detector: reentrancy-eth
+Reentrancy in EtherStore.withdrawFunds(uint256) ():
+	External calls:
+	- require(bool)(msg.sender.call.value(_weiToWithdraw)()) ()
+	State variables written after the call(s):
+	- balances[msg.sender] -= _weiToWithdraw ()
+	EtherStore.balances () can be used in cross function reentrancies:
+	- EtherStore.depositFunds() ()
+	- EtherStore.withdrawFunds(uint256) ()
+	- lastWithdrawTime[msg.sender] = now ()
+	EtherStore.lastWithdrawTime () can be used in cross function reentrancies:
+	- EtherStore.withdrawFunds(uint256) ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-1
+
+Detector: timestamp
+EtherStore.withdrawFunds(uint256) () uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(now >= lastWithdrawTime[msg.sender] + 604800) ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+
+Detector: solc-version
+Version constraint ^0.4.10 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- NestedArrayFunctionCallDecoder
+	- ZeroFunctionSelector
+	- DelegateCallReturnValue
+	- ECRecoverMalformedInput
+	- SkipEmptyStringLiteral
+	- ConstantOptimizerSubtraction.
+It is used by:
+	- ^0.4.10 ()
+solc-0.4.10 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: low-level-calls
+Low level call in EtherStore.withdrawFunds(uint256) ():
+	- require(bool)(msg.sender.call.value(_weiToWithdraw)()) ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+
+Detector: naming-convention
+Parameter EtherStore.withdrawFunds(uint256)._weiToWithdraw () is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: constable-states
+EtherStore.withdrawalLimit () should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_054_SC08.sol analyzed (1 contracts with 101 detectors), 7 result(s) found

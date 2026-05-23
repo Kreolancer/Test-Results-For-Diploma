@@ -1,0 +1,637 @@
+{
+  "success": true,
+  "error": null,
+  "results": {
+    "detectors": [
+      {
+        "elements": [
+          {
+            "type": "contract",
+            "name": "TokenERC20",
+            "source_mapping": {
+              "start": 0,
+              "length": 1349,
+              "filename_relative": "contracts/safe/safe_220_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_220_SAFE.sol",
+              "filename_short": "contracts/safe/safe_220_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                1,
+                2
+              ],
+              "starting_column": 1,
+              "ending_column": 0
+            }
+          },
+          {
+            "type": "function",
+            "name": "transfer",
+            "source_mapping": {
+              "start": 894,
+              "length": 91,
+              "filename_relative": "contracts/safe/safe_220_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_220_SAFE.sol",
+              "filename_short": "contracts/safe/safe_220_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                1
+              ],
+              "starting_column": 895,
+              "ending_column": 986
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "TokenERC20",
+                "source_mapping": {
+                  "start": 0,
+                  "length": 1349,
+                  "filename_relative": "contracts/safe/safe_220_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_220_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_220_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    1,
+                    2
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              },
+              "signature": "transfer(address,uint256)"
+            }
+          }
+        ],
+        "description": "TokenERC20 (contracts/safe/safe_220_SAFE.sol#1-2) has incorrect ERC20 function interface:TokenERC20.transfer(address,uint256) (contracts/safe/safe_220_SAFE.sol#1)\n",
+        "markdown": "[TokenERC20](contracts/safe/safe_220_SAFE.sol#L1-L2) has incorrect ERC20 function interface:[TokenERC20.transfer(address,uint256)](contracts/safe/safe_220_SAFE.sol#L1)\n",
+        "first_markdown_element": "contracts/safe/safe_220_SAFE.sol#L1-L2",
+        "id": "60300de6a0d78dd82732a14eab99f7f5a751a0ad1d5bc76b7b834b620612b871",
+        "check": "erc20-interface",
+        "impact": "Medium",
+        "confidence": "High"
+      },
+      {
+        "elements": [],
+        "description": "solc-0.4.24 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.\n",
+        "markdown": "solc-0.4.24 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.\n",
+        "first_markdown_element": "",
+        "id": "1d687d794f954ee692ca1d58ad5dd8291a8a0b5c0bcc4409d2dd8afb7258e605",
+        "check": "solc-version",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_value",
+            "source_mapping": {
+              "start": 925,
+              "length": 14,
+              "filename_relative": "contracts/safe/safe_220_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_220_SAFE.sol",
+              "filename_short": "contracts/safe/safe_220_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                1
+              ],
+              "starting_column": 926,
+              "ending_column": 940
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "transfer",
+                "source_mapping": {
+                  "start": 894,
+                  "length": 91,
+                  "filename_relative": "contracts/safe/safe_220_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_220_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_220_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    1
+                  ],
+                  "starting_column": 895,
+                  "ending_column": 986
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "TokenERC20",
+                    "source_mapping": {
+                      "start": 0,
+                      "length": 1349,
+                      "filename_relative": "contracts/safe/safe_220_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_220_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_220_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        1,
+                        2
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "transfer(address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter TokenERC20.transfer(address,uint256)._value (contracts/safe/safe_220_SAFE.sol#1) is not in mixedCase\n",
+        "markdown": "Parameter [TokenERC20.transfer(address,uint256)._value](contracts/safe/safe_220_SAFE.sol#L1) is not in mixedCase\n",
+        "first_markdown_element": "contracts/safe/safe_220_SAFE.sol#L1",
+        "id": "11ba4fb8b655f66fd7a669a0a359da3ce17393845fd8f155bd730239ee8efe3b",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_spender",
+            "source_mapping": {
+              "start": 1229,
+              "length": 16,
+              "filename_relative": "contracts/safe/safe_220_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_220_SAFE.sol",
+              "filename_short": "contracts/safe/safe_220_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                1
+              ],
+              "starting_column": 1230,
+              "ending_column": 1246
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "approve",
+                "source_mapping": {
+                  "start": 1212,
+                  "length": 136,
+                  "filename_relative": "contracts/safe/safe_220_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_220_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_220_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    1
+                  ],
+                  "starting_column": 1213,
+                  "ending_column": 1349
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "TokenERC20",
+                    "source_mapping": {
+                      "start": 0,
+                      "length": 1349,
+                      "filename_relative": "contracts/safe/safe_220_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_220_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_220_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        1,
+                        2
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "approve(address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter TokenERC20.approve(address,uint256)._spender (contracts/safe/safe_220_SAFE.sol#1) is not in mixedCase\n",
+        "markdown": "Parameter [TokenERC20.approve(address,uint256)._spender](contracts/safe/safe_220_SAFE.sol#L1) is not in mixedCase\n",
+        "first_markdown_element": "contracts/safe/safe_220_SAFE.sol#L1",
+        "id": "420ded9ca125ca54adc8f5676141ed18993d338ed7059643a011302cee1f8f29",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_to",
+            "source_mapping": {
+              "start": 912,
+              "length": 11,
+              "filename_relative": "contracts/safe/safe_220_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_220_SAFE.sol",
+              "filename_short": "contracts/safe/safe_220_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                1
+              ],
+              "starting_column": 913,
+              "ending_column": 924
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "transfer",
+                "source_mapping": {
+                  "start": 894,
+                  "length": 91,
+                  "filename_relative": "contracts/safe/safe_220_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_220_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_220_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    1
+                  ],
+                  "starting_column": 895,
+                  "ending_column": 986
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "TokenERC20",
+                    "source_mapping": {
+                      "start": 0,
+                      "length": 1349,
+                      "filename_relative": "contracts/safe/safe_220_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_220_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_220_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        1,
+                        2
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "transfer(address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter TokenERC20.transfer(address,uint256)._to (contracts/safe/safe_220_SAFE.sol#1) is not in mixedCase\n",
+        "markdown": "Parameter [TokenERC20.transfer(address,uint256)._to](contracts/safe/safe_220_SAFE.sol#L1) is not in mixedCase\n",
+        "first_markdown_element": "contracts/safe/safe_220_SAFE.sol#L1",
+        "id": "65b134b0902bb7bdabb307af2a2bbaad5f7dbd3996ba6522a2cee9441063ffc1",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_to",
+            "source_mapping": {
+              "start": 1022,
+              "length": 11,
+              "filename_relative": "contracts/safe/safe_220_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_220_SAFE.sol",
+              "filename_short": "contracts/safe/safe_220_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                1
+              ],
+              "starting_column": 1023,
+              "ending_column": 1034
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "transferFrom",
+                "source_mapping": {
+                  "start": 985,
+                  "length": 227,
+                  "filename_relative": "contracts/safe/safe_220_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_220_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_220_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    1
+                  ],
+                  "starting_column": 986,
+                  "ending_column": 1213
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "TokenERC20",
+                    "source_mapping": {
+                      "start": 0,
+                      "length": 1349,
+                      "filename_relative": "contracts/safe/safe_220_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_220_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_220_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        1,
+                        2
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "transferFrom(address,address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter TokenERC20.transferFrom(address,address,uint256)._to (contracts/safe/safe_220_SAFE.sol#1) is not in mixedCase\n",
+        "markdown": "Parameter [TokenERC20.transferFrom(address,address,uint256)._to](contracts/safe/safe_220_SAFE.sol#L1) is not in mixedCase\n",
+        "first_markdown_element": "contracts/safe/safe_220_SAFE.sol#L1",
+        "id": "6c9013fb25402fa45c0239d6362b2f5ad95188d8145bebb7c9df6491fd3ee4e9",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_value",
+            "source_mapping": {
+              "start": 1247,
+              "length": 14,
+              "filename_relative": "contracts/safe/safe_220_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_220_SAFE.sol",
+              "filename_short": "contracts/safe/safe_220_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                1
+              ],
+              "starting_column": 1248,
+              "ending_column": 1262
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "approve",
+                "source_mapping": {
+                  "start": 1212,
+                  "length": 136,
+                  "filename_relative": "contracts/safe/safe_220_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_220_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_220_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    1
+                  ],
+                  "starting_column": 1213,
+                  "ending_column": 1349
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "TokenERC20",
+                    "source_mapping": {
+                      "start": 0,
+                      "length": 1349,
+                      "filename_relative": "contracts/safe/safe_220_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_220_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_220_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        1,
+                        2
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "approve(address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter TokenERC20.approve(address,uint256)._value (contracts/safe/safe_220_SAFE.sol#1) is not in mixedCase\n",
+        "markdown": "Parameter [TokenERC20.approve(address,uint256)._value](contracts/safe/safe_220_SAFE.sol#L1) is not in mixedCase\n",
+        "first_markdown_element": "contracts/safe/safe_220_SAFE.sol#L1",
+        "id": "7d6d542c3402d09fe485c29155d70eaf0b245ea129fbe78d6c83c58e2573a44f",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_from",
+            "source_mapping": {
+              "start": 1007,
+              "length": 13,
+              "filename_relative": "contracts/safe/safe_220_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_220_SAFE.sol",
+              "filename_short": "contracts/safe/safe_220_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                1
+              ],
+              "starting_column": 1008,
+              "ending_column": 1021
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "transferFrom",
+                "source_mapping": {
+                  "start": 985,
+                  "length": 227,
+                  "filename_relative": "contracts/safe/safe_220_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_220_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_220_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    1
+                  ],
+                  "starting_column": 986,
+                  "ending_column": 1213
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "TokenERC20",
+                    "source_mapping": {
+                      "start": 0,
+                      "length": 1349,
+                      "filename_relative": "contracts/safe/safe_220_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_220_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_220_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        1,
+                        2
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "transferFrom(address,address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter TokenERC20.transferFrom(address,address,uint256)._from (contracts/safe/safe_220_SAFE.sol#1) is not in mixedCase\n",
+        "markdown": "Parameter [TokenERC20.transferFrom(address,address,uint256)._from](contracts/safe/safe_220_SAFE.sol#L1) is not in mixedCase\n",
+        "first_markdown_element": "contracts/safe/safe_220_SAFE.sol#L1",
+        "id": "988d43eaece3133ba9f683a589b56ce4a08ed9802c3d0b2e3c05545ab19f258c",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_value",
+            "source_mapping": {
+              "start": 1035,
+              "length": 14,
+              "filename_relative": "contracts/safe/safe_220_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_220_SAFE.sol",
+              "filename_short": "contracts/safe/safe_220_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                1
+              ],
+              "starting_column": 1036,
+              "ending_column": 1050
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "transferFrom",
+                "source_mapping": {
+                  "start": 985,
+                  "length": 227,
+                  "filename_relative": "contracts/safe/safe_220_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_220_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_220_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    1
+                  ],
+                  "starting_column": 986,
+                  "ending_column": 1213
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "TokenERC20",
+                    "source_mapping": {
+                      "start": 0,
+                      "length": 1349,
+                      "filename_relative": "contracts/safe/safe_220_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_220_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_220_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        1,
+                        2
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "transferFrom(address,address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter TokenERC20.transferFrom(address,address,uint256)._value (contracts/safe/safe_220_SAFE.sol#1) is not in mixedCase\n",
+        "markdown": "Parameter [TokenERC20.transferFrom(address,address,uint256)._value](contracts/safe/safe_220_SAFE.sol#L1) is not in mixedCase\n",
+        "first_markdown_element": "contracts/safe/safe_220_SAFE.sol#L1",
+        "id": "a35a09a0f0ebcbc0e5dfe68e0b995adf8a5086e27596badf9ec6d249600e1b7a",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "decimals",
+            "source_mapping": {
+              "start": 61,
+              "length": 26,
+              "filename_relative": "contracts/safe/safe_220_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_220_SAFE.sol",
+              "filename_short": "contracts/safe/safe_220_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                1
+              ],
+              "starting_column": 62,
+              "ending_column": 88
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "TokenERC20",
+                "source_mapping": {
+                  "start": 0,
+                  "length": 1349,
+                  "filename_relative": "contracts/safe/safe_220_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_220_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_220_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    1,
+                    2
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              }
+            }
+          }
+        ],
+        "description": "TokenERC20.decimals (contracts/safe/safe_220_SAFE.sol#1) should be constant \n",
+        "markdown": "[TokenERC20.decimals](contracts/safe/safe_220_SAFE.sol#L1) should be constant \n",
+        "first_markdown_element": "contracts/safe/safe_220_SAFE.sol#L1",
+        "id": "a9670d854ee163053db8b9963190355dc1bad5c30ae238efb5fbceed3d8abb71",
+        "check": "constable-states",
+        "impact": "Optimization",
+        "confidence": "High"
+      }
+    ]
+  }
+}

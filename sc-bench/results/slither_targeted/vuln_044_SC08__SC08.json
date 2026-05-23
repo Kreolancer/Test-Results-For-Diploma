@@ -1,0 +1,259 @@
+{
+  "success": true,
+  "error": null,
+  "results": {
+    "detectors": [
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "withdrawAll",
+            "source_mapping": {
+              "start": 245,
+              "length": 324,
+              "filename_relative": "contracts/vulnerable/vuln_044_SC08.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_044_SC08.sol",
+              "filename_short": "contracts/vulnerable/vuln_044_SC08.sol",
+              "is_dependency": false,
+              "lines": [
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22
+              ],
+              "starting_column": 5,
+              "ending_column": 6
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "ReentrancyDAO",
+                "source_mapping": {
+                  "start": 159,
+                  "length": 530,
+                  "filename_relative": "contracts/vulnerable/vuln_044_SC08.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_044_SC08.sol",
+                  "filename_short": "contracts/vulnerable/vuln_044_SC08.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15,
+                    16,
+                    17,
+                    18,
+                    19,
+                    20,
+                    21,
+                    22,
+                    23,
+                    24,
+                    25,
+                    26,
+                    27,
+                    28
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 2
+                }
+              },
+              "signature": "withdrawAll()"
+            }
+          },
+          {
+            "type": "node",
+            "name": "callResult = msg.sender.call.value(oCredit)()",
+            "source_mapping": {
+              "start": 432,
+              "length": 50,
+              "filename_relative": "contracts/vulnerable/vuln_044_SC08.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_044_SC08.sol",
+              "filename_short": "contracts/vulnerable/vuln_044_SC08.sol",
+              "is_dependency": false,
+              "lines": [
+                18
+              ],
+              "starting_column": 13,
+              "ending_column": 63
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "withdrawAll",
+                "source_mapping": {
+                  "start": 245,
+                  "length": 324,
+                  "filename_relative": "contracts/vulnerable/vuln_044_SC08.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_044_SC08.sol",
+                  "filename_short": "contracts/vulnerable/vuln_044_SC08.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    13,
+                    14,
+                    15,
+                    16,
+                    17,
+                    18,
+                    19,
+                    20,
+                    21,
+                    22
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "ReentrancyDAO",
+                    "source_mapping": {
+                      "start": 159,
+                      "length": 530,
+                      "filename_relative": "contracts/vulnerable/vuln_044_SC08.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_044_SC08.sol",
+                      "filename_short": "contracts/vulnerable/vuln_044_SC08.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        9,
+                        10,
+                        11,
+                        12,
+                        13,
+                        14,
+                        15,
+                        16,
+                        17,
+                        18,
+                        19,
+                        20,
+                        21,
+                        22,
+                        23,
+                        24,
+                        25,
+                        26,
+                        27,
+                        28
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "withdrawAll()"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "external_calls"
+            }
+          },
+          {
+            "type": "node",
+            "name": "credit[msg.sender] = 0",
+            "source_mapping": {
+              "start": 530,
+              "length": 22,
+              "filename_relative": "contracts/vulnerable/vuln_044_SC08.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_044_SC08.sol",
+              "filename_short": "contracts/vulnerable/vuln_044_SC08.sol",
+              "is_dependency": false,
+              "lines": [
+                20
+              ],
+              "starting_column": 13,
+              "ending_column": 35
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "withdrawAll",
+                "source_mapping": {
+                  "start": 245,
+                  "length": 324,
+                  "filename_relative": "contracts/vulnerable/vuln_044_SC08.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_044_SC08.sol",
+                  "filename_short": "contracts/vulnerable/vuln_044_SC08.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    13,
+                    14,
+                    15,
+                    16,
+                    17,
+                    18,
+                    19,
+                    20,
+                    21,
+                    22
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "ReentrancyDAO",
+                    "source_mapping": {
+                      "start": 159,
+                      "length": 530,
+                      "filename_relative": "contracts/vulnerable/vuln_044_SC08.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_044_SC08.sol",
+                      "filename_short": "contracts/vulnerable/vuln_044_SC08.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        9,
+                        10,
+                        11,
+                        12,
+                        13,
+                        14,
+                        15,
+                        16,
+                        17,
+                        18,
+                        19,
+                        20,
+                        21,
+                        22,
+                        23,
+                        24,
+                        25,
+                        26,
+                        27,
+                        28
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "withdrawAll()"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "variables_written",
+              "variable_name": "credit"
+            }
+          }
+        ],
+        "description": "Reentrancy in ReentrancyDAO.withdrawAll() (contracts/vulnerable/vuln_044_SC08.sol#13-22):\n\tExternal calls:\n\t- callResult = msg.sender.call.value(oCredit)() (contracts/vulnerable/vuln_044_SC08.sol#18)\n\tState variables written after the call(s):\n\t- credit[msg.sender] = 0 (contracts/vulnerable/vuln_044_SC08.sol#20)\n\tReentrancyDAO.credit (contracts/vulnerable/vuln_044_SC08.sol#10) can be used in cross function reentrancies:\n\t- ReentrancyDAO.deposit() (contracts/vulnerable/vuln_044_SC08.sol#24-27)\n\t- ReentrancyDAO.withdrawAll() (contracts/vulnerable/vuln_044_SC08.sol#13-22)\n",
+        "markdown": "Reentrancy in [ReentrancyDAO.withdrawAll()](contracts/vulnerable/vuln_044_SC08.sol#L13-L22):\n\tExternal calls:\n\t- [callResult = msg.sender.call.value(oCredit)()](contracts/vulnerable/vuln_044_SC08.sol#L18)\n\tState variables written after the call(s):\n\t- [credit[msg.sender] = 0](contracts/vulnerable/vuln_044_SC08.sol#L20)\n\t[ReentrancyDAO.credit](contracts/vulnerable/vuln_044_SC08.sol#L10) can be used in cross function reentrancies:\n\t- [ReentrancyDAO.deposit()](contracts/vulnerable/vuln_044_SC08.sol#L24-L27)\n\t- [ReentrancyDAO.withdrawAll()](contracts/vulnerable/vuln_044_SC08.sol#L13-L22)\n",
+        "first_markdown_element": "contracts/vulnerable/vuln_044_SC08.sol#L13-L22",
+        "id": "ecdfd159cd64780babf6c640155521660249d2f7fc762dc27ec2d366926885cf",
+        "check": "reentrancy-eth",
+        "impact": "High",
+        "confidence": "Medium"
+      }
+    ]
+  }
+}

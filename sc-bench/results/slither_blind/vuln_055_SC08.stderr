@@ -1,0 +1,51 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_055_SC08.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc' running
+
+Detector: reentrancy-eth
+Reentrancy in EtherBank.withdrawBalance() ():
+	External calls:
+	- ! (msg.sender.call.value(amountToWithdraw)()) ()
+	State variables written after the call(s):
+	- userBalances[msg.sender] = 0 ()
+	EtherBank.userBalances () can be used in cross function reentrancies:
+	- EtherBank.addToBalance() ()
+	- EtherBank.getBalance(address) ()
+	- EtherBank.withdrawBalance() ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-1
+
+Detector: deprecated-standards
+Deprecated standard detected THROW ():
+	- Usage of "throw" should be replaced with "revert()"
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#deprecated-standards
+
+Detector: solc-version
+Version constraint ^0.4.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- NestedArrayFunctionCallDecoder
+	- ZeroFunctionSelector
+	- DelegateCallReturnValue
+	- ECRecoverMalformedInput
+	- SkipEmptyStringLiteral
+	- ConstantOptimizerSubtraction
+	- IdentityPrecompileReturnIgnored
+	- HighOrderByteCleanStorage
+	- OptimizerStaleKnowledgeAboutSHA3
+	- LibrariesNotCallableFromPayableFunctions.
+It is used by:
+	- ^0.4.0 ()
+solc-0.4.0 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: low-level-calls
+Low level call in EtherBank.withdrawBalance() ():
+	- ! (msg.sender.call.value(amountToWithdraw)()) ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_055_SC08.sol analyzed (1 contracts with 101 detectors), 5 result(s) found

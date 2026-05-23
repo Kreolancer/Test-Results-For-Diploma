@@ -1,0 +1,127 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_224_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+
+Detector: divide-before-multiply
+SelfPayPreSale.computeTokenWithBonus(uint256,address) (contracts/safe/safe_224_SAFE.sol#245-266) performs a multiplication on the result of a division:
+	- tokens_ = tokens_.mul(175).div(100) (contracts/safe/safe_224_SAFE.sol#258)
+	- tokens_ = tokens_.mul(160).div(100) (contracts/safe/safe_224_SAFE.sol#262)
+SelfPayPreSale.computeTokenWithBonus(uint256,address) (contracts/safe/safe_224_SAFE.sol#245-266) performs a multiplication on the result of a division:
+	- tokens_ = tokens_.mul(200).div(100) (contracts/safe/safe_224_SAFE.sol#254)
+	- tokens_ = tokens_.mul(175).div(100) (contracts/safe/safe_224_SAFE.sol#258)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#divide-before-multiply
+
+Detector: reentrancy-no-eth
+Reentrancy in SelfPayPreSale.buyTokens(address) (contracts/safe/safe_224_SAFE.sol#269-287):
+	External calls:
+	- token.mint(beneficiary,tokens) (contracts/safe/safe_224_SAFE.sol#278)
+	State variables written after the call(s):
+	- weiRaised = weiRaised.add(weiAmount) (contracts/safe/safe_224_SAFE.sol#282)
+	Crowdsale.weiRaised (contracts/safe/safe_224_SAFE.sol#46) can be used in cross function reentrancies:
+	- SelfPayPreSale.buyTokens(address) (contracts/safe/safe_224_SAFE.sol#269-287)
+	- CappedCrowdsale.hasEnded() (contracts/safe/safe_224_SAFE.sol#142-145)
+	- CappedCrowdsale.validPurchase() (contracts/safe/safe_224_SAFE.sol#135-138)
+	- Crowdsale.weiRaised (contracts/safe/safe_224_SAFE.sol#46)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-2
+
+Detector: unused-return
+Crowdsale.buyTokens(address) (contracts/safe/safe_224_SAFE.sol#84-100) ignores return value by token.mint(beneficiary,tokens) (contracts/safe/safe_224_SAFE.sol#96)
+SelfPayPreSale.buyTokens(address) (contracts/safe/safe_224_SAFE.sol#269-287) ignores return value by token.mint(beneficiary,tokens) (contracts/safe/safe_224_SAFE.sol#278)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unused-return
+
+Detector: reentrancy-benign
+Reentrancy in SelfPayPreSale.buyTokens(address) (contracts/safe/safe_224_SAFE.sol#269-287):
+	External calls:
+	- token.mint(beneficiary,tokens) (contracts/safe/safe_224_SAFE.sol#278)
+	State variables written after the call(s):
+	- numberOfPurchasers = numberOfPurchasers + 1 (contracts/safe/safe_224_SAFE.sol#283)
+	- sxpNumber = sxpNumber.add(tokens) (contracts/safe/safe_224_SAFE.sol#284)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+
+Detector: reentrancy-events
+Reentrancy in Crowdsale.buyTokens(address) (contracts/safe/safe_224_SAFE.sol#84-100):
+	External calls:
+	- token.mint(beneficiary,tokens) (contracts/safe/safe_224_SAFE.sol#96)
+	Event emitted after the call(s):
+	- TokenPurchase(msg.sender,beneficiary,weiAmount,tokens) (contracts/safe/safe_224_SAFE.sol#97)
+Reentrancy in SelfPayPreSale.buyTokens(address) (contracts/safe/safe_224_SAFE.sol#269-287):
+	External calls:
+	- token.mint(beneficiary,tokens) (contracts/safe/safe_224_SAFE.sol#278)
+	Event emitted after the call(s):
+	- TokenPurchase(msg.sender,beneficiary,weiAmount,tokens) (contracts/safe/safe_224_SAFE.sol#279)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-4
+
+Detector: timestamp
+Crowdsale.Crowdsale(uint256,uint256,uint256,address) (contracts/safe/safe_224_SAFE.sol#58-69) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(_startTime >= now) (contracts/safe/safe_224_SAFE.sol#59)
+Crowdsale.validPurchase() (contracts/safe/safe_224_SAFE.sol#109-113) uses timestamp for comparisons
+	Dangerous comparisons:
+	- withinPeriod = now >= startTime && now <= endTime (contracts/safe/safe_224_SAFE.sol#110)
+	- withinPeriod && nonZeroPurchase (contracts/safe/safe_224_SAFE.sol#112)
+Crowdsale.hasEnded() (contracts/safe/safe_224_SAFE.sol#116-118) uses timestamp for comparisons
+	Dangerous comparisons:
+	- now > endTime (contracts/safe/safe_224_SAFE.sol#117)
+CappedCrowdsale.validPurchase() (contracts/safe/safe_224_SAFE.sol#135-138) uses timestamp for comparisons
+	Dangerous comparisons:
+	- super.validPurchase() && withinCap (contracts/safe/safe_224_SAFE.sol#137)
+CappedCrowdsale.hasEnded() (contracts/safe/safe_224_SAFE.sol#142-145) uses timestamp for comparisons
+	Dangerous comparisons:
+	- super.hasEnded() || capReached (contracts/safe/safe_224_SAFE.sol#144)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+
+Detector: dead-code
+FinalizableCrowdsale.finalization() (contracts/safe/safe_224_SAFE.sol#212-213) is never used and should be removed
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dead-code
+
+Detector: solc-version
+Version constraint ^0.4.13 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- NestedArrayFunctionCallDecoder
+	- ZeroFunctionSelector
+	- DelegateCallReturnValue
+	- ECRecoverMalformedInput.
+It is used by:
+	- ^0.4.13 (contracts/safe/safe_224_SAFE.sol#1)
+solc-0.4.13 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Parameter BasicToken.transfer(address,uint256)._to (contracts/safe/safe_224_SAFE.sol#317) is not in mixedCase
+Parameter BasicToken.transfer(address,uint256)._value (contracts/safe/safe_224_SAFE.sol#317) is not in mixedCase
+Parameter BasicToken.balanceOf(address)._owner (contracts/safe/safe_224_SAFE.sol#332) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._from (contracts/safe/safe_224_SAFE.sol#356) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._to (contracts/safe/safe_224_SAFE.sol#356) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._value (contracts/safe/safe_224_SAFE.sol#356) is not in mixedCase
+Parameter StandardToken.approve(address,uint256)._spender (contracts/safe/safe_224_SAFE.sol#381) is not in mixedCase
+Parameter StandardToken.approve(address,uint256)._value (contracts/safe/safe_224_SAFE.sol#381) is not in mixedCase
+Parameter StandardToken.allowance(address,address)._owner (contracts/safe/safe_224_SAFE.sol#393) is not in mixedCase
+Parameter StandardToken.allowance(address,address)._spender (contracts/safe/safe_224_SAFE.sol#393) is not in mixedCase
+Parameter StandardToken.increaseApproval(address,uint256)._spender (contracts/safe/safe_224_SAFE.sol#403) is not in mixedCase
+Parameter StandardToken.increaseApproval(address,uint256)._addedValue (contracts/safe/safe_224_SAFE.sol#403) is not in mixedCase
+Parameter StandardToken.decreaseApproval(address,uint256)._spender (contracts/safe/safe_224_SAFE.sol#410) is not in mixedCase
+Parameter StandardToken.decreaseApproval(address,uint256)._subtractedValue (contracts/safe/safe_224_SAFE.sol#410) is not in mixedCase
+Parameter BurnableToken.burn(uint256)._value (contracts/safe/safe_224_SAFE.sol#432) is not in mixedCase
+Parameter MintableToken.mint(address,uint256)._to (contracts/safe/safe_224_SAFE.sol#460) is not in mixedCase
+Parameter MintableToken.mint(address,uint256)._amount (contracts/safe/safe_224_SAFE.sol#460) is not in mixedCase
+Parameter SelfPayToken.transfer(address,uint256)._to (contracts/safe/safe_224_SAFE.sol#505) is not in mixedCase
+Parameter SelfPayToken.transfer(address,uint256)._value (contracts/safe/safe_224_SAFE.sol#505) is not in mixedCase
+Parameter SelfPayToken.transferFrom(address,address,uint256)._from (contracts/safe/safe_224_SAFE.sol#515) is not in mixedCase
+Parameter SelfPayToken.transferFrom(address,address,uint256)._to (contracts/safe/safe_224_SAFE.sol#515) is not in mixedCase
+Parameter SelfPayToken.transferFrom(address,address,uint256)._value (contracts/safe/safe_224_SAFE.sol#515) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: constable-states
+SelfPayToken.decimals (contracts/safe/safe_224_SAFE.sol#482) should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_224_SAFE.sol analyzed (13 contracts with 101 detectors), 39 result(s) found

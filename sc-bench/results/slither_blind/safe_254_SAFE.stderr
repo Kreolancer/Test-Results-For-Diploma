@@ -1,0 +1,108 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_254_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+
+Detector: erc20-interface
+CandyCoin (contracts/safe/safe_254_SAFE.sol#22-174) has incorrect ERC20 function interface:CandyCoin.transfer(address,uint256) (contracts/safe/safe_254_SAFE.sol#89-91)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-erc20-interface
+
+Detector: events-access
+owned.transferOwnership(address) (contracts/safe/safe_254_SAFE.sol#15-17) should emit an event for: 
+	- owner = newOwner (contracts/safe/safe_254_SAFE.sol#16) 
+	- owner = newOwner (contracts/safe/safe_254_SAFE.sol#16) 
+CandyCoin.setCrowdsaleContract(address) (contracts/safe/safe_254_SAFE.sol#56-58) should emit an event for: 
+	- crowdsaleContract = contractAddress (contracts/safe/safe_254_SAFE.sol#57) 
+owned.transferOwnership(address) (contracts/safe/safe_254_SAFE.sol#15-17) should emit an event for: 
+	- owner = newOwner (contracts/safe/safe_254_SAFE.sol#16) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+
+Detector: missing-zero-check
+owned.transferOwnership(address).newOwner (contracts/safe/safe_254_SAFE.sol#15) lacks a zero-check on :
+		- owner = newOwner (contracts/safe/safe_254_SAFE.sol#16)
+CandyCoin.setCrowdsaleContract(address).contractAddress (contracts/safe/safe_254_SAFE.sol#56) lacks a zero-check on :
+		- crowdsaleContract = contractAddress (contracts/safe/safe_254_SAFE.sol#57)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+
+Detector: reentrancy-events
+Reentrancy in CandySale.buyTokens(address) (contracts/safe/safe_254_SAFE.sol#209-217):
+	External calls:
+	- tokenReward.transfer(beneficiary,amount * 1000000000000000000 / tokenPrice) (contracts/safe/safe_254_SAFE.sol#213)
+	Event emitted after the call(s):
+	- FundTransfer(beneficiary,amount,true) (contracts/safe/safe_254_SAFE.sol#214)
+Reentrancy in CandySale.withdrawTokens() (contracts/safe/safe_254_SAFE.sol#203-206):
+	External calls:
+	- tokenReward.transfer(msg.sender,tokenReward.balanceOf(this)) (contracts/safe/safe_254_SAFE.sol#204)
+	- FundTransfer(msg.sender,tokenReward.balanceOf(this),false) (contracts/safe/safe_254_SAFE.sol#205)
+	Event emitted after the call(s):
+	- FundTransfer(msg.sender,tokenReward.balanceOf(this),false) (contracts/safe/safe_254_SAFE.sol#205)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-4
+
+Detector: solc-version
+Version constraint ^0.4.11 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- NestedArrayFunctionCallDecoder
+	- ZeroFunctionSelector
+	- DelegateCallReturnValue
+	- ECRecoverMalformedInput
+	- SkipEmptyStringLiteral.
+It is used by:
+	- ^0.4.11 (contracts/safe/safe_254_SAFE.sol#1)
+solc-0.4.11 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Contract owned (contracts/safe/safe_254_SAFE.sol#3-18) is not in CapWords
+Contract tokenRecipient (contracts/safe/safe_254_SAFE.sol#20) is not in CapWords
+Parameter CandyCoin.transfer(address,uint256)._to (contracts/safe/safe_254_SAFE.sol#89) is not in mixedCase
+Parameter CandyCoin.transfer(address,uint256)._value (contracts/safe/safe_254_SAFE.sol#89) is not in mixedCase
+Parameter CandyCoin.transferFrom(address,address,uint256)._from (contracts/safe/safe_254_SAFE.sol#102) is not in mixedCase
+Parameter CandyCoin.transferFrom(address,address,uint256)._to (contracts/safe/safe_254_SAFE.sol#102) is not in mixedCase
+Parameter CandyCoin.transferFrom(address,address,uint256)._value (contracts/safe/safe_254_SAFE.sol#102) is not in mixedCase
+Parameter CandyCoin.approve(address,uint256)._spender (contracts/safe/safe_254_SAFE.sol#117) is not in mixedCase
+Parameter CandyCoin.approve(address,uint256)._value (contracts/safe/safe_254_SAFE.sol#117) is not in mixedCase
+Parameter CandyCoin.approveAndCall(address,uint256,bytes)._spender (contracts/safe/safe_254_SAFE.sol#132) is not in mixedCase
+Parameter CandyCoin.approveAndCall(address,uint256,bytes)._value (contracts/safe/safe_254_SAFE.sol#132) is not in mixedCase
+Parameter CandyCoin.approveAndCall(address,uint256,bytes)._extraData (contracts/safe/safe_254_SAFE.sol#132) is not in mixedCase
+Parameter CandyCoin.burn(uint256)._value (contracts/safe/safe_254_SAFE.sol#149) is not in mixedCase
+Parameter CandyCoin.burnFrom(address,uint256)._from (contracts/safe/safe_254_SAFE.sol#165) is not in mixedCase
+Parameter CandyCoin.burnFrom(address,uint256)._value (contracts/safe/safe_254_SAFE.sol#165) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: too-many-digits
+CandyCoin.slitherConstructorVariables() (contracts/safe/safe_254_SAFE.sol#22-174) uses literals with too many digits:
+	- totalSupply = 12000000000000000000000000 (contracts/safe/safe_254_SAFE.sol#28)
+CandySale.buyTokens(address) (contracts/safe/safe_254_SAFE.sol#209-217) uses literals with too many digits:
+	- tokenReward.transfer(beneficiary,amount * 1000000000000000000 / tokenPrice) (contracts/safe/safe_254_SAFE.sol#213)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#too-many-digits
+
+Detector: unindexed-event-address
+Event CandySale.FundTransfer(address,uint256,bool) (contracts/safe/safe_254_SAFE.sol#189) has address parameters but no indexed parameters
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unindexed-event-address-parameters
+
+Detector: constable-states
+CandyCoin.decimals (contracts/safe/safe_254_SAFE.sol#26) should be constant 
+CandyCoin.name (contracts/safe/safe_254_SAFE.sol#24) should be constant 
+CandyCoin.sendingBanPeriod (contracts/safe/safe_254_SAFE.sol#31) should be constant 
+CandyCoin.symbol (contracts/safe/safe_254_SAFE.sol#25) should be constant 
+CandySale.endTime (contracts/safe/safe_254_SAFE.sol#184) should be constant 
+CandySale.teamWallet (contracts/safe/safe_254_SAFE.sol#179) should be constant 
+CandySale.tokenPrice (contracts/safe/safe_254_SAFE.sol#185) should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+
+Detector: external-function
+receiveApproval(address,uint256,address,bytes) should be declared external:
+	- tokenRecipient.receiveApproval(address,uint256,address,bytes) (contracts/safe/safe_254_SAFE.sol#20)
+approveAndCall(address,uint256,bytes) should be declared external:
+	- CandyCoin.approveAndCall(address,uint256,bytes) (contracts/safe/safe_254_SAFE.sol#132-140)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#public-function-that-could-be-declared-external
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_254_SAFE.sol analyzed (4 contracts with 101 detectors), 37 result(s) found

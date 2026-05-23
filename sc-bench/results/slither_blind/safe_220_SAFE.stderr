@@ -1,0 +1,36 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_220_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_220_SAFE.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_220_SAFE.sol:1:301: Warning: Defining constructors as functions with the same name as the contract is deprecated. Use "constructor(...) { ... }" instead.
+ ... function TokenERC20(uint256 initial ...  = tokenName;symbol = tokenSymbol;} ... 
+     ^-------------------------------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_220_SAFE.sol:1:1: Warning: Source file does not specify required compiler version!Consider adding "pragma solidity ^0.4.24;"
+contract TokenERC20 {string public  ... ][_spender] = _value;return true;}}
+^-------------------------------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_220_SAFE.sol:1:803: Warning: Invoking events without "emit" prefix is deprecated.
+ ... Transfer(_from, _to, _value) ... 
+     ^--------------------------^
+
+
+Detector: erc20-interface
+TokenERC20 (contracts/safe/safe_220_SAFE.sol#1-2) has incorrect ERC20 function interface:TokenERC20.transfer(address,uint256) (contracts/safe/safe_220_SAFE.sol#1)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-erc20-interface
+
+Detector: solc-version
+solc-0.4.24 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Parameter TokenERC20.transfer(address,uint256)._to (contracts/safe/safe_220_SAFE.sol#1) is not in mixedCase
+Parameter TokenERC20.transfer(address,uint256)._value (contracts/safe/safe_220_SAFE.sol#1) is not in mixedCase
+Parameter TokenERC20.transferFrom(address,address,uint256)._from (contracts/safe/safe_220_SAFE.sol#1) is not in mixedCase
+Parameter TokenERC20.transferFrom(address,address,uint256)._to (contracts/safe/safe_220_SAFE.sol#1) is not in mixedCase
+Parameter TokenERC20.transferFrom(address,address,uint256)._value (contracts/safe/safe_220_SAFE.sol#1) is not in mixedCase
+Parameter TokenERC20.approve(address,uint256)._spender (contracts/safe/safe_220_SAFE.sol#1) is not in mixedCase
+Parameter TokenERC20.approve(address,uint256)._value (contracts/safe/safe_220_SAFE.sol#1) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: constable-states
+TokenERC20.decimals (contracts/safe/safe_220_SAFE.sol#1) should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_220_SAFE.sol analyzed (1 contracts with 101 detectors), 10 result(s) found

@@ -1,0 +1,207 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_273_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc' running
+
+Detector: reentrancy-no-eth
+Reentrancy in Ledger.multiMint(uint256,uint256[]) ():
+	External calls:
+	- controller.ledgerTransfer(0,a,value) ()
+	State variables written after the call(s):
+	- balanceOf[a] = balanceOf[a] + value ()
+	Ledger.balanceOf () can be used in cross function reentrancies:
+	- Ledger.burn(address,uint256) ()
+	- Ledger.multiMint(uint256,uint256[]) ()
+	- Ledger.transfer(address,address,uint256) ()
+	- Ledger.transferFrom(address,address,address,uint256) ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-2
+
+Detector: missing-zero-check
+Owned.changeOwner(address)._newOwner () lacks a zero-check on :
+		- newOwner = _newOwner ()
+Token.setBeneficiary(address)._beneficiary () lacks a zero-check on :
+		- atFundDeposit = _beneficiary ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+
+Detector: calls-loop
+Ledger.multiMint(uint256,uint256[]) () has external calls inside a loop: controller.ledgerTransfer(0,a,value) ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation/#calls-inside-a-loop
+
+Detector: reentrancy-benign
+Reentrancy in Ledger.multiMint(uint256,uint256[]) ():
+	External calls:
+	- controller.ledgerTransfer(0,a,value) ()
+	State variables written after the call(s):
+	- totalSupply += created ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+
+Detector: reentrancy-events
+Reentrancy in Token.approve(address,uint256) ():
+	External calls:
+	- controller.approve(msg.sender,_spender,_value) ()
+	Event emitted after the call(s):
+	- Approval(msg.sender,_spender,_value) ()
+Reentrancy in Token.burn(uint256) ():
+	External calls:
+	- controller.burn(msg.sender,_amount) ()
+	Event emitted after the call(s):
+	- Transfer(msg.sender,0x0,_amount) ()
+Reentrancy in Token.decreaseApproval(address,uint256) ():
+	External calls:
+	- controller.decreaseApproval(msg.sender,_spender,_subtractedValue) ()
+	- newval = controller.allowance(msg.sender,_spender) ()
+	Event emitted after the call(s):
+	- Approval(msg.sender,_spender,newval) ()
+Reentrancy in Token.increaseApproval(address,uint256) ():
+	External calls:
+	- controller.increaseApproval(msg.sender,_spender,_addedValue) ()
+	- newval = controller.allowance(msg.sender,_spender) ()
+	Event emitted after the call(s):
+	- Approval(msg.sender,_spender,newval) ()
+Reentrancy in Token.transfer(address,uint256) ():
+	External calls:
+	- controller.transfer(msg.sender,_to,_value) ()
+	Event emitted after the call(s):
+	- Transfer(msg.sender,_to,_value) ()
+Reentrancy in Token.transferFrom(address,address,uint256) ():
+	External calls:
+	- controller.transferFrom(msg.sender,_from,_to,_value) ()
+	Event emitted after the call(s):
+	- Transfer(_from,_to,_value) ()
+Reentrancy in Token.transferToInternalLedger(uint256,bytes32) ():
+	External calls:
+	- transfer(atFundDeposit,_value) ()
+		- controller.transfer(msg.sender,_to,_value) ()
+	Event emitted after the call(s):
+	- TransferInternalLedgerAT(msg.sender,atFundDeposit,_value,_mdn) ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-4
+
+Detector: dead-code
+SafeMath.safeMul(uint256,uint256) () is never used and should be removed
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dead-code
+
+Detector: solc-version
+Version constraint >=0.4.10 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- NestedArrayFunctionCallDecoder
+	- ZeroFunctionSelector
+	- DelegateCallReturnValue
+	- ECRecoverMalformedInput
+	- SkipEmptyStringLiteral
+	- ConstantOptimizerSubtraction.
+It is used by:
+	- >=0.4.10 ()
+solc-0.4.10 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: missing-inheritance
+Token () should inherit from IToken ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-inheritance
+
+Detector: naming-convention
+Parameter Owned.changeOwner(address)._newOwner () is not in mixedCase
+Parameter TokenReceivable.claimTokens(address,address)._token () is not in mixedCase
+Parameter TokenReceivable.claimTokens(address,address)._to () is not in mixedCase
+Parameter Token.setMotd(string)._m () is not in mixedCase
+Parameter Token.setController(address)._c () is not in mixedCase
+Parameter Token.setBeneficiary(address)._beneficiary () is not in mixedCase
+Parameter Token.allowance(address,address)._owner () is not in mixedCase
+Parameter Token.allowance(address,address)._spender () is not in mixedCase
+Parameter Token.transfer(address,uint256)._to () is not in mixedCase
+Parameter Token.transfer(address,uint256)._value () is not in mixedCase
+Parameter Token.transferFrom(address,address,uint256)._from () is not in mixedCase
+Parameter Token.transferFrom(address,address,uint256)._to () is not in mixedCase
+Parameter Token.transferFrom(address,address,uint256)._value () is not in mixedCase
+Parameter Token.approve(address,uint256)._spender () is not in mixedCase
+Parameter Token.approve(address,uint256)._value () is not in mixedCase
+Parameter Token.increaseApproval(address,uint256)._spender () is not in mixedCase
+Parameter Token.increaseApproval(address,uint256)._addedValue () is not in mixedCase
+Parameter Token.decreaseApproval(address,uint256)._spender () is not in mixedCase
+Parameter Token.decreaseApproval(address,uint256)._subtractedValue () is not in mixedCase
+Parameter Token.burn(uint256)._amount () is not in mixedCase
+Parameter Token.transferToInternalLedger(uint256,bytes32)._value () is not in mixedCase
+Parameter Token.transferToInternalLedger(uint256,bytes32)._mdn () is not in mixedCase
+Parameter Token.controllerTransfer(address,address,uint256)._from () is not in mixedCase
+Parameter Token.controllerTransfer(address,address,uint256)._to () is not in mixedCase
+Parameter Token.controllerTransfer(address,address,uint256)._value () is not in mixedCase
+Parameter Token.controllerApprove(address,address,uint256)._owner () is not in mixedCase
+Parameter Token.controllerApprove(address,address,uint256)._spender () is not in mixedCase
+Parameter Token.controllerApprove(address,address,uint256)._value () is not in mixedCase
+Parameter Controller.setToken(address)._token () is not in mixedCase
+Parameter Controller.setLedger(address)._ledger () is not in mixedCase
+Parameter Controller.balanceOf(address)._a () is not in mixedCase
+Parameter Controller.allowance(address,address)._owner () is not in mixedCase
+Parameter Controller.allowance(address,address)._spender () is not in mixedCase
+Parameter Controller.transfer(address,address,uint256)._from () is not in mixedCase
+Parameter Controller.transfer(address,address,uint256)._to () is not in mixedCase
+Parameter Controller.transfer(address,address,uint256)._value () is not in mixedCase
+Parameter Controller.transferFrom(address,address,address,uint256)._spender () is not in mixedCase
+Parameter Controller.transferFrom(address,address,address,uint256)._from () is not in mixedCase
+Parameter Controller.transferFrom(address,address,address,uint256)._to () is not in mixedCase
+Parameter Controller.transferFrom(address,address,address,uint256)._value () is not in mixedCase
+Parameter Controller.approve(address,address,uint256)._owner () is not in mixedCase
+Parameter Controller.approve(address,address,uint256)._spender () is not in mixedCase
+Parameter Controller.approve(address,address,uint256)._value () is not in mixedCase
+Parameter Controller.increaseApproval(address,address,uint256)._owner () is not in mixedCase
+Parameter Controller.increaseApproval(address,address,uint256)._spender () is not in mixedCase
+Parameter Controller.increaseApproval(address,address,uint256)._addedValue () is not in mixedCase
+Parameter Controller.decreaseApproval(address,address,uint256)._owner () is not in mixedCase
+Parameter Controller.decreaseApproval(address,address,uint256)._spender () is not in mixedCase
+Parameter Controller.decreaseApproval(address,address,uint256)._subtractedValue () is not in mixedCase
+Parameter Controller.burn(address,uint256)._owner () is not in mixedCase
+Parameter Controller.burn(address,uint256)._amount () is not in mixedCase
+Parameter Ledger.setController(address)._controller () is not in mixedCase
+Parameter Ledger.transfer(address,address,uint256)._from () is not in mixedCase
+Parameter Ledger.transfer(address,address,uint256)._to () is not in mixedCase
+Parameter Ledger.transfer(address,address,uint256)._value () is not in mixedCase
+Parameter Ledger.transferFrom(address,address,address,uint256)._spender () is not in mixedCase
+Parameter Ledger.transferFrom(address,address,address,uint256)._from () is not in mixedCase
+Parameter Ledger.transferFrom(address,address,address,uint256)._to () is not in mixedCase
+Parameter Ledger.transferFrom(address,address,address,uint256)._value () is not in mixedCase
+Parameter Ledger.approve(address,address,uint256)._owner () is not in mixedCase
+Parameter Ledger.approve(address,address,uint256)._spender () is not in mixedCase
+Parameter Ledger.approve(address,address,uint256)._value () is not in mixedCase
+Parameter Ledger.increaseApproval(address,address,uint256)._owner () is not in mixedCase
+Parameter Ledger.increaseApproval(address,address,uint256)._spender () is not in mixedCase
+Parameter Ledger.increaseApproval(address,address,uint256)._addedValue () is not in mixedCase
+Parameter Ledger.decreaseApproval(address,address,uint256)._owner () is not in mixedCase
+Parameter Ledger.decreaseApproval(address,address,uint256)._spender () is not in mixedCase
+Parameter Ledger.decreaseApproval(address,address,uint256)._subtractedValue () is not in mixedCase
+Parameter Ledger.burn(address,uint256)._owner () is not in mixedCase
+Parameter Ledger.burn(address,uint256)._amount () is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: unindexed-event-address
+Event EventDefinitions.Transfer(address,address,uint256) () has address parameters but no indexed parameters
+Event EventDefinitions.TransferInternalLedgerAT(address,address,uint256,bytes32) () has address parameters but no indexed parameters
+Event EventDefinitions.Approval(address,address,uint256) () has address parameters but no indexed parameters
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unindexed-event-address-parameters
+
+Detector: unused-state
+Token.name () is never used in Token ()
+Token.decimals () is never used in Token ()
+Token.symbol () is never used in Token ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unused-state-variable
+
+Detector: constable-states
+Token.decimals () should be constant 
+Token.name () should be constant 
+Token.symbol () should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+
+Detector: external-function
+setMotd(string) should be declared external:
+	- Token.setMotd(string) ()
+multiMint(uint256,uint256[]) should be declared external:
+	- Ledger.multiMint(uint256,uint256[]) ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#public-function-that-could-be-declared-external
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_273_SAFE.sol analyzed (10 contracts with 101 detectors), 97 result(s) found

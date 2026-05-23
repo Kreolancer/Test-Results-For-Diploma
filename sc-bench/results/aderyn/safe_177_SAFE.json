@@ -1,0 +1,771 @@
+{
+  "files_summary": {
+    "total_source_units": 1,
+    "total_sloc": 313
+  },
+  "files_details": {
+    "files_details": [
+      {
+        "file_path": "src/safe_177_SAFE.sol",
+        "n_sloc": 313
+      }
+    ]
+  },
+  "issue_count": {
+    "high": 1,
+    "low": 9
+  },
+  "high_issues": {
+    "issues": [
+      {
+        "title": "Reentrancy: State change after external call",
+        "description": "Changing state after an external call can lead to re-entrancy attacks.Use the checks-effects-interactions pattern to avoid this issue.",
+        "detector_name": "reentrancy-state-change",
+        "instances": [
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 492,
+            "src": "15665:41",
+            "src_char": "15064:41",
+            "hint": "State is changed at: `balances[sender] = balances[sender].sub(_amount)`, `balances[_to] = balances[_to].add(resultAmount)`, `balances[staker] = balances[staker].add(fee)`, `lastUsedNonce[sender] = _nonce`"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 512,
+            "src": "16377:53",
+            "src_char": "15776:53",
+            "hint": "State is changed at: `balances[sender] = balances[sender].sub(_amount)`, `balances[staker] = balances[staker].add(fee)`, `totalSupply_ =totalSupply_.sub(resultAmount)`"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 529,
+            "src": "17108:51",
+            "src_char": "16406:51",
+            "hint": "State is changed at: `balances[_to] = balances[staker].add(resultAmount)`, `balances[staker] = balances[staker].add(fee)`, `totalSupply_ = totalSupply_.add(_amount)`"
+          }
+        ]
+      }
+    ]
+  },
+  "low_issues": {
+    "issues": [
+      {
+        "title": "Centralization Risk",
+        "description": "Contracts have owners with privileged rights to perform admin tasks and need to be trusted to not perform malicious updates or drain funds.",
+        "detector_name": "centralization-risk",
+        "instances": [
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 72,
+            "src": "1726:9",
+            "src_char": "1726:9"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 80,
+            "src": "1870:7",
+            "src_char": "1870:7"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 94,
+            "src": "2223:9",
+            "src_char": "2223:9"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 108,
+            "src": "2534:7",
+            "src_char": "2534:7"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 134,
+            "src": "3019:9",
+            "src_char": "3019:9"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 142,
+            "src": "3193:9",
+            "src_char": "3193:9"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 370,
+            "src": "11103:9",
+            "src_char": "11043:9"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 378,
+            "src": "11505:9",
+            "src_char": "11387:9"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 386,
+            "src": "11856:9",
+            "src_char": "11697:9"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 468,
+            "src": "14947:9",
+            "src_char": "14370:9"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 473,
+            "src": "15073:9",
+            "src_char": "14496:9"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 540,
+            "src": "17456:9",
+            "src_char": "16754:9"
+          }
+        ]
+      },
+      {
+        "title": "`ecrecover` Signature Malleability",
+        "description": "The `ecrecover` function is susceptible to signature malleability. This means that the same message can be signed in multiple ways, allowing an attacker to change the message signature without invalidating it. This can lead to unexpected behavior in smart contracts, such as the loss of funds or the ability to bypass access control. Consider using OpenZeppelin's ECDSA library instead of the built-in function.",
+        "detector_name": "ecrecover",
+        "instances": [
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 487,
+            "src": "15543:9",
+            "src_char": "14942:9"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 507,
+            "src": "16255:9",
+            "src_char": "15654:9"
+          }
+        ]
+      },
+      {
+        "title": "Empty `require()` / `revert()` Statement",
+        "description": "Use descriptive reason strings or custom errors for revert paths.",
+        "detector_name": "empty-require-revert",
+        "instances": [
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 65,
+            "src": "1532:7",
+            "src_char": "1532:7"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 73,
+            "src": "1742:7",
+            "src_char": "1742:7"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 87,
+            "src": "2040:7",
+            "src_char": "2040:7"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 119,
+            "src": "2743:7",
+            "src_char": "2743:7"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 127,
+            "src": "2896:7",
+            "src_char": "2896:7"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 195,
+            "src": "4586:7",
+            "src_char": "4586:7"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 196,
+            "src": "4618:7",
+            "src_char": "4618:7"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 229,
+            "src": "5482:7",
+            "src_char": "5482:7"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 252,
+            "src": "6350:7",
+            "src_char": "6350:7"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 253,
+            "src": "6382:7",
+            "src_char": "6382:7"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 254,
+            "src": "6422:7",
+            "src_char": "6422:7"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 478,
+            "src": "15163:7",
+            "src_char": "14586:7"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 489,
+            "src": "15577:7",
+            "src_char": "14976:7"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 490,
+            "src": "15622:7",
+            "src_char": "15021:7"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 509,
+            "src": "16289:7",
+            "src_char": "15688:7"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 510,
+            "src": "16334:7",
+            "src_char": "15733:7"
+          }
+        ]
+      },
+      {
+        "title": "Inconsistent uint256/uint (or) int256/int types",
+        "description": "Inconsistency in declaring uint256/uint (or) int256/int variables within a contract. Use explicit size declarations (uint256 or int256). Consider keeping the naming convention consistent in a given contract. Explicit size declarations are preferred (uint256, int256) over implicit ones (uint, int) to avoid confusion.",
+        "detector_name": "inconsistent-type-names",
+        "instances": [
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 299,
+            "src": "8457:16",
+            "src_char": "8457:16"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 316,
+            "src": "9189:21",
+            "src_char": "9189:21"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 317,
+            "src": "9239:13",
+            "src_char": "9239:13"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 342,
+            "src": "10084:16",
+            "src_char": "10084:16"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 346,
+            "src": "10257:21",
+            "src_char": "10257:21"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 456,
+            "src": "14645:38",
+            "src_char": "14068:38"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 483,
+            "src": "15308:12",
+            "src_char": "14707:12"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 483,
+            "src": "15322:11",
+            "src_char": "14721:11"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 503,
+            "src": "15994:12",
+            "src_char": "15393:12"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 503,
+            "src": "16027:11",
+            "src_char": "15426:11"
+          }
+        ]
+      },
+      {
+        "title": "Literal Instead of Constant",
+        "description": "Define and use `constant` variables instead of using literals. If the same constant literal value is used multiple times, create a constant state variable and reference it throughout the contract.",
+        "detector_name": "literal-instead-of-constant",
+        "instances": [
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 426,
+            "src": "13638:3",
+            "src_char": "13167:3"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 434,
+            "src": "14030:3",
+            "src_char": "13505:3"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 442,
+            "src": "14380:3",
+            "src_char": "13803:3"
+          }
+        ]
+      },
+      {
+        "title": "Modifier Invoked Only Once",
+        "description": "Consider removing the modifier or inlining the logic into the calling function.",
+        "detector_name": "modifier-used-only-once",
+        "instances": [
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 86,
+            "src": "2006:81",
+            "src_char": "2006:81"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 126,
+            "src": "2868:55",
+            "src_char": "2868:55"
+          }
+        ]
+      },
+      {
+        "title": "Address State Variable Set Without Checks",
+        "description": "Check for `address(0)` when assigning values to address state variables.",
+        "detector_name": "state-no-address-check",
+        "instances": [
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 95,
+            "src": "2238:23",
+            "src_char": "2238:23"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 474,
+            "src": "15096:30",
+            "src_char": "14519:30"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 541,
+            "src": "17502:16",
+            "src_char": "16800:16"
+          }
+        ]
+      },
+      {
+        "title": "Unsafe ERC20 Operation",
+        "description": "ERC20 functions may not behave as expected. For example: return values are not always meaningful. It is recommended to use OpenZeppelin's SafeERC20 library.",
+        "detector_name": "unsafe-erc20-operation",
+        "instances": [
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 331,
+            "src": "9702:14",
+            "src_char": "9702:14"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 339,
+            "src": "10000:13",
+            "src_char": "10000:13"
+          }
+        ]
+      },
+      {
+        "title": "Public Function Not Used Internally",
+        "description": "If a function is marked public but is not used internally, consider marking it as `external`.",
+        "detector_name": "unused-public-function",
+        "instances": [
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 72,
+            "src": "1674:169",
+            "src_char": "1674:169"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 94,
+            "src": "2171:95",
+            "src_char": "2171:95"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 101,
+            "src": "2350:159",
+            "src_char": "2350:159"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 134,
+            "src": "3002:90",
+            "src_char": "3002:90"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 142,
+            "src": "3174:92",
+            "src_char": "3174:92"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 154,
+            "src": "3422:53",
+            "src_char": "3422:53"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 155,
+            "src": "3478:62",
+            "src_char": "3478:62"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 156,
+            "src": "3543:67",
+            "src_char": "3543:67"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 161,
+            "src": "3722:85",
+            "src_char": "3722:85"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 164,
+            "src": "3811:89",
+            "src_char": "3811:89"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 167,
+            "src": "3904:71",
+            "src_char": "3904:71"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 185,
+            "src": "4274:83",
+            "src_char": "4274:83"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 194,
+            "src": "4511:321",
+            "src_char": "4511:321"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 209,
+            "src": "5034:99",
+            "src_char": "5034:99"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 224,
+            "src": "5345:73",
+            "src_char": "5345:73"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 251,
+            "src": "6256:444",
+            "src_char": "6256:444"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 273,
+            "src": "7323:188",
+            "src_char": "7323:188"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 285,
+            "src": "7830:126",
+            "src_char": "7830:126"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 299,
+            "src": "8413:270",
+            "src_char": "8413:270"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 316,
+            "src": "9145:402",
+            "src_char": "9145:402"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 330,
+            "src": "9606:128",
+            "src_char": "9606:128"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 334,
+            "src": "9738:158",
+            "src_char": "9738:158"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 338,
+            "src": "9900:136",
+            "src_char": "9900:136"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 342,
+            "src": "10040:169",
+            "src_char": "10040:169"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 346,
+            "src": "10213:181",
+            "src_char": "10213:181"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 370,
+            "src": "11025:268",
+            "src_char": "10965:268"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 378,
+            "src": "11426:275",
+            "src_char": "11308:275"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 386,
+            "src": "11798:200",
+            "src_char": "11639:200"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 394,
+            "src": "12119:129",
+            "src_char": "11908:129"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 399,
+            "src": "12363:129",
+            "src_char": "12103:129"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 404,
+            "src": "12609:133",
+            "src_char": "12299:133"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 409,
+            "src": "12853:133",
+            "src_char": "12496:133"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 414,
+            "src": "13067:92",
+            "src_char": "12677:92"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 419,
+            "src": "13236:92",
+            "src_char": "12816:92"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 424,
+            "src": "13448:270",
+            "src_char": "12977:270"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 432,
+            "src": "13844:264",
+            "src_char": "13319:264"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 440,
+            "src": "14230:209",
+            "src_char": "13653:209"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 468,
+            "src": "14897:116",
+            "src_char": "14320:116"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 473,
+            "src": "15017:114",
+            "src_char": "14440:114"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 483,
+            "src": "15269:695",
+            "src_char": "14668:695"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 503,
+            "src": "15968:709",
+            "src_char": "15367:709"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 525,
+            "src": "16946:467",
+            "src_char": "16244:467"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 540,
+            "src": "17417:106",
+            "src_char": "16715:106"
+          },
+          {
+            "contract_path": "src/safe_177_SAFE.sol",
+            "line_no": 544,
+            "src": "17529:84",
+            "src_char": "16827:84"
+          }
+        ]
+      }
+    ]
+  },
+  "detectors_used": [
+    "abi-encode-packed-hash-collision",
+    "arbitrary-transfer-from",
+    "assert-state-change",
+    "block-timestamp-deadline",
+    "boolean-equality",
+    "builtin-symbol-shadowing",
+    "centralization-risk",
+    "constant-function-changes-state",
+    "constant-function-contains-assembly",
+    "contract-locks-ether",
+    "costly-loop",
+    "dangerous-unary-operator",
+    "dead-code",
+    "delegate-call-unchecked-address",
+    "delegatecall-in-loop",
+    "delete-nested-mapping",
+    "deprecated-oz-function",
+    "division-before-multiplication",
+    "dynamic-array-length-assignment",
+    "ecrecover",
+    "empty-block",
+    "empty-require-revert",
+    "enumerable-loop-removal",
+    "eth-send-unchecked-address",
+    "experimental-encoder",
+    "function-initializing-state",
+    "function-pointer-in-constructor",
+    "function-selector-collision",
+    "inconsistent-type-names",
+    "incorrect-caret-operator",
+    "incorrect-erc20-interface",
+    "incorrect-erc721-interface",
+    "incorrect-shift-order",
+    "incorrect-use-of-modifier",
+    "internal-function-used-once",
+    "large-numeric-literal",
+    "literal-instead-of-constant",
+    "local-variable-shadowing",
+    "missing-inheritance",
+    "misused-boolean",
+    "modifier-used-only-once",
+    "msg-value-in-loop",
+    "multiple-constructors",
+    "multiple-placeholders",
+    "nested-struct-in-mapping",
+    "non-reentrant-not-first",
+    "out-of-order-retryable",
+    "pre-declared-local-variable-usage",
+    "push-zero-opcode",
+    "redundant-statement",
+    "reentrancy-state-change",
+    "require-revert-in-loop",
+    "return-bomb",
+    "reused-contract-name",
+    "rtlo",
+    "selfdestruct",
+    "signed-integer-storage-array",
+    "solmate-safe-transfer-lib",
+    "state-change-without-event",
+    "state-no-address-check",
+    "state-variable-could-be-constant",
+    "state-variable-could-be-immutable",
+    "state-variable-init-order",
+    "state-variable-read-external",
+    "state-variable-shadowing",
+    "storage-array-length-not-cached",
+    "storage-array-memory-edit",
+    "strict-equality-contract-balance",
+    "tautological-compare",
+    "tautology-or-contradiction",
+    "todo",
+    "tx-origin-used-for-auth",
+    "unchecked-low-level-call",
+    "unchecked-return",
+    "unchecked-send",
+    "uninitialized-local-variable",
+    "unprotected-initializer",
+    "unsafe-casting",
+    "unsafe-erc20-operation",
+    "unsafe-oz-erc721-mint",
+    "unspecific-solidity-pragma",
+    "unused-error",
+    "unused-import",
+    "unused-public-function",
+    "unused-state-variable",
+    "void-constructor",
+    "weak-randomness",
+    "yul-return"
+  ]
+}

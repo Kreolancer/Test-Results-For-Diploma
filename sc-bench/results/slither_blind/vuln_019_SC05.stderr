@@ -1,0 +1,89 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_019_SC05.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc' running
+
+Detector: controlled-array-length
+BlackJack () contract sets array length with a user-controlled value:
+	- games[msg.sender].houseCards.push(newCard) ()
+BlackJack () contract sets array length with a user-controlled value:
+	- games[msg.sender].playerCards.push(Deck.deal(msg.sender,nextCard)) ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#array-length-assignment
+
+Detector: weak-prng
+Deck.deal(address,uint8) () uses a weak PRNG: "uint8(uint256(keccak256()(block.blockhash(b),player,cardNumber,timestamp)) % 52) ()" 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#weak-PRNG
+
+Detector: tautology
+BlackJack.getPlayerCard(uint8) () contains a tautology or contradiction:
+	- id < 0 || id > games[msg.sender].playerCards.length ()
+BlackJack.getHouseCard(uint8) () contains a tautology or contradiction:
+	- id < 0 || id > games[msg.sender].houseCards.length ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#tautology-or-contradiction
+
+Detector: dead-code
+Deck.deal(address,uint8) () is never used and should be removed
+Deck.isAce(uint8) () is never used and should be removed
+Deck.isTen(uint8) () is never used and should be removed
+Deck.valueOf(uint8,bool) () is never used and should be removed
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dead-code
+
+Detector: deprecated-standards
+Deprecated standard detected uint8(uint256(keccak256()(block.blockhash(b),player,cardNumber,timestamp)) % 52) ():
+	- Usage of "block.blockhash()" should be replaced with "blockhash()"
+Deprecated standard detected THROW ():
+	- Usage of "throw" should be replaced with "revert()"
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#deprecated-standards
+
+Detector: solc-version
+Version constraint ^0.4.9 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- NestedArrayFunctionCallDecoder
+	- ZeroFunctionSelector
+	- DelegateCallReturnValue
+	- ECRecoverMalformedInput
+	- SkipEmptyStringLiteral
+	- ConstantOptimizerSubtraction.
+It is used by:
+	- ^0.4.9 ()
+solc-0.4.9 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Variable BlackJack.BLACKJACK () is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: reentrancy-unlimited-gas
+Reentrancy in BlackJack.checkGameResult(BlackJack.Game,bool) ():
+	External calls:
+	- ! msg.sender.send(game.bet) ()
+	State variables written after the call(s):
+	- games[msg.sender].state = GameState.Tie ()
+Reentrancy in BlackJack.checkGameResult(BlackJack.Game,bool) ():
+	External calls:
+	- ! msg.sender.send((game.bet * 5) / 2) ()
+	- ! msg.sender.send(game.bet * 2) ()
+	State variables written after the call(s):
+	- games[msg.sender].state = GameState.Player ()
+Reentrancy in BlackJack.checkGameResult(BlackJack.Game,bool) ():
+	External calls:
+	- ! msg.sender.send(game.bet * 2) ()
+	State variables written after the call(s):
+	- games[msg.sender].state = GameState.Player ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-5
+
+Detector: constable-states
+BlackJack.BLACKJACK () should be constant 
+BlackJack.maxBet () should be constant 
+BlackJack.minBet () should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_019_SC05.sol analyzed (2 contracts with 101 detectors), 20 result(s) found

@@ -1,0 +1,142 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_269_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+
+Detector: controlled-array-length
+ERC721Token (contracts/safe/safe_269_SAFE.sol#533-712) contract sets array length with a user-controlled value:
+	- ownedTokens[_to].push(_tokenId) (contracts/safe/safe_269_SAFE.sol#645)
+RP (contracts/safe/safe_269_SAFE.sol#719-823) contract sets array length with a user-controlled value:
+	- orders.push(string(char)) (contracts/safe/safe_269_SAFE.sol#748)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#array-length-assignment
+
+Detector: weak-prng
+RP._getRandom(uint256) (contracts/safe/safe_269_SAFE.sol#803-806) uses a weak PRNG: "random % max (contracts/safe/safe_269_SAFE.sol#805)" 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#weak-PRNG
+
+Detector: constant-function-asm
+AddressUtils.isContract(address) (contracts/safe/safe_269_SAFE.sol#103-114) is declared view but contains assembly code
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#constant-functions-using-assembly-code
+
+Detector: incorrect-equality
+RP.fallback() (contracts/safe/safe_269_SAFE.sol#777-801) uses a dangerous strict equality:
+	- i == orders.length - 1 (contracts/safe/safe_269_SAFE.sol#793)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dangerous-strict-equalities
+
+Detector: shadowing-local
+RP.getOwnedTokens().ownedTokens (contracts/safe/safe_269_SAFE.sol#759) shadows:
+	- ERC721Token.ownedTokens (contracts/safe/safe_269_SAFE.sol#541) (state variable)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#local-variable-shadowing
+
+Detector: reentrancy-benign
+Reentrancy in RP.getOrders(address) (contracts/safe/safe_269_SAFE.sol#739-752):
+	External calls:
+	- _orderString = bytes(OrderString(_orderContract).getOrderString()) (contracts/safe/safe_269_SAFE.sol#741)
+	State variables written after the call(s):
+	- available = orders.length (contracts/safe/safe_269_SAFE.sol#750)
+	- delete orders (contracts/safe/safe_269_SAFE.sol#743)
+	- orders.push(string(char)) (contracts/safe/safe_269_SAFE.sol#748)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+
+Detector: timestamp
+RP.fallback() (contracts/safe/safe_269_SAFE.sol#777-801) uses timestamp for comparisons
+	Dangerous comparisons:
+	- i < orders.length (contracts/safe/safe_269_SAFE.sol#784)
+	- i == orders.length - 1 (contracts/safe/safe_269_SAFE.sol#793)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+
+Detector: assembly
+AddressUtils.isContract(address) (contracts/safe/safe_269_SAFE.sol#103-114) uses assembly
+	- INLINE ASM (contracts/safe/safe_269_SAFE.sol#112-113)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#assembly-usage
+
+Detector: dead-code
+ERC721BasicToken._burn(address,uint256) (contracts/safe/safe_269_SAFE.sol#456-460) is never used and should be removed
+ERC721Token._burn(address,uint256) (contracts/safe/safe_269_SAFE.sol#691-710) is never used and should be removed
+ERC721Token._setTokenURI(uint256,string) (contracts/safe/safe_269_SAFE.sol#632-635) is never used and should be removed
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dead-code
+
+Detector: solc-version
+Version constraint ^0.4.24 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ABIEncoderV2PackedStorage_0.4.x
+	- ExpExponentCleanup
+	- EventStructWrongData.
+It is used by:
+	- ^0.4.24 (contracts/safe/safe_269_SAFE.sol#1)
+solc-0.4.24 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Parameter ERC721BasicToken.balanceOf(address)._owner (contracts/safe/safe_269_SAFE.sol#255) is not in mixedCase
+Parameter ERC721BasicToken.ownerOf(uint256)._tokenId (contracts/safe/safe_269_SAFE.sol#265) is not in mixedCase
+Parameter ERC721BasicToken.exists(uint256)._tokenId (contracts/safe/safe_269_SAFE.sol#276) is not in mixedCase
+Parameter ERC721BasicToken.approve(address,uint256)._to (contracts/safe/safe_269_SAFE.sol#289) is not in mixedCase
+Parameter ERC721BasicToken.approve(address,uint256)._tokenId (contracts/safe/safe_269_SAFE.sol#289) is not in mixedCase
+Parameter ERC721BasicToken.getApproved(uint256)._tokenId (contracts/safe/safe_269_SAFE.sol#305) is not in mixedCase
+Parameter ERC721BasicToken.setApprovalForAll(address,bool)._to (contracts/safe/safe_269_SAFE.sol#315) is not in mixedCase
+Parameter ERC721BasicToken.setApprovalForAll(address,bool)._approved (contracts/safe/safe_269_SAFE.sol#315) is not in mixedCase
+Parameter ERC721BasicToken.isApprovedForAll(address,address)._owner (contracts/safe/safe_269_SAFE.sol#328) is not in mixedCase
+Parameter ERC721BasicToken.isApprovedForAll(address,address)._operator (contracts/safe/safe_269_SAFE.sol#329) is not in mixedCase
+Parameter ERC721BasicToken.transferFrom(address,address,uint256)._from (contracts/safe/safe_269_SAFE.sol#347) is not in mixedCase
+Parameter ERC721BasicToken.transferFrom(address,address,uint256)._to (contracts/safe/safe_269_SAFE.sol#348) is not in mixedCase
+Parameter ERC721BasicToken.transferFrom(address,address,uint256)._tokenId (contracts/safe/safe_269_SAFE.sol#349) is not in mixedCase
+Parameter ERC721BasicToken.safeTransferFrom(address,address,uint256)._from (contracts/safe/safe_269_SAFE.sol#376) is not in mixedCase
+Parameter ERC721BasicToken.safeTransferFrom(address,address,uint256)._to (contracts/safe/safe_269_SAFE.sol#377) is not in mixedCase
+Parameter ERC721BasicToken.safeTransferFrom(address,address,uint256)._tokenId (contracts/safe/safe_269_SAFE.sol#378) is not in mixedCase
+Parameter ERC721BasicToken.safeTransferFrom(address,address,uint256,bytes)._from (contracts/safe/safe_269_SAFE.sol#400) is not in mixedCase
+Parameter ERC721BasicToken.safeTransferFrom(address,address,uint256,bytes)._to (contracts/safe/safe_269_SAFE.sol#401) is not in mixedCase
+Parameter ERC721BasicToken.safeTransferFrom(address,address,uint256,bytes)._tokenId (contracts/safe/safe_269_SAFE.sol#402) is not in mixedCase
+Parameter ERC721BasicToken.safeTransferFrom(address,address,uint256,bytes)._data (contracts/safe/safe_269_SAFE.sol#403) is not in mixedCase
+Parameter ERC721BasicToken.isApprovedOrOwner(address,uint256)._spender (contracts/safe/safe_269_SAFE.sol#421) is not in mixedCase
+Parameter ERC721BasicToken.isApprovedOrOwner(address,uint256)._tokenId (contracts/safe/safe_269_SAFE.sol#422) is not in mixedCase
+Parameter ERC721BasicToken.clearApproval(address,uint256)._owner (contracts/safe/safe_269_SAFE.sol#468) is not in mixedCase
+Parameter ERC721BasicToken.clearApproval(address,uint256)._tokenId (contracts/safe/safe_269_SAFE.sol#468) is not in mixedCase
+Parameter ERC721BasicToken.addTokenTo(address,uint256)._to (contracts/safe/safe_269_SAFE.sol#481) is not in mixedCase
+Parameter ERC721BasicToken.addTokenTo(address,uint256)._tokenId (contracts/safe/safe_269_SAFE.sol#481) is not in mixedCase
+Parameter ERC721BasicToken.removeTokenFrom(address,uint256)._from (contracts/safe/safe_269_SAFE.sol#492) is not in mixedCase
+Parameter ERC721BasicToken.removeTokenFrom(address,uint256)._tokenId (contracts/safe/safe_269_SAFE.sol#492) is not in mixedCase
+Parameter ERC721BasicToken.checkAndCallSafeTransfer(address,address,uint256,bytes)._from (contracts/safe/safe_269_SAFE.sol#508) is not in mixedCase
+Parameter ERC721BasicToken.checkAndCallSafeTransfer(address,address,uint256,bytes)._to (contracts/safe/safe_269_SAFE.sol#509) is not in mixedCase
+Parameter ERC721BasicToken.checkAndCallSafeTransfer(address,address,uint256,bytes)._tokenId (contracts/safe/safe_269_SAFE.sol#510) is not in mixedCase
+Parameter ERC721BasicToken.checkAndCallSafeTransfer(address,address,uint256,bytes)._data (contracts/safe/safe_269_SAFE.sol#511) is not in mixedCase
+Parameter ERC721Token.tokenURI(uint256)._tokenId (contracts/safe/safe_269_SAFE.sol#584) is not in mixedCase
+Parameter ERC721Token.tokenOfOwnerByIndex(address,uint256)._owner (contracts/safe/safe_269_SAFE.sol#596) is not in mixedCase
+Parameter ERC721Token.tokenOfOwnerByIndex(address,uint256)._index (contracts/safe/safe_269_SAFE.sol#597) is not in mixedCase
+Parameter ERC721Token.tokenByIndex(uint256)._index (contracts/safe/safe_269_SAFE.sol#621) is not in mixedCase
+Parameter ERC721Token.addTokenTo(address,uint256)._to (contracts/safe/safe_269_SAFE.sol#642) is not in mixedCase
+Parameter ERC721Token.addTokenTo(address,uint256)._tokenId (contracts/safe/safe_269_SAFE.sol#642) is not in mixedCase
+Parameter ERC721Token.removeTokenFrom(address,uint256)._from (contracts/safe/safe_269_SAFE.sol#654) is not in mixedCase
+Parameter ERC721Token.removeTokenFrom(address,uint256)._tokenId (contracts/safe/safe_269_SAFE.sol#654) is not in mixedCase
+Parameter RP.getOrders(address)._orderContract (contracts/safe/safe_269_SAFE.sol#739) is not in mixedCase
+Parameter RP.approve(address,uint256)._to (contracts/safe/safe_269_SAFE.sol#808) is not in mixedCase
+Parameter RP.approve(address,uint256)._tokenId (contracts/safe/safe_269_SAFE.sol#808) is not in mixedCase
+Parameter RP.setApprovalForAll(address,bool)._to (contracts/safe/safe_269_SAFE.sol#813) is not in mixedCase
+Parameter RP.setApprovalForAll(address,bool)._approved (contracts/safe/safe_269_SAFE.sol#813) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: cache-array-length
+Loop condition i < orders.length (contracts/safe/safe_269_SAFE.sol#763) should use cached array length instead of referencing `length` member of the storage array.
+ Loop condition i < orders.length (contracts/safe/safe_269_SAFE.sol#784) should use cached array length instead of referencing `length` member of the storage array.
+ Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#cache-array-length
+
+Detector: constable-states
+RP.decimals (contracts/safe/safe_269_SAFE.sol#720) should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+
+Detector: external-function
+onERC721Received(address,uint256,bytes) should be declared external:
+	- ERC721Receiver.onERC721Received(address,uint256,bytes) (contracts/safe/safe_269_SAFE.sol#197-203)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#public-function-that-could-be-declared-external
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_269_SAFE.sol analyzed (11 contracts with 101 detectors), 63 result(s) found

@@ -1,0 +1,47 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_177_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_177_SAFE.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_177_SAFE.sol:57:3: Warning: Defining constructors as functions with the same name as the contract is deprecated. Use "constructor(...) { ... }" instead.
+  function Ownable() public {
+  ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_177_SAFE.sol:462:3: Warning: Defining constructors as functions with the same name as the contract is deprecated. Use "constructor(...) { ... }" instead.
+  function EvaCurrency(string _name, string _symbol) public {
+  ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_177_SAFE.sol:74:5: Warning: Invoking events without "emit" prefix is deprecated.
+    OwnershipTransferred(owner, newOwner);
+    ^-----------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_177_SAFE.sol:102:5: Warning: Invoking events without "emit" prefix is deprecated.
+    OwnershipTransferred(owner, pendingOwner);
+    ^---------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_177_SAFE.sol:374:5: Warning: Invoking events without "emit" prefix is deprecated.
+    RefillCommisionIsChanged(_paySystem, _stat, _perc);
+    ^------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_177_SAFE.sol:382:5: Warning: Invoking events without "emit" prefix is deprecated.
+    WidthrawCommisionIsChanged(_paySystem, _stat, _perc);
+    ^--------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_177_SAFE.sol:390:5: Warning: Invoking events without "emit" prefix is deprecated.
+    TransferCommisionIsChanged(_stat, _perc);
+    ^--------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_177_SAFE.sol:519:5: Warning: Invoking events without "emit" prefix is deprecated.
+    Burn(sender, resultAmount);
+    ^------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_177_SAFE.sol:536:7: Warning: Invoking events without "emit" prefix is deprecated.
+      Mint(_to, resultAmount);
+      ^---------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_177_SAFE.sol:540:68: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+  function changeStaker(address _staker) onlyOwner public returns (bool success) {
+                                                                   ^----------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_177_SAFE.sol:544:3: Warning: Function state mutability can be restricted to pure
+  function getNullAddress() public view returns (address) {
+  ^ (Relevant source part starts here and spans across multiple lines).
+
+
+Detector: divide-before-multiply
+ComissionList.calcWidthraw(string,uint256) (contracts/safe/safe_177_SAFE.sol#424-429) performs a multiplication on the result of a division:
+	- _totalComission = widthrawPaySystemInfo[_paySystem].stat + (_value / 100) * widthrawPaySystemInfo[_paySystem].perc (contracts/safe/safe_177_SAFE.sol#426)
+ComissionList.calcRefill(string,uint256) (contracts/safe/safe_177_SAFE.sol#432-437) performs a multiplication on the result of a division:
+	- _totalComission = refillPaySystemInfo[_paySystem].stat + (_value / 100) * refillPaySystemInfo[_paySystem].perc (contracts/safe/safe_177_SAFE.sol#434)
+ComissionList.calcTransfer(uint256) (contracts/safe/safe_177_SAFE.sol#440-445) performs a multiplication on the result of a division:
+	- _totalComission = transferInfo.stat + (_value / 100) * transferInfo.perc (contracts/safe/safe_177_SAFE.sol#442)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#divide-before-multiply
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_177_SAFE.sol analyzed (12 contracts with 2 detectors), 3 result(s) found

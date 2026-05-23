@@ -1,0 +1,15 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_053_SC08.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
+
+Detector: reentrancy-eth
+Reentrancy in ETH_VAULT.CashOut(uint256) (contracts/vulnerable/vuln_053_SC08.sol#34-47):
+	External calls:
+	- msg.sender.call.value(_am)() (contracts/vulnerable/vuln_053_SC08.sol#41)
+	State variables written after the call(s):
+	- balances[msg.sender] -= _am (contracts/vulnerable/vuln_053_SC08.sol#43)
+	ETH_VAULT.balances (contracts/vulnerable/vuln_053_SC08.sol#11) can be used in cross function reentrancies:
+	- ETH_VAULT.CashOut(uint256) (contracts/vulnerable/vuln_053_SC08.sol#34-47)
+	- ETH_VAULT.Deposit() (contracts/vulnerable/vuln_053_SC08.sol#23-32)
+	- ETH_VAULT.balances (contracts/vulnerable/vuln_053_SC08.sol#11)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-1
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_053_SC08.sol analyzed (2 contracts with 2 detectors), 1 result(s) found

@@ -1,0 +1,60 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_023_SC05.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
+
+Detector: calls-loop
+Ethraffle_v4b.endRaffle() (contracts/vulnerable/vuln_023_SC05.sol#143-161) has external calls inside a loop: contestants[i].addr.transfer(pricePerTicket) (contracts/vulnerable/vuln_023_SC05.sol#150)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation/#calls-inside-a-loop
+
+Detector: costly-loop
+Ethraffle_v4b.buyTickets() (contracts/vulnerable/vuln_023_SC05.sol#64-95) has costly operations inside a loop:
+	- currTicket = nextTicket ++ (contracts/vulnerable/vuln_023_SC05.sol#78)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#costly-operations-inside-a-loop
+
+Detector: solc-version
+Version constraint ^0.4.16 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- NestedArrayFunctionCallDecoder
+	- ZeroFunctionSelector.
+It is used by:
+	- ^0.4.16 (contracts/vulnerable/vuln_023_SC05.sol#8)
+solc-0.4.16 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Contract Ethraffle_v4b (contracts/vulnerable/vuln_023_SC05.sol#10-174) is not in CapWords
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: reentrancy-unlimited-gas
+Reentrancy in Ethraffle_v4b.endRaffle() (contracts/vulnerable/vuln_023_SC05.sol#143-161):
+	External calls:
+	- contestants[i].addr.transfer(pricePerTicket) (contracts/vulnerable/vuln_023_SC05.sol#150)
+	State variables written after the call(s):
+	- blockNumber = block.number (contracts/vulnerable/vuln_023_SC05.sol#158)
+	- gaps.length = 0 (contracts/vulnerable/vuln_023_SC05.sol#159)
+	- nextTicket = 0 (contracts/vulnerable/vuln_023_SC05.sol#156)
+	- raffleId ++ (contracts/vulnerable/vuln_023_SC05.sol#155)
+	Event emitted after the call(s):
+	- RaffleResult(raffleId,totalTickets,address(0),address(0),address(0),0,0) (contracts/vulnerable/vuln_023_SC05.sol#154)
+	- TicketRefund(raffleId,contestants[i].addr,i) (contracts/vulnerable/vuln_023_SC05.sol#149)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-5
+
+Detector: unindexed-event-address
+Event Ethraffle_v4b.RaffleResult(uint256,uint256,address,address,address,uint256,bytes32) (contracts/vulnerable/vuln_023_SC05.sol#16-24) has address parameters but no indexed parameters
+Event Ethraffle_v4b.TicketPurchase(uint256,address,uint256) (contracts/vulnerable/vuln_023_SC05.sol#26-30) has address parameters but no indexed parameters
+Event Ethraffle_v4b.TicketRefund(uint256,address,uint256) (contracts/vulnerable/vuln_023_SC05.sol#32-36) has address parameters but no indexed parameters
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unindexed-event-address-parameters
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_023_SC05.sol analyzed (1 contracts with 101 detectors), 9 result(s) found

@@ -1,0 +1,106 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_126_SC06.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
+
+Detector: unchecked-transfer
+OpportyBountyHold.returnTokens(uint256) (contracts/vulnerable/vuln_126_SC06.sol#357-362) ignores return value by token.transfer(msg.sender,nTokens) (contracts/vulnerable/vuln_126_SC06.sol#359)
+OpportyBountyHold.unlockTokens() (contracts/vulnerable/vuln_126_SC06.sol#364-372) ignores return value by token.transfer(msg.sender,holderList[msg.sender].tokens) (contracts/vulnerable/vuln_126_SC06.sol#368)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unchecked-transfer
+
+Detector: reentrancy-no-eth
+Reentrancy in OpportyBountyHold.unlockTokens() (contracts/vulnerable/vuln_126_SC06.sol#364-372):
+	External calls:
+	- token.transfer(msg.sender,holderList[msg.sender].tokens) (contracts/vulnerable/vuln_126_SC06.sol#368)
+	State variables written after the call(s):
+	- holderList[msg.sender].withdrawed = true (contracts/vulnerable/vuln_126_SC06.sol#369)
+	OpportyBountyHold.holderList (contracts/vulnerable/vuln_126_SC06.sol#292) can be used in cross function reentrancies:
+	- OpportyBountyHold.addHolder(address,uint256) (contracts/vulnerable/vuln_126_SC06.sol#317-328)
+	- OpportyBountyHold.changeHold(address,uint256) (contracts/vulnerable/vuln_126_SC06.sol#330-334)
+	- OpportyBountyHold.getTokenAmount() (contracts/vulnerable/vuln_126_SC06.sol#374-382)
+	- OpportyBountyHold.holderList (contracts/vulnerable/vuln_126_SC06.sol#292)
+	- OpportyBountyHold.unlockTokens() (contracts/vulnerable/vuln_126_SC06.sol#364-372)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-2
+
+Detector: reentrancy-events
+Reentrancy in OpportyBountyHold.returnTokens(uint256) (contracts/vulnerable/vuln_126_SC06.sol#357-362):
+	External calls:
+	- require(bool)(nTokens <= getBalance()) (contracts/vulnerable/vuln_126_SC06.sol#358)
+		- token.balanceOf(this) (contracts/vulnerable/vuln_126_SC06.sol#354)
+	- token.transfer(msg.sender,nTokens) (contracts/vulnerable/vuln_126_SC06.sol#359)
+	Event emitted after the call(s):
+	- TokensTransfered(msg.sender,nTokens) (contracts/vulnerable/vuln_126_SC06.sol#360)
+Reentrancy in OpportyBountyHold.unlockTokens() (contracts/vulnerable/vuln_126_SC06.sol#364-372):
+	External calls:
+	- token.transfer(msg.sender,holderList[msg.sender].tokens) (contracts/vulnerable/vuln_126_SC06.sol#368)
+	Event emitted after the call(s):
+	- TokensTransfered(msg.sender,holderList[msg.sender].tokens) (contracts/vulnerable/vuln_126_SC06.sol#370)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-4
+
+Detector: timestamp
+OpportyBountyHold.unlockTokens() (contracts/vulnerable/vuln_126_SC06.sol#364-372) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(now >= endDate) (contracts/vulnerable/vuln_126_SC06.sol#367)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+
+Detector: boolean-equal
+OpportyBountyHold.addHolder(address,uint256) (contracts/vulnerable/vuln_126_SC06.sol#317-328) compares to a boolean constant:
+	-holderList[holder].isActive == false (contracts/vulnerable/vuln_126_SC06.sol#318)
+OpportyBountyHold.changeHold(address,uint256) (contracts/vulnerable/vuln_126_SC06.sol#330-334) compares to a boolean constant:
+	-require(bool)(holderList[holder].isActive == true) (contracts/vulnerable/vuln_126_SC06.sol#331)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#boolean-equality
+
+Detector: solc-version
+Version constraint ^0.4.18 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- EventStructWrongData
+	- NestedArrayFunctionCallDecoder.
+It is used by:
+	- ^0.4.18 (contracts/vulnerable/vuln_126_SC06.sol#1)
+solc-0.4.18 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Parameter BasicToken.transfer(address,uint256)._to (contracts/vulnerable/vuln_126_SC06.sol#85) is not in mixedCase
+Parameter BasicToken.transfer(address,uint256)._value (contracts/vulnerable/vuln_126_SC06.sol#85) is not in mixedCase
+Parameter BasicToken.balanceOf(address)._owner (contracts/vulnerable/vuln_126_SC06.sol#101) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._from (contracts/vulnerable/vuln_126_SC06.sol#136) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._to (contracts/vulnerable/vuln_126_SC06.sol#136) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._value (contracts/vulnerable/vuln_126_SC06.sol#136) is not in mixedCase
+Parameter StandardToken.approve(address,uint256)._spender (contracts/vulnerable/vuln_126_SC06.sol#158) is not in mixedCase
+Parameter StandardToken.approve(address,uint256)._value (contracts/vulnerable/vuln_126_SC06.sol#158) is not in mixedCase
+Parameter StandardToken.allowance(address,address)._owner (contracts/vulnerable/vuln_126_SC06.sol#170) is not in mixedCase
+Parameter StandardToken.allowance(address,address)._spender (contracts/vulnerable/vuln_126_SC06.sol#170) is not in mixedCase
+Parameter StandardToken.increaseApproval(address,uint256)._spender (contracts/vulnerable/vuln_126_SC06.sol#184) is not in mixedCase
+Parameter StandardToken.increaseApproval(address,uint256)._addedValue (contracts/vulnerable/vuln_126_SC06.sol#184) is not in mixedCase
+Parameter StandardToken.decreaseApproval(address,uint256)._spender (contracts/vulnerable/vuln_126_SC06.sol#200) is not in mixedCase
+Parameter StandardToken.decreaseApproval(address,uint256)._subtractedValue (contracts/vulnerable/vuln_126_SC06.sol#200) is not in mixedCase
+Parameter OpportyBountyHold.addAssetsOwner(address)._owner (contracts/vulnerable/vuln_126_SC06.sol#336) is not in mixedCase
+Parameter OpportyBountyHold.removeAssetsOwner(address)._owner (contracts/vulnerable/vuln_126_SC06.sol#342) is not in mixedCase
+Parameter OpportyBountyHold.getAssetsOwners(uint256)._index (contracts/vulnerable/vuln_126_SC06.sol#349) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: too-many-digits
+OpportyToken.slitherConstructorConstantVariables() (contracts/vulnerable/vuln_126_SC06.sol#219-236) uses literals with too many digits:
+	- INITIAL_SUPPLY = 1000000000 * (10 ** uint256(decimals)) (contracts/vulnerable/vuln_126_SC06.sol#225)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#too-many-digits
+
+Detector: unindexed-event-address
+Event OpportyBountyHold.TokensTransfered(address,uint256) (contracts/vulnerable/vuln_126_SC06.sol#300) has address parameters but no indexed parameters
+Event OpportyBountyHold.HolderAdded(address,address,uint256) (contracts/vulnerable/vuln_126_SC06.sol#303) has address parameters but no indexed parameters
+Event OpportyBountyHold.HoldChanged(address,address,uint256) (contracts/vulnerable/vuln_126_SC06.sol#304) has address parameters but no indexed parameters
+Event OpportyBountyHold.TokenChanged(address) (contracts/vulnerable/vuln_126_SC06.sol#305) has address parameters but no indexed parameters
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unindexed-event-address-parameters
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_126_SC06.sol analyzed (8 contracts with 101 detectors), 32 result(s) found

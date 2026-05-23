@@ -1,0 +1,28 @@
+
+----------------------------
+# Configuration
+----------------------------
+Root - /tmp/aderyn_run
+Source - /tmp/aderyn_run/src
+Remappings - []
+EVM version - prague
+----------------------------
+# Source Scope
+----------------------------
+Include Filepaths Containing - No specific criteria.
+Exclude Filepaths Containing - No specific criteria.
+Auto Excluding - No Files.
+----------------------------
+# Compiling Abstract Syntax Trees
+----------------------------
+Ingesting 1 compiled files [solc : v0.4.26]
+----------------------------
+# Scanning Contracts
+----------------------------
+Running 88 detectors
+Detectors run, printing report.
+Report printed to /home/andrei/sc-bench/results/aderyn/safe_260_SAFE.json
+
+✔ Aderyn did its job. Solidity's a bit safer now.
+💫 Like the tool? A star on GitHub goes a long way:
+https://github.com/Cyfrin/aderyn

@@ -1,0 +1,102 @@
+{
+  "success": true,
+  "error": null,
+  "results": {
+    "detectors": [
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "kill",
+            "source_mapping": {
+              "start": 726,
+              "length": 101,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "ETHVault",
+                "source_mapping": {
+                  "start": 181,
+                  "length": 649,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "kill()"
+            }
+          },
+          {
+            "type": "node",
+            "name": "require(bool)(this.balance == 0)",
+            "source_mapping": {
+              "start": 763,
+              "length": 26,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "kill",
+                "source_mapping": {
+                  "start": 726,
+                  "length": 101,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "ETHVault",
+                    "source_mapping": {
+                      "start": 181,
+                      "length": 649,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "kill()"
+                }
+              }
+            }
+          }
+        ],
+        "description": "ETHVault.kill() () uses a dangerous strict equality:\n\t- require(bool)(this.balance == 0) ()\n",
+        "markdown": "[ETHVault.kill()]() uses a dangerous strict equality:\n\t- [require(bool)(this.balance == 0)]()\n",
+        "first_markdown_element": "",
+        "id": "c5035a1a89a684b8aa80b506821941043aeffc72689b13f426b849e697d3f3e8",
+        "check": "incorrect-equality",
+        "impact": "Medium",
+        "confidence": "High"
+      }
+    ]
+  }
+}

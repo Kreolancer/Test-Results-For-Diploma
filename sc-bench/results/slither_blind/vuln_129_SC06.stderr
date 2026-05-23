@@ -1,0 +1,132 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_129_SC06.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
+
+Detector: weak-prng
+RESERVED.tryToWin() (contracts/vulnerable/vuln_129_SC06.sol#51-58) uses a weak PRNG: "random_number = uint256(blockhash(uint256)(block.number - 1)) % 100 + 1 (contracts/vulnerable/vuln_129_SC06.sol#52)" 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#weak-PRNG
+
+Detector: divide-before-multiply
+RESERVED.sendPayment() (contracts/vulnerable/vuln_129_SC06.sol#61-68) performs a multiplication on the result of a division:
+	- paymentAmount = balances[investor] * rate[investor] / 10000 * (now - timestamp[investor]) / day (contracts/vulnerable/vuln_129_SC06.sol#63)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#divide-before-multiply
+
+Detector: uninitialized-local
+RESERVED.bytesToAddress(bytes).result (contracts/vulnerable/vuln_129_SC06.sol#117) is a local variable never initialized
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#uninitialized-local-variables
+
+Detector: solc-version
+Version constraint ^0.4.24 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ABIEncoderV2PackedStorage_0.4.x
+	- ExpExponentCleanup
+	- EventStructWrongData.
+It is used by:
+	- ^0.4.24 (contracts/vulnerable/vuln_129_SC06.sol#6)
+solc-0.4.24 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Variable RESERVED.default_rate (contracts/vulnerable/vuln_129_SC06.sol#15) is not in mixedCase
+Variable RESERVED.max_rate (contracts/vulnerable/vuln_129_SC06.sol#16) is not in mixedCase
+Variable RESERVED.random_number (contracts/vulnerable/vuln_129_SC06.sol#19) is not in mixedCase
+Variable RESERVED.referrer_bonus (contracts/vulnerable/vuln_129_SC06.sol#20) is not in mixedCase
+Variable RESERVED.msg_data (contracts/vulnerable/vuln_129_SC06.sol#23) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: reentrancy-unlimited-gas
+Reentrancy in RESERVED.fallback() (contracts/vulnerable/vuln_129_SC06.sol#29-48):
+	External calls:
+	- owner.transfer(deposit / 10) (contracts/vulnerable/vuln_129_SC06.sol#37)
+	- tryToWin() (contracts/vulnerable/vuln_129_SC06.sol#39)
+		- investor.transfer(jackpot) (contracts/vulnerable/vuln_129_SC06.sol#54)
+	State variables written after the call(s):
+	- tryToWin() (contracts/vulnerable/vuln_129_SC06.sol#39)
+		- jackpot = deposit / 20 (contracts/vulnerable/vuln_129_SC06.sol#55)
+		- jackpot += deposit / 20 (contracts/vulnerable/vuln_129_SC06.sol#57)
+	- tryToWin() (contracts/vulnerable/vuln_129_SC06.sol#39)
+		- random_number = uint256(blockhash(uint256)(block.number - 1)) % 100 + 1 (contracts/vulnerable/vuln_129_SC06.sol#52)
+Reentrancy in RESERVED.fallback() (contracts/vulnerable/vuln_129_SC06.sol#29-48):
+	External calls:
+	- owner.transfer(deposit / 10) (contracts/vulnerable/vuln_129_SC06.sol#37)
+	- tryToWin() (contracts/vulnerable/vuln_129_SC06.sol#39)
+		- investor.transfer(jackpot) (contracts/vulnerable/vuln_129_SC06.sol#54)
+	- sendPayment() (contracts/vulnerable/vuln_129_SC06.sol#41)
+		- investor.transfer(paymentAmount) (contracts/vulnerable/vuln_129_SC06.sol#64)
+	State variables written after the call(s):
+	- sendPayment() (contracts/vulnerable/vuln_129_SC06.sol#41)
+		- balances[investor] += deposit (contracts/vulnerable/vuln_129_SC06.sol#67)
+	- updateRate() (contracts/vulnerable/vuln_129_SC06.sol#43)
+		- rate[investor] = default_rate + 75 (contracts/vulnerable/vuln_129_SC06.sol#74)
+		- rate[investor] = default_rate + 50 (contracts/vulnerable/vuln_129_SC06.sol#77)
+		- rate[investor] = default_rate + 25 (contracts/vulnerable/vuln_129_SC06.sol#80)
+		- rate[investor] = default_rate (contracts/vulnerable/vuln_129_SC06.sol#83)
+	- sendPayment() (contracts/vulnerable/vuln_129_SC06.sol#41)
+		- timestamp[investor] = now (contracts/vulnerable/vuln_129_SC06.sol#66)
+Reentrancy in RESERVED.fallback() (contracts/vulnerable/vuln_129_SC06.sol#29-48):
+	External calls:
+	- owner.transfer(deposit / 10) (contracts/vulnerable/vuln_129_SC06.sol#37)
+	- tryToWin() (contracts/vulnerable/vuln_129_SC06.sol#39)
+		- investor.transfer(jackpot) (contracts/vulnerable/vuln_129_SC06.sol#54)
+	- sendPayment() (contracts/vulnerable/vuln_129_SC06.sol#41)
+		- investor.transfer(paymentAmount) (contracts/vulnerable/vuln_129_SC06.sol#64)
+	- upgradeReferrer() (contracts/vulnerable/vuln_129_SC06.sol#45)
+		- referrer.transfer(referrer_bonus) (contracts/vulnerable/vuln_129_SC06.sol#95)
+	State variables written after the call(s):
+	- upgradeReferrer() (contracts/vulnerable/vuln_129_SC06.sol#45)
+		- rate[investor] += 50 (contracts/vulnerable/vuln_129_SC06.sol#93)
+		- rate[referrer] = rate[referrer] + 100 (contracts/vulnerable/vuln_129_SC06.sol#98)
+		- rate[referrer] = rate[referrer] + 50 (contracts/vulnerable/vuln_129_SC06.sol#101)
+		- rate[referrer] = rate[referrer] + 25 (contracts/vulnerable/vuln_129_SC06.sol#104)
+		- rate[referrer] = rate[referrer] + 10 (contracts/vulnerable/vuln_129_SC06.sol#107)
+	- upgradeReferrer() (contracts/vulnerable/vuln_129_SC06.sol#45)
+		- referrer_bonus = deposit * rate[referrer] / 10000 (contracts/vulnerable/vuln_129_SC06.sol#94)
+	- upgradeReferrer() (contracts/vulnerable/vuln_129_SC06.sol#45)
+		- referrers[investor] = 1 (contracts/vulnerable/vuln_129_SC06.sol#92)
+		- referrers[investor] = 1 (contracts/vulnerable/vuln_129_SC06.sol#112)
+Reentrancy in RESERVED.sendPayment() (contracts/vulnerable/vuln_129_SC06.sol#61-68):
+	External calls:
+	- investor.transfer(paymentAmount) (contracts/vulnerable/vuln_129_SC06.sol#64)
+	State variables written after the call(s):
+	- balances[investor] += deposit (contracts/vulnerable/vuln_129_SC06.sol#67)
+	- timestamp[investor] = now (contracts/vulnerable/vuln_129_SC06.sol#66)
+Reentrancy in RESERVED.tryToWin() (contracts/vulnerable/vuln_129_SC06.sol#51-58):
+	External calls:
+	- investor.transfer(jackpot) (contracts/vulnerable/vuln_129_SC06.sol#54)
+	State variables written after the call(s):
+	- jackpot = deposit / 20 (contracts/vulnerable/vuln_129_SC06.sol#55)
+Reentrancy in RESERVED.upgradeReferrer() (contracts/vulnerable/vuln_129_SC06.sol#88-113):
+	External calls:
+	- referrer.transfer(referrer_bonus) (contracts/vulnerable/vuln_129_SC06.sol#95)
+	State variables written after the call(s):
+	- rate[referrer] = rate[referrer] + 100 (contracts/vulnerable/vuln_129_SC06.sol#98)
+	- rate[referrer] = rate[referrer] + 50 (contracts/vulnerable/vuln_129_SC06.sol#101)
+	- rate[referrer] = rate[referrer] + 25 (contracts/vulnerable/vuln_129_SC06.sol#104)
+	- rate[referrer] = rate[referrer] + 10 (contracts/vulnerable/vuln_129_SC06.sol#107)
+	- referrers[investor] = 1 (contracts/vulnerable/vuln_129_SC06.sol#112)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-5
+
+Detector: too-many-digits
+RESERVED.slitherConstructorVariables() (contracts/vulnerable/vuln_129_SC06.sol#7-127) uses literals with too many digits:
+	- eth = 1000000000000000000 (contracts/vulnerable/vuln_129_SC06.sol#17)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#too-many-digits
+
+Detector: constable-states
+RESERVED.day (contracts/vulnerable/vuln_129_SC06.sol#22) should be constant 
+RESERVED.default_rate (contracts/vulnerable/vuln_129_SC06.sol#15) should be constant 
+RESERVED.eth (contracts/vulnerable/vuln_129_SC06.sol#17) should be constant 
+RESERVED.max_rate (contracts/vulnerable/vuln_129_SC06.sol#16) should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_129_SC06.sol analyzed (1 contracts with 101 detectors), 21 result(s) found

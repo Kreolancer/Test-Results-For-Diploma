@@ -1,0 +1,376 @@
+{
+  "files_summary": {
+    "total_source_units": 1,
+    "total_sloc": 439
+  },
+  "files_details": {
+    "files_details": [
+      {
+        "file_path": "src/vuln_142_SC09.sol",
+        "n_sloc": 439
+      }
+    ]
+  },
+  "issue_count": {
+    "high": 1,
+    "low": 9
+  },
+  "high_issues": {
+    "issues": [
+      {
+        "title": "Reentrancy: State change after external call",
+        "description": "Changing state after an external call can lead to re-entrancy attacks.Use the checks-effects-interactions pattern to avoid this issue.",
+        "detector_name": "reentrancy-state-change",
+        "instances": [
+          {
+            "contract_path": "src/vuln_142_SC09.sol",
+            "line_no": 450,
+            "src": "14376:23",
+            "src_char": "14376:23",
+            "hint": "State is changed at: `rounds[_roundID].state = DataSet.RoundState.ASSIGNED`, `rounds[_roundID].winner = _player`"
+          },
+          {
+            "contract_path": "src/vuln_142_SC09.sol",
+            "line_no": 451,
+            "src": "14417:23",
+            "src_char": "14417:23",
+            "hint": "State is changed at: `rounds[_roundID].state = DataSet.RoundState.ASSIGNED`, `rounds[_roundID].winner = _player`"
+          },
+          {
+            "contract_path": "src/vuln_142_SC09.sol",
+            "line_no": 492,
+            "src": "15781:24",
+            "src_char": "15781:24",
+            "hint": "State is changed at: `rounds[curRoundID].count -= count`, `rounds[curRoundID].pond = 0`"
+          },
+          {
+            "contract_path": "src/vuln_142_SC09.sol",
+            "line_no": 501,
+            "src": "16151:23",
+            "src_char": "16151:23",
+            "hint": "State is changed at: `rounds[curRoundID].pond = 0`"
+          }
+        ]
+      }
+    ]
+  },
+  "low_issues": {
+    "issues": [
+      {
+        "title": "Boolean equality is not required",
+        "description": "If `x` is a boolean, use `if(x)` and `if(!x)` instead of `if(x == true)` or `if(x == false)`.",
+        "detector_name": "boolean-equality",
+        "instances": [
+          {
+            "contract_path": "src/vuln_142_SC09.sol",
+            "line_no": 273,
+            "src": "7656:19",
+            "src_char": "7656:19"
+          },
+          {
+            "contract_path": "src/vuln_142_SC09.sol",
+            "line_no": 317,
+            "src": "8936:20",
+            "src_char": "8936:20"
+          }
+        ]
+      },
+      {
+        "title": "Constant Function Contains Assembly",
+        "description": "constant/pure/view was not enforced prior to Solidity 0.5. Starting from Solidity 0.5, a call to a constant/pure/view function uses the STATICCALL opcode, which reverts in case of state modification. As a result, a call to an incorrectly labeled function may trap a contract compiled with Solidity 0.5. https://docs.soliditylang.org/en/develop/050-breaking-changes.html#interoperability-with-older-contracts",
+        "detector_name": "constant-function-contains-assembly",
+        "instances": [
+          {
+            "contract_path": "src/vuln_142_SC09.sol",
+            "line_no": 621,
+            "src": "19968:184",
+            "src_char": "19968:184"
+          },
+          {
+            "contract_path": "src/vuln_142_SC09.sol",
+            "line_no": 685,
+            "src": "22093:178",
+            "src_char": "22093:178"
+          }
+        ]
+      },
+      {
+        "title": "Inconsistent uint256/uint (or) int256/int types",
+        "description": "Inconsistency in declaring uint256/uint (or) int256/int variables within a contract. Use explicit size declarations (uint256 or int256). Consider keeping the naming convention consistent in a given contract. Explicit size declarations are preferred (uint256, int256) over implicit ones (uint, int) to avoid confusion.",
+        "detector_name": "inconsistent-type-names",
+        "instances": [
+          {
+            "contract_path": "src/vuln_142_SC09.sol",
+            "line_no": 162,
+            "src": "4211:6",
+            "src_char": "4211:6"
+          },
+          {
+            "contract_path": "src/vuln_142_SC09.sol",
+            "line_no": 162,
+            "src": "4219:6",
+            "src_char": "4219:6"
+          },
+          {
+            "contract_path": "src/vuln_142_SC09.sol",
+            "line_no": 162,
+            "src": "4250:6",
+            "src_char": "4250:6"
+          },
+          {
+            "contract_path": "src/vuln_142_SC09.sol",
+            "line_no": 166,
+            "src": "4315:6",
+            "src_char": "4315:6"
+          },
+          {
+            "contract_path": "src/vuln_142_SC09.sol",
+            "line_no": 166,
+            "src": "4323:6",
+            "src_char": "4323:6"
+          },
+          {
+            "contract_path": "src/vuln_142_SC09.sol",
+            "line_no": 166,
+            "src": "4354:6",
+            "src_char": "4354:6"
+          }
+        ]
+      },
+      {
+        "title": "Internal Function Used Only Once",
+        "description": "Instead of separating the logic into a separate function, consider inlining the logic into the calling function. This can reduce the number of function calls and improve readability.",
+        "detector_name": "internal-function-used-once",
+        "instances": [
+          {
+            "contract_path": "src/vuln_142_SC09.sol",
+            "line_no": 632,
+            "src": "20316:198",
+            "src_char": "20316:198"
+          }
+        ]
+      },
+      {
+        "title": "Literal Instead of Constant",
+        "description": "Define and use `constant` variables instead of using literals. If the same constant literal value is used multiple times, create a constant state variable and reference it throughout the contract.",
+        "detector_name": "literal-instead-of-constant",
+        "instances": [
+          {
+            "contract_path": "src/vuln_142_SC09.sol",
+            "line_no": 38,
+            "src": "1496:2",
+            "src_char": "1496:2"
+          },
+          {
+            "contract_path": "src/vuln_142_SC09.sol",
+            "line_no": 44,
+            "src": "1669:2",
+            "src_char": "1669:2"
+          }
+        ]
+      },
+      {
+        "title": "Modifier Invoked Only Once",
+        "description": "Consider removing the modifier or inlining the logic into the calling function.",
+        "detector_name": "modifier-used-only-once",
+        "instances": [
+          {
+            "contract_path": "src/vuln_142_SC09.sol",
+            "line_no": 295,
+            "src": "8254:195",
+            "src_char": "8254:195"
+          }
+        ]
+      },
+      {
+        "title": "Uninitialized Local Variable",
+        "description": "Initialize all the variables. If a variable is meant to be initialized to zero, explicitly set it to zero to improve code readability.",
+        "detector_name": "uninitialized-local-variable",
+        "instances": [
+          {
+            "contract_path": "src/vuln_142_SC09.sol",
+            "line_no": 282,
+            "src": "7872:19",
+            "src_char": "7872:19"
+          }
+        ]
+      },
+      {
+        "title": "Unsafe ERC20 Operation",
+        "description": "ERC20 functions may not behave as expected. For example: return values are not always meaningful. It is recommended to use OpenZeppelin's SafeERC20 library.",
+        "detector_name": "unsafe-erc20-operation",
+        "instances": [
+          {
+            "contract_path": "src/vuln_142_SC09.sol",
+            "line_no": 450,
+            "src": "14376:16",
+            "src_char": "14376:16"
+          },
+          {
+            "contract_path": "src/vuln_142_SC09.sol",
+            "line_no": 451,
+            "src": "14417:17",
+            "src_char": "14417:17"
+          },
+          {
+            "contract_path": "src/vuln_142_SC09.sol",
+            "line_no": 492,
+            "src": "15781:16",
+            "src_char": "15781:16"
+          },
+          {
+            "contract_path": "src/vuln_142_SC09.sol",
+            "line_no": 501,
+            "src": "16151:17",
+            "src_char": "16151:17"
+          }
+        ]
+      },
+      {
+        "title": "Public Function Not Used Internally",
+        "description": "If a function is marked public but is not used internally, consider marking it as `external`.",
+        "detector_name": "unused-public-function",
+        "instances": [
+          {
+            "contract_path": "src/vuln_142_SC09.sol",
+            "line_no": 304,
+            "src": "8498:113",
+            "src_char": "8498:113"
+          },
+          {
+            "contract_path": "src/vuln_142_SC09.sol",
+            "line_no": 314,
+            "src": "8798:836",
+            "src_char": "8798:836"
+          },
+          {
+            "contract_path": "src/vuln_142_SC09.sol",
+            "line_no": 514,
+            "src": "16494:157",
+            "src_char": "16494:157"
+          },
+          {
+            "contract_path": "src/vuln_142_SC09.sol",
+            "line_no": 530,
+            "src": "17107:454",
+            "src_char": "17107:454"
+          },
+          {
+            "contract_path": "src/vuln_142_SC09.sol",
+            "line_no": 552,
+            "src": "17855:250",
+            "src_char": "17855:250"
+          },
+          {
+            "contract_path": "src/vuln_142_SC09.sol",
+            "line_no": 580,
+            "src": "18653:511",
+            "src_char": "18653:511"
+          },
+          {
+            "contract_path": "src/vuln_142_SC09.sol",
+            "line_no": 706,
+            "src": "22692:248",
+            "src_char": "22692:248"
+          },
+          {
+            "contract_path": "src/vuln_142_SC09.sol",
+            "line_no": 727,
+            "src": "23716:213",
+            "src_char": "23716:213"
+          }
+        ]
+      }
+    ]
+  },
+  "detectors_used": [
+    "abi-encode-packed-hash-collision",
+    "arbitrary-transfer-from",
+    "assert-state-change",
+    "block-timestamp-deadline",
+    "boolean-equality",
+    "builtin-symbol-shadowing",
+    "centralization-risk",
+    "constant-function-changes-state",
+    "constant-function-contains-assembly",
+    "contract-locks-ether",
+    "costly-loop",
+    "dangerous-unary-operator",
+    "dead-code",
+    "delegate-call-unchecked-address",
+    "delegatecall-in-loop",
+    "delete-nested-mapping",
+    "deprecated-oz-function",
+    "division-before-multiplication",
+    "dynamic-array-length-assignment",
+    "ecrecover",
+    "empty-block",
+    "empty-require-revert",
+    "enumerable-loop-removal",
+    "eth-send-unchecked-address",
+    "experimental-encoder",
+    "function-initializing-state",
+    "function-pointer-in-constructor",
+    "function-selector-collision",
+    "inconsistent-type-names",
+    "incorrect-caret-operator",
+    "incorrect-erc20-interface",
+    "incorrect-erc721-interface",
+    "incorrect-shift-order",
+    "incorrect-use-of-modifier",
+    "internal-function-used-once",
+    "large-numeric-literal",
+    "literal-instead-of-constant",
+    "local-variable-shadowing",
+    "missing-inheritance",
+    "misused-boolean",
+    "modifier-used-only-once",
+    "msg-value-in-loop",
+    "multiple-constructors",
+    "multiple-placeholders",
+    "nested-struct-in-mapping",
+    "non-reentrant-not-first",
+    "out-of-order-retryable",
+    "pre-declared-local-variable-usage",
+    "push-zero-opcode",
+    "redundant-statement",
+    "reentrancy-state-change",
+    "require-revert-in-loop",
+    "return-bomb",
+    "reused-contract-name",
+    "rtlo",
+    "selfdestruct",
+    "signed-integer-storage-array",
+    "solmate-safe-transfer-lib",
+    "state-change-without-event",
+    "state-no-address-check",
+    "state-variable-could-be-constant",
+    "state-variable-could-be-immutable",
+    "state-variable-init-order",
+    "state-variable-read-external",
+    "state-variable-shadowing",
+    "storage-array-length-not-cached",
+    "storage-array-memory-edit",
+    "strict-equality-contract-balance",
+    "tautological-compare",
+    "tautology-or-contradiction",
+    "todo",
+    "tx-origin-used-for-auth",
+    "unchecked-low-level-call",
+    "unchecked-return",
+    "unchecked-send",
+    "uninitialized-local-variable",
+    "unprotected-initializer",
+    "unsafe-casting",
+    "unsafe-erc20-operation",
+    "unsafe-oz-erc721-mint",
+    "unspecific-solidity-pragma",
+    "unused-error",
+    "unused-import",
+    "unused-public-function",
+    "unused-state-variable",
+    "void-constructor",
+    "weak-randomness",
+    "yul-return"
+  ]
+}

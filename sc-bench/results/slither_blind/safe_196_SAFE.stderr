@@ -1,0 +1,139 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_196_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+
+Detector: erc20-interface
+Jade (contracts/safe/safe_196_SAFE.sol#56-174) has incorrect ERC20 function interface:Jade.transfer(address,uint256) (contracts/safe/safe_196_SAFE.sol#98-109)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-erc20-interface
+
+Detector: tautology
+Jade.mine_jade_ex(uint256) (contracts/safe/safe_196_SAFE.sol#157-164) contains a tautology or contradiction:
+	- require(bool)(cycle >= 0) (contracts/safe/safe_196_SAFE.sol#159)
+Jade.mine_jade_ex(uint256) (contracts/safe/safe_196_SAFE.sol#157-164) contains a tautology or contradiction:
+	- require(bool)(power >= 0) (contracts/safe/safe_196_SAFE.sol#160)
+Jade.update_power() (contracts/safe/safe_196_SAFE.sol#166-172) contains a tautology or contradiction:
+	- require(bool)(levels[msg.sender] >= 0) (contracts/safe/safe_196_SAFE.sol#167)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#tautology-or-contradiction
+
+Detector: reentrancy-benign
+Reentrancy in Jade.catch_the_thief(address) (contracts/safe/safe_196_SAFE.sol#122-132):
+	External calls:
+	- ptc_ins.balanceOf(check_addr) < tickets (contracts/safe/safe_196_SAFE.sol#123)
+	- only_ptc_owner() (contracts/safe/safe_196_SAFE.sol#122)
+		- require(bool)(ptc_ins.balanceOf(msg.sender) >= tickets) (contracts/safe/safe_196_SAFE.sol#93)
+	State variables written after the call(s):
+	- balanceOf[check_addr] = 0 (contracts/safe/safe_196_SAFE.sol#127)
+	- levels[msg.sender] = levels[msg.sender].add(levels[check_addr]) (contracts/safe/safe_196_SAFE.sol#124)
+	- update_power() (contracts/safe/safe_196_SAFE.sol#125)
+		- levels[msg.sender] = levels[msg.sender].add(1) (contracts/safe/safe_196_SAFE.sol#169)
+		- levels[msg.sender] = max_level (contracts/safe/safe_196_SAFE.sol#171)
+	- levels[check_addr] = 0 (contracts/safe/safe_196_SAFE.sol#128)
+Reentrancy in Jade.mine_jade() (contracts/safe/safe_196_SAFE.sol#134-155):
+	External calls:
+	- only_ptc_owner() (contracts/safe/safe_196_SAFE.sol#134)
+		- require(bool)(ptc_ins.balanceOf(msg.sender) >= tickets) (contracts/safe/safe_196_SAFE.sol#93)
+	State variables written after the call(s):
+	- balanceOf[msg.sender] = mine_jade_ex(levels[msg.sender]) (contracts/safe/safe_196_SAFE.sol#139)
+	- balanceOf[msg.sender] = balanceOf[msg.sender].add(mine_jade_ex(levels[msg.sender])) (contracts/safe/safe_196_SAFE.sol#148)
+	- last_mine_time[msg.sender] = now (contracts/safe/safe_196_SAFE.sol#136)
+	- last_mine_time[msg.sender] = now (contracts/safe/safe_196_SAFE.sol#145)
+	- update_power() (contracts/safe/safe_196_SAFE.sol#137)
+		- levels[msg.sender] = levels[msg.sender].add(1) (contracts/safe/safe_196_SAFE.sol#169)
+		- levels[msg.sender] = max_level (contracts/safe/safe_196_SAFE.sol#171)
+	- update_power() (contracts/safe/safe_196_SAFE.sol#146)
+		- levels[msg.sender] = levels[msg.sender].add(1) (contracts/safe/safe_196_SAFE.sol#169)
+		- levels[msg.sender] = max_level (contracts/safe/safe_196_SAFE.sol#171)
+	- totalMember = totalMember.add(1) (contracts/safe/safe_196_SAFE.sol#141)
+	- totalSupply = totalSupply.add(mine_jade_ex(levels[msg.sender])) (contracts/safe/safe_196_SAFE.sol#140)
+	- totalSupply = totalSupply.add(mine_jade_ex(levels[msg.sender])) (contracts/safe/safe_196_SAFE.sol#149)
+Reentrancy in Jade.transfer(address,uint256) (contracts/safe/safe_196_SAFE.sol#98-109):
+	External calls:
+	- only_ptc_owner() (contracts/safe/safe_196_SAFE.sol#98)
+		- require(bool)(ptc_ins.balanceOf(msg.sender) >= tickets) (contracts/safe/safe_196_SAFE.sol#93)
+	State variables written after the call(s):
+	- balanceOf[msg.sender] -= _value (contracts/safe/safe_196_SAFE.sol#104)
+	- balanceOf[_to] += _value (contracts/safe/safe_196_SAFE.sol#105)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+
+Detector: reentrancy-events
+Reentrancy in Jade.transfer(address,uint256) (contracts/safe/safe_196_SAFE.sol#98-109):
+	External calls:
+	- only_ptc_owner() (contracts/safe/safe_196_SAFE.sol#98)
+		- require(bool)(ptc_ins.balanceOf(msg.sender) >= tickets) (contracts/safe/safe_196_SAFE.sol#93)
+	Event emitted after the call(s):
+	- Transfer(msg.sender,_to,_value) (contracts/safe/safe_196_SAFE.sol#108)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-4
+
+Detector: timestamp
+Jade.transfer(address,uint256) (contracts/safe/safe_196_SAFE.sol#98-109) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(balanceOf[msg.sender] >= _value) (contracts/safe/safe_196_SAFE.sol#100)
+	- require(bool)(balanceOf[_to] + _value >= balanceOf[_to]) (contracts/safe/safe_196_SAFE.sol#101)
+Jade.rest_time() (contracts/safe/safe_196_SAFE.sol#115-120) uses timestamp for comparisons
+	Dangerous comparisons:
+	- now >= last_mine_time[msg.sender].add(min_interval) (contracts/safe/safe_196_SAFE.sol#116)
+Jade.mine_jade() (contracts/safe/safe_196_SAFE.sol#134-155) uses timestamp for comparisons
+	Dangerous comparisons:
+	- now >= last_mine_time[msg.sender].add(min_interval) (contracts/safe/safe_196_SAFE.sol#144)
+Jade.mine_jade_ex(uint256) (contracts/safe/safe_196_SAFE.sol#157-164) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(cycle >= 0) (contracts/safe/safe_196_SAFE.sol#159)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+
+Detector: function-init-state
+Jade.ptc_ins (contracts/safe/safe_196_SAFE.sol#81) is set pre-construction with a non-constant function or state variable:
+	- Ptc(ptc_addr)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#function-initializing-state
+
+Detector: solc-version
+Version constraint ^0.4.23 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ABIEncoderV2PackedStorage_0.4.x
+	- ExpExponentCleanup
+	- EventStructWrongData.
+It is used by:
+	- ^0.4.23 (contracts/safe/safe_196_SAFE.sol#1)
+solc-0.4.23 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Parameter Jade.transfer(address,uint256)._to (contracts/safe/safe_196_SAFE.sol#98) is not in mixedCase
+Parameter Jade.transfer(address,uint256)._value (contracts/safe/safe_196_SAFE.sol#98) is not in mixedCase
+Function Jade.ptc_balance(address) (contracts/safe/safe_196_SAFE.sol#111-113) is not in mixedCase
+Function Jade.rest_time() (contracts/safe/safe_196_SAFE.sol#115-120) is not in mixedCase
+Function Jade.catch_the_thief(address) (contracts/safe/safe_196_SAFE.sol#122-132) is not in mixedCase
+Parameter Jade.catch_the_thief(address).check_addr (contracts/safe/safe_196_SAFE.sol#122) is not in mixedCase
+Function Jade.mine_jade() (contracts/safe/safe_196_SAFE.sol#134-155) is not in mixedCase
+Function Jade.mine_jade_ex(uint256) (contracts/safe/safe_196_SAFE.sol#157-164) is not in mixedCase
+Function Jade.update_power() (contracts/safe/safe_196_SAFE.sol#166-172) is not in mixedCase
+Variable Jade.max_level (contracts/safe/safe_196_SAFE.sol#66) is not in mixedCase
+Variable Jade.ajust_time (contracts/safe/safe_196_SAFE.sol#67) is not in mixedCase
+Variable Jade.min_interval (contracts/safe/safe_196_SAFE.sol#68) is not in mixedCase
+Variable Jade.creation_time (contracts/safe/safe_196_SAFE.sol#69) is not in mixedCase
+Variable Jade.last_mine_time (contracts/safe/safe_196_SAFE.sol#75) is not in mixedCase
+Variable Jade.ptc_addr (contracts/safe/safe_196_SAFE.sol#80) is not in mixedCase
+Variable Jade.ptc_ins (contracts/safe/safe_196_SAFE.sol#81) is not in mixedCase
+Modifier Jade.only_ptc_owner() (contracts/safe/safe_196_SAFE.sol#92-95) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: constable-states
+Jade.ajust_time (contracts/safe/safe_196_SAFE.sol#67) should be constant 
+Jade.decimals (contracts/safe/safe_196_SAFE.sol#62) should be constant 
+Jade.max_level (contracts/safe/safe_196_SAFE.sol#66) should be constant 
+Jade.min_interval (contracts/safe/safe_196_SAFE.sol#68) should be constant 
+Jade.ptc_addr (contracts/safe/safe_196_SAFE.sol#80) should be constant 
+Jade.tickets (contracts/safe/safe_196_SAFE.sol#65) should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_196_SAFE.sol analyzed (3 contracts with 101 detectors), 38 result(s) found

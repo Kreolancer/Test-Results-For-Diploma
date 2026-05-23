@@ -1,0 +1,17 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_029_SC05.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_029_SC05.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_029_SC05.sol:34:5: Warning: Return value of low-level calls not used.
+    lastInvestor.send(jackpot);
+    ^------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_029_SC05.sol:35:5: Warning: Return value of low-level calls not used.
+    owner.send(this.balance-1 ether);
+    ^------------------------------^
+
+
+Detector: timestamp
+Governmental.resetInvestment() () uses timestamp for comparisons
+	Dangerous comparisons:
+	- block.timestamp < lastInvestmentTimestamp + ONE_MINUTE ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_029_SC05.sol analyzed (2 contracts with 2 detectors), 1 result(s) found

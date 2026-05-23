@@ -1,0 +1,27 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_251_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+
+Detector: timestamp
+HoldPresaleContract.unlockTokens() (contracts/safe/safe_251_SAFE.sol#347-362) uses timestamp for comparisons
+	Dangerous comparisons:
+	- now >= holderList[contributor].holdPeriodTimestamp (contracts/safe/safe_251_SAFE.sol#351)
+OpportyPresale.fallback() (contracts/safe/safe_251_SAFE.sol#483-512) uses timestamp for comparisons
+	Dangerous comparisons:
+	- now > endDate (contracts/safe/safe_251_SAFE.sol#488)
+OpportyPresale.setEndSaleDate(uint256) (contracts/safe/safe_251_SAFE.sol#547-553) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(date > now) (contracts/safe/safe_251_SAFE.sol#549)
+OpportyPresale.setEndDate(uint256) (contracts/safe/safe_251_SAFE.sol#555-561) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(date > now) (contracts/safe/safe_251_SAFE.sol#557)
+OpportyPresale2.fallback() (contracts/safe/safe_251_SAFE.sol#692-724) uses timestamp for comparisons
+	Dangerous comparisons:
+	- now > endDate (contracts/safe/safe_251_SAFE.sol#697)
+OpportyPresale2.setEndSaleDate(uint256) (contracts/safe/safe_251_SAFE.sol#768-774) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(date > now) (contracts/safe/safe_251_SAFE.sol#770)
+OpportyPresale2.setEndDate(uint256) (contracts/safe/safe_251_SAFE.sol#776-782) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(date > now) (contracts/safe/safe_251_SAFE.sol#778)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_251_SAFE.sol analyzed (11 contracts with 2 detectors), 7 result(s) found

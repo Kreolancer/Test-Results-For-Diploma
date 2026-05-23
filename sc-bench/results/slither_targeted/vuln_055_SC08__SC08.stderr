@@ -1,0 +1,15 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_055_SC08.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc' running
+
+Detector: reentrancy-eth
+Reentrancy in EtherBank.withdrawBalance() ():
+	External calls:
+	- ! (msg.sender.call.value(amountToWithdraw)()) ()
+	State variables written after the call(s):
+	- userBalances[msg.sender] = 0 ()
+	EtherBank.userBalances () can be used in cross function reentrancies:
+	- EtherBank.addToBalance() ()
+	- EtherBank.getBalance(address) ()
+	- EtherBank.withdrawBalance() ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-1
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_055_SC08.sol analyzed (1 contracts with 2 detectors), 1 result(s) found

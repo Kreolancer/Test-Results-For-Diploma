@@ -1,0 +1,99 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_241_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_241_SAFE.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_241_SAFE.sol:37:5: Warning: Defining constructors as functions with the same name as the contract is deprecated. Use "constructor(...) { ... }" instead.
+    function EtherByte() {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_241_SAFE.sol:61:9: Warning: Use of the "var" keyword is deprecated.
+        var _allowance = allowed[_from][msg.sender];
+        ^------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_241_SAFE.sol:40:17: Warning: This looks like an address but has an invalid checksum. If this is not used as an address, please prepend '00'. Correct checksummed address: '0xDceFEFB8FB9C81F21759CDd3fBa511C6e8F434aB'. For more information please see https://solidity.readthedocs.io/en/develop/types.html#address-literals
+        owner = 0xdcefefb8fb9c81f21759cdd3fba511c6e8f434ab;
+                ^----------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_241_SAFE.sol:56:9: Warning: Invoking events without "emit" prefix is deprecated.
+        Transfer(msg.sender, _to, _value);
+        ^-------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_241_SAFE.sol:65:9: Warning: Invoking events without "emit" prefix is deprecated.
+        Transfer(_from, _to, _value);
+        ^--------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_241_SAFE.sol:72:9: Warning: Invoking events without "emit" prefix is deprecated.
+        Approval(msg.sender, _spender, _value);
+        ^------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_241_SAFE.sol:37:5: Warning: No visibility specified. Defaulting to "public". 
+    function EtherByte() {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_241_SAFE.sol:45:5: Warning: No visibility specified. Defaulting to "public". 
+    function balanceOf(address _owner) constant returns(uint256 balance) {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_241_SAFE.sol:49:5: Warning: No visibility specified. Defaulting to "public". 
+    function allowance(address _owner, address _spender) constant returns(uint256 remaining) {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_241_SAFE.sol:53:5: Warning: No visibility specified. Defaulting to "public". 
+    function transfer(address _to, uint256 _value) returns(bool) {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_241_SAFE.sol:60:5: Warning: No visibility specified. Defaulting to "public". 
+    function transferFrom(address _from, address _to, uint256 _value) returns(bool) {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_241_SAFE.sol:69:5: Warning: No visibility specified. Defaulting to "public". 
+    function approve(address _spender, uint256 _value) returns(bool) {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_241_SAFE.sol:76:5: Warning: No visibility specified. Defaulting to "public". 
+    function() {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_241_SAFE.sol:3:5: Warning: Function state mutability can be restricted to pure
+    function mul(uint256 a, uint256 b) internal constant returns(uint256) {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_241_SAFE.sol:9:5: Warning: Function state mutability can be restricted to pure
+    function div(uint256 a, uint256 b) internal constant returns(uint256) {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_241_SAFE.sol:14:5: Warning: Function state mutability can be restricted to pure
+    function sub(uint256 a, uint256 b) internal constant returns(uint256) {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_241_SAFE.sol:19:5: Warning: Function state mutability can be restricted to pure
+    function add(uint256 a, uint256 b) internal constant returns(uint256) {
+    ^ (Relevant source part starts here and spans across multiple lines).
+
+
+Detector: solc-version
+Version constraint ^0.4.9 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- NestedArrayFunctionCallDecoder
+	- ZeroFunctionSelector
+	- DelegateCallReturnValue
+	- ECRecoverMalformedInput
+	- SkipEmptyStringLiteral
+	- ConstantOptimizerSubtraction.
+It is used by:
+	- ^0.4.9 (contracts/safe/safe_241_SAFE.sol#1)
+solc-0.4.24 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Parameter EtherByte.balanceOf(address)._owner (contracts/safe/safe_241_SAFE.sol#45) is not in mixedCase
+Parameter EtherByte.allowance(address,address)._owner (contracts/safe/safe_241_SAFE.sol#49) is not in mixedCase
+Parameter EtherByte.allowance(address,address)._spender (contracts/safe/safe_241_SAFE.sol#49) is not in mixedCase
+Parameter EtherByte.transfer(address,uint256)._to (contracts/safe/safe_241_SAFE.sol#53) is not in mixedCase
+Parameter EtherByte.transfer(address,uint256)._value (contracts/safe/safe_241_SAFE.sol#53) is not in mixedCase
+Parameter EtherByte.transferFrom(address,address,uint256)._from (contracts/safe/safe_241_SAFE.sol#60) is not in mixedCase
+Parameter EtherByte.transferFrom(address,address,uint256)._to (contracts/safe/safe_241_SAFE.sol#60) is not in mixedCase
+Parameter EtherByte.transferFrom(address,address,uint256)._value (contracts/safe/safe_241_SAFE.sol#60) is not in mixedCase
+Parameter EtherByte.approve(address,uint256)._spender (contracts/safe/safe_241_SAFE.sol#69) is not in mixedCase
+Parameter EtherByte.approve(address,uint256)._value (contracts/safe/safe_241_SAFE.sol#69) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: too-many-digits
+EtherByte.EtherByte() (contracts/safe/safe_241_SAFE.sol#37-43) uses literals with too many digits:
+	- totalSupply = 900000000000000 (contracts/safe/safe_241_SAFE.sol#38)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#too-many-digits
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_241_SAFE.sol analyzed (2 contracts with 101 detectors), 13 result(s) found

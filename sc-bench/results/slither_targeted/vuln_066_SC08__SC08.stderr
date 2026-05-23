@@ -1,0 +1,20 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_066_SC08.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_066_SC08.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_066_SC08.sol:25:14: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+             throw;
+             ^---^
+
+
+Detector: reentrancy-eth
+Reentrancy in Reentrance.withdrawBalance() (contracts/vulnerable/vuln_066_SC08.sol#20-28):
+	External calls:
+	- ! (msg.sender.call.value(userBalance[msg.sender])()) (contracts/vulnerable/vuln_066_SC08.sol#24)
+	State variables written after the call(s):
+	- userBalance[msg.sender] = 0 (contracts/vulnerable/vuln_066_SC08.sol#27)
+	Reentrance.userBalance (contracts/vulnerable/vuln_066_SC08.sol#10) can be used in cross function reentrancies:
+	- Reentrance.addToBalance() (contracts/vulnerable/vuln_066_SC08.sol#16-18)
+	- Reentrance.getBalance(address) (contracts/vulnerable/vuln_066_SC08.sol#12-14)
+	- Reentrance.withdrawBalance() (contracts/vulnerable/vuln_066_SC08.sol#20-28)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-1
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_066_SC08.sol analyzed (1 contracts with 2 detectors), 1 result(s) found

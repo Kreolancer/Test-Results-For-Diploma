@@ -1,0 +1,208 @@
+{
+  "success": true,
+  "error": null,
+  "results": {
+    "detectors": [
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "reclaimToken",
+            "source_mapping": {
+              "start": 1367,
+              "length": 158,
+              "filename_relative": "contracts/safe/safe_257_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_257_SAFE.sol",
+              "filename_short": "contracts/safe/safe_257_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                47,
+                48,
+                49,
+                50
+              ],
+              "starting_column": 5,
+              "ending_column": 6
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "DarkPool",
+                "source_mapping": {
+                  "start": 542,
+                  "length": 1374,
+                  "filename_relative": "contracts/safe/safe_257_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_257_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_257_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    24,
+                    25,
+                    26,
+                    27,
+                    28,
+                    29,
+                    30,
+                    31,
+                    32,
+                    33,
+                    34,
+                    35,
+                    36,
+                    37,
+                    38,
+                    39,
+                    40,
+                    41,
+                    42,
+                    43,
+                    44,
+                    45,
+                    46,
+                    47,
+                    48,
+                    49,
+                    50,
+                    51,
+                    52,
+                    53,
+                    54,
+                    55,
+                    56,
+                    57,
+                    58,
+                    59,
+                    60,
+                    61,
+                    62,
+                    63,
+                    64,
+                    65,
+                    66,
+                    67,
+                    68,
+                    69
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 2
+                }
+              },
+              "signature": "reclaimToken(ERC20Basic)"
+            }
+          },
+          {
+            "type": "node",
+            "name": "token.transfer(owner,balance)",
+            "source_mapping": {
+              "start": 1487,
+              "length": 30,
+              "filename_relative": "contracts/safe/safe_257_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_257_SAFE.sol",
+              "filename_short": "contracts/safe/safe_257_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                49
+              ],
+              "starting_column": 9,
+              "ending_column": 39
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "reclaimToken",
+                "source_mapping": {
+                  "start": 1367,
+                  "length": 158,
+                  "filename_relative": "contracts/safe/safe_257_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_257_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_257_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    47,
+                    48,
+                    49,
+                    50
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "DarkPool",
+                    "source_mapping": {
+                      "start": 542,
+                      "length": 1374,
+                      "filename_relative": "contracts/safe/safe_257_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_257_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_257_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        24,
+                        25,
+                        26,
+                        27,
+                        28,
+                        29,
+                        30,
+                        31,
+                        32,
+                        33,
+                        34,
+                        35,
+                        36,
+                        37,
+                        38,
+                        39,
+                        40,
+                        41,
+                        42,
+                        43,
+                        44,
+                        45,
+                        46,
+                        47,
+                        48,
+                        49,
+                        50,
+                        51,
+                        52,
+                        53,
+                        54,
+                        55,
+                        56,
+                        57,
+                        58,
+                        59,
+                        60,
+                        61,
+                        62,
+                        63,
+                        64,
+                        65,
+                        66,
+                        67,
+                        68,
+                        69
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "reclaimToken(ERC20Basic)"
+                }
+              }
+            }
+          }
+        ],
+        "description": "DarkPool.reclaimToken(ERC20Basic) (contracts/safe/safe_257_SAFE.sol#47-50) ignores return value by token.transfer(owner,balance) (contracts/safe/safe_257_SAFE.sol#49)\n",
+        "markdown": "[DarkPool.reclaimToken(ERC20Basic)](contracts/safe/safe_257_SAFE.sol#L47-L50) ignores return value by [token.transfer(owner,balance)](contracts/safe/safe_257_SAFE.sol#L49)\n",
+        "first_markdown_element": "contracts/safe/safe_257_SAFE.sol#L47-L50",
+        "id": "60c5cef5ddc9482faf6a225c98188a609d4a94e3820099abcd246add48963ee4",
+        "check": "unchecked-transfer",
+        "impact": "High",
+        "confidence": "Medium"
+      }
+    ]
+  }
+}

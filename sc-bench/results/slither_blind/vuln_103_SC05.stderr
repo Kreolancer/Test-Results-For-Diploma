@@ -1,0 +1,72 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_103_SC05.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
+
+Detector: boolean-equal
+Pausable._unpause() (contracts/vulnerable/vuln_103_SC05.sol#298-302) compares to a boolean constant:
+	-require(bool)(paused == true) (contracts/vulnerable/vuln_103_SC05.sol#299)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#boolean-equality
+
+Detector: solc-version
+Version constraint ^0.4.24 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ABIEncoderV2PackedStorage_0.4.x
+	- ExpExponentCleanup
+	- EventStructWrongData.
+It is used by:
+	- ^0.4.24 (contracts/vulnerable/vuln_103_SC05.sol#1)
+solc-0.4.24 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Parameter BasicToken.transfer(address,uint256)._to (contracts/vulnerable/vuln_103_SC05.sol#94) is not in mixedCase
+Parameter BasicToken.transfer(address,uint256)._value (contracts/vulnerable/vuln_103_SC05.sol#94) is not in mixedCase
+Parameter BasicToken.balanceOf(address)._owner (contracts/vulnerable/vuln_103_SC05.sol#109) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._from (contracts/vulnerable/vuln_103_SC05.sol#132) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._to (contracts/vulnerable/vuln_103_SC05.sol#132) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._value (contracts/vulnerable/vuln_103_SC05.sol#132) is not in mixedCase
+Parameter StandardToken.approve(address,uint256)._spender (contracts/vulnerable/vuln_103_SC05.sol#154) is not in mixedCase
+Parameter StandardToken.approve(address,uint256)._value (contracts/vulnerable/vuln_103_SC05.sol#154) is not in mixedCase
+Parameter StandardToken.allowance(address,address)._owner (contracts/vulnerable/vuln_103_SC05.sol#166) is not in mixedCase
+Parameter StandardToken.allowance(address,address)._spender (contracts/vulnerable/vuln_103_SC05.sol#166) is not in mixedCase
+Parameter StandardToken.increaseApproval(address,uint256)._spender (contracts/vulnerable/vuln_103_SC05.sol#180) is not in mixedCase
+Parameter StandardToken.increaseApproval(address,uint256)._addedValue (contracts/vulnerable/vuln_103_SC05.sol#180) is not in mixedCase
+Parameter StandardToken.decreaseApproval(address,uint256)._spender (contracts/vulnerable/vuln_103_SC05.sol#197) is not in mixedCase
+Parameter StandardToken.decreaseApproval(address,uint256)._subtractedValue (contracts/vulnerable/vuln_103_SC05.sol#197) is not in mixedCase
+Function Pausable._pause() (contracts/vulnerable/vuln_103_SC05.sol#289-293) is not in mixedCase
+Function Pausable._unpause() (contracts/vulnerable/vuln_103_SC05.sol#298-302) is not in mixedCase
+Function CucunToken._doPause() (contracts/vulnerable/vuln_103_SC05.sol#322-325) is not in mixedCase
+Function CucunToken._doUnpause() (contracts/vulnerable/vuln_103_SC05.sol#327-330) is not in mixedCase
+Parameter CucunToken.transfer(address,uint256)._to (contracts/vulnerable/vuln_103_SC05.sol#335) is not in mixedCase
+Parameter CucunToken.transfer(address,uint256)._value (contracts/vulnerable/vuln_103_SC05.sol#335) is not in mixedCase
+Parameter CucunToken.transferFrom(address,address,uint256)._from (contracts/vulnerable/vuln_103_SC05.sol#342) is not in mixedCase
+Parameter CucunToken.transferFrom(address,address,uint256)._to (contracts/vulnerable/vuln_103_SC05.sol#342) is not in mixedCase
+Parameter CucunToken.transferFrom(address,address,uint256)._value (contracts/vulnerable/vuln_103_SC05.sol#342) is not in mixedCase
+Parameter CucunToken.approve(address,uint256)._spender (contracts/vulnerable/vuln_103_SC05.sol#349) is not in mixedCase
+Parameter CucunToken.approve(address,uint256)._value (contracts/vulnerable/vuln_103_SC05.sol#349) is not in mixedCase
+Parameter CucunToken.increaseApproval(address,uint256)._spender (contracts/vulnerable/vuln_103_SC05.sol#356) is not in mixedCase
+Parameter CucunToken.increaseApproval(address,uint256)._addedValue (contracts/vulnerable/vuln_103_SC05.sol#356) is not in mixedCase
+Parameter CucunToken.decreaseApproval(address,uint256)._spender (contracts/vulnerable/vuln_103_SC05.sol#363) is not in mixedCase
+Parameter CucunToken.decreaseApproval(address,uint256)._subtractedValue (contracts/vulnerable/vuln_103_SC05.sol#363) is not in mixedCase
+Function CucunToken._mint(uint256) (contracts/vulnerable/vuln_103_SC05.sol#369-372) is not in mixedCase
+Parameter CucunToken._mint(uint256).mint_amt (contracts/vulnerable/vuln_103_SC05.sol#369) is not in mixedCase
+Variable CucunToken.initial_supply (contracts/vulnerable/vuln_103_SC05.sol#313) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: too-many-digits
+CucunToken.constructor() (contracts/vulnerable/vuln_103_SC05.sol#378-386) uses literals with too many digits:
+	- initial_supply = 10000000000000000000 (contracts/vulnerable/vuln_103_SC05.sol#382)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#too-many-digits
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_103_SC05.sol analyzed (8 contracts with 101 detectors), 36 result(s) found

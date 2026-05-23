@@ -1,0 +1,1 @@
+{"success": false, "error": "Solc experienced a fatal error.\n\n/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_289_SAFE.sol:44:14: ParserError: Expected identifier, got 'LParen'\n  constructor() public{\r\n             ^\n", "issues": []}

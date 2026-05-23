@@ -1,0 +1,51 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_164_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+
+Detector: dead-code
+SafeMath.add(uint256,uint256) (contracts/safe/safe_164_SAFE.sol#30-34) is never used and should be removed
+SafeMath.div(uint256,uint256) (contracts/safe/safe_164_SAFE.sol#18-23) is never used and should be removed
+SafeMath.mul(uint256,uint256) (contracts/safe/safe_164_SAFE.sol#9-16) is never used and should be removed
+SafeMath.sub(uint256,uint256) (contracts/safe/safe_164_SAFE.sol#25-28) is never used and should be removed
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dead-code
+
+Detector: solc-version
+Version constraint ^0.4.11 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- NestedArrayFunctionCallDecoder
+	- ZeroFunctionSelector
+	- DelegateCallReturnValue
+	- ECRecoverMalformedInput
+	- SkipEmptyStringLiteral.
+It is used by:
+	- ^0.4.11 (contracts/safe/safe_164_SAFE.sol#1)
+solc-0.4.11 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Parameter BasicToken.transfer(address,uint256)._to (contracts/safe/safe_164_SAFE.sol#74) is not in mixedCase
+Parameter BasicToken.transfer(address,uint256)._value (contracts/safe/safe_164_SAFE.sol#74) is not in mixedCase
+Parameter BasicToken.balanceOf(address)._owner (contracts/safe/safe_164_SAFE.sol#90) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._from (contracts/safe/safe_164_SAFE.sol#114) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._to (contracts/safe/safe_164_SAFE.sol#114) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._value (contracts/safe/safe_164_SAFE.sol#114) is not in mixedCase
+Parameter StandardToken.approve(address,uint256)._spender (contracts/safe/safe_164_SAFE.sol#136) is not in mixedCase
+Parameter StandardToken.approve(address,uint256)._value (contracts/safe/safe_164_SAFE.sol#136) is not in mixedCase
+Parameter StandardToken.allowance(address,address)._owner (contracts/safe/safe_164_SAFE.sol#148) is not in mixedCase
+Parameter StandardToken.allowance(address,address)._spender (contracts/safe/safe_164_SAFE.sol#148) is not in mixedCase
+Parameter StandardToken.increaseApproval(address,uint256)._spender (contracts/safe/safe_164_SAFE.sol#158) is not in mixedCase
+Parameter StandardToken.increaseApproval(address,uint256)._addedValue (contracts/safe/safe_164_SAFE.sol#158) is not in mixedCase
+Parameter StandardToken.decreaseApproval(address,uint256)._spender (contracts/safe/safe_164_SAFE.sol#164) is not in mixedCase
+Parameter StandardToken.decreaseApproval(address,uint256)._subtractedValue (contracts/safe/safe_164_SAFE.sol#164) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_164_SAFE.sol analyzed (6 contracts with 101 detectors), 20 result(s) found

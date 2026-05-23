@@ -1,0 +1,15 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_185_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc' running
+
+Detector: reentrancy-no-eth
+Reentrancy in MiniMeToken.approve(address,uint256) ():
+	External calls:
+	- ! Controller(controller).onApprove(msg.sender,_spender,_amount) ()
+	State variables written after the call(s):
+	- allowed[msg.sender][_spender] = _amount ()
+	MiniMeToken.allowed () can be used in cross function reentrancies:
+	- MiniMeToken.allowance(address,address) ()
+	- MiniMeToken.approve(address,uint256) ()
+	- MiniMeToken.transferFrom(address,address,uint256) ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-2
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_185_SAFE.sol analyzed (12 contracts with 2 detectors), 1 result(s) found

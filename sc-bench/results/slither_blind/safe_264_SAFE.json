@@ -1,0 +1,1587 @@
+{
+  "success": true,
+  "error": null,
+  "results": {
+    "detectors": [
+      {
+        "elements": [],
+        "description": "solc-0.4.24 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.\n",
+        "markdown": "solc-0.4.24 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.\n",
+        "first_markdown_element": "",
+        "id": "1d687d794f954ee692ca1d58ad5dd8291a8a0b5c0bcc4409d2dd8afb7258e605",
+        "check": "solc-version",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "pragma",
+            "name": "^0.4.9",
+            "source_mapping": {
+              "start": 0,
+              "length": 25,
+              "filename_relative": "contracts/safe/safe_264_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_264_SAFE.sol",
+              "filename_short": "contracts/safe/safe_264_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                1
+              ],
+              "starting_column": 1,
+              "ending_column": 26
+            },
+            "type_specific_fields": {
+              "directive": [
+                "solidity",
+                "^",
+                "0.4",
+                ".9"
+              ]
+            }
+          }
+        ],
+        "description": "Version constraint ^0.4.9 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- DirtyBytesArrayToStorage\n\t- KeccakCaching\n\t- EmptyByteArrayCopy\n\t- DynamicArrayCleanup\n\t- ImplicitConstructorCallvalueCheck\n\t- TupleAssignmentMultiStackSlotComponents\n\t- MemoryArrayCreationOverflow\n\t- privateCanBeOverridden\n\t- SignedArrayStorageCopy\n\t- UninitializedFunctionPointerInConstructor_0.4.x\n\t- IncorrectEventSignatureInLibraries_0.4.x\n\t- ExpExponentCleanup\n\t- NestedArrayFunctionCallDecoder\n\t- ZeroFunctionSelector\n\t- DelegateCallReturnValue\n\t- ECRecoverMalformedInput\n\t- SkipEmptyStringLiteral\n\t- ConstantOptimizerSubtraction.\nIt is used by:\n\t- ^0.4.9 (contracts/safe/safe_264_SAFE.sol#1)\n",
+        "markdown": "Version constraint ^0.4.9 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- DirtyBytesArrayToStorage\n\t- KeccakCaching\n\t- EmptyByteArrayCopy\n\t- DynamicArrayCleanup\n\t- ImplicitConstructorCallvalueCheck\n\t- TupleAssignmentMultiStackSlotComponents\n\t- MemoryArrayCreationOverflow\n\t- privateCanBeOverridden\n\t- SignedArrayStorageCopy\n\t- UninitializedFunctionPointerInConstructor_0.4.x\n\t- IncorrectEventSignatureInLibraries_0.4.x\n\t- ExpExponentCleanup\n\t- NestedArrayFunctionCallDecoder\n\t- ZeroFunctionSelector\n\t- DelegateCallReturnValue\n\t- ECRecoverMalformedInput\n\t- SkipEmptyStringLiteral\n\t- ConstantOptimizerSubtraction.\nIt is used by:\n\t- [^0.4.9](contracts/safe/safe_264_SAFE.sol#L1)\n",
+        "first_markdown_element": "contracts/safe/safe_264_SAFE.sol#L1",
+        "id": "cae592cd1d0839a666d3eef5a0533d9527dff0a74f8a1e83ec25062cbf205e0a",
+        "check": "solc-version",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_spender",
+            "source_mapping": {
+              "start": 2236,
+              "length": 16,
+              "filename_relative": "contracts/safe/safe_264_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_264_SAFE.sol",
+              "filename_short": "contracts/safe/safe_264_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                69
+              ],
+              "starting_column": 22,
+              "ending_column": 38
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "approve",
+                "source_mapping": {
+                  "start": 2219,
+                  "length": 266,
+                  "filename_relative": "contracts/safe/safe_264_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_264_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_264_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    69,
+                    70,
+                    71,
+                    72,
+                    73,
+                    74
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "Sphinx",
+                    "source_mapping": {
+                      "start": 645,
+                      "length": 1889,
+                      "filename_relative": "contracts/safe/safe_264_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_264_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_264_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        25,
+                        26,
+                        27,
+                        28,
+                        29,
+                        30,
+                        31,
+                        32,
+                        33,
+                        34,
+                        35,
+                        36,
+                        37,
+                        38,
+                        39,
+                        40,
+                        41,
+                        42,
+                        43,
+                        44,
+                        45,
+                        46,
+                        47,
+                        48,
+                        49,
+                        50,
+                        51,
+                        52,
+                        53,
+                        54,
+                        55,
+                        56,
+                        57,
+                        58,
+                        59,
+                        60,
+                        61,
+                        62,
+                        63,
+                        64,
+                        65,
+                        66,
+                        67,
+                        68,
+                        69,
+                        70,
+                        71,
+                        72,
+                        73,
+                        74,
+                        75,
+                        76,
+                        77,
+                        78,
+                        79,
+                        80
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "approve(address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter Sphinx.approve(address,uint256)._spender (contracts/safe/safe_264_SAFE.sol#69) is not in mixedCase\n",
+        "markdown": "Parameter [Sphinx.approve(address,uint256)._spender](contracts/safe/safe_264_SAFE.sol#L69) is not in mixedCase\n",
+        "first_markdown_element": "contracts/safe/safe_264_SAFE.sol#L69",
+        "id": "26ad81ba8c6e39d65796c186041c143324df54fb3e5453bf618cceec5a06ea0f",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_to",
+            "source_mapping": {
+              "start": 1875,
+              "length": 11,
+              "filename_relative": "contracts/safe/safe_264_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_264_SAFE.sol",
+              "filename_short": "contracts/safe/safe_264_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                60
+              ],
+              "starting_column": 42,
+              "ending_column": 53
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "transferFrom",
+                "source_mapping": {
+                  "start": 1838,
+                  "length": 373,
+                  "filename_relative": "contracts/safe/safe_264_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_264_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_264_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    60,
+                    61,
+                    62,
+                    63,
+                    64,
+                    65,
+                    66,
+                    67
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "Sphinx",
+                    "source_mapping": {
+                      "start": 645,
+                      "length": 1889,
+                      "filename_relative": "contracts/safe/safe_264_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_264_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_264_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        25,
+                        26,
+                        27,
+                        28,
+                        29,
+                        30,
+                        31,
+                        32,
+                        33,
+                        34,
+                        35,
+                        36,
+                        37,
+                        38,
+                        39,
+                        40,
+                        41,
+                        42,
+                        43,
+                        44,
+                        45,
+                        46,
+                        47,
+                        48,
+                        49,
+                        50,
+                        51,
+                        52,
+                        53,
+                        54,
+                        55,
+                        56,
+                        57,
+                        58,
+                        59,
+                        60,
+                        61,
+                        62,
+                        63,
+                        64,
+                        65,
+                        66,
+                        67,
+                        68,
+                        69,
+                        70,
+                        71,
+                        72,
+                        73,
+                        74,
+                        75,
+                        76,
+                        77,
+                        78,
+                        79,
+                        80
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "transferFrom(address,address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter Sphinx.transferFrom(address,address,uint256)._to (contracts/safe/safe_264_SAFE.sol#60) is not in mixedCase\n",
+        "markdown": "Parameter [Sphinx.transferFrom(address,address,uint256)._to](contracts/safe/safe_264_SAFE.sol#L60) is not in mixedCase\n",
+        "first_markdown_element": "contracts/safe/safe_264_SAFE.sol#L60",
+        "id": "2e4501a14dded0c8083f7039ca206142ffc4de5a1b32cffcef2617cb7277fa29",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_owner",
+            "source_mapping": {
+              "start": 1329,
+              "length": 14,
+              "filename_relative": "contracts/safe/safe_264_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_264_SAFE.sol",
+              "filename_short": "contracts/safe/safe_264_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                45
+              ],
+              "starting_column": 24,
+              "ending_column": 38
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "balanceOf",
+                "source_mapping": {
+                  "start": 1310,
+                  "length": 111,
+                  "filename_relative": "contracts/safe/safe_264_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_264_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_264_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    45,
+                    46,
+                    47
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "Sphinx",
+                    "source_mapping": {
+                      "start": 645,
+                      "length": 1889,
+                      "filename_relative": "contracts/safe/safe_264_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_264_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_264_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        25,
+                        26,
+                        27,
+                        28,
+                        29,
+                        30,
+                        31,
+                        32,
+                        33,
+                        34,
+                        35,
+                        36,
+                        37,
+                        38,
+                        39,
+                        40,
+                        41,
+                        42,
+                        43,
+                        44,
+                        45,
+                        46,
+                        47,
+                        48,
+                        49,
+                        50,
+                        51,
+                        52,
+                        53,
+                        54,
+                        55,
+                        56,
+                        57,
+                        58,
+                        59,
+                        60,
+                        61,
+                        62,
+                        63,
+                        64,
+                        65,
+                        66,
+                        67,
+                        68,
+                        69,
+                        70,
+                        71,
+                        72,
+                        73,
+                        74,
+                        75,
+                        76,
+                        77,
+                        78,
+                        79,
+                        80
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "balanceOf(address)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter Sphinx.balanceOf(address)._owner (contracts/safe/safe_264_SAFE.sol#45) is not in mixedCase\n",
+        "markdown": "Parameter [Sphinx.balanceOf(address)._owner](contracts/safe/safe_264_SAFE.sol#L45) is not in mixedCase\n",
+        "first_markdown_element": "contracts/safe/safe_264_SAFE.sol#L45",
+        "id": "4d306f77c8a7a0890cff40f259093100a39ebff714efc06b5f2b35eefe15555c",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_from",
+            "source_mapping": {
+              "start": 1860,
+              "length": 13,
+              "filename_relative": "contracts/safe/safe_264_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_264_SAFE.sol",
+              "filename_short": "contracts/safe/safe_264_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                60
+              ],
+              "starting_column": 27,
+              "ending_column": 40
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "transferFrom",
+                "source_mapping": {
+                  "start": 1838,
+                  "length": 373,
+                  "filename_relative": "contracts/safe/safe_264_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_264_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_264_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    60,
+                    61,
+                    62,
+                    63,
+                    64,
+                    65,
+                    66,
+                    67
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "Sphinx",
+                    "source_mapping": {
+                      "start": 645,
+                      "length": 1889,
+                      "filename_relative": "contracts/safe/safe_264_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_264_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_264_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        25,
+                        26,
+                        27,
+                        28,
+                        29,
+                        30,
+                        31,
+                        32,
+                        33,
+                        34,
+                        35,
+                        36,
+                        37,
+                        38,
+                        39,
+                        40,
+                        41,
+                        42,
+                        43,
+                        44,
+                        45,
+                        46,
+                        47,
+                        48,
+                        49,
+                        50,
+                        51,
+                        52,
+                        53,
+                        54,
+                        55,
+                        56,
+                        57,
+                        58,
+                        59,
+                        60,
+                        61,
+                        62,
+                        63,
+                        64,
+                        65,
+                        66,
+                        67,
+                        68,
+                        69,
+                        70,
+                        71,
+                        72,
+                        73,
+                        74,
+                        75,
+                        76,
+                        77,
+                        78,
+                        79,
+                        80
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "transferFrom(address,address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter Sphinx.transferFrom(address,address,uint256)._from (contracts/safe/safe_264_SAFE.sol#60) is not in mixedCase\n",
+        "markdown": "Parameter [Sphinx.transferFrom(address,address,uint256)._from](contracts/safe/safe_264_SAFE.sol#L60) is not in mixedCase\n",
+        "first_markdown_element": "contracts/safe/safe_264_SAFE.sol#L60",
+        "id": "50196e31aa560a0484100c9681b0882ea6c224ab973ca2ca2fd75ea2eecfe5d8",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_to",
+            "source_mapping": {
+              "start": 1595,
+              "length": 11,
+              "filename_relative": "contracts/safe/safe_264_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_264_SAFE.sol",
+              "filename_short": "contracts/safe/safe_264_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                53
+              ],
+              "starting_column": 23,
+              "ending_column": 34
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "transfer",
+                "source_mapping": {
+                  "start": 1577,
+                  "length": 253,
+                  "filename_relative": "contracts/safe/safe_264_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_264_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_264_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    53,
+                    54,
+                    55,
+                    56,
+                    57,
+                    58
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "Sphinx",
+                    "source_mapping": {
+                      "start": 645,
+                      "length": 1889,
+                      "filename_relative": "contracts/safe/safe_264_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_264_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_264_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        25,
+                        26,
+                        27,
+                        28,
+                        29,
+                        30,
+                        31,
+                        32,
+                        33,
+                        34,
+                        35,
+                        36,
+                        37,
+                        38,
+                        39,
+                        40,
+                        41,
+                        42,
+                        43,
+                        44,
+                        45,
+                        46,
+                        47,
+                        48,
+                        49,
+                        50,
+                        51,
+                        52,
+                        53,
+                        54,
+                        55,
+                        56,
+                        57,
+                        58,
+                        59,
+                        60,
+                        61,
+                        62,
+                        63,
+                        64,
+                        65,
+                        66,
+                        67,
+                        68,
+                        69,
+                        70,
+                        71,
+                        72,
+                        73,
+                        74,
+                        75,
+                        76,
+                        77,
+                        78,
+                        79,
+                        80
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "transfer(address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter Sphinx.transfer(address,uint256)._to (contracts/safe/safe_264_SAFE.sol#53) is not in mixedCase\n",
+        "markdown": "Parameter [Sphinx.transfer(address,uint256)._to](contracts/safe/safe_264_SAFE.sol#L53) is not in mixedCase\n",
+        "first_markdown_element": "contracts/safe/safe_264_SAFE.sol#L53",
+        "id": "5eaf51cd56b00cfa1d3a929e6de695459c49207e59b52777e53cb3c5c527d1b5",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_owner",
+            "source_mapping": {
+              "start": 1448,
+              "length": 14,
+              "filename_relative": "contracts/safe/safe_264_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_264_SAFE.sol",
+              "filename_short": "contracts/safe/safe_264_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                49
+              ],
+              "starting_column": 24,
+              "ending_column": 38
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "allowance",
+                "source_mapping": {
+                  "start": 1429,
+                  "length": 140,
+                  "filename_relative": "contracts/safe/safe_264_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_264_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_264_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    49,
+                    50,
+                    51
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "Sphinx",
+                    "source_mapping": {
+                      "start": 645,
+                      "length": 1889,
+                      "filename_relative": "contracts/safe/safe_264_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_264_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_264_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        25,
+                        26,
+                        27,
+                        28,
+                        29,
+                        30,
+                        31,
+                        32,
+                        33,
+                        34,
+                        35,
+                        36,
+                        37,
+                        38,
+                        39,
+                        40,
+                        41,
+                        42,
+                        43,
+                        44,
+                        45,
+                        46,
+                        47,
+                        48,
+                        49,
+                        50,
+                        51,
+                        52,
+                        53,
+                        54,
+                        55,
+                        56,
+                        57,
+                        58,
+                        59,
+                        60,
+                        61,
+                        62,
+                        63,
+                        64,
+                        65,
+                        66,
+                        67,
+                        68,
+                        69,
+                        70,
+                        71,
+                        72,
+                        73,
+                        74,
+                        75,
+                        76,
+                        77,
+                        78,
+                        79,
+                        80
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "allowance(address,address)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter Sphinx.allowance(address,address)._owner (contracts/safe/safe_264_SAFE.sol#49) is not in mixedCase\n",
+        "markdown": "Parameter [Sphinx.allowance(address,address)._owner](contracts/safe/safe_264_SAFE.sol#L49) is not in mixedCase\n",
+        "first_markdown_element": "contracts/safe/safe_264_SAFE.sol#L49",
+        "id": "6e2f909390abc64f420253e6893591e3970310068a2f1dfa668e392dd27cb525",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_value",
+            "source_mapping": {
+              "start": 1888,
+              "length": 14,
+              "filename_relative": "contracts/safe/safe_264_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_264_SAFE.sol",
+              "filename_short": "contracts/safe/safe_264_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                60
+              ],
+              "starting_column": 55,
+              "ending_column": 69
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "transferFrom",
+                "source_mapping": {
+                  "start": 1838,
+                  "length": 373,
+                  "filename_relative": "contracts/safe/safe_264_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_264_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_264_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    60,
+                    61,
+                    62,
+                    63,
+                    64,
+                    65,
+                    66,
+                    67
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "Sphinx",
+                    "source_mapping": {
+                      "start": 645,
+                      "length": 1889,
+                      "filename_relative": "contracts/safe/safe_264_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_264_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_264_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        25,
+                        26,
+                        27,
+                        28,
+                        29,
+                        30,
+                        31,
+                        32,
+                        33,
+                        34,
+                        35,
+                        36,
+                        37,
+                        38,
+                        39,
+                        40,
+                        41,
+                        42,
+                        43,
+                        44,
+                        45,
+                        46,
+                        47,
+                        48,
+                        49,
+                        50,
+                        51,
+                        52,
+                        53,
+                        54,
+                        55,
+                        56,
+                        57,
+                        58,
+                        59,
+                        60,
+                        61,
+                        62,
+                        63,
+                        64,
+                        65,
+                        66,
+                        67,
+                        68,
+                        69,
+                        70,
+                        71,
+                        72,
+                        73,
+                        74,
+                        75,
+                        76,
+                        77,
+                        78,
+                        79,
+                        80
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "transferFrom(address,address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter Sphinx.transferFrom(address,address,uint256)._value (contracts/safe/safe_264_SAFE.sol#60) is not in mixedCase\n",
+        "markdown": "Parameter [Sphinx.transferFrom(address,address,uint256)._value](contracts/safe/safe_264_SAFE.sol#L60) is not in mixedCase\n",
+        "first_markdown_element": "contracts/safe/safe_264_SAFE.sol#L60",
+        "id": "896dd104f7a1d7a7f24641a3e82df4dfbc022109b818a74958cc60a3f634e923",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_spender",
+            "source_mapping": {
+              "start": 1464,
+              "length": 16,
+              "filename_relative": "contracts/safe/safe_264_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_264_SAFE.sol",
+              "filename_short": "contracts/safe/safe_264_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                49
+              ],
+              "starting_column": 40,
+              "ending_column": 56
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "allowance",
+                "source_mapping": {
+                  "start": 1429,
+                  "length": 140,
+                  "filename_relative": "contracts/safe/safe_264_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_264_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_264_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    49,
+                    50,
+                    51
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "Sphinx",
+                    "source_mapping": {
+                      "start": 645,
+                      "length": 1889,
+                      "filename_relative": "contracts/safe/safe_264_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_264_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_264_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        25,
+                        26,
+                        27,
+                        28,
+                        29,
+                        30,
+                        31,
+                        32,
+                        33,
+                        34,
+                        35,
+                        36,
+                        37,
+                        38,
+                        39,
+                        40,
+                        41,
+                        42,
+                        43,
+                        44,
+                        45,
+                        46,
+                        47,
+                        48,
+                        49,
+                        50,
+                        51,
+                        52,
+                        53,
+                        54,
+                        55,
+                        56,
+                        57,
+                        58,
+                        59,
+                        60,
+                        61,
+                        62,
+                        63,
+                        64,
+                        65,
+                        66,
+                        67,
+                        68,
+                        69,
+                        70,
+                        71,
+                        72,
+                        73,
+                        74,
+                        75,
+                        76,
+                        77,
+                        78,
+                        79,
+                        80
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "allowance(address,address)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter Sphinx.allowance(address,address)._spender (contracts/safe/safe_264_SAFE.sol#49) is not in mixedCase\n",
+        "markdown": "Parameter [Sphinx.allowance(address,address)._spender](contracts/safe/safe_264_SAFE.sol#L49) is not in mixedCase\n",
+        "first_markdown_element": "contracts/safe/safe_264_SAFE.sol#L49",
+        "id": "8e8e2d979ad87a29789ac9b9d5f39f34a909f52cdbb7ad7741da896ede2e8096",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_value",
+            "source_mapping": {
+              "start": 2254,
+              "length": 14,
+              "filename_relative": "contracts/safe/safe_264_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_264_SAFE.sol",
+              "filename_short": "contracts/safe/safe_264_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                69
+              ],
+              "starting_column": 40,
+              "ending_column": 54
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "approve",
+                "source_mapping": {
+                  "start": 2219,
+                  "length": 266,
+                  "filename_relative": "contracts/safe/safe_264_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_264_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_264_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    69,
+                    70,
+                    71,
+                    72,
+                    73,
+                    74
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "Sphinx",
+                    "source_mapping": {
+                      "start": 645,
+                      "length": 1889,
+                      "filename_relative": "contracts/safe/safe_264_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_264_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_264_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        25,
+                        26,
+                        27,
+                        28,
+                        29,
+                        30,
+                        31,
+                        32,
+                        33,
+                        34,
+                        35,
+                        36,
+                        37,
+                        38,
+                        39,
+                        40,
+                        41,
+                        42,
+                        43,
+                        44,
+                        45,
+                        46,
+                        47,
+                        48,
+                        49,
+                        50,
+                        51,
+                        52,
+                        53,
+                        54,
+                        55,
+                        56,
+                        57,
+                        58,
+                        59,
+                        60,
+                        61,
+                        62,
+                        63,
+                        64,
+                        65,
+                        66,
+                        67,
+                        68,
+                        69,
+                        70,
+                        71,
+                        72,
+                        73,
+                        74,
+                        75,
+                        76,
+                        77,
+                        78,
+                        79,
+                        80
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "approve(address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter Sphinx.approve(address,uint256)._value (contracts/safe/safe_264_SAFE.sol#69) is not in mixedCase\n",
+        "markdown": "Parameter [Sphinx.approve(address,uint256)._value](contracts/safe/safe_264_SAFE.sol#L69) is not in mixedCase\n",
+        "first_markdown_element": "contracts/safe/safe_264_SAFE.sol#L69",
+        "id": "9e83215b5db1d6e65454471f6edd0f7dffe65295f6fe36e1e0a0844dede5d2c1",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_value",
+            "source_mapping": {
+              "start": 1608,
+              "length": 14,
+              "filename_relative": "contracts/safe/safe_264_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_264_SAFE.sol",
+              "filename_short": "contracts/safe/safe_264_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                53
+              ],
+              "starting_column": 36,
+              "ending_column": 50
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "transfer",
+                "source_mapping": {
+                  "start": 1577,
+                  "length": 253,
+                  "filename_relative": "contracts/safe/safe_264_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_264_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_264_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    53,
+                    54,
+                    55,
+                    56,
+                    57,
+                    58
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "Sphinx",
+                    "source_mapping": {
+                      "start": 645,
+                      "length": 1889,
+                      "filename_relative": "contracts/safe/safe_264_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_264_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_264_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        25,
+                        26,
+                        27,
+                        28,
+                        29,
+                        30,
+                        31,
+                        32,
+                        33,
+                        34,
+                        35,
+                        36,
+                        37,
+                        38,
+                        39,
+                        40,
+                        41,
+                        42,
+                        43,
+                        44,
+                        45,
+                        46,
+                        47,
+                        48,
+                        49,
+                        50,
+                        51,
+                        52,
+                        53,
+                        54,
+                        55,
+                        56,
+                        57,
+                        58,
+                        59,
+                        60,
+                        61,
+                        62,
+                        63,
+                        64,
+                        65,
+                        66,
+                        67,
+                        68,
+                        69,
+                        70,
+                        71,
+                        72,
+                        73,
+                        74,
+                        75,
+                        76,
+                        77,
+                        78,
+                        79,
+                        80
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "transfer(address,uint256)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter Sphinx.transfer(address,uint256)._value (contracts/safe/safe_264_SAFE.sol#53) is not in mixedCase\n",
+        "markdown": "Parameter [Sphinx.transfer(address,uint256)._value](contracts/safe/safe_264_SAFE.sol#L53) is not in mixedCase\n",
+        "first_markdown_element": "contracts/safe/safe_264_SAFE.sol#L53",
+        "id": "d05622c98b32745ef687f985842a34a3c4969234ec87f493c8be2f132e28e040",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "Sphinx",
+            "source_mapping": {
+              "start": 1094,
+              "length": 208,
+              "filename_relative": "contracts/safe/safe_264_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_264_SAFE.sol",
+              "filename_short": "contracts/safe/safe_264_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                37,
+                38,
+                39,
+                40,
+                41,
+                42,
+                43
+              ],
+              "starting_column": 5,
+              "ending_column": 6
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "Sphinx",
+                "source_mapping": {
+                  "start": 645,
+                  "length": 1889,
+                  "filename_relative": "contracts/safe/safe_264_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_264_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_264_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    25,
+                    26,
+                    27,
+                    28,
+                    29,
+                    30,
+                    31,
+                    32,
+                    33,
+                    34,
+                    35,
+                    36,
+                    37,
+                    38,
+                    39,
+                    40,
+                    41,
+                    42,
+                    43,
+                    44,
+                    45,
+                    46,
+                    47,
+                    48,
+                    49,
+                    50,
+                    51,
+                    52,
+                    53,
+                    54,
+                    55,
+                    56,
+                    57,
+                    58,
+                    59,
+                    60,
+                    61,
+                    62,
+                    63,
+                    64,
+                    65,
+                    66,
+                    67,
+                    68,
+                    69,
+                    70,
+                    71,
+                    72,
+                    73,
+                    74,
+                    75,
+                    76,
+                    77,
+                    78,
+                    79,
+                    80
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              },
+              "signature": "Sphinx()"
+            }
+          },
+          {
+            "type": "node",
+            "name": "totalSupply = 20000000",
+            "source_mapping": {
+              "start": 1123,
+              "length": 22,
+              "filename_relative": "contracts/safe/safe_264_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_264_SAFE.sol",
+              "filename_short": "contracts/safe/safe_264_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                38
+              ],
+              "starting_column": 9,
+              "ending_column": 31
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "Sphinx",
+                "source_mapping": {
+                  "start": 1094,
+                  "length": 208,
+                  "filename_relative": "contracts/safe/safe_264_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_264_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_264_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    37,
+                    38,
+                    39,
+                    40,
+                    41,
+                    42,
+                    43
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "Sphinx",
+                    "source_mapping": {
+                      "start": 645,
+                      "length": 1889,
+                      "filename_relative": "contracts/safe/safe_264_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_264_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_264_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        25,
+                        26,
+                        27,
+                        28,
+                        29,
+                        30,
+                        31,
+                        32,
+                        33,
+                        34,
+                        35,
+                        36,
+                        37,
+                        38,
+                        39,
+                        40,
+                        41,
+                        42,
+                        43,
+                        44,
+                        45,
+                        46,
+                        47,
+                        48,
+                        49,
+                        50,
+                        51,
+                        52,
+                        53,
+                        54,
+                        55,
+                        56,
+                        57,
+                        58,
+                        59,
+                        60,
+                        61,
+                        62,
+                        63,
+                        64,
+                        65,
+                        66,
+                        67,
+                        68,
+                        69,
+                        70,
+                        71,
+                        72,
+                        73,
+                        74,
+                        75,
+                        76,
+                        77,
+                        78,
+                        79,
+                        80
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "Sphinx()"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Sphinx.Sphinx() (contracts/safe/safe_264_SAFE.sol#37-43) uses literals with too many digits:\n\t- totalSupply = 20000000 (contracts/safe/safe_264_SAFE.sol#38)\n",
+        "markdown": "[Sphinx.Sphinx()](contracts/safe/safe_264_SAFE.sol#L37-L43) uses literals with too many digits:\n\t- [totalSupply = 20000000](contracts/safe/safe_264_SAFE.sol#L38)\n",
+        "first_markdown_element": "contracts/safe/safe_264_SAFE.sol#L37-L43",
+        "id": "8706689c63c967549ccd834d5a77f8b6c409dd66dfb7cb074c79cb3f2f22c929",
+        "check": "too-many-digits",
+        "impact": "Informational",
+        "confidence": "Medium"
+      }
+    ]
+  }
+}

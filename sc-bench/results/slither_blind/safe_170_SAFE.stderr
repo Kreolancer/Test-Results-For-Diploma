@@ -1,0 +1,179 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_170_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+
+Detector: weak-prng
+Zlots.random(uint256,uint256,address) (contracts/safe/safe_170_SAFE.sol#427-429) uses a weak PRNG: "maxRandom(blockn,entropy) % upper (contracts/safe/safe_170_SAFE.sol#428)" 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#weak-PRNG
+
+Detector: unchecked-transfer
+Zlots._finishSpin(address) (contracts/safe/safe_170_SAFE.sol#247-399) ignores return value by ZTHTKN.transfer(target,profit) (contracts/safe/safe_170_SAFE.sol#392)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unchecked-transfer
+
+Detector: divide-before-multiply
+Zlots.jackpotGuard(uint256) (contracts/safe/safe_170_SAFE.sol#405-413) performs a multiplication on the result of a division:
+	- ninetyContractBalance = SafeMath.mul(SafeMath.div(contractBalance,10),9) (contracts/safe/safe_170_SAFE.sol#411)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#divide-before-multiply
+
+Detector: reentrancy-no-eth
+Reentrancy in Zlots._finishSpin(address) (contracts/safe/safe_170_SAFE.sol#247-399):
+	External calls:
+	- ZTHTKN.transfer(target,profit) (contracts/safe/safe_170_SAFE.sol#392)
+	State variables written after the call(s):
+	- playerSpins[target] = playerSpin(uint200(0),uint56(0)) (contracts/safe/safe_170_SAFE.sol#396)
+	Zlots.playerSpins (contracts/safe/safe_170_SAFE.sol#191) can be used in cross function reentrancies:
+	- Zlots._finishSpin(address) (contracts/safe/safe_170_SAFE.sol#247-399)
+	- Zlots._spinTokens(Zlots.TKN) (contracts/safe/safe_170_SAFE.sol#194-234)
+	- Zlots.playerSpins (contracts/safe/safe_170_SAFE.sol#191)
+Reentrancy in Zlots._spinTokens(Zlots.TKN) (contracts/safe/safe_170_SAFE.sol#194-234):
+	External calls:
+	- _finishSpin(_tkn.sender) (contracts/safe/safe_170_SAFE.sol#216)
+		- ZTHTKN.transfer(target,profit) (contracts/safe/safe_170_SAFE.sol#392)
+	State variables written after the call(s):
+	- playerSpins[_tkn.sender] = spin (contracts/safe/safe_170_SAFE.sol#224)
+	Zlots.playerSpins (contracts/safe/safe_170_SAFE.sol#191) can be used in cross function reentrancies:
+	- Zlots._finishSpin(address) (contracts/safe/safe_170_SAFE.sol#247-399)
+	- Zlots._spinTokens(Zlots.TKN) (contracts/safe/safe_170_SAFE.sol#194-234)
+	- Zlots.playerSpins (contracts/safe/safe_170_SAFE.sol#191)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-2
+
+Detector: uninitialized-local
+Zlots.tokenFallback(address,uint256,bytes)._tkn (contracts/safe/safe_170_SAFE.sol#177) is a local variable never initialized
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#uninitialized-local-variables
+
+Detector: unused-return
+Zlots.constructor(address,address) (contracts/safe/safe_170_SAFE.sol#139-164) ignores return value by ZTHTKN.approve(ZTHBANKROLL,2 ** 256 - 1) (contracts/safe/safe_170_SAFE.sol#151)
+Zlots.constructor(address,address) (contracts/safe/safe_170_SAFE.sol#139-164) ignores return value by ZTHTKN.approve(owner,2 ** 256 - 1) (contracts/safe/safe_170_SAFE.sol#154)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unused-return
+
+Detector: events-access
+Zlots.changeOwner(address) (contracts/safe/safe_170_SAFE.sol#454-456) should emit an event for: 
+	- owner = _newOwner (contracts/safe/safe_170_SAFE.sol#455) 
+	- owner = _newOwner (contracts/safe/safe_170_SAFE.sol#455) 
+Zlots.changeBankroll(address) (contracts/safe/safe_170_SAFE.sol#459-461) should emit an event for: 
+	- bankroll = _newBankroll (contracts/safe/safe_170_SAFE.sol#460) 
+	- bankroll = _newBankroll (contracts/safe/safe_170_SAFE.sol#460) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+
+Detector: events-maths
+Zlots.tokenFallback(address,uint256,bytes) (contracts/safe/safe_170_SAFE.sol#171-183) should emit an event for: 
+	- contractBalance = contractBalance.add(_value) (contracts/safe/safe_170_SAFE.sol#174) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-arithmetic
+
+Detector: missing-zero-check
+Zlots.constructor(address,address).ZethrAddress (contracts/safe/safe_170_SAFE.sol#139) lacks a zero-check on :
+		- ZTHTKNADDR = ZethrAddress (contracts/safe/safe_170_SAFE.sol#142)
+Zlots.constructor(address,address).BankrollAddress (contracts/safe/safe_170_SAFE.sol#139) lacks a zero-check on :
+		- ZTHBANKROLL = BankrollAddress (contracts/safe/safe_170_SAFE.sol#143)
+Zlots.changeOwner(address)._newOwner (contracts/safe/safe_170_SAFE.sol#454) lacks a zero-check on :
+		- owner = _newOwner (contracts/safe/safe_170_SAFE.sol#455)
+Zlots.changeBankroll(address)._newBankroll (contracts/safe/safe_170_SAFE.sol#459) lacks a zero-check on :
+		- bankroll = _newBankroll (contracts/safe/safe_170_SAFE.sol#460)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+
+Detector: reentrancy-benign
+Reentrancy in Zlots._spinTokens(Zlots.TKN) (contracts/safe/safe_170_SAFE.sol#194-234):
+	External calls:
+	- _finishSpin(_tkn.sender) (contracts/safe/safe_170_SAFE.sol#216)
+		- ZTHTKN.transfer(target,profit) (contracts/safe/safe_170_SAFE.sol#392)
+	State variables written after the call(s):
+	- totalSpins += 1 (contracts/safe/safe_170_SAFE.sol#227)
+	- totalZTHWagered += _wagered (contracts/safe/safe_170_SAFE.sol#230)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+
+Detector: reentrancy-events
+Reentrancy in Zlots._finishSpin(address) (contracts/safe/safe_170_SAFE.sol#247-399):
+	External calls:
+	- ZTHTKN.transfer(target,profit) (contracts/safe/safe_170_SAFE.sol#392)
+	Event emitted after the call(s):
+	- SpinConcluded(target,spin.blockn) (contracts/safe/safe_170_SAFE.sol#397)
+Reentrancy in Zlots._spinTokens(Zlots.TKN) (contracts/safe/safe_170_SAFE.sol#194-234):
+	External calls:
+	- _finishSpin(_tkn.sender) (contracts/safe/safe_170_SAFE.sol#216)
+		- ZTHTKN.transfer(target,profit) (contracts/safe/safe_170_SAFE.sol#392)
+	Event emitted after the call(s):
+	- TokensWagered(_customerAddress,_wagered) (contracts/safe/safe_170_SAFE.sol#232)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-4
+
+Detector: boolean-equal
+Zlots.gameIsActive() (contracts/safe/safe_170_SAFE.sol#134-137) compares to a boolean constant:
+	-require(bool)(gameActive == true) (contracts/safe/safe_170_SAFE.sol#135)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#boolean-equality
+
+Detector: cyclomatic-complexity
+Zlots._finishSpin(address) (contracts/safe/safe_170_SAFE.sol#247-399) has a high cyclomatic complexity (21).
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#cyclomatic-complexity
+
+Detector: solc-version
+Version constraint ^0.4.24 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ABIEncoderV2PackedStorage_0.4.x
+	- ExpExponentCleanup
+	- EventStructWrongData.
+It is used by:
+	- ^0.4.24 (contracts/safe/safe_170_SAFE.sol#1)
+solc-0.4.24 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Struct Zlots.playerSpin (contracts/safe/safe_170_SAFE.sol#185-188) is not in CapWords
+Parameter Zlots.tokenFallback(address,uint256,bytes)._from (contracts/safe/safe_170_SAFE.sol#171) is not in mixedCase
+Parameter Zlots.tokenFallback(address,uint256,bytes)._value (contracts/safe/safe_170_SAFE.sol#171) is not in mixedCase
+Parameter Zlots.jackpotGuard(uint256)._wager (contracts/safe/safe_170_SAFE.sol#405) is not in mixedCase
+Parameter Zlots.addNewBetAmount(uint256)._tokenAmount (contracts/safe/safe_170_SAFE.sol#436) is not in mixedCase
+Parameter Zlots.changeOwner(address)._newOwner (contracts/safe/safe_170_SAFE.sol#454) is not in mixedCase
+Parameter Zlots.changeBankroll(address)._newBankroll (contracts/safe/safe_170_SAFE.sol#459) is not in mixedCase
+Variable Zlots.ZTHTKNADDR (contracts/safe/safe_170_SAFE.sol#67) is not in mixedCase
+Variable Zlots.ZTHBANKROLL (contracts/safe/safe_170_SAFE.sol#68) is not in mixedCase
+Variable Zlots.ZTHTKN (contracts/safe/safe_170_SAFE.sol#69) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: too-many-digits
+Zlots._finishSpin(address) (contracts/safe/safe_170_SAFE.sol#247-399) uses literals with too many digits:
+	- result = random(1000000,spin.blockn,target) (contracts/safe/safe_170_SAFE.sol#267)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#too-many-digits
+
+Detector: unindexed-event-address
+Event Zlots.TokensWagered(address,uint256) (contracts/safe/safe_170_SAFE.sol#80-83) has address parameters but no indexed parameters
+Event Zlots.LogResult(address,uint256,uint256,uint256,uint256,bool) (contracts/safe/safe_170_SAFE.sol#85-92) has address parameters but no indexed parameters
+Event Zlots.Loss(address,uint256) (contracts/safe/safe_170_SAFE.sol#95) has address parameters but no indexed parameters
+Event Zlots.ThreeMoonJackpot(address,uint256) (contracts/safe/safe_170_SAFE.sol#96) has address parameters but no indexed parameters
+Event Zlots.TwoMoonPrize(address,uint256) (contracts/safe/safe_170_SAFE.sol#97) has address parameters but no indexed parameters
+Event Zlots.ZTHJackpot(address,uint256) (contracts/safe/safe_170_SAFE.sol#98) has address parameters but no indexed parameters
+Event Zlots.ThreeZSymbols(address,uint256) (contracts/safe/safe_170_SAFE.sol#99) has address parameters but no indexed parameters
+Event Zlots.ThreeTSymbols(address,uint256) (contracts/safe/safe_170_SAFE.sol#100) has address parameters but no indexed parameters
+Event Zlots.ThreeHSymbols(address,uint256) (contracts/safe/safe_170_SAFE.sol#101) has address parameters but no indexed parameters
+Event Zlots.ThreeEtherIcons(address,uint256) (contracts/safe/safe_170_SAFE.sol#102) has address parameters but no indexed parameters
+Event Zlots.ThreeGreenPyramids(address,uint256) (contracts/safe/safe_170_SAFE.sol#103) has address parameters but no indexed parameters
+Event Zlots.ThreeGoldPyramids(address,uint256) (contracts/safe/safe_170_SAFE.sol#104) has address parameters but no indexed parameters
+Event Zlots.ThreeWhitePyramids(address,uint256) (contracts/safe/safe_170_SAFE.sol#105) has address parameters but no indexed parameters
+Event Zlots.OneMoonPrize(address,uint256) (contracts/safe/safe_170_SAFE.sol#106) has address parameters but no indexed parameters
+Event Zlots.OneOfEachPyramidPrize(address,uint256) (contracts/safe/safe_170_SAFE.sol#107) has address parameters but no indexed parameters
+Event Zlots.TwoZSymbols(address,uint256) (contracts/safe/safe_170_SAFE.sol#108) has address parameters but no indexed parameters
+Event Zlots.TwoTSymbols(address,uint256) (contracts/safe/safe_170_SAFE.sol#109) has address parameters but no indexed parameters
+Event Zlots.TwoHSymbols(address,uint256) (contracts/safe/safe_170_SAFE.sol#110) has address parameters but no indexed parameters
+Event Zlots.TwoEtherIcons(address,uint256) (contracts/safe/safe_170_SAFE.sol#111) has address parameters but no indexed parameters
+Event Zlots.TwoGreenPyramids(address,uint256) (contracts/safe/safe_170_SAFE.sol#112) has address parameters but no indexed parameters
+Event Zlots.TwoGoldPyramids(address,uint256) (contracts/safe/safe_170_SAFE.sol#113) has address parameters but no indexed parameters
+Event Zlots.TwoWhitePyramids(address,uint256) (contracts/safe/safe_170_SAFE.sol#114) has address parameters but no indexed parameters
+Event Zlots.SpinConcluded(address,uint256) (contracts/safe/safe_170_SAFE.sol#116) has address parameters but no indexed parameters
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unindexed-event-address-parameters
+
+Detector: external-function
+tokenFallback(address,uint256,bytes) should be declared external:
+	- ZTHReceivingContract.tokenFallback(address,uint256,bytes) (contracts/safe/safe_170_SAFE.sol#43)
+	- Zlots.tokenFallback(address,uint256,bytes) (contracts/safe/safe_170_SAFE.sol#171-183)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#public-function-that-could-be-declared-external
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_170_SAFE.sol analyzed (4 contracts with 101 detectors), 57 result(s) found

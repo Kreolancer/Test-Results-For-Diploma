@@ -1,0 +1,102 @@
+{
+  "success": true,
+  "error": null,
+  "results": {
+    "detectors": [
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "returnEverything",
+            "source_mapping": {
+              "start": 1352,
+              "length": 242,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "Intermediary",
+                "source_mapping": {
+                  "start": 219,
+                  "length": 1555,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "returnEverything()"
+            }
+          },
+          {
+            "type": "node",
+            "name": "owner.send(this.balance)",
+            "source_mapping": {
+              "start": 1562,
+              "length": 24,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "returnEverything",
+                "source_mapping": {
+                  "start": 1352,
+                  "length": 242,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "Intermediary",
+                    "source_mapping": {
+                      "start": 219,
+                      "length": 1555,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "returnEverything()"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Intermediary.returnEverything() () sends eth to arbitrary user\n\tDangerous calls:\n\t- owner.send(this.balance) ()\n",
+        "markdown": "[Intermediary.returnEverything()]() sends eth to arbitrary user\n\tDangerous calls:\n\t- [owner.send(this.balance)]()\n",
+        "first_markdown_element": "",
+        "id": "80013d51719b6148200bd06e1557c1e265d14d321700714aabb987cc5f5ee4b2",
+        "check": "arbitrary-send-eth",
+        "impact": "High",
+        "confidence": "Medium"
+      }
+    ]
+  }
+}

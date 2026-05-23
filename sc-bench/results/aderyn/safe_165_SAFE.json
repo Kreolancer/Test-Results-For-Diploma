@@ -1,0 +1,473 @@
+{
+  "files_summary": {
+    "total_source_units": 1,
+    "total_sloc": 267
+  },
+  "files_details": {
+    "files_details": [
+      {
+        "file_path": "src/safe_165_SAFE.sol",
+        "n_sloc": 267
+      }
+    ]
+  },
+  "issue_count": {
+    "high": 0,
+    "low": 10
+  },
+  "high_issues": {
+    "issues": []
+  },
+  "low_issues": {
+    "issues": [
+      {
+        "title": "Boolean equality is not required",
+        "description": "If `x` is a boolean, use `if(x)` and `if(!x)` instead of `if(x == true)` or `if(x == false)`.",
+        "detector_name": "boolean-equality",
+        "instances": [
+          {
+            "contract_path": "src/safe_165_SAFE.sol",
+            "line_no": 351,
+            "src": "9972:33",
+            "src_char": "9972:33"
+          }
+        ]
+      },
+      {
+        "title": "Centralization Risk",
+        "description": "Contracts have owners with privileged rights to perform admin tasks and need to be trusted to not perform malicious updates or drain funds.",
+        "detector_name": "centralization-risk",
+        "instances": [
+          {
+            "contract_path": "src/safe_165_SAFE.sol",
+            "line_no": 210,
+            "src": "6360:9",
+            "src_char": "6360:9"
+          },
+          {
+            "contract_path": "src/safe_165_SAFE.sol",
+            "line_no": 219,
+            "src": "6650:9",
+            "src_char": "6650:9"
+          },
+          {
+            "contract_path": "src/safe_165_SAFE.sol",
+            "line_no": 302,
+            "src": "8876:7",
+            "src_char": "8876:7"
+          },
+          {
+            "contract_path": "src/safe_165_SAFE.sol",
+            "line_no": 428,
+            "src": "11956:9",
+            "src_char": "11956:9"
+          }
+        ]
+      },
+      {
+        "title": "Empty `require()` / `revert()` Statement",
+        "description": "Use descriptive reason strings or custom errors for revert paths.",
+        "detector_name": "empty-require-revert",
+        "instances": [
+          {
+            "contract_path": "src/safe_165_SAFE.sol",
+            "line_no": 45,
+            "src": "1207:7",
+            "src_char": "1207:7"
+          },
+          {
+            "contract_path": "src/safe_165_SAFE.sol",
+            "line_no": 46,
+            "src": "1239:7",
+            "src_char": "1239:7"
+          },
+          {
+            "contract_path": "src/safe_165_SAFE.sol",
+            "line_no": 84,
+            "src": "2271:7",
+            "src_char": "2271:7"
+          },
+          {
+            "contract_path": "src/safe_165_SAFE.sol",
+            "line_no": 85,
+            "src": "2303:7",
+            "src_char": "2303:7"
+          },
+          {
+            "contract_path": "src/safe_165_SAFE.sol",
+            "line_no": 86,
+            "src": "2343:7",
+            "src_char": "2343:7"
+          },
+          {
+            "contract_path": "src/safe_165_SAFE.sol",
+            "line_no": 200,
+            "src": "6020:7",
+            "src_char": "6020:7"
+          },
+          {
+            "contract_path": "src/safe_165_SAFE.sol",
+            "line_no": 228,
+            "src": "6897:7",
+            "src_char": "6897:7"
+          },
+          {
+            "contract_path": "src/safe_165_SAFE.sol",
+            "line_no": 338,
+            "src": "9611:7",
+            "src_char": "9611:7"
+          },
+          {
+            "contract_path": "src/safe_165_SAFE.sol",
+            "line_no": 346,
+            "src": "9843:7",
+            "src_char": "9843:7"
+          },
+          {
+            "contract_path": "src/safe_165_SAFE.sol",
+            "line_no": 351,
+            "src": "9964:7",
+            "src_char": "9964:7"
+          },
+          {
+            "contract_path": "src/safe_165_SAFE.sol",
+            "line_no": 356,
+            "src": "10091:7",
+            "src_char": "10091:7"
+          },
+          {
+            "contract_path": "src/safe_165_SAFE.sol",
+            "line_no": 387,
+            "src": "10768:7",
+            "src_char": "10768:7"
+          }
+        ]
+      },
+      {
+        "title": "Internal Function Used Only Once",
+        "description": "Instead of separating the logic into a separate function, consider inlining the logic into the calling function. This can reduce the number of function calls and improve readability.",
+        "detector_name": "internal-function-used-once",
+        "instances": [
+          {
+            "contract_path": "src/safe_165_SAFE.sol",
+            "line_no": 470,
+            "src": "13038:654",
+            "src_char": "13038:654"
+          }
+        ]
+      },
+      {
+        "title": "Large Numeric Literal",
+        "description": "Large literal values multiples of 10000 can be replaced with scientific notation.Use `e` notation, for example: `1e18`, instead of its full numeric value.",
+        "detector_name": "large-numeric-literal",
+        "instances": [
+          {
+            "contract_path": "src/safe_165_SAFE.sol",
+            "line_no": 292,
+            "src": "8619:10",
+            "src_char": "8619:10"
+          }
+        ]
+      },
+      {
+        "title": "Modifier Invoked Only Once",
+        "description": "Consider removing the modifier or inlining the logic into the calling function.",
+        "detector_name": "modifier-used-only-once",
+        "instances": [
+          {
+            "contract_path": "src/safe_165_SAFE.sol",
+            "line_no": 337,
+            "src": "9582:206",
+            "src_char": "9582:206"
+          },
+          {
+            "contract_path": "src/safe_165_SAFE.sol",
+            "line_no": 355,
+            "src": "10030:238",
+            "src_char": "10030:238"
+          }
+        ]
+      },
+      {
+        "title": "Address State Variable Set Without Checks",
+        "description": "Check for `address(0)` when assigning values to address state variables.",
+        "detector_name": "state-no-address-check",
+        "instances": [
+          {
+            "contract_path": "src/safe_165_SAFE.sol",
+            "line_no": 430,
+            "src": "11980:42",
+            "src_char": "11980:42"
+          },
+          {
+            "contract_path": "src/safe_165_SAFE.sol",
+            "line_no": 431,
+            "src": "12032:46",
+            "src_char": "12032:46"
+          },
+          {
+            "contract_path": "src/safe_165_SAFE.sol",
+            "line_no": 432,
+            "src": "12088:50",
+            "src_char": "12088:50"
+          }
+        ]
+      },
+      {
+        "title": "Unsafe ERC20 Operation",
+        "description": "ERC20 functions may not behave as expected. For example: return values are not always meaningful. It is recommended to use OpenZeppelin's SafeERC20 library.",
+        "detector_name": "unsafe-erc20-operation",
+        "instances": [
+          {
+            "contract_path": "src/safe_165_SAFE.sol",
+            "line_no": 405,
+            "src": "11332:14",
+            "src_char": "11332:14"
+          }
+        ]
+      },
+      {
+        "title": "Public Function Not Used Internally",
+        "description": "If a function is marked public but is not used internally, consider marking it as `external`.",
+        "detector_name": "unused-public-function",
+        "instances": [
+          {
+            "contract_path": "src/safe_165_SAFE.sol",
+            "line_no": 4,
+            "src": "50:53",
+            "src_char": "50:53"
+          },
+          {
+            "contract_path": "src/safe_165_SAFE.sol",
+            "line_no": 5,
+            "src": "106:62",
+            "src_char": "106:62"
+          },
+          {
+            "contract_path": "src/safe_165_SAFE.sol",
+            "line_no": 6,
+            "src": "171:67",
+            "src_char": "171:67"
+          },
+          {
+            "contract_path": "src/safe_165_SAFE.sol",
+            "line_no": 11,
+            "src": "350:85",
+            "src_char": "350:85"
+          },
+          {
+            "contract_path": "src/safe_165_SAFE.sol",
+            "line_no": 14,
+            "src": "439:89",
+            "src_char": "439:89"
+          },
+          {
+            "contract_path": "src/safe_165_SAFE.sol",
+            "line_no": 17,
+            "src": "532:71",
+            "src_char": "532:71"
+          },
+          {
+            "contract_path": "src/safe_165_SAFE.sol",
+            "line_no": 35,
+            "src": "895:83",
+            "src_char": "895:83"
+          },
+          {
+            "contract_path": "src/safe_165_SAFE.sol",
+            "line_no": 44,
+            "src": "1132:321",
+            "src_char": "1132:321"
+          },
+          {
+            "contract_path": "src/safe_165_SAFE.sol",
+            "line_no": 59,
+            "src": "1655:99",
+            "src_char": "1655:99"
+          },
+          {
+            "contract_path": "src/safe_165_SAFE.sol",
+            "line_no": 76,
+            "src": "2151:470",
+            "src_char": "2151:470"
+          },
+          {
+            "contract_path": "src/safe_165_SAFE.sol",
+            "line_no": 104,
+            "src": "3239:188",
+            "src_char": "3239:188"
+          },
+          {
+            "contract_path": "src/safe_165_SAFE.sol",
+            "line_no": 116,
+            "src": "3746:153",
+            "src_char": "3746:153"
+          },
+          {
+            "contract_path": "src/safe_165_SAFE.sol",
+            "line_no": 136,
+            "src": "4351:296",
+            "src_char": "4351:296"
+          },
+          {
+            "contract_path": "src/safe_165_SAFE.sol",
+            "line_no": 158,
+            "src": "5104:431",
+            "src_char": "5104:431"
+          },
+          {
+            "contract_path": "src/safe_165_SAFE.sol",
+            "line_no": 210,
+            "src": "6324:111",
+            "src_char": "6324:111"
+          },
+          {
+            "contract_path": "src/safe_165_SAFE.sol",
+            "line_no": 219,
+            "src": "6597:103",
+            "src_char": "6597:103"
+          },
+          {
+            "contract_path": "src/safe_165_SAFE.sol",
+            "line_no": 385,
+            "src": "10690:327",
+            "src_char": "10690:327"
+          },
+          {
+            "contract_path": "src/safe_165_SAFE.sol",
+            "line_no": 401,
+            "src": "11192:172",
+            "src_char": "11192:172"
+          },
+          {
+            "contract_path": "src/safe_165_SAFE.sol",
+            "line_no": 415,
+            "src": "11580:194",
+            "src_char": "11580:194"
+          },
+          {
+            "contract_path": "src/safe_165_SAFE.sol",
+            "line_no": 449,
+            "src": "12462:180",
+            "src_char": "12462:180"
+          },
+          {
+            "contract_path": "src/safe_165_SAFE.sol",
+            "line_no": 456,
+            "src": "12648:186",
+            "src_char": "12648:186"
+          },
+          {
+            "contract_path": "src/safe_165_SAFE.sol",
+            "line_no": 463,
+            "src": "12840:192",
+            "src_char": "12840:192"
+          }
+        ]
+      },
+      {
+        "title": "Unused State Variable",
+        "description": "State variable appears to be unused. No analysis has been performed to see if any inline assembly references it. Consider removing this unused variable.",
+        "detector_name": "unused-state-variable",
+        "instances": [
+          {
+            "contract_path": "src/safe_165_SAFE.sol",
+            "line_no": 294,
+            "src": "8654:28",
+            "src_char": "8654:28"
+          }
+        ]
+      }
+    ]
+  },
+  "detectors_used": [
+    "abi-encode-packed-hash-collision",
+    "arbitrary-transfer-from",
+    "assert-state-change",
+    "block-timestamp-deadline",
+    "boolean-equality",
+    "builtin-symbol-shadowing",
+    "centralization-risk",
+    "constant-function-changes-state",
+    "constant-function-contains-assembly",
+    "contract-locks-ether",
+    "costly-loop",
+    "dangerous-unary-operator",
+    "dead-code",
+    "delegate-call-unchecked-address",
+    "delegatecall-in-loop",
+    "delete-nested-mapping",
+    "deprecated-oz-function",
+    "division-before-multiplication",
+    "dynamic-array-length-assignment",
+    "ecrecover",
+    "empty-block",
+    "empty-require-revert",
+    "enumerable-loop-removal",
+    "eth-send-unchecked-address",
+    "experimental-encoder",
+    "function-initializing-state",
+    "function-pointer-in-constructor",
+    "function-selector-collision",
+    "inconsistent-type-names",
+    "incorrect-caret-operator",
+    "incorrect-erc20-interface",
+    "incorrect-erc721-interface",
+    "incorrect-shift-order",
+    "incorrect-use-of-modifier",
+    "internal-function-used-once",
+    "large-numeric-literal",
+    "literal-instead-of-constant",
+    "local-variable-shadowing",
+    "missing-inheritance",
+    "misused-boolean",
+    "modifier-used-only-once",
+    "msg-value-in-loop",
+    "multiple-constructors",
+    "multiple-placeholders",
+    "nested-struct-in-mapping",
+    "non-reentrant-not-first",
+    "out-of-order-retryable",
+    "pre-declared-local-variable-usage",
+    "push-zero-opcode",
+    "redundant-statement",
+    "reentrancy-state-change",
+    "require-revert-in-loop",
+    "return-bomb",
+    "reused-contract-name",
+    "rtlo",
+    "selfdestruct",
+    "signed-integer-storage-array",
+    "solmate-safe-transfer-lib",
+    "state-change-without-event",
+    "state-no-address-check",
+    "state-variable-could-be-constant",
+    "state-variable-could-be-immutable",
+    "state-variable-init-order",
+    "state-variable-read-external",
+    "state-variable-shadowing",
+    "storage-array-length-not-cached",
+    "storage-array-memory-edit",
+    "strict-equality-contract-balance",
+    "tautological-compare",
+    "tautology-or-contradiction",
+    "todo",
+    "tx-origin-used-for-auth",
+    "unchecked-low-level-call",
+    "unchecked-return",
+    "unchecked-send",
+    "uninitialized-local-variable",
+    "unprotected-initializer",
+    "unsafe-casting",
+    "unsafe-erc20-operation",
+    "unsafe-oz-erc721-mint",
+    "unspecific-solidity-pragma",
+    "unused-error",
+    "unused-import",
+    "unused-public-function",
+    "unused-state-variable",
+    "void-constructor",
+    "weak-randomness",
+    "yul-return"
+  ]
+}

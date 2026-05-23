@@ -1,0 +1,243 @@
+{
+  "files_summary": {
+    "total_source_units": 1,
+    "total_sloc": 26
+  },
+  "files_details": {
+    "files_details": [
+      {
+        "file_path": "src/vuln_002_SC01.sol",
+        "n_sloc": 26
+      }
+    ]
+  },
+  "issue_count": {
+    "high": 3,
+    "low": 4
+  },
+  "high_issues": {
+    "issues": [
+      {
+        "title": "Direct assignment of array length",
+        "description": "If the length of a dynamic array (storage variable) is directly assigned to, it may allow access to other storage slots by tweaking it's value. This practice has been deprecated in newer Solidity versions",
+        "detector_name": "dynamic-array-length-assignment",
+        "instances": [
+          {
+            "contract_path": "src/vuln_002_SC01.sol",
+            "line_no": 28,
+            "src": "706:17",
+            "src_char": "706:17"
+          }
+        ]
+      },
+      {
+        "title": "`selfdestruct` is Deprecated",
+        "description": "Remove the `selfdestruct` instruction from the code.",
+        "detector_name": "selfdestruct",
+        "instances": [
+          {
+            "contract_path": "src/vuln_002_SC01.sol",
+            "line_no": 38,
+            "src": "1041:12",
+            "src_char": "1041:12"
+          }
+        ]
+      },
+      {
+        "title": "Tautology or Contradiction in comparison",
+        "description": "The condition has been determined to be either always true or always false due to the integer range in which we're operating.",
+        "detector_name": "tautology-or-contradiction",
+        "instances": [
+          {
+            "contract_path": "src/vuln_002_SC01.sol",
+            "line_no": 27,
+            "src": "606:22",
+            "src_char": "606:22"
+          }
+        ]
+      }
+    ]
+  },
+  "low_issues": {
+    "issues": [
+      {
+        "title": "Empty Block",
+        "description": "Consider removing empty blocks.",
+        "detector_name": "empty-block",
+        "instances": [
+          {
+            "contract_path": "src/vuln_002_SC01.sol",
+            "line_no": 18,
+            "src": "390:35",
+            "src_char": "390:35"
+          }
+        ]
+      },
+      {
+        "title": "Empty `require()` / `revert()` Statement",
+        "description": "Use descriptive reason strings or custom errors for revert paths.",
+        "detector_name": "empty-require-revert",
+        "instances": [
+          {
+            "contract_path": "src/vuln_002_SC01.sol",
+            "line_no": 27,
+            "src": "598:7",
+            "src_char": "598:7"
+          },
+          {
+            "contract_path": "src/vuln_002_SC01.sol",
+            "line_no": 32,
+            "src": "838:7",
+            "src_char": "838:7"
+          },
+          {
+            "contract_path": "src/vuln_002_SC01.sol",
+            "line_no": 37,
+            "src": "1002:7",
+            "src_char": "1002:7"
+          }
+        ]
+      },
+      {
+        "title": "Unspecific Solidity Pragma",
+        "description": "Consider using a specific version of Solidity in your contracts instead of a wide version. For example, instead of `pragma solidity ^0.8.0;`, use `pragma solidity 0.8.0;`",
+        "detector_name": "unspecific-solidity-pragma",
+        "instances": [
+          {
+            "contract_path": "src/vuln_002_SC01.sol",
+            "line_no": 7,
+            "src": "177:24",
+            "src_char": "177:24"
+          }
+        ]
+      },
+      {
+        "title": "Public Function Not Used Internally",
+        "description": "If a function is marked public but is not used internally, consider marking it as `external`.",
+        "detector_name": "unused-public-function",
+        "instances": [
+          {
+            "contract_path": "src/vuln_002_SC01.sol",
+            "line_no": 18,
+            "src": "390:35",
+            "src_char": "390:35"
+          },
+          {
+            "contract_path": "src/vuln_002_SC01.sol",
+            "line_no": 21,
+            "src": "432:75",
+            "src_char": "432:75"
+          },
+          {
+            "contract_path": "src/vuln_002_SC01.sol",
+            "line_no": 25,
+            "src": "514:254",
+            "src_char": "514:254"
+          },
+          {
+            "contract_path": "src/vuln_002_SC01.sol",
+            "line_no": 31,
+            "src": "775:183",
+            "src_char": "775:183"
+          },
+          {
+            "contract_path": "src/vuln_002_SC01.sol",
+            "line_no": 36,
+            "src": "965:108",
+            "src_char": "965:108"
+          }
+        ]
+      }
+    ]
+  },
+  "detectors_used": [
+    "abi-encode-packed-hash-collision",
+    "arbitrary-transfer-from",
+    "assert-state-change",
+    "block-timestamp-deadline",
+    "boolean-equality",
+    "builtin-symbol-shadowing",
+    "centralization-risk",
+    "constant-function-changes-state",
+    "constant-function-contains-assembly",
+    "contract-locks-ether",
+    "costly-loop",
+    "dangerous-unary-operator",
+    "dead-code",
+    "delegate-call-unchecked-address",
+    "delegatecall-in-loop",
+    "delete-nested-mapping",
+    "deprecated-oz-function",
+    "division-before-multiplication",
+    "dynamic-array-length-assignment",
+    "ecrecover",
+    "empty-block",
+    "empty-require-revert",
+    "enumerable-loop-removal",
+    "eth-send-unchecked-address",
+    "experimental-encoder",
+    "function-initializing-state",
+    "function-pointer-in-constructor",
+    "function-selector-collision",
+    "inconsistent-type-names",
+    "incorrect-caret-operator",
+    "incorrect-erc20-interface",
+    "incorrect-erc721-interface",
+    "incorrect-shift-order",
+    "incorrect-use-of-modifier",
+    "internal-function-used-once",
+    "large-numeric-literal",
+    "literal-instead-of-constant",
+    "local-variable-shadowing",
+    "missing-inheritance",
+    "misused-boolean",
+    "modifier-used-only-once",
+    "msg-value-in-loop",
+    "multiple-constructors",
+    "multiple-placeholders",
+    "nested-struct-in-mapping",
+    "non-reentrant-not-first",
+    "out-of-order-retryable",
+    "pre-declared-local-variable-usage",
+    "push-zero-opcode",
+    "redundant-statement",
+    "reentrancy-state-change",
+    "require-revert-in-loop",
+    "return-bomb",
+    "reused-contract-name",
+    "rtlo",
+    "selfdestruct",
+    "signed-integer-storage-array",
+    "solmate-safe-transfer-lib",
+    "state-change-without-event",
+    "state-no-address-check",
+    "state-variable-could-be-constant",
+    "state-variable-could-be-immutable",
+    "state-variable-init-order",
+    "state-variable-read-external",
+    "state-variable-shadowing",
+    "storage-array-length-not-cached",
+    "storage-array-memory-edit",
+    "strict-equality-contract-balance",
+    "tautological-compare",
+    "tautology-or-contradiction",
+    "todo",
+    "tx-origin-used-for-auth",
+    "unchecked-low-level-call",
+    "unchecked-return",
+    "unchecked-send",
+    "uninitialized-local-variable",
+    "unprotected-initializer",
+    "unsafe-casting",
+    "unsafe-erc20-operation",
+    "unsafe-oz-erc721-mint",
+    "unspecific-solidity-pragma",
+    "unused-error",
+    "unused-import",
+    "unused-public-function",
+    "unused-state-variable",
+    "void-constructor",
+    "weak-randomness",
+    "yul-return"
+  ]
+}

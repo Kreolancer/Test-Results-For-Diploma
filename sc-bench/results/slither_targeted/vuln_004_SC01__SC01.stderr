@@ -1,0 +1,22 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_004_SC01.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_004_SC01.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_004_SC01.sol:377:37: Warning: This looks like an address but has an invalid checksum.
+  address constant _walletLibrary = 0xcafecafecafecafecafecafecafecafecafecafe;
+                                    ^----------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_004_SC01.sol:417:14: Warning: Inline assembly block is not balanced. It leaves 1 item(s) on the stack.
+    assembly {
+             ^
+Spanning multiple lines.
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_004_SC01.sol:437:7: Warning: Return value of low-level calls not used.
+      _walletLibrary.delegatecall(msg.data); //it should have whitelisted specific methods that the user is allowed to call
+      ^-----------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_004_SC01.sol:456:37: Warning: This looks like an address but has an invalid checksum.
+  address constant _walletLibrary = 0xcafecafecafecafecafecafecafecafecafecafe;
+                                    ^----------------------------------------^
+
+
+Detector: suicidal
+WalletLibrary.kill(address) () allows anyone to destruct the contract
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#suicidal
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_004_SC01.sol analyzed (4 contracts with 5 detectors), 1 result(s) found

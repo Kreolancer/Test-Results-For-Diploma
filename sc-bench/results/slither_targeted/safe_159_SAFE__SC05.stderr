@@ -1,0 +1,34 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_159_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+
+Detector: timestamp
+CryptoSagaHero.deploy(uint256,uint32,uint256) (contracts/safe/safe_159_SAFE.sol#1190-1208) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(_heroInstance.availableAt <= now) (contracts/safe/safe_159_SAFE.sol#1201)
+CryptoSagaHero.levelUp(uint256) (contracts/safe/safe_159_SAFE.sol#1243-1291) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(_heroInstance.availableAt <= now) (contracts/safe/safe_159_SAFE.sol#1252)
+	- require(bool)(_heroInstance.currentLevel < _heroClassInfo.maxLevel) (contracts/safe/safe_159_SAFE.sol#1258)
+	- require(bool)(_heroInstance.currentExp >= requiredExp) (contracts/safe/safe_159_SAFE.sol#1264)
+	- require(bool)(addressToGoldDeposit[_ownerOfToken] >= requiredGold) (contracts/safe/safe_159_SAFE.sol#1273)
+CryptoSagaHero.withdrawDeposit(uint256) (contracts/safe/safe_159_SAFE.sol#1308-1318) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(addressToGoldDeposit[msg.sender] >= _amount) (contracts/safe/safe_159_SAFE.sol#1311)
+CryptoSagaDungeonVer1.enterDungeon(uint256[4],uint32) (contracts/safe/safe_159_SAFE.sol#1713-1996) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(addressToPlayRecordDateTime[msg.sender] + coolDungeon <= now) (contracts/safe/safe_159_SAFE.sol#1735)
+	- min(max(((_unitStats[_slotId][3] * 150 / 100) - _unitStats[_targetSlotId][2]),75),99) <= random(100,0) (contracts/safe/safe_159_SAFE.sol#1884)
+	- 75 <= random(100,0) (contracts/safe/safe_159_SAFE.sol#1888)
+	- min(max((_unitStats[_slotId][3] - _unitStats[_targetSlotId][3]),5),75) > random(100,0) (contracts/safe/safe_159_SAFE.sol#1894)
+	- 5 > random(100,0) (contracts/safe/safe_159_SAFE.sol#1898)
+CryptoSagaDungeonVer1.checkOwnershipAndAvailability(address,uint256[4]) (contracts/safe/safe_159_SAFE.sol#1999-2024) uses timestamp for comparisons
+	Dangerous comparisons:
+	- _heroAvailAts[0] <= now && _heroAvailAts[1] <= now && _heroAvailAts[2] <= now && _heroAvailAts[3] <= now (contracts/safe/safe_159_SAFE.sol#2016)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+
+Detector: weak-prng
+CryptoSagaHero.random(uint32,uint32) (contracts/safe/safe_159_SAFE.sol#1321-1329) uses a weak PRNG: "seed % (_upper - _lower) + _lower (contracts/safe/safe_159_SAFE.sol#1328)" 
+CryptoSagaDungeonVer1.random(uint32,uint32) (contracts/safe/safe_159_SAFE.sol#2078-2086) uses a weak PRNG: "seed = seed % uint32(1103515245) + 12345 (contracts/safe/safe_159_SAFE.sol#2084)" 
+CryptoSagaDungeonVer1.random(uint32,uint32) (contracts/safe/safe_159_SAFE.sol#2078-2086) uses a weak PRNG: "seed % (_upper - _lower) + _lower (contracts/safe/safe_159_SAFE.sol#2085)" 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#weak-PRNG
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_159_SAFE.sol analyzed (20 contracts with 2 detectors), 8 result(s) found

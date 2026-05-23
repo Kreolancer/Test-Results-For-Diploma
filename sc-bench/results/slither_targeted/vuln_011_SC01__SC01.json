@@ -1,0 +1,534 @@
+{
+  "success": true,
+  "error": null,
+  "results": {
+    "detectors": [
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "fallback",
+            "source_mapping": {
+              "start": 1121,
+              "length": 124,
+              "filename_relative": "contracts/vulnerable/vuln_011_SC01.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_011_SC01.sol",
+              "filename_short": "contracts/vulnerable/vuln_011_SC01.sol",
+              "is_dependency": false,
+              "lines": [
+                36,
+                37,
+                38,
+                39
+              ],
+              "starting_column": 5,
+              "ending_column": 6
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "FibonacciBalance",
+                "source_mapping": {
+                  "start": 174,
+                  "length": 1073,
+                  "filename_relative": "contracts/vulnerable/vuln_011_SC01.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_011_SC01.sol",
+                  "filename_short": "contracts/vulnerable/vuln_011_SC01.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15,
+                    16,
+                    17,
+                    18,
+                    19,
+                    20,
+                    21,
+                    22,
+                    23,
+                    24,
+                    25,
+                    26,
+                    27,
+                    28,
+                    29,
+                    30,
+                    31,
+                    32,
+                    33,
+                    34,
+                    35,
+                    36,
+                    37,
+                    38,
+                    39,
+                    40
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 2
+                }
+              },
+              "signature": "fallback()"
+            }
+          },
+          {
+            "type": "node",
+            "name": "require(bool)(fibonacciLibrary.delegatecall(msg.data))",
+            "source_mapping": {
+              "start": 1190,
+              "length": 48,
+              "filename_relative": "contracts/vulnerable/vuln_011_SC01.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_011_SC01.sol",
+              "filename_short": "contracts/vulnerable/vuln_011_SC01.sol",
+              "is_dependency": false,
+              "lines": [
+                38
+              ],
+              "starting_column": 9,
+              "ending_column": 57
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "fallback",
+                "source_mapping": {
+                  "start": 1121,
+                  "length": 124,
+                  "filename_relative": "contracts/vulnerable/vuln_011_SC01.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_011_SC01.sol",
+                  "filename_short": "contracts/vulnerable/vuln_011_SC01.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    36,
+                    37,
+                    38,
+                    39
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "FibonacciBalance",
+                    "source_mapping": {
+                      "start": 174,
+                      "length": 1073,
+                      "filename_relative": "contracts/vulnerable/vuln_011_SC01.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_011_SC01.sol",
+                      "filename_short": "contracts/vulnerable/vuln_011_SC01.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        10,
+                        11,
+                        12,
+                        13,
+                        14,
+                        15,
+                        16,
+                        17,
+                        18,
+                        19,
+                        20,
+                        21,
+                        22,
+                        23,
+                        24,
+                        25,
+                        26,
+                        27,
+                        28,
+                        29,
+                        30,
+                        31,
+                        32,
+                        33,
+                        34,
+                        35,
+                        36,
+                        37,
+                        38,
+                        39,
+                        40
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "fallback()"
+                }
+              }
+            }
+          }
+        ],
+        "description": "FibonacciBalance.fallback() (contracts/vulnerable/vuln_011_SC01.sol#36-39) uses delegatecall to a input-controlled function id\n\t- require(bool)(fibonacciLibrary.delegatecall(msg.data)) (contracts/vulnerable/vuln_011_SC01.sol#38)\n",
+        "markdown": "[FibonacciBalance.fallback()](contracts/vulnerable/vuln_011_SC01.sol#L36-L39) uses delegatecall to a input-controlled function id\n\t- [require(bool)(fibonacciLibrary.delegatecall(msg.data))](contracts/vulnerable/vuln_011_SC01.sol#L38)\n",
+        "first_markdown_element": "contracts/vulnerable/vuln_011_SC01.sol#L36-L39",
+        "id": "3458d57d9083b90b8dc9dc6d3bb2a00ec6bbbadb35351dbca67de70cec8dd99a",
+        "check": "controlled-delegatecall",
+        "impact": "High",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "withdraw",
+            "source_mapping": {
+              "start": 710,
+              "length": 350,
+              "filename_relative": "contracts/vulnerable/vuln_011_SC01.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_011_SC01.sol",
+              "filename_short": "contracts/vulnerable/vuln_011_SC01.sol",
+              "is_dependency": false,
+              "lines": [
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33
+              ],
+              "starting_column": 5,
+              "ending_column": 6
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "FibonacciBalance",
+                "source_mapping": {
+                  "start": 174,
+                  "length": 1073,
+                  "filename_relative": "contracts/vulnerable/vuln_011_SC01.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_011_SC01.sol",
+                  "filename_short": "contracts/vulnerable/vuln_011_SC01.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15,
+                    16,
+                    17,
+                    18,
+                    19,
+                    20,
+                    21,
+                    22,
+                    23,
+                    24,
+                    25,
+                    26,
+                    27,
+                    28,
+                    29,
+                    30,
+                    31,
+                    32,
+                    33,
+                    34,
+                    35,
+                    36,
+                    37,
+                    38,
+                    39,
+                    40
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 2
+                }
+              },
+              "signature": "withdraw()"
+            }
+          },
+          {
+            "type": "node",
+            "name": "require(bool)(fibonacciLibrary.delegatecall(fibSig,withdrawalCounter))",
+            "source_mapping": {
+              "start": 928,
+              "length": 65,
+              "filename_relative": "contracts/vulnerable/vuln_011_SC01.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_011_SC01.sol",
+              "filename_short": "contracts/vulnerable/vuln_011_SC01.sol",
+              "is_dependency": false,
+              "lines": [
+                31
+              ],
+              "starting_column": 9,
+              "ending_column": 74
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "withdraw",
+                "source_mapping": {
+                  "start": 710,
+                  "length": 350,
+                  "filename_relative": "contracts/vulnerable/vuln_011_SC01.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_011_SC01.sol",
+                  "filename_short": "contracts/vulnerable/vuln_011_SC01.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    26,
+                    27,
+                    28,
+                    29,
+                    30,
+                    31,
+                    32,
+                    33
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "FibonacciBalance",
+                    "source_mapping": {
+                      "start": 174,
+                      "length": 1073,
+                      "filename_relative": "contracts/vulnerable/vuln_011_SC01.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_011_SC01.sol",
+                      "filename_short": "contracts/vulnerable/vuln_011_SC01.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        10,
+                        11,
+                        12,
+                        13,
+                        14,
+                        15,
+                        16,
+                        17,
+                        18,
+                        19,
+                        20,
+                        21,
+                        22,
+                        23,
+                        24,
+                        25,
+                        26,
+                        27,
+                        28,
+                        29,
+                        30,
+                        31,
+                        32,
+                        33,
+                        34,
+                        35,
+                        36,
+                        37,
+                        38,
+                        39,
+                        40
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "withdraw()"
+                }
+              }
+            }
+          }
+        ],
+        "description": "FibonacciBalance.withdraw() (contracts/vulnerable/vuln_011_SC01.sol#26-33) uses delegatecall to a input-controlled function id\n\t- require(bool)(fibonacciLibrary.delegatecall(fibSig,withdrawalCounter)) (contracts/vulnerable/vuln_011_SC01.sol#31)\n",
+        "markdown": "[FibonacciBalance.withdraw()](contracts/vulnerable/vuln_011_SC01.sol#L26-L33) uses delegatecall to a input-controlled function id\n\t- [require(bool)(fibonacciLibrary.delegatecall(fibSig,withdrawalCounter))](contracts/vulnerable/vuln_011_SC01.sol#L31)\n",
+        "first_markdown_element": "contracts/vulnerable/vuln_011_SC01.sol#L26-L33",
+        "id": "6e60a51ee89db043d1c2733122cf5275f04eb239582ab48fe7b381df99176efb",
+        "check": "controlled-delegatecall",
+        "impact": "High",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "withdraw",
+            "source_mapping": {
+              "start": 710,
+              "length": 350,
+              "filename_relative": "contracts/vulnerable/vuln_011_SC01.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_011_SC01.sol",
+              "filename_short": "contracts/vulnerable/vuln_011_SC01.sol",
+              "is_dependency": false,
+              "lines": [
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33
+              ],
+              "starting_column": 5,
+              "ending_column": 6
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "FibonacciBalance",
+                "source_mapping": {
+                  "start": 174,
+                  "length": 1073,
+                  "filename_relative": "contracts/vulnerable/vuln_011_SC01.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_011_SC01.sol",
+                  "filename_short": "contracts/vulnerable/vuln_011_SC01.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15,
+                    16,
+                    17,
+                    18,
+                    19,
+                    20,
+                    21,
+                    22,
+                    23,
+                    24,
+                    25,
+                    26,
+                    27,
+                    28,
+                    29,
+                    30,
+                    31,
+                    32,
+                    33,
+                    34,
+                    35,
+                    36,
+                    37,
+                    38,
+                    39,
+                    40
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 2
+                }
+              },
+              "signature": "withdraw()"
+            }
+          },
+          {
+            "type": "node",
+            "name": "msg.sender.transfer(calculatedFibNumber * 1000000000000000000)",
+            "source_mapping": {
+              "start": 1003,
+              "length": 50,
+              "filename_relative": "contracts/vulnerable/vuln_011_SC01.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_011_SC01.sol",
+              "filename_short": "contracts/vulnerable/vuln_011_SC01.sol",
+              "is_dependency": false,
+              "lines": [
+                32
+              ],
+              "starting_column": 9,
+              "ending_column": 59
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "withdraw",
+                "source_mapping": {
+                  "start": 710,
+                  "length": 350,
+                  "filename_relative": "contracts/vulnerable/vuln_011_SC01.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_011_SC01.sol",
+                  "filename_short": "contracts/vulnerable/vuln_011_SC01.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    26,
+                    27,
+                    28,
+                    29,
+                    30,
+                    31,
+                    32,
+                    33
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "FibonacciBalance",
+                    "source_mapping": {
+                      "start": 174,
+                      "length": 1073,
+                      "filename_relative": "contracts/vulnerable/vuln_011_SC01.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_011_SC01.sol",
+                      "filename_short": "contracts/vulnerable/vuln_011_SC01.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        10,
+                        11,
+                        12,
+                        13,
+                        14,
+                        15,
+                        16,
+                        17,
+                        18,
+                        19,
+                        20,
+                        21,
+                        22,
+                        23,
+                        24,
+                        25,
+                        26,
+                        27,
+                        28,
+                        29,
+                        30,
+                        31,
+                        32,
+                        33,
+                        34,
+                        35,
+                        36,
+                        37,
+                        38,
+                        39,
+                        40
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "withdraw()"
+                }
+              }
+            }
+          }
+        ],
+        "description": "FibonacciBalance.withdraw() (contracts/vulnerable/vuln_011_SC01.sol#26-33) sends eth to arbitrary user\n\tDangerous calls:\n\t- msg.sender.transfer(calculatedFibNumber * 1000000000000000000) (contracts/vulnerable/vuln_011_SC01.sol#32)\n",
+        "markdown": "[FibonacciBalance.withdraw()](contracts/vulnerable/vuln_011_SC01.sol#L26-L33) sends eth to arbitrary user\n\tDangerous calls:\n\t- [msg.sender.transfer(calculatedFibNumber * 1000000000000000000)](contracts/vulnerable/vuln_011_SC01.sol#L32)\n",
+        "first_markdown_element": "contracts/vulnerable/vuln_011_SC01.sol#L26-L33",
+        "id": "55752341e2e0b9557e8da6f874dca53acc58fabc412dfb20329cb0e62dccf0e8",
+        "check": "arbitrary-send-eth",
+        "impact": "High",
+        "confidence": "Medium"
+      }
+    ]
+  }
+}

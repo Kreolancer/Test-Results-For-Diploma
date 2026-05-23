@@ -1,0 +1,107 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:28:5: Warning: No visibility specified. Defaulting to "public".
+    function totalSupply() constant returns (uint256 supply) {}
+    ^---------------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:29:5: Warning: No visibility specified. Defaulting to "public".
+    function balanceOf(address _owner) constant returns (uint256 balance) {}
+    ^----------------------------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:30:5: Warning: No visibility specified. Defaulting to "public".
+    function transfer(address _to, uint256 _value) returns (bool success) {}
+    ^----------------------------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:31:5: Warning: No visibility specified. Defaulting to "public".
+    function transferFrom(address _from, address _to, uint256 _value) returns (bool success) {}
+    ^-----------------------------------------------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:32:5: Warning: No visibility specified. Defaulting to "public".
+    function approve(address _spender, uint256 _value) returns (bool success) {}
+    ^--------------------------------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:33:5: Warning: No visibility specified. Defaulting to "public".
+    function allowance(address _owner, address _spender) constant returns (uint256 remaining) {}
+    ^------------------------------------------------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:149:5: Warning: No visibility specified. Defaulting to "public".
+    function () nonZero payable {
+    ^
+Spanning multiple lines.
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:253:5: Warning: No visibility specified. Defaulting to "public".
+    function approve(address _spender, uint256 _tokens_in_cents) returns (bool success) {
+    ^
+Spanning multiple lines.
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:259:5: Warning: No visibility specified. Defaulting to "public".
+    function allowance(address _owner, address _spender) constant returns (uint256 remaining) {
+    ^
+Spanning multiple lines.
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:28:46: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function totalSupply() constant returns (uint256 supply) {}
+                                             ^------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:29:24: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function balanceOf(address _owner) constant returns (uint256 balance) {}
+                       ^------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:29:58: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function balanceOf(address _owner) constant returns (uint256 balance) {}
+                                                         ^-------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:30:23: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transfer(address _to, uint256 _value) returns (bool success) {}
+                      ^---------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:30:36: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transfer(address _to, uint256 _value) returns (bool success) {}
+                                   ^------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:30:61: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transfer(address _to, uint256 _value) returns (bool success) {}
+                                                            ^----------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:31:27: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transferFrom(address _from, address _to, uint256 _value) returns (bool success) {}
+                          ^-----------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:31:42: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transferFrom(address _from, address _to, uint256 _value) returns (bool success) {}
+                                         ^---------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:31:55: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transferFrom(address _from, address _to, uint256 _value) returns (bool success) {}
+                                                      ^------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:31:80: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transferFrom(address _from, address _to, uint256 _value) returns (bool success) {}
+                                                                               ^----------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:32:22: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function approve(address _spender, uint256 _value) returns (bool success) {}
+                     ^--------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:32:40: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function approve(address _spender, uint256 _value) returns (bool success) {}
+                                       ^------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:32:65: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function approve(address _spender, uint256 _value) returns (bool success) {}
+                                                                ^----------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:33:24: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function allowance(address _owner, address _spender) constant returns (uint256 remaining) {}
+                       ^------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:33:40: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function allowance(address _owner, address _spender) constant returns (uint256 remaining) {}
+                                       ^--------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:33:76: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function allowance(address _owner, address _spender) constant returns (uint256 remaining) {}
+                                                                           ^---------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:28:5: Warning: Function state mutability can be restricted to pure
+    function totalSupply() constant returns (uint256 supply) {}
+    ^---------------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:29:5: Warning: Function state mutability can be restricted to pure
+    function balanceOf(address _owner) constant returns (uint256 balance) {}
+    ^----------------------------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:30:5: Warning: Function state mutability can be restricted to pure
+    function transfer(address _to, uint256 _value) returns (bool success) {}
+    ^----------------------------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:31:5: Warning: Function state mutability can be restricted to pure
+    function transferFrom(address _from, address _to, uint256 _value) returns (bool success) {}
+    ^-----------------------------------------------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:32:5: Warning: Function state mutability can be restricted to pure
+    function approve(address _spender, uint256 _value) returns (bool success) {}
+    ^--------------------------------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:33:5: Warning: Function state mutability can be restricted to pure
+    function allowance(address _owner, address _spender) constant returns (uint256 remaining) {}
+    ^------------------------------------------------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:324:13: Warning: Function declared as view, but this expression (potentially) modifies the state and thus requires non-payable (the default) or payable.
+            crowdSaleState = State.PresaleFinalized;
+            ^------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:338:13: Warning: Function declared as view, but this expression (potentially) modifies the state and thus requires non-payable (the default) or payable.
+            crowdSaleState = State.ICOFinalized;
+            ^------------^
+
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol analyzed (5 contracts with 5 detectors), 0 result(s) found

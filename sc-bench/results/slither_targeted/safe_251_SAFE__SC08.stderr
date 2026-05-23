@@ -1,0 +1,15 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_251_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+
+Detector: reentrancy-no-eth
+Reentrancy in HoldPresaleContract.unlockTokens() (contracts/safe/safe_251_SAFE.sol#347-362):
+	External calls:
+	- OppToken.transfer(msg.sender,holderList[contributor].tokens) (contracts/safe/safe_251_SAFE.sol#352)
+	State variables written after the call(s):
+	- holderList[contributor].withdrawed = true (contracts/safe/safe_251_SAFE.sol#353)
+	HoldPresaleContract.holderList (contracts/safe/safe_251_SAFE.sol#300) can be used in cross function reentrancies:
+	- HoldPresaleContract.addHolder(address,uint256,uint8,uint256) (contracts/safe/safe_251_SAFE.sol#327-341)
+	- HoldPresaleContract.holderList (contracts/safe/safe_251_SAFE.sol#300)
+	- HoldPresaleContract.unlockTokens() (contracts/safe/safe_251_SAFE.sol#347-362)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-2
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_251_SAFE.sol analyzed (11 contracts with 2 detectors), 1 result(s) found

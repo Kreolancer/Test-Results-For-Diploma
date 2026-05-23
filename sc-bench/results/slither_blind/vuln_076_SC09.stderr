@@ -1,0 +1,44 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_076_SC09.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_076_SC09.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_076_SC09.sol:14:4: Warning: No visibility specified. Defaulting to "public".
+   function Token(uint _initialSupply) {
+   ^
+Spanning multiple lines.
+
+
+Detector: tautology
+Token.transfer(address,uint256) (contracts/vulnerable/vuln_076_SC09.sol#18-25) contains a tautology or contradiction:
+	- require(bool)(balances[msg.sender] - _value >= 0) (contracts/vulnerable/vuln_076_SC09.sol#20)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#tautology-or-contradiction
+
+Detector: solc-version
+Version constraint ^0.4.18 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- EventStructWrongData
+	- NestedArrayFunctionCallDecoder.
+It is used by:
+	- ^0.4.18 (contracts/vulnerable/vuln_076_SC09.sol#7)
+solc-0.4.18 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Parameter Token.transfer(address,uint256)._to (contracts/vulnerable/vuln_076_SC09.sol#18) is not in mixedCase
+Parameter Token.transfer(address,uint256)._value (contracts/vulnerable/vuln_076_SC09.sol#18) is not in mixedCase
+Parameter Token.balanceOf(address)._owner (contracts/vulnerable/vuln_076_SC09.sol#27) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_076_SC09.sol analyzed (1 contracts with 101 detectors), 6 result(s) found

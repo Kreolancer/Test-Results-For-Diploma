@@ -1,0 +1,106 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_298_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+
+Detector: shadowing-local
+BlackBox.unlock(string,uint256,Encoder.Algorithm).allowance (contracts/safe/safe_298_SAFE.sol#195) shadows:
+	- BlackBox.allowance(address,address) (contracts/safe/safe_298_SAFE.sol#229-232) (function)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#local-variable-shadowing
+
+Detector: events-access
+Owned.transferOwnership(address) (contracts/safe/safe_298_SAFE.sol#30-32) should emit an event for: 
+	- owner = newOwner (contracts/safe/safe_298_SAFE.sol#31) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+
+Detector: missing-zero-check
+Owned.transferOwnership(address).newOwner (contracts/safe/safe_298_SAFE.sol#30) lacks a zero-check on :
+		- owner = newOwner (contracts/safe/safe_298_SAFE.sol#31)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+
+Detector: reentrancy-events
+Reentrancy in BlackBox.unlock(string,uint256,Encoder.Algorithm) (contracts/safe/safe_298_SAFE.sol#170-204):
+	External calls:
+	- tokenBalance = token.balanceOf(msg.sender) (contracts/safe/safe_298_SAFE.sol#194)
+	- allowance = token.allowance(msg.sender,this) (contracts/safe/safe_298_SAFE.sol#195)
+	External calls sending eth:
+	- clearDeposits(receiver,balance) (contracts/safe/safe_298_SAFE.sol#188)
+		- ! _for.send(deposit + _value) (contracts/safe/safe_298_SAFE.sol#222)
+		- require(bool)(msg.sender.send(deposit + _value)) (contracts/safe/safe_298_SAFE.sol#223)
+	Event emitted after the call(s):
+	- TokenTransfer(_token,msg.sender,receiver,_value) (contracts/safe/safe_298_SAFE.sol#200)
+Reentrancy in BlackBox.withdrawTokens(address) (contracts/safe/safe_298_SAFE.sol#208-213):
+	External calls:
+	- value = token.balanceOf(this) (contracts/safe/safe_298_SAFE.sol#210)
+	- require(bool)(token.transfer(msg.sender,value)) (contracts/safe/safe_298_SAFE.sol#211)
+	Event emitted after the call(s):
+	- WithdrawTokens(_token,msg.sender,value) (contracts/safe/safe_298_SAFE.sol#212)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-4
+
+Detector: solc-version
+Version constraint ^0.4.18 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- EventStructWrongData
+	- NestedArrayFunctionCallDecoder.
+It is used by:
+	- ^0.4.18 (contracts/safe/safe_298_SAFE.sol#1)
+solc-0.4.18 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Function Encoder.hash_seed(string,Encoder.Algorithm) (contracts/safe/safe_298_SAFE.sol#92-98) is not in mixedCase
+Function Encoder.hash_data(bytes32,Encoder.Algorithm) (contracts/safe/safe_298_SAFE.sol#101-107) is not in mixedCase
+Parameter BlackBox.lock(bytes32,bytes32,bytes32)._hash (contracts/safe/safe_298_SAFE.sol#147) is not in mixedCase
+Parameter BlackBox.lock(bytes32,bytes32,bytes32)._operator (contracts/safe/safe_298_SAFE.sol#148) is not in mixedCase
+Parameter BlackBox.lock(bytes32,bytes32,bytes32)._check (contracts/safe/safe_298_SAFE.sol#149) is not in mixedCase
+Parameter BlackBox.unlock(string,uint256,Encoder.Algorithm)._seed (contracts/safe/safe_298_SAFE.sol#171) is not in mixedCase
+Parameter BlackBox.unlock(string,uint256,Encoder.Algorithm)._value (contracts/safe/safe_298_SAFE.sol#172) is not in mixedCase
+Parameter BlackBox.unlock(string,uint256,Encoder.Algorithm)._algo (contracts/safe/safe_298_SAFE.sol#173) is not in mixedCase
+Parameter BlackBox.withdrawTokens(address)._token (contracts/safe/safe_298_SAFE.sol#208) is not in mixedCase
+Parameter BlackBox.clearDeposits(address,uint256)._for (contracts/safe/safe_298_SAFE.sol#218) is not in mixedCase
+Parameter BlackBox.clearDeposits(address,uint256)._value (contracts/safe/safe_298_SAFE.sol#218) is not in mixedCase
+Parameter BlackBox.allowance(address,address)._token (contracts/safe/safe_298_SAFE.sol#229) is not in mixedCase
+Parameter BlackBox.allowance(address,address)._from (contracts/safe/safe_298_SAFE.sol#229) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: reentrancy-unlimited-gas
+Reentrancy in BlackBox.clearDeposits(address,uint256) (contracts/safe/safe_298_SAFE.sol#218-227):
+	External calls:
+	- ! _for.send(deposit + _value) (contracts/safe/safe_298_SAFE.sol#222)
+	- require(bool)(msg.sender.send(deposit + _value)) (contracts/safe/safe_298_SAFE.sol#223)
+	Event emitted after the call(s):
+	- ClearedDeposit(_for,deposit + _value) (contracts/safe/safe_298_SAFE.sol#225)
+Reentrancy in BlackBox.unlock(string,uint256,Encoder.Algorithm) (contracts/safe/safe_298_SAFE.sol#170-204):
+	External calls:
+	- clearDeposits(receiver,balance) (contracts/safe/safe_298_SAFE.sol#188)
+		- ! _for.send(deposit + _value) (contracts/safe/safe_298_SAFE.sol#222)
+		- require(bool)(msg.sender.send(deposit + _value)) (contracts/safe/safe_298_SAFE.sol#223)
+	Event emitted after the call(s):
+	- ProofVerified(_seed,msg.sender,balance) (contracts/safe/safe_298_SAFE.sol#189)
+	- TokenTransfer(_token,msg.sender,receiver,_value) (contracts/safe/safe_298_SAFE.sol#200)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-5
+
+Detector: unindexed-event-address
+Event BlackBox.ProofVerified(string,address,uint256) (contracts/safe/safe_298_SAFE.sol#136) has address parameters but no indexed parameters
+Event BlackBox.WithdrawTokens(address,address,uint256) (contracts/safe/safe_298_SAFE.sol#138) has address parameters but no indexed parameters
+Event BlackBox.ClearedDeposit(address,uint256) (contracts/safe/safe_298_SAFE.sol#139) has address parameters but no indexed parameters
+Event BlackBox.TokenTransfer(address,address,address,uint256) (contracts/safe/safe_298_SAFE.sol#140) has address parameters but no indexed parameters
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unindexed-event-address-parameters
+
+Detector: external-function
+generateProofSet(string,address,address,address,Encoder.Algorithm) should be declared external:
+	- Encoder.generateProofSet(string,address,address,address,Encoder.Algorithm) (contracts/safe/safe_298_SAFE.sol#53-65)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#public-function-that-could-be-declared-external
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_298_SAFE.sol analyzed (4 contracts with 101 detectors), 27 result(s) found

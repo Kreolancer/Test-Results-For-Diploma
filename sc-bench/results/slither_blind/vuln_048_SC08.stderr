@@ -1,0 +1,75 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_048_SC08.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
+
+Detector: controlled-array-length
+LogFile (contracts/vulnerable/vuln_048_SC08.sol#74-98) contract sets array length with a user-controlled value:
+	- History.push(LastMsg) (contracts/vulnerable/vuln_048_SC08.sol#95)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#array-length-assignment
+
+Detector: reentrancy-eth
+Reentrancy in ACCURAL_DEPOSIT.Collect(uint256) (contracts/vulnerable/vuln_048_SC08.sol#48-61):
+	External calls:
+	- msg.sender.call.value(_am)() (contracts/vulnerable/vuln_048_SC08.sol#55)
+	State variables written after the call(s):
+	- balances[msg.sender] -= _am (contracts/vulnerable/vuln_048_SC08.sol#57)
+	ACCURAL_DEPOSIT.balances (contracts/vulnerable/vuln_048_SC08.sol#12) can be used in cross function reentrancies:
+	- ACCURAL_DEPOSIT.Collect(uint256) (contracts/vulnerable/vuln_048_SC08.sol#48-61)
+	- ACCURAL_DEPOSIT.Deposit() (contracts/vulnerable/vuln_048_SC08.sol#40-46)
+	- ACCURAL_DEPOSIT.balances (contracts/vulnerable/vuln_048_SC08.sol#12)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-1
+
+Detector: solc-version
+Version constraint ^0.4.19 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ABIEncoderV2PackedStorage_0.4.x
+	- ExpExponentCleanup
+	- EventStructWrongData
+	- NestedArrayFunctionCallDecoder.
+It is used by:
+	- ^0.4.19 (contracts/vulnerable/vuln_048_SC08.sol#8)
+solc-0.4.19 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: low-level-calls
+Low level call in ACCURAL_DEPOSIT.Collect(uint256) (contracts/vulnerable/vuln_048_SC08.sol#48-61):
+	- msg.sender.call.value(_am)() (contracts/vulnerable/vuln_048_SC08.sol#55)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+
+Detector: naming-convention
+Contract ACCURAL_DEPOSIT (contracts/vulnerable/vuln_048_SC08.sol#10-70) is not in CapWords
+Function ACCURAL_DEPOSIT.SetMinSum(uint256) (contracts/vulnerable/vuln_048_SC08.sol#20-25) is not in mixedCase
+Parameter ACCURAL_DEPOSIT.SetMinSum(uint256)._val (contracts/vulnerable/vuln_048_SC08.sol#20) is not in mixedCase
+Function ACCURAL_DEPOSIT.SetLogFile(address) (contracts/vulnerable/vuln_048_SC08.sol#27-32) is not in mixedCase
+Parameter ACCURAL_DEPOSIT.SetLogFile(address)._log (contracts/vulnerable/vuln_048_SC08.sol#27) is not in mixedCase
+Function ACCURAL_DEPOSIT.Initialized() (contracts/vulnerable/vuln_048_SC08.sol#34-38) is not in mixedCase
+Function ACCURAL_DEPOSIT.Deposit() (contracts/vulnerable/vuln_048_SC08.sol#40-46) is not in mixedCase
+Function ACCURAL_DEPOSIT.Collect(uint256) (contracts/vulnerable/vuln_048_SC08.sol#48-61) is not in mixedCase
+Parameter ACCURAL_DEPOSIT.Collect(uint256)._am (contracts/vulnerable/vuln_048_SC08.sol#48) is not in mixedCase
+Variable ACCURAL_DEPOSIT.MinSum (contracts/vulnerable/vuln_048_SC08.sol#14) is not in mixedCase
+Variable ACCURAL_DEPOSIT.Log (contracts/vulnerable/vuln_048_SC08.sol#16) is not in mixedCase
+Function LogFile.AddMessage(address,uint256,string) (contracts/vulnerable/vuln_048_SC08.sol#88-96) is not in mixedCase
+Parameter LogFile.AddMessage(address,uint256,string)._adr (contracts/vulnerable/vuln_048_SC08.sol#88) is not in mixedCase
+Parameter LogFile.AddMessage(address,uint256,string)._val (contracts/vulnerable/vuln_048_SC08.sol#88) is not in mixedCase
+Parameter LogFile.AddMessage(address,uint256,string)._data (contracts/vulnerable/vuln_048_SC08.sol#88) is not in mixedCase
+Variable LogFile.History (contracts/vulnerable/vuln_048_SC08.sol#84) is not in mixedCase
+Variable LogFile.LastMsg (contracts/vulnerable/vuln_048_SC08.sol#86) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: external-function
+AddMessage(address,uint256,string) should be declared external:
+	- LogFile.AddMessage(address,uint256,string) (contracts/vulnerable/vuln_048_SC08.sol#88-96)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#public-function-that-could-be-declared-external
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_048_SC08.sol analyzed (2 contracts with 101 detectors), 23 result(s) found

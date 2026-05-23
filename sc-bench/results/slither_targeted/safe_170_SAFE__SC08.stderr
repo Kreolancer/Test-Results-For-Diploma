@@ -1,0 +1,25 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_170_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+
+Detector: reentrancy-no-eth
+Reentrancy in Zlots._finishSpin(address) (contracts/safe/safe_170_SAFE.sol#247-399):
+	External calls:
+	- ZTHTKN.transfer(target,profit) (contracts/safe/safe_170_SAFE.sol#392)
+	State variables written after the call(s):
+	- playerSpins[target] = playerSpin(uint200(0),uint56(0)) (contracts/safe/safe_170_SAFE.sol#396)
+	Zlots.playerSpins (contracts/safe/safe_170_SAFE.sol#191) can be used in cross function reentrancies:
+	- Zlots._finishSpin(address) (contracts/safe/safe_170_SAFE.sol#247-399)
+	- Zlots._spinTokens(Zlots.TKN) (contracts/safe/safe_170_SAFE.sol#194-234)
+	- Zlots.playerSpins (contracts/safe/safe_170_SAFE.sol#191)
+Reentrancy in Zlots._spinTokens(Zlots.TKN) (contracts/safe/safe_170_SAFE.sol#194-234):
+	External calls:
+	- _finishSpin(_tkn.sender) (contracts/safe/safe_170_SAFE.sol#216)
+		- ZTHTKN.transfer(target,profit) (contracts/safe/safe_170_SAFE.sol#392)
+	State variables written after the call(s):
+	- playerSpins[_tkn.sender] = spin (contracts/safe/safe_170_SAFE.sol#224)
+	Zlots.playerSpins (contracts/safe/safe_170_SAFE.sol#191) can be used in cross function reentrancies:
+	- Zlots._finishSpin(address) (contracts/safe/safe_170_SAFE.sol#247-399)
+	- Zlots._spinTokens(Zlots.TKN) (contracts/safe/safe_170_SAFE.sol#194-234)
+	- Zlots.playerSpins (contracts/safe/safe_170_SAFE.sol#191)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-2
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_170_SAFE.sol analyzed (4 contracts with 2 detectors), 2 result(s) found

@@ -1,0 +1,331 @@
+{
+  "files_summary": {
+    "total_source_units": 1,
+    "total_sloc": 122
+  },
+  "files_details": {
+    "files_details": [
+      {
+        "file_path": "src/safe_259_SAFE.sol",
+        "n_sloc": 122
+      }
+    ]
+  },
+  "issue_count": {
+    "high": 0,
+    "low": 6
+  },
+  "high_issues": {
+    "issues": []
+  },
+  "low_issues": {
+    "issues": [
+      {
+        "title": "Centralization Risk",
+        "description": "Contracts have owners with privileged rights to perform admin tasks and need to be trusted to not perform malicious updates or drain funds.",
+        "detector_name": "centralization-risk",
+        "instances": [
+          {
+            "contract_path": "src/safe_259_SAFE.sol",
+            "line_no": 81,
+            "src": "2023:9",
+            "src_char": "2023:9"
+          },
+          {
+            "contract_path": "src/safe_259_SAFE.sol",
+            "line_no": 251,
+            "src": "8219:7",
+            "src_char": "8219:7"
+          }
+        ]
+      },
+      {
+        "title": "Empty `require()` / `revert()` Statement",
+        "description": "Use descriptive reason strings or custom errors for revert paths.",
+        "detector_name": "empty-require-revert",
+        "instances": [
+          {
+            "contract_path": "src/safe_259_SAFE.sol",
+            "line_no": 73,
+            "src": "1770:7",
+            "src_char": "1770:7"
+          },
+          {
+            "contract_path": "src/safe_259_SAFE.sol",
+            "line_no": 82,
+            "src": "2039:7",
+            "src_char": "2039:7"
+          },
+          {
+            "contract_path": "src/safe_259_SAFE.sol",
+            "line_no": 136,
+            "src": "3612:7",
+            "src_char": "3612:7"
+          },
+          {
+            "contract_path": "src/safe_259_SAFE.sol",
+            "line_no": 137,
+            "src": "3644:7",
+            "src_char": "3644:7"
+          },
+          {
+            "contract_path": "src/safe_259_SAFE.sol",
+            "line_no": 175,
+            "src": "4987:7",
+            "src_char": "4987:7"
+          },
+          {
+            "contract_path": "src/safe_259_SAFE.sol",
+            "line_no": 176,
+            "src": "5019:7",
+            "src_char": "5019:7"
+          },
+          {
+            "contract_path": "src/safe_259_SAFE.sol",
+            "line_no": 177,
+            "src": "5059:7",
+            "src_char": "5059:7"
+          }
+        ]
+      },
+      {
+        "title": "Inconsistent uint256/uint (or) int256/int types",
+        "description": "Inconsistency in declaring uint256/uint (or) int256/int variables within a contract. Use explicit size declarations (uint256 or int256). Consider keeping the naming convention consistent in a given contract. Explicit size declarations are preferred (uint256, int256) over implicit ones (uint, int) to avoid confusion.",
+        "detector_name": "inconsistent-type-names",
+        "instances": [
+          {
+            "contract_path": "src/safe_259_SAFE.sol",
+            "line_no": 222,
+            "src": "7094:16",
+            "src_char": "7094:16"
+          },
+          {
+            "contract_path": "src/safe_259_SAFE.sol",
+            "line_no": 238,
+            "src": "7818:21",
+            "src_char": "7818:21"
+          },
+          {
+            "contract_path": "src/safe_259_SAFE.sol",
+            "line_no": 239,
+            "src": "7869:13",
+            "src_char": "7869:13"
+          }
+        ]
+      },
+      {
+        "title": "Large Numeric Literal",
+        "description": "Large literal values multiples of 10000 can be replaced with scientific notation.Use `e` notation, for example: `1e18`, instead of its full numeric value.",
+        "detector_name": "large-numeric-literal",
+        "instances": [
+          {
+            "contract_path": "src/safe_259_SAFE.sol",
+            "line_no": 262,
+            "src": "8443:9",
+            "src_char": "8443:9"
+          }
+        ]
+      },
+      {
+        "title": "Modifier Invoked Only Once",
+        "description": "Consider removing the modifier or inlining the logic into the calling function.",
+        "detector_name": "modifier-used-only-once",
+        "instances": [
+          {
+            "contract_path": "src/safe_259_SAFE.sol",
+            "line_no": 72,
+            "src": "1743:67",
+            "src_char": "1743:67"
+          }
+        ]
+      },
+      {
+        "title": "Public Function Not Used Internally",
+        "description": "If a function is marked public but is not used internally, consider marking it as `external`.",
+        "detector_name": "unused-public-function",
+        "instances": [
+          {
+            "contract_path": "src/safe_259_SAFE.sol",
+            "line_no": 81,
+            "src": "1971:174",
+            "src_char": "1971:174"
+          },
+          {
+            "contract_path": "src/safe_259_SAFE.sol",
+            "line_no": 95,
+            "src": "2302:53",
+            "src_char": "2302:53"
+          },
+          {
+            "contract_path": "src/safe_259_SAFE.sol",
+            "line_no": 96,
+            "src": "2358:62",
+            "src_char": "2358:62"
+          },
+          {
+            "contract_path": "src/safe_259_SAFE.sol",
+            "line_no": 97,
+            "src": "2423:67",
+            "src_char": "2423:67"
+          },
+          {
+            "contract_path": "src/safe_259_SAFE.sol",
+            "line_no": 106,
+            "src": "2691:81",
+            "src_char": "2691:81"
+          },
+          {
+            "contract_path": "src/safe_259_SAFE.sol",
+            "line_no": 107,
+            "src": "2775:85",
+            "src_char": "2775:85"
+          },
+          {
+            "contract_path": "src/safe_259_SAFE.sol",
+            "line_no": 108,
+            "src": "2863:71",
+            "src_char": "2863:71"
+          },
+          {
+            "contract_path": "src/safe_259_SAFE.sol",
+            "line_no": 126,
+            "src": "3300:83",
+            "src_char": "3300:83"
+          },
+          {
+            "contract_path": "src/safe_259_SAFE.sol",
+            "line_no": 135,
+            "src": "3537:384",
+            "src_char": "3537:384"
+          },
+          {
+            "contract_path": "src/safe_259_SAFE.sol",
+            "line_no": 151,
+            "src": "4123:107",
+            "src_char": "4123:107"
+          },
+          {
+            "contract_path": "src/safe_259_SAFE.sol",
+            "line_no": 174,
+            "src": "4893:444",
+            "src_char": "4893:444"
+          },
+          {
+            "contract_path": "src/safe_259_SAFE.sol",
+            "line_no": 196,
+            "src": "5960:188",
+            "src_char": "5960:188"
+          },
+          {
+            "contract_path": "src/safe_259_SAFE.sol",
+            "line_no": 208,
+            "src": "6467:126",
+            "src_char": "6467:126"
+          },
+          {
+            "contract_path": "src/safe_259_SAFE.sol",
+            "line_no": 222,
+            "src": "7050:262",
+            "src_char": "7050:262"
+          },
+          {
+            "contract_path": "src/safe_259_SAFE.sol",
+            "line_no": 238,
+            "src": "7774:403",
+            "src_char": "7774:403"
+          }
+        ]
+      }
+    ]
+  },
+  "detectors_used": [
+    "abi-encode-packed-hash-collision",
+    "arbitrary-transfer-from",
+    "assert-state-change",
+    "block-timestamp-deadline",
+    "boolean-equality",
+    "builtin-symbol-shadowing",
+    "centralization-risk",
+    "constant-function-changes-state",
+    "constant-function-contains-assembly",
+    "contract-locks-ether",
+    "costly-loop",
+    "dangerous-unary-operator",
+    "dead-code",
+    "delegate-call-unchecked-address",
+    "delegatecall-in-loop",
+    "delete-nested-mapping",
+    "deprecated-oz-function",
+    "division-before-multiplication",
+    "dynamic-array-length-assignment",
+    "ecrecover",
+    "empty-block",
+    "empty-require-revert",
+    "enumerable-loop-removal",
+    "eth-send-unchecked-address",
+    "experimental-encoder",
+    "function-initializing-state",
+    "function-pointer-in-constructor",
+    "function-selector-collision",
+    "inconsistent-type-names",
+    "incorrect-caret-operator",
+    "incorrect-erc20-interface",
+    "incorrect-erc721-interface",
+    "incorrect-shift-order",
+    "incorrect-use-of-modifier",
+    "internal-function-used-once",
+    "large-numeric-literal",
+    "literal-instead-of-constant",
+    "local-variable-shadowing",
+    "missing-inheritance",
+    "misused-boolean",
+    "modifier-used-only-once",
+    "msg-value-in-loop",
+    "multiple-constructors",
+    "multiple-placeholders",
+    "nested-struct-in-mapping",
+    "non-reentrant-not-first",
+    "out-of-order-retryable",
+    "pre-declared-local-variable-usage",
+    "push-zero-opcode",
+    "redundant-statement",
+    "reentrancy-state-change",
+    "require-revert-in-loop",
+    "return-bomb",
+    "reused-contract-name",
+    "rtlo",
+    "selfdestruct",
+    "signed-integer-storage-array",
+    "solmate-safe-transfer-lib",
+    "state-change-without-event",
+    "state-no-address-check",
+    "state-variable-could-be-constant",
+    "state-variable-could-be-immutable",
+    "state-variable-init-order",
+    "state-variable-read-external",
+    "state-variable-shadowing",
+    "storage-array-length-not-cached",
+    "storage-array-memory-edit",
+    "strict-equality-contract-balance",
+    "tautological-compare",
+    "tautology-or-contradiction",
+    "todo",
+    "tx-origin-used-for-auth",
+    "unchecked-low-level-call",
+    "unchecked-return",
+    "unchecked-send",
+    "uninitialized-local-variable",
+    "unprotected-initializer",
+    "unsafe-casting",
+    "unsafe-erc20-operation",
+    "unsafe-oz-erc721-mint",
+    "unspecific-solidity-pragma",
+    "unused-error",
+    "unused-import",
+    "unused-public-function",
+    "unused-state-variable",
+    "void-constructor",
+    "weak-randomness",
+    "yul-return"
+  ]
+}

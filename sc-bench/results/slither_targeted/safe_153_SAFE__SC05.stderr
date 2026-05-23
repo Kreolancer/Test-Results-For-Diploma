@@ -1,0 +1,21 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_153_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_153_SAFE.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_153_SAFE.sol:180:5: Warning: Function state mutability can be restricted to pure
+    function finalization() internal {}
+    ^---------------------------------^
+
+
+Detector: timestamp
+Crowdsale.constructor(uint256,uint256,uint256,address,MintableToken) (contracts/safe/safe_153_SAFE.sol#42-54) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(_startTime >= now) (contracts/safe/safe_153_SAFE.sol#43)
+Crowdsale.hasEnded() (contracts/safe/safe_153_SAFE.sol#81-83) uses timestamp for comparisons
+	Dangerous comparisons:
+	- now > endTime (contracts/safe/safe_153_SAFE.sol#82)
+Crowdsale.validPurchase() (contracts/safe/safe_153_SAFE.sol#97-101) uses timestamp for comparisons
+	Dangerous comparisons:
+	- withinPeriod = now >= startTime && now <= endTime (contracts/safe/safe_153_SAFE.sol#98)
+	- withinPeriod && nonZeroPurchase (contracts/safe/safe_153_SAFE.sol#100)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_153_SAFE.sol analyzed (13 contracts with 2 detectors), 3 result(s) found

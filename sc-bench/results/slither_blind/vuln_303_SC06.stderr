@@ -1,0 +1,153 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_303_SC06.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_303_SC06.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_303_SC06.sol:39:3: Warning: Defining constructors as functions with the same name as the contract is deprecated. Use "constructor(...) { ... }" instead.
+  function PreICOin() payable {
+  ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_303_SC06.sol:1:1: Warning: Source file does not specify required compiler version!Consider adding "pragma solidity ^0.4.24;"
+contract PreICOin {
+^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_303_SC06.sol:49:5: Warning: Invoking events without "emit" prefix is deprecated.
+    CurrentCoin(cur_coin);
+    ^-------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_303_SC06.sol:55:5: Warning: Invoking events without "emit" prefix is deprecated.
+    ContractEnabled();
+    ^---------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_303_SC06.sol:59:5: Warning: Invoking events without "emit" prefix is deprecated.
+    ContractDisabled();
+    ^----------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_303_SC06.sol:72:5: Warning: Invoking events without "emit" prefix is deprecated.
+    TransferEnabled();
+    ^---------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_303_SC06.sol:76:5: Warning: Invoking events without "emit" prefix is deprecated.
+    TransferDisabled();
+    ^----------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_303_SC06.sol:120:9: Warning: Invoking events without "emit" prefix is deprecated.
+        Transfer(msg.sender, _to, _value);
+        ^-------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_303_SC06.sol:136:9: Warning: Invoking events without "emit" prefix is deprecated.
+        Transfer(_from, _to, _value);
+        ^--------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_303_SC06.sol:145:5: Warning: Invoking events without "emit" prefix is deprecated.
+    Approval(msg.sender, _spender, _value);
+    ^------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_303_SC06.sol:39:3: Warning: No visibility specified. Defaulting to "public". 
+  function PreICOin() payable {
+  ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_303_SC06.sol:47:3: Warning: No visibility specified. Defaulting to "public". 
+  function setCurrentCoin(address current) onlyOwner workingFlag {
+  ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_303_SC06.sol:53:3: Warning: No visibility specified. Defaulting to "public". 
+  function enableContract() onlyOwner {
+  ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_303_SC06.sol:57:3: Warning: No visibility specified. Defaulting to "public". 
+  function disableContract() onlyOwner {
+  ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_303_SC06.sol:61:3: Warning: No visibility specified. Defaulting to "public". 
+  function contractState() returns (string state) {
+  ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_303_SC06.sol:70:3: Warning: No visibility specified. Defaulting to "public". 
+  function enableTransfer() onlyOwner {
+  ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_303_SC06.sol:74:3: Warning: No visibility specified. Defaulting to "public". 
+  function disableTransfer() onlyOwner {
+  ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_303_SC06.sol:78:3: Warning: No visibility specified. Defaulting to "public". 
+  function transferState() returns (string state) {
+  ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_303_SC06.sol:87:3: Warning: No visibility specified. Defaulting to "public". 
+  function generateTokens(address _client, uint256 _amount) ownerAndCoin workingFlag {
+  ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_303_SC06.sol:91:3: Warning: No visibility specified. Defaulting to "public". 
+  function destroyTokens(address _client, uint256 _amount) ownerAndCoin workingFlag returns (bool state) {
+  ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_303_SC06.sol:102:3: Warning: No visibility specified. Defaulting to "public". 
+  function () workingFlag payable {
+  ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_303_SC06.sol:106:3: Warning: No visibility specified. Defaulting to "public". 
+  function totalSupply() constant workingFlag returns (uint256 totalsupply) {
+  ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_303_SC06.sol:110:3: Warning: No visibility specified. Defaulting to "public". 
+  function balanceOf(address _owner) constant workingFlag returns (uint256 balance) {
+  ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_303_SC06.sol:113:3: Warning: No visibility specified. Defaulting to "public". 
+  function transfer(address _to, uint256 _value) transferFlag workingFlag returns (bool success) {
+  ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_303_SC06.sol:127:3: Warning: No visibility specified. Defaulting to "public". 
+  function transferFrom(address _from, address _to, uint256 _value) transferFlag workingFlag returns (bool success) {
+  ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_303_SC06.sol:143:3: Warning: No visibility specified. Defaulting to "public". 
+  function approve(address _spender, uint256 _value) returns (bool success) {
+  ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_303_SC06.sol:148:3: Warning: No visibility specified. Defaulting to "public". 
+  function allowance(address _owner, address _spender) constant returns (uint256 remaining) {
+  ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_303_SC06.sol:61:3: Warning: Function state mutability can be restricted to view
+  function contractState() returns (string state) {
+  ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_303_SC06.sol:78:3: Warning: Function state mutability can be restricted to view
+  function transferState() returns (string state) {
+  ^ (Relevant source part starts here and spans across multiple lines).
+
+
+Detector: events-maths
+PreICOin.generateTokens(address,uint256) (contracts/vulnerable/vuln_303_SC06.sol#87-90) should emit an event for: 
+	- _totalSupply += _amount (contracts/vulnerable/vuln_303_SC06.sol#88) 
+PreICOin.destroyTokens(address,uint256) (contracts/vulnerable/vuln_303_SC06.sol#91-100) should emit an event for: 
+	- _totalSupply -= _amount (contracts/vulnerable/vuln_303_SC06.sol#94) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-arithmetic
+
+Detector: missing-zero-check
+PreICOin.setCurrentCoin(address).current (contracts/vulnerable/vuln_303_SC06.sol#47) lacks a zero-check on :
+		- cur_coin = current (contracts/vulnerable/vuln_303_SC06.sol#48)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+
+Detector: boolean-equal
+PreICOin.kill() (contracts/vulnerable/vuln_303_SC06.sol#43-46) compares to a boolean constant:
+	-require(bool)(workingState == false) (contracts/vulnerable/vuln_303_SC06.sol#44)
+PreICOin.workingFlag() (contracts/vulnerable/vuln_303_SC06.sol#30-33) compares to a boolean constant:
+	-require(bool)(workingState == true) (contracts/vulnerable/vuln_303_SC06.sol#31)
+PreICOin.transferFlag() (contracts/vulnerable/vuln_303_SC06.sol#34-37) compares to a boolean constant:
+	-require(bool)(transferAllowed == true) (contracts/vulnerable/vuln_303_SC06.sol#35)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#boolean-equality
+
+Detector: solc-version
+solc-0.4.24 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: low-level-calls
+Low level call in PreICOin.fallback() (contracts/vulnerable/vuln_303_SC06.sol#102-105):
+	- ret = cur_coin.call(bytes4(keccak256()(pay(address,uint256))),msg.sender,msg.value) (contracts/vulnerable/vuln_303_SC06.sol#103)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+
+Detector: naming-convention
+Parameter PreICOin.generateTokens(address,uint256)._client (contracts/vulnerable/vuln_303_SC06.sol#87) is not in mixedCase
+Parameter PreICOin.generateTokens(address,uint256)._amount (contracts/vulnerable/vuln_303_SC06.sol#87) is not in mixedCase
+Parameter PreICOin.destroyTokens(address,uint256)._client (contracts/vulnerable/vuln_303_SC06.sol#91) is not in mixedCase
+Parameter PreICOin.destroyTokens(address,uint256)._amount (contracts/vulnerable/vuln_303_SC06.sol#91) is not in mixedCase
+Parameter PreICOin.balanceOf(address)._owner (contracts/vulnerable/vuln_303_SC06.sol#110) is not in mixedCase
+Parameter PreICOin.transfer(address,uint256)._to (contracts/vulnerable/vuln_303_SC06.sol#113) is not in mixedCase
+Parameter PreICOin.transfer(address,uint256)._value (contracts/vulnerable/vuln_303_SC06.sol#113) is not in mixedCase
+Parameter PreICOin.transferFrom(address,address,uint256)._from (contracts/vulnerable/vuln_303_SC06.sol#127) is not in mixedCase
+Parameter PreICOin.transferFrom(address,address,uint256)._to (contracts/vulnerable/vuln_303_SC06.sol#127) is not in mixedCase
+Parameter PreICOin.transferFrom(address,address,uint256)._value (contracts/vulnerable/vuln_303_SC06.sol#127) is not in mixedCase
+Parameter PreICOin.approve(address,uint256)._spender (contracts/vulnerable/vuln_303_SC06.sol#143) is not in mixedCase
+Parameter PreICOin.approve(address,uint256)._value (contracts/vulnerable/vuln_303_SC06.sol#143) is not in mixedCase
+Parameter PreICOin.allowance(address,address)._owner (contracts/vulnerable/vuln_303_SC06.sol#148) is not in mixedCase
+Parameter PreICOin.allowance(address,address)._spender (contracts/vulnerable/vuln_303_SC06.sol#148) is not in mixedCase
+Variable PreICOin._totalSupply (contracts/vulnerable/vuln_303_SC06.sol#5) is not in mixedCase
+Variable PreICOin.cur_coin (contracts/vulnerable/vuln_303_SC06.sol#9) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: redundant-statements
+Redundant expression "ret (contracts/vulnerable/vuln_303_SC06.sol#104)" inPreICOin (contracts/vulnerable/vuln_303_SC06.sol#1-152)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#redundant-statements
+
+Detector: unindexed-event-address
+Event PreICOin.CurrentCoin(address) (contracts/vulnerable/vuln_303_SC06.sol#20) has address parameters but no indexed parameters
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unindexed-event-address-parameters
+
+Detector: unused-state
+PreICOin.etherClients (contracts/vulnerable/vuln_303_SC06.sol#12) is never used in PreICOin (contracts/vulnerable/vuln_303_SC06.sol#1-152)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unused-state-variable
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_303_SC06.sol analyzed (1 contracts with 101 detectors), 27 result(s) found

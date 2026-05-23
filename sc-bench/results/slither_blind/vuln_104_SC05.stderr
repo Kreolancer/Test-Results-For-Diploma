@@ -1,0 +1,91 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_104_SC05.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
+
+Detector: locked-ether
+Contract locking ether found:
+	Contract Winsshar (contracts/vulnerable/vuln_104_SC05.sol#105-188) has payable functions:
+	 - Winsshar.fallback() (contracts/vulnerable/vuln_104_SC05.sol#182-185)
+	But does not have a function to withdraw the ether
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#contracts-that-lock-ether
+
+Detector: tautology
+Winsshar.burnTokens(uint256) (contracts/vulnerable/vuln_104_SC05.sol#175-180) contains a tautology or contradiction:
+	- require(bool)(totalSupply - subSupply >= 0) (contracts/vulnerable/vuln_104_SC05.sol#176)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#tautology-or-contradiction
+
+Detector: events-access
+Winsshar.ownership(address) (contracts/vulnerable/vuln_104_SC05.sol#161-165) should emit an event for: 
+	- owner = newOwner (contracts/vulnerable/vuln_104_SC05.sol#162) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+
+Detector: missing-zero-check
+Winsshar.Winsshar(address).administrativeAddress (contracts/vulnerable/vuln_104_SC05.sol#119) lacks a zero-check on :
+		- admin = administrativeAddress (contracts/vulnerable/vuln_104_SC05.sol#123)
+Winsshar.ownership(address).newOwner (contracts/vulnerable/vuln_104_SC05.sol#161) lacks a zero-check on :
+		- owner = newOwner (contracts/vulnerable/vuln_104_SC05.sol#162)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+
+Detector: dead-code
+SafeMath.safeDiv(uint256,uint256) (contracts/vulnerable/vuln_104_SC05.sol#16-19) is never used and should be removed
+SafeMath.safeMul(uint256,uint256) (contracts/vulnerable/vuln_104_SC05.sol#7-14) is never used and should be removed
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dead-code
+
+Detector: solc-version
+Version constraint 0.4.16 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- NestedArrayFunctionCallDecoder
+	- ZeroFunctionSelector.
+It is used by:
+	- 0.4.16 (contracts/vulnerable/vuln_104_SC05.sol#1)
+solc-0.4.16 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Parameter StandardToken.transfer(address,uint256)._to (contracts/vulnerable/vuln_104_SC05.sol#57) is not in mixedCase
+Parameter StandardToken.transfer(address,uint256)._value (contracts/vulnerable/vuln_104_SC05.sol#57) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._from (contracts/vulnerable/vuln_104_SC05.sol#66) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._to (contracts/vulnerable/vuln_104_SC05.sol#66) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._value (contracts/vulnerable/vuln_104_SC05.sol#66) is not in mixedCase
+Parameter StandardToken.balanceOf(address)._owner (contracts/vulnerable/vuln_104_SC05.sol#76) is not in mixedCase
+Parameter StandardToken.approve(address,uint256)._spender (contracts/vulnerable/vuln_104_SC05.sol#81) is not in mixedCase
+Parameter StandardToken.approve(address,uint256)._value (contracts/vulnerable/vuln_104_SC05.sol#81) is not in mixedCase
+Parameter StandardToken.changeApproval(address,uint256,uint256)._spender (contracts/vulnerable/vuln_104_SC05.sol#88) is not in mixedCase
+Parameter StandardToken.changeApproval(address,uint256,uint256)._oldValue (contracts/vulnerable/vuln_104_SC05.sol#88) is not in mixedCase
+Parameter StandardToken.changeApproval(address,uint256,uint256)._newValue (contracts/vulnerable/vuln_104_SC05.sol#88) is not in mixedCase
+Parameter StandardToken.allowance(address,address)._owner (contracts/vulnerable/vuln_104_SC05.sol#95) is not in mixedCase
+Parameter StandardToken.allowance(address,address)._spender (contracts/vulnerable/vuln_104_SC05.sol#95) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: too-many-digits
+Winsshar.giveReward(address) (contracts/vulnerable/vuln_104_SC05.sol#143-149) uses literals with too many digits:
+	- transfer(awardee,10000000) (contracts/vulnerable/vuln_104_SC05.sol#147)
+Winsshar.slitherConstructorVariables() (contracts/vulnerable/vuln_104_SC05.sol#105-188) uses literals with too many digits:
+	- maxSupply = 100000000000000000 (contracts/vulnerable/vuln_104_SC05.sol#110)
+Winsshar.slitherConstructorVariables() (contracts/vulnerable/vuln_104_SC05.sol#105-188) uses literals with too many digits:
+	- totalSupply = 1000000000000000 (contracts/vulnerable/vuln_104_SC05.sol#111)
+Winsshar.slitherConstructorVariables() (contracts/vulnerable/vuln_104_SC05.sol#105-188) uses literals with too many digits:
+	- administrativeSupply = 20000000000000 (contracts/vulnerable/vuln_104_SC05.sol#112)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#too-many-digits
+
+Detector: constable-states
+Winsshar.administrativeSupply (contracts/vulnerable/vuln_104_SC05.sol#112) should be constant 
+Winsshar.decimals (contracts/vulnerable/vuln_104_SC05.sol#109) should be constant 
+Winsshar.maxSupply (contracts/vulnerable/vuln_104_SC05.sol#110) should be constant 
+Winsshar.name (contracts/vulnerable/vuln_104_SC05.sol#107) should be constant 
+Winsshar.symbol (contracts/vulnerable/vuln_104_SC05.sol#108) should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_104_SC05.sol analyzed (4 contracts with 101 detectors), 31 result(s) found

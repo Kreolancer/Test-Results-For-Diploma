@@ -1,0 +1,88 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_122_SC06.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
+
+Detector: shadowing-abstract
+SurtaxChain.totalSupply (contracts/vulnerable/vuln_122_SC06.sol#81) shadows:
+	- ERC20Basic.totalSupply (contracts/vulnerable/vuln_122_SC06.sol#56)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variable-shadowing-from-abstract-contracts
+
+Detector: events-access
+SurtaxChain.transferOwnership(address) (contracts/vulnerable/vuln_122_SC06.sol#113-117) should emit an event for: 
+	- owner = newOwner (contracts/vulnerable/vuln_122_SC06.sol#115) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+
+Detector: costly-loop
+SurtaxChain.doAirdrop(address,uint256) (contracts/vulnerable/vuln_122_SC06.sol#135-151) has costly operations inside a loop:
+	- totalDistributed = totalDistributed.add(_amount) (contracts/vulnerable/vuln_122_SC06.sol#142)
+	Calls stack containing the loop:
+		SurtaxChain.adminClaimAirdropMultiple(address[],uint256)
+SurtaxChain.doAirdrop(address,uint256) (contracts/vulnerable/vuln_122_SC06.sol#135-151) has costly operations inside a loop:
+	- distributionFinished = true (contracts/vulnerable/vuln_122_SC06.sol#145)
+	Calls stack containing the loop:
+		SurtaxChain.adminClaimAirdropMultiple(address[],uint256)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#costly-operations-inside-a-loop
+
+Detector: solc-version
+Version constraint ^0.4.18 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- EventStructWrongData
+	- NestedArrayFunctionCallDecoder.
+It is used by:
+	- ^0.4.18 (contracts/vulnerable/vuln_122_SC06.sol#3)
+solc-0.4.24 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Parameter SurtaxChain.distr(address,uint256)._to (contracts/vulnerable/vuln_122_SC06.sol#126) is not in mixedCase
+Parameter SurtaxChain.distr(address,uint256)._amount (contracts/vulnerable/vuln_122_SC06.sol#126) is not in mixedCase
+Parameter SurtaxChain.doAirdrop(address,uint256)._participant (contracts/vulnerable/vuln_122_SC06.sol#135) is not in mixedCase
+Parameter SurtaxChain.doAirdrop(address,uint256)._amount (contracts/vulnerable/vuln_122_SC06.sol#135) is not in mixedCase
+Parameter SurtaxChain.adminClaimAirdrop(address,uint256)._participant (contracts/vulnerable/vuln_122_SC06.sol#153) is not in mixedCase
+Parameter SurtaxChain.adminClaimAirdrop(address,uint256)._amount (contracts/vulnerable/vuln_122_SC06.sol#153) is not in mixedCase
+Parameter SurtaxChain.adminClaimAirdropMultiple(address[],uint256)._addresses (contracts/vulnerable/vuln_122_SC06.sol#157) is not in mixedCase
+Parameter SurtaxChain.adminClaimAirdropMultiple(address[],uint256)._amount (contracts/vulnerable/vuln_122_SC06.sol#157) is not in mixedCase
+Parameter SurtaxChain.updateTokensPerEth(uint256)._tokensPerEth (contracts/vulnerable/vuln_122_SC06.sol#161) is not in mixedCase
+Parameter SurtaxChain.balanceOf(address)._owner (contracts/vulnerable/vuln_122_SC06.sol#189) is not in mixedCase
+Parameter SurtaxChain.transfer(address,uint256)._to (contracts/vulnerable/vuln_122_SC06.sol#199) is not in mixedCase
+Parameter SurtaxChain.transfer(address,uint256)._amount (contracts/vulnerable/vuln_122_SC06.sol#199) is not in mixedCase
+Parameter SurtaxChain.transferFrom(address,address,uint256)._from (contracts/vulnerable/vuln_122_SC06.sol#210) is not in mixedCase
+Parameter SurtaxChain.transferFrom(address,address,uint256)._to (contracts/vulnerable/vuln_122_SC06.sol#210) is not in mixedCase
+Parameter SurtaxChain.transferFrom(address,address,uint256)._amount (contracts/vulnerable/vuln_122_SC06.sol#210) is not in mixedCase
+Parameter SurtaxChain.approve(address,uint256)._spender (contracts/vulnerable/vuln_122_SC06.sol#223) is not in mixedCase
+Parameter SurtaxChain.approve(address,uint256)._value (contracts/vulnerable/vuln_122_SC06.sol#223) is not in mixedCase
+Parameter SurtaxChain.allowance(address,address)._owner (contracts/vulnerable/vuln_122_SC06.sol#231) is not in mixedCase
+Parameter SurtaxChain.allowance(address,address)._spender (contracts/vulnerable/vuln_122_SC06.sol#231) is not in mixedCase
+Parameter SurtaxChain.burn(uint256)._value (contracts/vulnerable/vuln_122_SC06.sol#247) is not in mixedCase
+Parameter SurtaxChain.withdrawAltcoinTokens(address)._tokenContract (contracts/vulnerable/vuln_122_SC06.sol#257) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: too-many-digits
+SurtaxChain.slitherConstructorVariables() (contracts/vulnerable/vuln_122_SC06.sol#69-263) uses literals with too many digits:
+	- totalSupply = 2000000000e8 (contracts/vulnerable/vuln_122_SC06.sol#81)
+SurtaxChain.slitherConstructorVariables() (contracts/vulnerable/vuln_122_SC06.sol#69-263) uses literals with too many digits:
+	- tokensPerEth = 200000000e8 (contracts/vulnerable/vuln_122_SC06.sol#83)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#too-many-digits
+
+Detector: constable-states
+ERC20Basic.totalSupply (contracts/vulnerable/vuln_122_SC06.sol#56) should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+
+Detector: external-function
+adminClaimAirdropMultiple(address[],uint256) should be declared external:
+	- SurtaxChain.adminClaimAirdropMultiple(address[],uint256) (contracts/vulnerable/vuln_122_SC06.sol#157-159)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#public-function-that-could-be-declared-external
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_122_SC06.sol analyzed (5 contracts with 101 detectors), 31 result(s) found

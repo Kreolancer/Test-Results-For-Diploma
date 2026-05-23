@@ -1,0 +1,95 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_161_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+
+Detector: shadowing-state
+CarbonExchangeCoinToken.decimals (contracts/safe/safe_161_SAFE.sol#183) shadows:
+	- TokenERC20.decimals (contracts/safe/safe_161_SAFE.sol#33)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variable-shadowing
+
+Detector: erc20-interface
+CarbonExchangeCoinToken (contracts/safe/safe_161_SAFE.sol#179-272) has incorrect ERC20 function interface:TokenERC20.transfer(address,uint256) (contracts/safe/safe_161_SAFE.sol#88-90)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-erc20-interface
+
+Detector: events-access
+owned.transferOwnership(address) (contracts/safe/safe_161_SAFE.sol#18-20) should emit an event for: 
+	- owner = newOwner (contracts/safe/safe_161_SAFE.sol#19) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+
+Detector: missing-zero-check
+owned.transferOwnership(address).newOwner (contracts/safe/safe_161_SAFE.sol#18) lacks a zero-check on :
+		- owner = newOwner (contracts/safe/safe_161_SAFE.sol#19)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+
+Detector: dead-code
+TokenERC20._transfer(address,address,uint256) (contracts/safe/safe_161_SAFE.sol#62-78) is never used and should be removed
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dead-code
+
+Detector: solc-version
+Version constraint ^0.4.18 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- EventStructWrongData
+	- NestedArrayFunctionCallDecoder.
+It is used by:
+	- ^0.4.18 (contracts/safe/safe_161_SAFE.sol#4)
+solc-0.4.18 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Contract owned (contracts/safe/safe_161_SAFE.sol#6-25) is not in CapWords
+Contract tokenRecipient (contracts/safe/safe_161_SAFE.sol#27) is not in CapWords
+Parameter TokenERC20.transfer(address,uint256)._to (contracts/safe/safe_161_SAFE.sol#88) is not in mixedCase
+Parameter TokenERC20.transfer(address,uint256)._value (contracts/safe/safe_161_SAFE.sol#88) is not in mixedCase
+Parameter TokenERC20.transferFrom(address,address,uint256)._from (contracts/safe/safe_161_SAFE.sol#101) is not in mixedCase
+Parameter TokenERC20.transferFrom(address,address,uint256)._to (contracts/safe/safe_161_SAFE.sol#101) is not in mixedCase
+Parameter TokenERC20.transferFrom(address,address,uint256)._value (contracts/safe/safe_161_SAFE.sol#101) is not in mixedCase
+Parameter TokenERC20.approve(address,uint256)._spender (contracts/safe/safe_161_SAFE.sol#116) is not in mixedCase
+Parameter TokenERC20.approve(address,uint256)._value (contracts/safe/safe_161_SAFE.sol#116) is not in mixedCase
+Parameter TokenERC20.approveAndCall(address,uint256,bytes)._spender (contracts/safe/safe_161_SAFE.sol#131) is not in mixedCase
+Parameter TokenERC20.approveAndCall(address,uint256,bytes)._value (contracts/safe/safe_161_SAFE.sol#131) is not in mixedCase
+Parameter TokenERC20.approveAndCall(address,uint256,bytes)._extraData (contracts/safe/safe_161_SAFE.sol#131) is not in mixedCase
+Parameter TokenERC20.burn(uint256)._value (contracts/safe/safe_161_SAFE.sol#148) is not in mixedCase
+Parameter TokenERC20.burnFrom(address,uint256)._from (contracts/safe/safe_161_SAFE.sol#164) is not in mixedCase
+Parameter TokenERC20.burnFrom(address,uint256)._value (contracts/safe/safe_161_SAFE.sol#164) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: too-many-digits
+TokenERC20.TokenERC20() (contracts/safe/safe_161_SAFE.sol#52-57) uses literals with too many digits:
+	- totalSupply = 500000000000 * 10 ** uint256(decimals) (contracts/safe/safe_161_SAFE.sol#53)
+CarbonExchangeCoinToken.CarbonExchangeCoinToken() (contracts/safe/safe_161_SAFE.sol#196-202) uses literals with too many digits:
+	- totalSupply = 50000000000.000000000000000000 (contracts/safe/safe_161_SAFE.sol#198)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#too-many-digits
+
+Detector: unindexed-event-address
+Event CarbonExchangeCoinToken.FrozenFunds(address,bool) (contracts/safe/safe_161_SAFE.sol#191) has address parameters but no indexed parameters
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unindexed-event-address-parameters
+
+Detector: constable-states
+CarbonExchangeCoinToken.decimals (contracts/safe/safe_161_SAFE.sol#183) should be constant 
+TokenERC20.decimals (contracts/safe/safe_161_SAFE.sol#33) should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+
+Detector: external-function
+receiveApproval(address,uint256,address,bytes) should be declared external:
+	- tokenRecipient.receiveApproval(address,uint256,address,bytes) (contracts/safe/safe_161_SAFE.sol#27)
+approveAndCall(address,uint256,bytes) should be declared external:
+	- TokenERC20.approveAndCall(address,uint256,bytes) (contracts/safe/safe_161_SAFE.sol#131-139)
+setTokenName(string) should be declared external:
+	- CarbonExchangeCoinToken.setTokenName(string) (contracts/safe/safe_161_SAFE.sol#264-266)
+setTokenSymbol(string) should be declared external:
+	- CarbonExchangeCoinToken.setTokenSymbol(string) (contracts/safe/safe_161_SAFE.sol#268-270)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#public-function-that-could-be-declared-external
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_161_SAFE.sol analyzed (4 contracts with 101 detectors), 31 result(s) found

@@ -1,0 +1,84 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_308_SC08.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
+
+Detector: shadowing-state
+VaultToken.name (contracts/vulnerable/vuln_308_SC08.sol#344) shadows:
+	- DetailedERC20.name (contracts/vulnerable/vuln_308_SC08.sol#47)
+VaultToken.symbol (contracts/vulnerable/vuln_308_SC08.sol#345) shadows:
+	- DetailedERC20.symbol (contracts/vulnerable/vuln_308_SC08.sol#48)
+VaultToken.decimals (contracts/vulnerable/vuln_308_SC08.sol#346) shadows:
+	- DetailedERC20.decimals (contracts/vulnerable/vuln_308_SC08.sol#49)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variable-shadowing
+
+Detector: function-init-state
+VaultToken.initialSupply (contracts/vulnerable/vuln_308_SC08.sol#347) is set pre-construction with a non-constant function or state variable:
+	- 10000000000 * 10 ** uint256(decimals)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#function-initializing-state
+
+Detector: solc-version
+Version constraint 0.4.24 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ABIEncoderV2PackedStorage_0.4.x
+	- ExpExponentCleanup
+	- EventStructWrongData.
+It is used by:
+	- 0.4.24 (contracts/vulnerable/vuln_308_SC08.sol#1)
+solc-0.4.24 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Parameter SafeMath.mul(uint256,uint256)._a (contracts/vulnerable/vuln_308_SC08.sol#69) is not in mixedCase
+Parameter SafeMath.mul(uint256,uint256)._b (contracts/vulnerable/vuln_308_SC08.sol#69) is not in mixedCase
+Parameter SafeMath.div(uint256,uint256)._a (contracts/vulnerable/vuln_308_SC08.sol#85) is not in mixedCase
+Parameter SafeMath.div(uint256,uint256)._b (contracts/vulnerable/vuln_308_SC08.sol#85) is not in mixedCase
+Parameter SafeMath.sub(uint256,uint256)._a (contracts/vulnerable/vuln_308_SC08.sol#95) is not in mixedCase
+Parameter SafeMath.sub(uint256,uint256)._b (contracts/vulnerable/vuln_308_SC08.sol#95) is not in mixedCase
+Parameter SafeMath.add(uint256,uint256)._a (contracts/vulnerable/vuln_308_SC08.sol#103) is not in mixedCase
+Parameter SafeMath.add(uint256,uint256)._b (contracts/vulnerable/vuln_308_SC08.sol#103) is not in mixedCase
+Parameter BasicToken.transfer(address,uint256)._to (contracts/vulnerable/vuln_308_SC08.sol#135) is not in mixedCase
+Parameter BasicToken.transfer(address,uint256)._value (contracts/vulnerable/vuln_308_SC08.sol#135) is not in mixedCase
+Parameter BasicToken.balanceOf(address)._owner (contracts/vulnerable/vuln_308_SC08.sol#150) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._from (contracts/vulnerable/vuln_308_SC08.sol#177) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._to (contracts/vulnerable/vuln_308_SC08.sol#178) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._value (contracts/vulnerable/vuln_308_SC08.sol#179) is not in mixedCase
+Parameter StandardToken.approve(address,uint256)._spender (contracts/vulnerable/vuln_308_SC08.sol#204) is not in mixedCase
+Parameter StandardToken.approve(address,uint256)._value (contracts/vulnerable/vuln_308_SC08.sol#204) is not in mixedCase
+Parameter StandardToken.allowance(address,address)._owner (contracts/vulnerable/vuln_308_SC08.sol#217) is not in mixedCase
+Parameter StandardToken.allowance(address,address)._spender (contracts/vulnerable/vuln_308_SC08.sol#218) is not in mixedCase
+Parameter StandardToken.increaseApproval(address,uint256)._spender (contracts/vulnerable/vuln_308_SC08.sol#237) is not in mixedCase
+Parameter StandardToken.increaseApproval(address,uint256)._addedValue (contracts/vulnerable/vuln_308_SC08.sol#238) is not in mixedCase
+Parameter StandardToken.decreaseApproval(address,uint256)._spender (contracts/vulnerable/vuln_308_SC08.sol#259) is not in mixedCase
+Parameter StandardToken.decreaseApproval(address,uint256)._subtractedValue (contracts/vulnerable/vuln_308_SC08.sol#260) is not in mixedCase
+Parameter Ownable.transferOwnership(address)._newOwner (contracts/vulnerable/vuln_308_SC08.sol#326) is not in mixedCase
+Parameter VaultToken.transfer(address,uint256)._to (contracts/vulnerable/vuln_308_SC08.sol#358) is not in mixedCase
+Parameter VaultToken.transfer(address,uint256)._value (contracts/vulnerable/vuln_308_SC08.sol#358) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: too-many-digits
+VaultToken.slitherConstructorVariables() (contracts/vulnerable/vuln_308_SC08.sol#343-378) uses literals with too many digits:
+	- initialSupply = 10000000000 * 10 ** uint256(decimals) (contracts/vulnerable/vuln_308_SC08.sol#347)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#too-many-digits
+
+Detector: unindexed-event-address
+Event VaultToken.FrozenFunds(address,bool) (contracts/vulnerable/vuln_308_SC08.sol#350) has address parameters but no indexed parameters
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unindexed-event-address-parameters
+
+Detector: constable-states
+VaultToken.decimals (contracts/vulnerable/vuln_308_SC08.sol#346) should be constant 
+VaultToken.name (contracts/vulnerable/vuln_308_SC08.sol#344) should be constant 
+VaultToken.symbol (contracts/vulnerable/vuln_308_SC08.sol#345) should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_308_SC08.sol analyzed (8 contracts with 101 detectors), 36 result(s) found

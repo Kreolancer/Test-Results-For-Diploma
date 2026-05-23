@@ -1,0 +1,54 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_141_SC09.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
+
+Detector: locked-ether
+Contract locking ether found:
+	Contract Nautcoins (contracts/vulnerable/vuln_141_SC09.sol#112-234) has payable functions:
+	 - Nautcoins.fallback() (contracts/vulnerable/vuln_141_SC09.sol#222-224)
+	But does not have a function to withdraw the ether
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#contracts-that-lock-ether
+
+Detector: missing-zero-check
+Owned.transferOwnership(address)._newOwner (contracts/vulnerable/vuln_141_SC09.sol#96) lacks a zero-check on :
+		- newOwner = _newOwner (contracts/vulnerable/vuln_141_SC09.sol#97)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+
+Detector: solc-version
+Version constraint ^0.4.25 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ABIEncoderV2PackedStorage_0.4.x.
+It is used by:
+	- ^0.4.25 (contracts/vulnerable/vuln_141_SC09.sol#1)
+solc-0.4.25 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Parameter Owned.transferOwnership(address)._newOwner (contracts/vulnerable/vuln_141_SC09.sol#96) is not in mixedCase
+Variable Nautcoins._totalSupply (contracts/vulnerable/vuln_141_SC09.sol#116) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: too-many-digits
+Nautcoins.constructor() (contracts/vulnerable/vuln_141_SC09.sol#125-132) uses literals with too many digits:
+	- _totalSupply = 10000000000000000000000000000 (contracts/vulnerable/vuln_141_SC09.sol#129)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#too-many-digits
+
+Detector: external-function
+receiveApproval(address,uint256,address,bytes) should be declared external:
+	- ApproveAndCallFallBack.receiveApproval(address,uint256,address,bytes) (contracts/vulnerable/vuln_141_SC09.sol#74)
+approveAndCall(address,uint256,bytes) should be declared external:
+	- Nautcoins.approveAndCall(address,uint256,bytes) (contracts/vulnerable/vuln_141_SC09.sol#211-216)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#public-function-that-could-be-declared-external
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_141_SC09.sol analyzed (5 contracts with 101 detectors), 9 result(s) found

@@ -1,0 +1,59 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_030_SC05.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
+
+Detector: arbitrary-send-eth
+EtherLotto.play() (contracts/vulnerable/vuln_030_SC05.sol#33-57) sends eth to arbitrary user
+	Dangerous calls:
+	- bank.transfer(FEE_AMOUNT) (contracts/vulnerable/vuln_030_SC05.sol#49)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#functions-that-send-ether-to-arbitrary-destinations
+
+Detector: weak-prng
+EtherLotto.play() (contracts/vulnerable/vuln_030_SC05.sol#33-57) uses a weak PRNG: "random = uint256(sha3()(block.timestamp)) % 2 (contracts/vulnerable/vuln_030_SC05.sol#43)" 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#weak-PRNG
+
+Detector: incorrect-equality
+EtherLotto.play() (contracts/vulnerable/vuln_030_SC05.sol#33-57) uses a dangerous strict equality:
+	- random == 0 (contracts/vulnerable/vuln_030_SC05.sol#46)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dangerous-strict-equalities
+
+Detector: timestamp
+EtherLotto.play() (contracts/vulnerable/vuln_030_SC05.sol#33-57) uses timestamp for comparisons
+	Dangerous comparisons:
+	- random == 0 (contracts/vulnerable/vuln_030_SC05.sol#46)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+
+Detector: deprecated-standards
+Deprecated standard detected random = uint256(sha3()(block.timestamp)) % 2 (contracts/vulnerable/vuln_030_SC05.sol#43):
+	- Usage of "sha3()" should be replaced with "keccak256()"
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#deprecated-standards
+
+Detector: solc-version
+Version constraint ^0.4.15 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- NestedArrayFunctionCallDecoder
+	- ZeroFunctionSelector.
+It is used by:
+	- ^0.4.15 (contracts/vulnerable/vuln_030_SC05.sol#8)
+solc-0.4.15 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: reentrancy-unlimited-gas
+Reentrancy in EtherLotto.play() (contracts/vulnerable/vuln_030_SC05.sol#33-57):
+	External calls:
+	- bank.transfer(FEE_AMOUNT) (contracts/vulnerable/vuln_030_SC05.sol#49)
+	- msg.sender.transfer(pot - FEE_AMOUNT) (contracts/vulnerable/vuln_030_SC05.sol#52)
+	State variables written after the call(s):
+	- pot = 0 (contracts/vulnerable/vuln_030_SC05.sol#55)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-5
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_030_SC05.sol analyzed (1 contracts with 101 detectors), 8 result(s) found

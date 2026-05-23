@@ -1,0 +1,8 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_251_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+
+Detector: unchecked-transfer
+OpportyPresale.getTokensBack() (contracts/safe/safe_251_SAFE.sol#529-535) ignores return value by token.transfer(msg.sender,balance) (contracts/safe/safe_251_SAFE.sol#534)
+OpportyPresale2.getTokensBack() (contracts/safe/safe_251_SAFE.sol#750-756) ignores return value by token.transfer(msg.sender,balance) (contracts/safe/safe_251_SAFE.sol#755)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unchecked-transfer
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_251_SAFE.sol analyzed (11 contracts with 5 detectors), 2 result(s) found

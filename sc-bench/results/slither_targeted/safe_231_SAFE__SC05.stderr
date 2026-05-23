@@ -1,0 +1,31 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_231_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_231_SAFE.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_231_SAFE.sol:186:35: Warning: This function only accepts a single "bytes" argument. Please use "abi.encodePacked(...)" or a similar function to encode the data.
+            seed = uint(keccak256(keccak256(blockhash(block.number), seed), now));
+                                  ^--------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_231_SAFE.sol:186:25: Warning: This function only accepts a single "bytes" argument. Please use "abi.encodePacked(...)" or a similar function to encode the data.
+            seed = uint(keccak256(keccak256(blockhash(block.number), seed), now));
+                        ^------------------------------------------------------^
+
+
+Detector: timestamp
+BWService.attackTile(address,uint16,uint256,bool,bool) (contracts/safe/safe_231_SAFE.sol#192-259) uses timestamp for comparisons
+	Dangerous comparisons:
+	- attackRoll > totalDefendAmount (contracts/safe/safe_231_SAFE.sol#222)
+BWData.addUser(address) (contracts/safe/safe_231_SAFE.sol#427-431) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(user.creationTime == 0) (contracts/safe/safe_231_SAFE.sol#429)
+BWData.verifyAmount(address,uint256,uint256,bool) (contracts/safe/safe_231_SAFE.sol#511-521) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(user.creationTime != 0) (contracts/safe/safe_231_SAFE.sol#513)
+	- require(bool)(user.battleValue >= _amount) (contracts/safe/safe_231_SAFE.sol#517)
+BWData.censorUser(address,bool) (contracts/safe/safe_231_SAFE.sol#595-599) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(user.creationTime != 0) (contracts/safe/safe_231_SAFE.sol#597)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+
+Detector: weak-prng
+BWService.random(uint256) (contracts/safe/safe_231_SAFE.sol#185-188) uses a weak PRNG: "seed % _upper (contracts/safe/safe_231_SAFE.sol#187)" 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#weak-PRNG
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_231_SAFE.sol analyzed (5 contracts with 2 detectors), 5 result(s) found

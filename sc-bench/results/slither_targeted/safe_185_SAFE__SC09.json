@@ -1,0 +1,196 @@
+{
+  "success": true,
+  "error": null,
+  "results": {
+    "detectors": [
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "safeMul",
+            "source_mapping": {
+              "start": 633,
+              "length": 134,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "SafeMath",
+                "source_mapping": {
+                  "start": 610,
+                  "length": 1102,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "safeMul(uint256,uint256)"
+            }
+          },
+          {
+            "type": "node",
+            "name": "assert(a == 0 || c / a == b)",
+            "source_mapping": {
+              "start": 718,
+              "length": 28,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "safeMul",
+                "source_mapping": {
+                  "start": 633,
+                  "length": 134,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "SafeMath",
+                    "source_mapping": {
+                      "start": 610,
+                      "length": 1102,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "safeMul(uint256,uint256)"
+                }
+              }
+            }
+          }
+        ],
+        "description": "SafeMath.safeMul(uint256,uint256) () uses a dangerous strict equality:\n\t- assert(a == 0 || c / a == b) ()\n",
+        "markdown": "[SafeMath.safeMul(uint256,uint256)]() uses a dangerous strict equality:\n\t- [assert(a == 0 || c / a == b)]()\n",
+        "first_markdown_element": "",
+        "id": "0b52a8826da398318b7fd88ae8136be81c350486c0138d61a1d8a51626b9fe06",
+        "check": "incorrect-equality",
+        "impact": "Medium",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "safeDiv",
+            "source_mapping": {
+              "start": 773,
+              "length": 152,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "SafeMath",
+                "source_mapping": {
+                  "start": 610,
+                  "length": 1102,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "safeDiv(uint256,uint256)"
+            }
+          },
+          {
+            "type": "node",
+            "name": "assert(a == b * c + a % b)",
+            "source_mapping": {
+              "start": 878,
+              "length": 26,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "safeDiv",
+                "source_mapping": {
+                  "start": 773,
+                  "length": 152,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "SafeMath",
+                    "source_mapping": {
+                      "start": 610,
+                      "length": 1102,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "safeDiv(uint256,uint256)"
+                }
+              }
+            }
+          }
+        ],
+        "description": "SafeMath.safeDiv(uint256,uint256) () uses a dangerous strict equality:\n\t- assert(a == b * c + a % b) ()\n",
+        "markdown": "[SafeMath.safeDiv(uint256,uint256)]() uses a dangerous strict equality:\n\t- [assert(a == b * c + a % b)]()\n",
+        "first_markdown_element": "",
+        "id": "6d7c82fa127c7b2e61e2645a3612e4ff57ca00d9431da461609311d4520fb827",
+        "check": "incorrect-equality",
+        "impact": "Medium",
+        "confidence": "High"
+      }
+    ]
+  }
+}

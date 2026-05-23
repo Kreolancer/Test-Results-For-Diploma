@@ -1,0 +1,10 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_165_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+
+Detector: timestamp
+CouponToken.isTransferAllowed(address) (contracts/safe/safe_165_SAFE.sol#470-485) uses timestamp for comparisons
+	Dangerous comparisons:
+	- endSaleTime == 0 || (now < (endSaleTime + 63072000)) (contracts/safe/safe_165_SAFE.sol#475-476)
+	- startTimeOfSaleLot4 == 0 || (now < (startTimeOfSaleLot4 + 7776000)) (contracts/safe/safe_165_SAFE.sol#480-481)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_165_SAFE.sol analyzed (8 contracts with 2 detectors), 1 result(s) found

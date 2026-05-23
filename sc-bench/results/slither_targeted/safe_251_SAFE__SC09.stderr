@@ -1,0 +1,18 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_251_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+
+Detector: divide-before-multiply
+OpportyPresale.fallback() (contracts/safe/safe_251_SAFE.sol#483-512) performs a multiplication on the result of a division:
+	- tokenAmount = msg.value.div(price) (contracts/safe/safe_251_SAFE.sol#503)
+	- tokenAmount += tokenAmount.mul(contrib.bonus).div(100) (contracts/safe/safe_251_SAFE.sol#504)
+OpportyPresale.fallback() (contracts/safe/safe_251_SAFE.sol#483-512) performs a multiplication on the result of a division:
+	- tokenAmount = msg.value.div(price) (contracts/safe/safe_251_SAFE.sol#503)
+	- tokenAmount *= 10 ** 18 (contracts/safe/safe_251_SAFE.sol#505)
+OpportyPresale2.fallback() (contracts/safe/safe_251_SAFE.sol#692-724) performs a multiplication on the result of a division:
+	- tokenAmount = msg.value.div(price) (contracts/safe/safe_251_SAFE.sol#712)
+	- tokenAmount += tokenAmount.mul(contrib.bonus).div(100) (contracts/safe/safe_251_SAFE.sol#713)
+OpportyPresale2.fallback() (contracts/safe/safe_251_SAFE.sol#692-724) performs a multiplication on the result of a division:
+	- tokenAmount = msg.value.div(price) (contracts/safe/safe_251_SAFE.sol#712)
+	- tokenAmount *= 10 ** 18 (contracts/safe/safe_251_SAFE.sol#714)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#divide-before-multiply
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_251_SAFE.sol analyzed (11 contracts with 2 detectors), 4 result(s) found

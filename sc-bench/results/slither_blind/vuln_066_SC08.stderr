@@ -1,0 +1,51 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_066_SC08.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_066_SC08.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_066_SC08.sol:25:14: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+             throw;
+             ^---^
+
+
+Detector: reentrancy-eth
+Reentrancy in Reentrance.withdrawBalance() (contracts/vulnerable/vuln_066_SC08.sol#20-28):
+	External calls:
+	- ! (msg.sender.call.value(userBalance[msg.sender])()) (contracts/vulnerable/vuln_066_SC08.sol#24)
+	State variables written after the call(s):
+	- userBalance[msg.sender] = 0 (contracts/vulnerable/vuln_066_SC08.sol#27)
+	Reentrance.userBalance (contracts/vulnerable/vuln_066_SC08.sol#10) can be used in cross function reentrancies:
+	- Reentrance.addToBalance() (contracts/vulnerable/vuln_066_SC08.sol#16-18)
+	- Reentrance.getBalance(address) (contracts/vulnerable/vuln_066_SC08.sol#12-14)
+	- Reentrance.withdrawBalance() (contracts/vulnerable/vuln_066_SC08.sol#20-28)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-1
+
+Detector: deprecated-standards
+Deprecated standard detected THROW (contracts/vulnerable/vuln_066_SC08.sol#25):
+	- Usage of "throw" should be replaced with "revert()"
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#deprecated-standards
+
+Detector: solc-version
+Version constraint ^0.4.15 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- NestedArrayFunctionCallDecoder
+	- ZeroFunctionSelector.
+It is used by:
+	- ^0.4.15 (contracts/vulnerable/vuln_066_SC08.sol#7)
+solc-0.4.15 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: low-level-calls
+Low level call in Reentrance.withdrawBalance() (contracts/vulnerable/vuln_066_SC08.sol#20-28):
+	- ! (msg.sender.call.value(userBalance[msg.sender])()) (contracts/vulnerable/vuln_066_SC08.sol#24)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_066_SC08.sol analyzed (1 contracts with 101 detectors), 5 result(s) found

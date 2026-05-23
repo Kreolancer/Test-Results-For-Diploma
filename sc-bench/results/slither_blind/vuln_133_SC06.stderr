@@ -1,0 +1,52 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_133_SC06.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
+
+Detector: shadowing-local
+XBYR.transferFrom(address,address,uint256).allowance (contracts/vulnerable/vuln_133_SC06.sol#77) shadows:
+	- XBYR.allowance(address,address) (contracts/vulnerable/vuln_133_SC06.sol#119-123) (function)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#local-variable-shadowing
+
+Detector: solc-version
+Version constraint ^0.4.16 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- NestedArrayFunctionCallDecoder
+	- ZeroFunctionSelector.
+It is used by:
+	- ^0.4.16 (contracts/vulnerable/vuln_133_SC06.sol#1)
+solc-0.4.16 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Parameter XBYR.transfer(address,uint256)._to (contracts/vulnerable/vuln_133_SC06.sol#59) is not in mixedCase
+Parameter XBYR.transfer(address,uint256)._value (contracts/vulnerable/vuln_133_SC06.sol#59) is not in mixedCase
+Parameter XBYR.transferFrom(address,address,uint256)._from (contracts/vulnerable/vuln_133_SC06.sol#75) is not in mixedCase
+Parameter XBYR.transferFrom(address,address,uint256)._to (contracts/vulnerable/vuln_133_SC06.sol#75) is not in mixedCase
+Parameter XBYR.transferFrom(address,address,uint256)._value (contracts/vulnerable/vuln_133_SC06.sol#75) is not in mixedCase
+Parameter XBYR.balanceOf(address)._owner (contracts/vulnerable/vuln_133_SC06.sol#99) is not in mixedCase
+Parameter XBYR.approve(address,uint256)._spender (contracts/vulnerable/vuln_133_SC06.sol#107) is not in mixedCase
+Parameter XBYR.approve(address,uint256)._value (contracts/vulnerable/vuln_133_SC06.sol#107) is not in mixedCase
+Parameter XBYR.allowance(address,address)._owner (contracts/vulnerable/vuln_133_SC06.sol#119) is not in mixedCase
+Parameter XBYR.allowance(address,address)._spender (contracts/vulnerable/vuln_133_SC06.sol#119) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: too-many-digits
+XBYR.XBYR() (contracts/vulnerable/vuln_133_SC06.sol#41-53) uses literals with too many digits:
+	- balances[msg.sender] = 1000000000000 (contracts/vulnerable/vuln_133_SC06.sol#43)
+XBYR.XBYR() (contracts/vulnerable/vuln_133_SC06.sol#41-53) uses literals with too many digits:
+	- totalSupply = 1000000000000 (contracts/vulnerable/vuln_133_SC06.sol#45)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#too-many-digits
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_133_SC06.sol analyzed (1 contracts with 101 detectors), 15 result(s) found

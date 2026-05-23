@@ -1,0 +1,58 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_031_SC05.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_031_SC05.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_031_SC05.sol:14:7: Warning: Return value of low-level calls not used.
+      msg.sender.send( msg.value );
+      ^--------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_031_SC05.sol:17:9: Warning: Return value of low-level calls not used.
+        leader.send( this.balance );
+        ^-------------------------^
+
+
+Detector: arbitrary-send-eth
+lottopollo.payOut(uint256) () sends eth to arbitrary user
+	Dangerous calls:
+	- leader.send(this.balance) ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#functions-that-send-ether-to-arbitrary-destinations
+
+Detector: unchecked-send
+lottopollo.payOut(uint256) () ignores return value by msg.sender.send(msg.value) ()
+lottopollo.payOut(uint256) () ignores return value by leader.send(this.balance) ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unchecked-send
+
+Detector: timestamp
+lottopollo.payOut(uint256) () uses timestamp for comparisons
+	Dangerous comparisons:
+	- rand > 0 && now - rand > 86400 ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+
+Detector: solc-version
+Version constraint ^0.4.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- NestedArrayFunctionCallDecoder
+	- ZeroFunctionSelector
+	- DelegateCallReturnValue
+	- ECRecoverMalformedInput
+	- SkipEmptyStringLiteral
+	- ConstantOptimizerSubtraction
+	- IdentityPrecompileReturnIgnored
+	- HighOrderByteCleanStorage
+	- OptimizerStaleKnowledgeAboutSHA3
+	- LibrariesNotCallableFromPayableFunctions.
+It is used by:
+	- ^0.4.0 ()
+solc-0.4.0 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Contract lottopollo () is not in CapWords
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_031_SC05.sol analyzed (1 contracts with 101 detectors), 7 result(s) found

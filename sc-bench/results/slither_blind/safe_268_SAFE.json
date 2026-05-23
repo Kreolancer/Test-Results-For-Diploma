@@ -1,0 +1,234 @@
+{
+  "success": true,
+  "error": null,
+  "results": {
+    "detectors": [
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "onlyOwner",
+            "source_mapping": {
+              "start": 79,
+              "length": 52,
+              "filename_relative": "contracts/safe/safe_268_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_268_SAFE.sol",
+              "filename_short": "contracts/safe/safe_268_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                6
+              ],
+              "starting_column": 5,
+              "ending_column": 57
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "Owned",
+                "source_mapping": {
+                  "start": 28,
+                  "length": 333,
+                  "filename_relative": "contracts/safe/safe_268_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_268_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_268_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15,
+                    16
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 2
+                }
+              },
+              "signature": "onlyOwner()"
+            }
+          }
+        ],
+        "description": "Modifier Owned.onlyOwner() (contracts/safe/safe_268_SAFE.sol#6) does not always execute _; or revert\n",
+        "markdown": "Modifier [Owned.onlyOwner()](contracts/safe/safe_268_SAFE.sol#L6) does not always execute _; or revert\n",
+        "first_markdown_element": "contracts/safe/safe_268_SAFE.sol#L6",
+        "id": "19b79b707cb5f67d7a33e6958092b837f05c49c2979e29b994869c10a2b30d2a",
+        "check": "incorrect-modifier",
+        "impact": "Low",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "ifOwner",
+            "source_mapping": {
+              "start": 137,
+              "length": 60,
+              "filename_relative": "contracts/safe/safe_268_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_268_SAFE.sol",
+              "filename_short": "contracts/safe/safe_268_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                7
+              ],
+              "starting_column": 5,
+              "ending_column": 65
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "Owned",
+                "source_mapping": {
+                  "start": 28,
+                  "length": 333,
+                  "filename_relative": "contracts/safe/safe_268_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_268_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_268_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15,
+                    16
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 2
+                }
+              },
+              "signature": "ifOwner(address)"
+            }
+          }
+        ],
+        "description": "Modifier Owned.ifOwner(address) (contracts/safe/safe_268_SAFE.sol#7) does not always execute _; or revert\n",
+        "markdown": "Modifier [Owned.ifOwner(address)](contracts/safe/safe_268_SAFE.sol#L7) does not always execute _; or revert\n",
+        "first_markdown_element": "contracts/safe/safe_268_SAFE.sol#L7",
+        "id": "e33ac9e3b2c8805ffefaa12e1afb8e5ff9f1ba892e25caada4a3b194eb06d5a2",
+        "check": "incorrect-modifier",
+        "impact": "Low",
+        "confidence": "High"
+      },
+      {
+        "elements": [],
+        "description": "solc-0.4.11 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.\n",
+        "markdown": "solc-0.4.11 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.\n",
+        "first_markdown_element": "",
+        "id": "5d99fc54f41e89042793ebb7ff5ab5238d4e5cc061349a85110615bcf29410b3",
+        "check": "solc-version",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "pragma",
+            "name": "^0.4.11",
+            "source_mapping": {
+              "start": 0,
+              "length": 24,
+              "filename_relative": "contracts/safe/safe_268_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_268_SAFE.sol",
+              "filename_short": "contracts/safe/safe_268_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                1
+              ],
+              "starting_column": 1,
+              "ending_column": 25
+            },
+            "type_specific_fields": {
+              "directive": [
+                "solidity",
+                "^",
+                "0.4",
+                ".11"
+              ]
+            }
+          }
+        ],
+        "description": "Version constraint ^0.4.11 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- DirtyBytesArrayToStorage\n\t- KeccakCaching\n\t- EmptyByteArrayCopy\n\t- DynamicArrayCleanup\n\t- ImplicitConstructorCallvalueCheck\n\t- TupleAssignmentMultiStackSlotComponents\n\t- MemoryArrayCreationOverflow\n\t- privateCanBeOverridden\n\t- SignedArrayStorageCopy\n\t- UninitializedFunctionPointerInConstructor_0.4.x\n\t- IncorrectEventSignatureInLibraries_0.4.x\n\t- ExpExponentCleanup\n\t- NestedArrayFunctionCallDecoder\n\t- ZeroFunctionSelector\n\t- DelegateCallReturnValue\n\t- ECRecoverMalformedInput\n\t- SkipEmptyStringLiteral.\nIt is used by:\n\t- ^0.4.11 (contracts/safe/safe_268_SAFE.sol#1)\n",
+        "markdown": "Version constraint ^0.4.11 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- DirtyBytesArrayToStorage\n\t- KeccakCaching\n\t- EmptyByteArrayCopy\n\t- DynamicArrayCleanup\n\t- ImplicitConstructorCallvalueCheck\n\t- TupleAssignmentMultiStackSlotComponents\n\t- MemoryArrayCreationOverflow\n\t- privateCanBeOverridden\n\t- SignedArrayStorageCopy\n\t- UninitializedFunctionPointerInConstructor_0.4.x\n\t- IncorrectEventSignatureInLibraries_0.4.x\n\t- ExpExponentCleanup\n\t- NestedArrayFunctionCallDecoder\n\t- ZeroFunctionSelector\n\t- DelegateCallReturnValue\n\t- ECRecoverMalformedInput\n\t- SkipEmptyStringLiteral.\nIt is used by:\n\t- [^0.4.11](contracts/safe/safe_268_SAFE.sol#L1)\n",
+        "first_markdown_element": "contracts/safe/safe_268_SAFE.sol#L1",
+        "id": "c2f1e5b426bb7cb905aef1995822f3a42818cbfc3868d64d898e5bb6071d766a",
+        "check": "solc-version",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "postData",
+            "source_mapping": {
+              "start": 513,
+              "length": 121,
+              "filename_relative": "contracts/safe/safe_268_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_268_SAFE.sol",
+              "filename_short": "contracts/safe/safe_268_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                22,
+                23,
+                24
+              ],
+              "starting_column": 2,
+              "ending_column": 3
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "DataDump",
+                "source_mapping": {
+                  "start": 365,
+                  "length": 272,
+                  "filename_relative": "contracts/safe/safe_268_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_268_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_268_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    18,
+                    19,
+                    20,
+                    21,
+                    22,
+                    23,
+                    24,
+                    25,
+                    26
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              },
+              "signature": "postData(address,string,bytes32)"
+            }
+          }
+        ],
+        "description": "postData(address,string,bytes32) should be declared external:\n\t- DataDump.postData(address,string,bytes32) (contracts/safe/safe_268_SAFE.sol#22-24)\n",
+        "markdown": "postData(address,string,bytes32) should be declared external:\n\t- [DataDump.postData(address,string,bytes32)](contracts/safe/safe_268_SAFE.sol#L22-L24)\n",
+        "first_markdown_element": "contracts/safe/safe_268_SAFE.sol#L22-L24",
+        "id": "d08400d1f0fd54f14c0018e748d68339b2a4d3a3f7ad048200747f6e67bc0172",
+        "check": "external-function",
+        "impact": "Optimization",
+        "confidence": "High"
+      }
+    ]
+  }
+}

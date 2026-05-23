@@ -1,0 +1,1 @@
+{"success": false, "error": "Solc experienced a fatal error.\n\n/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_094_SC01.sol:1:1: ParserError: Expected pragma, import directive or contract/interface/library definition.\n159\n^-^\n", "issues": []}

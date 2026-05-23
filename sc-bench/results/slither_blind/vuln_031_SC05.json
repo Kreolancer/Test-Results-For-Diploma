@@ -1,0 +1,458 @@
+{
+  "success": true,
+  "error": null,
+  "results": {
+    "detectors": [
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "payOut",
+            "source_mapping": {
+              "start": 250,
+              "length": 343,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "lottopollo",
+                "source_mapping": {
+                  "start": 187,
+                  "length": 645,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "payOut(uint256)"
+            }
+          },
+          {
+            "type": "node",
+            "name": "leader.send(this.balance)",
+            "source_mapping": {
+              "start": 451,
+              "length": 27,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "payOut",
+                "source_mapping": {
+                  "start": 250,
+                  "length": 343,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "lottopollo",
+                    "source_mapping": {
+                      "start": 187,
+                      "length": 645,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "payOut(uint256)"
+                }
+              }
+            }
+          }
+        ],
+        "description": "lottopollo.payOut(uint256) () sends eth to arbitrary user\n\tDangerous calls:\n\t- leader.send(this.balance) ()\n",
+        "markdown": "[lottopollo.payOut(uint256)]() sends eth to arbitrary user\n\tDangerous calls:\n\t- [leader.send(this.balance)]()\n",
+        "first_markdown_element": "",
+        "id": "4bc92ceed5ec83e03d721399781c6255a28b4da5e0fa0e8e313f78bb994216d0",
+        "check": "arbitrary-send-eth",
+        "impact": "High",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "payOut",
+            "source_mapping": {
+              "start": 250,
+              "length": 343,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "lottopollo",
+                "source_mapping": {
+                  "start": 187,
+                  "length": 645,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "payOut(uint256)"
+            }
+          },
+          {
+            "type": "node",
+            "name": "leader.send(this.balance)",
+            "source_mapping": {
+              "start": 451,
+              "length": 27,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "payOut",
+                "source_mapping": {
+                  "start": 250,
+                  "length": 343,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "lottopollo",
+                    "source_mapping": {
+                      "start": 187,
+                      "length": 645,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "payOut(uint256)"
+                }
+              }
+            }
+          }
+        ],
+        "description": "lottopollo.payOut(uint256) () ignores return value by leader.send(this.balance) ()\n",
+        "markdown": "[lottopollo.payOut(uint256)]() ignores return value by [leader.send(this.balance)]()\n",
+        "first_markdown_element": "",
+        "id": "5a6b2dde2f45453000ba8be36aaf7d64a8876a13d2783d4cdd30f5e51dabc647",
+        "check": "unchecked-send",
+        "impact": "Medium",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "payOut",
+            "source_mapping": {
+              "start": 250,
+              "length": 343,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "lottopollo",
+                "source_mapping": {
+                  "start": 187,
+                  "length": 645,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "payOut(uint256)"
+            }
+          },
+          {
+            "type": "node",
+            "name": "msg.sender.send(msg.value)",
+            "source_mapping": {
+              "start": 380,
+              "length": 28,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "payOut",
+                "source_mapping": {
+                  "start": 250,
+                  "length": 343,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "lottopollo",
+                    "source_mapping": {
+                      "start": 187,
+                      "length": 645,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "payOut(uint256)"
+                }
+              }
+            }
+          }
+        ],
+        "description": "lottopollo.payOut(uint256) () ignores return value by msg.sender.send(msg.value) ()\n",
+        "markdown": "[lottopollo.payOut(uint256)]() ignores return value by [msg.sender.send(msg.value)]()\n",
+        "first_markdown_element": "",
+        "id": "96bbfad84b8483a317c950a06777627ab9e6fc4e198065240b328bad84b7f3df",
+        "check": "unchecked-send",
+        "impact": "Medium",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "payOut",
+            "source_mapping": {
+              "start": 250,
+              "length": 343,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "lottopollo",
+                "source_mapping": {
+                  "start": 187,
+                  "length": 645,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                }
+              },
+              "signature": "payOut(uint256)"
+            }
+          },
+          {
+            "type": "node",
+            "name": "rand > 0 && now - rand > 86400",
+            "source_mapping": {
+              "start": 337,
+              "length": 32,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "payOut",
+                "source_mapping": {
+                  "start": 250,
+                  "length": 343,
+                  "filename_relative": "",
+                  "filename_absolute": "",
+                  "filename_short": "",
+                  "is_dependency": false,
+                  "lines": [],
+                  "starting_column": 0,
+                  "ending_column": 0
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "lottopollo",
+                    "source_mapping": {
+                      "start": 187,
+                      "length": 645,
+                      "filename_relative": "",
+                      "filename_absolute": "",
+                      "filename_short": "",
+                      "is_dependency": false,
+                      "lines": [],
+                      "starting_column": 0,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "payOut(uint256)"
+                }
+              }
+            }
+          }
+        ],
+        "description": "lottopollo.payOut(uint256) () uses timestamp for comparisons\n\tDangerous comparisons:\n\t- rand > 0 && now - rand > 86400 ()\n",
+        "markdown": "[lottopollo.payOut(uint256)]() uses timestamp for comparisons\n\tDangerous comparisons:\n\t- [rand > 0 && now - rand > 86400]()\n",
+        "first_markdown_element": "",
+        "id": "3b8fc79f2fcd1fbef4129ac778bf7d954aa7416229ed4c635fafe2ccf5c0d857",
+        "check": "timestamp",
+        "impact": "Low",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [
+          {
+            "type": "pragma",
+            "name": "^0.4.0",
+            "source_mapping": {
+              "start": 163,
+              "length": 23,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "type_specific_fields": {
+              "directive": [
+                "solidity",
+                "^",
+                "0.4",
+                ".0"
+              ]
+            }
+          }
+        ],
+        "description": "Version constraint ^0.4.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- DirtyBytesArrayToStorage\n\t- KeccakCaching\n\t- EmptyByteArrayCopy\n\t- DynamicArrayCleanup\n\t- TupleAssignmentMultiStackSlotComponents\n\t- MemoryArrayCreationOverflow\n\t- privateCanBeOverridden\n\t- IncorrectEventSignatureInLibraries_0.4.x\n\t- ExpExponentCleanup\n\t- NestedArrayFunctionCallDecoder\n\t- ZeroFunctionSelector\n\t- DelegateCallReturnValue\n\t- ECRecoverMalformedInput\n\t- SkipEmptyStringLiteral\n\t- ConstantOptimizerSubtraction\n\t- IdentityPrecompileReturnIgnored\n\t- HighOrderByteCleanStorage\n\t- OptimizerStaleKnowledgeAboutSHA3\n\t- LibrariesNotCallableFromPayableFunctions.\nIt is used by:\n\t- ^0.4.0 ()\n",
+        "markdown": "Version constraint ^0.4.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- DirtyBytesArrayToStorage\n\t- KeccakCaching\n\t- EmptyByteArrayCopy\n\t- DynamicArrayCleanup\n\t- TupleAssignmentMultiStackSlotComponents\n\t- MemoryArrayCreationOverflow\n\t- privateCanBeOverridden\n\t- IncorrectEventSignatureInLibraries_0.4.x\n\t- ExpExponentCleanup\n\t- NestedArrayFunctionCallDecoder\n\t- ZeroFunctionSelector\n\t- DelegateCallReturnValue\n\t- ECRecoverMalformedInput\n\t- SkipEmptyStringLiteral\n\t- ConstantOptimizerSubtraction\n\t- IdentityPrecompileReturnIgnored\n\t- HighOrderByteCleanStorage\n\t- OptimizerStaleKnowledgeAboutSHA3\n\t- LibrariesNotCallableFromPayableFunctions.\nIt is used by:\n\t- [^0.4.0]()\n",
+        "first_markdown_element": "",
+        "id": "0ac2786c9c7120d39f097c2127bc5eacbc117e78b6989464e7d649f967698498",
+        "check": "solc-version",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [],
+        "description": "solc-0.4.0 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.\n",
+        "markdown": "solc-0.4.0 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.\n",
+        "first_markdown_element": "",
+        "id": "f08241739f2fffeca3419784d6e3cb73331167fd0dfa903e5ba3f841f933f90f",
+        "check": "solc-version",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "contract",
+            "name": "lottopollo",
+            "source_mapping": {
+              "start": 187,
+              "length": 645,
+              "filename_relative": "",
+              "filename_absolute": "",
+              "filename_short": "",
+              "is_dependency": false,
+              "lines": [],
+              "starting_column": 0,
+              "ending_column": 0
+            },
+            "additional_fields": {
+              "target": "contract",
+              "convention": "CapWords"
+            }
+          }
+        ],
+        "description": "Contract lottopollo () is not in CapWords\n",
+        "markdown": "Contract [lottopollo]() is not in CapWords\n",
+        "first_markdown_element": "",
+        "id": "79234efe0af9f4ec5b7b011cc876aaa0e3160ca0bce275d97c893ec7536731c8",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      }
+    ]
+  }
+}

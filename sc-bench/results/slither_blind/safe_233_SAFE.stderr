@@ -1,0 +1,129 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_233_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+
+Detector: arbitrary-send-eth
+CryptoBeauty.purchase(uint256,uint256) (contracts/safe/safe_233_SAFE.sol#206-274) sends eth to arbitrary user
+	Dangerous calls:
+	- charity.transfer(donate) (contracts/safe/safe_233_SAFE.sol#249)
+	- oldOwner.transfer(SafeMath.sub(sellingPrice,devCut)) (contracts/safe/safe_233_SAFE.sol#264)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#functions-that-send-ether-to-arbitrary-destinations
+
+Detector: controlled-array-length
+CryptoBeauty (contracts/safe/safe_233_SAFE.sol#57-341) contract sets array length with a user-controlled value:
+	- admins.push(msg.sender) (contracts/safe/safe_233_SAFE.sol#104)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#array-length-assignment
+
+Detector: shadowing-local
+CryptoBeauty.ownerOf(uint256).owner (contracts/safe/safe_233_SAFE.sol#119) shadows:
+	- AccessControl.owner (contracts/safe/safe_233_SAFE.sol#4) (state variable)
+CryptoBeauty.getBeauty(uint256).owner (contracts/safe/safe_233_SAFE.sol#196) shadows:
+	- AccessControl.owner (contracts/safe/safe_233_SAFE.sol#4) (state variable)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#local-variable-shadowing
+
+Detector: events-access
+AccessControl.transferOwnership(address) (contracts/safe/safe_233_SAFE.sol#29-33) should emit an event for: 
+	- owner = newOwner (contracts/safe/safe_233_SAFE.sol#31) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+
+Detector: boolean-equal
+CryptoBeauty.purchase(uint256,uint256) (contracts/safe/safe_233_SAFE.sol#206-274) compares to a boolean constant:
+	-charityEnabled == true (contracts/safe/safe_233_SAFE.sol#237)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#boolean-equality
+
+Detector: solc-version
+Version constraint ^0.4.19 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ABIEncoderV2PackedStorage_0.4.x
+	- ExpExponentCleanup
+	- EventStructWrongData
+	- NestedArrayFunctionCallDecoder.
+It is used by:
+	- ^0.4.19 (contracts/safe/safe_233_SAFE.sol#1)
+solc-0.4.19 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Parameter AccessControl.addAdmin(address)._adminAddress (contracts/safe/safe_233_SAFE.sol#25) is not in mixedCase
+Parameter CryptoBeauty.balanceOf(address)._owner (contracts/safe/safe_233_SAFE.sol#116) is not in mixedCase
+Parameter CryptoBeauty.ownerOf(uint256)._tokenId (contracts/safe/safe_233_SAFE.sol#119) is not in mixedCase
+Parameter CryptoBeauty.transfer(address,uint256)._to (contracts/safe/safe_233_SAFE.sol#124) is not in mixedCase
+Parameter CryptoBeauty.transfer(address,uint256)._tokenId (contracts/safe/safe_233_SAFE.sol#124) is not in mixedCase
+Parameter CryptoBeauty.approve(address,uint256)._to (contracts/safe/safe_233_SAFE.sol#130) is not in mixedCase
+Parameter CryptoBeauty.approve(address,uint256)._tokenId (contracts/safe/safe_233_SAFE.sol#130) is not in mixedCase
+Parameter CryptoBeauty.transferFrom(address,address,uint256)._from (contracts/safe/safe_233_SAFE.sol#135) is not in mixedCase
+Parameter CryptoBeauty.transferFrom(address,address,uint256)._to (contracts/safe/safe_233_SAFE.sol#135) is not in mixedCase
+Parameter CryptoBeauty.transferFrom(address,address,uint256)._tokenId (contracts/safe/safe_233_SAFE.sol#135) is not in mixedCase
+Parameter CryptoBeauty.addCharity(address)._charity (contracts/safe/safe_233_SAFE.sol#149) is not in mixedCase
+Parameter CryptoBeauty.deleteCharity(uint256)._charityId (contracts/safe/safe_233_SAFE.sol#158) is not in mixedCase
+Parameter CryptoBeauty.getCharity(uint256)._charityId (contracts/safe/safe_233_SAFE.sol#165) is not in mixedCase
+Parameter CryptoBeauty.createBeauty(string,address,uint256)._name (contracts/safe/safe_233_SAFE.sol#169) is not in mixedCase
+Parameter CryptoBeauty.createBeauty(string,address,uint256)._owner (contracts/safe/safe_233_SAFE.sol#169) is not in mixedCase
+Parameter CryptoBeauty.createBeauty(string,address,uint256)._price (contracts/safe/safe_233_SAFE.sol#169) is not in mixedCase
+Parameter CryptoBeauty.newBeauty(string,uint256)._name (contracts/safe/safe_233_SAFE.sol#188) is not in mixedCase
+Parameter CryptoBeauty.newBeauty(string,uint256)._price (contracts/safe/safe_233_SAFE.sol#188) is not in mixedCase
+Parameter CryptoBeauty.getBeauty(uint256)._tokenId (contracts/safe/safe_233_SAFE.sol#192) is not in mixedCase
+Parameter CryptoBeauty.purchase(uint256,uint256)._tokenId (contracts/safe/safe_233_SAFE.sol#206) is not in mixedCase
+Parameter CryptoBeauty.purchase(uint256,uint256)._charityId (contracts/safe/safe_233_SAFE.sol#206) is not in mixedCase
+Parameter CryptoBeauty.changePrice(uint256,uint256)._tokenId (contracts/safe/safe_233_SAFE.sol#277) is not in mixedCase
+Parameter CryptoBeauty.changePrice(uint256,uint256)._price (contracts/safe/safe_233_SAFE.sol#277) is not in mixedCase
+Parameter CryptoBeauty.priceOfBeauty(uint256)._tokenId (contracts/safe/safe_233_SAFE.sol#291) is not in mixedCase
+Parameter CryptoBeauty.tokensOfOwner(address)._owner (contracts/safe/safe_233_SAFE.sol#295) is not in mixedCase
+Parameter CryptoBeauty.withdrawAmount(uint256)._amount (contracts/safe/safe_233_SAFE.sol#337) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: reentrancy-unlimited-gas
+Reentrancy in CryptoBeauty.purchase(uint256,uint256) (contracts/safe/safe_233_SAFE.sol#206-274):
+	External calls:
+	- charity.transfer(donate) (contracts/safe/safe_233_SAFE.sol#249)
+	State variables written after the call(s):
+	- beauties[_tokenId].price = nextPrice (contracts/safe/safe_233_SAFE.sol#254)
+	- beauties[_tokenId].maxPrice = nextPrice (contracts/safe/safe_233_SAFE.sol#257)
+	- _transfer(oldOwner,newOwner,_tokenId) (contracts/safe/safe_233_SAFE.sol#260)
+		- beautyOwnershipCount[_to] ++ (contracts/safe/safe_233_SAFE.sol#313)
+		- beautyOwnershipCount[_from] -- (contracts/safe/safe_233_SAFE.sol#317)
+	- _transfer(oldOwner,newOwner,_tokenId) (contracts/safe/safe_233_SAFE.sol#260)
+		- delete beautyToApproved[_tokenId] (contracts/safe/safe_233_SAFE.sol#318)
+	- _transfer(oldOwner,newOwner,_tokenId) (contracts/safe/safe_233_SAFE.sol#260)
+		- beautyToOwner[_tokenId] = _to (contracts/safe/safe_233_SAFE.sol#314)
+	Event emitted after the call(s):
+	- Transfer(_from,_to,_tokenId) (contracts/safe/safe_233_SAFE.sol#320)
+		- _transfer(oldOwner,newOwner,_tokenId) (contracts/safe/safe_233_SAFE.sol#260)
+Reentrancy in CryptoBeauty.purchase(uint256,uint256) (contracts/safe/safe_233_SAFE.sol#206-274):
+	External calls:
+	- charity.transfer(donate) (contracts/safe/safe_233_SAFE.sol#249)
+	- oldOwner.transfer(SafeMath.sub(sellingPrice,devCut)) (contracts/safe/safe_233_SAFE.sol#264)
+	Event emitted after the call(s):
+	- Purchase(_tokenId,sellingPrice,beauties[_tokenId].price,oldOwner,newOwner,_charityId) (contracts/safe/safe_233_SAFE.sol#268)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-5
+
+Detector: unindexed-event-address
+Event CryptoBeauty.Creation(uint256,string,address) (contracts/safe/safe_233_SAFE.sol#59) has address parameters but no indexed parameters
+Event CryptoBeauty.Purchase(uint256,uint256,uint256,address,address,uint256) (contracts/safe/safe_233_SAFE.sol#62) has address parameters but no indexed parameters
+Event CryptoBeauty.Charity(uint256,address) (contracts/safe/safe_233_SAFE.sol#68) has address parameters but no indexed parameters
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unindexed-event-address-parameters
+
+Detector: constable-states
+CryptoBeauty.increaseLimit1 (contracts/safe/safe_233_SAFE.sol#75) should be constant 
+CryptoBeauty.increaseLimit2 (contracts/safe/safe_233_SAFE.sol#76) should be constant 
+CryptoBeauty.increaseLimit3 (contracts/safe/safe_233_SAFE.sol#77) should be constant 
+CryptoBeauty.startingPrice (contracts/safe/safe_233_SAFE.sol#74) should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+
+Detector: external-function
+newBeauty(string,uint256) should be declared external:
+	- CryptoBeauty.newBeauty(string,uint256) (contracts/safe/safe_233_SAFE.sol#188-190)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#public-function-that-could-be-declared-external
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_233_SAFE.sol analyzed (4 contracts with 101 detectors), 44 result(s) found

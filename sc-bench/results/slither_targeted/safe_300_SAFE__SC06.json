@@ -1,0 +1,196 @@
+{
+  "success": true,
+  "error": null,
+  "results": {
+    "detectors": [
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "destroy",
+            "source_mapping": {
+              "start": 959,
+              "length": 134,
+              "filename_relative": "contracts/safe/safe_300_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_300_SAFE.sol",
+              "filename_short": "contracts/safe/safe_300_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                24,
+                25,
+                26,
+                27
+              ],
+              "starting_column": 5,
+              "ending_column": 6
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "MacroDestructionContract",
+                "source_mapping": {
+                  "start": 750,
+                  "length": 912,
+                  "filename_relative": "contracts/safe/safe_300_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_300_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_300_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    13,
+                    14,
+                    15,
+                    16,
+                    17,
+                    18,
+                    19,
+                    20,
+                    21,
+                    22,
+                    23,
+                    24,
+                    25,
+                    26,
+                    27,
+                    28,
+                    29,
+                    30,
+                    31,
+                    32,
+                    33,
+                    34,
+                    35,
+                    36,
+                    37,
+                    38,
+                    39,
+                    40,
+                    41,
+                    42,
+                    43,
+                    44,
+                    45,
+                    46,
+                    47,
+                    48,
+                    49,
+                    50,
+                    51,
+                    52
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              },
+              "signature": "destroy(uint256)"
+            }
+          },
+          {
+            "type": "node",
+            "name": "tokenContract.destroy(msg.sender,_amount)",
+            "source_mapping": {
+              "start": 1043,
+              "length": 42,
+              "filename_relative": "contracts/safe/safe_300_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_300_SAFE.sol",
+              "filename_short": "contracts/safe/safe_300_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                26
+              ],
+              "starting_column": 9,
+              "ending_column": 51
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "destroy",
+                "source_mapping": {
+                  "start": 959,
+                  "length": 134,
+                  "filename_relative": "contracts/safe/safe_300_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_300_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_300_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    24,
+                    25,
+                    26,
+                    27
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "MacroDestructionContract",
+                    "source_mapping": {
+                      "start": 750,
+                      "length": 912,
+                      "filename_relative": "contracts/safe/safe_300_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_300_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_300_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        13,
+                        14,
+                        15,
+                        16,
+                        17,
+                        18,
+                        19,
+                        20,
+                        21,
+                        22,
+                        23,
+                        24,
+                        25,
+                        26,
+                        27,
+                        28,
+                        29,
+                        30,
+                        31,
+                        32,
+                        33,
+                        34,
+                        35,
+                        36,
+                        37,
+                        38,
+                        39,
+                        40,
+                        41,
+                        42,
+                        43,
+                        44,
+                        45,
+                        46,
+                        47,
+                        48,
+                        49,
+                        50,
+                        51,
+                        52
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "destroy(uint256)"
+                }
+              }
+            }
+          }
+        ],
+        "description": "MacroDestructionContract.destroy(uint256) (contracts/safe/safe_300_SAFE.sol#24-27) ignores return value by tokenContract.destroy(msg.sender,_amount) (contracts/safe/safe_300_SAFE.sol#26)\n",
+        "markdown": "[MacroDestructionContract.destroy(uint256)](contracts/safe/safe_300_SAFE.sol#L24-L27) ignores return value by [tokenContract.destroy(msg.sender,_amount)](contracts/safe/safe_300_SAFE.sol#L26)\n",
+        "first_markdown_element": "contracts/safe/safe_300_SAFE.sol#L24-L27",
+        "id": "0c82a4c382647e58348e30d12a999944b87bd4e86c72737a1766c6a41a0dc634",
+        "check": "unused-return",
+        "impact": "Medium",
+        "confidence": "Medium"
+      }
+    ]
+  }
+}

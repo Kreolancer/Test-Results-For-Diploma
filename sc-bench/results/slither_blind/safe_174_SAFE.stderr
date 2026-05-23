@@ -1,0 +1,69 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_174_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+
+Detector: arbitrary-send-eth
+Snake.buy(uint256) (contracts/safe/safe_174_SAFE.sol#20-38) sends eth to arbitrary user
+	Dangerous calls:
+	- owner.transfer(amount / 100 * 125) (contracts/safe/safe_174_SAFE.sol#30)
+	- ownerAddress.transfer(this.balance) (contracts/safe/safe_174_SAFE.sol#37)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#functions-that-send-ether-to-arbitrary-destinations
+
+Detector: divide-before-multiply
+Snake.buy(uint256) (contracts/safe/safe_174_SAFE.sol#20-38) performs a multiplication on the result of a division:
+	- require(bool)(msg.value >= snake[id] / 100 * 150) (contracts/safe/safe_174_SAFE.sol#22)
+Snake.buy(uint256) (contracts/safe/safe_174_SAFE.sol#20-38) performs a multiplication on the result of a division:
+	- snake[id] = amount / 100 * 150 (contracts/safe/safe_174_SAFE.sol#26)
+Snake.buy(uint256) (contracts/safe/safe_174_SAFE.sol#20-38) performs a multiplication on the result of a division:
+	- owner.transfer(amount / 100 * 125) (contracts/safe/safe_174_SAFE.sol#30)
+Snake.getToken(uint256) (contracts/safe/safe_174_SAFE.sol#40-42) performs a multiplication on the result of a division:
+	- (snake[id] / 100 * 150,stamps[id],owners[id]) (contracts/safe/safe_174_SAFE.sol#41)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#divide-before-multiply
+
+Detector: missing-zero-check
+Snake.buy(uint256).owner (contracts/safe/safe_174_SAFE.sol#23) lacks a zero-check on :
+		- owner.transfer(amount / 100 * 125) (contracts/safe/safe_174_SAFE.sol#30)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+
+Detector: solc-version
+Version constraint ^0.4.19 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ABIEncoderV2PackedStorage_0.4.x
+	- ExpExponentCleanup
+	- EventStructWrongData
+	- NestedArrayFunctionCallDecoder.
+It is used by:
+	- ^0.4.19 (contracts/safe/safe_174_SAFE.sol#1)
+solc-0.4.19 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: reentrancy-unlimited-gas
+Reentrancy in Snake.buy(uint256) (contracts/safe/safe_174_SAFE.sol#20-38):
+	External calls:
+	- owner.transfer(amount / 100 * 125) (contracts/safe/safe_174_SAFE.sol#30)
+	State variables written after the call(s):
+	- length ++ (contracts/safe/safe_174_SAFE.sol#34)
+	- _extend(length) (contracts/safe/safe_174_SAFE.sol#35)
+		- owners[id] = msg.sender (contracts/safe/safe_174_SAFE.sol#46)
+	- _extend(length) (contracts/safe/safe_174_SAFE.sol#35)
+		- snake[id] = 1 * 10 ** 16 (contracts/safe/safe_174_SAFE.sol#45)
+	Event emitted after the call(s):
+	- Sale(owner,amount,uint256(now)) (contracts/safe/safe_174_SAFE.sol#31)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-5
+
+Detector: unindexed-event-address
+Event Snake.Sale(address,uint256,uint256) (contracts/safe/safe_174_SAFE.sol#11) has address parameters but no indexed parameters
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unindexed-event-address-parameters
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_174_SAFE.sol analyzed (1 contracts with 101 detectors), 10 result(s) found

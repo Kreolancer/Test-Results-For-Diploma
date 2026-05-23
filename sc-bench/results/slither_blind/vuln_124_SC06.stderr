@@ -1,0 +1,99 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_124_SC06.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
+
+Detector: divide-before-multiply
+CryptoLike.sell(uint256) (contracts/vulnerable/vuln_124_SC06.sol#101-119) performs a multiplication on the result of a division:
+	- _dividends = SafeMath.div(SafeMath.mul(_ethereum,exitFee_),100) (contracts/vulnerable/vuln_124_SC06.sol#106)
+	- profitPerShare_ = SafeMath.add(profitPerShare_,(_dividends * magnitude) / tokenSupply_) (contracts/vulnerable/vuln_124_SC06.sol#116)
+CryptoLike.purchaseTokens(uint256,address) (contracts/vulnerable/vuln_124_SC06.sol#212-248) performs a multiplication on the result of a division:
+	- _undividedDividends = SafeMath.div(SafeMath.mul(_incomingEthereum,entryFee_),100) (contracts/vulnerable/vuln_124_SC06.sol#214)
+	- _referralBonus = SafeMath.div(SafeMath.mul(_undividedDividends,refferalFee_),100) (contracts/vulnerable/vuln_124_SC06.sol#215)
+CryptoLike.purchaseTokens(uint256,address) (contracts/vulnerable/vuln_124_SC06.sol#212-248) performs a multiplication on the result of a division:
+	- _fee = _fee - (_fee - (_amountOfTokens * (_dividends * magnitude / tokenSupply_))) (contracts/vulnerable/vuln_124_SC06.sol#237)
+CryptoLike.tokensToEthereum_(uint256) (contracts/vulnerable/vuln_124_SC06.sol#274-291) performs a multiplication on the result of a division:
+	- _etherReceived = (SafeMath.sub((((tokenPriceInitial_ + (tokenPriceIncremental_ * (_tokenSupply / 1e18))) - tokenPriceIncremental_) * (tokens_ - 1e18)),(tokenPriceIncremental_ * ((tokens_ ** 2 - tokens_) / 1e18)) / 2) / 1e18) (contracts/vulnerable/vuln_124_SC06.sol#277-288)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#divide-before-multiply
+
+Detector: solc-version
+Version constraint ^0.4.25 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ABIEncoderV2PackedStorage_0.4.x.
+It is used by:
+	- ^0.4.25 (contracts/vulnerable/vuln_124_SC06.sol#1)
+solc-0.4.25 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Event CryptoLike.onTokenPurchase(address,uint256,uint256,address,uint256,uint256) (contracts/vulnerable/vuln_124_SC06.sol#15-22) is not in CapWords
+Event CryptoLike.onTokenSell(address,uint256,uint256,uint256,uint256) (contracts/vulnerable/vuln_124_SC06.sol#24-30) is not in CapWords
+Event CryptoLike.onReinvestment(address,uint256,uint256) (contracts/vulnerable/vuln_124_SC06.sol#32-36) is not in CapWords
+Event CryptoLike.onWithdraw(address,uint256) (contracts/vulnerable/vuln_124_SC06.sol#38-41) is not in CapWords
+Parameter CryptoLike.buy(address)._referredBy (contracts/vulnerable/vuln_124_SC06.sol#66) is not in mixedCase
+Parameter CryptoLike.sell(uint256)._amountOfTokens (contracts/vulnerable/vuln_124_SC06.sol#101) is not in mixedCase
+Parameter CryptoLike.transfer(address,uint256)._toAddress (contracts/vulnerable/vuln_124_SC06.sol#121) is not in mixedCase
+Parameter CryptoLike.transfer(address,uint256)._amountOfTokens (contracts/vulnerable/vuln_124_SC06.sol#121) is not in mixedCase
+Parameter CryptoLike.myDividends(bool)._includeReferralBonus (contracts/vulnerable/vuln_124_SC06.sol#157) is not in mixedCase
+Parameter CryptoLike.balanceOf(address)._customerAddress (contracts/vulnerable/vuln_124_SC06.sol#162) is not in mixedCase
+Parameter CryptoLike.dividendsOf(address)._customerAddress (contracts/vulnerable/vuln_124_SC06.sol#166) is not in mixedCase
+Parameter CryptoLike.calculateTokensReceived(uint256)._ethereumToSpend (contracts/vulnerable/vuln_124_SC06.sol#195) is not in mixedCase
+Parameter CryptoLike.calculateEthereumReceived(uint256)._tokensToSell (contracts/vulnerable/vuln_124_SC06.sol#203) is not in mixedCase
+Parameter CryptoLike.purchaseTokens(uint256,address)._incomingEthereum (contracts/vulnerable/vuln_124_SC06.sol#212) is not in mixedCase
+Parameter CryptoLike.purchaseTokens(uint256,address)._referredBy (contracts/vulnerable/vuln_124_SC06.sol#212) is not in mixedCase
+Parameter CryptoLike.ethereumToTokens_(uint256)._ethereum (contracts/vulnerable/vuln_124_SC06.sol#250) is not in mixedCase
+Parameter CryptoLike.tokensToEthereum_(uint256)._tokens (contracts/vulnerable/vuln_124_SC06.sol#274) is not in mixedCase
+Constant CryptoLike.entryFee_ (contracts/vulnerable/vuln_124_SC06.sol#52) is not in UPPER_CASE_WITH_UNDERSCORES
+Constant CryptoLike.transferFee_ (contracts/vulnerable/vuln_124_SC06.sol#53) is not in UPPER_CASE_WITH_UNDERSCORES
+Constant CryptoLike.exitFee_ (contracts/vulnerable/vuln_124_SC06.sol#54) is not in UPPER_CASE_WITH_UNDERSCORES
+Constant CryptoLike.refferalFee_ (contracts/vulnerable/vuln_124_SC06.sol#55) is not in UPPER_CASE_WITH_UNDERSCORES
+Constant CryptoLike.tokenPriceInitial_ (contracts/vulnerable/vuln_124_SC06.sol#56) is not in UPPER_CASE_WITH_UNDERSCORES
+Constant CryptoLike.tokenPriceIncremental_ (contracts/vulnerable/vuln_124_SC06.sol#57) is not in UPPER_CASE_WITH_UNDERSCORES
+Constant CryptoLike.magnitude (contracts/vulnerable/vuln_124_SC06.sol#58) is not in UPPER_CASE_WITH_UNDERSCORES
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: reentrancy-unlimited-gas
+Reentrancy in CryptoLike.transfer(address,uint256) (contracts/vulnerable/vuln_124_SC06.sol#121-141):
+	External calls:
+	- withdraw() (contracts/vulnerable/vuln_124_SC06.sol#126)
+		- _customerAddress.transfer(_dividends) (contracts/vulnerable/vuln_124_SC06.sol#97)
+	State variables written after the call(s):
+	- payoutsTo_[_customerAddress] -= int256(profitPerShare_ * _amountOfTokens) (contracts/vulnerable/vuln_124_SC06.sol#136)
+	- payoutsTo_[_toAddress] += int256(profitPerShare_ * _taxedTokens) (contracts/vulnerable/vuln_124_SC06.sol#137)
+	- profitPerShare_ = SafeMath.add(profitPerShare_,(_dividends * magnitude) / tokenSupply_) (contracts/vulnerable/vuln_124_SC06.sol#138)
+	- tokenBalanceLedger_[_customerAddress] = SafeMath.sub(tokenBalanceLedger_[_customerAddress],_amountOfTokens) (contracts/vulnerable/vuln_124_SC06.sol#134)
+	- tokenBalanceLedger_[_toAddress] = SafeMath.add(tokenBalanceLedger_[_toAddress],_taxedTokens) (contracts/vulnerable/vuln_124_SC06.sol#135)
+	- tokenSupply_ = SafeMath.sub(tokenSupply_,_tokenFee) (contracts/vulnerable/vuln_124_SC06.sol#133)
+	Event emitted after the call(s):
+	- Transfer(_customerAddress,_toAddress,_taxedTokens) (contracts/vulnerable/vuln_124_SC06.sol#139)
+Reentrancy in CryptoLike.withdraw() (contracts/vulnerable/vuln_124_SC06.sol#91-99):
+	External calls:
+	- _customerAddress.transfer(_dividends) (contracts/vulnerable/vuln_124_SC06.sol#97)
+	Event emitted after the call(s):
+	- onWithdraw(_customerAddress,_dividends) (contracts/vulnerable/vuln_124_SC06.sol#98)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-5
+
+Detector: too-many-digits
+CryptoLike.slitherConstructorConstantVariables() (contracts/vulnerable/vuln_124_SC06.sol#3-304) uses literals with too many digits:
+	- tokenPriceInitial_ = 100000000000 (contracts/vulnerable/vuln_124_SC06.sol#56)
+CryptoLike.slitherConstructorConstantVariables() (contracts/vulnerable/vuln_124_SC06.sol#3-304) uses literals with too many digits:
+	- tokenPriceIncremental_ = 10000000000 (contracts/vulnerable/vuln_124_SC06.sol#57)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#too-many-digits
+
+Detector: constable-states
+CryptoLike.name (contracts/vulnerable/vuln_124_SC06.sol#49) should be constant 
+CryptoLike.stakingRequirement (contracts/vulnerable/vuln_124_SC06.sol#59) should be constant 
+CryptoLike.symbol (contracts/vulnerable/vuln_124_SC06.sol#50) should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_124_SC06.sol analyzed (2 contracts with 101 detectors), 37 result(s) found

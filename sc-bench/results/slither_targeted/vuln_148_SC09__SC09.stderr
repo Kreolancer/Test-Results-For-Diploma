@@ -1,0 +1,59 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_148_SC09.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_148_SC09.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_148_SC09.sol:92:9: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+        throw;
+        ^---^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_148_SC09.sol:117:141: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+        if(!_spender.call(bytes4(bytes32(sha3("receiveApproval(address,uint256,address,bytes)"))), msg.sender, _value, this, _extraData)) { throw; }
+                                                                                                                                            ^---^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_148_SC09.sol:11:46: Warning: Unused local variable
+    function totalSupply() constant returns (uint256 supply) {}
+                                             ^------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_148_SC09.sol:15:24: Warning: Unused local variable
+    function balanceOf(address _owner) constant returns (uint256 balance) {}
+                       ^------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_148_SC09.sol:15:58: Warning: Unused local variable
+    function balanceOf(address _owner) constant returns (uint256 balance) {}
+                                                         ^-------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_148_SC09.sol:21:23: Warning: Unused local variable
+    function transfer(address _to, uint256 _value) returns (bool success) {}
+                      ^---------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_148_SC09.sol:21:36: Warning: Unused local variable
+    function transfer(address _to, uint256 _value) returns (bool success) {}
+                                   ^------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_148_SC09.sol:21:61: Warning: Unused local variable
+    function transfer(address _to, uint256 _value) returns (bool success) {}
+                                                            ^----------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_148_SC09.sol:28:27: Warning: Unused local variable
+    function transferFrom(address _from, address _to, uint256 _value) returns (bool success) {}
+                          ^-----------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_148_SC09.sol:28:42: Warning: Unused local variable
+    function transferFrom(address _from, address _to, uint256 _value) returns (bool success) {}
+                                         ^---------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_148_SC09.sol:28:55: Warning: Unused local variable
+    function transferFrom(address _from, address _to, uint256 _value) returns (bool success) {}
+                                                      ^------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_148_SC09.sol:28:80: Warning: Unused local variable
+    function transferFrom(address _from, address _to, uint256 _value) returns (bool success) {}
+                                                                               ^----------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_148_SC09.sol:34:22: Warning: Unused local variable
+    function approve(address _spender, uint256 _value) returns (bool success) {}
+                     ^--------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_148_SC09.sol:34:40: Warning: Unused local variable
+    function approve(address _spender, uint256 _value) returns (bool success) {}
+                                       ^------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_148_SC09.sol:34:65: Warning: Unused local variable
+    function approve(address _spender, uint256 _value) returns (bool success) {}
+                                                                ^----------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_148_SC09.sol:39:24: Warning: Unused local variable
+    function allowance(address _owner, address _spender) constant returns (uint256 remaining) {}
+                       ^------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_148_SC09.sol:39:40: Warning: Unused local variable
+    function allowance(address _owner, address _spender) constant returns (uint256 remaining) {}
+                                       ^--------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_148_SC09.sol:39:76: Warning: Unused local variable
+    function allowance(address _owner, address _spender) constant returns (uint256 remaining) {}
+                                                                           ^---------------^
+
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_148_SC09.sol analyzed (3 contracts with 2 detectors), 0 result(s) found

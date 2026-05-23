@@ -1,0 +1,823 @@
+{
+  "files_summary": {
+    "total_source_units": 1,
+    "total_sloc": 433
+  },
+  "files_details": {
+    "files_details": [
+      {
+        "file_path": "src/vuln_137_SC09.sol",
+        "n_sloc": 433
+      }
+    ]
+  },
+  "issue_count": {
+    "high": 1,
+    "low": 10
+  },
+  "high_issues": {
+    "issues": [
+      {
+        "title": "Shadowed State Variable",
+        "description": "This vulnerability arises when a derived contract unintentionally shadows a state variable from a parent contract by declaring a variable with the same name. This can be misleading. To prevent this, ensure variable names are unique across the inheritance hierarchy or use proper visibility and scope controls.",
+        "detector_name": "state-variable-shadowing",
+        "instances": [
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 501,
+            "src": "16611:61",
+            "src_char": "16368:61"
+          }
+        ]
+      }
+    ]
+  },
+  "low_issues": {
+    "issues": [
+      {
+        "title": "Centralization Risk",
+        "description": "Contracts have owners with privileged rights to perform admin tasks and need to be trusted to not perform malicious updates or drain funds.",
+        "detector_name": "centralization-risk",
+        "instances": [
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 67,
+            "src": "1836:9",
+            "src_char": "1836:9"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 74,
+            "src": "1937:7",
+            "src_char": "1937:7"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 89,
+            "src": "2342:9",
+            "src_char": "2342:9"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 114,
+            "src": "2855:9",
+            "src_char": "2855:9"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 611,
+            "src": "21612:9",
+            "src_char": "21126:9"
+          }
+        ]
+      },
+      {
+        "title": "Empty `require()` / `revert()` Statement",
+        "description": "Use descriptive reason strings or custom errors for revert paths.",
+        "detector_name": "empty-require-revert",
+        "instances": [
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 33,
+            "src": "1174:7",
+            "src_char": "1174:7"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 58,
+            "src": "1589:7",
+            "src_char": "1589:7"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 68,
+            "src": "1852:7",
+            "src_char": "1852:7"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 110,
+            "src": "2755:7",
+            "src_char": "2755:7"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 115,
+            "src": "2873:7",
+            "src_char": "2873:7"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 210,
+            "src": "5913:7",
+            "src_char": "5913:7"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 245,
+            "src": "7219:7",
+            "src_char": "7195:7"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 246,
+            "src": "7256:7",
+            "src_char": "7232:7"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 529,
+            "src": "17957:7",
+            "src_char": "17594:7"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 530,
+            "src": "18019:7",
+            "src_char": "17656:7"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 531,
+            "src": "18073:7",
+            "src_char": "17710:7"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 533,
+            "src": "18142:7",
+            "src_char": "17779:7"
+          }
+        ]
+      },
+      {
+        "title": "Inconsistent uint256/uint (or) int256/int types",
+        "description": "Inconsistency in declaring uint256/uint (or) int256/int variables within a contract. Use explicit size declarations (uint256 or int256). Consider keeping the naming convention consistent in a given contract. Explicit size declarations are preferred (uint256, int256) over implicit ones (uint, int) to avoid confusion.",
+        "detector_name": "inconsistent-type-names",
+        "instances": [
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 237,
+            "src": "6715:53",
+            "src_char": "6715:53"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 238,
+            "src": "6774:30",
+            "src_char": "6774:30"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 256,
+            "src": "7751:6",
+            "src_char": "7709:6"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 267,
+            "src": "8172:10",
+            "src_char": "8097:10"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 279,
+            "src": "8542:10",
+            "src_char": "8467:10"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 513,
+            "src": "17290:51",
+            "src_char": "16948:51"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 514,
+            "src": "17347:34",
+            "src_char": "17005:34"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 562,
+            "src": "19494:10",
+            "src_char": "19086:10"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 589,
+            "src": "20737:10",
+            "src_char": "20278:10"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 601,
+            "src": "21098:10",
+            "src_char": "20639:10"
+          }
+        ]
+      },
+      {
+        "title": "Internal Function Used Only Once",
+        "description": "Instead of separating the logic into a separate function, consider inlining the logic into the calling function. This can reduce the number of function calls and improve readability.",
+        "detector_name": "internal-function-used-once",
+        "instances": [
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 279,
+            "src": "8511:472",
+            "src_char": "8436:472"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 559,
+            "src": "19327:733",
+            "src_char": "18919:733"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 574,
+            "src": "20145:409",
+            "src_char": "19704:409"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 601,
+            "src": "21072:421",
+            "src_char": "20613:421"
+          }
+        ]
+      },
+      {
+        "title": "Large Numeric Literal",
+        "description": "Large literal values multiples of 10000 can be replaced with scientific notation.Use `e` notation, for example: `1e18`, instead of its full numeric value.",
+        "detector_name": "large-numeric-literal",
+        "instances": [
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 500,
+            "src": "16354:9",
+            "src_char": "16225:9"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 501,
+            "src": "16661:10",
+            "src_char": "16418:10"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 502,
+            "src": "16759:8",
+            "src_char": "16507:8"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 503,
+            "src": "16912:7",
+            "src_char": "16621:7"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 576,
+            "src": "20299:9",
+            "src_char": "19858:9"
+          }
+        ]
+      },
+      {
+        "title": "Literal Instead of Constant",
+        "description": "Define and use `constant` variables instead of using literals. If the same constant literal value is used multiple times, create a constant state variable and reference it throughout the contract.",
+        "detector_name": "literal-instead-of-constant",
+        "instances": [
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 315,
+            "src": "9725:1",
+            "src_char": "9650:1"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 318,
+            "src": "9818:3",
+            "src_char": "9743:3"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 321,
+            "src": "9912:3",
+            "src_char": "9837:3"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 329,
+            "src": "10147:1",
+            "src_char": "10072:1"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 329,
+            "src": "10158:3",
+            "src_char": "10083:3"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 329,
+            "src": "10171:3",
+            "src_char": "10096:3"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 333,
+            "src": "10386:2",
+            "src_char": "10311:2"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 334,
+            "src": "10423:2",
+            "src_char": "10348:2"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 336,
+            "src": "10479:1",
+            "src_char": "10404:1"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 337,
+            "src": "10558:2",
+            "src_char": "10483:2"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 340,
+            "src": "10656:2",
+            "src_char": "10581:2"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 343,
+            "src": "10732:2",
+            "src_char": "10657:2"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 361,
+            "src": "11345:2",
+            "src_char": "11270:2"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 426,
+            "src": "13777:2",
+            "src_char": "13702:2"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 426,
+            "src": "13782:2",
+            "src_char": "13707:2"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 430,
+            "src": "13916:2",
+            "src_char": "13841:2"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 430,
+            "src": "13922:2",
+            "src_char": "13847:2"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 434,
+            "src": "14049:2",
+            "src_char": "13974:2"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 455,
+            "src": "14812:2",
+            "src_char": "14737:2"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 456,
+            "src": "14875:2",
+            "src_char": "14800:2"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 458,
+            "src": "14963:2",
+            "src_char": "14888:2"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 461,
+            "src": "15052:2",
+            "src_char": "14977:2"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 463,
+            "src": "15110:2",
+            "src_char": "15035:2"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 464,
+            "src": "15150:2",
+            "src_char": "15075:2"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 465,
+            "src": "15190:2",
+            "src_char": "15115:2"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 466,
+            "src": "15230:2",
+            "src_char": "15155:2"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 467,
+            "src": "15270:2",
+            "src_char": "15195:2"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 468,
+            "src": "15310:2",
+            "src_char": "15235:2"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 469,
+            "src": "15350:2",
+            "src_char": "15275:2"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 470,
+            "src": "15390:2",
+            "src_char": "15315:2"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 471,
+            "src": "15431:2",
+            "src_char": "15356:2"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 472,
+            "src": "15472:2",
+            "src_char": "15397:2"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 552,
+            "src": "19070:2",
+            "src_char": "18707:2"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 563,
+            "src": "19644:2",
+            "src_char": "19236:2"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 564,
+            "src": "19781:2",
+            "src_char": "19373:2"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 565,
+            "src": "19917:2",
+            "src_char": "19509:2"
+          }
+        ]
+      },
+      {
+        "title": "Local Variable Shadows State Variable",
+        "description": "Rename the local variable that shadows another state variable.",
+        "detector_name": "local-variable-shadowing",
+        "instances": [
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 519,
+            "src": "17526:16",
+            "src_char": "17184:16"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 625,
+            "src": "21987:16",
+            "src_char": "21501:16"
+          }
+        ]
+      },
+      {
+        "title": "Modifier Invoked Only Once",
+        "description": "Consider removing the modifier or inlining the logic into the calling function.",
+        "detector_name": "modifier-used-only-once",
+        "instances": [
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 32,
+            "src": "1144:121",
+            "src_char": "1144:121"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 80,
+            "src": "2073:81",
+            "src_char": "2073:81"
+          }
+        ]
+      },
+      {
+        "title": "Address State Variable Set Without Checks",
+        "description": "Check for `address(0)` when assigning values to address state variables.",
+        "detector_name": "state-no-address-check",
+        "instances": [
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 90,
+            "src": "2358:23",
+            "src_char": "2358:23"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 106,
+            "src": "2690:20",
+            "src_char": "2690:20"
+          }
+        ]
+      },
+      {
+        "title": "Public Function Not Used Internally",
+        "description": "If a function is marked public but is not used internally, consider marking it as `external`.",
+        "detector_name": "unused-public-function",
+        "instances": [
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 5,
+            "src": "80:59",
+            "src_char": "80:59"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 6,
+            "src": "142:60",
+            "src_char": "142:60"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 11,
+            "src": "314:78",
+            "src_char": "314:78"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 12,
+            "src": "395:78",
+            "src_char": "395:78"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 13,
+            "src": "476:64",
+            "src_char": "476:64"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 67,
+            "src": "1791:119",
+            "src_char": "1791:119"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 89,
+            "src": "2297:89",
+            "src_char": "2297:89"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 96,
+            "src": "2470:98",
+            "src_char": "2470:98"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 114,
+            "src": "2808:136",
+            "src_char": "2808:136"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 157,
+            "src": "3909:231",
+            "src_char": "3909:231"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 169,
+            "src": "4342:104",
+            "src_char": "4342:104"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 186,
+            "src": "4832:489",
+            "src_char": "4832:489"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 204,
+            "src": "5552:534",
+            "src_char": "5552:534"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 223,
+            "src": "6404:133",
+            "src_char": "6404:133"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 244,
+            "src": "7101:502",
+            "src_char": "7077:502"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 255,
+            "src": "7662:349",
+            "src_char": "7620:349"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 266,
+            "src": "8097:408",
+            "src_char": "8022:408"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 417,
+            "src": "13407:126",
+            "src_char": "13332:126"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 421,
+            "src": "13543:122",
+            "src_char": "13468:122"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 425,
+            "src": "13675:127",
+            "src_char": "13600:127"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 429,
+            "src": "13812:124",
+            "src_char": "13737:124"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 433,
+            "src": "13946:117",
+            "src_char": "13871:117"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 437,
+            "src": "14073:166",
+            "src_char": "13998:166"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 528,
+            "src": "17837:1375",
+            "src_char": "17474:1375"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 587,
+            "src": "20625:441",
+            "src_char": "20166:441"
+          },
+          {
+            "contract_path": "src/vuln_137_SC09.sol",
+            "line_no": 611,
+            "src": "21568:95",
+            "src_char": "21082:95"
+          }
+        ]
+      }
+    ]
+  },
+  "detectors_used": [
+    "abi-encode-packed-hash-collision",
+    "arbitrary-transfer-from",
+    "assert-state-change",
+    "block-timestamp-deadline",
+    "boolean-equality",
+    "builtin-symbol-shadowing",
+    "centralization-risk",
+    "constant-function-changes-state",
+    "constant-function-contains-assembly",
+    "contract-locks-ether",
+    "costly-loop",
+    "dangerous-unary-operator",
+    "dead-code",
+    "delegate-call-unchecked-address",
+    "delegatecall-in-loop",
+    "delete-nested-mapping",
+    "deprecated-oz-function",
+    "division-before-multiplication",
+    "dynamic-array-length-assignment",
+    "ecrecover",
+    "empty-block",
+    "empty-require-revert",
+    "enumerable-loop-removal",
+    "eth-send-unchecked-address",
+    "experimental-encoder",
+    "function-initializing-state",
+    "function-pointer-in-constructor",
+    "function-selector-collision",
+    "inconsistent-type-names",
+    "incorrect-caret-operator",
+    "incorrect-erc20-interface",
+    "incorrect-erc721-interface",
+    "incorrect-shift-order",
+    "incorrect-use-of-modifier",
+    "internal-function-used-once",
+    "large-numeric-literal",
+    "literal-instead-of-constant",
+    "local-variable-shadowing",
+    "missing-inheritance",
+    "misused-boolean",
+    "modifier-used-only-once",
+    "msg-value-in-loop",
+    "multiple-constructors",
+    "multiple-placeholders",
+    "nested-struct-in-mapping",
+    "non-reentrant-not-first",
+    "out-of-order-retryable",
+    "pre-declared-local-variable-usage",
+    "push-zero-opcode",
+    "redundant-statement",
+    "reentrancy-state-change",
+    "require-revert-in-loop",
+    "return-bomb",
+    "reused-contract-name",
+    "rtlo",
+    "selfdestruct",
+    "signed-integer-storage-array",
+    "solmate-safe-transfer-lib",
+    "state-change-without-event",
+    "state-no-address-check",
+    "state-variable-could-be-constant",
+    "state-variable-could-be-immutable",
+    "state-variable-init-order",
+    "state-variable-read-external",
+    "state-variable-shadowing",
+    "storage-array-length-not-cached",
+    "storage-array-memory-edit",
+    "strict-equality-contract-balance",
+    "tautological-compare",
+    "tautology-or-contradiction",
+    "todo",
+    "tx-origin-used-for-auth",
+    "unchecked-low-level-call",
+    "unchecked-return",
+    "unchecked-send",
+    "uninitialized-local-variable",
+    "unprotected-initializer",
+    "unsafe-casting",
+    "unsafe-erc20-operation",
+    "unsafe-oz-erc721-mint",
+    "unspecific-solidity-pragma",
+    "unused-error",
+    "unused-import",
+    "unused-public-function",
+    "unused-state-variable",
+    "void-constructor",
+    "weak-randomness",
+    "yul-return"
+  ]
+}

@@ -1,0 +1,93 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_267_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_267_SAFE.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_267_SAFE.sol:41:36: Warning: Unused local variable
+contract token { function transfer(address receiver, uint amount){  } }
+                                   ^--------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_267_SAFE.sol:41:54: Warning: Unused local variable
+contract token { function transfer(address receiver, uint amount){  } }
+                                                     ^---------^
+
+
+Detector: divide-before-multiply
+Crowdsale.buyTokens(address) (contracts/safe/safe_267_SAFE.sol#88-115) performs a multiplication on the result of a division:
+	- tokens = (weiAmount / 10000000000) * 300 (contracts/safe/safe_267_SAFE.sol#95)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#divide-before-multiply
+
+Detector: erc20-interface
+token (contracts/safe/safe_267_SAFE.sol#41) has incorrect ERC20 function interface:token.transfer(address,uint256) (contracts/safe/safe_267_SAFE.sol#41)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-erc20-interface
+
+Detector: reentrancy-events
+Reentrancy in Crowdsale.buyTokens(address) (contracts/safe/safe_267_SAFE.sol#88-115):
+	External calls:
+	- tokenReward.transfer(beneficiary,tokens) (contracts/safe/safe_267_SAFE.sol#112)
+	Event emitted after the call(s):
+	- TokenPurchase(msg.sender,beneficiary,weiAmount,tokens) (contracts/safe/safe_267_SAFE.sol#113)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-4
+
+Detector: timestamp
+Crowdsale.buyTokens(address) (contracts/safe/safe_267_SAFE.sol#88-115) uses timestamp for comparisons
+	Dangerous comparisons:
+	- now < startTime + 1 * 7 * 24 * 60 * 60 (contracts/safe/safe_267_SAFE.sol#97)
+	- now < startTime + 2 * 7 * 24 * 60 * 60 (contracts/safe/safe_267_SAFE.sol#99)
+	- now < startTime + 3 * 7 * 24 * 60 * 60 (contracts/safe/safe_267_SAFE.sol#101)
+	- now < startTime + 4 * 7 * 24 * 60 * 60 (contracts/safe/safe_267_SAFE.sol#103)
+	- now < startTime + 5 * 7 * 24 * 60 * 60 (contracts/safe/safe_267_SAFE.sol#105)
+Crowdsale.validPurchase() (contracts/safe/safe_267_SAFE.sol#127-131) uses timestamp for comparisons
+	Dangerous comparisons:
+	- withinPeriod = now >= startTime && now <= endTime (contracts/safe/safe_267_SAFE.sol#128)
+	- withinPeriod && nonZeroPurchase (contracts/safe/safe_267_SAFE.sol#130)
+Crowdsale.hasEnded() (contracts/safe/safe_267_SAFE.sol#134-136) uses timestamp for comparisons
+	Dangerous comparisons:
+	- now > endTime (contracts/safe/safe_267_SAFE.sol#135)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+
+Detector: dead-code
+SafeMath.add(uint256,uint256) (contracts/safe/safe_267_SAFE.sol#26-30) is never used and should be removed
+SafeMath.div(uint256,uint256) (contracts/safe/safe_267_SAFE.sol#14-19) is never used and should be removed
+SafeMath.mul(uint256,uint256) (contracts/safe/safe_267_SAFE.sol#8-12) is never used and should be removed
+SafeMath.sub(uint256,uint256) (contracts/safe/safe_267_SAFE.sol#21-24) is never used and should be removed
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dead-code
+
+Detector: deprecated-standards
+Deprecated standard detected THROW (contracts/safe/safe_267_SAFE.sol#122):
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected THROW (contracts/safe/safe_267_SAFE.sol#139):
+	- Usage of "throw" should be replaced with "revert()"
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#deprecated-standards
+
+Detector: solc-version
+Version constraint ^0.4.11 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- NestedArrayFunctionCallDecoder
+	- ZeroFunctionSelector
+	- DelegateCallReturnValue
+	- ECRecoverMalformedInput
+	- SkipEmptyStringLiteral.
+It is used by:
+	- ^0.4.11 (contracts/safe/safe_267_SAFE.sol#1)
+solc-0.4.11 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Contract token (contracts/safe/safe_267_SAFE.sol#41) is not in CapWords
+Parameter Crowdsale.withdrawTokens(uint256)._amount (contracts/safe/safe_267_SAFE.sol#138) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: too-many-digits
+Crowdsale.buyTokens(address) (contracts/safe/safe_267_SAFE.sol#88-115) uses literals with too many digits:
+	- tokens = (weiAmount / 10000000000) * 300 (contracts/safe/safe_267_SAFE.sol#95)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#too-many-digits
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_267_SAFE.sol analyzed (3 contracts with 101 detectors), 17 result(s) found

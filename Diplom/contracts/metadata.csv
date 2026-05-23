@@ -1,0 +1,309 @@
+id,orig_path,label,sc_class,source
+vuln_001_SC01,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/access_control/wallet_03_wrong_constructor.sol",vuln,SC01,smartbugs
+vuln_002_SC01,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/access_control/arbitrary_location_write_simple.sol",vuln,SC01,smartbugs
+vuln_003_SC01,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/access_control/phishable.sol",vuln,SC01,smartbugs
+vuln_004_SC01,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/access_control/parity_wallet_bug_1.sol",vuln,SC01,smartbugs
+vuln_005_SC01,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/access_control/parity_wallet_bug_2.sol",vuln,SC01,smartbugs
+vuln_006_SC01,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/access_control/unprotected0.sol",vuln,SC01,smartbugs
+vuln_007_SC01,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/access_control/incorrect_constructor_name1.sol",vuln,SC01,smartbugs
+vuln_008_SC01,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/access_control/simple_suicide.sol",vuln,SC01,smartbugs
+vuln_009_SC01,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/access_control/incorrect_constructor_name3.sol",vuln,SC01,smartbugs
+vuln_010_SC01,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/access_control/multiowned_vulnerable.sol",vuln,SC01,smartbugs
+vuln_011_SC01,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/access_control/FibonacciBalance.sol",vuln,SC01,smartbugs
+vuln_012_SC01,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/access_control/incorrect_constructor_name2.sol",vuln,SC01,smartbugs
+vuln_013_SC01,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/access_control/wallet_02_refund_nosub.sol",vuln,SC01,smartbugs
+vuln_014_SC01,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/access_control/proxy.sol",vuln,SC01,smartbugs
+vuln_015_SC01,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/access_control/rubixi.sol",vuln,SC01,smartbugs
+vuln_016_SC01,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/access_control/mapping_write.sol",vuln,SC01,smartbugs
+vuln_017_SC01,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/access_control/mycontract.sol",vuln,SC01,smartbugs
+vuln_018_SC01,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/access_control/wallet_04_confused_sign.sol",vuln,SC01,smartbugs
+vuln_019_SC05,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/bad_randomness/blackjack.sol",vuln,SC05,smartbugs
+vuln_020_SC05,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/bad_randomness/lucky_doubler.sol",vuln,SC05,smartbugs
+vuln_021_SC05,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/bad_randomness/random_number_generator.sol",vuln,SC05,smartbugs
+vuln_022_SC05,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/bad_randomness/lottery.sol",vuln,SC05,smartbugs
+vuln_023_SC05,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/bad_randomness/etheraffle.sol",vuln,SC05,smartbugs
+vuln_024_SC05,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/bad_randomness/guess_the_random_number.sol",vuln,SC05,smartbugs
+vuln_025_SC05,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/bad_randomness/smart_billions.sol",vuln,SC05,smartbugs
+vuln_026_SC05,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/bad_randomness/old_blockhash.sol",vuln,SC05,smartbugs
+vuln_027_SC05,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/time_manipulation/timed_crowdsale.sol",vuln,SC05,smartbugs
+vuln_028_SC05,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/time_manipulation/roulette.sol",vuln,SC05,smartbugs
+vuln_029_SC05,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/time_manipulation/governmental_survey.sol",vuln,SC05,smartbugs
+vuln_030_SC05,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/time_manipulation/ether_lotto.sol",vuln,SC05,smartbugs
+vuln_031_SC05,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/time_manipulation/lottopollo.sol",vuln,SC05,smartbugs
+vuln_032_SC05,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/front_running/eth_tx_order_dependence_minimal.sol",vuln,SC05,smartbugs
+vuln_033_SC05,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/front_running/FindThisHash.sol",vuln,SC05,smartbugs
+vuln_034_SC05,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/front_running/ERC20.sol",vuln,SC05,smartbugs
+vuln_035_SC05,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/front_running/odds_and_evens.sol",vuln,SC05,smartbugs
+vuln_036_SC06,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/denial_of_service/dos_number.sol",vuln,SC06,smartbugs
+vuln_037_SC06,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/denial_of_service/dos_simple.sol",vuln,SC06,smartbugs
+vuln_038_SC06,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/denial_of_service/send_loop.sol",vuln,SC06,smartbugs
+vuln_039_SC06,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/denial_of_service/list_dos.sol",vuln,SC06,smartbugs
+vuln_040_SC06,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/denial_of_service/dos_address.sol",vuln,SC06,smartbugs
+vuln_041_SC06,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/denial_of_service/auction.sol",vuln,SC06,smartbugs
+vuln_042_SC08,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/reentrancy/0x01f8c4e3fa3edeb29e514cba738d87ce8c091d3f.sol",vuln,SC08,smartbugs
+vuln_043_SC08,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/reentrancy/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol",vuln,SC08,smartbugs
+vuln_044_SC08,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/reentrancy/reentrancy_dao.sol",vuln,SC08,smartbugs
+vuln_045_SC08,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/reentrancy/0xb5e1b1ee15c6fa0e48fce100125569d430f1bd12.sol",vuln,SC08,smartbugs
+vuln_046_SC08,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/reentrancy/spank_chain_payment.sol",vuln,SC08,smartbugs
+vuln_047_SC08,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/reentrancy/0xbe4041d55db380c5ae9d4a9b9703f1ed4e7e3888.sol",vuln,SC08,smartbugs
+vuln_048_SC08,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/reentrancy/0x4320e6f8c05b27ab4707cd1f6d5ce6f3e4b3a5a1.sol",vuln,SC08,smartbugs
+vuln_049_SC08,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/reentrancy/modifier_reentrancy.sol",vuln,SC08,smartbugs
+vuln_050_SC08,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/reentrancy/0x96edbe868531bd23a6c05e9d0c424ea64fb1b78b.sol",vuln,SC08,smartbugs
+vuln_051_SC08,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/reentrancy/0x7b368c4e805c3870b6c49a3f1f49f69af8662cf3.sol",vuln,SC08,smartbugs
+vuln_052_SC08,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/reentrancy/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol",vuln,SC08,smartbugs
+vuln_053_SC08,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/reentrancy/0x8c7777c45481dba411450c228cb692ac3d550344.sol",vuln,SC08,smartbugs
+vuln_054_SC08,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/reentrancy/etherstore.sol",vuln,SC08,smartbugs
+vuln_055_SC08,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/reentrancy/etherbank.sol",vuln,SC08,smartbugs
+vuln_056_SC08,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/reentrancy/0x93c32845fae42c83a70e5f06214c8433665c2ab5.sol",vuln,SC08,smartbugs
+vuln_057_SC08,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/reentrancy/reentrancy_cross_function.sol",vuln,SC08,smartbugs
+vuln_058_SC08,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/reentrancy/0xcead721ef5b11f1a7b530171aab69b16c5e66b6e.sol",vuln,SC08,smartbugs
+vuln_059_SC08,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/reentrancy/reentrancy_bonus.sol",vuln,SC08,smartbugs
+vuln_060_SC08,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/reentrancy/0xaae1f51cf3339f18b6d3f3bdc75a5facd744b0b8.sol",vuln,SC08,smartbugs
+vuln_061_SC08,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/reentrancy/0xbaf51e761510c1a11bf48dd87c0307ac8a8c8a4f.sol",vuln,SC08,smartbugs
+vuln_062_SC08,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/reentrancy/0x561eac93c92360949ab1f1403323e6db345cbf31.sol",vuln,SC08,smartbugs
+vuln_063_SC08,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/reentrancy/0x941d225236464a25eb18076df7da6a91d0f95e9e.sol",vuln,SC08,smartbugs
+vuln_064_SC08,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/reentrancy/0x23a91059fdc9579a9fbd0edc5f2ea0bfdb70deb4.sol",vuln,SC08,smartbugs
+vuln_065_SC08,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/reentrancy/0x7541b76cb60f4c60af330c208b0623b7f54bf615.sol",vuln,SC08,smartbugs
+vuln_066_SC08,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/reentrancy/reentrancy_simple.sol",vuln,SC08,smartbugs
+vuln_067_SC08,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/reentrancy/reentrance.sol",vuln,SC08,smartbugs
+vuln_068_SC08,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/reentrancy/0x7a8721a9d64c74da899424c1b52acbf58ddc9782.sol",vuln,SC08,smartbugs
+vuln_069_SC08,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/reentrancy/0xb93430ce38ac4a6bb47fb1fc085ea669353fd89e.sol",vuln,SC08,smartbugs
+vuln_070_SC08,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/reentrancy/simple_dao.sol",vuln,SC08,smartbugs
+vuln_071_SC08,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/reentrancy/0xf015c35649c82f5467c9c74b7f28ee67665aad68.sol",vuln,SC08,smartbugs
+vuln_072_SC09,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/arithmetic/integer_overflow_mapping_sym_1.sol",vuln,SC09,smartbugs
+vuln_073_SC09,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/arithmetic/integer_overflow_add.sol",vuln,SC09,smartbugs
+vuln_074_SC09,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/arithmetic/timelock.sol",vuln,SC09,smartbugs
+vuln_075_SC09,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/arithmetic/overflow_simple_add.sol",vuln,SC09,smartbugs
+vuln_076_SC09,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/arithmetic/token.sol",vuln,SC09,smartbugs
+vuln_077_SC09,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/arithmetic/insecure_transfer.sol",vuln,SC09,smartbugs
+vuln_078_SC09,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/arithmetic/integer_overflow_mul.sol",vuln,SC09,smartbugs
+vuln_079_SC09,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/arithmetic/integer_overflow_minimal.sol",vuln,SC09,smartbugs
+vuln_080_SC09,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/arithmetic/tokensalechallenge.sol",vuln,SC09,smartbugs
+vuln_081_SC09,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/arithmetic/integer_overflow_multitx_multifunc_feasible.sol",vuln,SC09,smartbugs
+vuln_082_SC09,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/arithmetic/BECToken.sol",vuln,SC09,smartbugs
+vuln_083_SC09,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/arithmetic/integer_overflow_multitx_onefunc_feasible.sol",vuln,SC09,smartbugs
+vuln_084_SC09,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/arithmetic/integer_overflow_benign_1.sol",vuln,SC09,smartbugs
+vuln_085_SC09,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/arithmetic/integer_overflow_1.sol",vuln,SC09,smartbugs
+vuln_086_SC09,"/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset/arithmetic/overflow_single_tx.sol",vuln,SC09,smartbugs
+vuln_087_SC01,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/WeakAccessMod/29c80110d6a3932dfcec931361059a4bb0c9ff8e52747d5018d4181ca2d58559.sol",vuln,SC01,bccc
+vuln_088_SC01,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/WeakAccessMod/130790feced08212eed7d1490dd4d7abf138543be61a4744a03f69ecb9609764.sol",vuln,SC01,bccc
+vuln_089_SC01,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/WeakAccessMod/d4e33e2934280979f580a63f992daa7d0de2cd64a145d5c403a75c3dc5c0004e.sol",vuln,SC01,bccc
+vuln_090_SC01,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/WeakAccessMod/e7958a592e85df2a56545ce837e3d8dbd8b1398ee1257c8a560a8854e5eedb14.sol",vuln,SC01,bccc
+vuln_091_SC01,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/WeakAccessMod/0adbedb5c563def75ac24a03304554c54938471af5e7e0faf529b530aee6dc3a.sol",vuln,SC01,bccc
+vuln_092_SC01,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/WeakAccessMod/ce02d4b6d1aceeea96a562c10923d590607df6182b4a3405ad10be85b6354787.sol",vuln,SC01,bccc
+vuln_093_SC01,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/WeakAccessMod/42daa5cdd2c859d2c37ffc94204333784c2be704e318d9fc66e1f785a1cc9640.sol",vuln,SC01,bccc
+vuln_094_SC01,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/WeakAccessMod/ff2ccb6ba423d356bd549ed4bfb76e96976a0dcde05a09996a1cdb9f83422ec4.sol",vuln,SC01,bccc
+vuln_095_SC01,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/WeakAccessMod/33512007840ced1bb0aab68f47cb5f702abd494a15f26bcbe26a1e47af03d841.sol",vuln,SC01,bccc
+vuln_096_SC01,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/WeakAccessMod/cba28b89eb859497f544956d64cf2ecf29b76fe2ef7175b33ea59e64293a4461.sol",vuln,SC01,bccc
+vuln_097_SC01,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/WeakAccessMod/c6e3d7a233801ab89dc620453e288d0b711cb7afed67469eb40f4c783fabfa99.sol",vuln,SC01,bccc
+vuln_098_SC01,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/WeakAccessMod/9644294ac4ffb3091eef01219b3fe4fe467f05890cc56af961dce68fddbb7704.sol",vuln,SC01,bccc
+vuln_099_SC05,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/Timestamp/1ea9bae0bbcf6a841629c20664a342e0c8df815c938d7b159316bc29bbb54055.sol",vuln,SC05,bccc
+vuln_100_SC05,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/Timestamp/011317a800b6d7a3a7e0b87d8e36e69c7926ec9fab70bba32be49e245fd2449b.sol",vuln,SC05,bccc
+vuln_101_SC05,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/Timestamp/2d7beba78a80362c903660827ddbd487e576223e921b62e2fca01839d3cdb9ee.sol",vuln,SC05,bccc
+vuln_102_SC05,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/Timestamp/240cd57825c98a065d07977f41668e510c6906e0813ad394627229513367b499.sol",vuln,SC05,bccc
+vuln_103_SC05,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/Timestamp/ca0b0c65dbebaceadde552ecbd67de7e68b532574f53fabfe1a51435fc4a699c.sol",vuln,SC05,bccc
+vuln_104_SC05,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/Timestamp/1a129478e921b8f702bce2219872537da599f0cdfaefb83b57f31f2ec77c8ad9.sol",vuln,SC05,bccc
+vuln_105_SC05,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/Timestamp/ab0229807620042c849a5ca2a82b47ffe17c45cbe7e122e97209347b0e541166.sol",vuln,SC05,bccc
+vuln_106_SC05,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/Timestamp/f6495e5bce8f6b16dccc1b1e83db04785f21ade9c848d3224a6b59217a70e91f.sol",vuln,SC05,bccc
+vuln_107_SC05,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/Timestamp/38ae02e0e3eff597a8658457d6c0cdeda19851a216b20aa0ee3df42ea558c435.sol",vuln,SC05,bccc
+vuln_108_SC05,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/Timestamp/04a8942beabbb20fdbf8ebd4bc79b0b548ecaafab1b68671b156b1e29c574281.sol",vuln,SC05,bccc
+vuln_109_SC05,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/Timestamp/e0cd60c5e4ceec25a93260de8097edaee8542150398c099bafc438d1f35a5293.sol",vuln,SC05,bccc
+vuln_110_SC05,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/Timestamp/368934a7c787a34bb2198cbe6e29f34235150ae835bcf6392ce0d848e43889d3.sol",vuln,SC05,bccc
+vuln_111_SC05,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/Timestamp/d6c7bd569c3b48049adca63ab535ca6f33723ec891d6b6a87ec3d60afa841aa3.sol",vuln,SC05,bccc
+vuln_112_SC06,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/CallToUnknown/3328911573270ed53b588a6612983d8c954ce405cea0e0de774a760153bf35b5.sol",vuln,SC06,bccc
+vuln_113_SC06,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/CallToUnknown/1fad1d8336b9a7e2c8ac9c9db4bb9ba8e0e29ed4f697f1461fbebf16fb578e45.sol",vuln,SC06,bccc
+vuln_114_SC06,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/CallToUnknown/7ad359052eae830df9eb696e2bbe688bd133cd769a3b6c39f4ec3c9375390ede.sol",vuln,SC06,bccc
+vuln_115_SC06,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/CallToUnknown/d42e58382f2edbd2854b80287aace88c724972474fc8b3a74e96da6776fbee17.sol",vuln,SC06,bccc
+vuln_116_SC06,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/CallToUnknown/2713eb99d7340df06a9c9b109ea0d3691921a066795bc2468158fb46d375fb85.sol",vuln,SC06,bccc
+vuln_117_SC06,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/CallToUnknown/187cb9aaa5a34c54546a470cc508fac75c2f8f7eab3a15c14871134ef7f877c2.sol",vuln,SC06,bccc
+vuln_118_SC06,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/CallToUnknown/29a47d4064beda33890a590d20d11b3d2e2dd38475c83d41a720551e0d11d982.sol",vuln,SC06,bccc
+vuln_119_SC06,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/CallToUnknown/337d3084b0315920c25b460d0df682705d8ded8c4392170eefb9a866709c5482.sol",vuln,SC06,bccc
+vuln_120_SC06,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/UnusedReturn/34fa67b724700e1daa0ae68acbdc5e94c2a6ca8da24c6e33cecd48c3ba8d2e62.sol",vuln,SC06,bccc
+vuln_121_SC06,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/UnusedReturn/c5cda32e136252cf6138bbb92da09e136776aac040e6a059b47e44adf23a99b2.sol",vuln,SC06,bccc
+vuln_122_SC06,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/UnusedReturn/a299d72288ad0be902d9341523f599862cf77f69ca3843b71f7a4843e0757cff.sol",vuln,SC06,bccc
+vuln_123_SC06,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/UnusedReturn/b9820b025688126dae687b384edb19eb624dc336438534bc46fbd2febf0a6621.sol",vuln,SC06,bccc
+vuln_124_SC06,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/UnusedReturn/953aee2bfa27b73c185043d7bfafbfa1f4d7db985edb8dba0a3db8f068507d39.sol",vuln,SC06,bccc
+vuln_125_SC06,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/UnusedReturn/9e58917a3afcf15743cc62156b8cbe46439fa13c8a746e2a685f4827c38f6a38.sol",vuln,SC06,bccc
+vuln_126_SC06,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/UnusedReturn/13517b035dccb06dbba2fc92d10932f59a84a4807cfdecd75e4d704639e508d1.sol",vuln,SC06,bccc
+vuln_127_SC06,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/UnusedReturn/211ed5c0bf68b0d6642216fbedea9f785de3e899f0c14ac1cba840bcd8b2b29f.sol",vuln,SC06,bccc
+vuln_128_SC06,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/MishandledException/3d8cc66bfc3d88108e68fbb62cc665bc8bb1cefccb441f0ea217aaff4d2a8912.sol",vuln,SC06,bccc
+vuln_129_SC06,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/MishandledException/e90e261e157500720723af9cefc7adc2fa7f48febc444af78693dccfe5cfd376.sol",vuln,SC06,bccc
+vuln_130_SC06,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/MishandledException/4b8e974db66e981a9cf3b08c875211d90e939f89c4f55274adc484956cc5cbe6.sol",vuln,SC06,bccc
+vuln_131_SC06,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/MishandledException/c69476380e8c91cb4a18d7f838f9b5d9189731439d59547bc34e97fce1472e28.sol",vuln,SC06,bccc
+vuln_132_SC06,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/MishandledException/c445455653f3c08eefe28a001d1f2645b290fd5fe8e234cf9a876dc7672cf583.sol",vuln,SC06,bccc
+vuln_133_SC06,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/MishandledException/803761b1de16cb2e12d5dd10434ffdd56d2440b7f4d3af5337e8964a42c73e51.sol",vuln,SC06,bccc
+vuln_134_SC06,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/MishandledException/ddca1f5a4383aacf041c08a1601dc194ce2b5641624fee32ae25040f1801b582.sol",vuln,SC06,bccc
+vuln_135_SC06,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/MishandledException/1b797deb5ce105c8e2e7593408bdda24898f5afd27c2b1944f9204ef5b088b4a.sol",vuln,SC06,bccc
+vuln_136_SC09,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/IntegerUO/cd3602ffca28892863a238da445625fede04ae423fdb46bfb7ba622b39092e15.sol",vuln,SC09,bccc
+vuln_137_SC09,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/IntegerUO/28801945168598720ac0449152d35971ab9a6e08fe2d990196beebcff6a1a789.sol",vuln,SC09,bccc
+vuln_138_SC09,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/IntegerUO/c4a47f9f909f8d2fc6b7deebbdc5898fcdf35cf91382959911111ef4407b5e93.sol",vuln,SC09,bccc
+vuln_139_SC09,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/IntegerUO/cd48ad5826aa234f9509899cb6c30723d0f97febed586ff2dbfc72f9ca56d1b6.sol",vuln,SC09,bccc
+vuln_140_SC09,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/IntegerUO/002fbde145487c0871710de42c69f020cf95653c755af352a1c9fad963d3f8c3.sol",vuln,SC09,bccc
+vuln_141_SC09,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/IntegerUO/cd5b6ec1a89658682782be7e486eba4d7c7be5ee3a0808628d3099222633a48e.sol",vuln,SC09,bccc
+vuln_142_SC09,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/IntegerUO/28985c755486e9edf5d44719f5a7ada5158ba087cbef662806380ad7b1d9e710.sol",vuln,SC09,bccc
+vuln_143_SC09,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/IntegerUO/c4b84a9b11ef1d2d93c3304d5cdc0f6d6329e0748ae1c72bd5e1acacf2ca840d.sol",vuln,SC09,bccc
+vuln_144_SC09,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/IntegerUO/00c85d0db37681d03bf94e28e0ae564509867e88de9ae41e4aede452f447d04d.sol",vuln,SC09,bccc
+vuln_145_SC09,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/IntegerUO/c4c6bbc1e34b5f1023d8ed0b636e23ef70f00c9299eb9d4f17212ff87d689d94.sol",vuln,SC09,bccc
+vuln_146_SC09,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/IntegerUO/cd6de3ee5b843c68bce1809e3aef143094d809b0b86ddafdac5fd9b8fb8c9fba.sol",vuln,SC09,bccc
+vuln_147_SC09,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/IntegerUO/28a6ea27b0683b919e8d50c098d7c6548f255fb775fcf4a7fca4922e64e18e42.sol",vuln,SC09,bccc
+vuln_148_SC09,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/IntegerUO/c4cd4e5dde480848eafe93b5dc308e0a807c306106c7f6ea417eb27da33ff5ad.sol",vuln,SC09,bccc
+vuln_149_SC09,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/IntegerUO/00cda2fa4ea4d3bfdf069ca20908024b498efe8ff3e0809c1627bfb29a06e08c.sol",vuln,SC09,bccc
+vuln_150_SC09,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/IntegerUO/c4d334a2a6ce6c6d9552558b9c4295727b4d4e86cca9e08340537aad073d00aa.sol",vuln,SC09,bccc
+safe_151_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/7fdff7ef4f6b21f6babd9deb91dc4909e7b5e8162adb593fc429749b6b0bb342.sol",safe,SAFE,bccc
+safe_152_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/18a7c9f4c09de19d1e8893aec8eb26394412de2a531cccc81a72d0562d415d22.sol",safe,SAFE,bccc
+safe_153_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/7acfe2add48f17415c903c9d936ad248bdd9f18877f6b1241691309e3bdf24e1.sol",safe,SAFE,bccc
+safe_154_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/7fe81ae4c2b738d4cdb0e0dd387d129bbc738bbe223530f5b351f31b393871e8.sol",safe,SAFE,bccc
+safe_155_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/18ae0f02a63adcb0181839aef03a03e887cd3c163c8bd2ed6df8fa4e5c876e0e.sol",safe,SAFE,bccc
+safe_156_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/7ad5d36164f9d60241c5493aacc35afcd274d0a749bdc0cd71f325ecfba892b1.sol",safe,SAFE,bccc
+safe_157_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/0089db221870739b32bf3dcf7abf7fc3916e83676dd045ecb5cf705fcfff7aa3.sol",safe,SAFE,bccc
+safe_158_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/7ad72696c38a79c6d596e67fb95313b0e5c1e9196d263a97c96ef1b7ac2e78c4.sol",safe,SAFE,bccc
+safe_159_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/7ff5f910c1fa7f4d3b52a8eada7656b2a81227307fe7d82f88d6f9c2c9ee76a6.sol",safe,SAFE,bccc
+safe_160_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/18bd2c99e64dc165cc7855d09a71b6937237332372b3e965dbf84c638ae823d6.sol",safe,SAFE,bccc
+safe_161_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/7add62f4b4817c830af9818cae0d4d9c55f249b541b87b1e83bc90a006b28a19.sol",safe,SAFE,bccc
+safe_162_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/7ffa6285a1a07f0abc3eab040dbe6ce355bc0d6e88dc598b3c4d3f3161bd0e88.sol",safe,SAFE,bccc
+safe_163_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/18c80bfb4b24e91038f6f5d0a749758e4e23c947b38959a687f854210b92b6f0.sol",safe,SAFE,bccc
+safe_164_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/0092ec909b6a7e7abdd5888ff9e8365179b8ffc328e5c75c8ccec6799f83a497.sol",safe,SAFE,bccc
+safe_165_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/18cb6475cd5f367aee8e880d7ca20ef587afff290717d8a8e84cc2987f641150.sol",safe,SAFE,bccc
+safe_166_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/7ae9b15d5eaeb6fd057cfea625933f6dffd1271324b9b3cd0670e6170402c610.sol",safe,SAFE,bccc
+safe_167_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/8009ca2b731521589b4038fad12bb271011ddd370f7a97c60e2f65682da6429c.sol",safe,SAFE,bccc
+safe_168_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/18d2b9f157fbeba408cdd3f955bfbe71229f7f392fa8c7bf3f67198dad257db7.sol",safe,SAFE,bccc
+safe_169_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/7aebe5cd9ae63822b8ca3d0b18ef596bfa290e56ece652b01cc638baab083ec8.sol",safe,SAFE,bccc
+safe_170_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/800f5dab866493c718e2ed88f741af1e3d7c6ebee75856049b0cd4fc80991015.sol",safe,SAFE,bccc
+safe_171_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/0051a7e414539122840976c27eed4325099d0cea9cc7c1387ea119b2b84fafe4.sol",safe,SAFE,bccc
+safe_172_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/80165ed082f4e412633efed1402ed4f2fc87fe0605dfe9afd250dc966ce6bbec.sol",safe,SAFE,bccc
+safe_173_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/18d8346c5fe9a6fda4a9143c874cd6d516f272c31e46f3949a9c3f20cb85663e.sol",safe,SAFE,bccc
+safe_174_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/7af434743b08224427bd5b9dc1618216b5155de6347d357e3f2340b5596bd50d.sol",safe,SAFE,bccc
+safe_175_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/801d17b626609b9737c93d61313edf46ef59edd0a4d55b40c883aeb6fe165113.sol",safe,SAFE,bccc
+safe_176_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/18de540ce98dd43178ae0a67e1c656fe527085835ee4daa0668b366330c9e423.sol",safe,SAFE,bccc
+safe_177_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/7afae28c4afb0fbd59a183137f7dbae5a9b2b67645c3e8564f691f8b181194bd.sol",safe,SAFE,bccc
+safe_178_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/00c665924a1eff2cf100932729708ea0d9ccb16edfc5b648a7b61ec9678a083a.sol",safe,SAFE,bccc
+safe_179_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/7afe2f241627db2329ab19351e3a2e7b3875c58c3e1694e1160deaa2483a6ae9.sol",safe,SAFE,bccc
+safe_180_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/802b92197d34bb0d0d808adbda741a4b6fc2dfd9772f883661fde7a66c77438e.sol",safe,SAFE,bccc
+safe_181_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/18f3877a81c9bf7fb1ab77531b81a72d377cbd62095a21268eaf9d99ab820202.sol",safe,SAFE,bccc
+safe_182_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/7b028bb2c97e7fd557dcafbd308ba01a3048ebefb89324149ed302b94c1e2e69.sol",safe,SAFE,bccc
+safe_183_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/802f32caee8bbb7e80a2a71e951f6ac346cd684e4476e18facecd8940fd13846.sol",safe,SAFE,bccc
+safe_184_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/19006f33ac70260cee7ba3583e78cac02fa1d99288539ef096d02f252bf4c79c.sol",safe,SAFE,bccc
+safe_185_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/00d221e36aa8cd729c903a983a0cd423a5607f36393a653305d4f0b118d34795.sol",safe,SAFE,bccc
+safe_186_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/1906a88304d1c9736a483d3205dc0e289cd1c8665881953b7fa38c8a5e0e554b.sol",safe,SAFE,bccc
+safe_187_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/7b0cb21fcf7d579c43a45eaa6d6ab4ceedaaca0685dc4805ed3ab92444424587.sol",safe,SAFE,bccc
+safe_188_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/8049d0e97b481cda527a2f35e44e074a541dd4cd28bbe0afcfea942c1de85072.sol",safe,SAFE,bccc
+safe_189_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/190cbdc299d5b5ffe09a0a14b905128174b596115e68610382171ae8d2eb6c3e.sol",safe,SAFE,bccc
+safe_190_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/7b1731b9a40d20f852004fd1d37d79bd1ea8170f78ce2533566b797bccc15ffb.sol",safe,SAFE,bccc
+safe_191_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/805107cf1e14867fbee98e4fedfdf25733d736eac3019476668d9dec074b3557.sol",safe,SAFE,bccc
+safe_192_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/0083d0cf9736a421c05b39b751914cf9b81ca26ffbfecb47150f275be42b8ea7.sol",safe,SAFE,bccc
+safe_193_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/80546d053cdf847eeb78bda50ee0c9fc6213efdf88fb9995a79014b720eba16d.sol",safe,SAFE,bccc
+safe_194_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/1917c22c426ab6e27e348182989fa111ec4900cf2eb76a53b015229478383f44.sol",safe,SAFE,bccc
+safe_195_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/7b23a3b816845b9d09a27981ffd68d2cc2f88160cf90f5d4d5e1434acb6018b3.sol",safe,SAFE,bccc
+safe_196_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/80579f35d652008211f62187baabf1b188b949ca21b865a3bd37a7ae52e2fa90.sol",safe,SAFE,bccc
+safe_197_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/191b3688f2a95884b742a0939ac9871859f9efe591cd9299f6c3c9a8fa02ba35.sol",safe,SAFE,bccc
+safe_198_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/7b2a0f186a17e9bc3002b30364552163fc9df558eb2f892e16ef0ae951c138f4.sol",safe,SAFE,bccc
+safe_199_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/00f3c3cf69b03abb3636cbfcea35811c4a8a9ee585a900eae2c0564bb580973e.sol",safe,SAFE,bccc
+safe_200_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/7b30a4a032909df83232bd30d55c30346275d7fe3e9af0fb4215db711e51ba6c.sol",safe,SAFE,bccc
+safe_201_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/806f130e534827a5726077f57e47ec0521a1ad703d6b151fbed9121d36107173.sol",safe,SAFE,bccc
+safe_202_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/192c4d5a2df77357eaf1071a8fd1e07655fb12074563a6cb4ebd3518ce0323f2.sol",safe,SAFE,bccc
+safe_203_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/7b40328b55f6153ac216f6441b0a82e1d42d34701c7f57e7bb72a167080da2f4.sol",safe,SAFE,bccc
+safe_204_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/8076a8ffd4475236f48c180eca7ee639edcd2af241e185ab7a84b9f6c3ba03a4.sol",safe,SAFE,bccc
+safe_205_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/19375cd55e09815b69f8861c2a45f4ee824740c67b549f140c959512108125f3.sol",safe,SAFE,bccc
+safe_206_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/00fadf79bb7e7a8e0788daa486c2245ea958eadedc7cb113633266416ee4e64f.sol",safe,SAFE,bccc
+safe_207_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/193f344e76b60ec5b8cb745ba348b36f27dd2941a275d064ce14aacb738a2381.sol",safe,SAFE,bccc
+safe_208_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/7b42fbde18e63f18861f77c89ee17e00ede867b2a1cbcbc31054298625b113e7.sol",safe,SAFE,bccc
+safe_209_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/808839325f69c75dd5ade93d92043aabc221b7eaf7e84aab0a2a4f1d6398b4d5.sol",safe,SAFE,bccc
+safe_210_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/194c545f219764cce9f7636ea833a8900df620bc659ddb34ae6be1fc970519f3.sol",safe,SAFE,bccc
+safe_211_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/7b485955a875d7d2c42cdae95a39785ba1a9caffa842c126b3577b3d78e21d0e.sol",safe,SAFE,bccc
+safe_212_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/80937bfebf616030c162336a595590d184988bca348e30603416296b88a73da0.sol",safe,SAFE,bccc
+safe_213_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/00bbbc05372d17dd230d81d5a544e4d480f618ccc94d393e05fb1685c2393e6b.sol",safe,SAFE,bccc
+safe_214_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/809611e75f593a7148d4e904c0aedcf032d8605f0b02e91662fceb03f4e4ffb1.sol",safe,SAFE,bccc
+safe_215_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/195548005c07b03e306a5f03026e2747a8c1b09e824e7b98b9b1582c2f1ecbcd.sol",safe,SAFE,bccc
+safe_216_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/7b504b82d5120ec55485ec13dba8b5014ccaa88a8a9476ecf0962c864fb92ef8.sol",safe,SAFE,bccc
+safe_217_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/80985b70e235ee3e7d7286108b81e6383b0bb1f3392b01f74878a382e9bf0e2b.sol",safe,SAFE,bccc
+safe_218_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/1959c75bc90a13c8fa008d3f61726d212b1670a281590d035811380991c01c82.sol",safe,SAFE,bccc
+safe_219_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/7b5545b7ec686d7f7070b4ee043d2552d7d4c9fb2321e200c33f2117f26fda93.sol",safe,SAFE,bccc
+safe_220_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/012a8fb69a121f02329e33c38cfc7b7c9190e6c8a9b41f715398fda0bf4fc8a3.sol",safe,SAFE,bccc
+safe_221_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/7b5e7cd4d654a8035d62d02103ada17f7d08249ce0e88b4d913f0528f6b07545.sol",safe,SAFE,bccc
+safe_222_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/80a0ae49dfabb013d3f938b480085c2863d3d74d33093dadfc0987863760e422.sol",safe,SAFE,bccc
+safe_223_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/19676489843525532ff854eb692b1ee9e80a968a53cf40b38a1cf8652507dbd4.sol",safe,SAFE,bccc
+safe_224_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/7b64763903d7a0285780375c310417664a523397ecb9b462eafbcbac172220ba.sol",safe,SAFE,bccc
+safe_225_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/80a6ee5a1de52208abd354e46484abafb2f06dd1449f151088c39789dac6ee8a.sol",safe,SAFE,bccc
+safe_226_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/196f55c9bd092b000356c46ff22edabdbcb2b56968b9697a7a0e80085d70bd75.sol",safe,SAFE,bccc
+safe_227_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/013118248e2e816875abb21533efbbbed7ae9db19e5a1ddefeb34dd3767251ea.sol",safe,SAFE,bccc
+safe_228_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/19716a45b1de332787adaafc2a734de79a5180c3d56370ecd4b8e0a8316c6988.sol",safe,SAFE,bccc
+safe_229_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/7b67a8685ea250b2b86b34cf60cb908c944d8653f32abb14a06d48f9ce6a46b4.sol",safe,SAFE,bccc
+safe_230_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/80af90bea3855cfd308224c54da4c2ebf6d2adbe30456cabdff25cc7eddf0c0a.sol",safe,SAFE,bccc
+safe_231_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/1979535a82f8b45dddc67cc416b1aedeb98e4c41b76b6473ffe039e2df9876f9.sol",safe,SAFE,bccc
+safe_232_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/7b6d45a4719f3591f7add1fddc710bc2c1b06e55b6bb5943a5690ab8bf898638.sol",safe,SAFE,bccc
+safe_233_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/80c752d20e7a70e250b2aab7e60e9035ebc37c7c52b3d5bced3227db9e48525a.sol",safe,SAFE,bccc
+safe_234_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/00e01d3a3856888409151f9a7c0aca33fa1c08cea36d32c86f8dde4aa8d5c72c.sol",safe,SAFE,bccc
+safe_235_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/80cb5b3225d24f46a64675581fe47b4077e41ebd2ff6607bad7082fe32efdd2b.sol",safe,SAFE,bccc
+safe_236_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/1981d8976f7c30eb45b1d85e296a4e16c48ae079826c10e6336a01bbfcb5ee4e.sol",safe,SAFE,bccc
+safe_237_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/7b7e67b2634e02717ab9214232b2f54651f9591860cd2315b389bed18ea2db40.sol",safe,SAFE,bccc
+safe_238_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/80d2d8093f97b0cc9ca4bc519d29cac38e103eb757f4d83478a8da239405f8ea.sol",safe,SAFE,bccc
+safe_239_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/1985c7e8dbf8b95fa8252c676b986642a5f19bde3b29c0ca5a43a7db308a05f0.sol",safe,SAFE,bccc
+safe_240_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/7b86e7f52c6fc44a458fab675c9bf998e6e2d9fde20f1ded302b2f5d029f74bc.sol",safe,SAFE,bccc
+safe_241_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/015225c845b2a09af7d68cb73c5f48d4d8e89c5382cb4ad999182fbf490d208d.sol",safe,SAFE,bccc
+safe_242_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/7b9255c9cea2618f07ba542899f907afc418449e9107d0e3fb8d20acbbe552d0.sol",safe,SAFE,bccc
+safe_243_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/80d91ff476fcf56e5a1115276b111c2963c461aad9e306ce068e3e3ddcd97425.sol",safe,SAFE,bccc
+safe_244_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/198a001a6696c79024e40cc182c7ba3cd6dade5dedde65baf4c1599d2cc9b19a.sol",safe,SAFE,bccc
+safe_245_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/7b955aa68334542341bf83492dc2f61ef188e58b6fe76ea83e5f84960cb98a3b.sol",safe,SAFE,bccc
+safe_246_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/80e6ebe04ee4e6477d0dc1509f591c56d9a86c3994ea0fd8438f3a21fae552c8.sol",safe,SAFE,bccc
+safe_247_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/199435bc61961db27450b9dfbf52ca5793f3ebd913bfce0982a6e0845b33e9ee.sol",safe,SAFE,bccc
+safe_248_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/01622283b5615ea7c89cb88e85f6d456a7645b25cfbf0ad953e17f6b395bba5e.sol",safe,SAFE,bccc
+safe_249_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/19978f2906d8f92c4e74b987be2ceeea279637969ff84d0a0b348e6cc3c3642a.sol",safe,SAFE,bccc
+safe_250_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/7ba0ec954a3b46bfa0166f2ddd6017c80357d6ed8c32604eeb9e452fa51fe332.sol",safe,SAFE,bccc
+safe_251_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/80e9fcaf49741c923df76843778e6370bfb444a8d071e737c2a1df1054301e8a.sol",safe,SAFE,bccc
+safe_252_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/199faeb5096ecde88b1eb48353b91447ce9926a97e8b03309dac260b565adb3a.sol",safe,SAFE,bccc
+safe_253_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/7ba6bff075ced52f5fbbf7fd0f96088c042151c48ed25fd4f3d6544d40db1446.sol",safe,SAFE,bccc
+safe_254_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/80f7ae4d9ba7ecc5334ebc6c9bc71970d68dde258a25fdd01156b875c05c66c5.sol",safe,SAFE,bccc
+safe_255_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/011864e8340bf239dd6e9c781e453b8677bdbccc56abdfda227af5ab10e19c00.sol",safe,SAFE,bccc
+safe_256_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/80fde4431836561fa3539bddef4e602e2c8e0eea05ea55771a0c397f7a5cd793.sol",safe,SAFE,bccc
+safe_257_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/19aceaf61bc0b4b9134f5e2f59fa6c2be5eaf05d89d4e7c01118b2017723550c.sol",safe,SAFE,bccc
+safe_258_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/7bb2fefc6afd984093475d9889b475c5a5456a2a13eb5328ca55b4a25af92a62.sol",safe,SAFE,bccc
+safe_259_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/8104ed1541c15ec1a6f895d40099166ecbf4da5c893dcdad7fc4e5fcd9874c9d.sol",safe,SAFE,bccc
+safe_260_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/19b2347dbb3b963b85ee1206b523c3fd7ecf207a1b3822dff59320dec70b4e4b.sol",safe,SAFE,bccc
+safe_261_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/7bbbc49c93f02dcf6374c74d1f12e9f9bca85235d681f6463c578f9ed622dcb6.sol",safe,SAFE,bccc
+safe_262_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/0186bf6de5d7f85715dcf5400a38874bd157b7a4aac0a55b426933f2bba8b692.sol",safe,SAFE,bccc
+safe_263_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/7bbd21675a11418072ca3622fbbe59e067921feac16991c887b9ba2f9feea640.sol",safe,SAFE,bccc
+safe_264_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/810f481474a51bf72fde40a0444dc0900fa645768b61e035915a7e9f89b75cd5.sol",safe,SAFE,bccc
+safe_265_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/19cb8b3358e9bcdde858243048fe45d2e3d4262432f32e0b139bccabce572bd0.sol",safe,SAFE,bccc
+safe_266_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/7bbfe47b93098df039c5a976c713b602c903c38e48794b14f483acd00d4c900e.sol",safe,SAFE,bccc
+safe_267_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/8111f232f15987aacb536cc8e717d239c4b51028db2748eabf5cd3ac4620ad80.sol",safe,SAFE,bccc
+safe_268_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/19d17f7d24d48c3607f7b8d9323b15d9e78074a8c82860c83aa680ddfa4d05f6.sol",safe,SAFE,bccc
+safe_269_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/019d0fe84ca79e08b3e48a6494e4dbbd414933d5c7abafdf13b91e4bfeaf7a6c.sol",safe,SAFE,bccc
+safe_270_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/19d458cd87c11dc8298bd375656b55d9994bcb760a1b80643bc07d149dff3c7f.sol",safe,SAFE,bccc
+safe_271_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/7bcce4478d258666266786cae7913cb445af7d24b0d4e1b942217d79834c7382.sol",safe,SAFE,bccc
+safe_272_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/811728d3dc0fdbd43704220d56c12f1a0f9c88cb99aa41427205f96a4097a595.sol",safe,SAFE,bccc
+safe_273_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/19debc6242b4aece35a90b78d399c2a2b28191f8745c59851334de610976954d.sol",safe,SAFE,bccc
+safe_274_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/7bcfdfff4845d51da64a20252073d6bbcac022b9b4b67600d2b2a1dbac994ca5.sol",safe,SAFE,bccc
+safe_275_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/811fe9d6364ebc1e6265041c84f63caa950dd99f5eeef41e0d6d9b1f5178a53c.sol",safe,SAFE,bccc
+safe_276_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/013f2705a33f6132f249926ebfa24e7e50f12a674ae6bb29afe88c92d11c6046.sol",safe,SAFE,bccc
+safe_277_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/81243a90a7349fecdece5f2c7b1839b38bb6092c06dbf04fa79e97bcf418de38.sol",safe,SAFE,bccc
+safe_278_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/19eceba27e9f2efccaf2f4fb576bb735d475f7d1cc2bbde720f03081a1a07962.sol",safe,SAFE,bccc
+safe_279_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/7bdd204734394d43b7a34688bacba9335dc68ab7a5454f56bb5b46fa3f414c33.sol",safe,SAFE,bccc
+safe_280_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/812e9cde240ce9b9f0959e112c185ef77c469ffbfd9679357ffe5568c3f9bd3b.sol",safe,SAFE,bccc
+safe_281_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/19f4bae790ce1775477338d50322ef8501815d92fda131389eede46278476b28.sol",safe,SAFE,bccc
+safe_282_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/7be50300959ae068cc93d695d191e04b5e3ef183a895413f3dac8baf73da41db.sol",safe,SAFE,bccc
+safe_283_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/01c2258bf0f526e1df763790032e7ba30de056fe74beb63a3be4819502639594.sol",safe,SAFE,bccc
+safe_284_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/7be6d93cc09419c1ae2fa60dbc5d4493b69c9fec6084d7ff49498c65d9973735.sol",safe,SAFE,bccc
+safe_285_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/8136164a16b7990799b2a638c6b713a8ff357b3890b33f7967f424698ef3e2bf.sol",safe,SAFE,bccc
+safe_286_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/19fe1dfe6a5add2ca2d067bdaecba89ef9a61369ddd773367c876e933ed0e9ef.sol",safe,SAFE,bccc
+safe_287_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/7bf4489a109706027d3362edf9e9d2fbebe0ba04014e26d1dd5bfd835539b0e9.sol",safe,SAFE,bccc
+safe_288_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/81417cea8da060385ac65832f1692a7d27344afe7584c7881ed0500e26cef8d2.sol",safe,SAFE,bccc
+safe_289_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/1a0b9dee8992e37fe1471caee9396fdeb3e7af462bf5a98a1e203409bbf00ee2.sol",safe,SAFE,bccc
+safe_290_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/01cf6199f6c2396b938519ca7dc156c2a1f9ea564118e062cd4203d3ac7bec22.sol",safe,SAFE,bccc
+safe_291_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/1a0f6fdd402d7c3ac535e9e2127a4236fcb4793346996c3a14df05c494d77c52.sol",safe,SAFE,bccc
+safe_292_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/7bfd3a8ba4d907225dbcafaf582992e96a5c2ddd41bb0f5a0e99d8255cc12d29.sol",safe,SAFE,bccc
+safe_293_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/8156e0abc89c6e5968db95be9f3e8b80e78c99ed251f9cf663a612dcda9d1ac5.sol",safe,SAFE,bccc
+safe_294_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/1a153224ceb6ed3ca41319a2e8a7e84c9a32e05d0de209f7781998afa08e650a.sol",safe,SAFE,bccc
+safe_295_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/7c03386070fcd7fa0385ad2252b526ac1eba859508307e153cbb9d9c1e33fdd5.sol",safe,SAFE,bccc
+safe_296_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/815dfd207f4b2c011137dba883b6f0521c1feabbf3cfbbc9a96748440349aa12.sol",safe,SAFE,bccc
+safe_297_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/0176b1f335e6a278d7fe7af64f1840ba779317c252d374b92a67d89f841bc9b1.sol",safe,SAFE,bccc
+safe_298_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/815fc8ff65d8f4c6fe69aefc89634fd1fc01f86f9bd59d25cf24174b83ddc1f2.sol",safe,SAFE,bccc
+safe_299_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/1a25e670596f8362916feaa09f2a1ed126c7a84449d6ad90e33942aa723a7b4c.sol",safe,SAFE,bccc
+safe_300_SAFE,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/NonVulnerable/7c116412fee104e6c0eb7f12af226174cd1dbfd7c926237b1fa95cb65b12be8e.sol",safe,SAFE,bccc
+vuln_301_SC01,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/WeakAccessMod/cffa30ca0e1496729a77c27946c749674ab4c3f34deb4bc2eb30084cc266722d.sol",vuln,SC01,bccc_repl
+vuln_302_SC06,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/CallToUnknown/4519de0a1a5e5550e1191b8671336dd2ff172b4f3459b2c400ba56e0e95584d3.sol",vuln,SC06,bccc_repl
+vuln_303_SC06,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/CallToUnknown/06ad1dd7775549c700dd2cf5b2f1b8dd25da3a5899d72a274c07da4bd0ecf5ee.sol",vuln,SC06,bccc_repl
+vuln_304_SC06,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/CallToUnknown/452bffb33bc7e0cc820c292d3142a740b20381fc21cf4f90bcdbb265b9474acc.sol",vuln,SC06,bccc_repl
+vuln_305_SC06,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/CallToUnknown/28c37c45b2900bd05b84888e2855090d6adcaa11f6d314308224407476810904.sol",vuln,SC06,bccc_repl
+vuln_306_SC06,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/CallToUnknown/45407580e8ec969a12ea72b3c5a20d8f56edbf1cfd2569b9f367469e0f1fb2b1.sol",vuln,SC06,bccc_repl
+vuln_307_SC08,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/Reentrancy/cb64c06701d27dede47a3c9e2803b08a1b4a6a24af8c06d264e9bea73a3e50fb.sol",vuln,SC08,bccc_repl
+vuln_308_SC08,"/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes/Reentrancy/cb6c44460adafb6588f8a0e7e4611d36e760feb63c95e82638385457b05c0198.sol",vuln,SC08,bccc_repl

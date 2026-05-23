@@ -1,0 +1,117 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_143_SC09.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
+
+Detector: weak-prng
+LottoPI.getRnd(uint256,uint256,uint256) (contracts/vulnerable/vuln_143_SC09.sol#458-463) uses a weak PRNG: "rndSeed = uint256(keccak256()(abi.encodePacked(msg.sender,block.number,block.timestamp,block.difficulty,block.gaslimit,_seed))) % _max + _min (contracts/vulnerable/vuln_143_SC09.sol#460)" 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#weak-PRNG
+
+Detector: tautology
+LottoPI.stats() (contracts/vulnerable/vuln_143_SC09.sol#434-456) contains a tautology or contradiction:
+	- avblBalance < 0 (contracts/vulnerable/vuln_143_SC09.sol#451)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#tautology-or-contradiction
+
+Detector: uninitialized-local
+LottoPI.constructor().L3 (contracts/vulnerable/vuln_143_SC09.sol#158) is a local variable never initialized
+LottoPI.constructor().L2 (contracts/vulnerable/vuln_143_SC09.sol#152) is a local variable never initialized
+LottoPI.constructor().L1 (contracts/vulnerable/vuln_143_SC09.sol#147) is a local variable never initialized
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#uninitialized-local-variables
+
+Detector: events-access
+Ownable.transferOwnership(address) (contracts/vulnerable/vuln_143_SC09.sol#28-32) should emit an event for: 
+	- owner = newOwner (contracts/vulnerable/vuln_143_SC09.sol#31) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+
+Detector: missing-zero-check
+LottoPI.withdrawTo(address,uint256)._addr (contracts/vulnerable/vuln_143_SC09.sol#416) lacks a zero-check on :
+		- address(_addr).transfer(_val) (contracts/vulnerable/vuln_143_SC09.sol#417)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+
+Detector: variable-scope
+Variable 'LottoPI.stats().avblBalance (contracts/vulnerable/vuln_143_SC09.sol#450)' in LottoPI.stats() (contracts/vulnerable/vuln_143_SC09.sol#434-456) potentially used before declaration: avblBalance = 0 (contracts/vulnerable/vuln_143_SC09.sol#442)
+Variable 'LottoPI.stats().avblBalance (contracts/vulnerable/vuln_143_SC09.sol#450)' in LottoPI.stats() (contracts/vulnerable/vuln_143_SC09.sol#434-456) potentially used before declaration: (avblBalance,ttlInvestAmount,ttlInvestCount,ttlPlayers,balDailyLotto,ttlLottoAmount,dailyLottoPlayers.length,totalDivided) (contracts/vulnerable/vuln_143_SC09.sol#455)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#pre-declaration-usage-of-local-variables
+
+Detector: timestamp
+LottoPI.invest(uint256) (contracts/vulnerable/vuln_143_SC09.sol#166-244) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool,string)(now > startTime,Game is not start) (contracts/vulnerable/vuln_143_SC09.sol#168)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+
+Detector: cyclomatic-complexity
+LottoPI.dailyLottery() (contracts/vulnerable/vuln_143_SC09.sol#276-359) has a high cyclomatic complexity (13).
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#cyclomatic-complexity
+
+Detector: solc-version
+Version constraint ^0.4.24 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ABIEncoderV2PackedStorage_0.4.x
+	- ExpExponentCleanup
+	- EventStructWrongData.
+It is used by:
+	- ^0.4.24 (contracts/vulnerable/vuln_143_SC09.sol#1)
+solc-0.4.24 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Event LottoPIEvents.investEvt(address,uint256,uint256) (contracts/vulnerable/vuln_143_SC09.sol#51-55) is not in CapWords
+Event LottoPIEvents.dividedEvt(address,uint256) (contracts/vulnerable/vuln_143_SC09.sol#57-60) is not in CapWords
+Event LottoPIEvents.referralEvt(address,uint256,uint256) (contracts/vulnerable/vuln_143_SC09.sol#61-65) is not in CapWords
+Event LottoPIEvents.dailyLottoEvt(address,uint256) (contracts/vulnerable/vuln_143_SC09.sol#66-69) is not in CapWords
+Struct LottoPI.invRate (contracts/vulnerable/vuln_143_SC09.sol#121-124) is not in CapWords
+Parameter LottoPI.setGameStatus(bool)._opened (contracts/vulnerable/vuln_143_SC09.sol#403) is not in mixedCase
+Parameter LottoPI.withdrawTo(address,uint256)._addr (contracts/vulnerable/vuln_143_SC09.sol#416) is not in mixedCase
+Parameter LottoPI.withdrawTo(address,uint256)._val (contracts/vulnerable/vuln_143_SC09.sol#416) is not in mixedCase
+Parameter LottoPI.getRnd(uint256,uint256,uint256)._seed (contracts/vulnerable/vuln_143_SC09.sol#458) is not in mixedCase
+Parameter LottoPI.getRnd(uint256,uint256,uint256)._min (contracts/vulnerable/vuln_143_SC09.sol#458) is not in mixedCase
+Parameter LottoPI.getRnd(uint256,uint256,uint256)._max (contracts/vulnerable/vuln_143_SC09.sol#458) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: reentrancy-unlimited-gas
+Reentrancy in LottoPI.buyTicket(uint256) (contracts/vulnerable/vuln_143_SC09.sol#246-258):
+	External calls:
+	- w1.transfer(msg.value) (contracts/vulnerable/vuln_143_SC09.sol#251)
+	State variables written after the call(s):
+	- dailyLottoPlayers.push(msg.sender) (contracts/vulnerable/vuln_143_SC09.sol#253)
+	- ttlTicketSold += num (contracts/vulnerable/vuln_143_SC09.sol#256)
+Reentrancy in LottoPI.invest(uint256) (contracts/vulnerable/vuln_143_SC09.sol#166-244):
+	External calls:
+	- w1.transfer((msg.value * dividedT) / 100000000000000000000) (contracts/vulnerable/vuln_143_SC09.sol#230)
+	State variables written after the call(s):
+	- balDailyLotto += (msg.value * 15000000000000000000) / 100000000000000000000 (contracts/vulnerable/vuln_143_SC09.sol#233)
+	- invtByOrder.push(msg.sender) (contracts/vulnerable/vuln_143_SC09.sol#239)
+	Event emitted after the call(s):
+	- investEvt(msg.sender,refCode,msg.value) (contracts/vulnerable/vuln_143_SC09.sol#242)
+Reentrancy in LottoPI.withdraw() (contracts/vulnerable/vuln_143_SC09.sol#407-414):
+	External calls:
+	- w1.transfer(1000000000000000) (contracts/vulnerable/vuln_143_SC09.sol#410)
+	- msg.sender.transfer(dsInvtBalances[roundId][msg.sender] - 1000000000000000) (contracts/vulnerable/vuln_143_SC09.sol#411)
+	State variables written after the call(s):
+	- dsInvtBalances[roundId][msg.sender] = 0 (contracts/vulnerable/vuln_143_SC09.sol#413)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-5
+
+Detector: cache-array-length
+Loop condition i < dailyLottoPlayers.length (contracts/vulnerable/vuln_143_SC09.sol#425) should use cached array length instead of referencing `length` member of the storage array.
+ Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#cache-array-length
+
+Detector: constable-states
+LottoPI.dividedT (contracts/vulnerable/vuln_143_SC09.sol#114) should be constant 
+LottoPI.level1 (contracts/vulnerable/vuln_143_SC09.sol#117) should be constant 
+LottoPI.level2 (contracts/vulnerable/vuln_143_SC09.sol#118) should be constant 
+LottoPI.level3 (contracts/vulnerable/vuln_143_SC09.sol#119) should be constant 
+LottoPI.roundInterval (contracts/vulnerable/vuln_143_SC09.sol#102) should be constant 
+LottoPI.ticketPrice (contracts/vulnerable/vuln_143_SC09.sol#133) should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_143_SC09.sol analyzed (4 contracts with 101 detectors), 34 result(s) found

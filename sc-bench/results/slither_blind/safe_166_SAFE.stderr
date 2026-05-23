@@ -1,0 +1,175 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_166_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_166_SAFE.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_166_SAFE.sol:59:1: Warning: Defining constructors as functions with the same name as the contract is deprecated. Use "constructor(...) { ... }" instead.
+function ShinySquirrels() {
+^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_166_SAFE.sol:465:9: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+        throw;
+        ^---^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_166_SAFE.sol:478:29: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+    if(msg.sender != owner) throw;
+                            ^---^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_166_SAFE.sol:479:51: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+    if(newMultiplier < 80 || newMultiplier > 120) throw;
+                                                  ^---^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_166_SAFE.sol:480:52: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+    if(maxMultiplier < 125 || maxMultiplier > 200) throw;
+                                                   ^---^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_166_SAFE.sol:481:35: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+    if(newFee < 0 || newFee > 15) throw;
+                                  ^---^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_166_SAFE.sol:482:55: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+    if(minDeposit < 1 finney || minDeposit > 1 ether) throw;
+                                                      ^---^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_166_SAFE.sol:483:56: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+    if(maxDeposit < 1 finney || maxDeposit > 25 ether) throw;
+                                                       ^---^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_166_SAFE.sol:1:1: Warning: Source file does not specify required compiler version!Consider adding "pragma solidity ^0.4.24;"
+contract ShinySquirrels {
+^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_166_SAFE.sol:113:5: Warning: Variable is declared as a storage pointer. Use an explicit "storage" keyword to silence this warning.
+    PlayerEntry player = players[theLine[index]];
+    ^----------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_166_SAFE.sol:137:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        msg.sender.send(deposit);
+        ^----------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_166_SAFE.sol:408:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        players[theLine[currentPosition]].addr.send(payout);
+        ^-------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_166_SAFE.sol:472:5: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+    owner.send(feeBalance);
+    ^--------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_166_SAFE.sol:59:1: Warning: No visibility specified. Defaulting to "public". 
+function ShinySquirrels() {
+^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_166_SAFE.sol:63:1: Warning: No visibility specified. Defaulting to "public". 
+function totals() constant returns(uint playerCount, uint currentPlaceInLine, uint playersWaiting, uint totalDepositsInFinneys, uint totalPaidOutInFinneys, uint squirrelFriends, uint shinyThingsFound, uint sprocketsCollected, uint starsWon, uint heartsEarned, uint balanceInFinneys, uint feeBalanceInFinneys) {
+^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_166_SAFE.sol:78:1: Warning: No visibility specified. Defaulting to "public". 
+function settings() constant returns(uint minimumDepositInFinneys, uint maximumDepositInFinneys) {
+^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_166_SAFE.sol:83:1: Warning: No visibility specified. Defaulting to "public". 
+function playerByAddress(address addr) constant returns(uint entries, uint depositedInFinney, uint paidOutInFinney, uint skippedAhead, uint squirrels, uint shinyThings, uint sprockets, uint stars, uint hearts) {
+^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_166_SAFE.sol:112:1: Warning: No visibility specified. Defaulting to "public". 
+function lineOfPlayers(uint index) constant returns (address addr, uint orderJoined, uint depositInFinney, uint payoutInFinney, uint multiplierPercent, uint paid, uint skippedAhead, uint squirrels, uint shinyThings, uint sprockets, uint stars, uint hearts) {
+^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_166_SAFE.sol:128:1: Warning: No visibility specified. Defaulting to "public". 
+function () {
+^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_166_SAFE.sol:132:1: Warning: No visibility specified. Defaulting to "public". 
+function play() {
+^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_166_SAFE.sol:133:20: Warning: "msg.value" used in non-payable function. Do you want to add the "payable" modifier to this function?
+    uint deposit = msg.value; // in wei
+                   ^-------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_166_SAFE.sol:454:1: Warning: No visibility specified. Defaulting to "public". 
+function DynamicPyramid() {
+^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_166_SAFE.sol:463:1: Warning: No visibility specified. Defaulting to "public". 
+function collectFees() {
+^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_166_SAFE.sol:476:1: Warning: No visibility specified. Defaulting to "public". 
+function updateSettings(uint newMultiplier, uint newMaxMultiplier, uint newFee, uint newMinDeposit, uint newMaxDeposit, bool collect) {
+^ (Relevant source part starts here and spans across multiple lines).
+
+
+Detector: divide-before-multiply
+ShinySquirrels.lineOfPlayers(uint256) (contracts/safe/safe_166_SAFE.sol#112-126) performs a multiplication on the result of a division:
+	- depositInFinney = player.deposit / 1000000000000000 (contracts/safe/safe_166_SAFE.sol#116)
+	- payoutInFinney = depositInFinney * player.multiplier / 100 (contracts/safe/safe_166_SAFE.sol#117)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#divide-before-multiply
+
+Detector: tautology
+ShinySquirrels.updateSettings(uint256,uint256,uint256,uint256,uint256,bool) (contracts/safe/safe_166_SAFE.sol#476-490) contains a tautology or contradiction:
+	- newFee < 0 || newFee > 15 (contracts/safe/safe_166_SAFE.sol#481)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#tautology-or-contradiction
+
+Detector: unchecked-send
+ShinySquirrels.play() (contracts/safe/safe_166_SAFE.sol#132-421) ignores return value by msg.sender.send(deposit) (contracts/safe/safe_166_SAFE.sol#137)
+ShinySquirrels.play() (contracts/safe/safe_166_SAFE.sol#132-421) ignores return value by players[theLine[currentPosition]].addr.send(payout) (contracts/safe/safe_166_SAFE.sol#408)
+ShinySquirrels.collectFees() (contracts/safe/safe_166_SAFE.sol#463-474) ignores return value by owner.send(feeBalance) (contracts/safe/safe_166_SAFE.sol#472)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unchecked-send
+
+Detector: events-maths
+ShinySquirrels.updateSettings(uint256,uint256,uint256,uint256,uint256,bool) (contracts/safe/safe_166_SAFE.sol#476-490) should emit an event for: 
+	- baseMultiplier = newMultiplier (contracts/safe/safe_166_SAFE.sol#485) 
+	- maxMultiplier = newMaxMultiplier (contracts/safe/safe_166_SAFE.sol#486) 
+	- baseFee = newFee (contracts/safe/safe_166_SAFE.sol#487) 
+	- minDeposit = newMinDeposit (contracts/safe/safe_166_SAFE.sol#488) 
+	- maxDeposit = newMaxDeposit (contracts/safe/safe_166_SAFE.sol#489) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-arithmetic
+
+Detector: calls-loop
+ShinySquirrels.play() (contracts/safe/safe_166_SAFE.sol#132-421) has external calls inside a loop: players[theLine[currentPosition]].addr.send(payout) (contracts/safe/safe_166_SAFE.sol#408)
+	Calls stack containing the loop:
+		ShinySquirrels.fallback()
+ShinySquirrels.play() (contracts/safe/safe_166_SAFE.sol#132-421) has external calls inside a loop: players[theLine[currentPosition]].addr.send(payout) (contracts/safe/safe_166_SAFE.sol#408)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation/#calls-inside-a-loop
+
+Detector: costly-loop
+ShinySquirrels.play() (contracts/safe/safe_166_SAFE.sol#132-421) has costly operations inside a loop:
+	- balance -= payout (contracts/safe/safe_166_SAFE.sol#413)
+ShinySquirrels.play() (contracts/safe/safe_166_SAFE.sol#132-421) has costly operations inside a loop:
+	- totalPaid += payout (contracts/safe/safe_166_SAFE.sol#414)
+ShinySquirrels.play() (contracts/safe/safe_166_SAFE.sol#132-421) has costly operations inside a loop:
+	- currentPosition ++ (contracts/safe/safe_166_SAFE.sol#417)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#costly-operations-inside-a-loop
+
+Detector: cyclomatic-complexity
+ShinySquirrels.play() (contracts/safe/safe_166_SAFE.sol#132-421) has a high cyclomatic complexity (44).
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#cyclomatic-complexity
+
+Detector: deprecated-standards
+Deprecated standard detected THROW (contracts/safe/safe_166_SAFE.sol#465):
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected THROW (contracts/safe/safe_166_SAFE.sol#478):
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected THROW (contracts/safe/safe_166_SAFE.sol#479):
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected THROW (contracts/safe/safe_166_SAFE.sol#480):
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected THROW (contracts/safe/safe_166_SAFE.sol#481):
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected THROW (contracts/safe/safe_166_SAFE.sol#482):
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected THROW (contracts/safe/safe_166_SAFE.sol#483):
+	- Usage of "throw" should be replaced with "revert()"
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#deprecated-standards
+
+Detector: solc-version
+solc-0.4.24 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Function ShinySquirrels.DynamicPyramid() (contracts/safe/safe_166_SAFE.sol#454-461) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: reentrancy-unlimited-gas
+Reentrancy in ShinySquirrels.collectFees() (contracts/safe/safe_166_SAFE.sol#463-474):
+	External calls:
+	- owner.send(feeBalance) (contracts/safe/safe_166_SAFE.sol#472)
+	State variables written after the call(s):
+	- feeBalance = 0 (contracts/safe/safe_166_SAFE.sol#473)
+Reentrancy in ShinySquirrels.play() (contracts/safe/safe_166_SAFE.sol#132-421):
+	External calls:
+	- players[theLine[currentPosition]].addr.send(payout) (contracts/safe/safe_166_SAFE.sol#408)
+	State variables written after the call(s):
+	- balance -= payout (contracts/safe/safe_166_SAFE.sol#413)
+	- currentPosition ++ (contracts/safe/safe_166_SAFE.sol#417)
+	- playerStats[players[theLine[currentPosition]].addr].paid += payout (contracts/safe/safe_166_SAFE.sol#412)
+	- players[theLine[currentPosition]].paid += payout (contracts/safe/safe_166_SAFE.sol#410)
+	- totalPaid += payout (contracts/safe/safe_166_SAFE.sol#414)
+Reentrancy in ShinySquirrels.updateSettings(uint256,uint256,uint256,uint256,uint256,bool) (contracts/safe/safe_166_SAFE.sol#476-490):
+	External calls:
+	- collectFees() (contracts/safe/safe_166_SAFE.sol#484)
+		- owner.send(feeBalance) (contracts/safe/safe_166_SAFE.sol#472)
+	State variables written after the call(s):
+	- baseFee = newFee (contracts/safe/safe_166_SAFE.sol#487)
+	- baseMultiplier = newMultiplier (contracts/safe/safe_166_SAFE.sol#485)
+	- maxDeposit = newMaxDeposit (contracts/safe/safe_166_SAFE.sol#489)
+	- maxMultiplier = newMaxMultiplier (contracts/safe/safe_166_SAFE.sol#486)
+	- minDeposit = newMinDeposit (contracts/safe/safe_166_SAFE.sol#488)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-5
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_166_SAFE.sol analyzed (1 contracts with 101 detectors), 24 result(s) found

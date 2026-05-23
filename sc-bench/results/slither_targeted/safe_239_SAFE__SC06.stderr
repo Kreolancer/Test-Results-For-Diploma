@@ -1,0 +1,26 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_239_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_239_SAFE.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_239_SAFE.sol:10:5: Warning: No visibility specified. Defaulting to "public".
+    function Set(address dataBase, uint256 limit)
+    ^
+Spanning multiple lines.
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_239_SAFE.sol:17:5: Warning: No visibility specified. Defaulting to "public".
+    function()payable{}
+    ^-----------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_239_SAFE.sol:19:5: Warning: No visibility specified. Defaulting to "public".
+    function transfer(address adr)
+    ^
+Spanning multiple lines.
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_239_SAFE.sol:24:42: Warning: "sha3" has been deprecated in favour of "keccak256"
+            DataBase.delegatecall(bytes4(sha3("AddToDB(address)")),msg.sender);
+                                         ^----------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_239_SAFE.sol:24:13: Warning: Return value of low-level calls not used.
+            DataBase.delegatecall(bytes4(sha3("AddToDB(address)")),msg.sender);
+            ^----------------------------------------------------------------^
+
+
+Detector: unchecked-lowlevel
+Router.transfer(address) (contracts/safe/safe_239_SAFE.sol#19-27) ignores return value by DataBase.delegatecall(bytes4(sha3()(AddToDB(address))),msg.sender) (contracts/safe/safe_239_SAFE.sol#24)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unchecked-low-level-calls
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_239_SAFE.sol analyzed (1 contracts with 5 detectors), 1 result(s) found

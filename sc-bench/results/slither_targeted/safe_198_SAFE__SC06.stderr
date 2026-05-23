@@ -1,0 +1,16 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_198_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_198_SAFE.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_198_SAFE.sol:1169:9: Warning: Return value of low-level calls not used.
+        flushDivs.call.value(_POOH)(bytes4(keccak256("donate()")));  
+        ^--------------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_198_SAFE.sol:1279:13: Warning: Return value of low-level calls not used.
+            flushDivs.call.value(_POOH)(bytes4(keccak256("donate()")));
+            ^--------------------------------------------------------^
+
+
+Detector: unchecked-lowlevel
+POOHMO.endRound(POOHMODatasets.EventReturns) (contracts/safe/safe_198_SAFE.sol#1131-1193) ignores return value by flushDivs.call.value(_POOH)(bytes4(keccak256()(donate()))) (contracts/safe/safe_198_SAFE.sol#1169)
+POOHMO.distributeExternal(uint256,uint256,uint256,uint256,uint256,POOHMODatasets.EventReturns) (contracts/safe/safe_198_SAFE.sol#1245-1288) ignores return value by flushDivs.call.value(_POOH)(bytes4(keccak256()(donate()))) (contracts/safe/safe_198_SAFE.sol#1279)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unchecked-low-level-calls
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_198_SAFE.sol analyzed (7 contracts with 5 detectors), 2 result(s) found

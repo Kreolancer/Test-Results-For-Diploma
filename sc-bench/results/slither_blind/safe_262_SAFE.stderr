@@ -1,0 +1,59 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_262_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+
+Detector: erc20-interface
+MyToken (contracts/safe/safe_262_SAFE.sol#5-97) has incorrect ERC20 function interface:MyToken.transfer(address,uint256) (contracts/safe/safe_262_SAFE.sol#38-45)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-erc20-interface
+
+Detector: solc-version
+Version constraint ^0.4.11 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- NestedArrayFunctionCallDecoder
+	- ZeroFunctionSelector
+	- DelegateCallReturnValue
+	- ECRecoverMalformedInput
+	- SkipEmptyStringLiteral.
+It is used by:
+	- ^0.4.11 (contracts/safe/safe_262_SAFE.sol#1)
+solc-0.4.11 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Contract tokenRecipient (contracts/safe/safe_262_SAFE.sol#3) is not in CapWords
+Parameter MyToken.transfer(address,uint256)._to (contracts/safe/safe_262_SAFE.sol#38) is not in mixedCase
+Parameter MyToken.transfer(address,uint256)._value (contracts/safe/safe_262_SAFE.sol#38) is not in mixedCase
+Parameter MyToken.approve(address,uint256)._spender (contracts/safe/safe_262_SAFE.sol#48) is not in mixedCase
+Parameter MyToken.approve(address,uint256)._value (contracts/safe/safe_262_SAFE.sol#48) is not in mixedCase
+Parameter MyToken.approveAndCall(address,uint256,bytes)._spender (contracts/safe/safe_262_SAFE.sol#55) is not in mixedCase
+Parameter MyToken.approveAndCall(address,uint256,bytes)._value (contracts/safe/safe_262_SAFE.sol#55) is not in mixedCase
+Parameter MyToken.approveAndCall(address,uint256,bytes)._extraData (contracts/safe/safe_262_SAFE.sol#55) is not in mixedCase
+Parameter MyToken.transferFrom(address,address,uint256)._from (contracts/safe/safe_262_SAFE.sol#65) is not in mixedCase
+Parameter MyToken.transferFrom(address,address,uint256)._to (contracts/safe/safe_262_SAFE.sol#65) is not in mixedCase
+Parameter MyToken.transferFrom(address,address,uint256)._value (contracts/safe/safe_262_SAFE.sol#65) is not in mixedCase
+Parameter MyToken.burn(uint256)._value (contracts/safe/safe_262_SAFE.sol#77) is not in mixedCase
+Parameter MyToken.burnFrom(address,uint256)._from (contracts/safe/safe_262_SAFE.sol#85) is not in mixedCase
+Parameter MyToken.burnFrom(address,uint256)._value (contracts/safe/safe_262_SAFE.sol#85) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: constable-states
+MyToken.standard (contracts/safe/safe_262_SAFE.sol#7) should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+
+Detector: external-function
+receiveApproval(address,uint256,address,bytes) should be declared external:
+	- tokenRecipient.receiveApproval(address,uint256,address,bytes) (contracts/safe/safe_262_SAFE.sol#3)
+approveAndCall(address,uint256,bytes) should be declared external:
+	- MyToken.approveAndCall(address,uint256,bytes) (contracts/safe/safe_262_SAFE.sol#55-62)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#public-function-that-could-be-declared-external
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_262_SAFE.sol analyzed (2 contracts with 101 detectors), 20 result(s) found

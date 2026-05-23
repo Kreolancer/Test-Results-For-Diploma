@@ -1,0 +1,104 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_282_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+
+Detector: reentrancy-benign
+Reentrancy in SmartToken.transferData(address,uint256,bytes) (contracts/safe/safe_282_SAFE.sol#310-317):
+	External calls:
+	- require(bool)(_to.call(_data)) (contracts/safe/safe_282_SAFE.sol#313)
+	State variables written after the call(s):
+	- super.transfer(_to,_value) (contracts/safe/safe_282_SAFE.sol#315)
+		- balances[msg.sender] = balances[msg.sender].sub(_value) (contracts/safe/safe_282_SAFE.sol#149)
+		- balances[_to] = balances[_to].add(_value) (contracts/safe/safe_282_SAFE.sol#150)
+Reentrancy in SmartToken.transferDataFrom(address,address,uint256,bytes) (contracts/safe/safe_282_SAFE.sol#330-337):
+	External calls:
+	- require(bool)(_to.call(_data)) (contracts/safe/safe_282_SAFE.sol#333)
+	State variables written after the call(s):
+	- super.transferFrom(_from,_to,_value) (contracts/safe/safe_282_SAFE.sol#335)
+		- allowed[_from][msg.sender] = _allowance.sub(_value) (contracts/safe/safe_282_SAFE.sol#205)
+	- super.transferFrom(_from,_to,_value) (contracts/safe/safe_282_SAFE.sol#335)
+		- balances[_from] = balances[_from].sub(_value) (contracts/safe/safe_282_SAFE.sol#203)
+		- balances[_to] = balances[_to].add(_value) (contracts/safe/safe_282_SAFE.sol#204)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+
+Detector: reentrancy-events
+Reentrancy in SmartToken.transferData(address,uint256,bytes) (contracts/safe/safe_282_SAFE.sol#310-317):
+	External calls:
+	- require(bool)(_to.call(_data)) (contracts/safe/safe_282_SAFE.sol#313)
+	Event emitted after the call(s):
+	- Transfer(msg.sender,_to,_value) (contracts/safe/safe_282_SAFE.sol#151)
+		- super.transfer(_to,_value) (contracts/safe/safe_282_SAFE.sol#315)
+Reentrancy in SmartToken.transferDataFrom(address,address,uint256,bytes) (contracts/safe/safe_282_SAFE.sol#330-337):
+	External calls:
+	- require(bool)(_to.call(_data)) (contracts/safe/safe_282_SAFE.sol#333)
+	Event emitted after the call(s):
+	- Transfer(_from,_to,_value) (contracts/safe/safe_282_SAFE.sol#206)
+		- super.transferFrom(_from,_to,_value) (contracts/safe/safe_282_SAFE.sol#335)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-4
+
+Detector: solc-version
+Version constraint ^0.4.15 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- NestedArrayFunctionCallDecoder
+	- ZeroFunctionSelector.
+It is used by:
+	- ^0.4.15 (contracts/safe/safe_282_SAFE.sol#1)
+solc-0.4.15 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: low-level-calls
+Low level call in SmartToken.approveData(address,uint256,bytes) (contracts/safe/safe_282_SAFE.sol#290-298):
+	- require(bool)(_spender.call(_data)) (contracts/safe/safe_282_SAFE.sol#295)
+Low level call in SmartToken.transferData(address,uint256,bytes) (contracts/safe/safe_282_SAFE.sol#310-317):
+	- require(bool)(_to.call(_data)) (contracts/safe/safe_282_SAFE.sol#313)
+Low level call in SmartToken.transferDataFrom(address,address,uint256,bytes) (contracts/safe/safe_282_SAFE.sol#330-337):
+	- require(bool)(_to.call(_data)) (contracts/safe/safe_282_SAFE.sol#333)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+
+Detector: naming-convention
+Parameter BasicToken.transfer(address,uint256)._to (contracts/safe/safe_282_SAFE.sol#145) is not in mixedCase
+Parameter BasicToken.transfer(address,uint256)._value (contracts/safe/safe_282_SAFE.sol#145) is not in mixedCase
+Parameter BasicToken.balanceOf(address)._owner (contracts/safe/safe_282_SAFE.sol#160) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._from (contracts/safe/safe_282_SAFE.sol#195) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._to (contracts/safe/safe_282_SAFE.sol#195) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._value (contracts/safe/safe_282_SAFE.sol#195) is not in mixedCase
+Parameter StandardToken.approve(address,uint256)._spender (contracts/safe/safe_282_SAFE.sol#220) is not in mixedCase
+Parameter StandardToken.approve(address,uint256)._value (contracts/safe/safe_282_SAFE.sol#220) is not in mixedCase
+Parameter StandardToken.allowance(address,address)._owner (contracts/safe/safe_282_SAFE.sol#232) is not in mixedCase
+Parameter StandardToken.allowance(address,address)._spender (contracts/safe/safe_282_SAFE.sol#232) is not in mixedCase
+Parameter StandardToken.increaseApproval(address,uint256)._spender (contracts/safe/safe_282_SAFE.sol#242) is not in mixedCase
+Parameter StandardToken.increaseApproval(address,uint256)._addedValue (contracts/safe/safe_282_SAFE.sol#242) is not in mixedCase
+Parameter StandardToken.decreaseApproval(address,uint256)._spender (contracts/safe/safe_282_SAFE.sol#249) is not in mixedCase
+Parameter StandardToken.decreaseApproval(address,uint256)._subtractedValue (contracts/safe/safe_282_SAFE.sol#249) is not in mixedCase
+Parameter SmartToken.approveData(address,uint256,bytes)._spender (contracts/safe/safe_282_SAFE.sol#290) is not in mixedCase
+Parameter SmartToken.approveData(address,uint256,bytes)._value (contracts/safe/safe_282_SAFE.sol#290) is not in mixedCase
+Parameter SmartToken.approveData(address,uint256,bytes)._data (contracts/safe/safe_282_SAFE.sol#290) is not in mixedCase
+Parameter SmartToken.transferData(address,uint256,bytes)._to (contracts/safe/safe_282_SAFE.sol#310) is not in mixedCase
+Parameter SmartToken.transferData(address,uint256,bytes)._value (contracts/safe/safe_282_SAFE.sol#310) is not in mixedCase
+Parameter SmartToken.transferData(address,uint256,bytes)._data (contracts/safe/safe_282_SAFE.sol#310) is not in mixedCase
+Parameter SmartToken.transferDataFrom(address,address,uint256,bytes)._from (contracts/safe/safe_282_SAFE.sol#330) is not in mixedCase
+Parameter SmartToken.transferDataFrom(address,address,uint256,bytes)._to (contracts/safe/safe_282_SAFE.sol#330) is not in mixedCase
+Parameter SmartToken.transferDataFrom(address,address,uint256,bytes)._value (contracts/safe/safe_282_SAFE.sol#330) is not in mixedCase
+Parameter SmartToken.transferDataFrom(address,address,uint256,bytes)._data (contracts/safe/safe_282_SAFE.sol#330) is not in mixedCase
+Parameter MintableToken.mint(address,uint256)._to (contracts/safe/safe_282_SAFE.sol#366) is not in mixedCase
+Parameter MintableToken.mint(address,uint256)._amount (contracts/safe/safe_282_SAFE.sol#366) is not in mixedCase
+Parameter LifToken.transfer(address,uint256)._to (contracts/safe/safe_282_SAFE.sol#404) is not in mixedCase
+Parameter LifToken.transfer(address,uint256)._value (contracts/safe/safe_282_SAFE.sol#404) is not in mixedCase
+Parameter LifToken.approve(address,uint256)._spender (contracts/safe/safe_282_SAFE.sol#408) is not in mixedCase
+Parameter LifToken.approve(address,uint256)._value (contracts/safe/safe_282_SAFE.sol#408) is not in mixedCase
+Parameter LifToken.transferFrom(address,address,uint256)._from (contracts/safe/safe_282_SAFE.sol#412) is not in mixedCase
+Parameter LifToken.transferFrom(address,address,uint256)._to (contracts/safe/safe_282_SAFE.sol#412) is not in mixedCase
+Parameter LifToken.transferFrom(address,address,uint256)._value (contracts/safe/safe_282_SAFE.sol#412) is not in mixedCase
+Parameter LifToken.burn(uint256)._value (contracts/safe/safe_282_SAFE.sol#433) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_282_SAFE.sol analyzed (10 contracts with 101 detectors), 43 result(s) found

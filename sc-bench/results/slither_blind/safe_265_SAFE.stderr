@@ -1,0 +1,73 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_265_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_265_SAFE.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_265_SAFE.sol:5:5: Warning: No visibility specified. Defaulting to "public".
+    function()payable{}
+    ^-----------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_265_SAFE.sol:7:5: Warning: No visibility specified. Defaulting to "public".
+    function CalcHash(bytes password) 
+    ^
+Spanning multiple lines.
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_265_SAFE.sol:11:16: Warning: "sha3" has been deprecated in favour of "keccak256"
+        return sha3(password);
+               ^------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_265_SAFE.sol:32:24: Warning: "sha3" has been deprecated in favour of "keccak256"
+        if(hashPass == sha3(password))
+                       ^------------^
+
+
+Detector: deprecated-standards
+Deprecated standard detected sha3()(password) (contracts/safe/safe_265_SAFE.sol#11):
+	- Usage of "sha3()" should be replaced with "keccak256()"
+Deprecated standard detected hashPass == sha3()(password) (contracts/safe/safe_265_SAFE.sol#32):
+	- Usage of "sha3()" should be replaced with "keccak256()"
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#deprecated-standards
+
+Detector: solc-version
+Version constraint ^0.4.19 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ABIEncoderV2PackedStorage_0.4.x
+	- ExpExponentCleanup
+	- EventStructWrongData
+	- NestedArrayFunctionCallDecoder.
+It is used by:
+	- ^0.4.19 (contracts/safe/safe_265_SAFE.sol#1)
+solc-0.4.19 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Function LuggageStorage.CalcHash(bytes) (contracts/safe/safe_265_SAFE.sol#7-12) is not in mixedCase
+Function LuggageStorage.Put(bytes32) (contracts/safe/safe_265_SAFE.sol#18-26) is not in mixedCase
+Function LuggageStorage.Open(bytes) (contracts/safe/safe_265_SAFE.sol#28-37) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: reentrancy-unlimited-gas
+Reentrancy in LuggageStorage.Open(bytes) (contracts/safe/safe_265_SAFE.sol#28-37):
+	External calls:
+	- msg.sender.transfer(this.balance) (contracts/safe/safe_265_SAFE.sol#34)
+	State variables written after the call(s):
+	- closed = false (contracts/safe/safe_265_SAFE.sol#35)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-5
+
+Detector: constable-states
+LuggageStorage.cr (contracts/safe/safe_265_SAFE.sol#17) should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+
+Detector: external-function
+CalcHash(bytes) should be declared external:
+	- LuggageStorage.CalcHash(bytes) (contracts/safe/safe_265_SAFE.sol#7-12)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#public-function-that-could-be-declared-external
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_265_SAFE.sol analyzed (1 contracts with 101 detectors), 10 result(s) found

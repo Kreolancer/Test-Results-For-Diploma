@@ -1,0 +1,1034 @@
+{
+  "success": true,
+  "error": null,
+  "results": {
+    "detectors": [
+      {
+        "elements": [
+          {
+            "type": "node",
+            "name": "sha3()(password)",
+            "source_mapping": {
+              "start": 176,
+              "length": 21,
+              "filename_relative": "contracts/safe/safe_265_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_265_SAFE.sol",
+              "filename_short": "contracts/safe/safe_265_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                11
+              ],
+              "starting_column": 9,
+              "ending_column": 30
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "CalcHash",
+                "source_mapping": {
+                  "start": 91,
+                  "length": 114,
+                  "filename_relative": "contracts/safe/safe_265_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_265_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_265_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "LuggageStorage",
+                    "source_mapping": {
+                      "start": 28,
+                      "length": 3883,
+                      "filename_relative": "contracts/safe/safe_265_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_265_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_265_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        3,
+                        4,
+                        5,
+                        6,
+                        7,
+                        8,
+                        9,
+                        10,
+                        11,
+                        12,
+                        13,
+                        14,
+                        15,
+                        16,
+                        17,
+                        18,
+                        19,
+                        20,
+                        21,
+                        22,
+                        23,
+                        24,
+                        25,
+                        26,
+                        27,
+                        28,
+                        29,
+                        30,
+                        31,
+                        32,
+                        33,
+                        34,
+                        35,
+                        36,
+                        37,
+                        38,
+                        39
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "CalcHash(bytes)"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Deprecated standard detected sha3()(password) (contracts/safe/safe_265_SAFE.sol#11):\n\t- Usage of \"sha3()\" should be replaced with \"keccak256()\"\n",
+        "markdown": "Deprecated standard detected [sha3()(password)](contracts/safe/safe_265_SAFE.sol#L11):\n\t- Usage of \"sha3()\" should be replaced with \"keccak256()\"\n",
+        "first_markdown_element": "contracts/safe/safe_265_SAFE.sol#L11",
+        "id": "033d19f8630a8185cfdf4d38f74f04b382c8eae2a126edfdec86b926b7b62d5d",
+        "check": "deprecated-standards",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "node",
+            "name": "hashPass == sha3()(password)",
+            "source_mapping": {
+              "start": 2766,
+              "length": 26,
+              "filename_relative": "contracts/safe/safe_265_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_265_SAFE.sol",
+              "filename_short": "contracts/safe/safe_265_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                32
+              ],
+              "starting_column": 12,
+              "ending_column": 38
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "Open",
+                "source_mapping": {
+                  "start": 2593,
+                  "length": 1315,
+                  "filename_relative": "contracts/safe/safe_265_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_265_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_265_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    28,
+                    29,
+                    30,
+                    31,
+                    32,
+                    33,
+                    34,
+                    35,
+                    36,
+                    37
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "LuggageStorage",
+                    "source_mapping": {
+                      "start": 28,
+                      "length": 3883,
+                      "filename_relative": "contracts/safe/safe_265_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_265_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_265_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        3,
+                        4,
+                        5,
+                        6,
+                        7,
+                        8,
+                        9,
+                        10,
+                        11,
+                        12,
+                        13,
+                        14,
+                        15,
+                        16,
+                        17,
+                        18,
+                        19,
+                        20,
+                        21,
+                        22,
+                        23,
+                        24,
+                        25,
+                        26,
+                        27,
+                        28,
+                        29,
+                        30,
+                        31,
+                        32,
+                        33,
+                        34,
+                        35,
+                        36,
+                        37,
+                        38,
+                        39
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "Open(bytes)"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Deprecated standard detected hashPass == sha3()(password) (contracts/safe/safe_265_SAFE.sol#32):\n\t- Usage of \"sha3()\" should be replaced with \"keccak256()\"\n",
+        "markdown": "Deprecated standard detected [hashPass == sha3()(password)](contracts/safe/safe_265_SAFE.sol#L32):\n\t- Usage of \"sha3()\" should be replaced with \"keccak256()\"\n",
+        "first_markdown_element": "contracts/safe/safe_265_SAFE.sol#L32",
+        "id": "74bf6711000328314cd8de30ebe3c09c2b195763a35c8985274eab28f1c95fcb",
+        "check": "deprecated-standards",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "pragma",
+            "name": "^0.4.19",
+            "source_mapping": {
+              "start": 0,
+              "length": 24,
+              "filename_relative": "contracts/safe/safe_265_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_265_SAFE.sol",
+              "filename_short": "contracts/safe/safe_265_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                1
+              ],
+              "starting_column": 1,
+              "ending_column": 25
+            },
+            "type_specific_fields": {
+              "directive": [
+                "solidity",
+                "^",
+                "0.4",
+                ".19"
+              ]
+            }
+          }
+        ],
+        "description": "Version constraint ^0.4.19 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- DirtyBytesArrayToStorage\n\t- ABIDecodeTwoDimensionalArrayMemory\n\t- KeccakCaching\n\t- EmptyByteArrayCopy\n\t- DynamicArrayCleanup\n\t- ImplicitConstructorCallvalueCheck\n\t- TupleAssignmentMultiStackSlotComponents\n\t- MemoryArrayCreationOverflow\n\t- privateCanBeOverridden\n\t- SignedArrayStorageCopy\n\t- ABIEncoderV2StorageArrayWithMultiSlotElement\n\t- DynamicConstructorArgumentsClippedABIV2\n\t- UninitializedFunctionPointerInConstructor_0.4.x\n\t- IncorrectEventSignatureInLibraries_0.4.x\n\t- ABIEncoderV2PackedStorage_0.4.x\n\t- ExpExponentCleanup\n\t- EventStructWrongData\n\t- NestedArrayFunctionCallDecoder.\nIt is used by:\n\t- ^0.4.19 (contracts/safe/safe_265_SAFE.sol#1)\n",
+        "markdown": "Version constraint ^0.4.19 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- DirtyBytesArrayToStorage\n\t- ABIDecodeTwoDimensionalArrayMemory\n\t- KeccakCaching\n\t- EmptyByteArrayCopy\n\t- DynamicArrayCleanup\n\t- ImplicitConstructorCallvalueCheck\n\t- TupleAssignmentMultiStackSlotComponents\n\t- MemoryArrayCreationOverflow\n\t- privateCanBeOverridden\n\t- SignedArrayStorageCopy\n\t- ABIEncoderV2StorageArrayWithMultiSlotElement\n\t- DynamicConstructorArgumentsClippedABIV2\n\t- UninitializedFunctionPointerInConstructor_0.4.x\n\t- IncorrectEventSignatureInLibraries_0.4.x\n\t- ABIEncoderV2PackedStorage_0.4.x\n\t- ExpExponentCleanup\n\t- EventStructWrongData\n\t- NestedArrayFunctionCallDecoder.\nIt is used by:\n\t- [^0.4.19](contracts/safe/safe_265_SAFE.sol#L1)\n",
+        "first_markdown_element": "contracts/safe/safe_265_SAFE.sol#L1",
+        "id": "8e3ff3fb1ca20ae5516c6c81e774f417f0186c5ee186c50352b54c8a70de1610",
+        "check": "solc-version",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [],
+        "description": "solc-0.4.19 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.\n",
+        "markdown": "solc-0.4.19 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.\n",
+        "first_markdown_element": "",
+        "id": "ad457bbfc5c52be8c4d97b086e219d41696dfd743d850493ed6efbf67e38042b",
+        "check": "solc-version",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "CalcHash",
+            "source_mapping": {
+              "start": 91,
+              "length": 114,
+              "filename_relative": "contracts/safe/safe_265_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_265_SAFE.sol",
+              "filename_short": "contracts/safe/safe_265_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+              ],
+              "starting_column": 5,
+              "ending_column": 6
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "LuggageStorage",
+                "source_mapping": {
+                  "start": 28,
+                  "length": 3883,
+                  "filename_relative": "contracts/safe/safe_265_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_265_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_265_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15,
+                    16,
+                    17,
+                    18,
+                    19,
+                    20,
+                    21,
+                    22,
+                    23,
+                    24,
+                    25,
+                    26,
+                    27,
+                    28,
+                    29,
+                    30,
+                    31,
+                    32,
+                    33,
+                    34,
+                    35,
+                    36,
+                    37,
+                    38,
+                    39
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              },
+              "signature": "CalcHash(bytes)"
+            },
+            "additional_fields": {
+              "target": "function",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Function LuggageStorage.CalcHash(bytes) (contracts/safe/safe_265_SAFE.sol#7-12) is not in mixedCase\n",
+        "markdown": "Function [LuggageStorage.CalcHash(bytes)](contracts/safe/safe_265_SAFE.sol#L7-L12) is not in mixedCase\n",
+        "first_markdown_element": "contracts/safe/safe_265_SAFE.sol#L7-L12",
+        "id": "a2067a39c42677b4ff069d9d3b14f4ead28f8619199e781f7b733cc9a06d7a8e",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "Open",
+            "source_mapping": {
+              "start": 2593,
+              "length": 1315,
+              "filename_relative": "contracts/safe/safe_265_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_265_SAFE.sol",
+              "filename_short": "contracts/safe/safe_265_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37
+              ],
+              "starting_column": 5,
+              "ending_column": 6
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "LuggageStorage",
+                "source_mapping": {
+                  "start": 28,
+                  "length": 3883,
+                  "filename_relative": "contracts/safe/safe_265_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_265_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_265_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15,
+                    16,
+                    17,
+                    18,
+                    19,
+                    20,
+                    21,
+                    22,
+                    23,
+                    24,
+                    25,
+                    26,
+                    27,
+                    28,
+                    29,
+                    30,
+                    31,
+                    32,
+                    33,
+                    34,
+                    35,
+                    36,
+                    37,
+                    38,
+                    39
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              },
+              "signature": "Open(bytes)"
+            },
+            "additional_fields": {
+              "target": "function",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Function LuggageStorage.Open(bytes) (contracts/safe/safe_265_SAFE.sol#28-37) is not in mixedCase\n",
+        "markdown": "Function [LuggageStorage.Open(bytes)](contracts/safe/safe_265_SAFE.sol#L28-L37) is not in mixedCase\n",
+        "first_markdown_element": "contracts/safe/safe_265_SAFE.sol#L28-L37",
+        "id": "b668a56fcdfc430e5086eff79e4e617a42b5597931e865771c97783efc7ed344",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "Put",
+            "source_mapping": {
+              "start": 1285,
+              "length": 1296,
+              "filename_relative": "contracts/safe/safe_265_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_265_SAFE.sol",
+              "filename_short": "contracts/safe/safe_265_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26
+              ],
+              "starting_column": 5,
+              "ending_column": 6
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "LuggageStorage",
+                "source_mapping": {
+                  "start": 28,
+                  "length": 3883,
+                  "filename_relative": "contracts/safe/safe_265_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_265_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_265_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15,
+                    16,
+                    17,
+                    18,
+                    19,
+                    20,
+                    21,
+                    22,
+                    23,
+                    24,
+                    25,
+                    26,
+                    27,
+                    28,
+                    29,
+                    30,
+                    31,
+                    32,
+                    33,
+                    34,
+                    35,
+                    36,
+                    37,
+                    38,
+                    39
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              },
+              "signature": "Put(bytes32)"
+            },
+            "additional_fields": {
+              "target": "function",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Function LuggageStorage.Put(bytes32) (contracts/safe/safe_265_SAFE.sol#18-26) is not in mixedCase\n",
+        "markdown": "Function [LuggageStorage.Put(bytes32)](contracts/safe/safe_265_SAFE.sol#L18-L26) is not in mixedCase\n",
+        "first_markdown_element": "contracts/safe/safe_265_SAFE.sol#L18-L26",
+        "id": "d2aa80186eb61aacba12e863d29900d193fc91309177a4dc7f26fe01448b3598",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "Open",
+            "source_mapping": {
+              "start": 2593,
+              "length": 1315,
+              "filename_relative": "contracts/safe/safe_265_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_265_SAFE.sol",
+              "filename_short": "contracts/safe/safe_265_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37
+              ],
+              "starting_column": 5,
+              "ending_column": 6
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "LuggageStorage",
+                "source_mapping": {
+                  "start": 28,
+                  "length": 3883,
+                  "filename_relative": "contracts/safe/safe_265_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_265_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_265_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15,
+                    16,
+                    17,
+                    18,
+                    19,
+                    20,
+                    21,
+                    22,
+                    23,
+                    24,
+                    25,
+                    26,
+                    27,
+                    28,
+                    29,
+                    30,
+                    31,
+                    32,
+                    33,
+                    34,
+                    35,
+                    36,
+                    37,
+                    38,
+                    39
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              },
+              "signature": "Open(bytes)"
+            }
+          },
+          {
+            "type": "node",
+            "name": "msg.sender.transfer(this.balance)",
+            "source_mapping": {
+              "start": 2818,
+              "length": 33,
+              "filename_relative": "contracts/safe/safe_265_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_265_SAFE.sol",
+              "filename_short": "contracts/safe/safe_265_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                34
+              ],
+              "starting_column": 13,
+              "ending_column": 46
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "Open",
+                "source_mapping": {
+                  "start": 2593,
+                  "length": 1315,
+                  "filename_relative": "contracts/safe/safe_265_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_265_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_265_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    28,
+                    29,
+                    30,
+                    31,
+                    32,
+                    33,
+                    34,
+                    35,
+                    36,
+                    37
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "LuggageStorage",
+                    "source_mapping": {
+                      "start": 28,
+                      "length": 3883,
+                      "filename_relative": "contracts/safe/safe_265_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_265_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_265_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        3,
+                        4,
+                        5,
+                        6,
+                        7,
+                        8,
+                        9,
+                        10,
+                        11,
+                        12,
+                        13,
+                        14,
+                        15,
+                        16,
+                        17,
+                        18,
+                        19,
+                        20,
+                        21,
+                        22,
+                        23,
+                        24,
+                        25,
+                        26,
+                        27,
+                        28,
+                        29,
+                        30,
+                        31,
+                        32,
+                        33,
+                        34,
+                        35,
+                        36,
+                        37,
+                        38,
+                        39
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "Open(bytes)"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "external_calls"
+            }
+          },
+          {
+            "type": "node",
+            "name": "closed = false",
+            "source_mapping": {
+              "start": 2866,
+              "length": 14,
+              "filename_relative": "contracts/safe/safe_265_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_265_SAFE.sol",
+              "filename_short": "contracts/safe/safe_265_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                35
+              ],
+              "starting_column": 13,
+              "ending_column": 27
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "Open",
+                "source_mapping": {
+                  "start": 2593,
+                  "length": 1315,
+                  "filename_relative": "contracts/safe/safe_265_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_265_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_265_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    28,
+                    29,
+                    30,
+                    31,
+                    32,
+                    33,
+                    34,
+                    35,
+                    36,
+                    37
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "LuggageStorage",
+                    "source_mapping": {
+                      "start": 28,
+                      "length": 3883,
+                      "filename_relative": "contracts/safe/safe_265_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_265_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_265_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        3,
+                        4,
+                        5,
+                        6,
+                        7,
+                        8,
+                        9,
+                        10,
+                        11,
+                        12,
+                        13,
+                        14,
+                        15,
+                        16,
+                        17,
+                        18,
+                        19,
+                        20,
+                        21,
+                        22,
+                        23,
+                        24,
+                        25,
+                        26,
+                        27,
+                        28,
+                        29,
+                        30,
+                        31,
+                        32,
+                        33,
+                        34,
+                        35,
+                        36,
+                        37,
+                        38,
+                        39
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "Open(bytes)"
+                }
+              }
+            },
+            "additional_fields": {
+              "underlying_type": "variables_written",
+              "variable_name": "closed"
+            }
+          }
+        ],
+        "description": "Reentrancy in LuggageStorage.Open(bytes) (contracts/safe/safe_265_SAFE.sol#28-37):\n\tExternal calls:\n\t- msg.sender.transfer(this.balance) (contracts/safe/safe_265_SAFE.sol#34)\n\tState variables written after the call(s):\n\t- closed = false (contracts/safe/safe_265_SAFE.sol#35)\n",
+        "markdown": "Reentrancy in [LuggageStorage.Open(bytes)](contracts/safe/safe_265_SAFE.sol#L28-L37):\n\tExternal calls:\n\t- [msg.sender.transfer(this.balance)](contracts/safe/safe_265_SAFE.sol#L34)\n\tState variables written after the call(s):\n\t- [closed = false](contracts/safe/safe_265_SAFE.sol#L35)\n",
+        "first_markdown_element": "contracts/safe/safe_265_SAFE.sol#L28-L37",
+        "id": "553c4d8f24c999ac5b809bcdcfdfde54e34686fb19aaeaeba330fffd46da0225",
+        "check": "reentrancy-unlimited-gas",
+        "impact": "Informational",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "cr",
+            "source_mapping": {
+              "start": 1223,
+              "length": 55,
+              "filename_relative": "contracts/safe/safe_265_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_265_SAFE.sol",
+              "filename_short": "contracts/safe/safe_265_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                17
+              ],
+              "starting_column": 942,
+              "ending_column": 997
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "LuggageStorage",
+                "source_mapping": {
+                  "start": 28,
+                  "length": 3883,
+                  "filename_relative": "contracts/safe/safe_265_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_265_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_265_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15,
+                    16,
+                    17,
+                    18,
+                    19,
+                    20,
+                    21,
+                    22,
+                    23,
+                    24,
+                    25,
+                    26,
+                    27,
+                    28,
+                    29,
+                    30,
+                    31,
+                    32,
+                    33,
+                    34,
+                    35,
+                    36,
+                    37,
+                    38,
+                    39
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              }
+            }
+          }
+        ],
+        "description": "LuggageStorage.cr (contracts/safe/safe_265_SAFE.sol#17) should be constant \n",
+        "markdown": "[LuggageStorage.cr](contracts/safe/safe_265_SAFE.sol#L17) should be constant \n",
+        "first_markdown_element": "contracts/safe/safe_265_SAFE.sol#L17",
+        "id": "ee6a495eee6ffa71485f41077221f17721b10bd5393eca42410423d839ac474b",
+        "check": "constable-states",
+        "impact": "Optimization",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "CalcHash",
+            "source_mapping": {
+              "start": 91,
+              "length": 114,
+              "filename_relative": "contracts/safe/safe_265_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_265_SAFE.sol",
+              "filename_short": "contracts/safe/safe_265_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+              ],
+              "starting_column": 5,
+              "ending_column": 6
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "LuggageStorage",
+                "source_mapping": {
+                  "start": 28,
+                  "length": 3883,
+                  "filename_relative": "contracts/safe/safe_265_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_265_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_265_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15,
+                    16,
+                    17,
+                    18,
+                    19,
+                    20,
+                    21,
+                    22,
+                    23,
+                    24,
+                    25,
+                    26,
+                    27,
+                    28,
+                    29,
+                    30,
+                    31,
+                    32,
+                    33,
+                    34,
+                    35,
+                    36,
+                    37,
+                    38,
+                    39
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              },
+              "signature": "CalcHash(bytes)"
+            }
+          }
+        ],
+        "description": "CalcHash(bytes) should be declared external:\n\t- LuggageStorage.CalcHash(bytes) (contracts/safe/safe_265_SAFE.sol#7-12)\n",
+        "markdown": "CalcHash(bytes) should be declared external:\n\t- [LuggageStorage.CalcHash(bytes)](contracts/safe/safe_265_SAFE.sol#L7-L12)\n",
+        "first_markdown_element": "contracts/safe/safe_265_SAFE.sol#L7-L12",
+        "id": "3764b304ef9b563456505aca95eacb9c4732ffe729af446672eb48613bb92b56",
+        "check": "external-function",
+        "impact": "Optimization",
+        "confidence": "High"
+      }
+    ]
+  }
+}

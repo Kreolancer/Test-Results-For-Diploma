@@ -1,0 +1,22 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_200_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_200_SAFE.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_200_SAFE.sol:12:5: Warning: Defining constructors as functions with the same name as the contract is deprecated. Use "constructor(...) { ... }" instead.
+    function SmartMMM() public {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_200_SAFE.sol:22:12: Warning: Using contract member "balance" inherited from the address type is deprecated. Convert the contract to "address" type to access the member, for example use "address(contract).balance" instead.
+        if(this.balance < amountToInvestor) {
+           ^----------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_200_SAFE.sol:23:32: Warning: Using contract member "balance" inherited from the address type is deprecated. Convert the contract to "address" type to access the member, for example use "address(contract).balance" instead.
+            amountToInvestor = this.balance;
+                               ^----------^
+
+
+Detector: timestamp
+SmartMMM.withdraw() (contracts/safe/safe_200_SAFE.sol#16-28) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(now >= investorDate[msg.sender] + 604800) (contracts/safe/safe_200_SAFE.sol#18)
+	- this.balance < amountToInvestor (contracts/safe/safe_200_SAFE.sol#22)
+	- msg.sender.send(amountToInvestor) == false (contracts/safe/safe_200_SAFE.sol#25)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_200_SAFE.sol analyzed (1 contracts with 2 detectors), 1 result(s) found

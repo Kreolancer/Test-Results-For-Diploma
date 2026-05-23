@@ -1,0 +1,73 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_223_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_223_SAFE.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_223_SAFE.sol:22:19: Warning: The "returndatasize" instruction is only available after the Metropolis hard fork. Before that it acts as an invalid instruction.
+      let size := returndatasize
+                  ^------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_223_SAFE.sol:25:7: Warning: The "returndatacopy" instruction is only available after the Metropolis hard fork. Before that it acts as an invalid instruction.
+      returndatacopy(ptr, 0, size)
+      ^------------^
+
+
+Detector: controlled-array-length
+Ownable (contracts/safe/safe_223_SAFE.sol#40-96) contract sets array length with a user-controlled value:
+	- owners.push(msg.sender) (contracts/safe/safe_223_SAFE.sol#52)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#array-length-assignment
+
+Detector: locked-ether
+Contract locking ether found:
+	Contract Upgradable (contracts/safe/safe_223_SAFE.sol#120-122) has payable functions:
+	 - Upgradable.initialize() (contracts/safe/safe_223_SAFE.sol#121)
+	But does not have a function to withdraw the ether
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#contracts-that-lock-ether
+
+Detector: missing-zero-check
+KnowledgeProxy.upgradeTo(address).imp (contracts/safe/safe_223_SAFE.sol#129) lacks a zero-check on :
+		- _implementation = imp (contracts/safe/safe_223_SAFE.sol#130)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+
+Detector: reentrancy-events
+Reentrancy in KnowledgeProxy.upgradeTo(address) (contracts/safe/safe_223_SAFE.sol#129-134):
+	External calls:
+	- Upgradable(this).initialize.value(msg.value)() (contracts/safe/safe_223_SAFE.sol#131)
+	Event emitted after the call(s):
+	- NewImplementation(imp) (contracts/safe/safe_223_SAFE.sol#133)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-4
+
+Detector: assembly
+Proxy.fallback() (contracts/safe/safe_223_SAFE.sol#15-31) uses assembly
+	- INLINE ASM (contracts/safe/safe_223_SAFE.sol#20-31)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#assembly-usage
+
+Detector: solc-version
+Version constraint ^0.4.18 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- EventStructWrongData
+	- NestedArrayFunctionCallDecoder.
+It is used by:
+	- ^0.4.18 (contracts/safe/safe_223_SAFE.sol#1)
+solc-0.4.18 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: unindexed-event-address
+Event UpgradableStorage.NewImplementation(address) (contracts/safe/safe_223_SAFE.sol#104) has address parameters but no indexed parameters
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unindexed-event-address-parameters
+
+Detector: constable-states
+UpgradableStorage._implementation (contracts/safe/safe_223_SAFE.sol#102) should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_223_SAFE.sol analyzed (5 contracts with 101 detectors), 9 result(s) found

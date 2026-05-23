@@ -1,0 +1,67 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_110_SC05.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
+
+Detector: arbitrary-send-eth
+SimpleAuction.woyaoqianqian(uint256) (contracts/vulnerable/vuln_110_SC05.sol#200-208) sends eth to arbitrary user
+	Dangerous calls:
+	- boss.transfer(fee) (contracts/vulnerable/vuln_110_SC05.sol#207)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#functions-that-send-ether-to-arbitrary-destinations
+
+Detector: divide-before-multiply
+SimpleAuction.bid() (contracts/vulnerable/vuln_110_SC05.sol#128-155) performs a multiplication on the result of a division:
+	- pendingReturns[msg.sender] += (msg.value.div(10).mul(9)) (contracts/vulnerable/vuln_110_SC05.sol#141)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#divide-before-multiply
+
+Detector: missing-zero-check
+SimpleAuction.constructor(address)._beneficiary (contracts/vulnerable/vuln_110_SC05.sol#121) lacks a zero-check on :
+		- boss = _beneficiary (contracts/vulnerable/vuln_110_SC05.sol#123)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+
+Detector: solc-version
+Version constraint ^0.4.22 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ABIEncoderV2PackedStorage_0.4.x
+	- ExpExponentCleanup
+	- EventStructWrongData
+	- OneOfTwoConstructorsSkipped.
+It is used by:
+	- ^0.4.22 (contracts/vulnerable/vuln_110_SC05.sol#1)
+solc-0.4.22 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Parameter NameFilter.filter(string)._input (contracts/vulnerable/vuln_110_SC05.sol#68) is not in mixedCase
+Parameter SimpleAuction.setInfo(string,string)._name (contracts/vulnerable/vuln_110_SC05.sol#157) is not in mixedCase
+Parameter SimpleAuction.setInfo(string,string)._message (contracts/vulnerable/vuln_110_SC05.sol#157) is not in mixedCase
+Parameter SimpleAuction.getInfo(address)._add (contracts/vulnerable/vuln_110_SC05.sol#179) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: reentrancy-unlimited-gas
+Reentrancy in SimpleAuction.withdraw() (contracts/vulnerable/vuln_110_SC05.sol#185-197):
+	External calls:
+	- msg.sender.transfer(amount) (contracts/vulnerable/vuln_110_SC05.sol#189)
+	State variables written after the call(s):
+	- loser = top (contracts/vulnerable/vuln_110_SC05.sol#191)
+	- loserbid = topbid (contracts/vulnerable/vuln_110_SC05.sol#192)
+	- top = 0 (contracts/vulnerable/vuln_110_SC05.sol#193)
+	- topbid = 0 (contracts/vulnerable/vuln_110_SC05.sol#194)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-5
+
+Detector: external-function
+setInfo(string,string) should be declared external:
+	- SimpleAuction.setInfo(string,string) (contracts/vulnerable/vuln_110_SC05.sol#157-161)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#public-function-that-could-be-declared-external
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_110_SC05.sol analyzed (3 contracts with 101 detectors), 11 result(s) found

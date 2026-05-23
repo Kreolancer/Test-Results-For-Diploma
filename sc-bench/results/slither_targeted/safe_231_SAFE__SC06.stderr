@@ -1,0 +1,11 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_231_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_231_SAFE.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_231_SAFE.sol:186:35: Warning: This function only accepts a single "bytes" argument. Please use "abi.encodePacked(...)" or a similar function to encode the data.
+            seed = uint(keccak256(keccak256(blockhash(block.number), seed), now));
+                                  ^--------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_231_SAFE.sol:186:25: Warning: This function only accepts a single "bytes" argument. Please use "abi.encodePacked(...)" or a similar function to encode the data.
+            seed = uint(keccak256(keccak256(blockhash(block.number), seed), now));
+                        ^------------------------------------------------------^
+
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_231_SAFE.sol analyzed (5 contracts with 5 detectors), 0 result(s) found

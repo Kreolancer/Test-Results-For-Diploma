@@ -1,0 +1,97 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_215_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+
+Detector: shadowing-local
+ERC20Token.totalSupply().totalSupply (contracts/safe/safe_215_SAFE.sol#90) shadows:
+	- ERC20Token.totalSupply() (contracts/safe/safe_215_SAFE.sol#90-92) (function)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#local-variable-shadowing
+
+Detector: missing-zero-check
+Owned.transferOwnership(address)._newOwner (contracts/safe/safe_215_SAFE.sol#52) lacks a zero-check on :
+		- newOwner = _newOwner (contracts/safe/safe_215_SAFE.sol#53)
+DaoCasinoToken.DaoCasinoToken(uint256,uint256,uint256,address)._multisig (contracts/safe/safe_215_SAFE.sol#194) lacks a zero-check on :
+		- multisig = _multisig (contracts/safe/safe_215_SAFE.sol#198)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+
+Detector: timestamp
+DaoCasinoToken.buyPriceAt(uint256) (contracts/safe/safe_215_SAFE.sol#220-240) uses timestamp for comparisons
+	Dangerous comparisons:
+	- at < STARTDATE (contracts/safe/safe_215_SAFE.sol#221)
+	- at < (STARTDATE + 86400) (contracts/safe/safe_215_SAFE.sol#223)
+	- at < (STARTDATE + 1296000) (contracts/safe/safe_215_SAFE.sol#225)
+	- at < (STARTDATE + 1555200) (contracts/safe/safe_215_SAFE.sol#227)
+	- at < (STARTDATE + 1814400) (contracts/safe/safe_215_SAFE.sol#229)
+	- at < (STARTDATE + 2073600) (contracts/safe/safe_215_SAFE.sol#231)
+	- at < (STARTDATE + 2332800) (contracts/safe/safe_215_SAFE.sol#233)
+	- at <= ENDDATE (contracts/safe/safe_215_SAFE.sol#235)
+DaoCasinoToken.proxyPayment(address) (contracts/safe/safe_215_SAFE.sol#254-296) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(now >= STARTDATE) (contracts/safe/safe_215_SAFE.sol#256)
+	- require(bool)(now <= ENDDATE) (contracts/safe/safe_215_SAFE.sol#258)
+DaoCasinoToken.addPrecommitment(address,uint256) (contracts/safe/safe_215_SAFE.sol#306-312) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(now < STARTDATE) (contracts/safe/safe_215_SAFE.sol#307)
+DaoCasinoToken.transfer(address,uint256) (contracts/safe/safe_215_SAFE.sol#319-324) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(now > ENDDATE || totalEthers == CAP) (contracts/safe/safe_215_SAFE.sol#321)
+DaoCasinoToken.transferFrom(address,address,uint256) (contracts/safe/safe_215_SAFE.sol#332-339) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(now > ENDDATE || totalEthers == CAP) (contracts/safe/safe_215_SAFE.sol#336)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+
+Detector: dead-code
+SafeMath.add(uint256,uint256) (contracts/safe/safe_215_SAFE.sol#19-23) is never used and should be removed
+SafeMath.sub(uint256,uint256) (contracts/safe/safe_215_SAFE.sol#28-31) is never used and should be removed
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dead-code
+
+Detector: deprecated-standards
+Deprecated standard detected THROW (contracts/safe/safe_215_SAFE.sol#48):
+	- Usage of "throw" should be replaced with "revert()"
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#deprecated-standards
+
+Detector: solc-version
+Version constraint ^0.4.11 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- NestedArrayFunctionCallDecoder
+	- ZeroFunctionSelector
+	- DelegateCallReturnValue
+	- ECRecoverMalformedInput
+	- SkipEmptyStringLiteral.
+It is used by:
+	- ^0.4.11 (contracts/safe/safe_215_SAFE.sol#1)
+solc-0.4.11 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Parameter Owned.transferOwnership(address)._newOwner (contracts/safe/safe_215_SAFE.sol#52) is not in mixedCase
+Parameter ERC20Token.balanceOf(address)._owner (contracts/safe/safe_215_SAFE.sol#97) is not in mixedCase
+Parameter ERC20Token.transfer(address,uint256)._to (contracts/safe/safe_215_SAFE.sol#104) is not in mixedCase
+Parameter ERC20Token.transfer(address,uint256)._amount (contracts/safe/safe_215_SAFE.sol#104) is not in mixedCase
+Parameter ERC20Token.approve(address,uint256)._spender (contracts/safe/safe_215_SAFE.sol#124) is not in mixedCase
+Parameter ERC20Token.approve(address,uint256)._amount (contracts/safe/safe_215_SAFE.sol#125) is not in mixedCase
+Parameter ERC20Token.transferFrom(address,address,uint256)._from (contracts/safe/safe_215_SAFE.sol#138) is not in mixedCase
+Parameter ERC20Token.transferFrom(address,address,uint256)._to (contracts/safe/safe_215_SAFE.sol#139) is not in mixedCase
+Parameter ERC20Token.transferFrom(address,address,uint256)._amount (contracts/safe/safe_215_SAFE.sol#140) is not in mixedCase
+Parameter ERC20Token.allowance(address,address)._owner (contracts/safe/safe_215_SAFE.sol#162) is not in mixedCase
+Parameter ERC20Token.allowance(address,address)._spender (contracts/safe/safe_215_SAFE.sol#163) is not in mixedCase
+Parameter DaoCasinoToken.transfer(address,uint256)._to (contracts/safe/safe_215_SAFE.sol#319) is not in mixedCase
+Parameter DaoCasinoToken.transfer(address,uint256)._amount (contracts/safe/safe_215_SAFE.sol#319) is not in mixedCase
+Parameter DaoCasinoToken.transferFrom(address,address,uint256)._from (contracts/safe/safe_215_SAFE.sol#332) is not in mixedCase
+Parameter DaoCasinoToken.transferFrom(address,address,uint256)._to (contracts/safe/safe_215_SAFE.sol#332) is not in mixedCase
+Parameter DaoCasinoToken.transferFrom(address,address,uint256)._amount (contracts/safe/safe_215_SAFE.sol#332) is not in mixedCase
+Variable DaoCasinoToken.STARTDATE (contracts/safe/safe_215_SAFE.sol#184) is not in mixedCase
+Variable DaoCasinoToken.ENDDATE (contracts/safe/safe_215_SAFE.sol#185) is not in mixedCase
+Variable DaoCasinoToken.CAP (contracts/safe/safe_215_SAFE.sol#188) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_215_SAFE.sol analyzed (4 contracts with 101 detectors), 32 result(s) found

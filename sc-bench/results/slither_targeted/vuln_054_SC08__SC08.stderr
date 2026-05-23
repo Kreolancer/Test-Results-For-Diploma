@@ -1,0 +1,17 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_054_SC08.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc' running
+
+Detector: reentrancy-eth
+Reentrancy in EtherStore.withdrawFunds(uint256) ():
+	External calls:
+	- require(bool)(msg.sender.call.value(_weiToWithdraw)()) ()
+	State variables written after the call(s):
+	- balances[msg.sender] -= _weiToWithdraw ()
+	EtherStore.balances () can be used in cross function reentrancies:
+	- EtherStore.depositFunds() ()
+	- EtherStore.withdrawFunds(uint256) ()
+	- lastWithdrawTime[msg.sender] = now ()
+	EtherStore.lastWithdrawTime () can be used in cross function reentrancies:
+	- EtherStore.withdrawFunds(uint256) ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-1
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_054_SC08.sol analyzed (1 contracts with 2 detectors), 1 result(s) found

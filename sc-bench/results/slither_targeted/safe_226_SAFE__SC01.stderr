@@ -1,0 +1,47 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_226_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_226_SAFE.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_226_SAFE.sol:130:5: Warning: Defining constructors as functions with the same name as the contract is deprecated. Use "constructor(...) { ... }" instead.
+    function EtherShipsCore() public {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_226_SAFE.sol:170:18: Warning: Using contract member "balance" inherited from the address type is deprecated. Convert the contract to "address" type to access the member, for example use "address(contract).balance" instead.
+        require (this.balance >= _amount); // Checking if this contract has enought money to pay
+                 ^----------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_226_SAFE.sol:183:9: Warning: Invoking events without "emit" prefix is deprecated.
+        EventCashOut (msg.sender, _amount);
+        ^--------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_226_SAFE.sol:192:18: Warning: Using contract member "balance" inherited from the address type is deprecated. Convert the contract to "address" type to access the member, for example use "address(contract).balance" instead.
+        require (this.balance >= _amount); // Checking if this contract has enought money to pay
+                 ^----------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_226_SAFE.sol:203:9: Warning: Invoking events without "emit" prefix is deprecated.
+        EventCashOut (msg.sender, _amount);
+        ^--------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_226_SAFE.sol:208:9: Warning: Invoking events without "emit" prefix is deprecated.
+        EventLogin (msg.sender, _hash);
+        ^----------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_226_SAFE.sol:224:9: Warning: Invoking events without "emit" prefix is deprecated.
+        EventUpgradeShip (msg.sender, _shipID, _upgradeChoice);
+        ^----------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_226_SAFE.sol:238:9: Warning: Invoking events without "emit" prefix is deprecated.
+        EventTransfer (msg.sender, _receiver, _shipID);
+        ^--------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_226_SAFE.sol:258:9: Warning: Invoking events without "emit" prefix is deprecated.
+        EventTransferAction (msg.sender, _receiver, _shipID, _ActionType);
+        ^---------------------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_226_SAFE.sol:277:9: Warning: Invoking events without "emit" prefix is deprecated.
+        EventAuction (msg.sender, _shipID, _startPrice, _finishPrice, _duration, now);
+        ^---------------------------------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_226_SAFE.sol:303:9: Warning: Invoking events without "emit" prefix is deprecated.
+        EventBid (_shipID);
+        ^----------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_226_SAFE.sol:315:9: Warning: Invoking events without "emit" prefix is deprecated.
+        EventCancelAuction (_shipID);
+        ^--------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_226_SAFE.sol:343:9: Warning: Invoking events without "emit" prefix is deprecated.
+        EventBuyShip (msg.sender, _shipproductID, newIdShip-1);
+        ^----------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_226_SAFE.sol:416:16: Warning: Using contract member "balance" inherited from the address type is deprecated. Convert the contract to "address" type to access the member, for example use "address(contract).balance" instead.
+        return this.balance;
+               ^----------^
+
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_226_SAFE.sol analyzed (1 contracts with 5 detectors), 0 result(s) found

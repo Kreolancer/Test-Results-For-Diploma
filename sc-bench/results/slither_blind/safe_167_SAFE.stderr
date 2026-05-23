@@ -1,0 +1,238 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:28:5: Warning: No visibility specified. Defaulting to "public".
+    function totalSupply() constant returns (uint256 supply) {}
+    ^---------------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:29:5: Warning: No visibility specified. Defaulting to "public".
+    function balanceOf(address _owner) constant returns (uint256 balance) {}
+    ^----------------------------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:30:5: Warning: No visibility specified. Defaulting to "public".
+    function transfer(address _to, uint256 _value) returns (bool success) {}
+    ^----------------------------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:31:5: Warning: No visibility specified. Defaulting to "public".
+    function transferFrom(address _from, address _to, uint256 _value) returns (bool success) {}
+    ^-----------------------------------------------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:32:5: Warning: No visibility specified. Defaulting to "public".
+    function approve(address _spender, uint256 _value) returns (bool success) {}
+    ^--------------------------------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:33:5: Warning: No visibility specified. Defaulting to "public".
+    function allowance(address _owner, address _spender) constant returns (uint256 remaining) {}
+    ^------------------------------------------------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:149:5: Warning: No visibility specified. Defaulting to "public".
+    function () nonZero payable {
+    ^
+Spanning multiple lines.
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:253:5: Warning: No visibility specified. Defaulting to "public".
+    function approve(address _spender, uint256 _tokens_in_cents) returns (bool success) {
+    ^
+Spanning multiple lines.
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:259:5: Warning: No visibility specified. Defaulting to "public".
+    function allowance(address _owner, address _spender) constant returns (uint256 remaining) {
+    ^
+Spanning multiple lines.
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:28:46: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function totalSupply() constant returns (uint256 supply) {}
+                                             ^------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:29:24: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function balanceOf(address _owner) constant returns (uint256 balance) {}
+                       ^------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:29:58: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function balanceOf(address _owner) constant returns (uint256 balance) {}
+                                                         ^-------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:30:23: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transfer(address _to, uint256 _value) returns (bool success) {}
+                      ^---------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:30:36: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transfer(address _to, uint256 _value) returns (bool success) {}
+                                   ^------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:30:61: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transfer(address _to, uint256 _value) returns (bool success) {}
+                                                            ^----------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:31:27: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transferFrom(address _from, address _to, uint256 _value) returns (bool success) {}
+                          ^-----------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:31:42: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transferFrom(address _from, address _to, uint256 _value) returns (bool success) {}
+                                         ^---------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:31:55: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transferFrom(address _from, address _to, uint256 _value) returns (bool success) {}
+                                                      ^------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:31:80: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transferFrom(address _from, address _to, uint256 _value) returns (bool success) {}
+                                                                               ^----------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:32:22: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function approve(address _spender, uint256 _value) returns (bool success) {}
+                     ^--------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:32:40: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function approve(address _spender, uint256 _value) returns (bool success) {}
+                                       ^------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:32:65: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function approve(address _spender, uint256 _value) returns (bool success) {}
+                                                                ^----------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:33:24: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function allowance(address _owner, address _spender) constant returns (uint256 remaining) {}
+                       ^------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:33:40: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function allowance(address _owner, address _spender) constant returns (uint256 remaining) {}
+                                       ^--------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:33:76: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function allowance(address _owner, address _spender) constant returns (uint256 remaining) {}
+                                                                           ^---------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:28:5: Warning: Function state mutability can be restricted to pure
+    function totalSupply() constant returns (uint256 supply) {}
+    ^---------------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:29:5: Warning: Function state mutability can be restricted to pure
+    function balanceOf(address _owner) constant returns (uint256 balance) {}
+    ^----------------------------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:30:5: Warning: Function state mutability can be restricted to pure
+    function transfer(address _to, uint256 _value) returns (bool success) {}
+    ^----------------------------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:31:5: Warning: Function state mutability can be restricted to pure
+    function transferFrom(address _from, address _to, uint256 _value) returns (bool success) {}
+    ^-----------------------------------------------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:32:5: Warning: Function state mutability can be restricted to pure
+    function approve(address _spender, uint256 _value) returns (bool success) {}
+    ^--------------------------------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:33:5: Warning: Function state mutability can be restricted to pure
+    function allowance(address _owner, address _spender) constant returns (uint256 remaining) {}
+    ^------------------------------------------------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:324:13: Warning: Function declared as view, but this expression (potentially) modifies the state and thus requires non-payable (the default) or payable.
+            crowdSaleState = State.PresaleFinalized;
+            ^------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol:338:13: Warning: Function declared as view, but this expression (potentially) modifies the state and thus requires non-payable (the default) or payable.
+            crowdSaleState = State.ICOFinalized;
+            ^------------^
+
+
+Detector: reentrancy-eth
+Reentrancy in HurtleCoin.buyTokens(address,uint256) (contracts/safe/safe_167_SAFE.sol#175-195):
+	External calls:
+	- vault.deposit.value(_value)(_recipient) (contracts/safe/safe_167_SAFE.sol#186)
+	State variables written after the call(s):
+	- preSaleRaised = preSaleRaised.add(_value) (contracts/safe/safe_167_SAFE.sol#187)
+	HurtleCoin.preSaleRaised (contracts/safe/safe_167_SAFE.sol#106) can be used in cross function reentrancies:
+	- HurtleCoin.buyTokens(address,uint256) (contracts/safe/safe_167_SAFE.sol#175-195)
+	- HurtleCoin.getPresaleRaisedAmount() (contracts/safe/safe_167_SAFE.sol#365-367)
+	- HurtleCoin.isPreSalePeriod() (contracts/safe/safe_167_SAFE.sol#322-330)
+	- HurtleCoin.preSaleRaised (contracts/safe/safe_167_SAFE.sol#106)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-1
+
+Detector: constant-function-state
+HurtleCoin.isPreSalePeriod() (contracts/safe/safe_167_SAFE.sol#322-330) is declared view but changes state variables:
+	- HurtleCoin.crowdSaleState (contracts/safe/safe_167_SAFE.sol#124)
+HurtleCoin.isICOPeriod() (contracts/safe/safe_167_SAFE.sol#336-343) is declared view but changes state variables:
+	- HurtleCoin.crowdSaleState (contracts/safe/safe_167_SAFE.sol#124)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#constant-functions-changing-the-state
+
+Detector: missing-zero-check
+RefundVault.RefundVault(address)._wallet (contracts/safe/safe_167_SAFE.sol#58) lacks a zero-check on :
+		- wallet = _wallet (contracts/safe/safe_167_SAFE.sol#59)
+RefundVault.refund(address).investor (contracts/safe/safe_167_SAFE.sol#77) lacks a zero-check on :
+		- investor.transfer(depositedValue) (contracts/safe/safe_167_SAFE.sol#81)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+
+Detector: reentrancy-benign
+Reentrancy in HurtleCoin.buyTokens(address,uint256) (contracts/safe/safe_167_SAFE.sol#175-195):
+	External calls:
+	- vault.deposit.value(_value)(_recipient) (contracts/safe/safe_167_SAFE.sol#191)
+	State variables written after the call(s):
+	- icoRaised = icoRaised.add(_value) (contracts/safe/safe_167_SAFE.sol#192)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+
+Detector: timestamp
+HurtleCoin.calculateTokens(uint256) (contracts/safe/safe_167_SAFE.sol#263-274) uses timestamp for comparisons
+	Dangerous comparisons:
+	- crowdSaleState == State.Preparing && isPreSalePeriod() (contracts/safe/safe_167_SAFE.sol#264)
+HurtleCoin.isPreSalePeriod() (contracts/safe/safe_167_SAFE.sol#322-330) uses timestamp for comparisons
+	Dangerous comparisons:
+	- preSaleRaised > preSaleMaxCapInWei || now >= presaleEndTimestamp (contracts/safe/safe_167_SAFE.sol#323)
+	- now > presaleStartTimestamp (contracts/safe/safe_167_SAFE.sol#328)
+HurtleCoin.isICOPeriod() (contracts/safe/safe_167_SAFE.sol#336-343) uses timestamp for comparisons
+	Dangerous comparisons:
+	- icoRaised > icoHardCapInWei || now >= icoEndTimestamp (contracts/safe/safe_167_SAFE.sol#337)
+	- now > icoStartTimestamp (contracts/safe/safe_167_SAFE.sol#341)
+HurtleCoin.endCrowdSale() (contracts/safe/safe_167_SAFE.sol#346-355) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(now >= icoEndTimestamp || icoRaised >= icoSoftCapInWei) (contracts/safe/safe_167_SAFE.sol#347)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+
+Detector: solc-version
+Version constraint ^0.4.18 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- EventStructWrongData
+	- NestedArrayFunctionCallDecoder.
+It is used by:
+	- ^0.4.18 (contracts/safe/safe_167_SAFE.sol#1)
+solc-0.4.18 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Parameter HurtleCoin.buyTokens(address,uint256)._recipient (contracts/safe/safe_167_SAFE.sol#175) is not in mixedCase
+Parameter HurtleCoin.buyTokens(address,uint256)._value (contracts/safe/safe_167_SAFE.sol#175) is not in mixedCase
+Parameter HurtleCoin.transferTokens(address,uint256)._recipient (contracts/safe/safe_167_SAFE.sol#197) is not in mixedCase
+Parameter HurtleCoin.transferTokens(address,uint256).tokens_in_cents (contracts/safe/safe_167_SAFE.sol#197) is not in mixedCase
+Parameter HurtleCoin.transfer(address,uint256)._to (contracts/safe/safe_167_SAFE.sol#211) is not in mixedCase
+Parameter HurtleCoin.transfer(address,uint256)._tokens_in_cents (contracts/safe/safe_167_SAFE.sol#211) is not in mixedCase
+Parameter HurtleCoin.transferFrom(address,address,uint256)._from (contracts/safe/safe_167_SAFE.sol#231) is not in mixedCase
+Parameter HurtleCoin.transferFrom(address,address,uint256)._to (contracts/safe/safe_167_SAFE.sol#231) is not in mixedCase
+Parameter HurtleCoin.transferFrom(address,address,uint256)._tokens_in_cents (contracts/safe/safe_167_SAFE.sol#231) is not in mixedCase
+Parameter HurtleCoin.approve(address,uint256)._spender (contracts/safe/safe_167_SAFE.sol#253) is not in mixedCase
+Parameter HurtleCoin.approve(address,uint256)._tokens_in_cents (contracts/safe/safe_167_SAFE.sol#253) is not in mixedCase
+Parameter HurtleCoin.allowance(address,address)._owner (contracts/safe/safe_167_SAFE.sol#259) is not in mixedCase
+Parameter HurtleCoin.allowance(address,address)._spender (contracts/safe/safe_167_SAFE.sol#259) is not in mixedCase
+Parameter HurtleCoin.calculateTokens(uint256)._amount (contracts/safe/safe_167_SAFE.sol#263) is not in mixedCase
+Parameter HurtleCoin.getRefund(address)._recipient (contracts/safe/safe_167_SAFE.sol#276) is not in mixedCase
+Parameter HurtleCoin.refundedAmount(address)._recipient (contracts/safe/safe_167_SAFE.sol#283) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: reentrancy-unlimited-gas
+Reentrancy in RefundVault.close() (contracts/safe/safe_167_SAFE.sol#66-71):
+	External calls:
+	- wallet.transfer(this.balance) (contracts/safe/safe_167_SAFE.sol#69)
+	Event emitted after the call(s):
+	- Closed() (contracts/safe/safe_167_SAFE.sol#70)
+Reentrancy in RefundVault.refund(address) (contracts/safe/safe_167_SAFE.sol#77-83):
+	External calls:
+	- investor.transfer(depositedValue) (contracts/safe/safe_167_SAFE.sol#81)
+	Event emitted after the call(s):
+	- Refunded(investor,depositedValue) (contracts/safe/safe_167_SAFE.sol#82)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-5
+
+Detector: too-many-digits
+HurtleCoin.slitherConstructorVariables() (contracts/safe/safe_167_SAFE.sol#86-374) uses literals with too many digits:
+	- initialSupply = 200000000 (contracts/safe/safe_167_SAFE.sol#100)
+HurtleCoin.slitherConstructorVariables() (contracts/safe/safe_167_SAFE.sol#86-374) uses literals with too many digits:
+	- ratePreICO = 200000000000000 (contracts/safe/safe_167_SAFE.sol#102)
+HurtleCoin.slitherConstructorVariables() (contracts/safe/safe_167_SAFE.sol#86-374) uses literals with too many digits:
+	- rateICO = 280000000000000 (contracts/safe/safe_167_SAFE.sol#103)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#too-many-digits
+
+Detector: constable-states
+HurtleCoin.decimals (contracts/safe/safe_167_SAFE.sol#99) should be constant 
+HurtleCoin.icoHardCapInWei (contracts/safe/safe_167_SAFE.sol#109) should be constant 
+HurtleCoin.icoSoftCapInWei (contracts/safe/safe_167_SAFE.sol#108) should be constant 
+HurtleCoin.icoTokenLimit (contracts/safe/safe_167_SAFE.sol#118) should be constant 
+HurtleCoin.initialSupply (contracts/safe/safe_167_SAFE.sol#100) should be constant 
+HurtleCoin.name (contracts/safe/safe_167_SAFE.sol#97) should be constant 
+HurtleCoin.preSaleMaxCapInWei (contracts/safe/safe_167_SAFE.sol#105) should be constant 
+HurtleCoin.presaleTokenLimit (contracts/safe/safe_167_SAFE.sol#117) should be constant 
+HurtleCoin.rateICO (contracts/safe/safe_167_SAFE.sol#103) should be constant 
+HurtleCoin.ratePreICO (contracts/safe/safe_167_SAFE.sol#102) should be constant 
+HurtleCoin.symbol (contracts/safe/safe_167_SAFE.sol#98) should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_167_SAFE.sol analyzed (5 contracts with 101 detectors), 44 result(s) found

@@ -1,0 +1,138 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_114_SC06.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_114_SC06.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_114_SC06.sol:219:61: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transferToAddress(address _to, uint256 _value, bytes _data) private returns (bool) {
+                                                            ^---------^
+
+
+Detector: constant-function-asm
+StandardToken.isContract(address) (contracts/vulnerable/vuln_114_SC06.sol#209-216) is declared view but contains assembly code
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#constant-functions-using-assembly-code
+
+Detector: uninitialized-local
+MintableToken.mint(address,uint256).empty (contracts/vulnerable/vuln_114_SC06.sol#289) is a local variable never initialized
+StandardToken.transfer(address,uint256).empty (contracts/vulnerable/vuln_114_SC06.sol#199) is a local variable never initialized
+ContractReceiver.tokenFallback(address,uint256,bytes).tkn (contracts/vulnerable/vuln_114_SC06.sol#89) is a local variable never initialized
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#uninitialized-local-variables
+
+Detector: events-access
+Ownable.transferOwnership(address) (contracts/vulnerable/vuln_114_SC06.sol#46-49) should emit an event for: 
+	- owner = newOwner (contracts/vulnerable/vuln_114_SC06.sol#48) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+
+Detector: reentrancy-events
+Reentrancy in StandardToken.transfer(address,uint256,bytes,string) (contracts/vulnerable/vuln_114_SC06.sol#166-180):
+	External calls:
+	- assert(bool)(_to.call.value(0)(bytes4(keccak256()(_custom_fallback)),msg.sender,_value,_data)) (contracts/vulnerable/vuln_114_SC06.sol#173)
+	Event emitted after the call(s):
+	- Transfer(msg.sender,_to,_value,_data) (contracts/vulnerable/vuln_114_SC06.sol#174)
+Reentrancy in StandardToken.transferToContract(address,uint256,bytes) (contracts/vulnerable/vuln_114_SC06.sol#229-237):
+	External calls:
+	- receiver.tokenFallback(msg.sender,_value,_data) (contracts/vulnerable/vuln_114_SC06.sol#234)
+	Event emitted after the call(s):
+	- Transfer(msg.sender,_to,_value,_data) (contracts/vulnerable/vuln_114_SC06.sol#235)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-4
+
+Detector: assembly
+StandardToken.isContract(address) (contracts/vulnerable/vuln_114_SC06.sol#209-216) uses assembly
+	- INLINE ASM (contracts/vulnerable/vuln_114_SC06.sol#211-215)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#assembly-usage
+
+Detector: dead-code
+SafeMath.safeMul(uint256,uint256) (contracts/vulnerable/vuln_114_SC06.sol#25-29) is never used and should be removed
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dead-code
+
+Detector: function-init-state
+EMIToken.initialSupply (contracts/vulnerable/vuln_114_SC06.sol#319) is set pre-construction with a non-constant function or state variable:
+	- 600000000 * (10 ** uint256(decimals))
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#function-initializing-state
+
+Detector: solc-version
+Version constraint ^0.4.21 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ABIEncoderV2PackedStorage_0.4.x
+	- ExpExponentCleanup
+	- EventStructWrongData
+	- NestedArrayFunctionCallDecoder.
+It is used by:
+	- ^0.4.21 (contracts/vulnerable/vuln_114_SC06.sol#1)
+solc-0.4.21 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: low-level-calls
+Low level call in StandardToken.transfer(address,uint256,bytes,string) (contracts/vulnerable/vuln_114_SC06.sol#166-180):
+	- assert(bool)(_to.call.value(0)(bytes4(keccak256()(_custom_fallback)),msg.sender,_value,_data)) (contracts/vulnerable/vuln_114_SC06.sol#173)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+
+Detector: naming-convention
+Parameter ERC223Interface.transfer(address,uint256,bytes,string).custom_fallback (contracts/vulnerable/vuln_114_SC06.sol#61) is not in mixedCase
+Parameter ContractReceiver.tokenFallback(address,uint256,bytes)._from (contracts/vulnerable/vuln_114_SC06.sol#88) is not in mixedCase
+Parameter ContractReceiver.tokenFallback(address,uint256,bytes)._value (contracts/vulnerable/vuln_114_SC06.sol#88) is not in mixedCase
+Parameter ContractReceiver.tokenFallback(address,uint256,bytes)._data (contracts/vulnerable/vuln_114_SC06.sol#88) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._from (contracts/vulnerable/vuln_114_SC06.sol#111) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._to (contracts/vulnerable/vuln_114_SC06.sol#111) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._value (contracts/vulnerable/vuln_114_SC06.sol#111) is not in mixedCase
+Parameter StandardToken.approve(address,uint256)._spender (contracts/vulnerable/vuln_114_SC06.sol#130) is not in mixedCase
+Parameter StandardToken.approve(address,uint256)._value (contracts/vulnerable/vuln_114_SC06.sol#130) is not in mixedCase
+Parameter StandardToken.allowance(address,address)._owner (contracts/vulnerable/vuln_114_SC06.sol#142) is not in mixedCase
+Parameter StandardToken.allowance(address,address)._spender (contracts/vulnerable/vuln_114_SC06.sol#142) is not in mixedCase
+Parameter StandardToken.increaseApproval(address,uint256)._spender (contracts/vulnerable/vuln_114_SC06.sol#147) is not in mixedCase
+Parameter StandardToken.increaseApproval(address,uint256)._addedValue (contracts/vulnerable/vuln_114_SC06.sol#147) is not in mixedCase
+Parameter StandardToken.decreaseApproval(address,uint256)._spender (contracts/vulnerable/vuln_114_SC06.sol#153) is not in mixedCase
+Parameter StandardToken.decreaseApproval(address,uint256)._subtractedValue (contracts/vulnerable/vuln_114_SC06.sol#153) is not in mixedCase
+Parameter StandardToken.transfer(address,uint256,bytes,string)._to (contracts/vulnerable/vuln_114_SC06.sol#166) is not in mixedCase
+Parameter StandardToken.transfer(address,uint256,bytes,string)._value (contracts/vulnerable/vuln_114_SC06.sol#166) is not in mixedCase
+Parameter StandardToken.transfer(address,uint256,bytes,string)._data (contracts/vulnerable/vuln_114_SC06.sol#166) is not in mixedCase
+Parameter StandardToken.transfer(address,uint256,bytes,string)._custom_fallback (contracts/vulnerable/vuln_114_SC06.sol#166) is not in mixedCase
+Parameter StandardToken.transfer(address,uint256,bytes)._to (contracts/vulnerable/vuln_114_SC06.sol#183) is not in mixedCase
+Parameter StandardToken.transfer(address,uint256,bytes)._value (contracts/vulnerable/vuln_114_SC06.sol#183) is not in mixedCase
+Parameter StandardToken.transfer(address,uint256,bytes)._data (contracts/vulnerable/vuln_114_SC06.sol#183) is not in mixedCase
+Parameter StandardToken.transfer(address,uint256)._to (contracts/vulnerable/vuln_114_SC06.sol#195) is not in mixedCase
+Parameter StandardToken.transfer(address,uint256)._value (contracts/vulnerable/vuln_114_SC06.sol#195) is not in mixedCase
+Parameter StandardToken.transferToAddress(address,uint256,bytes)._to (contracts/vulnerable/vuln_114_SC06.sol#219) is not in mixedCase
+Parameter StandardToken.transferToAddress(address,uint256,bytes)._value (contracts/vulnerable/vuln_114_SC06.sol#219) is not in mixedCase
+Parameter StandardToken.transferToContract(address,uint256,bytes)._to (contracts/vulnerable/vuln_114_SC06.sol#229) is not in mixedCase
+Parameter StandardToken.transferToContract(address,uint256,bytes)._value (contracts/vulnerable/vuln_114_SC06.sol#229) is not in mixedCase
+Parameter StandardToken.transferToContract(address,uint256,bytes)._data (contracts/vulnerable/vuln_114_SC06.sol#229) is not in mixedCase
+Parameter StandardToken.balanceOf(address)._owner (contracts/vulnerable/vuln_114_SC06.sol#239) is not in mixedCase
+Parameter BurnableToken.burn(uint256)._value (contracts/vulnerable/vuln_114_SC06.sol#253) is not in mixedCase
+Parameter MintableToken.mint(address,uint256)._to (contracts/vulnerable/vuln_114_SC06.sol#288) is not in mixedCase
+Parameter MintableToken.mint(address,uint256)._amount (contracts/vulnerable/vuln_114_SC06.sol#288) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: too-many-digits
+EMIToken.slitherConstructorVariables() (contracts/vulnerable/vuln_114_SC06.sol#315-328) uses literals with too many digits:
+	- initialSupply = 600000000 * (10 ** uint256(decimals)) (contracts/vulnerable/vuln_114_SC06.sol#319)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#too-many-digits
+
+Detector: constable-states
+EMIToken.decimals (contracts/vulnerable/vuln_114_SC06.sol#318) should be constant 
+EMIToken.name (contracts/vulnerable/vuln_114_SC06.sol#316) should be constant 
+EMIToken.symbol (contracts/vulnerable/vuln_114_SC06.sol#317) should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+
+Detector: external-function
+transfer(address,uint256,bytes) should be declared external:
+	- ERC223Interface.transfer(address,uint256,bytes) (contracts/vulnerable/vuln_114_SC06.sol#60)
+	- StandardToken.transfer(address,uint256,bytes) (contracts/vulnerable/vuln_114_SC06.sol#183-191)
+transfer(address,uint256,bytes,string) should be declared external:
+	- ERC223Interface.transfer(address,uint256,bytes,string) (contracts/vulnerable/vuln_114_SC06.sol#61)
+	- StandardToken.transfer(address,uint256,bytes,string) (contracts/vulnerable/vuln_114_SC06.sol#166-180)
+tokenFallback(address,uint256,bytes) should be declared external:
+	- ContractReceiver.tokenFallback(address,uint256,bytes) (contracts/vulnerable/vuln_114_SC06.sol#88-103)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#public-function-that-could-be-declared-external
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_114_SC06.sol analyzed (9 contracts with 101 detectors), 53 result(s) found

@@ -1,0 +1,276 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_278_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+
+Detector: divide-before-multiply
+CretICO.giveRiskToken(address,uint256) (contracts/safe/safe_278_SAFE.sol#363-369) performs a multiplication on the result of a division:
+	- require(bool)(rt.add(decvalue) <= soldTotal.div(1000).mul(riskPart)) (contracts/safe/safe_278_SAFE.sol#367)
+CretICO.giveAdvisers(address,uint256) (contracts/safe/safe_278_SAFE.sol#371-377) performs a multiplication on the result of a division:
+	- require(bool)(at.add(decvalue) <= soldTotal.div(1000).mul(advisersPart)) (contracts/safe/safe_278_SAFE.sol#375)
+CretICO.giveBounty(address[],uint256) (contracts/safe/safe_278_SAFE.sol#385-393) performs a multiplication on the result of a division:
+	- require(bool)(bt.add(wantToMint) <= soldTotal.div(1000).mul(airdropPart)) (contracts/safe/safe_278_SAFE.sol#390)
+CretICO.finishIco() (contracts/safe/safe_278_SAFE.sol#457-467) performs a multiplication on the result of a division:
+	- teamTokens = soldTotal.div(1000).mul(teamPart) (contracts/safe/safe_278_SAFE.sol#460)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#divide-before-multiply
+
+Detector: reentrancy-no-eth
+Reentrancy in CretICO.finishIco() (contracts/safe/safe_278_SAFE.sol#457-467):
+	External calls:
+	- CRET.mintTokens(TeamFund,teamTokens) (contracts/safe/safe_278_SAFE.sol#461)
+	- CRET.mintTokens(TeamFund2,teamTokens) (contracts/safe/safe_278_SAFE.sol#462)
+	State variables written after the call(s):
+	- statusICO = StatusICO.IcoFinished (contracts/safe/safe_278_SAFE.sol#463)
+	CretICO.statusICO (contracts/safe/safe_278_SAFE.sol#323) can be used in cross function reentrancies:
+	- CretICO.buyForInvestor(address,uint256) (contracts/safe/safe_278_SAFE.sol#520-538)
+	- CretICO.buyPreIco() (contracts/safe/safe_278_SAFE.sol#510-516)
+	- CretICO.constructor(address,address,address,address,address) (contracts/safe/safe_278_SAFE.sol#270-285)
+	- CretICO.currentStage() (contracts/safe/safe_278_SAFE.sol#401-407)
+	- CretICO.disableTokensTransfer() (contracts/safe/safe_278_SAFE.sol#480-483)
+	- CretICO.finishIco() (contracts/safe/safe_278_SAFE.sol#457-467)
+	- CretICO.finishPreIco() (contracts/safe/safe_278_SAFE.sol#432-436)
+	- CretICO.setIco() (contracts/safe/safe_278_SAFE.sol#446-451)
+	- CretICO.startPreIco() (contracts/safe/safe_278_SAFE.sol#422-426)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-2
+
+Detector: events-maths
+CretICO.setRate(uint256) (contracts/safe/safe_278_SAFE.sol#413-416) should emit an event for: 
+	- Rate_Eth = _RateEth (contracts/safe/safe_278_SAFE.sol#414) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-arithmetic
+
+Detector: missing-zero-check
+CretToken.constructor(address,address,address)._owner (contracts/safe/safe_278_SAFE.sol#87) lacks a zero-check on :
+		- owner = _owner (contracts/safe/safe_278_SAFE.sol#88)
+CretToken.constructor(address,address,address)._team (contracts/safe/safe_278_SAFE.sol#87) lacks a zero-check on :
+		- teamOneYearFrozen = _team (contracts/safe/safe_278_SAFE.sol#90)
+CretToken.constructor(address,address,address)._team2 (contracts/safe/safe_278_SAFE.sol#87) lacks a zero-check on :
+		- teamHalfYearFrozen = _team2 (contracts/safe/safe_278_SAFE.sol#91)
+CretICO.constructor(address,address,address,address,address)._TeamFund (contracts/safe/safe_278_SAFE.sol#271) lacks a zero-check on :
+		- TeamFund = _TeamFund (contracts/safe/safe_278_SAFE.sol#278)
+CretICO.constructor(address,address,address,address,address)._TeamFund2 (contracts/safe/safe_278_SAFE.sol#272) lacks a zero-check on :
+		- TeamFund2 = _TeamFund2 (contracts/safe/safe_278_SAFE.sol#279)
+CretICO.constructor(address,address,address,address,address)._Manager (contracts/safe/safe_278_SAFE.sol#275) lacks a zero-check on :
+		- Manager = _Manager (contracts/safe/safe_278_SAFE.sol#280)
+CretICO.constructor(address,address,address,address,address)._Companion1 (contracts/safe/safe_278_SAFE.sol#273) lacks a zero-check on :
+		- Companion1 = _Companion1 (contracts/safe/safe_278_SAFE.sol#281)
+CretICO.constructor(address,address,address,address,address)._Companion2 (contracts/safe/safe_278_SAFE.sol#274) lacks a zero-check on :
+		- Companion2 = _Companion2 (contracts/safe/safe_278_SAFE.sol#282)
+CretICO.consensusAddress(address)._investor (contracts/safe/safe_278_SAFE.sol#652) lacks a zero-check on :
+		- addressCompanion1 = _investor (contracts/safe/safe_278_SAFE.sol#654)
+		- addressCompanion2 = _investor (contracts/safe/safe_278_SAFE.sol#656)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+
+Detector: variable-scope
+Variable 'CretICO.getBonus(uint256).part1 (contracts/safe/safe_278_SAFE.sol#568)' in CretICO.getBonus(uint256) (contracts/safe/safe_278_SAFE.sol#562-607) potentially used before declaration: part1 = (soldTotal.add(_value)).sub(bonusRange2) (contracts/safe/safe_278_SAFE.sol#579)
+Variable 'CretICO.getBonus(uint256).part1 (contracts/safe/safe_278_SAFE.sol#568)' in CretICO.getBonus(uint256) (contracts/safe/safe_278_SAFE.sol#562-607) potentially used before declaration: part2 = _value.sub(part1) (contracts/safe/safe_278_SAFE.sol#580)
+Variable 'CretICO.getBonus(uint256).part2 (contracts/safe/safe_278_SAFE.sol#569)' in CretICO.getBonus(uint256) (contracts/safe/safe_278_SAFE.sol#562-607) potentially used before declaration: part2 = _value.sub(part1) (contracts/safe/safe_278_SAFE.sol#580)
+Variable 'CretICO.getBonus(uint256).bonusPart1 (contracts/safe/safe_278_SAFE.sol#570)' in CretICO.getBonus(uint256) (contracts/safe/safe_278_SAFE.sol#562-607) potentially used before declaration: bonusPart1 = part1.mul(200).div(1000) (contracts/safe/safe_278_SAFE.sol#581)
+Variable 'CretICO.getBonus(uint256).part1 (contracts/safe/safe_278_SAFE.sol#568)' in CretICO.getBonus(uint256) (contracts/safe/safe_278_SAFE.sol#562-607) potentially used before declaration: bonusPart1 = part1.mul(200).div(1000) (contracts/safe/safe_278_SAFE.sol#581)
+Variable 'CretICO.getBonus(uint256).bonusPart2 (contracts/safe/safe_278_SAFE.sol#571)' in CretICO.getBonus(uint256) (contracts/safe/safe_278_SAFE.sol#562-607) potentially used before declaration: bonusPart2 = part2.mul(300).div(1000) (contracts/safe/safe_278_SAFE.sol#582)
+Variable 'CretICO.getBonus(uint256).part2 (contracts/safe/safe_278_SAFE.sol#569)' in CretICO.getBonus(uint256) (contracts/safe/safe_278_SAFE.sol#562-607) potentially used before declaration: bonusPart2 = part2.mul(300).div(1000) (contracts/safe/safe_278_SAFE.sol#582)
+Variable 'CretICO.getBonus(uint256).bonusPart1 (contracts/safe/safe_278_SAFE.sol#570)' in CretICO.getBonus(uint256) (contracts/safe/safe_278_SAFE.sol#562-607) potentially used before declaration: bonus = bonusPart1.add(bonusPart2) (contracts/safe/safe_278_SAFE.sol#583)
+Variable 'CretICO.getBonus(uint256).bonusPart2 (contracts/safe/safe_278_SAFE.sol#571)' in CretICO.getBonus(uint256) (contracts/safe/safe_278_SAFE.sol#562-607) potentially used before declaration: bonus = bonusPart1.add(bonusPart2) (contracts/safe/safe_278_SAFE.sol#583)
+Variable 'CretICO.getBonus(uint256).part1 (contracts/safe/safe_278_SAFE.sol#568)' in CretICO.getBonus(uint256) (contracts/safe/safe_278_SAFE.sol#562-607) potentially used before declaration: part1 = (soldTotal.add(_value)).sub(bonusRange3) (contracts/safe/safe_278_SAFE.sol#589)
+Variable 'CretICO.getBonus(uint256).part1 (contracts/safe/safe_278_SAFE.sol#568)' in CretICO.getBonus(uint256) (contracts/safe/safe_278_SAFE.sol#562-607) potentially used before declaration: part2 = _value.sub(part1) (contracts/safe/safe_278_SAFE.sol#590)
+Variable 'CretICO.getBonus(uint256).part2 (contracts/safe/safe_278_SAFE.sol#569)' in CretICO.getBonus(uint256) (contracts/safe/safe_278_SAFE.sol#562-607) potentially used before declaration: part2 = _value.sub(part1) (contracts/safe/safe_278_SAFE.sol#590)
+Variable 'CretICO.getBonus(uint256).bonusPart1 (contracts/safe/safe_278_SAFE.sol#570)' in CretICO.getBonus(uint256) (contracts/safe/safe_278_SAFE.sol#562-607) potentially used before declaration: bonusPart1 = part1.mul(100).div(1000) (contracts/safe/safe_278_SAFE.sol#591)
+Variable 'CretICO.getBonus(uint256).part1 (contracts/safe/safe_278_SAFE.sol#568)' in CretICO.getBonus(uint256) (contracts/safe/safe_278_SAFE.sol#562-607) potentially used before declaration: bonusPart1 = part1.mul(100).div(1000) (contracts/safe/safe_278_SAFE.sol#591)
+Variable 'CretICO.getBonus(uint256).bonusPart2 (contracts/safe/safe_278_SAFE.sol#571)' in CretICO.getBonus(uint256) (contracts/safe/safe_278_SAFE.sol#562-607) potentially used before declaration: bonusPart2 = part2.mul(200).div(1000) (contracts/safe/safe_278_SAFE.sol#592)
+Variable 'CretICO.getBonus(uint256).part2 (contracts/safe/safe_278_SAFE.sol#569)' in CretICO.getBonus(uint256) (contracts/safe/safe_278_SAFE.sol#562-607) potentially used before declaration: bonusPart2 = part2.mul(200).div(1000) (contracts/safe/safe_278_SAFE.sol#592)
+Variable 'CretICO.getBonus(uint256).bonusPart1 (contracts/safe/safe_278_SAFE.sol#570)' in CretICO.getBonus(uint256) (contracts/safe/safe_278_SAFE.sol#562-607) potentially used before declaration: bonus = bonusPart1.add(bonusPart2) (contracts/safe/safe_278_SAFE.sol#593)
+Variable 'CretICO.getBonus(uint256).bonusPart2 (contracts/safe/safe_278_SAFE.sol#571)' in CretICO.getBonus(uint256) (contracts/safe/safe_278_SAFE.sol#562-607) potentially used before declaration: bonus = bonusPart1.add(bonusPart2) (contracts/safe/safe_278_SAFE.sol#593)
+Variable 'CretICO.getBonus(uint256).part1 (contracts/safe/safe_278_SAFE.sol#568)' in CretICO.getBonus(uint256) (contracts/safe/safe_278_SAFE.sol#562-607) potentially used before declaration: part1 = (soldTotal.add(_value)).sub(bonusRange4) (contracts/safe/safe_278_SAFE.sol#599)
+Variable 'CretICO.getBonus(uint256).part1 (contracts/safe/safe_278_SAFE.sol#568)' in CretICO.getBonus(uint256) (contracts/safe/safe_278_SAFE.sol#562-607) potentially used before declaration: part2 = _value.sub(part1) (contracts/safe/safe_278_SAFE.sol#600)
+Variable 'CretICO.getBonus(uint256).part2 (contracts/safe/safe_278_SAFE.sol#569)' in CretICO.getBonus(uint256) (contracts/safe/safe_278_SAFE.sol#562-607) potentially used before declaration: part2 = _value.sub(part1) (contracts/safe/safe_278_SAFE.sol#600)
+Variable 'CretICO.getBonus(uint256).bonusPart1 (contracts/safe/safe_278_SAFE.sol#570)' in CretICO.getBonus(uint256) (contracts/safe/safe_278_SAFE.sol#562-607) potentially used before declaration: bonusPart1 = 0 (contracts/safe/safe_278_SAFE.sol#601)
+Variable 'CretICO.getBonus(uint256).bonusPart2 (contracts/safe/safe_278_SAFE.sol#571)' in CretICO.getBonus(uint256) (contracts/safe/safe_278_SAFE.sol#562-607) potentially used before declaration: bonusPart2 = part2.mul(100).div(1000) (contracts/safe/safe_278_SAFE.sol#602)
+Variable 'CretICO.getBonus(uint256).part2 (contracts/safe/safe_278_SAFE.sol#569)' in CretICO.getBonus(uint256) (contracts/safe/safe_278_SAFE.sol#562-607) potentially used before declaration: bonusPart2 = part2.mul(100).div(1000) (contracts/safe/safe_278_SAFE.sol#602)
+Variable 'CretICO.getBonus(uint256).bonusPart1 (contracts/safe/safe_278_SAFE.sol#570)' in CretICO.getBonus(uint256) (contracts/safe/safe_278_SAFE.sol#562-607) potentially used before declaration: bonus = bonusPart1.add(bonusPart2) (contracts/safe/safe_278_SAFE.sol#603)
+Variable 'CretICO.getBonus(uint256).bonusPart2 (contracts/safe/safe_278_SAFE.sol#571)' in CretICO.getBonus(uint256) (contracts/safe/safe_278_SAFE.sol#562-607) potentially used before declaration: bonus = bonusPart1.add(bonusPart2) (contracts/safe/safe_278_SAFE.sol#603)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#pre-declaration-usage-of-local-variables
+
+Detector: reentrancy-benign
+Reentrancy in CretICO.finishIco() (contracts/safe/safe_278_SAFE.sol#457-467):
+	External calls:
+	- CRET.mintTokens(TeamFund,teamTokens) (contracts/safe/safe_278_SAFE.sol#461)
+	- CRET.mintTokens(TeamFund2,teamTokens) (contracts/safe/safe_278_SAFE.sol#462)
+	State variables written after the call(s):
+	- canIBuy = false (contracts/safe/safe_278_SAFE.sol#464)
+	- canIWithdraw = true (contracts/safe/safe_278_SAFE.sol#465)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+
+Detector: reentrancy-events
+Reentrancy in CretICO.buyForInvestor(address,uint256) (contracts/safe/safe_278_SAFE.sol#520-538):
+	External calls:
+	- CRET.mintTokens(_investor,total) (contracts/safe/safe_278_SAFE.sol#536)
+	Event emitted after the call(s):
+	- LogBuyForInvestor(_investor,_value) (contracts/safe/safe_278_SAFE.sol#537)
+Reentrancy in CretICO.finishIco() (contracts/safe/safe_278_SAFE.sol#457-467):
+	External calls:
+	- CRET.mintTokens(TeamFund,teamTokens) (contracts/safe/safe_278_SAFE.sol#461)
+	- CRET.mintTokens(TeamFund2,teamTokens) (contracts/safe/safe_278_SAFE.sol#462)
+	Event emitted after the call(s):
+	- LogFinishICO() (contracts/safe/safe_278_SAFE.sol#466)
+Reentrancy in CretICO.returnEther() (contracts/safe/safe_278_SAFE.sol#615-631):
+	External calls:
+	- CRET.burnTokens(msg.sender,tokens) (contracts/safe/safe_278_SAFE.sol#628)
+	External calls sending eth:
+	- msg.sender.transfer(eth) (contracts/safe/safe_278_SAFE.sol#629)
+	Event emitted after the call(s):
+	- LogReturnEth(msg.sender,eth) (contracts/safe/safe_278_SAFE.sol#630)
+Reentrancy in CretICO.returnOtherCrypto(address) (contracts/safe/safe_278_SAFE.sol#636-646):
+	External calls:
+	- CRET.burnTokens(_investor,tokens) (contracts/safe/safe_278_SAFE.sol#644)
+	Event emitted after the call(s):
+	- LogReturnOtherCrypto(_investor) (contracts/safe/safe_278_SAFE.sol#645)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-4
+
+Detector: timestamp
+CretToken.transfer(address,uint256) (contracts/safe/safe_278_SAFE.sol#187-200) uses timestamp for comparisons
+	Dangerous comparisons:
+	- now < (timeStamp + 36720000) (contracts/safe/safe_278_SAFE.sol#189)
+	- now < (timeStamp + 20736000) (contracts/safe/safe_278_SAFE.sol#192)
+CretToken.transferFrom(address,address,uint256) (contracts/safe/safe_278_SAFE.sol#205-223) uses timestamp for comparisons
+	Dangerous comparisons:
+	- now < (timeStamp + 36720000) (contracts/safe/safe_278_SAFE.sol#209)
+	- now < (timeStamp + 20736000) (contracts/safe/safe_278_SAFE.sol#213)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+
+Detector: costly-loop
+CretToken.mintBountyTokens(address[],uint256) (contracts/safe/safe_278_SAFE.sol#135-145) has costly operations inside a loop:
+	- totalSupply = totalSupply.add(_value) (contracts/safe/safe_278_SAFE.sol#140)
+CretToken.mintBountyTokens(address[],uint256) (contracts/safe/safe_278_SAFE.sol#135-145) has costly operations inside a loop:
+	- bountyTokens = bountyTokens.add(_value) (contracts/safe/safe_278_SAFE.sol#141)
+CretToken.mintBountyTokens(address[],uint256) (contracts/safe/safe_278_SAFE.sol#135-145) has costly operations inside a loop:
+	- lastBountyStatus ++ (contracts/safe/safe_278_SAFE.sol#142)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#costly-operations-inside-a-loop
+
+Detector: function-init-state
+CretICO.Token_Price (contracts/safe/safe_278_SAFE.sol#293) is set pre-construction with a non-constant function or state variable:
+	- Tokens_Per_Dollar.mul(Rate_Eth)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#function-initializing-state
+
+Detector: solc-version
+Version constraint ^0.4.21 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ABIEncoderV2PackedStorage_0.4.x
+	- ExpExponentCleanup
+	- EventStructWrongData
+	- NestedArrayFunctionCallDecoder.
+It is used by:
+	- ^0.4.21 (contracts/safe/safe_278_SAFE.sol#1)
+solc-0.4.24 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Parameter CretToken.mintTokens(address,uint256)._investor (contracts/safe/safe_278_SAFE.sol#102) is not in mixedCase
+Parameter CretToken.mintTokens(address,uint256)._value (contracts/safe/safe_278_SAFE.sol#102) is not in mixedCase
+Parameter CretToken.mintRiskTokens(address,uint256)._investor (contracts/safe/safe_278_SAFE.sol#110) is not in mixedCase
+Parameter CretToken.mintRiskTokens(address,uint256)._value (contracts/safe/safe_278_SAFE.sol#110) is not in mixedCase
+Parameter CretToken.mintReserveTokens(address,uint256)._investor (contracts/safe/safe_278_SAFE.sol#118) is not in mixedCase
+Parameter CretToken.mintReserveTokens(address,uint256)._value (contracts/safe/safe_278_SAFE.sol#118) is not in mixedCase
+Parameter CretToken.mintAdvisersTokens(address,uint256)._investor (contracts/safe/safe_278_SAFE.sol#127) is not in mixedCase
+Parameter CretToken.mintAdvisersTokens(address,uint256)._value (contracts/safe/safe_278_SAFE.sol#127) is not in mixedCase
+Parameter CretToken.mintBountyTokens(address[],uint256)._dests (contracts/safe/safe_278_SAFE.sol#135) is not in mixedCase
+Parameter CretToken.mintBountyTokens(address[],uint256)._value (contracts/safe/safe_278_SAFE.sol#135) is not in mixedCase
+Parameter CretToken.burnTokens(address,uint256)._investor (contracts/safe/safe_278_SAFE.sol#168) is not in mixedCase
+Parameter CretToken.burnTokens(address,uint256)._value (contracts/safe/safe_278_SAFE.sol#168) is not in mixedCase
+Parameter CretToken.balanceOf(address)._owner (contracts/safe/safe_278_SAFE.sol#180) is not in mixedCase
+Parameter CretToken.transfer(address,uint256)._to (contracts/safe/safe_278_SAFE.sol#187) is not in mixedCase
+Parameter CretToken.transfer(address,uint256)._amount (contracts/safe/safe_278_SAFE.sol#187) is not in mixedCase
+Parameter CretToken.transferFrom(address,address,uint256)._from (contracts/safe/safe_278_SAFE.sol#205) is not in mixedCase
+Parameter CretToken.transferFrom(address,address,uint256)._to (contracts/safe/safe_278_SAFE.sol#205) is not in mixedCase
+Parameter CretToken.transferFrom(address,address,uint256)._amount (contracts/safe/safe_278_SAFE.sol#205) is not in mixedCase
+Parameter CretToken.approve(address,uint256)._spender (contracts/safe/safe_278_SAFE.sol#234) is not in mixedCase
+Parameter CretToken.approve(address,uint256)._amount (contracts/safe/safe_278_SAFE.sol#234) is not in mixedCase
+Parameter CretToken.allowance(address,address)._owner (contracts/safe/safe_278_SAFE.sol#249) is not in mixedCase
+Parameter CretToken.allowance(address,address)._spender (contracts/safe/safe_278_SAFE.sol#249) is not in mixedCase
+Parameter CretICO.passKYC(address)._investor (contracts/safe/safe_278_SAFE.sol#358) is not in mixedCase
+Parameter CretICO.giveRiskToken(address,uint256)._investor (contracts/safe/safe_278_SAFE.sol#363) is not in mixedCase
+Parameter CretICO.giveRiskToken(address,uint256)._value (contracts/safe/safe_278_SAFE.sol#363) is not in mixedCase
+Parameter CretICO.giveAdvisers(address,uint256)._investor (contracts/safe/safe_278_SAFE.sol#371) is not in mixedCase
+Parameter CretICO.giveAdvisers(address,uint256)._value (contracts/safe/safe_278_SAFE.sol#371) is not in mixedCase
+Parameter CretICO.giveReserveFund(address,uint256)._investor (contracts/safe/safe_278_SAFE.sol#379) is not in mixedCase
+Parameter CretICO.giveReserveFund(address,uint256)._value (contracts/safe/safe_278_SAFE.sol#379) is not in mixedCase
+Parameter CretICO.giveBounty(address[],uint256)._value (contracts/safe/safe_278_SAFE.sol#385) is not in mixedCase
+Parameter CretICO.pureBalance(address)._owner (contracts/safe/safe_278_SAFE.sol#396) is not in mixedCase
+Parameter CretICO.setRate(uint256)._RateEth (contracts/safe/safe_278_SAFE.sol#413) is not in mixedCase
+Parameter CretICO.buyForInvestor(address,uint256)._investor (contracts/safe/safe_278_SAFE.sol#520) is not in mixedCase
+Parameter CretICO.buyForInvestor(address,uint256)._value (contracts/safe/safe_278_SAFE.sol#520) is not in mixedCase
+Parameter CretICO.createTokens(address,uint256,uint256)._investor (contracts/safe/safe_278_SAFE.sol#542) is not in mixedCase
+Parameter CretICO.createTokens(address,uint256,uint256)._value (contracts/safe/safe_278_SAFE.sol#542) is not in mixedCase
+Parameter CretICO.createTokens(address,uint256,uint256)._ethValue (contracts/safe/safe_278_SAFE.sol#542) is not in mixedCase
+Parameter CretICO.getBonus(uint256)._value (contracts/safe/safe_278_SAFE.sol#562) is not in mixedCase
+Parameter CretICO.returnOtherCrypto(address)._investor (contracts/safe/safe_278_SAFE.sol#636) is not in mixedCase
+Parameter CretICO.consensusAddress(address)._investor (contracts/safe/safe_278_SAFE.sol#652) is not in mixedCase
+Variable CretICO.TeamFund (contracts/safe/safe_278_SAFE.sol#258) is not in mixedCase
+Variable CretICO.TeamFund2 (contracts/safe/safe_278_SAFE.sol#259) is not in mixedCase
+Variable CretICO.Companion1 (contracts/safe/safe_278_SAFE.sol#260) is not in mixedCase
+Variable CretICO.Companion2 (contracts/safe/safe_278_SAFE.sol#261) is not in mixedCase
+Variable CretICO.Manager (contracts/safe/safe_278_SAFE.sol#262) is not in mixedCase
+Variable CretICO.CRET (contracts/safe/safe_278_SAFE.sol#265) is not in mixedCase
+Variable CretICO.Rate_Eth (contracts/safe/safe_278_SAFE.sol#291) is not in mixedCase
+Variable CretICO.Tokens_Per_Dollar (contracts/safe/safe_278_SAFE.sol#292) is not in mixedCase
+Variable CretICO.Token_Price (contracts/safe/safe_278_SAFE.sol#293) is not in mixedCase
+Constant CretICO.teamPart (contracts/safe/safe_278_SAFE.sol#294) is not in UPPER_CASE_WITH_UNDERSCORES
+Constant CretICO.advisersPart (contracts/safe/safe_278_SAFE.sol#295) is not in UPPER_CASE_WITH_UNDERSCORES
+Constant CretICO.riskPart (contracts/safe/safe_278_SAFE.sol#296) is not in UPPER_CASE_WITH_UNDERSCORES
+Constant CretICO.airdropPart (contracts/safe/safe_278_SAFE.sol#297) is not in UPPER_CASE_WITH_UNDERSCORES
+Constant CretICO.maxDeposit (contracts/safe/safe_278_SAFE.sol#300) is not in UPPER_CASE_WITH_UNDERSCORES
+Constant CretICO.bonusRange1 (contracts/safe/safe_278_SAFE.sol#301) is not in UPPER_CASE_WITH_UNDERSCORES
+Constant CretICO.bonusRange2 (contracts/safe/safe_278_SAFE.sol#302) is not in UPPER_CASE_WITH_UNDERSCORES
+Constant CretICO.bonusRange3 (contracts/safe/safe_278_SAFE.sol#303) is not in UPPER_CASE_WITH_UNDERSCORES
+Constant CretICO.bonusRange4 (contracts/safe/safe_278_SAFE.sol#304) is not in UPPER_CASE_WITH_UNDERSCORES
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: reentrancy-unlimited-gas
+Reentrancy in CretICO.returnEther() (contracts/safe/safe_278_SAFE.sol#615-631):
+	External calls:
+	- msg.sender.transfer(eth) (contracts/safe/safe_278_SAFE.sol#629)
+	Event emitted after the call(s):
+	- LogReturnEth(msg.sender,eth) (contracts/safe/safe_278_SAFE.sol#630)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-5
+
+Detector: too-many-digits
+CretToken.slitherConstructorConstantVariables() (contracts/safe/safe_278_SAFE.sol#54-252) uses literals with too many digits:
+	- reserveTokensLimit = 5000000 * 1e18 (contracts/safe/safe_278_SAFE.sol#64)
+CretICO.slitherConstructorConstantVariables() (contracts/safe/safe_278_SAFE.sol#255-675) uses literals with too many digits:
+	- SOFT_CAP = 30000000 * 1e18 (contracts/safe/safe_278_SAFE.sol#298)
+CretICO.slitherConstructorConstantVariables() (contracts/safe/safe_278_SAFE.sol#255-675) uses literals with too many digits:
+	- HARD_CAP = 450000000 * 1e18 (contracts/safe/safe_278_SAFE.sol#299)
+CretICO.slitherConstructorConstantVariables() (contracts/safe/safe_278_SAFE.sol#255-675) uses literals with too many digits:
+	- maxDeposit = 5000000 * 1e18 (contracts/safe/safe_278_SAFE.sol#300)
+CretICO.slitherConstructorConstantVariables() (contracts/safe/safe_278_SAFE.sol#255-675) uses literals with too many digits:
+	- bonusRange1 = 30000000 * 1e18 (contracts/safe/safe_278_SAFE.sol#301)
+CretICO.slitherConstructorConstantVariables() (contracts/safe/safe_278_SAFE.sol#255-675) uses literals with too many digits:
+	- bonusRange2 = 100000000 * 1e18 (contracts/safe/safe_278_SAFE.sol#302)
+CretICO.slitherConstructorConstantVariables() (contracts/safe/safe_278_SAFE.sol#255-675) uses literals with too many digits:
+	- bonusRange3 = 200000000 * 1e18 (contracts/safe/safe_278_SAFE.sol#303)
+CretICO.slitherConstructorConstantVariables() (contracts/safe/safe_278_SAFE.sol#255-675) uses literals with too many digits:
+	- bonusRange4 = 300000000 * 1e18 (contracts/safe/safe_278_SAFE.sol#304)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#too-many-digits
+
+Detector: unindexed-event-address
+Event CretICO.LogBuyForInvestor(address,uint256) (contracts/safe/safe_278_SAFE.sol#339) has address parameters but no indexed parameters
+Event CretICO.LogReturnEth(address,uint256) (contracts/safe/safe_278_SAFE.sol#340) has address parameters but no indexed parameters
+Event CretICO.LogReturnOtherCrypto(address) (contracts/safe/safe_278_SAFE.sol#341) has address parameters but no indexed parameters
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unindexed-event-address-parameters
+
+Detector: constable-states
+CretICO.Tokens_Per_Dollar (contracts/safe/safe_278_SAFE.sol#292) should be constant 
+CretToken.decimals (contracts/safe/safe_278_SAFE.sol#58) should be constant 
+CretToken.name (contracts/safe/safe_278_SAFE.sol#56) should be constant 
+CretToken.symbol (contracts/safe/safe_278_SAFE.sol#57) should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_278_SAFE.sol analyzed (4 contracts with 101 detectors), 128 result(s) found

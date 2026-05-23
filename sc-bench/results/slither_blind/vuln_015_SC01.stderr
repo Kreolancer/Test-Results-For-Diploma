@@ -1,0 +1,151 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_015_SC01.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_015_SC01.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_015_SC01.sol:83:42: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+                 if (collectedFees == 0) throw;
+                                         ^---^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_015_SC01.sol:93:42: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+                 if (collectedFees == 0) throw;
+                                         ^---^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_015_SC01.sol:100:58: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+                 if (collectedFees == 0 || _pcent > 100) throw;
+                                                         ^---^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_015_SC01.sol:113:50: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+                 if (_mult > 300 || _mult < 120) throw;
+                                                 ^---^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_015_SC01.sol:119:33: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+                 if (_fee > 10) throw;
+                                ^---^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_015_SC01.sol:74:26: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+                         participants[payoutOrder].etherAddress.send(payoutToSend);
+                         ^-------------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_015_SC01.sol:85:18: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+                 creator.send(collectedFees);
+                 ^-------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_015_SC01.sol:95:18: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+                 creator.send(_amt);
+                 ^----------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_015_SC01.sol:103:18: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+                 creator.send(feesToCollect);
+                 ^-------------------------^
+
+
+Detector: controlled-array-length
+Rubixi (contracts/vulnerable/vuln_015_SC01.sol#10-162) contract sets array length with a user-controlled value:
+	- participants.push(Participant(msg.sender,(msg.value * pyramidMultiplier) / 100)) (contracts/vulnerable/vuln_015_SC01.sol#61)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#array-length-assignment
+
+Detector: divide-before-multiply
+Rubixi.collectPercentOfFees(uint256) (contracts/vulnerable/vuln_015_SC01.sol#99-105) performs a multiplication on the result of a division:
+	- feesToCollect = collectedFees / 100 * _pcent (contracts/vulnerable/vuln_015_SC01.sol#102)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#divide-before-multiply
+
+Detector: unchecked-send
+Rubixi.addPayout(uint256) (contracts/vulnerable/vuln_015_SC01.sol#59-79) ignores return value by participants[payoutOrder].etherAddress.send(payoutToSend) (contracts/vulnerable/vuln_015_SC01.sol#74)
+Rubixi.collectAllFees() (contracts/vulnerable/vuln_015_SC01.sol#82-87) ignores return value by creator.send(collectedFees) (contracts/vulnerable/vuln_015_SC01.sol#85)
+Rubixi.collectFeesInEther(uint256) (contracts/vulnerable/vuln_015_SC01.sol#89-97) ignores return value by creator.send(_amt) (contracts/vulnerable/vuln_015_SC01.sol#95)
+Rubixi.collectPercentOfFees(uint256) (contracts/vulnerable/vuln_015_SC01.sol#99-105) ignores return value by creator.send(feesToCollect) (contracts/vulnerable/vuln_015_SC01.sol#103)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unchecked-send
+
+Detector: events-access
+Rubixi.changeOwner(address) (contracts/vulnerable/vuln_015_SC01.sol#108-110) should emit an event for: 
+	- creator = _owner (contracts/vulnerable/vuln_015_SC01.sol#109) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+
+Detector: events-maths
+Rubixi.collectFeesInEther(uint256) (contracts/vulnerable/vuln_015_SC01.sol#89-97) should emit an event for: 
+	- collectedFees -= _amt (contracts/vulnerable/vuln_015_SC01.sol#96) 
+Rubixi.collectPercentOfFees(uint256) (contracts/vulnerable/vuln_015_SC01.sol#99-105) should emit an event for: 
+	- collectedFees -= feesToCollect (contracts/vulnerable/vuln_015_SC01.sol#104) 
+Rubixi.changeMultiplier(uint256) (contracts/vulnerable/vuln_015_SC01.sol#112-116) should emit an event for: 
+	- pyramidMultiplier = _mult (contracts/vulnerable/vuln_015_SC01.sol#115) 
+Rubixi.changeFeePercentage(uint256) (contracts/vulnerable/vuln_015_SC01.sol#118-122) should emit an event for: 
+	- feePercent = _fee (contracts/vulnerable/vuln_015_SC01.sol#121) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-arithmetic
+
+Detector: missing-zero-check
+Rubixi.changeOwner(address)._owner (contracts/vulnerable/vuln_015_SC01.sol#108) lacks a zero-check on :
+		- creator = _owner (contracts/vulnerable/vuln_015_SC01.sol#109)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+
+Detector: incorrect-modifier
+Modifier Rubixi.onlyowner() (contracts/vulnerable/vuln_015_SC01.sol#27-29) does not always execute _; or revert
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-modifier
+
+Detector: calls-loop
+Rubixi.addPayout(uint256) (contracts/vulnerable/vuln_015_SC01.sol#59-79) has external calls inside a loop: participants[payoutOrder].etherAddress.send(payoutToSend) (contracts/vulnerable/vuln_015_SC01.sol#74)
+	Calls stack containing the loop:
+		Rubixi.fallback()
+		Rubixi.init()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation/#calls-inside-a-loop
+
+Detector: deprecated-standards
+Deprecated standard detected THROW (contracts/vulnerable/vuln_015_SC01.sol#83):
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected THROW (contracts/vulnerable/vuln_015_SC01.sol#93):
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected THROW (contracts/vulnerable/vuln_015_SC01.sol#100):
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected THROW (contracts/vulnerable/vuln_015_SC01.sol#113):
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected THROW (contracts/vulnerable/vuln_015_SC01.sol#119):
+	- Usage of "throw" should be replaced with "revert()"
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#deprecated-standards
+
+Detector: solc-version
+Version constraint ^0.4.15 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- NestedArrayFunctionCallDecoder
+	- ZeroFunctionSelector.
+It is used by:
+	- ^0.4.15 (contracts/vulnerable/vuln_015_SC01.sol#8)
+solc-0.4.15 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Function Rubixi.DynamicPyramid() (contracts/vulnerable/vuln_015_SC01.sol#23-25) is not in mixedCase
+Parameter Rubixi.addPayout(uint256)._fee (contracts/vulnerable/vuln_015_SC01.sol#59) is not in mixedCase
+Parameter Rubixi.collectFeesInEther(uint256)._amt (contracts/vulnerable/vuln_015_SC01.sol#89) is not in mixedCase
+Parameter Rubixi.collectPercentOfFees(uint256)._pcent (contracts/vulnerable/vuln_015_SC01.sol#99) is not in mixedCase
+Parameter Rubixi.changeOwner(address)._owner (contracts/vulnerable/vuln_015_SC01.sol#108) is not in mixedCase
+Parameter Rubixi.changeMultiplier(uint256)._mult (contracts/vulnerable/vuln_015_SC01.sol#112) is not in mixedCase
+Parameter Rubixi.changeFeePercentage(uint256)._fee (contracts/vulnerable/vuln_015_SC01.sol#118) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: reentrancy-unlimited-gas
+Reentrancy in Rubixi.addPayout(uint256) (contracts/vulnerable/vuln_015_SC01.sol#59-79):
+	External calls:
+	- participants[payoutOrder].etherAddress.send(payoutToSend) (contracts/vulnerable/vuln_015_SC01.sol#74)
+	State variables written after the call(s):
+	- balance -= participants[payoutOrder].payout (contracts/vulnerable/vuln_015_SC01.sol#76)
+	- payoutOrder += 1 (contracts/vulnerable/vuln_015_SC01.sol#77)
+Reentrancy in Rubixi.collectAllFees() (contracts/vulnerable/vuln_015_SC01.sol#82-87):
+	External calls:
+	- creator.send(collectedFees) (contracts/vulnerable/vuln_015_SC01.sol#85)
+	State variables written after the call(s):
+	- collectedFees = 0 (contracts/vulnerable/vuln_015_SC01.sol#86)
+Reentrancy in Rubixi.collectFeesInEther(uint256) (contracts/vulnerable/vuln_015_SC01.sol#89-97):
+	External calls:
+	- collectAllFees() (contracts/vulnerable/vuln_015_SC01.sol#91)
+		- creator.send(collectedFees) (contracts/vulnerable/vuln_015_SC01.sol#85)
+	- creator.send(_amt) (contracts/vulnerable/vuln_015_SC01.sol#95)
+	State variables written after the call(s):
+	- collectedFees -= _amt (contracts/vulnerable/vuln_015_SC01.sol#96)
+Reentrancy in Rubixi.collectPercentOfFees(uint256) (contracts/vulnerable/vuln_015_SC01.sol#99-105):
+	External calls:
+	- creator.send(feesToCollect) (contracts/vulnerable/vuln_015_SC01.sol#103)
+	State variables written after the call(s):
+	- collectedFees -= feesToCollect (contracts/vulnerable/vuln_015_SC01.sol#104)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-5
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_015_SC01.sol analyzed (1 contracts with 101 detectors), 32 result(s) found

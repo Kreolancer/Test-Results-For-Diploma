@@ -1,0 +1,55 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_217_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+
+Detector: locked-ether
+Contract locking ether found:
+	Contract BiotheumToken (contracts/safe/safe_217_SAFE.sol#82-228) has payable functions:
+	 - BiotheumToken.fallback() (contracts/safe/safe_217_SAFE.sol#193-195)
+	But does not have a function to withdraw the ether
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#contracts-that-lock-ether
+
+Detector: missing-zero-check
+Owned.transferOwnership(address)._newOwner (contracts/safe/safe_217_SAFE.sol#66) lacks a zero-check on :
+		- newOwner = _newOwner (contracts/safe/safe_217_SAFE.sol#67)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+
+Detector: solc-version
+Version constraint ^0.4.4 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- NestedArrayFunctionCallDecoder
+	- ZeroFunctionSelector
+	- DelegateCallReturnValue
+	- ECRecoverMalformedInput
+	- SkipEmptyStringLiteral
+	- ConstantOptimizerSubtraction
+	- IdentityPrecompileReturnIgnored.
+It is used by:
+	- ^0.4.4 (contracts/safe/safe_217_SAFE.sol#3)
+solc-0.4.24 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Contract tokenRecipient (contracts/safe/safe_217_SAFE.sol#45) is not in CapWords
+Parameter Owned.transferOwnership(address)._newOwner (contracts/safe/safe_217_SAFE.sol#66) is not in mixedCase
+Parameter BiotheumToken.approveAndCall(address,uint256,bytes)._spender (contracts/safe/safe_217_SAFE.sol#179) is not in mixedCase
+Parameter BiotheumToken.approveAndCall(address,uint256,bytes)._value (contracts/safe/safe_217_SAFE.sol#179) is not in mixedCase
+Parameter BiotheumToken.approveAndCall(address,uint256,bytes)._extraData (contracts/safe/safe_217_SAFE.sol#179) is not in mixedCase
+Parameter BiotheumToken.increaseApproval(address,uint256)._spender (contracts/safe/safe_217_SAFE.sol#211) is not in mixedCase
+Parameter BiotheumToken.increaseApproval(address,uint256)._addedValue (contracts/safe/safe_217_SAFE.sol#211) is not in mixedCase
+Parameter BiotheumToken.decreaseApproval(address,uint256)._spender (contracts/safe/safe_217_SAFE.sol#217) is not in mixedCase
+Parameter BiotheumToken.decreaseApproval(address,uint256)._subtractedValue (contracts/safe/safe_217_SAFE.sol#217) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: external-function
+approveAndCall(address,uint256,bytes) should be declared external:
+	- BiotheumToken.approveAndCall(address,uint256,bytes) (contracts/safe/safe_217_SAFE.sol#179-188)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#public-function-that-could-be-declared-external
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_217_SAFE.sol analyzed (5 contracts with 101 detectors), 14 result(s) found

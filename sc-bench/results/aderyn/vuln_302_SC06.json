@@ -1,0 +1,1928 @@
+{
+  "files_summary": {
+    "total_source_units": 1,
+    "total_sloc": 893
+  },
+  "files_details": {
+    "files_details": [
+      {
+        "file_path": "src/vuln_302_SC06.sol",
+        "n_sloc": 893
+      }
+    ]
+  },
+  "issue_count": {
+    "high": 4,
+    "low": 12
+  },
+  "high_issues": {
+    "issues": [
+      {
+        "title": "Arbitrary `from` Passed to `transferFrom`",
+        "description": "Passing an arbitrary `from` address to `transferFrom` (or `safeTransferFrom`) can lead to loss of funds, because anyone can transfer tokens from the `from` address if an approval is made.",
+        "detector_name": "arbitrary-transfer-from",
+        "instances": [
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 366,
+            "src": "12755:37",
+            "src_char": "12755:37"
+          }
+        ]
+      },
+      {
+        "title": "Direct assignment of array length",
+        "description": "If the length of a dynamic array (storage variable) is directly assigned to, it may allow access to other storage slots by tweaking it's value. This practice has been deprecated in newer Solidity versions",
+        "detector_name": "dynamic-array-length-assignment",
+        "instances": [
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1378,
+            "src": "49029:14",
+            "src_char": "49029:14"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1384,
+            "src": "49253:14",
+            "src_char": "49253:14"
+          }
+        ]
+      },
+      {
+        "title": "Reentrancy: State change after external call",
+        "description": "Changing state after an external call can lead to re-entrancy attacks.Use the checks-effects-interactions pattern to avoid this issue.",
+        "detector_name": "reentrancy-state-change",
+        "instances": [
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 96,
+            "src": "2526:102",
+            "src_char": "2526:102",
+            "hint": "State is changed at: `unpausedWallet[_wallet] = mode`"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 300,
+            "src": "10193:102",
+            "src_char": "10193:102",
+            "hint": "State is changed at: `grantedToSetUnpausedWallet[_to] = permission`"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 306,
+            "src": "10525:144",
+            "src_char": "10525:144",
+            "hint": "State is changed at: `unpausedWallet[_wallet] = mode`"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 470,
+            "src": "16023:102",
+            "src_char": "16023:102",
+            "hint": "State is changed at: `grantedToSetUnburnableWallet[_to] = permission`"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 476,
+            "src": "16387:146",
+            "src_char": "16387:146",
+            "hint": "State is changed at: `unburnableWallet[_wallet] = true`"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 739,
+            "src": "26217:72",
+            "src_char": "26217:72",
+            "hint": "State is changed at: `totalShare = totalShare.sub(share)`, `unlocked[_owner] += share`"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 838,
+            "src": "29795:57",
+            "src_char": "29795:57",
+            "hint": "State is changed at: `queue[_beneficiary][unfreezeDate] = queue[_beneficiary][unfreezeDate].add(_tokens)`, `totalShare = totalShare.add(_tokens)`"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 859,
+            "src": "30425:28",
+            "src_char": "30425:28",
+            "hint": "State is changed at: `totalShare = totalShare.sub(share)`"
+          }
+        ]
+      },
+      {
+        "title": "`selfdestruct` is Deprecated",
+        "description": "Remove the `selfdestruct` instruction from the code.",
+        "detector_name": "selfdestruct",
+        "instances": [
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 686,
+            "src": "24484:12",
+            "src_char": "24484:12"
+          }
+        ]
+      }
+    ]
+  },
+  "low_issues": {
+    "issues": [
+      {
+        "title": "Boolean equality is not required",
+        "description": "If `x` is a boolean, use `if(x)` and `if(!x)` instead of `if(x == true)` or `if(x == false)`.",
+        "detector_name": "boolean-equality",
+        "instances": [
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1065,
+            "src": "38129:17",
+            "src_char": "38129:17"
+          }
+        ]
+      },
+      {
+        "title": "Centralization Risk",
+        "description": "Contracts have owners with privileged rights to perform admin tasks and need to be trusted to not perform malicious updates or drain funds.",
+        "detector_name": "centralization-risk",
+        "instances": [
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 64,
+            "src": "1707:9",
+            "src_char": "1707:9"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 76,
+            "src": "1982:7",
+            "src_char": "1982:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 103,
+            "src": "2798:9",
+            "src_char": "2798:9"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 343,
+            "src": "11835:9",
+            "src_char": "11835:9"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 380,
+            "src": "13198:7",
+            "src_char": "13198:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 390,
+            "src": "13579:9",
+            "src_char": "13579:9"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 404,
+            "src": "13959:7",
+            "src_char": "13959:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 411,
+            "src": "14183:9",
+            "src_char": "14183:9"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 429,
+            "src": "14734:9",
+            "src_char": "14734:9"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 444,
+            "src": "15048:7",
+            "src_char": "15048:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 452,
+            "src": "15296:9",
+            "src_char": "15296:9"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 484,
+            "src": "16765:9",
+            "src_char": "16765:9"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 618,
+            "src": "21939:7",
+            "src_char": "21939:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 639,
+            "src": "22561:9",
+            "src_char": "22561:9"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 646,
+            "src": "22930:9",
+            "src_char": "22930:9"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 657,
+            "src": "23303:9",
+            "src_char": "23303:9"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 676,
+            "src": "24185:9",
+            "src_char": "24185:9"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 685,
+            "src": "24464:9",
+            "src_char": "24464:9"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 691,
+            "src": "24615:7",
+            "src_char": "24615:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 713,
+            "src": "25162:9",
+            "src_char": "25162:9"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 720,
+            "src": "25406:9",
+            "src_char": "25406:9"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 747,
+            "src": "26475:7",
+            "src_char": "26475:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 836,
+            "src": "29728:9",
+            "src_char": "29728:9"
+          }
+        ]
+      },
+      {
+        "title": "Empty `require()` / `revert()` Statement",
+        "description": "Use descriptive reason strings or custom errors for revert paths.",
+        "detector_name": "empty-require-revert",
+        "instances": [
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 56,
+            "src": "1438:7",
+            "src_char": "1438:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 65,
+            "src": "1727:7",
+            "src_char": "1727:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 90,
+            "src": "2274:7",
+            "src_char": "2274:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 96,
+            "src": "2526:7",
+            "src_char": "2526:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 166,
+            "src": "4708:7",
+            "src_char": "4708:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 167,
+            "src": "4744:7",
+            "src_char": "4744:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 207,
+            "src": "6202:7",
+            "src_char": "6202:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 208,
+            "src": "6238:7",
+            "src_char": "6238:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 209,
+            "src": "6282:7",
+            "src_char": "6282:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 300,
+            "src": "10193:7",
+            "src_char": "10193:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 306,
+            "src": "10525:7",
+            "src_char": "10525:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 350,
+            "src": "12074:7",
+            "src_char": "12074:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 360,
+            "src": "12450:7",
+            "src_char": "12450:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 365,
+            "src": "12676:7",
+            "src_char": "12676:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 412,
+            "src": "14203:7",
+            "src_char": "14203:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 417,
+            "src": "14349:7",
+            "src_char": "14349:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 438,
+            "src": "14928:7",
+            "src_char": "14928:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 453,
+            "src": "15316:7",
+            "src_char": "15316:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 470,
+            "src": "16023:7",
+            "src_char": "16023:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 476,
+            "src": "16387:7",
+            "src_char": "16387:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 485,
+            "src": "16785:7",
+            "src_char": "16785:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 522,
+            "src": "18055:7",
+            "src_char": "18055:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 569,
+            "src": "19753:7",
+            "src_char": "19753:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 571,
+            "src": "19818:7",
+            "src_char": "19818:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 582,
+            "src": "20264:7",
+            "src_char": "20264:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 584,
+            "src": "20324:7",
+            "src_char": "20324:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 598,
+            "src": "21109:7",
+            "src_char": "21109:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 599,
+            "src": "21168:7",
+            "src_char": "21168:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 640,
+            "src": "22596:7",
+            "src_char": "22596:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 647,
+            "src": "22957:7",
+            "src_char": "22957:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 648,
+            "src": "22997:7",
+            "src_char": "22997:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 658,
+            "src": "23330:7",
+            "src_char": "23330:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 668,
+            "src": "23881:7",
+            "src_char": "23881:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 670,
+            "src": "23985:7",
+            "src_char": "23985:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 677,
+            "src": "24205:7",
+            "src_char": "24205:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 714,
+            "src": "25191:7",
+            "src_char": "25191:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 715,
+            "src": "25226:7",
+            "src_char": "25226:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 727,
+            "src": "25726:7",
+            "src_char": "25726:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 728,
+            "src": "25760:7",
+            "src_char": "25760:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 837,
+            "src": "29757:7",
+            "src_char": "29757:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 838,
+            "src": "29795:7",
+            "src_char": "29795:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 843,
+            "src": "29976:7",
+            "src_char": "29976:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 852,
+            "src": "30273:7",
+            "src_char": "30273:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1064,
+            "src": "38015:7",
+            "src_char": "38015:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1117,
+            "src": "40221:7",
+            "src_char": "40221:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1122,
+            "src": "40394:7",
+            "src_char": "40394:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1188,
+            "src": "42850:7",
+            "src_char": "42850:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1189,
+            "src": "42981:7",
+            "src_char": "42981:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1190,
+            "src": "43012:7",
+            "src_char": "43012:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1272,
+            "src": "45511:7",
+            "src_char": "45511:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1294,
+            "src": "46397:7",
+            "src_char": "46397:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1300,
+            "src": "46574:7",
+            "src_char": "46574:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1323,
+            "src": "47192:7",
+            "src_char": "47192:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1334,
+            "src": "47656:7",
+            "src_char": "47656:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1356,
+            "src": "48504:7",
+            "src_char": "48504:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1361,
+            "src": "48593:7",
+            "src_char": "48593:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1365,
+            "src": "48700:7",
+            "src_char": "48700:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1369,
+            "src": "48796:7",
+            "src_char": "48796:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1377,
+            "src": "48974:7",
+            "src_char": "48974:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1383,
+            "src": "49195:7",
+            "src_char": "49195:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1443,
+            "src": "51559:7",
+            "src_char": "51559:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1457,
+            "src": "52308:7",
+            "src_char": "52308:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1507,
+            "src": "54623:7",
+            "src_char": "54623:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1526,
+            "src": "55450:7",
+            "src_char": "55450:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1545,
+            "src": "56196:7",
+            "src_char": "56196:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1546,
+            "src": "56268:7",
+            "src_char": "56268:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1575,
+            "src": "58097:7",
+            "src_char": "58097:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1576,
+            "src": "58137:7",
+            "src_char": "58137:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1639,
+            "src": "62339:7",
+            "src_char": "62339:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1683,
+            "src": "64411:7",
+            "src_char": "64409:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1684,
+            "src": "64448:7",
+            "src_char": "64446:7"
+          }
+        ]
+      },
+      {
+        "title": "Inconsistent uint256/uint (or) int256/int types",
+        "description": "Inconsistency in declaring uint256/uint (or) int256/int variables within a contract. Use explicit size declarations (uint256 or int256). Consider keeping the naming convention consistent in a given contract. Explicit size declarations are preferred (uint256, int256) over implicit ones (uint, int) to avoid confusion.",
+        "detector_name": "inconsistent-type-names",
+        "instances": [
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 254,
+            "src": "8417:16",
+            "src_char": "8417:16"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 270,
+            "src": "9177:21",
+            "src_char": "9177:21"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 271,
+            "src": "9232:13",
+            "src_char": "9232:13"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 430,
+            "src": "14758:6",
+            "src_char": "14758:6"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 756,
+            "src": "26683:36",
+            "src_char": "26683:36"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 757,
+            "src": "26725:40",
+            "src_char": "26725:40"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 758,
+            "src": "26771:45",
+            "src_char": "26771:45"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 761,
+            "src": "26863:49",
+            "src_char": "26863:49"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 781,
+            "src": "27378:24",
+            "src_char": "27378:24"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 784,
+            "src": "27433:9",
+            "src_char": "27433:9"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 785,
+            "src": "27492:17",
+            "src_char": "27492:17"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 803,
+            "src": "28152:14",
+            "src_char": "28152:14"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 804,
+            "src": "28198:14",
+            "src_char": "28198:14"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 805,
+            "src": "28244:15",
+            "src_char": "28244:15"
+          }
+        ]
+      },
+      {
+        "title": "Internal Function Used Only Once",
+        "description": "Instead of separating the logic into a separate function, consider inlining the logic into the calling function. This can reduce the number of function calls and improve readability.",
+        "detector_name": "internal-function-used-once",
+        "instances": [
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1144,
+            "src": "41033:298",
+            "src_char": "41033:298"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1156,
+            "src": "41406:643",
+            "src_char": "41406:643"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1202,
+            "src": "43487:1629",
+            "src_char": "43487:1629"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1309,
+            "src": "46699:162",
+            "src_char": "46699:162"
+          }
+        ]
+      },
+      {
+        "title": "Literal Instead of Constant",
+        "description": "Define and use `constant` variables instead of using literals. If the same constant literal value is used multiple times, create a constant state variable and reference it throughout the contract.",
+        "detector_name": "literal-instead-of-constant",
+        "instances": [
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 412,
+            "src": "14229:3",
+            "src_char": "14229:3"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 417,
+            "src": "14375:3",
+            "src_char": "14375:3"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 648,
+            "src": "23017:3",
+            "src_char": "23017:3"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 651,
+            "src": "23099:3",
+            "src_char": "23099:3"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 768,
+            "src": "27090:1",
+            "src_char": "27090:1"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 771,
+            "src": "27155:3",
+            "src_char": "27155:3"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 774,
+            "src": "27221:3",
+            "src_char": "27221:3"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 785,
+            "src": "27526:1",
+            "src_char": "27526:1"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 785,
+            "src": "27543:3",
+            "src_char": "27543:3"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 785,
+            "src": "27562:3",
+            "src_char": "27562:3"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 812,
+            "src": "28593:1",
+            "src_char": "28593:1"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 814,
+            "src": "28707:1",
+            "src_char": "28707:1"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 815,
+            "src": "28751:1",
+            "src_char": "28751:1"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 816,
+            "src": "28821:1",
+            "src_char": "28821:1"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 817,
+            "src": "28865:1",
+            "src_char": "28865:1"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 818,
+            "src": "28939:1",
+            "src_char": "28939:1"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 819,
+            "src": "28983:1",
+            "src_char": "28983:1"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 821,
+            "src": "29101:1",
+            "src_char": "29101:1"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 823,
+            "src": "29219:1",
+            "src_char": "29219:1"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 823,
+            "src": "29235:1",
+            "src_char": "29235:1"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 825,
+            "src": "29337:1",
+            "src_char": "29337:1"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 825,
+            "src": "29353:1",
+            "src_char": "29353:1"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 827,
+            "src": "29456:1",
+            "src_char": "29456:1"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 827,
+            "src": "29472:1",
+            "src_char": "29472:1"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 833,
+            "src": "29617:3",
+            "src_char": "29617:3"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1100,
+            "src": "39671:2",
+            "src_char": "39671:2"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1104,
+            "src": "39790:6",
+            "src_char": "39790:6"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1145,
+            "src": "41097:3",
+            "src_char": "41097:3"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1212,
+            "src": "43725:3",
+            "src_char": "43725:3"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1214,
+            "src": "43884:1",
+            "src_char": "43884:1"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1214,
+            "src": "43891:3",
+            "src_char": "43891:3"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1255,
+            "src": "44971:3",
+            "src_char": "44971:3"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1275,
+            "src": "45626:1",
+            "src_char": "45626:1"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1275,
+            "src": "45629:1",
+            "src_char": "45629:1"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1275,
+            "src": "45632:7",
+            "src_char": "45632:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1310,
+            "src": "46766:3",
+            "src_char": "46766:3"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1334,
+            "src": "47682:3",
+            "src_char": "47682:3"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1575,
+            "src": "58123:3",
+            "src_char": "58123:3"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1653,
+            "src": "62861:1",
+            "src_char": "62859:1"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1653,
+            "src": "62868:2",
+            "src_char": "62866:2"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1653,
+            "src": "62873:7",
+            "src_char": "62871:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1656,
+            "src": "62984:1",
+            "src_char": "62982:1"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1656,
+            "src": "62991:2",
+            "src_char": "62989:2"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1659,
+            "src": "63117:1",
+            "src_char": "63115:1"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1659,
+            "src": "63124:2",
+            "src_char": "63122:2"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1659,
+            "src": "63129:7",
+            "src_char": "63127:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1662,
+            "src": "63269:1",
+            "src_char": "63267:1"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1662,
+            "src": "63283:2",
+            "src_char": "63281:2"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1662,
+            "src": "63288:1",
+            "src_char": "63286:1"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1662,
+            "src": "63292:7",
+            "src_char": "63290:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1663,
+            "src": "63359:1",
+            "src_char": "63357:1"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1663,
+            "src": "63373:2",
+            "src_char": "63371:2"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1663,
+            "src": "63378:8",
+            "src_char": "63376:8"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1666,
+            "src": "63512:2",
+            "src_char": "63510:2"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1666,
+            "src": "63517:7",
+            "src_char": "63515:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1669,
+            "src": "63666:2",
+            "src_char": "63664:2"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1669,
+            "src": "63681:2",
+            "src_char": "63679:2"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1669,
+            "src": "63686:1",
+            "src_char": "63684:1"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1669,
+            "src": "63690:7",
+            "src_char": "63688:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1670,
+            "src": "63761:2",
+            "src_char": "63759:2"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1670,
+            "src": "63776:2",
+            "src_char": "63774:2"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1670,
+            "src": "63781:8",
+            "src_char": "63779:8"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1673,
+            "src": "63923:2",
+            "src_char": "63921:2"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1673,
+            "src": "63938:2",
+            "src_char": "63936:2"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1673,
+            "src": "63947:7",
+            "src_char": "63945:7"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1674,
+            "src": "64014:2",
+            "src_char": "64012:2"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1674,
+            "src": "64029:2",
+            "src_char": "64027:2"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1674,
+            "src": "64034:8",
+            "src_char": "64032:8"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1677,
+            "src": "64146:1",
+            "src_char": "64144:1"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1677,
+            "src": "64153:2",
+            "src_char": "64151:2"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1683,
+            "src": "64434:3",
+            "src_char": "64432:3"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1707,
+            "src": "65327:3",
+            "src_char": "65325:3"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1707,
+            "src": "65337:9",
+            "src_char": "65335:9"
+          }
+        ]
+      },
+      {
+        "title": "Address State Variable Set Without Checks",
+        "description": "Check for `address(0)` when assigning values to address state variables.",
+        "detector_name": "state-no-address-check",
+        "instances": [
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 413,
+            "src": "14243:32",
+            "src_char": "14243:32"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 710,
+            "src": "25089:14",
+            "src_char": "25089:14"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 764,
+            "src": "26980:14",
+            "src_char": "26980:14"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1060,
+            "src": "37925:16",
+            "src_char": "37925:16"
+          }
+        ]
+      },
+      {
+        "title": "Unchecked Return",
+        "description": "Function returns a value but it is ignored. Consider checking the return value.",
+        "detector_name": "unchecked-return",
+        "instances": [
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 356,
+            "src": "12338:20",
+            "src_char": "12338:20"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 544,
+            "src": "18845:27",
+            "src_char": "18845:27"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 742,
+            "src": "26390:36",
+            "src_char": "26390:36"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 859,
+            "src": "30425:28",
+            "src_char": "30425:28"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1129,
+            "src": "40518:52",
+            "src_char": "40518:52"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1220,
+            "src": "44025:58",
+            "src_char": "44025:58"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1647,
+            "src": "62568:44",
+            "src_char": "62568:44"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1656,
+            "src": "62941:54",
+            "src_char": "62939:54"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1677,
+            "src": "64091:66",
+            "src_char": "64089:66"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1712,
+            "src": "65435:31",
+            "src_char": "65433:31"
+          }
+        ]
+      },
+      {
+        "title": "Uninitialized Local Variable",
+        "description": "Initialize all the variables. If a variable is meant to be initialized to zero, explicitly set it to zero to improve code readability.",
+        "detector_name": "uninitialized-local-variable",
+        "instances": [
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 515,
+            "src": "17875:18",
+            "src_char": "17875:18"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1547,
+            "src": "56327:8",
+            "src_char": "56327:8"
+          }
+        ]
+      },
+      {
+        "title": "Unsafe ERC20 Operation",
+        "description": "ERC20 functions may not behave as expected. For example: return values are not always meaningful. It is recommended to use OpenZeppelin's SafeERC20 library.",
+        "detector_name": "unsafe-erc20-operation",
+        "instances": [
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 292,
+            "src": "9897:14",
+            "src_char": "9897:14"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 361,
+            "src": "12539:14",
+            "src_char": "12539:14"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 544,
+            "src": "18845:14",
+            "src_char": "18845:14"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 652,
+            "src": "23112:17",
+            "src_char": "23112:17"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 653,
+            "src": "23151:17",
+            "src_char": "23151:17"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 672,
+            "src": "24062:17",
+            "src_char": "24062:17"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 742,
+            "src": "26390:14",
+            "src_char": "26390:14"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 859,
+            "src": "30425:14",
+            "src_char": "30425:14"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1149,
+            "src": "41234:42",
+            "src_char": "41234:42"
+          }
+        ]
+      },
+      {
+        "title": "Public Function Not Used Internally",
+        "description": "If a function is marked public but is not used internally, consider marking it as `external`.",
+        "detector_name": "unused-public-function",
+        "instances": [
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 64,
+            "src": "1655:188",
+            "src_char": "1655:188"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 95,
+            "src": "2454:221",
+            "src_char": "2454:221"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 103,
+            "src": "2762:244",
+            "src_char": "2762:244"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 123,
+            "src": "3226:53",
+            "src_char": "3226:53"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 124,
+            "src": "3284:62",
+            "src_char": "3284:62"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 125,
+            "src": "3351:67",
+            "src_char": "3351:67"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 135,
+            "src": "3684:81",
+            "src_char": "3684:81"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 136,
+            "src": "3770:85",
+            "src_char": "3770:85"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 137,
+            "src": "3860:71",
+            "src_char": "3860:71"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 156,
+            "src": "4374:89",
+            "src_char": "4374:89"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 165,
+            "src": "4629:414",
+            "src_char": "4629:414"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 206,
+            "src": "6104:478",
+            "src_char": "6104:478"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 228,
+            "src": "7227:202",
+            "src_char": "7227:202"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 240,
+            "src": "7762:132",
+            "src_char": "7762:132"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 254,
+            "src": "8373:276",
+            "src_char": "8373:276"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 270,
+            "src": "9133:441",
+            "src_char": "9133:441"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 291,
+            "src": "9792:139",
+            "src_char": "9792:139"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 295,
+            "src": "9937:169",
+            "src_char": "9937:169"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 299,
+            "src": "10112:244",
+            "src_char": "10112:244"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 305,
+            "src": "10453:263",
+            "src_char": "10453:263"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 335,
+            "src": "11498:217",
+            "src_char": "11498:217"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 343,
+            "src": "11752:226",
+            "src_char": "11752:226"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 364,
+            "src": "12578:221",
+            "src_char": "12578:221"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 390,
+            "src": "13535:288",
+            "src_char": "13535:288"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 401,
+            "src": "13857:59",
+            "src_char": "13857:59"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 411,
+            "src": "14124:158",
+            "src_char": "14124:158"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 429,
+            "src": "14687:167",
+            "src_char": "14687:167"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 436,
+            "src": "14888:117",
+            "src_char": "14888:117"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 452,
+            "src": "15237:523",
+            "src_char": "15237:523"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 469,
+            "src": "15940:248",
+            "src_char": "15940:248"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 475,
+            "src": "16324:258",
+            "src_char": "16324:258"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 484,
+            "src": "16706:176",
+            "src_char": "16706:176"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 495,
+            "src": "16977:71",
+            "src_char": "16977:71"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 539,
+            "src": "18585:449",
+            "src_char": "18585:449"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 555,
+            "src": "19230:262",
+            "src_char": "19230:262"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 566,
+            "src": "19652:365",
+            "src_char": "19652:365"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 581,
+            "src": "20166:530",
+            "src_char": "20166:530"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 597,
+            "src": "20988:653",
+            "src_char": "20988:653"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 639,
+            "src": "22526:231",
+            "src_char": "22526:231"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 646,
+            "src": "22859:339",
+            "src_char": "22859:339"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 657,
+            "src": "23278:153",
+            "src_char": "23278:153"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 667,
+            "src": "23830:321",
+            "src_char": "23830:321"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 726,
+            "src": "25674:769",
+            "src_char": "25674:769"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 849,
+            "src": "30163:355",
+            "src_char": "30163:355"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 865,
+            "src": "30581:163",
+            "src_char": "30581:163"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1115,
+            "src": "40140:473",
+            "src_char": "40140:473"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1186,
+            "src": "42812:424",
+            "src_char": "42812:424"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1269,
+            "src": "45446:297",
+            "src_char": "45446:297"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1290,
+            "src": "46297:396",
+            "src_char": "46297:396"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1320,
+            "src": "47132:133",
+            "src_char": "47132:133"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1349,
+            "src": "48191:1226",
+            "src_char": "48191:1226"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1455,
+            "src": "52243:123",
+            "src_char": "52243:123"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1466,
+            "src": "52629:112",
+            "src_char": "52629:112"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1483,
+            "src": "53618:135",
+            "src_char": "53618:135"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1492,
+            "src": "53970:116",
+            "src_char": "53970:116"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1574,
+            "src": "58055:482",
+            "src_char": "58055:482"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1633,
+            "src": "61977:488",
+            "src_char": "61977:488"
+          },
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 1722,
+            "src": "65636:65",
+            "src_char": "65634:65"
+          }
+        ]
+      },
+      {
+        "title": "Unused State Variable",
+        "description": "State variable appears to be unused. No analysis has been performed to see if any inline assembly references it. Consider removing this unused variable.",
+        "detector_name": "unused-state-variable",
+        "instances": [
+          {
+            "contract_path": "src/vuln_302_SC06.sol",
+            "line_no": 912,
+            "src": "32063:54",
+            "src_char": "32063:54"
+          }
+        ]
+      }
+    ]
+  },
+  "detectors_used": [
+    "abi-encode-packed-hash-collision",
+    "arbitrary-transfer-from",
+    "assert-state-change",
+    "block-timestamp-deadline",
+    "boolean-equality",
+    "builtin-symbol-shadowing",
+    "centralization-risk",
+    "constant-function-changes-state",
+    "constant-function-contains-assembly",
+    "contract-locks-ether",
+    "costly-loop",
+    "dangerous-unary-operator",
+    "dead-code",
+    "delegate-call-unchecked-address",
+    "delegatecall-in-loop",
+    "delete-nested-mapping",
+    "deprecated-oz-function",
+    "division-before-multiplication",
+    "dynamic-array-length-assignment",
+    "ecrecover",
+    "empty-block",
+    "empty-require-revert",
+    "enumerable-loop-removal",
+    "eth-send-unchecked-address",
+    "experimental-encoder",
+    "function-initializing-state",
+    "function-pointer-in-constructor",
+    "function-selector-collision",
+    "inconsistent-type-names",
+    "incorrect-caret-operator",
+    "incorrect-erc20-interface",
+    "incorrect-erc721-interface",
+    "incorrect-shift-order",
+    "incorrect-use-of-modifier",
+    "internal-function-used-once",
+    "large-numeric-literal",
+    "literal-instead-of-constant",
+    "local-variable-shadowing",
+    "missing-inheritance",
+    "misused-boolean",
+    "modifier-used-only-once",
+    "msg-value-in-loop",
+    "multiple-constructors",
+    "multiple-placeholders",
+    "nested-struct-in-mapping",
+    "non-reentrant-not-first",
+    "out-of-order-retryable",
+    "pre-declared-local-variable-usage",
+    "push-zero-opcode",
+    "redundant-statement",
+    "reentrancy-state-change",
+    "require-revert-in-loop",
+    "return-bomb",
+    "reused-contract-name",
+    "rtlo",
+    "selfdestruct",
+    "signed-integer-storage-array",
+    "solmate-safe-transfer-lib",
+    "state-change-without-event",
+    "state-no-address-check",
+    "state-variable-could-be-constant",
+    "state-variable-could-be-immutable",
+    "state-variable-init-order",
+    "state-variable-read-external",
+    "state-variable-shadowing",
+    "storage-array-length-not-cached",
+    "storage-array-memory-edit",
+    "strict-equality-contract-balance",
+    "tautological-compare",
+    "tautology-or-contradiction",
+    "todo",
+    "tx-origin-used-for-auth",
+    "unchecked-low-level-call",
+    "unchecked-return",
+    "unchecked-send",
+    "uninitialized-local-variable",
+    "unprotected-initializer",
+    "unsafe-casting",
+    "unsafe-erc20-operation",
+    "unsafe-oz-erc721-mint",
+    "unspecific-solidity-pragma",
+    "unused-error",
+    "unused-import",
+    "unused-public-function",
+    "unused-state-variable",
+    "void-constructor",
+    "weak-randomness",
+    "yul-return"
+  ]
+}

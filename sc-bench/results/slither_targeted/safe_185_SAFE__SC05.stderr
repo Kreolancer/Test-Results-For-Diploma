@@ -1,0 +1,14 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_185_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc' running
+
+Detector: timestamp
+MiniMeIrrevocableVestedToken.calculateVestedTokens(uint256,uint256,uint256,uint256,uint256) () uses timestamp for comparisons
+	Dangerous comparisons:
+	- time < cliff ()
+	- time >= vesting ()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+
+Detector: weak-prng
+SafeMath.safeDiv(uint256,uint256) () uses a weak PRNG: "assert(a == b * c + a % b) ()" 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#weak-PRNG
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_185_SAFE.sol analyzed (12 contracts with 2 detectors), 2 result(s) found

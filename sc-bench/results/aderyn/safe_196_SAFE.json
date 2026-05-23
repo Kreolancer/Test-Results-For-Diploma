@@ -1,0 +1,266 @@
+{
+  "files_summary": {
+    "total_source_units": 1,
+    "total_sloc": 114
+  },
+  "files_details": {
+    "files_details": [
+      {
+        "file_path": "src/safe_196_SAFE.sol",
+        "n_sloc": 114
+      }
+    ]
+  },
+  "issue_count": {
+    "high": 2,
+    "low": 3
+  },
+  "high_issues": {
+    "issues": [
+      {
+        "title": "Reentrancy: State change after external call",
+        "description": "Changing state after an external call can lead to re-entrancy attacks.Use the checks-effects-interactions pattern to avoid this issue.",
+        "detector_name": "reentrancy-state-change",
+        "instances": [
+          {
+            "contract_path": "src/safe_196_SAFE.sol",
+            "line_no": 123,
+            "src": "3714:39",
+            "src_char": "3714:39",
+            "hint": "State is changed at: `levels[msg.sender] = levels[msg.sender].add(levels[check_addr])`, `balanceOf[check_addr] = 0`, `levels[check_addr] = 0`"
+          }
+        ]
+      },
+      {
+        "title": "Tautology or Contradiction in comparison",
+        "description": "The condition has been determined to be either always true or always false due to the integer range in which we're operating.",
+        "detector_name": "tautology-or-contradiction",
+        "instances": [
+          {
+            "contract_path": "src/safe_196_SAFE.sol",
+            "line_no": 159,
+            "src": "5024:10",
+            "src_char": "5024:10"
+          },
+          {
+            "contract_path": "src/safe_196_SAFE.sol",
+            "line_no": 160,
+            "src": "5054:10",
+            "src_char": "5054:10"
+          },
+          {
+            "contract_path": "src/safe_196_SAFE.sol",
+            "line_no": 167,
+            "src": "5245:23",
+            "src_char": "5245:23"
+          }
+        ]
+      }
+    ]
+  },
+  "low_issues": {
+    "issues": [
+      {
+        "title": "Empty `require()` / `revert()` Statement",
+        "description": "Use descriptive reason strings or custom errors for revert paths.",
+        "detector_name": "empty-require-revert",
+        "instances": [
+          {
+            "contract_path": "src/safe_196_SAFE.sol",
+            "line_no": 93,
+            "src": "2654:7",
+            "src_char": "2654:7"
+          },
+          {
+            "contract_path": "src/safe_196_SAFE.sol",
+            "line_no": 100,
+            "src": "2891:7",
+            "src_char": "2891:7"
+          },
+          {
+            "contract_path": "src/safe_196_SAFE.sol",
+            "line_no": 101,
+            "src": "2942:7",
+            "src_char": "2942:7"
+          },
+          {
+            "contract_path": "src/safe_196_SAFE.sol",
+            "line_no": 159,
+            "src": "5015:7",
+            "src_char": "5015:7"
+          },
+          {
+            "contract_path": "src/safe_196_SAFE.sol",
+            "line_no": 160,
+            "src": "5045:7",
+            "src_char": "5045:7"
+          },
+          {
+            "contract_path": "src/safe_196_SAFE.sol",
+            "line_no": 161,
+            "src": "5075:7",
+            "src_char": "5075:7"
+          },
+          {
+            "contract_path": "src/safe_196_SAFE.sol",
+            "line_no": 167,
+            "src": "5236:7",
+            "src_char": "5236:7"
+          }
+        ]
+      },
+      {
+        "title": "Literal Instead of Constant",
+        "description": "Define and use `constant` variables instead of using literals. If the same constant literal value is used multiple times, create a constant state variable and reference it throughout the contract.",
+        "detector_name": "literal-instead-of-constant",
+        "instances": [
+          {
+            "contract_path": "src/safe_196_SAFE.sol",
+            "line_no": 163,
+            "src": "5123:3",
+            "src_char": "5123:3"
+          },
+          {
+            "contract_path": "src/safe_196_SAFE.sol",
+            "line_no": 163,
+            "src": "5170:3",
+            "src_char": "5170:3"
+          }
+        ]
+      },
+      {
+        "title": "Public Function Not Used Internally",
+        "description": "If a function is marked public but is not used internally, consider marking it as `external`.",
+        "detector_name": "unused-public-function",
+        "instances": [
+          {
+            "contract_path": "src/safe_196_SAFE.sol",
+            "line_no": 53,
+            "src": "1358:69",
+            "src_char": "1358:69"
+          },
+          {
+            "contract_path": "src/safe_196_SAFE.sol",
+            "line_no": 98,
+            "src": "2748:490",
+            "src_char": "2748:490"
+          },
+          {
+            "contract_path": "src/safe_196_SAFE.sol",
+            "line_no": 111,
+            "src": "3244:114",
+            "src_char": "3244:114"
+          },
+          {
+            "contract_path": "src/safe_196_SAFE.sol",
+            "line_no": 115,
+            "src": "3364:250",
+            "src_char": "3364:250"
+          },
+          {
+            "contract_path": "src/safe_196_SAFE.sol",
+            "line_no": 122,
+            "src": "3620:380",
+            "src_char": "3620:380"
+          },
+          {
+            "contract_path": "src/safe_196_SAFE.sol",
+            "line_no": 134,
+            "src": "4006:862",
+            "src_char": "4006:862"
+          }
+        ]
+      }
+    ]
+  },
+  "detectors_used": [
+    "abi-encode-packed-hash-collision",
+    "arbitrary-transfer-from",
+    "assert-state-change",
+    "block-timestamp-deadline",
+    "boolean-equality",
+    "builtin-symbol-shadowing",
+    "centralization-risk",
+    "constant-function-changes-state",
+    "constant-function-contains-assembly",
+    "contract-locks-ether",
+    "costly-loop",
+    "dangerous-unary-operator",
+    "dead-code",
+    "delegate-call-unchecked-address",
+    "delegatecall-in-loop",
+    "delete-nested-mapping",
+    "deprecated-oz-function",
+    "division-before-multiplication",
+    "dynamic-array-length-assignment",
+    "ecrecover",
+    "empty-block",
+    "empty-require-revert",
+    "enumerable-loop-removal",
+    "eth-send-unchecked-address",
+    "experimental-encoder",
+    "function-initializing-state",
+    "function-pointer-in-constructor",
+    "function-selector-collision",
+    "inconsistent-type-names",
+    "incorrect-caret-operator",
+    "incorrect-erc20-interface",
+    "incorrect-erc721-interface",
+    "incorrect-shift-order",
+    "incorrect-use-of-modifier",
+    "internal-function-used-once",
+    "large-numeric-literal",
+    "literal-instead-of-constant",
+    "local-variable-shadowing",
+    "missing-inheritance",
+    "misused-boolean",
+    "modifier-used-only-once",
+    "msg-value-in-loop",
+    "multiple-constructors",
+    "multiple-placeholders",
+    "nested-struct-in-mapping",
+    "non-reentrant-not-first",
+    "out-of-order-retryable",
+    "pre-declared-local-variable-usage",
+    "push-zero-opcode",
+    "redundant-statement",
+    "reentrancy-state-change",
+    "require-revert-in-loop",
+    "return-bomb",
+    "reused-contract-name",
+    "rtlo",
+    "selfdestruct",
+    "signed-integer-storage-array",
+    "solmate-safe-transfer-lib",
+    "state-change-without-event",
+    "state-no-address-check",
+    "state-variable-could-be-constant",
+    "state-variable-could-be-immutable",
+    "state-variable-init-order",
+    "state-variable-read-external",
+    "state-variable-shadowing",
+    "storage-array-length-not-cached",
+    "storage-array-memory-edit",
+    "strict-equality-contract-balance",
+    "tautological-compare",
+    "tautology-or-contradiction",
+    "todo",
+    "tx-origin-used-for-auth",
+    "unchecked-low-level-call",
+    "unchecked-return",
+    "unchecked-send",
+    "uninitialized-local-variable",
+    "unprotected-initializer",
+    "unsafe-casting",
+    "unsafe-erc20-operation",
+    "unsafe-oz-erc721-mint",
+    "unspecific-solidity-pragma",
+    "unused-error",
+    "unused-import",
+    "unused-public-function",
+    "unused-state-variable",
+    "void-constructor",
+    "weak-randomness",
+    "yul-return"
+  ]
+}

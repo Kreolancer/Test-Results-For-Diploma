@@ -1,0 +1,64 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_291_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+
+Detector: uninitialized-state
+BasicToken.totalSupply_ (contracts/safe/safe_291_SAFE.sol#61) is never initialized. It is used in:
+	- BasicToken.totalSupply() (contracts/safe/safe_291_SAFE.sol#65-67)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#uninitialized-state-variables
+
+Detector: locked-ether
+Contract locking ether found:
+	Contract ViteToken (contracts/safe/safe_291_SAFE.sol#186-201) has payable functions:
+	 - ViteToken.fallback() (contracts/safe/safe_291_SAFE.sol#191-196)
+	But does not have a function to withdraw the ether
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#contracts-that-lock-ether
+
+Detector: solc-version
+Version constraint ^0.4.18 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- EventStructWrongData
+	- NestedArrayFunctionCallDecoder.
+It is used by:
+	- ^0.4.18 (contracts/safe/safe_291_SAFE.sol#1)
+solc-0.4.18 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Parameter BasicToken.transfer(address,uint256)._to (contracts/safe/safe_291_SAFE.sol#73) is not in mixedCase
+Parameter BasicToken.transfer(address,uint256)._value (contracts/safe/safe_291_SAFE.sol#73) is not in mixedCase
+Parameter BasicToken.balanceOf(address)._owner (contracts/safe/safe_291_SAFE.sol#87) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._from (contracts/safe/safe_291_SAFE.sol#116) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._to (contracts/safe/safe_291_SAFE.sol#116) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._value (contracts/safe/safe_291_SAFE.sol#116) is not in mixedCase
+Parameter StandardToken.approve(address,uint256)._spender (contracts/safe/safe_291_SAFE.sol#136) is not in mixedCase
+Parameter StandardToken.approve(address,uint256)._value (contracts/safe/safe_291_SAFE.sol#136) is not in mixedCase
+Parameter StandardToken.allowance(address,address)._owner (contracts/safe/safe_291_SAFE.sol#147) is not in mixedCase
+Parameter StandardToken.allowance(address,address)._spender (contracts/safe/safe_291_SAFE.sol#147) is not in mixedCase
+Parameter StandardToken.increaseApproval(address,uint256)._spender (contracts/safe/safe_291_SAFE.sol#160) is not in mixedCase
+Parameter StandardToken.increaseApproval(address,uint256)._addedValue (contracts/safe/safe_291_SAFE.sol#160) is not in mixedCase
+Parameter StandardToken.decreaseApproval(address,uint256)._spender (contracts/safe/safe_291_SAFE.sol#175) is not in mixedCase
+Parameter StandardToken.decreaseApproval(address,uint256)._subtractedValue (contracts/safe/safe_291_SAFE.sol#175) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: constable-states
+BasicToken.totalSupply_ (contracts/safe/safe_291_SAFE.sol#61) should be constant 
+ViteToken.decimals (contracts/safe/safe_291_SAFE.sol#189) should be constant 
+ViteToken.name (contracts/safe/safe_291_SAFE.sol#187) should be constant 
+ViteToken.symbol (contracts/safe/safe_291_SAFE.sol#188) should be constant 
+ViteToken.totalSupply (contracts/safe/safe_291_SAFE.sol#190) should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_291_SAFE.sol analyzed (6 contracts with 101 detectors), 23 result(s) found

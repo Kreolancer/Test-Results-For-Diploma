@@ -1,0 +1,22 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_224_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+
+Detector: timestamp
+Crowdsale.Crowdsale(uint256,uint256,uint256,address) (contracts/safe/safe_224_SAFE.sol#58-69) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(_startTime >= now) (contracts/safe/safe_224_SAFE.sol#59)
+Crowdsale.validPurchase() (contracts/safe/safe_224_SAFE.sol#109-113) uses timestamp for comparisons
+	Dangerous comparisons:
+	- withinPeriod = now >= startTime && now <= endTime (contracts/safe/safe_224_SAFE.sol#110)
+	- withinPeriod && nonZeroPurchase (contracts/safe/safe_224_SAFE.sol#112)
+Crowdsale.hasEnded() (contracts/safe/safe_224_SAFE.sol#116-118) uses timestamp for comparisons
+	Dangerous comparisons:
+	- now > endTime (contracts/safe/safe_224_SAFE.sol#117)
+CappedCrowdsale.validPurchase() (contracts/safe/safe_224_SAFE.sol#135-138) uses timestamp for comparisons
+	Dangerous comparisons:
+	- super.validPurchase() && withinCap (contracts/safe/safe_224_SAFE.sol#137)
+CappedCrowdsale.hasEnded() (contracts/safe/safe_224_SAFE.sol#142-145) uses timestamp for comparisons
+	Dangerous comparisons:
+	- super.hasEnded() || capReached (contracts/safe/safe_224_SAFE.sol#144)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_224_SAFE.sol analyzed (13 contracts with 2 detectors), 5 result(s) found

@@ -1,0 +1,157 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_137_SC09.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_137_SC09.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_137_SC09.sol:257:13: Warning: Variable is declared as a storage pointer. Use an explicit "storage" keyword to silence this warning.
+            LockedBalance lockedBalance = lockedBalances[i];
+            ^-------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_137_SC09.sol:280:9: Warning: Variable is declared as a storage pointer. Use an explicit "storage" keyword to silence this warning.
+        LockedBalance lockedBalance = lockedBalances[index];
+        ^-------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_137_SC09.sol:602:9: Warning: Variable is declared as a storage pointer. Use an explicit "storage" keyword to silence this warning.
+        FrozenRecord unfreezeRecord = frozenRecords[index];
+        ^-------------------------^
+
+
+Detector: shadowing-abstract
+ReleaseableToken.totalSupply (contracts/vulnerable/vuln_137_SC09.sol#501) shadows:
+	- ERC20Basic.totalSupply (contracts/vulnerable/vuln_137_SC09.sol#4)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variable-shadowing-from-abstract-contracts
+
+Detector: shadowing-local
+ReleaseableToken.ReleaseableToken(uint256,uint256,address).operator (contracts/vulnerable/vuln_137_SC09.sol#519) shadows:
+	- Operational.operator (contracts/vulnerable/vuln_137_SC09.sol#103) (state variable)
+LLToken.LLToken(uint256,uint256,address).operator (contracts/vulnerable/vuln_137_SC09.sol#625) shadows:
+	- Operational.operator (contracts/vulnerable/vuln_137_SC09.sol#103) (state variable)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#local-variable-shadowing
+
+Detector: events-access
+Operational.transferOperator(address) (contracts/vulnerable/vuln_137_SC09.sol#114-117) should emit an event for: 
+	- operator = newOperator (contracts/vulnerable/vuln_137_SC09.sol#116) 
+Claimable.transferOwnership(address) (contracts/vulnerable/vuln_137_SC09.sol#89-91) should emit an event for: 
+	- pendingOwner = newOwner (contracts/vulnerable/vuln_137_SC09.sol#90) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-access-control
+
+Detector: missing-zero-check
+Operational.Operational(address)._operator (contracts/vulnerable/vuln_137_SC09.sol#105) lacks a zero-check on :
+		- operator = _operator (contracts/vulnerable/vuln_137_SC09.sol#106)
+Claimable.transferOwnership(address).newOwner (contracts/vulnerable/vuln_137_SC09.sol#89) lacks a zero-check on :
+		- pendingOwner = newOwner (contracts/vulnerable/vuln_137_SC09.sol#90)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+
+Detector: timestamp
+LockableToken.transferLockedToken(address,uint256,uint256) (contracts/vulnerable/vuln_137_SC09.sol#244-252) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(_releaseTime > now) (contracts/vulnerable/vuln_137_SC09.sol#245)
+	- require(bool)(_releaseTime.sub(220752000) < now) (contracts/vulnerable/vuln_137_SC09.sol#246)
+LockableToken.releaseLockedBalance() (contracts/vulnerable/vuln_137_SC09.sol#266-277) uses timestamp for comparisons
+	Dangerous comparisons:
+	- now >= lockedBalances[index].releaseTime (contracts/vulnerable/vuln_137_SC09.sol#269)
+ReleaseableToken.releaseSupply(uint256,uint256) (contracts/vulnerable/vuln_137_SC09.sol#528-556) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(timestamp >= createTime && timestamp <= now) (contracts/vulnerable/vuln_137_SC09.sol#529)
+ReleaseableToken.updateLimit() (contracts/vulnerable/vuln_137_SC09.sol#574-584) uses timestamp for comparisons
+	Dangerous comparisons:
+	- createTime.add(220752000) < now && ! secondYearUpdate (contracts/vulnerable/vuln_137_SC09.sol#575)
+	- createTime.add(2 * 220752000) < now (contracts/vulnerable/vuln_137_SC09.sol#579)
+ReleaseableToken.unfreeze() (contracts/vulnerable/vuln_137_SC09.sol#587-599) uses timestamp for comparisons
+	Dangerous comparisons:
+	- frozenRecords[index].unfreezeTime < now (contracts/vulnerable/vuln_137_SC09.sol#591)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+
+Detector: costly-loop
+ReleaseableToken.unfreezeByIndex(uint256) (contracts/vulnerable/vuln_137_SC09.sol#601-608) has costly operations inside a loop:
+	- delete frozenRecords[frozenRecordsCount - 1] (contracts/vulnerable/vuln_137_SC09.sol#606)
+	Calls stack containing the loop:
+		ReleaseableToken.unfreeze()
+ReleaseableToken.unfreezeByIndex(uint256) (contracts/vulnerable/vuln_137_SC09.sol#601-608) has costly operations inside a loop:
+	- frozenRecordsCount -- (contracts/vulnerable/vuln_137_SC09.sol#607)
+	Calls stack containing the loop:
+		ReleaseableToken.unfreeze()
+LockableToken.unlockBalanceByIndex(uint256) (contracts/vulnerable/vuln_137_SC09.sol#279-286) has costly operations inside a loop:
+	- delete lockedBalances[lockedBalanceCount - 1] (contracts/vulnerable/vuln_137_SC09.sol#284)
+	Calls stack containing the loop:
+		LockableToken.releaseLockedBalance()
+LockableToken.unlockBalanceByIndex(uint256) (contracts/vulnerable/vuln_137_SC09.sol#279-286) has costly operations inside a loop:
+	- lockedBalanceCount -- (contracts/vulnerable/vuln_137_SC09.sol#285)
+	Calls stack containing the loop:
+		LockableToken.releaseLockedBalance()
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#costly-operations-inside-a-loop
+
+Detector: function-init-state
+ReleaseableToken.totalSupply (contracts/vulnerable/vuln_137_SC09.sol#501) is set pre-construction with a non-constant function or state variable:
+	- standardDecimals.mul(1000000000)
+ReleaseableToken.limitSupplyPerYear (contracts/vulnerable/vuln_137_SC09.sol#502) is set pre-construction with a non-constant function or state variable:
+	- standardDecimals.mul(60000000)
+ReleaseableToken.dailyLimit (contracts/vulnerable/vuln_137_SC09.sol#503) is set pre-construction with a non-constant function or state variable:
+	- standardDecimals.mul(1000000)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#function-initializing-state
+
+Detector: solc-version
+Version constraint ^0.4.13 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- NestedArrayFunctionCallDecoder
+	- ZeroFunctionSelector
+	- DelegateCallReturnValue
+	- ECRecoverMalformedInput.
+It is used by:
+	- ^0.4.13 (contracts/vulnerable/vuln_137_SC09.sol#1)
+solc-0.4.13 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Variable ReentrancyGuard.rentrancy_lock (contracts/vulnerable/vuln_137_SC09.sol#22) is not in mixedCase
+Parameter BasicToken.transfer(address,uint256)._to (contracts/vulnerable/vuln_137_SC09.sol#157) is not in mixedCase
+Parameter BasicToken.transfer(address,uint256)._value (contracts/vulnerable/vuln_137_SC09.sol#157) is not in mixedCase
+Parameter BasicToken.balanceOf(address)._owner (contracts/vulnerable/vuln_137_SC09.sol#169) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._from (contracts/vulnerable/vuln_137_SC09.sol#186) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._to (contracts/vulnerable/vuln_137_SC09.sol#186) is not in mixedCase
+Parameter StandardToken.transferFrom(address,address,uint256)._value (contracts/vulnerable/vuln_137_SC09.sol#186) is not in mixedCase
+Parameter StandardToken.approve(address,uint256)._spender (contracts/vulnerable/vuln_137_SC09.sol#204) is not in mixedCase
+Parameter StandardToken.approve(address,uint256)._value (contracts/vulnerable/vuln_137_SC09.sol#204) is not in mixedCase
+Parameter StandardToken.allowance(address,address)._owner (contracts/vulnerable/vuln_137_SC09.sol#223) is not in mixedCase
+Parameter StandardToken.allowance(address,address)._spender (contracts/vulnerable/vuln_137_SC09.sol#223) is not in mixedCase
+Parameter LockableToken.transferLockedToken(address,uint256,uint256)._to (contracts/vulnerable/vuln_137_SC09.sol#244) is not in mixedCase
+Parameter LockableToken.transferLockedToken(address,uint256,uint256)._value (contracts/vulnerable/vuln_137_SC09.sol#244) is not in mixedCase
+Parameter LockableToken.transferLockedToken(address,uint256,uint256)._releaseTime (contracts/vulnerable/vuln_137_SC09.sol#244) is not in mixedCase
+Parameter LockableToken.lockedBalanceOf(address)._owner (contracts/vulnerable/vuln_137_SC09.sol#255) is not in mixedCase
+Parameter ReleaseableToken.setDailyLimit(uint256)._dailyLimit (contracts/vulnerable/vuln_137_SC09.sol#611) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: too-many-digits
+ReleaseableToken.updateLimit() (contracts/vulnerable/vuln_137_SC09.sol#574-584) uses literals with too many digits:
+	- limitSupplyPerYear = standardDecimals.mul(120000000) (contracts/vulnerable/vuln_137_SC09.sol#576)
+LLToken.slitherConstructorVariables() (contracts/vulnerable/vuln_137_SC09.sol#616-628) uses literals with too many digits:
+	- totalSupply = standardDecimals.mul(1000000000) (contracts/vulnerable/vuln_137_SC09.sol#501)
+LLToken.slitherConstructorVariables() (contracts/vulnerable/vuln_137_SC09.sol#616-628) uses literals with too many digits:
+	- standardDecimals = 100000000 (contracts/vulnerable/vuln_137_SC09.sol#500)
+LLToken.slitherConstructorVariables() (contracts/vulnerable/vuln_137_SC09.sol#616-628) uses literals with too many digits:
+	- limitSupplyPerYear = standardDecimals.mul(60000000) (contracts/vulnerable/vuln_137_SC09.sol#502)
+LLToken.slitherConstructorVariables() (contracts/vulnerable/vuln_137_SC09.sol#616-628) uses literals with too many digits:
+	- dailyLimit = standardDecimals.mul(1000000) (contracts/vulnerable/vuln_137_SC09.sol#503)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#too-many-digits
+
+Detector: unindexed-event-address
+Event ReleaseableToken.ReleaseSupply(address,uint256,uint256) (contracts/vulnerable/vuln_137_SC09.sol#505) has address parameters but no indexed parameters
+Event ReleaseableToken.UnfreezeAmount(address,uint256,uint256) (contracts/vulnerable/vuln_137_SC09.sol#506) has address parameters but no indexed parameters
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unindexed-event-address-parameters
+
+Detector: constable-states
+ERC20Basic.totalSupply (contracts/vulnerable/vuln_137_SC09.sol#4) should be constant 
+LLToken.decimals (contracts/vulnerable/vuln_137_SC09.sol#620) should be constant 
+LLToken.name (contracts/vulnerable/vuln_137_SC09.sol#618) should be constant 
+LLToken.standard (contracts/vulnerable/vuln_137_SC09.sol#617) should be constant 
+LLToken.symbol (contracts/vulnerable/vuln_137_SC09.sol#619) should be constant 
+ReleaseableToken.standardDecimals (contracts/vulnerable/vuln_137_SC09.sol#500) should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_137_SC09.sol analyzed (13 contracts with 101 detectors), 50 result(s) found

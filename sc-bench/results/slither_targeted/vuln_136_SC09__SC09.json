@@ -1,0 +1,172 @@
+{
+  "success": true,
+  "error": null,
+  "results": {
+    "detectors": [
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "fallback",
+            "source_mapping": {
+              "start": 230,
+              "length": 438,
+              "filename_relative": "contracts/vulnerable/vuln_136_SC09.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_136_SC09.sol",
+              "filename_short": "contracts/vulnerable/vuln_136_SC09.sol",
+              "is_dependency": false,
+              "lines": [
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25
+              ],
+              "starting_column": 5,
+              "ending_column": 6
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "Easy12",
+                "source_mapping": {
+                  "start": 119,
+                  "length": 554,
+                  "filename_relative": "contracts/vulnerable/vuln_136_SC09.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_136_SC09.sol",
+                  "filename_short": "contracts/vulnerable/vuln_136_SC09.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15,
+                    16,
+                    17,
+                    18,
+                    19,
+                    20,
+                    21,
+                    22,
+                    23,
+                    24,
+                    25,
+                    26,
+                    27,
+                    28
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              },
+              "signature": "fallback()"
+            }
+          },
+          {
+            "type": "node",
+            "name": "payout = invests[sender] / 100 * 12 * (now - dates[sender]) / 86400",
+            "source_mapping": {
+              "start": 348,
+              "length": 76,
+              "filename_relative": "contracts/vulnerable/vuln_136_SC09.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_136_SC09.sol",
+              "filename_short": "contracts/vulnerable/vuln_136_SC09.sol",
+              "is_dependency": false,
+              "lines": [
+                17
+              ],
+              "starting_column": 13,
+              "ending_column": 89
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "fallback",
+                "source_mapping": {
+                  "start": 230,
+                  "length": 438,
+                  "filename_relative": "contracts/vulnerable/vuln_136_SC09.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_136_SC09.sol",
+                  "filename_short": "contracts/vulnerable/vuln_136_SC09.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    14,
+                    15,
+                    16,
+                    17,
+                    18,
+                    19,
+                    20,
+                    21,
+                    22,
+                    23,
+                    24,
+                    25
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "Easy12",
+                    "source_mapping": {
+                      "start": 119,
+                      "length": 554,
+                      "filename_relative": "contracts/vulnerable/vuln_136_SC09.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_136_SC09.sol",
+                      "filename_short": "contracts/vulnerable/vuln_136_SC09.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        9,
+                        10,
+                        11,
+                        12,
+                        13,
+                        14,
+                        15,
+                        16,
+                        17,
+                        18,
+                        19,
+                        20,
+                        21,
+                        22,
+                        23,
+                        24,
+                        25,
+                        26,
+                        27,
+                        28
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "fallback()"
+                }
+              }
+            }
+          }
+        ],
+        "description": "Easy12.fallback() (contracts/vulnerable/vuln_136_SC09.sol#14-25) performs a multiplication on the result of a division:\n\t- payout = invests[sender] / 100 * 12 * (now - dates[sender]) / 86400 (contracts/vulnerable/vuln_136_SC09.sol#17)\n",
+        "markdown": "[Easy12.fallback()](contracts/vulnerable/vuln_136_SC09.sol#L14-L25) performs a multiplication on the result of a division:\n\t- [payout = invests[sender] / 100 * 12 * (now - dates[sender]) / 86400](contracts/vulnerable/vuln_136_SC09.sol#L17)\n",
+        "first_markdown_element": "contracts/vulnerable/vuln_136_SC09.sol#L14-L25",
+        "id": "14ed70a462b0d5e92ebe34b70b7da4d02025aacd7a798218a67283d7d37428ca",
+        "check": "divide-before-multiply",
+        "impact": "Medium",
+        "confidence": "Medium"
+      }
+    ]
+  }
+}

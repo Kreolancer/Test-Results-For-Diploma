@@ -1,0 +1,58 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_280_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_280_SAFE.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_280_SAFE.sol:22:25: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+        if (!assertion) throw;
+                        ^---^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_280_SAFE.sol:193:5: Warning: Defining constructors as functions with the same name as the contract is deprecated. Use "constructor(...) { ... }" instead.
+    function RpsGame() {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_280_SAFE.sol:21:5: Warning: This declaration shadows a builtin symbol.
+    function assert(bool assertion) internal {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_280_SAFE.sol:270:9: Warning: Invoking events without "emit" prefix is deprecated.
+        Reveal(gameid, msg.sender, choice);
+        ^--------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_280_SAFE.sol:305:16: Warning: "sha3" has been deprecated in favour of "keccak256"
+        return sha3(sender, choice, randomSecret);
+               ^--------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_280_SAFE.sol:305:16: Warning: This function only accepts a single "bytes" argument. Please use "abi.encodePacked(...)" or a similar function to encode the data.
+        return sha3(sender, choice, randomSecret);
+               ^--------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_280_SAFE.sol:193:5: Warning: No visibility specified. Defaulting to "public". 
+    function RpsGame() {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_280_SAFE.sol:21:5: Warning: Function state mutability can be restricted to pure
+    function assert(bool assertion) internal {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_280_SAFE.sol:304:5: Warning: Function state mutability can be restricted to pure
+    function getProof(address sender, uint8 choice, bytes32 randomSecret) public view returns (bytes32){
+    ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_280_SAFE.sol:312:5: Warning: Function state mutability can be restricted to pure
+    function checkChoice(uint8 choice) public view returns (bool){
+    ^ (Relevant source part starts here and spans across multiple lines).
+
+
+Detector: timestamp
+RpsGame.joinGame(uint256,uint8) (contracts/safe/safe_280_SAFE.sol#236-254) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(msg.value == game.dealerValue && game.dealer != address(0) && game.dealer != msg.sender && game.playerChoice == NONE) (contracts/safe/safe_280_SAFE.sol#238)
+	- require(bool)(game.player == address(0) || game.player == msg.sender) (contracts/safe/safe_280_SAFE.sol#239)
+	- require(bool)(! game.closed) (contracts/safe/safe_280_SAFE.sol#240)
+	- require(bool)(now < game.expireTime) (contracts/safe/safe_280_SAFE.sol#241)
+RpsGame.reveal(uint256,uint8,bytes32) (contracts/safe/safe_280_SAFE.sol#257-275) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(! game.closed) (contracts/safe/safe_280_SAFE.sol#261)
+	- require(bool)(now < game.expireTime) (contracts/safe/safe_280_SAFE.sol#262)
+	- require(bool)(game.dealerHash != 0x0) (contracts/safe/safe_280_SAFE.sol#263)
+	- require(bool)(checkChoice(game.playerChoice)) (contracts/safe/safe_280_SAFE.sol#265)
+	- require(bool)(game.dealer == msg.sender && proof == game.dealerHash) (contracts/safe/safe_280_SAFE.sol#266)
+RpsGame.close(uint256) (contracts/safe/safe_280_SAFE.sol#278-301) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(! game.closed) (contracts/safe/safe_280_SAFE.sol#280)
+	- require(bool)(now > game.expireTime || (game.dealerChoice != NONE && game.playerChoice != NONE)) (contracts/safe/safe_280_SAFE.sol#281)
+	- require(bool)(game.dealer.send(reward)) (contracts/safe/safe_280_SAFE.sol#288)
+	- require(bool)(game.player.send(reward)) (contracts/safe/safe_280_SAFE.sol#290)
+	- require(bool)(game.dealer.send(game.dealerValue) && game.player.send(game.playerValue)) (contracts/safe/safe_280_SAFE.sol#292)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_280_SAFE.sol analyzed (3 contracts with 2 detectors), 3 result(s) found

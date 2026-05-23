@@ -1,0 +1,55 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_184_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_184_SAFE.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_184_SAFE.sol:16:5: Warning: Defining constructors as functions with the same name as the contract is deprecated. Use "constructor(...) { ... }" instead.
+    function PayVor() {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_184_SAFE.sol:30:45: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+        if (balanceOf[msg.sender] < _value) throw;           // Check if the sender has enough
+                                            ^---^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_184_SAFE.sol:31:55: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+        if (balanceOf[_to] + _value < balanceOf[_to]) throw; // Check for overflows
+                                                      ^---^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_184_SAFE.sol:45:9: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+        throw;     // Prevents accidental sending of ether
+        ^---^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_184_SAFE.sol:1:1: Warning: Source file does not specify required compiler version!Consider adding "pragma solidity ^0.4.24;"
+contract PayVor {
+^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_184_SAFE.sol:16:5: Warning: No visibility specified. Defaulting to "public". 
+    function PayVor() {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_184_SAFE.sol:29:5: Warning: No visibility specified. Defaulting to "public". 
+    function transfer(address _to, uint256 _value) {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_184_SAFE.sol:44:5: Warning: No visibility specified. Defaulting to "public". 
+    function () {
+    ^ (Relevant source part starts here and spans across multiple lines).
+
+
+Detector: erc20-interface
+PayVor (contracts/safe/safe_184_SAFE.sol#1-48) has incorrect ERC20 function interface:PayVor.transfer(address,uint256) (contracts/safe/safe_184_SAFE.sol#29-35)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-erc20-interface
+
+Detector: deprecated-standards
+Deprecated standard detected THROW (contracts/safe/safe_184_SAFE.sol#30):
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected THROW (contracts/safe/safe_184_SAFE.sol#31):
+	- Usage of "throw" should be replaced with "revert()"
+Deprecated standard detected THROW (contracts/safe/safe_184_SAFE.sol#45):
+	- Usage of "throw" should be replaced with "revert()"
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#deprecated-standards
+
+Detector: solc-version
+solc-0.4.24 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Parameter PayVor.transfer(address,uint256)._to (contracts/safe/safe_184_SAFE.sol#29) is not in mixedCase
+Parameter PayVor.transfer(address,uint256)._value (contracts/safe/safe_184_SAFE.sol#29) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: constable-states
+PayVor.standard (contracts/safe/safe_184_SAFE.sol#3) should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_184_SAFE.sol analyzed (1 contracts with 101 detectors), 8 result(s) found

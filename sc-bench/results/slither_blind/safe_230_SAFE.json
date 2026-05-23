@@ -1,0 +1,1609 @@
+{
+  "success": true,
+  "error": null,
+  "results": {
+    "detectors": [
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "recover",
+            "source_mapping": {
+              "start": 1499,
+              "length": 721,
+              "filename_relative": "contracts/safe/safe_230_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_230_SAFE.sol",
+              "filename_short": "contracts/safe/safe_230_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                63,
+                64,
+                65,
+                66,
+                67,
+                68,
+                69,
+                70,
+                71,
+                72,
+                73,
+                74,
+                75,
+                76,
+                77,
+                78,
+                79,
+                80,
+                81,
+                82,
+                83,
+                84,
+                85,
+                86,
+                87,
+                88,
+                89,
+                90,
+                91
+              ],
+              "starting_column": 3,
+              "ending_column": 4
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "ECRecovery",
+                "source_mapping": {
+                  "start": 1196,
+                  "length": 1029,
+                  "filename_relative": "contracts/safe/safe_230_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_230_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_230_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    56,
+                    57,
+                    58,
+                    59,
+                    60,
+                    61,
+                    62,
+                    63,
+                    64,
+                    65,
+                    66,
+                    67,
+                    68,
+                    69,
+                    70,
+                    71,
+                    72,
+                    73,
+                    74,
+                    75,
+                    76,
+                    77,
+                    78,
+                    79,
+                    80,
+                    81,
+                    82,
+                    83,
+                    84,
+                    85,
+                    86,
+                    87,
+                    88,
+                    89,
+                    90,
+                    91,
+                    92,
+                    93
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 2
+                }
+              },
+              "signature": "recover(bytes32,bytes)"
+            }
+          }
+        ],
+        "description": "ECRecovery.recover(bytes32,bytes) (contracts/safe/safe_230_SAFE.sol#63-91) is declared view but contains assembly code\n",
+        "markdown": "[ECRecovery.recover(bytes32,bytes)](contracts/safe/safe_230_SAFE.sol#L63-L91) is declared view but contains assembly code\n",
+        "first_markdown_element": "contracts/safe/safe_230_SAFE.sol#L63-L91",
+        "id": "d85b820d4b79ff22e2e3c950f840a65d757d0aef39e0d6b2bd198305b8c89b56",
+        "additional_fields": {
+          "contains_assembly": true
+        },
+        "check": "constant-function-asm",
+        "impact": "Medium",
+        "confidence": "Medium"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "recover",
+            "source_mapping": {
+              "start": 1499,
+              "length": 721,
+              "filename_relative": "contracts/safe/safe_230_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_230_SAFE.sol",
+              "filename_short": "contracts/safe/safe_230_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                63,
+                64,
+                65,
+                66,
+                67,
+                68,
+                69,
+                70,
+                71,
+                72,
+                73,
+                74,
+                75,
+                76,
+                77,
+                78,
+                79,
+                80,
+                81,
+                82,
+                83,
+                84,
+                85,
+                86,
+                87,
+                88,
+                89,
+                90,
+                91
+              ],
+              "starting_column": 3,
+              "ending_column": 4
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "ECRecovery",
+                "source_mapping": {
+                  "start": 1196,
+                  "length": 1029,
+                  "filename_relative": "contracts/safe/safe_230_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_230_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_230_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    56,
+                    57,
+                    58,
+                    59,
+                    60,
+                    61,
+                    62,
+                    63,
+                    64,
+                    65,
+                    66,
+                    67,
+                    68,
+                    69,
+                    70,
+                    71,
+                    72,
+                    73,
+                    74,
+                    75,
+                    76,
+                    77,
+                    78,
+                    79,
+                    80,
+                    81,
+                    82,
+                    83,
+                    84,
+                    85,
+                    86,
+                    87,
+                    88,
+                    89,
+                    90,
+                    91,
+                    92,
+                    93
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 2
+                }
+              },
+              "signature": "recover(bytes32,bytes)"
+            }
+          },
+          {
+            "type": "node",
+            "name": "",
+            "source_mapping": {
+              "start": 1779,
+              "length": 220,
+              "filename_relative": "contracts/safe/safe_230_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_230_SAFE.sol",
+              "filename_short": "contracts/safe/safe_230_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                74,
+                75,
+                76,
+                77,
+                78,
+                79,
+                80,
+                81
+              ],
+              "starting_column": 5,
+              "ending_column": 7
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "recover",
+                "source_mapping": {
+                  "start": 1499,
+                  "length": 721,
+                  "filename_relative": "contracts/safe/safe_230_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_230_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_230_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    63,
+                    64,
+                    65,
+                    66,
+                    67,
+                    68,
+                    69,
+                    70,
+                    71,
+                    72,
+                    73,
+                    74,
+                    75,
+                    76,
+                    77,
+                    78,
+                    79,
+                    80,
+                    81,
+                    82,
+                    83,
+                    84,
+                    85,
+                    86,
+                    87,
+                    88,
+                    89,
+                    90,
+                    91
+                  ],
+                  "starting_column": 3,
+                  "ending_column": 4
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "ECRecovery",
+                    "source_mapping": {
+                      "start": 1196,
+                      "length": 1029,
+                      "filename_relative": "contracts/safe/safe_230_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_230_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_230_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        56,
+                        57,
+                        58,
+                        59,
+                        60,
+                        61,
+                        62,
+                        63,
+                        64,
+                        65,
+                        66,
+                        67,
+                        68,
+                        69,
+                        70,
+                        71,
+                        72,
+                        73,
+                        74,
+                        75,
+                        76,
+                        77,
+                        78,
+                        79,
+                        80,
+                        81,
+                        82,
+                        83,
+                        84,
+                        85,
+                        86,
+                        87,
+                        88,
+                        89,
+                        90,
+                        91,
+                        92,
+                        93
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 2
+                    }
+                  },
+                  "signature": "recover(bytes32,bytes)"
+                }
+              }
+            }
+          }
+        ],
+        "description": "ECRecovery.recover(bytes32,bytes) (contracts/safe/safe_230_SAFE.sol#63-91) uses assembly\n\t- INLINE ASM (contracts/safe/safe_230_SAFE.sol#74-81)\n",
+        "markdown": "[ECRecovery.recover(bytes32,bytes)](contracts/safe/safe_230_SAFE.sol#L63-L91) uses assembly\n\t- [INLINE ASM](contracts/safe/safe_230_SAFE.sol#L74-L81)\n",
+        "first_markdown_element": "contracts/safe/safe_230_SAFE.sol#L63-L91",
+        "id": "c9007120c57c4b71e8631021a3a7ecae41ab0095c45e3d17eba97865751c7a7f",
+        "check": "assembly",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "pragma",
+            "name": "^0.4.17",
+            "source_mapping": {
+              "start": 0,
+              "length": 24,
+              "filename_relative": "contracts/safe/safe_230_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_230_SAFE.sol",
+              "filename_short": "contracts/safe/safe_230_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                1
+              ],
+              "starting_column": 1,
+              "ending_column": 25
+            },
+            "type_specific_fields": {
+              "directive": [
+                "solidity",
+                "^",
+                "0.4",
+                ".17"
+              ]
+            }
+          }
+        ],
+        "description": "Version constraint ^0.4.17 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- DirtyBytesArrayToStorage\n\t- ABIDecodeTwoDimensionalArrayMemory\n\t- KeccakCaching\n\t- EmptyByteArrayCopy\n\t- DynamicArrayCleanup\n\t- ImplicitConstructorCallvalueCheck\n\t- TupleAssignmentMultiStackSlotComponents\n\t- MemoryArrayCreationOverflow\n\t- privateCanBeOverridden\n\t- SignedArrayStorageCopy\n\t- ABIEncoderV2StorageArrayWithMultiSlotElement\n\t- DynamicConstructorArgumentsClippedABIV2\n\t- UninitializedFunctionPointerInConstructor_0.4.x\n\t- IncorrectEventSignatureInLibraries_0.4.x\n\t- ExpExponentCleanup\n\t- EventStructWrongData\n\t- NestedArrayFunctionCallDecoder\n\t- ZeroFunctionSelector.\nIt is used by:\n\t- ^0.4.17 (contracts/safe/safe_230_SAFE.sol#1)\n",
+        "markdown": "Version constraint ^0.4.17 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)\n\t- DirtyBytesArrayToStorage\n\t- ABIDecodeTwoDimensionalArrayMemory\n\t- KeccakCaching\n\t- EmptyByteArrayCopy\n\t- DynamicArrayCleanup\n\t- ImplicitConstructorCallvalueCheck\n\t- TupleAssignmentMultiStackSlotComponents\n\t- MemoryArrayCreationOverflow\n\t- privateCanBeOverridden\n\t- SignedArrayStorageCopy\n\t- ABIEncoderV2StorageArrayWithMultiSlotElement\n\t- DynamicConstructorArgumentsClippedABIV2\n\t- UninitializedFunctionPointerInConstructor_0.4.x\n\t- IncorrectEventSignatureInLibraries_0.4.x\n\t- ExpExponentCleanup\n\t- EventStructWrongData\n\t- NestedArrayFunctionCallDecoder\n\t- ZeroFunctionSelector.\nIt is used by:\n\t- [^0.4.17](contracts/safe/safe_230_SAFE.sol#L1)\n",
+        "first_markdown_element": "contracts/safe/safe_230_SAFE.sol#L1",
+        "id": "c2303482afd4d42169e26aa6418206d1cd1c28a383ca7c2f4bf7675aef051100",
+        "check": "solc-version",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [],
+        "description": "solc-0.4.17 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.\n",
+        "markdown": "solc-0.4.17 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.\n",
+        "first_markdown_element": "",
+        "id": "dcb273bbf8895ddca171619ade9ff883467ff33115b76d0652e4e6bc2b0575fe",
+        "check": "solc-version",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_state",
+            "source_mapping": {
+              "start": 3218,
+              "length": 11,
+              "filename_relative": "contracts/safe/safe_230_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_230_SAFE.sol",
+              "filename_short": "contracts/safe/safe_230_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                132
+              ],
+              "starting_column": 42,
+              "ending_column": 53
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "setWhitelist",
+                "source_mapping": {
+                  "start": 3181,
+                  "length": 192,
+                  "filename_relative": "contracts/safe/safe_230_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_230_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_230_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    132,
+                    133,
+                    134,
+                    135,
+                    136
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "EthealWhitelist",
+                    "source_mapping": {
+                      "start": 2341,
+                      "length": 1561,
+                      "filename_relative": "contracts/safe/safe_230_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_230_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_230_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        100,
+                        101,
+                        102,
+                        103,
+                        104,
+                        105,
+                        106,
+                        107,
+                        108,
+                        109,
+                        110,
+                        111,
+                        112,
+                        113,
+                        114,
+                        115,
+                        116,
+                        117,
+                        118,
+                        119,
+                        120,
+                        121,
+                        122,
+                        123,
+                        124,
+                        125,
+                        126,
+                        127,
+                        128,
+                        129,
+                        130,
+                        131,
+                        132,
+                        133,
+                        134,
+                        135,
+                        136,
+                        137,
+                        138,
+                        139,
+                        140,
+                        141,
+                        142,
+                        143,
+                        144,
+                        145,
+                        146,
+                        147,
+                        148,
+                        149,
+                        150,
+                        151
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "setWhitelist(address,bool)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter EthealWhitelist.setWhitelist(address,bool)._state (contracts/safe/safe_230_SAFE.sol#132) is not in mixedCase\n",
+        "markdown": "Parameter [EthealWhitelist.setWhitelist(address,bool)._state](contracts/safe/safe_230_SAFE.sol#L132) is not in mixedCase\n",
+        "first_markdown_element": "contracts/safe/safe_230_SAFE.sol#L132",
+        "id": "3239bb6eb685d73cd48261572f93e21da33cb843373c891c909e9eba440f210c",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_state",
+            "source_mapping": {
+              "start": 3485,
+              "length": 11,
+              "filename_relative": "contracts/safe/safe_230_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_230_SAFE.sol",
+              "filename_short": "contracts/safe/safe_230_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                139
+              ],
+              "starting_column": 48,
+              "ending_column": 59
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "setManyWhitelist",
+                "source_mapping": {
+                  "start": 3442,
+                  "length": 191,
+                  "filename_relative": "contracts/safe/safe_230_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_230_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_230_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    139,
+                    140,
+                    141,
+                    142,
+                    143
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "EthealWhitelist",
+                    "source_mapping": {
+                      "start": 2341,
+                      "length": 1561,
+                      "filename_relative": "contracts/safe/safe_230_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_230_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_230_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        100,
+                        101,
+                        102,
+                        103,
+                        104,
+                        105,
+                        106,
+                        107,
+                        108,
+                        109,
+                        110,
+                        111,
+                        112,
+                        113,
+                        114,
+                        115,
+                        116,
+                        117,
+                        118,
+                        119,
+                        120,
+                        121,
+                        122,
+                        123,
+                        124,
+                        125,
+                        126,
+                        127,
+                        128,
+                        129,
+                        130,
+                        131,
+                        132,
+                        133,
+                        134,
+                        135,
+                        136,
+                        137,
+                        138,
+                        139,
+                        140,
+                        141,
+                        142,
+                        143,
+                        144,
+                        145,
+                        146,
+                        147,
+                        148,
+                        149,
+                        150,
+                        151
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "setManyWhitelist(address[],bool)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter EthealWhitelist.setManyWhitelist(address[],bool)._state (contracts/safe/safe_230_SAFE.sol#139) is not in mixedCase\n",
+        "markdown": "Parameter [EthealWhitelist.setManyWhitelist(address[],bool)._state](contracts/safe/safe_230_SAFE.sol#L139) is not in mixedCase\n",
+        "first_markdown_element": "contracts/safe/safe_230_SAFE.sol#L139",
+        "id": "619b9673550918642ed7b4802fde61051ab560d6bf0a40935413e0408145c30e",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_signer",
+            "source_mapping": {
+              "start": 2928,
+              "length": 15,
+              "filename_relative": "contracts/safe/safe_230_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_230_SAFE.sol",
+              "filename_short": "contracts/safe/safe_230_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                121
+              ],
+              "starting_column": 24,
+              "ending_column": 39
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "setSigner",
+                "source_mapping": {
+                  "start": 2909,
+                  "length": 131,
+                  "filename_relative": "contracts/safe/safe_230_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_230_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_230_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    121,
+                    122,
+                    123,
+                    124,
+                    125
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "EthealWhitelist",
+                    "source_mapping": {
+                      "start": 2341,
+                      "length": 1561,
+                      "filename_relative": "contracts/safe/safe_230_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_230_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_230_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        100,
+                        101,
+                        102,
+                        103,
+                        104,
+                        105,
+                        106,
+                        107,
+                        108,
+                        109,
+                        110,
+                        111,
+                        112,
+                        113,
+                        114,
+                        115,
+                        116,
+                        117,
+                        118,
+                        119,
+                        120,
+                        121,
+                        122,
+                        123,
+                        124,
+                        125,
+                        126,
+                        127,
+                        128,
+                        129,
+                        130,
+                        131,
+                        132,
+                        133,
+                        134,
+                        135,
+                        136,
+                        137,
+                        138,
+                        139,
+                        140,
+                        141,
+                        142,
+                        143,
+                        144,
+                        145,
+                        146,
+                        147,
+                        148,
+                        149,
+                        150,
+                        151
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "setSigner(address)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter EthealWhitelist.setSigner(address)._signer (contracts/safe/safe_230_SAFE.sol#121) is not in mixedCase\n",
+        "markdown": "Parameter [EthealWhitelist.setSigner(address)._signer](contracts/safe/safe_230_SAFE.sol#L121) is not in mixedCase\n",
+        "first_markdown_element": "contracts/safe/safe_230_SAFE.sol#L121",
+        "id": "6e78c3d7c529eb58b01191e45117ba29e3dd7727a4e8632809efb422657cc6b9",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_sig",
+            "source_mapping": {
+              "start": 3729,
+              "length": 10,
+              "filename_relative": "contracts/safe/safe_230_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_230_SAFE.sol",
+              "filename_short": "contracts/safe/safe_230_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                146
+              ],
+              "starting_column": 51,
+              "ending_column": 61
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "isOffchainWhitelisted",
+                "source_mapping": {
+                  "start": 3683,
+                  "length": 216,
+                  "filename_relative": "contracts/safe/safe_230_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_230_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_230_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    146,
+                    147,
+                    148,
+                    149
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "EthealWhitelist",
+                    "source_mapping": {
+                      "start": 2341,
+                      "length": 1561,
+                      "filename_relative": "contracts/safe/safe_230_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_230_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_230_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        100,
+                        101,
+                        102,
+                        103,
+                        104,
+                        105,
+                        106,
+                        107,
+                        108,
+                        109,
+                        110,
+                        111,
+                        112,
+                        113,
+                        114,
+                        115,
+                        116,
+                        117,
+                        118,
+                        119,
+                        120,
+                        121,
+                        122,
+                        123,
+                        124,
+                        125,
+                        126,
+                        127,
+                        128,
+                        129,
+                        130,
+                        131,
+                        132,
+                        133,
+                        134,
+                        135,
+                        136,
+                        137,
+                        138,
+                        139,
+                        140,
+                        141,
+                        142,
+                        143,
+                        144,
+                        145,
+                        146,
+                        147,
+                        148,
+                        149,
+                        150,
+                        151
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "isOffchainWhitelisted(address,bytes)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter EthealWhitelist.isOffchainWhitelisted(address,bytes)._sig (contracts/safe/safe_230_SAFE.sol#146) is not in mixedCase\n",
+        "markdown": "Parameter [EthealWhitelist.isOffchainWhitelisted(address,bytes)._sig](contracts/safe/safe_230_SAFE.sol#L146) is not in mixedCase\n",
+        "first_markdown_element": "contracts/safe/safe_230_SAFE.sol#L146",
+        "id": "8a750c3b65ddbce07a2993e9177b4f7d801d51460cb61b649cf52d7a8c38d726",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_addr",
+            "source_mapping": {
+              "start": 3714,
+              "length": 13,
+              "filename_relative": "contracts/safe/safe_230_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_230_SAFE.sol",
+              "filename_short": "contracts/safe/safe_230_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                146
+              ],
+              "starting_column": 36,
+              "ending_column": 49
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "isOffchainWhitelisted",
+                "source_mapping": {
+                  "start": 3683,
+                  "length": 216,
+                  "filename_relative": "contracts/safe/safe_230_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_230_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_230_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    146,
+                    147,
+                    148,
+                    149
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "EthealWhitelist",
+                    "source_mapping": {
+                      "start": 2341,
+                      "length": 1561,
+                      "filename_relative": "contracts/safe/safe_230_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_230_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_230_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        100,
+                        101,
+                        102,
+                        103,
+                        104,
+                        105,
+                        106,
+                        107,
+                        108,
+                        109,
+                        110,
+                        111,
+                        112,
+                        113,
+                        114,
+                        115,
+                        116,
+                        117,
+                        118,
+                        119,
+                        120,
+                        121,
+                        122,
+                        123,
+                        124,
+                        125,
+                        126,
+                        127,
+                        128,
+                        129,
+                        130,
+                        131,
+                        132,
+                        133,
+                        134,
+                        135,
+                        136,
+                        137,
+                        138,
+                        139,
+                        140,
+                        141,
+                        142,
+                        143,
+                        144,
+                        145,
+                        146,
+                        147,
+                        148,
+                        149,
+                        150,
+                        151
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "isOffchainWhitelisted(address,bytes)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter EthealWhitelist.isOffchainWhitelisted(address,bytes)._addr (contracts/safe/safe_230_SAFE.sol#146) is not in mixedCase\n",
+        "markdown": "Parameter [EthealWhitelist.isOffchainWhitelisted(address,bytes)._addr](contracts/safe/safe_230_SAFE.sol#L146) is not in mixedCase\n",
+        "first_markdown_element": "contracts/safe/safe_230_SAFE.sol#L146",
+        "id": "8b6dd6738de8844ca47b739273daedc6aa7107942cddc13cf517022d5c23efd8",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_addr",
+            "source_mapping": {
+              "start": 3468,
+              "length": 15,
+              "filename_relative": "contracts/safe/safe_230_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_230_SAFE.sol",
+              "filename_short": "contracts/safe/safe_230_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                139
+              ],
+              "starting_column": 31,
+              "ending_column": 46
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "setManyWhitelist",
+                "source_mapping": {
+                  "start": 3442,
+                  "length": 191,
+                  "filename_relative": "contracts/safe/safe_230_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_230_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_230_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    139,
+                    140,
+                    141,
+                    142,
+                    143
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "EthealWhitelist",
+                    "source_mapping": {
+                      "start": 2341,
+                      "length": 1561,
+                      "filename_relative": "contracts/safe/safe_230_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_230_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_230_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        100,
+                        101,
+                        102,
+                        103,
+                        104,
+                        105,
+                        106,
+                        107,
+                        108,
+                        109,
+                        110,
+                        111,
+                        112,
+                        113,
+                        114,
+                        115,
+                        116,
+                        117,
+                        118,
+                        119,
+                        120,
+                        121,
+                        122,
+                        123,
+                        124,
+                        125,
+                        126,
+                        127,
+                        128,
+                        129,
+                        130,
+                        131,
+                        132,
+                        133,
+                        134,
+                        135,
+                        136,
+                        137,
+                        138,
+                        139,
+                        140,
+                        141,
+                        142,
+                        143,
+                        144,
+                        145,
+                        146,
+                        147,
+                        148,
+                        149,
+                        150,
+                        151
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "setManyWhitelist(address[],bool)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter EthealWhitelist.setManyWhitelist(address[],bool)._addr (contracts/safe/safe_230_SAFE.sol#139) is not in mixedCase\n",
+        "markdown": "Parameter [EthealWhitelist.setManyWhitelist(address[],bool)._addr](contracts/safe/safe_230_SAFE.sol#L139) is not in mixedCase\n",
+        "first_markdown_element": "contracts/safe/safe_230_SAFE.sol#L139",
+        "id": "958d3a4aa799d1f302a67d3e5fced1bcfb32d6b5070af347e6a87561cda1d918",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "_addr",
+            "source_mapping": {
+              "start": 3203,
+              "length": 13,
+              "filename_relative": "contracts/safe/safe_230_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_230_SAFE.sol",
+              "filename_short": "contracts/safe/safe_230_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                132
+              ],
+              "starting_column": 27,
+              "ending_column": 40
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "function",
+                "name": "setWhitelist",
+                "source_mapping": {
+                  "start": 3181,
+                  "length": 192,
+                  "filename_relative": "contracts/safe/safe_230_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_230_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_230_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    132,
+                    133,
+                    134,
+                    135,
+                    136
+                  ],
+                  "starting_column": 5,
+                  "ending_column": 6
+                },
+                "type_specific_fields": {
+                  "parent": {
+                    "type": "contract",
+                    "name": "EthealWhitelist",
+                    "source_mapping": {
+                      "start": 2341,
+                      "length": 1561,
+                      "filename_relative": "contracts/safe/safe_230_SAFE.sol",
+                      "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_230_SAFE.sol",
+                      "filename_short": "contracts/safe/safe_230_SAFE.sol",
+                      "is_dependency": false,
+                      "lines": [
+                        100,
+                        101,
+                        102,
+                        103,
+                        104,
+                        105,
+                        106,
+                        107,
+                        108,
+                        109,
+                        110,
+                        111,
+                        112,
+                        113,
+                        114,
+                        115,
+                        116,
+                        117,
+                        118,
+                        119,
+                        120,
+                        121,
+                        122,
+                        123,
+                        124,
+                        125,
+                        126,
+                        127,
+                        128,
+                        129,
+                        130,
+                        131,
+                        132,
+                        133,
+                        134,
+                        135,
+                        136,
+                        137,
+                        138,
+                        139,
+                        140,
+                        141,
+                        142,
+                        143,
+                        144,
+                        145,
+                        146,
+                        147,
+                        148,
+                        149,
+                        150,
+                        151
+                      ],
+                      "starting_column": 1,
+                      "ending_column": 0
+                    }
+                  },
+                  "signature": "setWhitelist(address,bool)"
+                }
+              }
+            },
+            "additional_fields": {
+              "target": "parameter",
+              "convention": "mixedCase"
+            }
+          }
+        ],
+        "description": "Parameter EthealWhitelist.setWhitelist(address,bool)._addr (contracts/safe/safe_230_SAFE.sol#132) is not in mixedCase\n",
+        "markdown": "Parameter [EthealWhitelist.setWhitelist(address,bool)._addr](contracts/safe/safe_230_SAFE.sol#L132) is not in mixedCase\n",
+        "first_markdown_element": "contracts/safe/safe_230_SAFE.sol#L132",
+        "id": "98548a3ad12d381b4ebe5d4d8062df4610cc8ecd106cd89654bf53d0369f830f",
+        "check": "naming-convention",
+        "impact": "Informational",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "recover",
+            "source_mapping": {
+              "start": 1499,
+              "length": 721,
+              "filename_relative": "contracts/safe/safe_230_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_230_SAFE.sol",
+              "filename_short": "contracts/safe/safe_230_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                63,
+                64,
+                65,
+                66,
+                67,
+                68,
+                69,
+                70,
+                71,
+                72,
+                73,
+                74,
+                75,
+                76,
+                77,
+                78,
+                79,
+                80,
+                81,
+                82,
+                83,
+                84,
+                85,
+                86,
+                87,
+                88,
+                89,
+                90,
+                91
+              ],
+              "starting_column": 3,
+              "ending_column": 4
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "ECRecovery",
+                "source_mapping": {
+                  "start": 1196,
+                  "length": 1029,
+                  "filename_relative": "contracts/safe/safe_230_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_230_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_230_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    56,
+                    57,
+                    58,
+                    59,
+                    60,
+                    61,
+                    62,
+                    63,
+                    64,
+                    65,
+                    66,
+                    67,
+                    68,
+                    69,
+                    70,
+                    71,
+                    72,
+                    73,
+                    74,
+                    75,
+                    76,
+                    77,
+                    78,
+                    79,
+                    80,
+                    81,
+                    82,
+                    83,
+                    84,
+                    85,
+                    86,
+                    87,
+                    88,
+                    89,
+                    90,
+                    91,
+                    92,
+                    93
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 2
+                }
+              },
+              "signature": "recover(bytes32,bytes)"
+            }
+          }
+        ],
+        "description": "recover(bytes32,bytes) should be declared external:\n\t- ECRecovery.recover(bytes32,bytes) (contracts/safe/safe_230_SAFE.sol#63-91)\n",
+        "markdown": "recover(bytes32,bytes) should be declared external:\n\t- [ECRecovery.recover(bytes32,bytes)](contracts/safe/safe_230_SAFE.sol#L63-L91)\n",
+        "first_markdown_element": "contracts/safe/safe_230_SAFE.sol#L63-L91",
+        "id": "2024e38a6d876c251dc509fce0274de113a993f7005a11ffb526837b95bd539d",
+        "check": "external-function",
+        "impact": "Optimization",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "isOffchainWhitelisted",
+            "source_mapping": {
+              "start": 3683,
+              "length": 216,
+              "filename_relative": "contracts/safe/safe_230_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_230_SAFE.sol",
+              "filename_short": "contracts/safe/safe_230_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                146,
+                147,
+                148,
+                149
+              ],
+              "starting_column": 5,
+              "ending_column": 6
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "EthealWhitelist",
+                "source_mapping": {
+                  "start": 2341,
+                  "length": 1561,
+                  "filename_relative": "contracts/safe/safe_230_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_230_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_230_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    100,
+                    101,
+                    102,
+                    103,
+                    104,
+                    105,
+                    106,
+                    107,
+                    108,
+                    109,
+                    110,
+                    111,
+                    112,
+                    113,
+                    114,
+                    115,
+                    116,
+                    117,
+                    118,
+                    119,
+                    120,
+                    121,
+                    122,
+                    123,
+                    124,
+                    125,
+                    126,
+                    127,
+                    128,
+                    129,
+                    130,
+                    131,
+                    132,
+                    133,
+                    134,
+                    135,
+                    136,
+                    137,
+                    138,
+                    139,
+                    140,
+                    141,
+                    142,
+                    143,
+                    144,
+                    145,
+                    146,
+                    147,
+                    148,
+                    149,
+                    150,
+                    151
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              },
+              "signature": "isOffchainWhitelisted(address,bytes)"
+            }
+          }
+        ],
+        "description": "isOffchainWhitelisted(address,bytes) should be declared external:\n\t- EthealWhitelist.isOffchainWhitelisted(address,bytes) (contracts/safe/safe_230_SAFE.sol#146-149)\n",
+        "markdown": "isOffchainWhitelisted(address,bytes) should be declared external:\n\t- [EthealWhitelist.isOffchainWhitelisted(address,bytes)](contracts/safe/safe_230_SAFE.sol#L146-L149)\n",
+        "first_markdown_element": "contracts/safe/safe_230_SAFE.sol#L146-L149",
+        "id": "d03d72687a15ac1f715f9105b04aec0b13137ad10cfe0e23046c86365b6c91fc",
+        "check": "external-function",
+        "impact": "Optimization",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "function",
+            "name": "setManyWhitelist",
+            "source_mapping": {
+              "start": 3442,
+              "length": 191,
+              "filename_relative": "contracts/safe/safe_230_SAFE.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_230_SAFE.sol",
+              "filename_short": "contracts/safe/safe_230_SAFE.sol",
+              "is_dependency": false,
+              "lines": [
+                139,
+                140,
+                141,
+                142,
+                143
+              ],
+              "starting_column": 5,
+              "ending_column": 6
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "EthealWhitelist",
+                "source_mapping": {
+                  "start": 2341,
+                  "length": 1561,
+                  "filename_relative": "contracts/safe/safe_230_SAFE.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/safe/safe_230_SAFE.sol",
+                  "filename_short": "contracts/safe/safe_230_SAFE.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    100,
+                    101,
+                    102,
+                    103,
+                    104,
+                    105,
+                    106,
+                    107,
+                    108,
+                    109,
+                    110,
+                    111,
+                    112,
+                    113,
+                    114,
+                    115,
+                    116,
+                    117,
+                    118,
+                    119,
+                    120,
+                    121,
+                    122,
+                    123,
+                    124,
+                    125,
+                    126,
+                    127,
+                    128,
+                    129,
+                    130,
+                    131,
+                    132,
+                    133,
+                    134,
+                    135,
+                    136,
+                    137,
+                    138,
+                    139,
+                    140,
+                    141,
+                    142,
+                    143,
+                    144,
+                    145,
+                    146,
+                    147,
+                    148,
+                    149,
+                    150,
+                    151
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              },
+              "signature": "setManyWhitelist(address[],bool)"
+            }
+          }
+        ],
+        "description": "setManyWhitelist(address[],bool) should be declared external:\n\t- EthealWhitelist.setManyWhitelist(address[],bool) (contracts/safe/safe_230_SAFE.sol#139-143)\n",
+        "markdown": "setManyWhitelist(address[],bool) should be declared external:\n\t- [EthealWhitelist.setManyWhitelist(address[],bool)](contracts/safe/safe_230_SAFE.sol#L139-L143)\n",
+        "first_markdown_element": "contracts/safe/safe_230_SAFE.sol#L139-L143",
+        "id": "d24c92ce2ad11c873cef60ffc300d110a89e3f6645c4b5a6bffc45ea31310706",
+        "check": "external-function",
+        "impact": "Optimization",
+        "confidence": "High"
+      }
+    ]
+  }
+}

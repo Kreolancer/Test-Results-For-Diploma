@@ -1,0 +1,50 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_172_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_172_SAFE.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_172_SAFE.sol:38:3: Warning: Defining constructors as functions with the same name as the contract is deprecated. Use "constructor(...) { ... }" instead.
+  function Ownable() public {
+  ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_172_SAFE.sol:89:3: Warning: Defining constructors as functions with the same name as the contract is deprecated. Use "constructor(...) { ... }" instead.
+  function BitLoanex() public {
+  ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_172_SAFE.sol:229:11: Warning: Use of the "var" keyword is deprecated.
+      for(var i = 0; i < deadlines.length; i++)
+          ^---^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_172_SAFE.sol:49:5: Warning: Invoking events without "emit" prefix is deprecated.
+    OwnershipTransferred(owner, newOwner);
+    ^-----------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_172_SAFE.sol:101:5: Warning: Invoking events without "emit" prefix is deprecated.
+    Transfer(msg.sender, _to, _value);
+    ^-------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_172_SAFE.sol:119:5: Warning: Invoking events without "emit" prefix is deprecated.
+    Transfer(_from, _to, _value);
+    ^--------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_172_SAFE.sol:126:5: Warning: Invoking events without "emit" prefix is deprecated.
+    Approval(msg.sender, _spender, _value);
+    ^------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_172_SAFE.sol:137:5: Warning: Invoking events without "emit" prefix is deprecated.
+    Approval(msg.sender, _spender, allowed[msg.sender][_spender]);
+    ^-----------------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_172_SAFE.sol:148:5: Warning: Invoking events without "emit" prefix is deprecated.
+    Approval(msg.sender, _spender, allowed[msg.sender][_spender]);
+    ^-----------------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_172_SAFE.sol:194:5: Warning: Invoking events without "emit" prefix is deprecated.
+    BoughtTokens(msg.sender, tokens);
+    ^------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_172_SAFE.sol:229:11: Warning: The type of this variable was inferred as uint8, which can hold values between 0 and 255. This is probably not desired. Use an explicit type to silence this warning.
+      for(var i = 0; i < deadlines.length; i++)
+          ^-------^
+
+
+Detector: timestamp
+BitLoanex.isActive() (contracts/safe/safe_172_SAFE.sol#166-173) uses timestamp for comparisons
+	Dangerous comparisons:
+	- (initialized == true && now >= START && now <= START.add(DAYS * 86400) && goalReached() == false) (contracts/safe/safe_172_SAFE.sol#167-172)
+BitLoanex.buyTokens() (contracts/safe/safe_172_SAFE.sol#185-204) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(initialized && now <= START.add(DAYS * 86400)) (contracts/safe/safe_172_SAFE.sol#187)
+BitLoanex.getRate() (contracts/safe/safe_172_SAFE.sol#225-233) uses timestamp for comparisons
+	Dangerous comparisons:
+	- now < deadlines[i] (contracts/safe/safe_172_SAFE.sol#230)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_172_SAFE.sol analyzed (3 contracts with 2 detectors), 3 result(s) found

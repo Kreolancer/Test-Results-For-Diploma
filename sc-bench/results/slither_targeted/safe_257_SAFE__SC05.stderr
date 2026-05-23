@@ -1,0 +1,9 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_257_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+
+Detector: timestamp
+DarkPool.active() (contracts/safe/safe_257_SAFE.sol#56-58) uses timestamp for comparisons
+	Dangerous comparisons:
+	- now < end (contracts/safe/safe_257_SAFE.sol#57)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_257_SAFE.sol analyzed (4 contracts with 2 detectors), 1 result(s) found

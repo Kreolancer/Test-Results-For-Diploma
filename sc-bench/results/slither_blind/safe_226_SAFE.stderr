@@ -1,0 +1,296 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_226_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_226_SAFE.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_226_SAFE.sol:130:5: Warning: Defining constructors as functions with the same name as the contract is deprecated. Use "constructor(...) { ... }" instead.
+    function EtherShipsCore() public {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_226_SAFE.sol:170:18: Warning: Using contract member "balance" inherited from the address type is deprecated. Convert the contract to "address" type to access the member, for example use "address(contract).balance" instead.
+        require (this.balance >= _amount); // Checking if this contract has enought money to pay
+                 ^----------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_226_SAFE.sol:183:9: Warning: Invoking events without "emit" prefix is deprecated.
+        EventCashOut (msg.sender, _amount);
+        ^--------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_226_SAFE.sol:192:18: Warning: Using contract member "balance" inherited from the address type is deprecated. Convert the contract to "address" type to access the member, for example use "address(contract).balance" instead.
+        require (this.balance >= _amount); // Checking if this contract has enought money to pay
+                 ^----------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_226_SAFE.sol:203:9: Warning: Invoking events without "emit" prefix is deprecated.
+        EventCashOut (msg.sender, _amount);
+        ^--------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_226_SAFE.sol:208:9: Warning: Invoking events without "emit" prefix is deprecated.
+        EventLogin (msg.sender, _hash);
+        ^----------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_226_SAFE.sol:224:9: Warning: Invoking events without "emit" prefix is deprecated.
+        EventUpgradeShip (msg.sender, _shipID, _upgradeChoice);
+        ^----------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_226_SAFE.sol:238:9: Warning: Invoking events without "emit" prefix is deprecated.
+        EventTransfer (msg.sender, _receiver, _shipID);
+        ^--------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_226_SAFE.sol:258:9: Warning: Invoking events without "emit" prefix is deprecated.
+        EventTransferAction (msg.sender, _receiver, _shipID, _ActionType);
+        ^---------------------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_226_SAFE.sol:277:9: Warning: Invoking events without "emit" prefix is deprecated.
+        EventAuction (msg.sender, _shipID, _startPrice, _finishPrice, _duration, now);
+        ^---------------------------------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_226_SAFE.sol:303:9: Warning: Invoking events without "emit" prefix is deprecated.
+        EventBid (_shipID);
+        ^----------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_226_SAFE.sol:315:9: Warning: Invoking events without "emit" prefix is deprecated.
+        EventCancelAuction (_shipID);
+        ^--------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_226_SAFE.sol:343:9: Warning: Invoking events without "emit" prefix is deprecated.
+        EventBuyShip (msg.sender, _shipproductID, newIdShip-1);
+        ^----------------------------------------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_226_SAFE.sol:416:16: Warning: Using contract member "balance" inherited from the address type is deprecated. Convert the contract to "address" type to access the member, for example use "address(contract).balance" instead.
+        return this.balance;
+               ^----------^
+
+
+Detector: divide-before-multiply
+EtherShipsCore.bid(uint32) (contracts/safe/safe_226_SAFE.sol#281-304) performs a multiplication on the result of a division:
+	- currentPrice = currentAuction.startPrice - (((currentAuction.startPrice - currentAuction.finishPrice) / (currentAuction.duration)) * (now - currentAuction.startTime)) (contracts/safe/safe_226_SAFE.sol#285)
+EtherShipsCore.bid(uint32) (contracts/safe/safe_226_SAFE.sol#281-304) performs a multiplication on the result of a division:
+	- marketFee = (currentPrice / 100) * 3 (contracts/safe/safe_226_SAFE.sol#294)
+EtherShipsCore.getCurrentPriceAuction(uint32) (contracts/safe/safe_226_SAFE.sol#401-409) performs a multiplication on the result of a division:
+	- currentPrice = currentAuction.startPrice - (((currentAuction.startPrice - currentAuction.finishPrice) / (currentAuction.duration)) * (now - currentAuction.startTime)) (contracts/safe/safe_226_SAFE.sol#404)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#divide-before-multiply
+
+Detector: incorrect-equality
+EtherShipsCore._transfer(uint32,address) (contracts/safe/safe_226_SAFE.sol#230-240) uses a dangerous strict equality:
+	- require(bool)(ships[_shipID].selling == false) (contracts/safe/safe_226_SAFE.sol#234)
+EtherShipsCore._transferAction(uint32,address,uint8) (contracts/safe/safe_226_SAFE.sol#243-260) uses a dangerous strict equality:
+	- require(bool)(ships[_shipID].selling == false) (contracts/safe/safe_226_SAFE.sol#247)
+EtherShipsCore.bid(uint32) (contracts/safe/safe_226_SAFE.sol#281-304) uses a dangerous strict equality:
+	- require(bool)(ships[_shipID].selling == true) (contracts/safe/safe_226_SAFE.sol#283)
+EtherShipsCore.cancelAuction(uint32) (contracts/safe/safe_226_SAFE.sol#307-316) uses a dangerous strict equality:
+	- require(bool)(ships[_shipID].selling == true) (contracts/safe/safe_226_SAFE.sol#309)
+EtherShipsCore.sellShip(uint32,uint256,uint256,uint256) (contracts/safe/safe_226_SAFE.sol#263-278) uses a dangerous strict equality:
+	- require(bool)(ships[_shipID].selling == false) (contracts/safe/safe_226_SAFE.sol#266)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dangerous-strict-equalities
+
+Detector: tautology
+EtherShipsCore.cashOut(uint256) (contracts/safe/safe_226_SAFE.sol#166-185) contains a tautology or contradiction:
+	- require(bool)(_amount >= 0) (contracts/safe/safe_226_SAFE.sol#168)
+EtherShipsCore.upgradeShip(uint32,uint8) (contracts/safe/safe_226_SAFE.sol#214-226) contains a tautology or contradiction:
+	- require(bool)(_upgradeChoice >= 0 && _upgradeChoice < 4) (contracts/safe/safe_226_SAFE.sol#217)
+EtherShipsCore.sellShip(uint32,uint256,uint256,uint256) (contracts/safe/safe_226_SAFE.sol#263-278) contains a tautology or contradiction:
+	- require(bool)(_startPrice > 0 && _finishPrice >= 0) (contracts/safe/safe_226_SAFE.sol#268)
+EtherShipsCore.bid(uint32) (contracts/safe/safe_226_SAFE.sol#281-304) contains a tautology or contradiction:
+	- require(bool)(currentPrice >= 0) (contracts/safe/safe_226_SAFE.sol#290)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#tautology-or-contradiction
+
+Detector: missing-zero-check
+EtherShipsCore.ChangeUpgradeMaster(address)._newMaster (contracts/safe/safe_226_SAFE.sol#115) lacks a zero-check on :
+		- UpgradeMaster = _newMaster (contracts/safe/safe_226_SAFE.sol#117)
+EtherShipsCore.ChangeShipSellMaster(address)._newMaster (contracts/safe/safe_226_SAFE.sol#120) lacks a zero-check on :
+		- ShipSellMaster = _newMaster (contracts/safe/safe_226_SAFE.sol#122)
+EtherShipsCore.ChangeAuctionMaster(address)._newMaster (contracts/safe/safe_226_SAFE.sol#125) lacks a zero-check on :
+		- AuctionMaster = _newMaster (contracts/safe/safe_226_SAFE.sol#127)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+
+Detector: timestamp
+EtherShipsCore.cashOut(uint256) (contracts/safe/safe_226_SAFE.sol#166-185) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(_amount >= 0) (contracts/safe/safe_226_SAFE.sol#168)
+	- require(bool)(_amount == uint256(uint128(_amount))) (contracts/safe/safe_226_SAFE.sol#169)
+	- require(bool)(this.balance >= _amount) (contracts/safe/safe_226_SAFE.sol#170)
+	- require(bool)(balances[msg.sender] >= _amount) (contracts/safe/safe_226_SAFE.sol#171)
+	- _amount == 0 (contracts/safe/safe_226_SAFE.sol#172)
+EtherShipsCore.cashOutShip(uint32) (contracts/safe/safe_226_SAFE.sol#187-205) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(ships[_shipID].owner == msg.sender) (contracts/safe/safe_226_SAFE.sol#190)
+	- require(bool)(this.balance >= _amount) (contracts/safe/safe_226_SAFE.sol#192)
+	- require(bool)(_amount > 0) (contracts/safe/safe_226_SAFE.sol#193)
+EtherShipsCore.upgradeShip(uint32,uint8) (contracts/safe/safe_226_SAFE.sol#214-226) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(ships[_shipID].owner == msg.sender) (contracts/safe/safe_226_SAFE.sol#216)
+	- require(bool)(ships[_shipID].upgrades[_upgradeChoice] < 5) (contracts/safe/safe_226_SAFE.sol#218)
+EtherShipsCore._transfer(uint32,address) (contracts/safe/safe_226_SAFE.sol#230-240) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(ships[_shipID].owner == msg.sender) (contracts/safe/safe_226_SAFE.sol#232)
+	- require(bool)(ships[_shipID].selling == false) (contracts/safe/safe_226_SAFE.sol#234)
+EtherShipsCore._transferAction(uint32,address,uint8) (contracts/safe/safe_226_SAFE.sol#243-260) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(ships[_shipID].owner == msg.sender) (contracts/safe/safe_226_SAFE.sol#245)
+	- require(bool)(ships[_shipID].selling == false) (contracts/safe/safe_226_SAFE.sol#247)
+EtherShipsCore.sellShip(uint32,uint256,uint256,uint256) (contracts/safe/safe_226_SAFE.sol#263-278) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(ships[_shipID].owner == msg.sender) (contracts/safe/safe_226_SAFE.sol#265)
+	- require(bool)(ships[_shipID].selling == false) (contracts/safe/safe_226_SAFE.sol#266)
+EtherShipsCore.bid(uint32) (contracts/safe/safe_226_SAFE.sol#281-304) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(ships[_shipID].selling == true) (contracts/safe/safe_226_SAFE.sol#283)
+	- currentPrice < currentAuction.finishPrice (contracts/safe/safe_226_SAFE.sol#287)
+	- require(bool)(currentPrice >= 0) (contracts/safe/safe_226_SAFE.sol#290)
+	- require(bool)(msg.value >= currentPrice) (contracts/safe/safe_226_SAFE.sol#291)
+EtherShipsCore.cancelAuction(uint32) (contracts/safe/safe_226_SAFE.sol#307-316) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(ships[_shipID].selling == true) (contracts/safe/safe_226_SAFE.sol#309)
+	- require(bool)(ships[_shipID].owner == msg.sender) (contracts/safe/safe_226_SAFE.sol#310)
+EtherShipsCore.buyShip(uint32) (contracts/safe/safe_226_SAFE.sol#323-345) uses timestamp for comparisons
+	Dangerous comparisons:
+	- require(bool)(shipProducts[_shipproductID].currentPrice > 0 && msg.value > 0) (contracts/safe/safe_226_SAFE.sol#324)
+	- require(bool)(msg.value >= shipProducts[_shipproductID].currentPrice) (contracts/safe/safe_226_SAFE.sol#325)
+	- require(bool)(shipProducts[_shipproductID].releaseTime <= now) (contracts/safe/safe_226_SAFE.sol#326)
+	- msg.value > shipProducts[_shipproductID].currentPrice (contracts/safe/safe_226_SAFE.sol#330)
+EtherShipsCore.getCurrentPriceAuction(uint32) (contracts/safe/safe_226_SAFE.sol#401-409) uses timestamp for comparisons
+	Dangerous comparisons:
+	- currentPrice < currentAuction.finishPrice (contracts/safe/safe_226_SAFE.sol#405)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+
+Detector: boolean-equal
+EtherShipsCore._transfer(uint32,address) (contracts/safe/safe_226_SAFE.sol#230-240) compares to a boolean constant:
+	-require(bool)(ships[_shipID].selling == false) (contracts/safe/safe_226_SAFE.sol#234)
+EtherShipsCore._transferAction(uint32,address,uint8) (contracts/safe/safe_226_SAFE.sol#243-260) compares to a boolean constant:
+	-require(bool)(ships[_shipID].selling == false) (contracts/safe/safe_226_SAFE.sol#247)
+EtherShipsCore.sellShip(uint32,uint256,uint256,uint256) (contracts/safe/safe_226_SAFE.sol#263-278) compares to a boolean constant:
+	-require(bool)(ships[_shipID].selling == false) (contracts/safe/safe_226_SAFE.sol#266)
+EtherShipsCore.bid(uint32) (contracts/safe/safe_226_SAFE.sol#281-304) compares to a boolean constant:
+	-require(bool)(ships[_shipID].selling == true) (contracts/safe/safe_226_SAFE.sol#283)
+EtherShipsCore.cancelAuction(uint32) (contracts/safe/safe_226_SAFE.sol#307-316) compares to a boolean constant:
+	-require(bool)(ships[_shipID].selling == true) (contracts/safe/safe_226_SAFE.sol#309)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#boolean-equality
+
+Detector: solc-version
+Version constraint ^0.4.0 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- NestedArrayFunctionCallDecoder
+	- ZeroFunctionSelector
+	- DelegateCallReturnValue
+	- ECRecoverMalformedInput
+	- SkipEmptyStringLiteral
+	- ConstantOptimizerSubtraction
+	- IdentityPrecompileReturnIgnored
+	- HighOrderByteCleanStorage
+	- OptimizerStaleKnowledgeAboutSHA3
+	- LibrariesNotCallableFromPayableFunctions.
+It is used by:
+	- ^0.4.0 (contracts/safe/safe_226_SAFE.sol#1)
+solc-0.4.24 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Function EtherShipsCore.ChangeUpgradeMaster(address) (contracts/safe/safe_226_SAFE.sol#115-118) is not in mixedCase
+Parameter EtherShipsCore.ChangeUpgradeMaster(address)._newMaster (contracts/safe/safe_226_SAFE.sol#115) is not in mixedCase
+Function EtherShipsCore.ChangeShipSellMaster(address) (contracts/safe/safe_226_SAFE.sol#120-123) is not in mixedCase
+Parameter EtherShipsCore.ChangeShipSellMaster(address)._newMaster (contracts/safe/safe_226_SAFE.sol#120) is not in mixedCase
+Function EtherShipsCore.ChangeAuctionMaster(address) (contracts/safe/safe_226_SAFE.sol#125-128) is not in mixedCase
+Parameter EtherShipsCore.ChangeAuctionMaster(address)._newMaster (contracts/safe/safe_226_SAFE.sol#125) is not in mixedCase
+Parameter EtherShipsCore.cashOut(uint256)._amount (contracts/safe/safe_226_SAFE.sol#166) is not in mixedCase
+Parameter EtherShipsCore.cashOutShip(uint32)._shipID (contracts/safe/safe_226_SAFE.sol#187) is not in mixedCase
+Parameter EtherShipsCore.login(string)._hash (contracts/safe/safe_226_SAFE.sol#207) is not in mixedCase
+Parameter EtherShipsCore.upgradeShip(uint32,uint8)._shipID (contracts/safe/safe_226_SAFE.sol#214) is not in mixedCase
+Parameter EtherShipsCore.upgradeShip(uint32,uint8)._upgradeChoice (contracts/safe/safe_226_SAFE.sol#214) is not in mixedCase
+Function EtherShipsCore._transfer(uint32,address) (contracts/safe/safe_226_SAFE.sol#230-240) is not in mixedCase
+Parameter EtherShipsCore._transfer(uint32,address)._shipID (contracts/safe/safe_226_SAFE.sol#230) is not in mixedCase
+Parameter EtherShipsCore._transfer(uint32,address)._receiver (contracts/safe/safe_226_SAFE.sol#230) is not in mixedCase
+Function EtherShipsCore._transferAction(uint32,address,uint8) (contracts/safe/safe_226_SAFE.sol#243-260) is not in mixedCase
+Parameter EtherShipsCore._transferAction(uint32,address,uint8)._shipID (contracts/safe/safe_226_SAFE.sol#243) is not in mixedCase
+Parameter EtherShipsCore._transferAction(uint32,address,uint8)._receiver (contracts/safe/safe_226_SAFE.sol#243) is not in mixedCase
+Parameter EtherShipsCore._transferAction(uint32,address,uint8)._ActionType (contracts/safe/safe_226_SAFE.sol#243) is not in mixedCase
+Parameter EtherShipsCore.sellShip(uint32,uint256,uint256,uint256)._shipID (contracts/safe/safe_226_SAFE.sol#263) is not in mixedCase
+Parameter EtherShipsCore.sellShip(uint32,uint256,uint256,uint256)._startPrice (contracts/safe/safe_226_SAFE.sol#263) is not in mixedCase
+Parameter EtherShipsCore.sellShip(uint32,uint256,uint256,uint256)._finishPrice (contracts/safe/safe_226_SAFE.sol#263) is not in mixedCase
+Parameter EtherShipsCore.sellShip(uint32,uint256,uint256,uint256)._duration (contracts/safe/safe_226_SAFE.sol#263) is not in mixedCase
+Parameter EtherShipsCore.bid(uint32)._shipID (contracts/safe/safe_226_SAFE.sol#281) is not in mixedCase
+Parameter EtherShipsCore.cancelAuction(uint32)._shipID (contracts/safe/safe_226_SAFE.sol#307) is not in mixedCase
+Parameter EtherShipsCore.newShipProduct(string,uint32,uint32,uint32,uint32,uint32,uint8,uint256,uint256,uint256)._name (contracts/safe/safe_226_SAFE.sol#319) is not in mixedCase
+Parameter EtherShipsCore.newShipProduct(string,uint32,uint32,uint32,uint32,uint32,uint8,uint256,uint256,uint256)._armor (contracts/safe/safe_226_SAFE.sol#319) is not in mixedCase
+Parameter EtherShipsCore.newShipProduct(string,uint32,uint32,uint32,uint32,uint32,uint8,uint256,uint256,uint256)._speed (contracts/safe/safe_226_SAFE.sol#319) is not in mixedCase
+Parameter EtherShipsCore.newShipProduct(string,uint32,uint32,uint32,uint32,uint32,uint8,uint256,uint256,uint256)._minDamage (contracts/safe/safe_226_SAFE.sol#319) is not in mixedCase
+Parameter EtherShipsCore.newShipProduct(string,uint32,uint32,uint32,uint32,uint32,uint8,uint256,uint256,uint256)._maxDamage (contracts/safe/safe_226_SAFE.sol#319) is not in mixedCase
+Parameter EtherShipsCore.newShipProduct(string,uint32,uint32,uint32,uint32,uint32,uint8,uint256,uint256,uint256)._attackSpeed (contracts/safe/safe_226_SAFE.sol#319) is not in mixedCase
+Parameter EtherShipsCore.newShipProduct(string,uint32,uint32,uint32,uint32,uint32,uint8,uint256,uint256,uint256)._league (contracts/safe/safe_226_SAFE.sol#319) is not in mixedCase
+Parameter EtherShipsCore.newShipProduct(string,uint32,uint32,uint32,uint32,uint32,uint8,uint256,uint256,uint256)._price (contracts/safe/safe_226_SAFE.sol#319) is not in mixedCase
+Parameter EtherShipsCore.newShipProduct(string,uint32,uint32,uint32,uint32,uint32,uint8,uint256,uint256,uint256)._earning (contracts/safe/safe_226_SAFE.sol#319) is not in mixedCase
+Parameter EtherShipsCore.newShipProduct(string,uint32,uint32,uint32,uint32,uint32,uint8,uint256,uint256,uint256)._releaseTime (contracts/safe/safe_226_SAFE.sol#319) is not in mixedCase
+Parameter EtherShipsCore.buyShip(uint32)._shipproductID (contracts/safe/safe_226_SAFE.sol#323) is not in mixedCase
+Parameter EtherShipsCore.getShipName(uint32)._ID (contracts/safe/safe_226_SAFE.sol#361) is not in mixedCase
+Parameter EtherShipsCore.getShipProduct(uint32)._ID (contracts/safe/safe_226_SAFE.sol#365) is not in mixedCase
+Parameter EtherShipsCore.getShipDetails(uint32)._ID (contracts/safe/safe_226_SAFE.sol#369) is not in mixedCase
+Parameter EtherShipsCore.getShipOwner(uint32)._ID (contracts/safe/safe_226_SAFE.sol#373) is not in mixedCase
+Parameter EtherShipsCore.getShipSell(uint32)._ID (contracts/safe/safe_226_SAFE.sol#377) is not in mixedCase
+Parameter EtherShipsCore.getShipTotalEarned(uint32)._ID (contracts/safe/safe_226_SAFE.sol#381) is not in mixedCase
+Parameter EtherShipsCore.getShipAuctionEntity(uint32)._ID (contracts/safe/safe_226_SAFE.sol#385) is not in mixedCase
+Parameter EtherShipsCore.getCurrentPrice(uint32)._ID (contracts/safe/safe_226_SAFE.sol#389) is not in mixedCase
+Parameter EtherShipsCore.getProductEarning(uint32)._ID (contracts/safe/safe_226_SAFE.sol#393) is not in mixedCase
+Parameter EtherShipsCore.getShipEarning(uint32)._ID (contracts/safe/safe_226_SAFE.sol#397) is not in mixedCase
+Parameter EtherShipsCore.getCurrentPriceAuction(uint32)._ID (contracts/safe/safe_226_SAFE.sol#401) is not in mixedCase
+Parameter EtherShipsCore.getPlayerBalance(address)._player (contracts/safe/safe_226_SAFE.sol#411) is not in mixedCase
+Variable EtherShipsCore.UpgradeMaster (contracts/safe/safe_226_SAFE.sol#111) is not in mixedCase
+Variable EtherShipsCore.AuctionMaster (contracts/safe/safe_226_SAFE.sol#112) is not in mixedCase
+Variable EtherShipsCore.ShipSellMaster (contracts/safe/safe_226_SAFE.sol#113) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: reentrancy-unlimited-gas
+Reentrancy in EtherShipsCore.cashOut(uint256) (contracts/safe/safe_226_SAFE.sol#166-185):
+	External calls:
+	- ! msg.sender.send(_amount) (contracts/safe/safe_226_SAFE.sol#179)
+	Event emitted after the call(s):
+	- EventCashOut(msg.sender,_amount) (contracts/safe/safe_226_SAFE.sol#183)
+Reentrancy in EtherShipsCore.cashOutShip(uint32) (contracts/safe/safe_226_SAFE.sol#187-205):
+	External calls:
+	- ! ships[_shipID].owner.send(_amount) (contracts/safe/safe_226_SAFE.sol#199)
+	Event emitted after the call(s):
+	- EventCashOut(msg.sender,_amount) (contracts/safe/safe_226_SAFE.sol#203)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-5
+
+Detector: too-many-digits
+EtherShipsCore.EtherShipsCore() (contracts/safe/safe_226_SAFE.sol#130-164) uses literals with too many digits:
+	- newShipProduct(L-Raz,50,5,5,40,5,1,50000000000000000,500000000000000,now) (contracts/safe/safe_226_SAFE.sol#139)
+EtherShipsCore.EtherShipsCore() (contracts/safe/safe_226_SAFE.sol#130-164) uses literals with too many digits:
+	- newShipProduct(L-Vip,50,4,6,35,6,1,50000000000000000,500000000000000,now + (60 * 60 * 3)) (contracts/safe/safe_226_SAFE.sol#140)
+EtherShipsCore.EtherShipsCore() (contracts/safe/safe_226_SAFE.sol#130-164) uses literals with too many digits:
+	- newShipProduct(L-Rapt,50,5,5,35,5,1,50000000000000000,500000000000000,now + (60 * 60 * 6)) (contracts/safe/safe_226_SAFE.sol#141)
+EtherShipsCore.EtherShipsCore() (contracts/safe/safe_226_SAFE.sol#130-164) uses literals with too many digits:
+	- newShipProduct(L-Slash,50,5,5,30,6,1,50000000000000000,500000000000000,now + (60 * 60 * 12)) (contracts/safe/safe_226_SAFE.sol#142)
+EtherShipsCore.EtherShipsCore() (contracts/safe/safe_226_SAFE.sol#130-164) uses literals with too many digits:
+	- newShipProduct(L-Stin,50,5,5,40,5,1,50000000000000000,500000000000000,now + (60 * 60 * 24)) (contracts/safe/safe_226_SAFE.sol#143)
+EtherShipsCore.EtherShipsCore() (contracts/safe/safe_226_SAFE.sol#130-164) uses literals with too many digits:
+	- newShipProduct(L-Scor,50,4,5,35,5,1,50000000000000000,500000000000000,now + (60 * 60 * 48)) (contracts/safe/safe_226_SAFE.sol#144)
+EtherShipsCore.EtherShipsCore() (contracts/safe/safe_226_SAFE.sol#130-164) uses literals with too many digits:
+	- newShipProduct(Sub-Sc,60,5,45,115,4,2,100000000000000000,1000000000000000,now) (contracts/safe/safe_226_SAFE.sol#146)
+EtherShipsCore.EtherShipsCore() (contracts/safe/safe_226_SAFE.sol#130-164) uses literals with too many digits:
+	- newShipProduct(Sub-Cycl,70,4,40,115,4,2,100000000000000000,1000000000000000,now + (60 * 60 * 6)) (contracts/safe/safe_226_SAFE.sol#147)
+EtherShipsCore.EtherShipsCore() (contracts/safe/safe_226_SAFE.sol#130-164) uses literals with too many digits:
+	- newShipProduct(Sub-Deep,80,5,45,120,4,2,100000000000000000,1000000000000000,now + (60 * 60 * 12)) (contracts/safe/safe_226_SAFE.sol#148)
+EtherShipsCore.EtherShipsCore() (contracts/safe/safe_226_SAFE.sol#130-164) uses literals with too many digits:
+	- newShipProduct(Sub-Sp,90,4,50,120,3,2,100000000000000000,1000000000000000,now + (60 * 60 * 24)) (contracts/safe/safe_226_SAFE.sol#149)
+EtherShipsCore.EtherShipsCore() (contracts/safe/safe_226_SAFE.sol#130-164) uses literals with too many digits:
+	- newShipProduct(Sub-Ab,100,5,55,130,3,2,100000000000000000,1000000000000000,now + (60 * 60 * 48)) (contracts/safe/safe_226_SAFE.sol#150)
+EtherShipsCore.EtherShipsCore() (contracts/safe/safe_226_SAFE.sol#130-164) uses literals with too many digits:
+	- newShipProduct(M-Sp,140,4,40,120,4,3,200000000000000000,2000000000000000,now) (contracts/safe/safe_226_SAFE.sol#152)
+EtherShipsCore.EtherShipsCore() (contracts/safe/safe_226_SAFE.sol#130-164) uses literals with too many digits:
+	- newShipProduct(M-Arma,150,4,40,115,5,3,200000000000000000,2000000000000000,now + (60 * 60 * 12)) (contracts/safe/safe_226_SAFE.sol#153)
+EtherShipsCore.EtherShipsCore() (contracts/safe/safe_226_SAFE.sol#130-164) uses literals with too many digits:
+	- newShipProduct(M-Penetr,160,4,35,120,6,3,200000000000000000,2000000000000000,now + (60 * 60 * 24)) (contracts/safe/safe_226_SAFE.sol#154)
+EtherShipsCore.EtherShipsCore() (contracts/safe/safe_226_SAFE.sol#130-164) uses literals with too many digits:
+	- newShipProduct(M-Slice,170,4,45,120,3,3,200000000000000000,2000000000000000,now + (60 * 60 * 36)) (contracts/safe/safe_226_SAFE.sol#155)
+EtherShipsCore.EtherShipsCore() (contracts/safe/safe_226_SAFE.sol#130-164) uses literals with too many digits:
+	- newShipProduct(M-Hell,180,3,35,120,2,3,200000000000000000,2000000000000000,now + (60 * 60 * 48)) (contracts/safe/safe_226_SAFE.sol#156)
+EtherShipsCore.EtherShipsCore() (contracts/safe/safe_226_SAFE.sol#130-164) uses literals with too many digits:
+	- newShipProduct(H-Haw,210,3,65,140,3,4,400000000000000000,4000000000000000,now) (contracts/safe/safe_226_SAFE.sol#158)
+EtherShipsCore.EtherShipsCore() (contracts/safe/safe_226_SAFE.sol#130-164) uses literals with too many digits:
+	- newShipProduct(H-Fat,220,3,75,150,2,4,400000000000000000,4000000000000000,now + (60 * 60 * 24)) (contracts/safe/safe_226_SAFE.sol#159)
+EtherShipsCore.EtherShipsCore() (contracts/safe/safe_226_SAFE.sol#130-164) uses literals with too many digits:
+	- newShipProduct(H-Beh,230,2,85,160,2,4,400000000000000000,4000000000000000,now + (60 * 60 * 48)) (contracts/safe/safe_226_SAFE.sol#160)
+EtherShipsCore.EtherShipsCore() (contracts/safe/safe_226_SAFE.sol#130-164) uses literals with too many digits:
+	- newShipProduct(H-Mamm,240,2,100,170,2,4,400000000000000000,4000000000000000,now + (60 * 60 * 72)) (contracts/safe/safe_226_SAFE.sol#161)
+EtherShipsCore.EtherShipsCore() (contracts/safe/safe_226_SAFE.sol#130-164) uses literals with too many digits:
+	- newShipProduct(H-BigM,250,2,120,180,3,4,400000000000000000,4000000000000000,now + (60 * 60 * 96)) (contracts/safe/safe_226_SAFE.sol#162)
+EtherShipsCore.slitherConstructorConstantVariables() (contracts/safe/safe_226_SAFE.sol#19-423) uses literals with too many digits:
+	- upgradePrice = 5000000000000000 (contracts/safe/safe_226_SAFE.sol#359)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#too-many-digits
+
+Detector: external-function
+login(string) should be declared external:
+	- EtherShipsCore.login(string) (contracts/safe/safe_226_SAFE.sol#207-210)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#public-function-that-could-be-declared-external
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_226_SAFE.sol analyzed (1 contracts with 101 detectors), 107 result(s) found

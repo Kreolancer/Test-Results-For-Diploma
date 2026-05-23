@@ -1,0 +1,117 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_152_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_152_SAFE.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_152_SAFE.sol:46:23: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function withdraw(uint tokenCount) public returns (bool) {
+                      ^-------------^
+
+
+Detector: divide-before-multiply
+RfsCoin.buy() (contracts/safe/safe_152_SAFE.sol#137-171) performs a multiplication on the result of a division:
+	- holderreward = (PRECISION - (reserve() + numEther) * numTokens * PRECISION / (totalSupply + numTokens) / numEther) * uint256(CRRD) / uint256(CRRD - CRRN) (contracts/safe/safe_152_SAFE.sol#152-154)
+	- holderfee = fee * holderreward (contracts/safe/safe_152_SAFE.sol#155)
+RfsCoin.fixedLog(uint256) (contracts/safe/safe_152_SAFE.sol#207-225) performs a multiplication on the result of a division:
+	- s = ((int256(a) - one) * one) / (int256(a) + one) (contracts/safe/safe_152_SAFE.sol#217)
+	- z = (s * s) / one (contracts/safe/safe_152_SAFE.sol#221)
+RfsCoin.fixedLog(uint256) (contracts/safe/safe_152_SAFE.sol#207-225) performs a multiplication on the result of a division:
+	- s = ((int256(a) - one) * one) / (int256(a) + one) (contracts/safe/safe_152_SAFE.sol#217)
+	- scale * ln2 + (s * (c1 + (z * (c3 + (z * (c5 + (z * (c7 + (z * (c9 + (z * c11 / one)) / one)) / one)) / one)) / one)) / one) (contracts/safe/safe_152_SAFE.sol#222-224)
+RfsCoin.fixedExp(int256) (contracts/safe/safe_152_SAFE.sol#232-247) performs a multiplication on the result of a division:
+	- z = (a * a) / one (contracts/safe/safe_152_SAFE.sol#238)
+	- R = (int256(2) * one) + (z * (c2 + (z * (c4 + (z * (c6 + (z * c8 / one)) / one)) / one)) / one) (contracts/safe/safe_152_SAFE.sol#239-240)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#divide-before-multiply
+
+Detector: erc20-interface
+RfsCoin (contracts/safe/safe_152_SAFE.sol#9-256) has incorrect ERC20 function interface:RfsCoin.transfer(address,uint256) (contracts/safe/safe_152_SAFE.sol#96-98)
+RfsCoin (contracts/safe/safe_152_SAFE.sol#9-256) has incorrect ERC20 function interface:RfsCoin.transferFrom(address,address,uint256) (contracts/safe/safe_152_SAFE.sol#100-106)
+RfsCoin (contracts/safe/safe_152_SAFE.sol#9-256) has incorrect ERC20 function interface:RfsCoin.approve(address,uint256) (contracts/safe/safe_152_SAFE.sol#108-116)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-erc20-interface
+
+Detector: incorrect-equality
+RfsCoin.getEtherForTokens(uint256) (contracts/safe/safe_152_SAFE.sol#189-193) uses a dangerous strict equality:
+	- tokens == totalSupply (contracts/safe/safe_152_SAFE.sol#190)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dangerous-strict-equalities
+
+Detector: shadowing-local
+RfsCoin.balanceOf(address).balance (contracts/safe/safe_152_SAFE.sol#42) shadows:
+	- RfsCoin.balance() (contracts/safe/safe_152_SAFE.sol#129-131) (function)
+RfsCoin.withdraw(uint256).balance (contracts/safe/safe_152_SAFE.sol#47) shadows:
+	- RfsCoin.balance() (contracts/safe/safe_152_SAFE.sol#129-131) (function)
+RfsCoin.sellMyTokensDaddy().balance (contracts/safe/safe_152_SAFE.sol#55) shadows:
+	- RfsCoin.balance() (contracts/safe/safe_152_SAFE.sol#129-131) (function)
+RfsCoin.withdrawOld(address).balance (contracts/safe/safe_152_SAFE.sol#123) shadows:
+	- RfsCoin.balance() (contracts/safe/safe_152_SAFE.sol#129-131) (function)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#local-variable-shadowing
+
+Detector: missing-zero-check
+RfsCoin.withdrawOld(address).to (contracts/safe/safe_152_SAFE.sol#122) lacks a zero-check on :
+		- to.transfer(balance) (contracts/safe/safe_152_SAFE.sol#126)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+
+Detector: solc-version
+Version constraint ^0.4.18 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- EventStructWrongData
+	- NestedArrayFunctionCallDecoder.
+It is used by:
+	- ^0.4.18 (contracts/safe/safe_152_SAFE.sol#1)
+solc-0.4.18 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Parameter RfsCoin.balanceOf(address)._owner (contracts/safe/safe_152_SAFE.sol#42) is not in mixedCase
+Parameter RfsCoin.transferTokens(address,address,uint256)._from (contracts/safe/safe_152_SAFE.sol#81) is not in mixedCase
+Parameter RfsCoin.transferTokens(address,address,uint256)._to (contracts/safe/safe_152_SAFE.sol#81) is not in mixedCase
+Parameter RfsCoin.transferTokens(address,address,uint256)._value (contracts/safe/safe_152_SAFE.sol#81) is not in mixedCase
+Parameter RfsCoin.transfer(address,uint256)._to (contracts/safe/safe_152_SAFE.sol#96) is not in mixedCase
+Parameter RfsCoin.transfer(address,uint256)._value (contracts/safe/safe_152_SAFE.sol#96) is not in mixedCase
+Parameter RfsCoin.transferFrom(address,address,uint256)._from (contracts/safe/safe_152_SAFE.sol#100) is not in mixedCase
+Parameter RfsCoin.transferFrom(address,address,uint256)._to (contracts/safe/safe_152_SAFE.sol#100) is not in mixedCase
+Parameter RfsCoin.transferFrom(address,address,uint256)._value (contracts/safe/safe_152_SAFE.sol#100) is not in mixedCase
+Parameter RfsCoin.approve(address,uint256)._spender (contracts/safe/safe_152_SAFE.sol#108) is not in mixedCase
+Parameter RfsCoin.approve(address,uint256)._value (contracts/safe/safe_152_SAFE.sol#108) is not in mixedCase
+Parameter RfsCoin.dividends(address)._owner (contracts/safe/safe_152_SAFE.sol#118) is not in mixedCase
+Constant RfsCoin.one (contracts/safe/safe_152_SAFE.sol#195) is not in UPPER_CASE_WITH_UNDERSCORES
+Constant RfsCoin.sqrt2 (contracts/safe/safe_152_SAFE.sol#196) is not in UPPER_CASE_WITH_UNDERSCORES
+Constant RfsCoin.sqrtdot5 (contracts/safe/safe_152_SAFE.sol#197) is not in UPPER_CASE_WITH_UNDERSCORES
+Constant RfsCoin.ln2 (contracts/safe/safe_152_SAFE.sol#198) is not in UPPER_CASE_WITH_UNDERSCORES
+Constant RfsCoin.ln2_64dot5 (contracts/safe/safe_152_SAFE.sol#199) is not in UPPER_CASE_WITH_UNDERSCORES
+Constant RfsCoin.c1 (contracts/safe/safe_152_SAFE.sol#200) is not in UPPER_CASE_WITH_UNDERSCORES
+Constant RfsCoin.c3 (contracts/safe/safe_152_SAFE.sol#201) is not in UPPER_CASE_WITH_UNDERSCORES
+Constant RfsCoin.c5 (contracts/safe/safe_152_SAFE.sol#202) is not in UPPER_CASE_WITH_UNDERSCORES
+Constant RfsCoin.c7 (contracts/safe/safe_152_SAFE.sol#203) is not in UPPER_CASE_WITH_UNDERSCORES
+Constant RfsCoin.c9 (contracts/safe/safe_152_SAFE.sol#204) is not in UPPER_CASE_WITH_UNDERSCORES
+Constant RfsCoin.c11 (contracts/safe/safe_152_SAFE.sol#205) is not in UPPER_CASE_WITH_UNDERSCORES
+Constant RfsCoin.c2 (contracts/safe/safe_152_SAFE.sol#227) is not in UPPER_CASE_WITH_UNDERSCORES
+Constant RfsCoin.c4 (contracts/safe/safe_152_SAFE.sol#228) is not in UPPER_CASE_WITH_UNDERSCORES
+Constant RfsCoin.c6 (contracts/safe/safe_152_SAFE.sol#229) is not in UPPER_CASE_WITH_UNDERSCORES
+Constant RfsCoin.c8 (contracts/safe/safe_152_SAFE.sol#230) is not in UPPER_CASE_WITH_UNDERSCORES
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: too-many-digits
+RfsCoin.fund() (contracts/safe/safe_152_SAFE.sol#64-71) uses literals with too many digits:
+	- msg.value > 1000000000000 (contracts/safe/safe_152_SAFE.sol#65)
+RfsCoin.buy() (contracts/safe/safe_152_SAFE.sol#137-171) uses literals with too many digits:
+	- msg.value < 1000000000000 || msg.value > 1000000000000000000000000 (contracts/safe/safe_152_SAFE.sol#138)
+RfsCoin.slitherConstructorConstantVariables() (contracts/safe/safe_152_SAFE.sol#9-256) uses literals with too many digits:
+	- PRECISION = 0x10000000000000000 (contracts/safe/safe_152_SAFE.sol#10)
+RfsCoin.slitherConstructorConstantVariables() (contracts/safe/safe_152_SAFE.sol#9-256) uses literals with too many digits:
+	- one = 0x10000000000000000 (contracts/safe/safe_152_SAFE.sol#195)
+RfsCoin.slitherConstructorConstantVariables() (contracts/safe/safe_152_SAFE.sol#9-256) uses literals with too many digits:
+	- c8 = - 0x000001b893ad04b3a (contracts/safe/safe_152_SAFE.sol#230)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#too-many-digits
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_152_SAFE.sol analyzed (1 contracts with 101 detectors), 47 result(s) found

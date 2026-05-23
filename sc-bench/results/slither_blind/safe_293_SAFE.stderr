@@ -1,0 +1,50 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_293_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+
+Detector: shadowing-local
+NWO.totalSupply().totalSupply (contracts/safe/safe_293_SAFE.sol#17) shadows:
+	- NWO.totalSupply() (contracts/safe/safe_293_SAFE.sol#17-19) (function)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#local-variable-shadowing
+
+Detector: solc-version
+Version constraint ^0.4.11 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- NestedArrayFunctionCallDecoder
+	- ZeroFunctionSelector
+	- DelegateCallReturnValue
+	- ECRecoverMalformedInput
+	- SkipEmptyStringLiteral.
+It is used by:
+	- ^0.4.11 (contracts/safe/safe_293_SAFE.sol#1)
+solc-0.4.11 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Parameter NWO.balanceOf(address)._owner (contracts/safe/safe_293_SAFE.sol#21) is not in mixedCase
+Parameter NWO.transfer(address,uint256)._to (contracts/safe/safe_293_SAFE.sol#25) is not in mixedCase
+Parameter NWO.transfer(address,uint256)._value (contracts/safe/safe_293_SAFE.sol#25) is not in mixedCase
+Parameter NWO.transferFrom(address,address,uint256)._from (contracts/safe/safe_293_SAFE.sol#36) is not in mixedCase
+Parameter NWO.transferFrom(address,address,uint256)._to (contracts/safe/safe_293_SAFE.sol#36) is not in mixedCase
+Parameter NWO.transferFrom(address,address,uint256)._value (contracts/safe/safe_293_SAFE.sol#36) is not in mixedCase
+Parameter NWO.approve(address,uint256)._spender (contracts/safe/safe_293_SAFE.sol#49) is not in mixedCase
+Parameter NWO.approve(address,uint256)._value (contracts/safe/safe_293_SAFE.sol#49) is not in mixedCase
+Parameter NWO.allowance(address,address)._owner (contracts/safe/safe_293_SAFE.sol#55) is not in mixedCase
+Parameter NWO.allowance(address,address)._spender (contracts/safe/safe_293_SAFE.sol#55) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: too-many-digits
+NWO.slitherConstructorConstantVariables() (contracts/safe/safe_293_SAFE.sol#2-62) uses literals with too many digits:
+	- _totalSupply = 999000000 (contracts/safe/safe_293_SAFE.sol#4)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#too-many-digits
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_293_SAFE.sol analyzed (1 contracts with 101 detectors), 14 result(s) found

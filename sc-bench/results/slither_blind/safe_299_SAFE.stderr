@@ -1,0 +1,169 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_299_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+
+Detector: uninitialized-local
+iBird.fallback()._amount (contracts/safe/safe_299_SAFE.sol#49) is a local variable never initialized
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#uninitialized-local-variables
+
+Detector: shadowing-local
+iBird.SetupiBird(string,string,uint256,uint256,uint256,address,address,uint256).DistribFundsReceiverAddress (contracts/safe/safe_299_SAFE.sol#93) shadows:
+	- iBird.DistribFundsReceiverAddress() (contracts/safe/safe_299_SAFE.sol#238-240) (function)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#local-variable-shadowing
+
+Detector: events-maths
+iBird.SetExtra(uint256) (contracts/safe/safe_299_SAFE.sol#123-125) should emit an event for: 
+	- _ExtraTokensPerETHSended = ExtraTokensPerETHSended (contracts/safe/safe_299_SAFE.sol#124) 
+iBird.SetFreeMKI(uint256) (contracts/safe/safe_299_SAFE.sol#127-129) should emit an event for: 
+	- _FreeiBird = FreeiBird (contracts/safe/safe_299_SAFE.sol#128) 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-events-arithmetic
+
+Detector: missing-zero-check
+iBird.SetupiBird(string,string,uint256,uint256,uint256,address,address,uint256).DistribFundsReceiverAddress (contracts/safe/safe_299_SAFE.sol#93) lacks a zero-check on :
+		- _DistribFundsReceiverAddress = DistribFundsReceiverAddress (contracts/safe/safe_299_SAFE.sol#107)
+iBird.SetupiBird(string,string,uint256,uint256,uint256,address,address,uint256).remainingTokensReceiverAddress (contracts/safe/safe_299_SAFE.sol#93) lacks a zero-check on :
+		- _remainingTokensReceiverAddress = remainingTokensReceiverAddress (contracts/safe/safe_299_SAFE.sol#109)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+
+Detector: boolean-equal
+iBird.fallback() (contracts/safe/safe_299_SAFE.sol#47-91) compares to a boolean constant:
+	-Claimed[msg.sender] == false (contracts/safe/safe_299_SAFE.sol#52)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#boolean-equality
+
+Detector: costly-loop
+iBird.distribution(address[],uint256) (contracts/safe/safe_299_SAFE.sol#159-179) has costly operations inside a loop:
+	- _CurrentDistribPublicSupply += _amount (contracts/safe/safe_299_SAFE.sol#168)
+iBird.distribution(address[],uint256) (contracts/safe/safe_299_SAFE.sol#159-179) has costly operations inside a loop:
+	- _totalSupply += _amount (contracts/safe/safe_299_SAFE.sol#170)
+iBird.distributeAmounts(address[],uint256[]) (contracts/safe/safe_299_SAFE.sol#181-203) has costly operations inside a loop:
+	- _CurrentDistribPublicSupply += _amount (contracts/safe/safe_299_SAFE.sol#192)
+iBird.distributeAmounts(address[],uint256[]) (contracts/safe/safe_299_SAFE.sol#181-203) has costly operations inside a loop:
+	- _totalSupply += _amount (contracts/safe/safe_299_SAFE.sol#194)
+iBird.distributeAmounts(address[],uint256[]) (contracts/safe/safe_299_SAFE.sol#181-203) has costly operations inside a loop:
+	- DistribStarted = false (contracts/safe/safe_299_SAFE.sol#199)
+iBird.distributeAmounts(address[],uint256[]) (contracts/safe/safe_299_SAFE.sol#181-203) has costly operations inside a loop:
+	- IsDistribRunning = false (contracts/safe/safe_299_SAFE.sol#200)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#costly-operations-inside-a-loop
+
+Detector: solc-version
+Version constraint ^0.4.18 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- ABIDecodeTwoDimensionalArrayMemory
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- ABIEncoderV2StorageArrayWithMultiSlotElement
+	- DynamicConstructorArgumentsClippedABIV2
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- EventStructWrongData
+	- NestedArrayFunctionCallDecoder.
+It is used by:
+	- ^0.4.18 (contracts/safe/safe_299_SAFE.sol#1)
+solc-0.4.18 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Contract iBird (contracts/safe/safe_299_SAFE.sol#3-304) is not in CapWords
+Function iBird.Makindo() (contracts/safe/safe_299_SAFE.sol#43-45) is not in mixedCase
+Function iBird.SetupiBird(string,string,uint256,uint256,uint256,address,address,uint256) (contracts/safe/safe_299_SAFE.sol#93-113) is not in mixedCase
+Parameter iBird.SetupiBird(string,string,uint256,uint256,uint256,address,address,uint256).ExtraTokensPerETHSended (contracts/safe/safe_299_SAFE.sol#93) is not in mixedCase
+Parameter iBird.SetupiBird(string,string,uint256,uint256,uint256,address,address,uint256).MaxDistribPublicSupply (contracts/safe/safe_299_SAFE.sol#93) is not in mixedCase
+Parameter iBird.SetupiBird(string,string,uint256,uint256,uint256,address,address,uint256).OwnerDistribSupply (contracts/safe/safe_299_SAFE.sol#93) is not in mixedCase
+Parameter iBird.SetupiBird(string,string,uint256,uint256,uint256,address,address,uint256).DistribFundsReceiverAddress (contracts/safe/safe_299_SAFE.sol#93) is not in mixedCase
+Parameter iBird.SetupiBird(string,string,uint256,uint256,uint256,address,address,uint256).FreeiBird (contracts/safe/safe_299_SAFE.sol#93) is not in mixedCase
+Function iBird.SetupML(uint256,uint256,uint256,uint256) (contracts/safe/safe_299_SAFE.sol#115-121) is not in mixedCase
+Parameter iBird.SetupML(uint256,uint256,uint256,uint256).ML1inX (contracts/safe/safe_299_SAFE.sol#115) is not in mixedCase
+Parameter iBird.SetupML(uint256,uint256,uint256,uint256).ML2inX (contracts/safe/safe_299_SAFE.sol#115) is not in mixedCase
+Parameter iBird.SetupML(uint256,uint256,uint256,uint256).LimitML1inWei (contracts/safe/safe_299_SAFE.sol#115) is not in mixedCase
+Parameter iBird.SetupML(uint256,uint256,uint256,uint256).LimitML2inWei (contracts/safe/safe_299_SAFE.sol#115) is not in mixedCase
+Function iBird.SetExtra(uint256) (contracts/safe/safe_299_SAFE.sol#123-125) is not in mixedCase
+Parameter iBird.SetExtra(uint256).ExtraTokensPerETHSended (contracts/safe/safe_299_SAFE.sol#123) is not in mixedCase
+Function iBird.SetFreeMKI(uint256) (contracts/safe/safe_299_SAFE.sol#127-129) is not in mixedCase
+Parameter iBird.SetFreeMKI(uint256).FreeiBird (contracts/safe/safe_299_SAFE.sol#127) is not in mixedCase
+Function iBird.StartDistrib() (contracts/safe/safe_299_SAFE.sol#131-139) is not in mixedCase
+Function iBird.StopDistrib() (contracts/safe/safe_299_SAFE.sol#141-157) is not in mixedCase
+Parameter iBird.distribution(address[],uint256)._amount (contracts/safe/safe_299_SAFE.sol#159) is not in mixedCase
+Function iBird.BurnTokens(uint256) (contracts/safe/safe_299_SAFE.sol#205-216) is not in mixedCase
+Function iBird.MaxDistribPublicSupply_() (contracts/safe/safe_299_SAFE.sol#222-224) is not in mixedCase
+Function iBird.OwnerDistribSupply_() (contracts/safe/safe_299_SAFE.sol#226-228) is not in mixedCase
+Function iBird.CurrentDistribPublicSupply_() (contracts/safe/safe_299_SAFE.sol#230-232) is not in mixedCase
+Function iBird.RemainingTokensReceiverAddress() (contracts/safe/safe_299_SAFE.sol#234-236) is not in mixedCase
+Function iBird.DistribFundsReceiverAddress() (contracts/safe/safe_299_SAFE.sol#238-240) is not in mixedCase
+Function iBird.Owner() (contracts/safe/safe_299_SAFE.sol#242-244) is not in mixedCase
+Function iBird.SetupDone() (contracts/safe/safe_299_SAFE.sol#246-248) is not in mixedCase
+Function iBird.IsDistribRunningFalg_() (contracts/safe/safe_299_SAFE.sol#250-252) is not in mixedCase
+Function iBird.IsDistribStarted() (contracts/safe/safe_299_SAFE.sol#254-256) is not in mixedCase
+Parameter iBird.balanceOf(address)._owner (contracts/safe/safe_299_SAFE.sol#258) is not in mixedCase
+Parameter iBird.transfer(address,uint256)._to (contracts/safe/safe_299_SAFE.sol#262) is not in mixedCase
+Parameter iBird.transfer(address,uint256)._amount (contracts/safe/safe_299_SAFE.sol#262) is not in mixedCase
+Parameter iBird.transferFrom(address,address,uint256)._from (contracts/safe/safe_299_SAFE.sol#276) is not in mixedCase
+Parameter iBird.transferFrom(address,address,uint256)._to (contracts/safe/safe_299_SAFE.sol#277) is not in mixedCase
+Parameter iBird.transferFrom(address,address,uint256)._amount (contracts/safe/safe_299_SAFE.sol#278) is not in mixedCase
+Parameter iBird.approve(address,uint256)._spender (contracts/safe/safe_299_SAFE.sol#294) is not in mixedCase
+Parameter iBird.approve(address,uint256)._amount (contracts/safe/safe_299_SAFE.sol#294) is not in mixedCase
+Parameter iBird.allowance(address,address)._owner (contracts/safe/safe_299_SAFE.sol#300) is not in mixedCase
+Parameter iBird.allowance(address,address)._spender (contracts/safe/safe_299_SAFE.sol#300) is not in mixedCase
+Variable iBird._FreeiBird (contracts/safe/safe_299_SAFE.sol#9) is not in mixedCase
+Variable iBird._ML1 (contracts/safe/safe_299_SAFE.sol#10) is not in mixedCase
+Variable iBird._ML2 (contracts/safe/safe_299_SAFE.sol#11) is not in mixedCase
+Variable iBird._ML3 (contracts/safe/safe_299_SAFE.sol#12) is not in mixedCase
+Variable iBird._LimitML1 (contracts/safe/safe_299_SAFE.sol#13) is not in mixedCase
+Variable iBird._LimitML2 (contracts/safe/safe_299_SAFE.sol#14) is not in mixedCase
+Variable iBird._LimitML3 (contracts/safe/safe_299_SAFE.sol#15) is not in mixedCase
+Variable iBird._MaxDistribPublicSupply (contracts/safe/safe_299_SAFE.sol#16) is not in mixedCase
+Variable iBird._OwnerDistribSupply (contracts/safe/safe_299_SAFE.sol#17) is not in mixedCase
+Variable iBird._CurrentDistribPublicSupply (contracts/safe/safe_299_SAFE.sol#18) is not in mixedCase
+Variable iBird._ExtraTokensPerETHSended (contracts/safe/safe_299_SAFE.sol#19) is not in mixedCase
+Variable iBird._DistribFundsReceiverAddress (contracts/safe/safe_299_SAFE.sol#21) is not in mixedCase
+Variable iBird.IsDistribRunning (contracts/safe/safe_299_SAFE.sol#27) is not in mixedCase
+Variable iBird.DistribStarted (contracts/safe/safe_299_SAFE.sol#28) is not in mixedCase
+Variable iBird.Claimed (contracts/safe/safe_299_SAFE.sol#36) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: reentrancy-unlimited-gas
+Reentrancy in iBird.fallback() (contracts/safe/safe_299_SAFE.sol#47-91):
+	External calls:
+	- ! _DistribFundsReceiverAddress.send(msg.value) (contracts/safe/safe_299_SAFE.sol#51)
+	State variables written after the call(s):
+	- Claimed[msg.sender] = true (contracts/safe/safe_299_SAFE.sol#58)
+	- _CurrentDistribPublicSupply += _amount (contracts/safe/safe_299_SAFE.sol#54)
+	- _CurrentDistribPublicSupply += _amount (contracts/safe/safe_299_SAFE.sol#80)
+	- _totalSupply += _amount (contracts/safe/safe_299_SAFE.sol#56)
+	- _totalSupply += _amount (contracts/safe/safe_299_SAFE.sol#82)
+	- balances[msg.sender] += _amount (contracts/safe/safe_299_SAFE.sol#55)
+	- balances[msg.sender] += _amount (contracts/safe/safe_299_SAFE.sol#81)
+	Event emitted after the call(s):
+	- Transfer(this,msg.sender,_amount) (contracts/safe/safe_299_SAFE.sol#57)
+	- Transfer(this,msg.sender,_amount) (contracts/safe/safe_299_SAFE.sol#83)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-5
+
+Detector: too-many-digits
+iBird.slitherConstructorVariables() (contracts/safe/safe_299_SAFE.sol#3-304) uses literals with too many digits:
+	- _MaxDistribPublicSupply = 20000000000 (contracts/safe/safe_299_SAFE.sol#16)
+iBird.slitherConstructorVariables() (contracts/safe/safe_299_SAFE.sol#3-304) uses literals with too many digits:
+	- _ExtraTokensPerETHSended = 5000000000 (contracts/safe/safe_299_SAFE.sol#19)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#too-many-digits
+
+Detector: unused-state
+iBird._ML3 (contracts/safe/safe_299_SAFE.sol#12) is never used in iBird (contracts/safe/safe_299_SAFE.sol#3-304)
+iBird._LimitML3 (contracts/safe/safe_299_SAFE.sol#15) is never used in iBird (contracts/safe/safe_299_SAFE.sol#3-304)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unused-state-variable
+
+Detector: constable-states
+iBird._LimitML3 (contracts/safe/safe_299_SAFE.sol#15) should be constant 
+iBird._ML3 (contracts/safe/safe_299_SAFE.sol#12) should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+
+Detector: external-function
+SetupiBird(string,string,uint256,uint256,uint256,address,address,uint256) should be declared external:
+	- iBird.SetupiBird(string,string,uint256,uint256,uint256,address,address,uint256) (contracts/safe/safe_299_SAFE.sol#93-113)
+distributeAmounts(address[],uint256[]) should be declared external:
+	- iBird.distributeAmounts(address[],uint256[]) (contracts/safe/safe_299_SAFE.sol#181-203)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#public-function-that-could-be-declared-external
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_299_SAFE.sol analyzed (1 contracts with 101 detectors), 79 result(s) found

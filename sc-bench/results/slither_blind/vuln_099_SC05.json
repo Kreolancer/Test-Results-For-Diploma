@@ -1,0 +1,322 @@
+{
+  "success": true,
+  "error": null,
+  "results": {
+    "detectors": [
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "startTime",
+            "source_mapping": {
+              "start": 59,
+              "length": 24,
+              "filename_relative": "contracts/vulnerable/vuln_099_SC05.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_099_SC05.sol",
+              "filename_short": "contracts/vulnerable/vuln_099_SC05.sol",
+              "is_dependency": false,
+              "lines": [
+                3
+              ],
+              "starting_column": 3,
+              "ending_column": 27
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "Distribution",
+                "source_mapping": {
+                  "start": 0,
+                  "length": 225,
+                  "filename_relative": "contracts/vulnerable/vuln_099_SC05.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_099_SC05.sol",
+                  "filename_short": "contracts/vulnerable/vuln_099_SC05.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              }
+            }
+          },
+          {
+            "type": "function",
+            "name": "getStage",
+            "source_mapping": {
+              "start": 90,
+              "length": 132,
+              "filename_relative": "contracts/vulnerable/vuln_099_SC05.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_099_SC05.sol",
+              "filename_short": "contracts/vulnerable/vuln_099_SC05.sol",
+              "is_dependency": false,
+              "lines": [
+                5,
+                6,
+                7
+              ],
+              "starting_column": 3,
+              "ending_column": 4
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "Distribution",
+                "source_mapping": {
+                  "start": 0,
+                  "length": 225,
+                  "filename_relative": "contracts/vulnerable/vuln_099_SC05.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_099_SC05.sol",
+                  "filename_short": "contracts/vulnerable/vuln_099_SC05.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              },
+              "signature": "getStage()"
+            }
+          }
+        ],
+        "description": "Distribution.startTime (contracts/vulnerable/vuln_099_SC05.sol#3) is never initialized. It is used in:\n\t- Distribution.getStage() (contracts/vulnerable/vuln_099_SC05.sol#5-7)\n",
+        "markdown": "[Distribution.startTime](contracts/vulnerable/vuln_099_SC05.sol#L3) is never initialized. It is used in:\n\t- [Distribution.getStage()](contracts/vulnerable/vuln_099_SC05.sol#L5-L7)\n",
+        "first_markdown_element": "contracts/vulnerable/vuln_099_SC05.sol#L3",
+        "id": "9d36a92550b17c1e29561f505d5a393fd266e58df8e48f8ebac6fc2a735dc593",
+        "check": "uninitialized-state",
+        "impact": "High",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "stageDuration",
+            "source_mapping": {
+              "start": 26,
+              "length": 28,
+              "filename_relative": "contracts/vulnerable/vuln_099_SC05.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_099_SC05.sol",
+              "filename_short": "contracts/vulnerable/vuln_099_SC05.sol",
+              "is_dependency": false,
+              "lines": [
+                2
+              ],
+              "starting_column": 3,
+              "ending_column": 31
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "Distribution",
+                "source_mapping": {
+                  "start": 0,
+                  "length": 225,
+                  "filename_relative": "contracts/vulnerable/vuln_099_SC05.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_099_SC05.sol",
+                  "filename_short": "contracts/vulnerable/vuln_099_SC05.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              }
+            }
+          },
+          {
+            "type": "function",
+            "name": "getStage",
+            "source_mapping": {
+              "start": 90,
+              "length": 132,
+              "filename_relative": "contracts/vulnerable/vuln_099_SC05.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_099_SC05.sol",
+              "filename_short": "contracts/vulnerable/vuln_099_SC05.sol",
+              "is_dependency": false,
+              "lines": [
+                5,
+                6,
+                7
+              ],
+              "starting_column": 3,
+              "ending_column": 4
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "Distribution",
+                "source_mapping": {
+                  "start": 0,
+                  "length": 225,
+                  "filename_relative": "contracts/vulnerable/vuln_099_SC05.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_099_SC05.sol",
+                  "filename_short": "contracts/vulnerable/vuln_099_SC05.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              },
+              "signature": "getStage()"
+            }
+          }
+        ],
+        "description": "Distribution.stageDuration (contracts/vulnerable/vuln_099_SC05.sol#2) is never initialized. It is used in:\n\t- Distribution.getStage() (contracts/vulnerable/vuln_099_SC05.sol#5-7)\n",
+        "markdown": "[Distribution.stageDuration](contracts/vulnerable/vuln_099_SC05.sol#L2) is never initialized. It is used in:\n\t- [Distribution.getStage()](contracts/vulnerable/vuln_099_SC05.sol#L5-L7)\n",
+        "first_markdown_element": "contracts/vulnerable/vuln_099_SC05.sol#L2",
+        "id": "c9aa23cc4069ed9dbc2005d996201824ee1a1f86b16a263a50e5f2a053d235d1",
+        "check": "uninitialized-state",
+        "impact": "High",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "stageDuration",
+            "source_mapping": {
+              "start": 26,
+              "length": 28,
+              "filename_relative": "contracts/vulnerable/vuln_099_SC05.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_099_SC05.sol",
+              "filename_short": "contracts/vulnerable/vuln_099_SC05.sol",
+              "is_dependency": false,
+              "lines": [
+                2
+              ],
+              "starting_column": 3,
+              "ending_column": 31
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "Distribution",
+                "source_mapping": {
+                  "start": 0,
+                  "length": 225,
+                  "filename_relative": "contracts/vulnerable/vuln_099_SC05.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_099_SC05.sol",
+                  "filename_short": "contracts/vulnerable/vuln_099_SC05.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              }
+            }
+          }
+        ],
+        "description": "Distribution.stageDuration (contracts/vulnerable/vuln_099_SC05.sol#2) should be constant \n",
+        "markdown": "[Distribution.stageDuration](contracts/vulnerable/vuln_099_SC05.sol#L2) should be constant \n",
+        "first_markdown_element": "contracts/vulnerable/vuln_099_SC05.sol#L2",
+        "id": "04582fdcb4cc26f8235efd44dd5dd5ee1e4be83eb7c1975e83a372f436b17410",
+        "check": "constable-states",
+        "impact": "Optimization",
+        "confidence": "High"
+      },
+      {
+        "elements": [
+          {
+            "type": "variable",
+            "name": "startTime",
+            "source_mapping": {
+              "start": 59,
+              "length": 24,
+              "filename_relative": "contracts/vulnerable/vuln_099_SC05.sol",
+              "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_099_SC05.sol",
+              "filename_short": "contracts/vulnerable/vuln_099_SC05.sol",
+              "is_dependency": false,
+              "lines": [
+                3
+              ],
+              "starting_column": 3,
+              "ending_column": 27
+            },
+            "type_specific_fields": {
+              "parent": {
+                "type": "contract",
+                "name": "Distribution",
+                "source_mapping": {
+                  "start": 0,
+                  "length": 225,
+                  "filename_relative": "contracts/vulnerable/vuln_099_SC05.sol",
+                  "filename_absolute": "/home/andrei/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b/Kursovaya/Diplom/contracts/vulnerable/vuln_099_SC05.sol",
+                  "filename_short": "contracts/vulnerable/vuln_099_SC05.sol",
+                  "is_dependency": false,
+                  "lines": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9
+                  ],
+                  "starting_column": 1,
+                  "ending_column": 0
+                }
+              }
+            }
+          }
+        ],
+        "description": "Distribution.startTime (contracts/vulnerable/vuln_099_SC05.sol#3) should be constant \n",
+        "markdown": "[Distribution.startTime](contracts/vulnerable/vuln_099_SC05.sol#L3) should be constant \n",
+        "first_markdown_element": "contracts/vulnerable/vuln_099_SC05.sol#L3",
+        "id": "646e482f25132129eb3f8a533cd67e8172974d7ecb0c568b16134cdaed4d8d67",
+        "check": "constable-states",
+        "impact": "Optimization",
+        "confidence": "High"
+      }
+    ]
+  }
+}

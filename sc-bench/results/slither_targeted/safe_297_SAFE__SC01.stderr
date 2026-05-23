@@ -1,0 +1,25 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_297_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_297_SAFE.sol:
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_297_SAFE.sol:157:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        _addr.send(this.balance);
+        ^----------------------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_297_SAFE.sol:57:67: Warning: Unused local variable
+    function addCbAddress(address newCbAddress, byte addressType, bytes proof)
+                                                                  ^---------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_297_SAFE.sol:137:47: Warning: Unused local variable
+    function setBasePrice(uint new_baseprice, bytes proofID)
+                                              ^-----------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_297_SAFE.sol:269:26: Warning: Unused local variable
+    function getCodeSize(address _addr)
+                         ^-----------^
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_297_SAFE.sol:272:13: Warning: Unused local variable
+    returns(uint _size)
+            ^--------^
+
+
+Detector: tx-origin
+Oraclize.cbAddress() (contracts/safe/safe_297_SAFE.sol#71-77) uses tx.origin for authorization: cbAddresses[tx.origin] != 0 (contracts/safe/safe_297_SAFE.sol#75)
+Oraclize.getPrice(string,uint256,address) (contracts/safe/safe_297_SAFE.sol#248-267) uses tx.origin for authorization: (offchainPayment[_addr]) || ((_gaslimit <= 200000) && (reqc[_addr] == 0) && (gasprice_ <= gasprice) && (tx.origin != cbAddress())) (contracts/safe/safe_297_SAFE.sol#254-260)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dangerous-usage-of-txorigin
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_297_SAFE.sol analyzed (1 contracts with 5 detectors), 2 result(s) found

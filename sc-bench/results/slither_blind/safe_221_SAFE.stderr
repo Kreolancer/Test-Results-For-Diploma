@@ -1,0 +1,65 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_221_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
+
+Detector: erc20-interface
+FintechChain (contracts/safe/safe_221_SAFE.sol#4-88) has incorrect ERC20 function interface:FintechChain.transfer(address,uint256) (contracts/safe/safe_221_SAFE.sol#32-39)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-erc20-interface
+
+Detector: solc-version
+Version constraint ^0.4.13 contains known severe issues (https://solidity.readthedocs.io/en/latest/bugs.html)
+	- DirtyBytesArrayToStorage
+	- KeccakCaching
+	- EmptyByteArrayCopy
+	- DynamicArrayCleanup
+	- ImplicitConstructorCallvalueCheck
+	- TupleAssignmentMultiStackSlotComponents
+	- MemoryArrayCreationOverflow
+	- privateCanBeOverridden
+	- SignedArrayStorageCopy
+	- UninitializedFunctionPointerInConstructor_0.4.x
+	- IncorrectEventSignatureInLibraries_0.4.x
+	- ExpExponentCleanup
+	- NestedArrayFunctionCallDecoder
+	- ZeroFunctionSelector
+	- DelegateCallReturnValue
+	- ECRecoverMalformedInput.
+It is used by:
+	- ^0.4.13 (contracts/safe/safe_221_SAFE.sol#1)
+solc-0.4.13 is an outdated solc version. Use a more recent version (at least 0.8.0), if possible.
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+Detector: naming-convention
+Contract tokenRecipient (contracts/safe/safe_221_SAFE.sol#2) is not in CapWords
+Parameter FintechChain.transfer(address,uint256)._to (contracts/safe/safe_221_SAFE.sol#32) is not in mixedCase
+Parameter FintechChain.transfer(address,uint256)._value (contracts/safe/safe_221_SAFE.sol#32) is not in mixedCase
+Parameter FintechChain.approve(address,uint256)._spender (contracts/safe/safe_221_SAFE.sol#42) is not in mixedCase
+Parameter FintechChain.approve(address,uint256)._value (contracts/safe/safe_221_SAFE.sol#42) is not in mixedCase
+Parameter FintechChain.approveAndCall(address,uint256,bytes)._spender (contracts/safe/safe_221_SAFE.sol#49) is not in mixedCase
+Parameter FintechChain.approveAndCall(address,uint256,bytes)._value (contracts/safe/safe_221_SAFE.sol#49) is not in mixedCase
+Parameter FintechChain.approveAndCall(address,uint256,bytes)._extraData (contracts/safe/safe_221_SAFE.sol#49) is not in mixedCase
+Parameter FintechChain.transferFrom(address,address,uint256)._from (contracts/safe/safe_221_SAFE.sol#59) is not in mixedCase
+Parameter FintechChain.transferFrom(address,address,uint256)._to (contracts/safe/safe_221_SAFE.sol#59) is not in mixedCase
+Parameter FintechChain.transferFrom(address,address,uint256)._value (contracts/safe/safe_221_SAFE.sol#59) is not in mixedCase
+Parameter FintechChain.burn(uint256)._value (contracts/safe/safe_221_SAFE.sol#71) is not in mixedCase
+Parameter FintechChain.burnFrom(address,uint256)._from (contracts/safe/safe_221_SAFE.sol#79) is not in mixedCase
+Parameter FintechChain.burnFrom(address,uint256)._value (contracts/safe/safe_221_SAFE.sol#79) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+
+Detector: too-many-digits
+FintechChain.FintechChain() (contracts/safe/safe_221_SAFE.sol#23-29) uses literals with too many digits:
+	- balanceOf[msg.sender] = 1000000000 * 1000000000000000000 (contracts/safe/safe_221_SAFE.sol#24)
+FintechChain.FintechChain() (contracts/safe/safe_221_SAFE.sol#23-29) uses literals with too many digits:
+	- totalSupply = 1000000000 * 1000000000000000000 (contracts/safe/safe_221_SAFE.sol#25)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#too-many-digits
+
+Detector: constable-states
+FintechChain.standard (contracts/safe/safe_221_SAFE.sol#6) should be constant 
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#state-variables-that-could-be-declared-constant
+
+Detector: external-function
+receiveApproval(address,uint256,address,bytes) should be declared external:
+	- tokenRecipient.receiveApproval(address,uint256,address,bytes) (contracts/safe/safe_221_SAFE.sol#2)
+approveAndCall(address,uint256,bytes) should be declared external:
+	- FintechChain.approveAndCall(address,uint256,bytes) (contracts/safe/safe_221_SAFE.sol#49-56)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#public-function-that-could-be-declared-external
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_221_SAFE.sol analyzed (2 contracts with 101 detectors), 22 result(s) found

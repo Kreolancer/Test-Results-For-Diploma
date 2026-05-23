@@ -1,0 +1,8 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_014_SC01.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
+
+Detector: controlled-delegatecall
+Proxy.forward(address,bytes) (contracts/vulnerable/vuln_014_SC01.sol#17-20) uses delegatecall to a input-controlled function id
+	- require(bool)(callee.delegatecall(_data)) (contracts/vulnerable/vuln_014_SC01.sol#19)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#controlled-delegatecall
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_014_SC01.sol analyzed (1 contracts with 5 detectors), 1 result(s) found

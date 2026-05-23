@@ -1,0 +1,14 @@
+'solc --version' running
+'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_044_SC08.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
+
+Detector: reentrancy-eth
+Reentrancy in ReentrancyDAO.withdrawAll() (contracts/vulnerable/vuln_044_SC08.sol#13-22):
+	External calls:
+	- callResult = msg.sender.call.value(oCredit)() (contracts/vulnerable/vuln_044_SC08.sol#18)
+	State variables written after the call(s):
+	- credit[msg.sender] = 0 (contracts/vulnerable/vuln_044_SC08.sol#20)
+	ReentrancyDAO.credit (contracts/vulnerable/vuln_044_SC08.sol#10) can be used in cross function reentrancies:
+	- ReentrancyDAO.deposit() (contracts/vulnerable/vuln_044_SC08.sol#24-27)
+	- ReentrancyDAO.withdrawAll() (contracts/vulnerable/vuln_044_SC08.sol#13-22)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-1
+/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_044_SC08.sol analyzed (1 contracts with 2 detectors), 1 result(s) found
