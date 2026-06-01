@@ -1,7 +1,0 @@
-'solc --version' running
-'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_019_SC05.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc' running
-
-Detector: weak-prng
-Deck.deal(address,uint8) () uses a weak PRNG: "uint8(uint256(keccak256()(block.blockhash(b),player,cardNumber,timestamp)) % 52) ()" 
-Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#weak-PRNG
-/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_019_SC05.sol analyzed (2 contracts with 2 detectors), 1 result(s) found

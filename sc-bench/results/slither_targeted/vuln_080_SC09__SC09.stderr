@@ -1,8 +1,0 @@
-'solc --version' running
-'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_080_SC09.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
-Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_080_SC09.sol:
-/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_080_SC09.sol:13:33: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
-    function TokenSaleChallenge(address _player) public payable {
-                                ^-------------^
-
-/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_080_SC09.sol analyzed (1 contracts with 2 detectors), 0 result(s) found

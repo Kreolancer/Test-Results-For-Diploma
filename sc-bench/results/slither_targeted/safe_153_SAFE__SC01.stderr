@@ -1,8 +1,0 @@
-'solc --version' running
-'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_153_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
-Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_153_SAFE.sol:
-/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_153_SAFE.sol:180:5: Warning: Function state mutability can be restricted to pure
-    function finalization() internal {}
-    ^---------------------------------^
-
-/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_153_SAFE.sol analyzed (13 contracts with 5 detectors), 0 result(s) found

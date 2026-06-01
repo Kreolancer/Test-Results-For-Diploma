@@ -1,8 +1,0 @@
-'solc --version' running
-'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_276_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
-
-Detector: divide-before-multiply
-DecentralandToken.fallback() (contracts/safe/safe_276_SAFE.sol#132-149) performs a multiplication on the result of a division:
-	- numTokens = msg.value * (1000.0 / totalTokens) (contracts/safe/safe_276_SAFE.sol#141)
-Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#divide-before-multiply
-/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_276_SAFE.sol analyzed (1 contracts with 2 detectors), 1 result(s) found

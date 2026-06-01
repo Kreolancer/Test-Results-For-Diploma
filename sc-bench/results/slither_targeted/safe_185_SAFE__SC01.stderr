@@ -1,9 +1,0 @@
-'solc --version' running
-'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_185_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc' running
-
-Detector: arbitrary-send-eth
-SaleWallet.doWithdraw() () sends eth to arbitrary user
-	Dangerous calls:
-	- ! multisig.send(this.balance) ()
-Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#functions-that-send-ether-to-arbitrary-destinations
-/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_185_SAFE.sol analyzed (12 contracts with 5 detectors), 1 result(s) found

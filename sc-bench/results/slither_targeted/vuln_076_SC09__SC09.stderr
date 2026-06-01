@@ -1,9 +1,0 @@
-'solc --version' running
-'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_076_SC09.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
-Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_076_SC09.sol:
-/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_076_SC09.sol:14:4: Warning: No visibility specified. Defaulting to "public".
-   function Token(uint _initialSupply) {
-   ^
-Spanning multiple lines.
-
-/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_076_SC09.sol analyzed (1 contracts with 2 detectors), 0 result(s) found

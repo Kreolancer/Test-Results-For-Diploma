@@ -1,9 +1,0 @@
-'solc --version' running
-'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_024_SC05.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
-
-Detector: timestamp
-GuessTheRandomNumberChallenge.guess(uint8) (contracts/vulnerable/vuln_024_SC05.sol#22-28) uses timestamp for comparisons
-	Dangerous comparisons:
-	- n == answer (contracts/vulnerable/vuln_024_SC05.sol#25)
-Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
-/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_024_SC05.sol analyzed (1 contracts with 2 detectors), 1 result(s) found

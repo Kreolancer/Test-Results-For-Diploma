@@ -1,8 +1,0 @@
-'solc --version' running
-'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_152_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
-Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_152_SAFE.sol:
-/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_152_SAFE.sol:46:23: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
-    function withdraw(uint tokenCount) public returns (bool) {
-                      ^-------------^
-
-/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_152_SAFE.sol analyzed (1 contracts with 5 detectors), 0 result(s) found

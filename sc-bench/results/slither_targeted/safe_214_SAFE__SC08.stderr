@@ -1,9 +1,0 @@
-'solc --version' running
-'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_214_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
-Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_214_SAFE.sol:
-/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_214_SAFE.sol:78:5: Warning: No visibility specified. Defaulting to "public".
-    function Xtime (address _addressFounder)  {
-    ^
-Spanning multiple lines.
-
-/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_214_SAFE.sol analyzed (3 contracts with 2 detectors), 0 result(s) found

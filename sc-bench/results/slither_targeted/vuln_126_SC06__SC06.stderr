@@ -1,8 +1,0 @@
-'solc --version' running
-'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_126_SC06.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
-
-Detector: unchecked-transfer
-OpportyBountyHold.returnTokens(uint256) (contracts/vulnerable/vuln_126_SC06.sol#357-362) ignores return value by token.transfer(msg.sender,nTokens) (contracts/vulnerable/vuln_126_SC06.sol#359)
-OpportyBountyHold.unlockTokens() (contracts/vulnerable/vuln_126_SC06.sol#364-372) ignores return value by token.transfer(msg.sender,holderList[msg.sender].tokens) (contracts/vulnerable/vuln_126_SC06.sol#368)
-Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unchecked-transfer
-/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_126_SC06.sol analyzed (8 contracts with 5 detectors), 2 result(s) found

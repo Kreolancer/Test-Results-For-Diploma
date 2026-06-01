@@ -1,8 +1,0 @@
-'solc --version' running
-'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_224_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
-
-Detector: unused-return
-Crowdsale.buyTokens(address) (contracts/safe/safe_224_SAFE.sol#84-100) ignores return value by token.mint(beneficiary,tokens) (contracts/safe/safe_224_SAFE.sol#96)
-SelfPayPreSale.buyTokens(address) (contracts/safe/safe_224_SAFE.sol#269-287) ignores return value by token.mint(beneficiary,tokens) (contracts/safe/safe_224_SAFE.sol#278)
-Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unused-return
-/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_224_SAFE.sol analyzed (13 contracts with 5 detectors), 2 result(s) found

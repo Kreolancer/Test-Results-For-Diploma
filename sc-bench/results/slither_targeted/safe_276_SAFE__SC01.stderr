@@ -1,9 +1,0 @@
-'solc --version' running
-'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_276_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
-
-Detector: arbitrary-send-eth
-DecentralandToken.changeOwner(address) (contracts/safe/safe_276_SAFE.sol#47-55) sends eth to arbitrary user
-	Dangerous calls:
-	- owner.transfer(this.balance) (contracts/safe/safe_276_SAFE.sol#52)
-Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#functions-that-send-ether-to-arbitrary-destinations
-/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_276_SAFE.sol analyzed (1 contracts with 5 detectors), 1 result(s) found

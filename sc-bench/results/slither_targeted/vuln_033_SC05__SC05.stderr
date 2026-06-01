@@ -1,8 +1,0 @@
-'solc --version' running
-'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_033_SC05.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable' running
-Compilation warnings/errors on /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_033_SC05.sol:
-/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_033_SC05.sol:17:25: Warning: "sha3" has been deprecated in favour of "keccak256"
-        require(hash == sha3(solution));
-                        ^------------^
-
-/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/vulnerable/vuln_033_SC05.sol analyzed (1 contracts with 2 detectors), 0 result(s) found

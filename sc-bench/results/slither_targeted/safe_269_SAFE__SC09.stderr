@@ -1,8 +1,0 @@
-'solc --version' running
-'solc /home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_269_SAFE.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe' running
-
-Detector: incorrect-equality
-RP.fallback() (contracts/safe/safe_269_SAFE.sol#777-801) uses a dangerous strict equality:
-	- i == orders.length - 1 (contracts/safe/safe_269_SAFE.sol#793)
-Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dangerous-strict-equalities
-/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts/safe/safe_269_SAFE.sol analyzed (11 contracts with 2 detectors), 1 result(s) found
