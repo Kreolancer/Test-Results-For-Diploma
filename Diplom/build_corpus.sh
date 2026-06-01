@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 # build_corpus.sh — сборка стратифицированного корпуса
 set -uo pipefail
-# ПОДСТАВЬ свои реальные пути:
 SB="/home/andrei/Рабочий стол/Kursovaya/Diplom/dataset"
 BCCC="/home/andrei/Рабочий стол/Kursovaya/Diplom/BCCC-SCsVul-2024/SourceCodes/Source Codes"
 DEST="/home/andrei/Рабочий стол/Kursovaya/Diplom/contracts"
@@ -42,5 +41,5 @@ add_files "$BCCC/MishandledException"       SC06 vuln 8  bccc
 add_files "$BCCC/IntegerUO"                 SC09 vuln 15 bccc   # 15 + 15 = 30
 add_files "$BCCC/NonVulnerable"             SAFE safe "$N_SAFE" bccc
 echo ""
-echo "Итого в корфусе:"
+echo "Итого в корпусе:"
 column -t -s, "$META" | tail -n +2 | awk -F'  +' '{print $4}' | sort | uniq -c
