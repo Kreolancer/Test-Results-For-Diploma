@@ -55,5 +55,5 @@ for sc in SC01 SC06 SC08; do
     done
     echo "  итог $sc: добрано $got (проверено $tried)"
 done
-echo "Готово. Не забудь: solc-select use вернуть в 0.8.20 при необходимости."
+echo "Готово."
 solc-select use 0.8.20 >/dev/null 2>&1 || true
